@@ -1,7 +1,10 @@
 <template>
-  <div class="weui-cells">
-    <slot></slot>
-  </div>
+	<div>
+		<div class="weui-cells__title" v-if="title">{{ title }}</div>
+		<div class="weui-cells">
+			<slot></slot>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -11,9 +14,7 @@ export default {
   name: 'vui-cell-group',
 
   props: {
-    visible: {
-      default: true
-    }
+    title: String
   }
 }
 </script>
