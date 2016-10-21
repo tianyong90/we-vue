@@ -1,0 +1,68 @@
+[
+  {
+    "path": "/home",
+    "name": "Home",
+    "description": "Home",
+    "icon": "home"
+  },
+  {
+    "path": "/button",
+    "name": "Button",
+    "description": "按钮",
+    "icon": "home"
+  },
+  {
+    "path": "/toast",
+    "name": "Toast",
+    "description": "弹出式提示",
+    "icon": "home"
+  },
+  {
+    "path": "/indicator",
+    "name": "Indicator",
+    "description": "IndicatorHome",
+    "icon": "home"
+  },
+  {
+    "path": "/dialog",
+    "name": "Dialog",
+    "description": "Dialog",
+    "icon": "home"
+  },
+  {
+    "path": "/grid",
+    "name": "Grid",
+    "description": "九宫格",
+    "icon": "home"
+  },
+  {
+    "path": "/tabbar",
+    "name": "Tabbar",
+    "description": "Tabbar",
+    "icon": "home"
+  },
+  {
+    "path": "/cell",
+    "name": "Cell",
+    "description": "Cell",
+    "icon": "home"
+  },
+  {
+    "path": "/flex",
+    "name": "Flex",
+    "description": "Flex 布局",
+    "icon": "home"
+  },
+  {
+    "path": "/progress",
+    "name": "Progress",
+    "description": "进度条",
+    "icon": "home"
+  },
+  {
+    "path": "/actionsheet",
+    "name": "ActionSheet",
+    "description": "弹出式菜单",
+    "icon": "home"
+  }
+]
