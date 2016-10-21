@@ -64,5 +64,24 @@
     "name": "ActionSheet",
     "description": "弹出式菜单",
     "icon": "home"
+  },
+  {
+    "path": "/checklist",
+    "name": "Checklist",
+    "description": "多选列表",
+    "icon": "home"
+  },
+  {
+    "path": "/radio",
+    "name": "Radio",
+    "description": "单选",
+    "icon": "home"
+  },
+  {
+    "path": "/circle",
+    "name": "Circle",
+    "description": "圆环进度指示",
+    "icon": "home"
   }
+
 ]

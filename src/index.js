@@ -12,7 +12,7 @@ import Navbar from './components/navbar/index.js'
 import Tabbar from './components/tabbar/index.js'
 import TabItem from './components/tab-item/index.js'
 import Search from './components/search/index.js'
-// import Checklist from './components/checklist/index.js'
+import Checklist from './components/checklist/index.js'
 import Radio from './components/radio/index.js'
 // import Loadmore from './components/loadmore/index.js'
 import Actionsheet from './components/actionsheet/index.js'
@@ -53,7 +53,7 @@ const install = function (Vue) {
   // Vue.component(TabContainer.name, TabContainer)
   Vue.component(Navbar.name, Navbar)
   Vue.component(Search.name, Search)
-  // Vue.component(Checklist.name, Checklist)
+  Vue.component(Checklist.name, Checklist)
   Vue.component(Radio.name, Radio)
   // Vue.component(Loadmore.name, Loadmore)
   Vue.component(Actionsheet.name, Actionsheet)
@@ -97,13 +97,13 @@ module.exports = {
   // Badge,
   Switch,
   // Spinner,
-  TabItem,
   // TabContainerItem,
   // TabContainer,
   Navbar,
   Tabbar,
+  TabItem,
   Search,
-  // Checklist,
+  Checklist,
   Radio,
   // Loadmore,
   Actionsheet,
