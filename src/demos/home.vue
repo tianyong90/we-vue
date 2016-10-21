@@ -2,7 +2,7 @@
   <div id="home">
     <vui-grid>
       <vui-grid-item v-for="nav in navs" :to="nav.path">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
+        <img src="../assets/icon_tabbar.png" slot="icon">
         {{ nav.name }}
       </vui-grid-item>
     </vui-grid>

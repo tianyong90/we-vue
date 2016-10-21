@@ -2,40 +2,40 @@
   <div>
     <vui-grid>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
       <vui-grid-item to="/">
-        <i class="iconfont icon" slot="icon">&#xe601;</i>
-        Home
+        <img src="../assets/icon_tabbar.png" slot="icon">
+        Grid
       </vui-grid-item>
     </vui-grid>
   </div>
