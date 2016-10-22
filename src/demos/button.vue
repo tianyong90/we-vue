@@ -21,14 +21,12 @@
 			<vui-button type="default" :mini="true">按钮</vui-button>
 			<vui-button type="warn" :mini="true">按钮</vui-button>
 		</div>
-
 	</div>
 </template>
 
 <script>
 export default {
   mounted () {
-    console.log(this.$route)
   }
 }
 </script>
@@ -37,18 +35,18 @@ export default {
 	.buttons-big {
 		display: block;
 		width: 80%;
-		margin: 0 auto;
+		margin: 10px auto;
 	}
 	
 	.buttons-plain {
 		display: block;
 		width: 60%;
-		margin: 0 auto;
+		margin: 10px auto;
 	}
 	
 	.buttons-mini {
 		display: block;
 		width: 60%;
-		margin: 0 auto;
+		margin: 10px auto;
 	}
 </style>

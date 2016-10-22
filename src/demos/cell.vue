@@ -12,7 +12,6 @@
 <script>
 export default {
   mounted () {
-    // Vui.Toast('abc')
   },
 
   data () {

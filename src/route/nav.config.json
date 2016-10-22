@@ -1,11 +1,5 @@
 [
   {
-    "path": "/home",
-    "name": "Home",
-    "description": "Home",
-    "icon": "home"
-  },
-  {
     "path": "/button",
     "name": "Button",
     "description": "按钮",
@@ -20,13 +14,13 @@
   {
     "path": "/indicator",
     "name": "Indicator",
-    "description": "IndicatorHome",
+    "description": "加载指示",
     "icon": "home"
   },
   {
     "path": "/dialog",
     "name": "Dialog",
-    "description": "Dialog",
+    "description": "对话框",
     "icon": "home"
   },
   {
@@ -38,7 +32,7 @@
   {
     "path": "/tabbar",
     "name": "Tabbar",
-    "description": "Tabbar",
+    "description": "导航菜单",
     "icon": "home"
   },
   {

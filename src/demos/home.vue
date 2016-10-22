@@ -14,6 +14,7 @@ import navs from '../route/index.js'
 
 export default {
   mounted () {
+    console.log(navs)
   },
 
   data () {

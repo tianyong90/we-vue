@@ -1,5 +1,5 @@
 <template>
-	<div class="weui-tabbar" v-model="selected">
+	<div class="weui-tabbar">
 		<slot></slot>
 	</div>
 </template>
@@ -8,15 +8,6 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-tabbar',
-
-  props: {
-  },
-
-  data () {
-    return {
-      selected: ''
-    }
-  }
+  name: 'vui-tabbar'
 }
 </script>
