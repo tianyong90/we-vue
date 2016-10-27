@@ -1,0 +1,46 @@
+body {
+  background-color: #f8f8f8;
+  font-family: 'Microsoft Yahei';
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.page__hd {
+  padding: 40px;
+
+  .page__title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .page__desc {
+    margin-top: 5px;
+    color: #888;
+    text-align: left;
+    font-size: 14px;
+  }
+}
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .1s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-active {
+  padding-left: 10px;
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .1s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}

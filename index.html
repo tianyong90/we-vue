@@ -5,28 +5,6 @@
     <title>VUI</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
     <meta name="format-detection" content="telephone=no" />
-    <style>
-      /* Enter and leave animations can use different */
-      /* durations and timing functions.              */
-      .slide-fade-enter-active {
-        transition: all .1s ease;
-      }
-
-      .slide-fade-leave-active {
-        transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-      }
-      .slide-fade-enter, .slide-fade-leave-active {
-        padding-left: 10px;
-        opacity: 0;
-      }
-
-      .fade-enter-active, .fade-leave-active {
-        transition: opacity .1s
-      }
-      .fade-enter, .fade-leave-active {
-        opacity: 0
-      }
-    </style>
   </head>
   <body>
     <div id="app" class="page">
@@ -35,7 +13,6 @@
         <p class="page__desc">{{ this.$route.meta.description }}</p>
       </div>
       <transition name="slide-fade" mode="out-in">
-        
         <router-view></router-view>
       </transition>
       <mainmenu v-show="this.$store.state.isMainMenuVisible"></mainmenu>

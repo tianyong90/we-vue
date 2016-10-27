@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Vui from './index.js'
 import FastClick from 'fastclick'
 import 'normalize.css/normalize.css'
-import './assets/style.scss'
+import './assets/demo.scss'
 import './assets/iconfont/iconfont.css'
 
 document.addEventListener('DOMContentLoaded', function () {

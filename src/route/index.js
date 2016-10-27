@@ -1,4 +1,4 @@
-import NavConfig from './nav.config.json'
+import NavConfig from './nav.json'
 
 const registerRoute = (config) => {
   let routes = []

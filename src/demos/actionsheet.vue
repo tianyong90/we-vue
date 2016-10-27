@@ -5,7 +5,7 @@
       <vui-button type="default" @click.native="showActionsheet('android')">Android ActionSheet</vui-button>
     </div>
 
-    <vui-actionsheet :type="type" :actions="actions" :visible.sync="visible"></vui-actionsheet>
+    <vui-actionsheet :type="type" :actions="actions" :visible="visible"></vui-actionsheet>
   </div>
 </template>
 
@@ -37,7 +37,6 @@ export default {
   methods: {
     showActionsheet (type) {
       this.type = type
-      console.log(type)
       this.visible = true
     }
   }
