@@ -5,7 +5,7 @@
       <vui-button type="default" @click.native="showActionsheet('android')">Android ActionSheet</vui-button>
     </div>
 
-    <vui-actionsheet :type="type" :actions="actions" :visible="visible"></vui-actionsheet>
+    <vui-actionsheet :type="type" :actions="actions" cancel-text="取消" :visible="visible"></vui-actionsheet>
   </div>
 </template>
 
@@ -17,19 +17,19 @@ export default {
       visible: false,
       actions: [{
         name: '示例菜单',
-        method: ''
+        method: 'menuClick'
       },
       {
         name: '示例菜单',
-        method: ''
+        method: 'menuClick'
       },
       {
         name: '示例菜单',
-        method: ''
+        method: 'menuClick'
       },
       {
         name: '示例菜单',
-        method: ''
+        method: 'menuClick'
       }]
     }
   },
@@ -38,6 +38,10 @@ export default {
     showActionsheet (type) {
       this.type = type
       this.visible = true
+    },
+
+    menuClick () {
+      console.log(123)
     }
   }
 }
