@@ -9,12 +9,11 @@
   </div>
 </template>
 
-<script>
+<script type="text/babel">
 import navs from '../route/index.js'
 
 export default {
   mounted () {
-    console.log(navs)
   },
 
   data () {

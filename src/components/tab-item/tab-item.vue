@@ -7,7 +7,7 @@
 	</a>
 </template>
 
-<script>
+<script type="text/babel">
 import 'weui/dist/style/weui.min.css'
 
 function cleanPath (path) {

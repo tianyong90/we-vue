@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/babel">
 import Toast from '../components/toast/index.js'
 
 export default {
