@@ -22,6 +22,7 @@ import Actionsheet from './components/actionsheet/index.js'
 // import Range from './components/range/index.js'
 // import Picker from './components/picker/index.js'
 import Progress from './components/progress/index.js'
+import Circle from './components/circle/index.js'
 import Toast from './components/toast/index.js'
 import Indicator from './components/indicator/index.js'
 import Dialog from './components/dialog/index.js'
@@ -63,6 +64,7 @@ const install = function (Vue) {
   // Vue.component(Range.name, Range)
   // Vue.component(Picker.name, Picker)
   Vue.component(Progress.name, Progress)
+  Vue.component(Circle.name, Circle)
   // Vue.component(DatetimePicker.name, DatetimePicker)
   // Vue.component(IndexList.name, IndexList)
   // Vue.component(IndexSection.name, IndexSection)
@@ -113,6 +115,7 @@ module.exports = {
   // Range,
   // Picker,
   Progress,
+  Circle,
   Toast,
   Indicator,
   Dialog,
