@@ -70,6 +70,8 @@ export default {
   },
 
   mounted () {
+    console.log(this.actions)
+
     if (this.value) {
       this.currentValue = true
     }

@@ -15,22 +15,7 @@ export default {
     return {
       type: 'ios',
       sheetVisible: false,
-      actions: [{
-        name: '示例菜单',
-        method: this.menuClick
-      },
-      {
-        name: '示例菜单',
-        method: this.menuClick
-      },
-      {
-        name: '示例菜单',
-        method: this.menuClick
-      },
-      {
-        name: '示例菜单',
-        method: this.menuClick
-      }]
+      actions: []
     }
   },
 
@@ -43,6 +28,23 @@ export default {
     menuClick () {
       console.log('menuClick')
     }
+  },
+
+  mounted () {
+    this.actions = [
+      {
+        name: '示例菜单',
+        method: this.menuClick
+      },
+      {
+        name: '示例菜单',
+        method: this.menuClick
+      },
+      {
+        name: '示例菜单',
+        method: this.menuClick
+      }
+    ]
   }
 }
 </script>
