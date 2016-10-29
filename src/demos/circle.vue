@@ -1,6 +1,11 @@
 <template>
 	<div>
-		<vui-circle :trail-width="2" :stroke-width="2" :percent="percent"></vui-circle>
+    <div id="circle-1">
+		  <vui-circle :trail-width="3" :stroke-width="3" :percent="percent1">{{ percent1 }}%</vui-circle>
+    </div>
+    <div id="circle-2">
+		  <vui-circle :trail-width="3" :stroke-width="3" :percent="percent2">{{ percent2 }}%</vui-circle>
+    </div>
 	</div>
 </template>
 
@@ -8,12 +13,32 @@
 export default {
   data () {
     return {
-      percent: 58
+      percent1: 58,
+      percent2: 0
     }
+  },
+
+  mounted () {
+    setInterval(() => {
+      // 第二个进度百分比随机赋值
+      this.percent2 = parseInt(Math.random() * 100)
+    }, 1000)
   }
 }
 </script>
 
 <style scoped lang="scss">
+#circle-1 {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
 
+#circle-2 {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 3rem auto;
+}
 </style>

@@ -62,6 +62,17 @@ export default {
 
 <style scoped lang="scss">
 .vui-circle {
-  padding: 1rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .vui-circle-content {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 </style>
