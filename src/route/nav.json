@@ -76,6 +76,12 @@
     "name": "Circle",
     "description": "圆环进度指示",
     "icon": "home"
+  },
+  {
+    "path": "/switch",
+    "name": "Switch",
+    "description": "开关",
+    "icon": "home"
   }
 
 ]

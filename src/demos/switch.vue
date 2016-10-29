@@ -1,6 +1,7 @@
 <template>
   <div id="home">
-    <vui-switch :disabled="false" :value="true"></vui-switch>
+    <vui-switch :disabled="false" v-model="isOpen"></vui-switch>
+    <span>{{ isOpen }}</span>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ export default {
 
   data () {
     return {
+      isOpen: true
     }
   },
 

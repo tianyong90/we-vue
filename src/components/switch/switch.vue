@@ -1,9 +1,5 @@
 <template>
-  <input
-  class="weui-switch"
-  :disabled="disabled"
-  v-model="value"
-  type="checkbox">
+  <input class="weui-switch" :disabled="disabled" @change="$emit('change', currentValue)" v-model="currentValue" type="checkbox">
 </template>
 
 <script type="text/babel">
@@ -15,6 +11,22 @@ export default {
   props: {
     disabled: Boolean,
     value: Boolean
+  },
+
+  data () {
+    return {
+      currentValue: this.value
+    }
+  },
+
+  watch: {
+    value (val) {
+      this.currentValue = val
+    },
+
+    currentValue (val) {
+      this.$emit('input', val)
+    }
   }
 }
 </script>
