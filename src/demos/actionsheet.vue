@@ -17,19 +17,19 @@ export default {
       sheetVisible: false,
       actions: [{
         name: '示例菜单',
-        method: 'menuClick'
+        method: this.menuClick
       },
       {
         name: '示例菜单',
-        method: 'menuClick'
+        method: this.menuClick
       },
       {
         name: '示例菜单',
-        method: 'menuClick'
+        method: this.menuClick
       },
       {
         name: '示例菜单',
-        method: 'menuClick'
+        method: this.menuClick
       }]
     }
   },
@@ -41,7 +41,7 @@ export default {
     },
 
     menuClick () {
-      console.log(123)
+      console.log('menuClick')
     }
   }
 }
