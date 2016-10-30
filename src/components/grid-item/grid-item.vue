@@ -48,8 +48,6 @@ export default {
   methods: {
     handleClick ($event) {
       $event.preventDefault()
-
-      console.log()
       this.$router.push(this.href)
     }
   }
