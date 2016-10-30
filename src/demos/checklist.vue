@@ -22,7 +22,7 @@ export default {
           value: 'value3'
         }
       ],
-      checkedItems: []
+      checkedItems: ['value1']
     }
   }
 }
