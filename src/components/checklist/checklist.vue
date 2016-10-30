@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="weui-cells__title">复选列表项</div>
+    <div v-if="title" class="weui-cells__title">{{ title }}</div>
     <div class="weui-cells weui-cells_checkbox">
-        <label v-for="option in options" class="weui-cell weui-check__label" for="s11">
+        <label v-for="option in options" class="weui-cell weui-check__label">
             <div class="weui-cell__hd">
-                <input type="checkbox" class="weui-check" v-model="currentValue" :disabled="option.disabled" :value="option.value || option" id="s11">
+                <input type="checkbox" class="weui-check" v-model="currentValue" :disabled="option.disabled" :value="option.value || option">
                 <i class="weui-icon-checked"></i>
             </div>
             <div class="weui-cell__bd">

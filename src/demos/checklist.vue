@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<vui-checklist :options="options" v-model="checkedItems"></vui-checklist>
+		<vui-checklist title="基本示例" :options="options" v-model="checkedItems"></vui-checklist>
 	</div>
 </template>
 
@@ -21,31 +21,13 @@ export default {
           label: '选项3',
           value: 'value3'
         }
-      ]
+      ],
+      checkedItems: []
     }
-  },
-  mounted () {
-    console.log(this.$route)
   }
 }
 </script>
 
 <style scoped lang="scss">
-	.buttons-big {
-		display: block;
-		width: 80%;
-		margin: 0 auto;
-	}
-	
-	.buttons-plain {
-		display: block;
-		width: 60%;
-		margin: 0 auto;
-	}
-	
-	.buttons-mini {
-		display: block;
-		width: 60%;
-		margin: 0 auto;
-	}
+
 </style>
