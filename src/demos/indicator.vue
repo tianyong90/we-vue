@@ -12,7 +12,7 @@ import Indicator from '../components/indicator/index.js'
 export default {
   methods: {
     openIndicator () {
-      Indicator.open()
+      Indicator.open('loading')
 
       setTimeout(() => {
         Indicator.close()

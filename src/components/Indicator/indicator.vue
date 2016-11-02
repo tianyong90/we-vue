@@ -3,7 +3,7 @@
     <div class="weui-mask_transparent"></div>
     <div class="weui-toast">
       <i class="weui-loading weui-icon_toast"></i>
-      <p class="weui-toast__content" v-if="message">{{ message }}</p>
+      <p class="weui-toast__content">{{ text }}</p>
     </div>
   </div>
 </template>
@@ -13,14 +13,12 @@ import 'weui/dist/style/weui.min.css'
 
 export default {
   props: {
-    visible: {
-      default: false
-    }
+    text: String
   },
 
   data () {
     return {
-      message: 'Loading……'
+      visible: false
     }
   }
 }
