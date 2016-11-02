@@ -18,6 +18,10 @@ export default {
     }
   },
 
+  watch: {
+
+  },
+
   data () {
     return {
       message: ''

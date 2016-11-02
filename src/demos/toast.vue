@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="buttons">
-      <vui-button type="default" @click.native="success">成功提示</vui-button>
-      <vui-button type="default" @click.native="loading">加载中提示</vui-button>
+      <vui-button type="default" @click.native="showSuccess">成功提示</vui-button>
+      <vui-button type="default" @click.native="showError">出错提示</vui-button>
     </div>
   </div>
 </template>
@@ -12,11 +12,11 @@ import Toast from '../components/toast/index.js'
 
 export default {
   methods: {
-    success () {
-      console.log(Toast)
+    showSuccess () {
+      Toast.open('abc')
     },
 
-    loading () {
+    showError () {
 
     }
   }
