@@ -2,22 +2,19 @@
 	<div>
 		<div class="buttons-big">
 			<div class="row">
-        <vui-badge type="success" size="large">success</vui-badge>
-        <vui-badge type="success" size="large">success</vui-badge>
-        <vui-badge type="success" size="large">success</vui-badge>
-        <vui-badge type="success" size="large">success</vui-badge>
+        <vui-badge type="default" size="large">default</vui-badge>
+        <vui-badge type="primary" size="large">primary</vui-badge>
+        <vui-badge type="warn" size="large">warn</vui-badge>
       </div>
       <div class="row">
-        <vui-badge type="success" size="normal">success</vui-badge>
-        <vui-badge type="success" size="normal">success</vui-badge>
-        <vui-badge type="success" size="normal">success</vui-badge>
-        <vui-badge type="success" size="normal">success</vui-badge>
+        <vui-badge type="default" size="normal">default</vui-badge>
+        <vui-badge type="primary" size="normal">primary</vui-badge>
+        <vui-badge type="warn" size="normal">warnprimary</vui-badge>
       </div>
       <div class="row">
-        <vui-badge type="success" size="small">success</vui-badge>
-        <vui-badge type="success" size="small">success</vui-badge>
-        <vui-badge type="success" size="small">success</vui-badge>
-        <vui-badge type="success" size="small">success</vui-badge>
+        <vui-badge type="default" size="small">default</vui-badge>
+        <vui-badge type="primary" size="small">primary</vui-badge>
+        <vui-badge type="warn" size="small">warnprimary</vui-badge>
       </div>
 
       <vui-cell-group>
@@ -31,8 +28,6 @@
 
 <script type="text/babel">
 export default {
-  mounted () {
-  }
 }
 </script>
 

@@ -2,7 +2,7 @@
   <span
     class="vui-badge"
     :style="{ backgroundColor: color }"
-    :class="['is-' + type, 'is-size-' + size]">
+    :class="[type, 'size-' + size]">
     <slot></slot>
   </span>
 </template>
@@ -26,16 +26,41 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/var.scss";
+
 .vui-badge {
   color: white;
   text-align: center;
   display: inline-block;
 
-  background-color: red;
-  
-  border-radius: 12px;
-  font-size: 15px;
-  padding: 2px 8px;
+  &.default {
+    background-color: $color-default;
+  }
 
+  &.primary {
+    background-color: $color-primary;
+  }
+
+  &.warn {
+    background-color: red;
+  }
+
+  &.size-normal {
+    border-radius: 12px;
+    font-size: 15px;
+    padding: 2px 8px;
+  }
+
+  &.size-large {
+    border-radius: 14px;
+    font-size: 18px;
+    padding: 2px 10px;
+  }
+
+  &.size-small {
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 2px 6px;
+  }
 }
 </style>
