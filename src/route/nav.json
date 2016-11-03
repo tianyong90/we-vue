@@ -82,6 +82,12 @@
     "name": "Switch",
     "description": "开关",
     "icon": "home"
+  },
+  {
+    "path": "/icons",
+    "name": "Icons",
+    "description": "图标",
+    "icon": "home"
   }
 
 ]
