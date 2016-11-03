@@ -3,9 +3,9 @@ import Button from './components/button/index.js'
 import CellGroup from './components/cell-group/index.js'
 import Cell from './components/cell/index.js'
 // import Field from './components/field/index.js'
-// import Badge from './components/badge/index.js'
+import Badge from './components/badge/index.js'
 import Switch from './components/switch/index.js'
-// import Spinner from './components/spinner/index.js'
+import Spinner from './components/spinner/index.js'
 // import TabContainerItem from './components/tab-container-item/index.js'
 // import TabContainer from './components/tab-container/index.js'
 import Navbar from './components/navbar/index.js'
@@ -45,9 +45,9 @@ const install = function (Vue) {
   Vue.component(CellGroup.name, CellGroup)
   Vue.component(Cell.name, Cell)
   // Vue.component(Field.name, Field)
-  // Vue.component(Badge.name, Badge)
+  Vue.component(Badge.name, Badge)
   Vue.component(Switch.name, Switch)
-  // Vue.component(Spinner.name, Spinner)
+  Vue.component(Spinner.name, Spinner)
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(TabItem.name, TabItem)
   // Vue.component(TabContainerItem.name, TabContainerItem)
@@ -96,9 +96,9 @@ module.exports = {
   CellGroup,
   Cell,
   // Field,
-  // Badge,
+  Badge,
   Switch,
-  // Spinner,
+  Spinner,
   // TabContainerItem,
   // TabContainer,
   Navbar,

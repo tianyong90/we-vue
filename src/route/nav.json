@@ -88,6 +88,17 @@
     "name": "Icons",
     "description": "图标",
     "icon": "home"
+  },
+  {
+    "path": "/badge",
+    "name": "Badge",
+    "description": "小徽章",
+    "icon": "home"
+  },
+  {
+    "path": "/spinner",
+    "name": "Spinner",
+    "description": "加载动画",
+    "icon": "home"
   }
-
 ]
