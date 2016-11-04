@@ -2,7 +2,9 @@
 import Button from './components/button/index.js'
 import CellGroup from './components/cell-group/index.js'
 import Cell from './components/cell/index.js'
+import Icon from './components/icon/index.js'
 // import Field from './components/field/index.js'
+import Textarea from './components/Textarea/index.js'
 import Badge from './components/badge/index.js'
 import Switch from './components/switch/index.js'
 import Spinner from './components/spinner/index.js'
@@ -44,7 +46,9 @@ const install = function (Vue) {
   Vue.component(Button.name, Button)
   Vue.component(CellGroup.name, CellGroup)
   Vue.component(Cell.name, Cell)
+  Vue.component(Icon.name, Icon)
   // Vue.component(Field.name, Field)
+  Vue.component(Textarea.name, Textarea)
   Vue.component(Badge.name, Badge)
   Vue.component(Switch.name, Switch)
   Vue.component(Spinner.name, Spinner)
@@ -95,7 +99,9 @@ module.exports = {
   Button,
   CellGroup,
   Cell,
+  Icon,
   // Field,
+  Textarea,
   Badge,
   Switch,
   Spinner,

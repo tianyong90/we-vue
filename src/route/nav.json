@@ -100,5 +100,17 @@
     "name": "Spinner",
     "description": "加载动画",
     "icon": "home"
+  },
+  {
+    "path": "/search",
+    "name": "Search",
+    "description": "搜索框",
+    "icon": "home"
+  },
+  {
+    "path": "/textarea",
+    "name": "Textarea",
+    "description": "文本框",
+    "icon": "home"
   }
 ]

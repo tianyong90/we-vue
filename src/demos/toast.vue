@@ -13,11 +13,11 @@ import Toast from '../components/toast/index.js'
 export default {
   methods: {
     showSuccess () {
-      Toast.open('abc')
+      Toast('操作成功')
     },
 
     showError () {
-
+      Toast('操作失败')
     }
   }
 }
