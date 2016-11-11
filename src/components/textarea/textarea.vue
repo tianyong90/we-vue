@@ -2,7 +2,7 @@
   <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea class="weui-textarea" :placeholder="placeholder" :rows="row" :disabled="disabled">{{ currentValue }}</textarea>
+        <textarea class="weui-textarea" :placeholder="placeholder" :rows="row" :disabled="disabled" v-model="currentValue"></textarea>
         <div class="weui-textarea-counter" v-if="showCounter"><span>{{ length }}</span>/{{ maxLength }}</div>
       </div>
     </div>
@@ -54,8 +54,12 @@ export default {
       this.$emit('input', val)
     },
 
-    value (val) {
-      this.currentValue = val
+    value (newVal) {
+      if (this.max && this.value.length > this.max) {
+        this.value = newVal.slice(0, this.max)
+      }
+
+      this.currentValue = this.value
     }
   }
 }
