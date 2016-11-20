@@ -1,1 +1,1 @@
-module.exports = require('./cell.vue')
+module.exports = require('./input.vue')
