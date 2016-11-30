@@ -112,5 +112,17 @@
     "name": "Textarea",
     "description": "文本框",
     "icon": "home"
+  },
+  {
+    "path": "/slider",
+    "name": "Slider",
+    "description": "滑块",
+    "icon": "home"
+  },
+  {
+    "path": "/loadmore",
+    "name": "Loadmore",
+    "description": "加载更多",
+    "icon": "home"
   }
 ]

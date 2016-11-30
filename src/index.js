@@ -16,7 +16,8 @@ import TabItem from './components/tab-item/index.js'
 import Search from './components/search/index.js'
 import Checklist from './components/checklist/index.js'
 import Radio from './components/radio/index.js'
-// import Loadmore from './components/loadmore/index.js'
+import Slider from './components/slider/index.js'
+import Loadmore from './components/loadmore/index.js'
 import Actionsheet from './components/actionsheet/index.js'
 // import Popup from './components/popup/index.js'
 // import Swipe from './components/swipe/index.js'
@@ -60,7 +61,8 @@ const install = function (Vue) {
   Vue.component(Search.name, Search)
   Vue.component(Checklist.name, Checklist)
   Vue.component(Radio.name, Radio)
-  // Vue.component(Loadmore.name, Loadmore)
+  Vue.component(Slider.name, Slider)
+  Vue.component(Loadmore.name, Loadmore)
   Vue.component(Actionsheet.name, Actionsheet)
   // Vue.component(Popup.name, Popup)
   // Vue.component(Swipe.name, Swipe)
@@ -113,7 +115,8 @@ module.exports = {
   Search,
   Checklist,
   Radio,
-  // Loadmore,
+  Slider,
+  Loadmore,
   Actionsheet,
   // Popup,
   // Swipe,
