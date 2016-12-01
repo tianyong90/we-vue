@@ -1,6 +1,15 @@
 <template>
   <div>
-    <a class="weui-cell" :class="{'weui-cell_access': isLink}" :href="href" v-if="to">
+    <div class="weui-cells">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <p>标题文字</p>
+        </div>
+        <div class="weui-cell__ft">ASDFA</div>
+      </div>
+    </div>
+
+    <!--<a class="weui-cell" :class="{'weui-cell_access': isLink}" :href="href" v-if="to">
       <div class="weui-cell_hd">
         <slot name="icon"></slot>
       </div>
@@ -18,6 +27,7 @@
       </div>
       <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot></div>
     </div>
+    -->
   </div>
 </template>
 
