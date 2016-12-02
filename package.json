@@ -62,6 +62,7 @@
     "vue-loader": "^10.0.2",
     "vue-router": "^2.1.0",
     "vue-style-loader": "^1.0.0",
+    "vue-template-compiler": "^2.1.4",
     "vuex": "^2.0.0",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
