@@ -2,7 +2,7 @@
   <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea class="weui-textarea" :placeholder="placeholder" :rows="row" :disabled="disabled" v-model="currentValue"></textarea>
+        <textarea @change="$emit('change', currentValue)" class="weui-textarea" ref="rextarea" :placeholder="placeholder" :rows="rows" :disabled="disabled" :readonly="readonly" v-model="currentValue"></textarea>
         <div class="weui-textarea-counter" v-if="showCounter"><span>{{ length }}</span>/{{ maxLength }}</div>
       </div>
     </div>
@@ -21,7 +21,7 @@ export default {
       type: Boolean,
       default: true
     },
-    row: {
+    rows: {
       type: Number,
       default: 3
     },
@@ -30,12 +30,13 @@ export default {
       default: 100
     },
     disabled: Boolean,
+    readonly: Boolean,
     value: String
   },
 
   data () {
     return {
-      currentValue: ''
+      currentValue: this.value
     }
   },
 
@@ -54,12 +55,13 @@ export default {
       this.$emit('input', val)
     },
 
-    value (newVal) {
-      if (this.max && this.value.length > this.max) {
-        this.value = newVal.slice(0, this.max)
+    value (val) {
+      // 有最大字数限制时对超出限制部分进行截取
+      if (this.maxLength && this.value.length > this.maxLength) {
+        val = val.slice(0, this.maxLength)
       }
 
-      this.currentValue = this.value
+      this.currentValue = val
     }
   }
 }
