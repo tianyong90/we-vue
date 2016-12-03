@@ -12,7 +12,7 @@ function cleanPath (path) {
 }
 
 export default {
-  name: 'vui-cell',
+  name: 'vui-spinner',
 
   props: {
     title: String,
