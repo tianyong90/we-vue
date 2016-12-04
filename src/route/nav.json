@@ -124,5 +124,11 @@
     "name": "Loadmore",
     "description": "加载更多",
     "icon": "home"
+  },
+  {
+    "path": "/input",
+    "name": "Input",
+    "description": "输入框",
+    "icon": "home"
   }
 ]

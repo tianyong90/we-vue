@@ -6,28 +6,46 @@
         <div id="sliderHandler" style="left: 52%;" class="weui-slider__handler"></div>
       </div>
     </div>
-    <div id="sliderValue" class="weui-slider-box__value">52</div>
+    <div id="sliderValue" class="weui-slider-box__value">{{ value }}</div>
   </div>
 </template>
 
 <script type="text/babel">
+// import Vue from 'vue'
+// import AlloyFingerVue from 'alloyfinger'
+
+// Vue.use(AlloyFingerVue)
 import 'weui/dist/style/weui.min.css'
 
 export default {
   name: 'vui-slider',
 
   props: {
-    trailColor: {
-      type: String,
-      default: '#D9D9D9'
-    },
     value: {
       type: Number,
       default: 0
+    },
+    min: {
+      type: Number,
+      default: 0
+    },
+    max: {
+      type: Number,
+      default: 100
+    },
+    disabled: Boolean
+  },
+
+  data () {
+    return {
+      currentValue: 0
     }
   },
 
   computed: {
+    width () {
+      return 100
+    }
   }
 }
 </script>
