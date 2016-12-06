@@ -1,6 +1,10 @@
 <template>
   <div>
-    <vui-input label="label" placeholder="请输入内容"></vui-input>
+    <vui-cell-group>
+      <vui-input label="label" placeholder="请输入内容"></vui-input>
+      <vui-input label="label" placeholder="请输入内容"></vui-input>
+      <vui-input label="label" placeholder="请输入内容"></vui-input>
+    </vui-cell-group>
   </div>
 </template>
 

@@ -1,11 +1,9 @@
 <template>
   <div>
-    <div class="weui-cells weui-cells_form">
-      <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">{{ label }}</label></div>
-        <div class="weui-cell__bd">
-          <input class="weui-input" :type="type" :placeholder="placeholder">
-        </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label class="weui-label">{{ label }}</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" :type="type" :placeholder="placeholder" :disabled="disabled" :readonly="readonly">
       </div>
     </div>
   </div>
