@@ -3,7 +3,7 @@
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label">{{ label }}</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" :type="type" :placeholder="placeholder" :disabled="disabled" :readonly="readonly">
+        <input class="weui-input" :type="type" :placeholder="placeholder" :readonly="readonly">
       </div>
     </div>
   </div>
@@ -22,7 +22,6 @@ export default {
       default: 'text'
     },
     value: String,
-    disabled: Boolean,
     readonly: Boolean,
     placeholder: String
   },
