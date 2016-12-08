@@ -1,14 +1,16 @@
 <template>
   <div>
-    <vui-cell-group title="默认">
+    <vui-cell title="默认">
       <vui-input label="label" placeholder="请输入内容"></vui-input>
-    </vui-cell-group>
-    <vui-cell-group title="readonly">
+      <vui-input label="label" placeholder="请输入内容"></vui-input>
+      <vui-input label="label" placeholder="请输入内容"></vui-input>
+    </vui-cell>
+    <vui-cell title="readonly">
       <vui-input label="label" placeholder="请输入内容" :readonly="true" v-model="content"></vui-input>
-    </vui-cell-group>
-    <vui-cell-group title="默认">
+    </vui-cell>
+    <vui-cell title="默认">
       <vui-input label="label" placeholder="请输入内容"></vui-input>
-    </vui-cell-group>
+    </vui-cell>
   </div>
 </template>
 

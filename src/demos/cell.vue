@@ -1,36 +1,36 @@
 <template>
   <div>
-    <vui-cell-group title="带说明的列表项">
+    <vui-cell title="带说明的列表项">
       <vui-cell title="标题文字" value="说明文字"></vui-cell>
-    </vui-cell-group>
+    </vui-cell>
 
-    <vui-cell-group title="带图标、说明的列表项">
+    <vui-cell title="带图标、说明的列表项">
       <vui-cell title="标题文字" value="说明文字">
         <img src="../assets/icon_tabbar.png" alt="" slot="icon" class="cell-icon">
       </vui-cell>
       <vui-cell title="标题文字" value="说明文字">
         <img src="../assets/icon_tabbar.png" alt="" slot="icon" class="cell-icon">
       </vui-cell>
-    </vui-cell-group>
+    </vui-cell>
 
-    <vui-cell-group title="带跳转的列表项">
+    <vui-cell title="带跳转的列表项">
       <vui-cell title="标题文字" is-link to="/"></vui-cell>
       <vui-cell title="标题文字" is-link to="/"></vui-cell>
-    </vui-cell-group>
+    </vui-cell>
 
-    <vui-cell-group title="带说明、跳转的列表项">
+    <vui-cell title="带说明、跳转的列表项">
       <vui-cell title="标题文字" value="说明文字" is-link to="/"></vui-cell>
       <vui-cell title="标题文字" value="说明文字" is-link to="/"></vui-cell>
-    </vui-cell-group>
+    </vui-cell>
 
-    <vui-cell-group title="带图标、说明、跳转的列表项">
+    <vui-cell title="带图标、说明、跳转的列表项">
       <vui-cell title="标题文字" value="说明文字" is-link to="/">
         <img src="../assets/icon_tabbar.png" alt="" slot="icon" class="cell-icon">
       </vui-cell>
       <vui-cell title="标题文字" value="说明文字" is-link to="/">
         <img src="../assets/icon_tabbar.png" alt="" slot="icon" class="cell-icon">
       </vui-cell>
-    </vui-cell-group>
+    </vui-cell>
   </div>
 </template>
 

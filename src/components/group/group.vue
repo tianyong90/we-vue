@@ -11,7 +11,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-cell-group',
+  name: 'vui-group',
 
   props: {
     title: String

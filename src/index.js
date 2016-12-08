@@ -1,6 +1,6 @@
 // import Header from './components/header/index.js'
 import Button from './components/button/index.js'
-import CellGroup from './components/cell-group/index.js'
+import Group from './components/group/index.js'
 import Cell from './components/cell/index.js'
 import Icon from './components/icon/index.js'
 import Textarea from './components/Textarea/index.js'
@@ -45,7 +45,7 @@ const install = function (Vue) {
 
   // Vue.component(Header.name, Header)
   Vue.component(Button.name, Button)
-  Vue.component(CellGroup.name, CellGroup)
+  Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
   Vue.component(Icon.name, Icon)
   Vue.component(Textarea.name, Textarea)
@@ -99,7 +99,7 @@ module.exports = {
   install,
   // Header,
   Button,
-  CellGroup,
+  Group,
   Cell,
   Icon,
   Textarea,

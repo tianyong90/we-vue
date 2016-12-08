@@ -1,6 +1,6 @@
 body {
-  background-color: #f8f8f8;
-  font-family: 'Microsoft Yahei';
+  background-color: #ebebeb;
+  // font-family: 'Microsoft Yahei';
 }
 
 [v-cloak] {
@@ -43,4 +43,8 @@ body {
 }
 .fade-enter, .fade-leave-active {
   opacity: 0
+}
+
+.page-with-padding {
+  padding: 0 .7rem;
 }

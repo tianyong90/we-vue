@@ -5,11 +5,11 @@
         <vui-badge type="default">default</vui-badge>
       </div>
 
-      <vui-cell-group>
+      <vui-cell>
         <vui-cell title="hello" value="world">
           未读消息 <vui-badge>10</vui-badge>
         </vui-cell>
-      </vui-cell-group>
+      </vui-cell>
 		</div>
 	</div>
 </template>

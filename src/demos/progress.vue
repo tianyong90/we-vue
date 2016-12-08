@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="page-with-padding">
 		<vui-progress :percent="percent1" :show-clear="false"></vui-progress>
 		<vui-progress :percent="percent2"></vui-progress>
 		<vui-progress :percent="percent3"></vui-progress>

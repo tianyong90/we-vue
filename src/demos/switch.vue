@@ -1,7 +1,8 @@
 <template>
   <div id="home">
-    <vui-switch :disabled="false" v-model="isOpen"></vui-switch>
-    <span>{{ isOpen }}</span>
+    <vui-group>
+      <vui-switch :disabled="false" v-model="isOpen"></vui-switch>
+    </vui-group>
   </div>
 </template>
 
