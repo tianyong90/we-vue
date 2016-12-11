@@ -1,16 +1,16 @@
 <template>
   <div>
-    <vui-cell title="默认">
+    <vui-group title="默认">
       <vui-input label="label" placeholder="请输入内容"></vui-input>
       <vui-input label="label" placeholder="请输入内容"></vui-input>
       <vui-input label="label" placeholder="请输入内容"></vui-input>
-    </vui-cell>
-    <vui-cell title="readonly">
+    </vui-group>
+    <vui-group title="readonly">
       <vui-input label="label" placeholder="请输入内容" :readonly="true" v-model="content"></vui-input>
-    </vui-cell>
-    <vui-cell title="默认">
+    </vui-group>
+    <vui-group title="默认">
       <vui-input label="label" placeholder="请输入内容"></vui-input>
-    </vui-cell>
+    </vui-group>
   </div>
 </template>
 
@@ -18,7 +18,7 @@
 export default {
   data () {
     return {
-      content: 'abc'
+      content: 'hello'
     }
   }
 }

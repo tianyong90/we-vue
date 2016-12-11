@@ -2,6 +2,7 @@
   <div id="home">
     <vui-group>
       <vui-switch :disabled="false" v-model="isOpen"></vui-switch>
+      <vui-switch :disabled="false" v-model="isOpen"></vui-switch>
     </vui-group>
   </div>
 </template>
