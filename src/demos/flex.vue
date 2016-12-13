@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-with-padding">
     <vui-flex>
       <vui-flex-item>
         <div class="placeholder">vui</div>

@@ -7,13 +7,10 @@
             <p>{{ option.label || option }}</p>
         </div>
         <div class="weui-cell__ft">
-            <input type="radio" class="weui-check" v-model="value" :disabled="option.disabled" :value="option.value || option">
+            <input type="radio" class="weui-check" v-model="currentValue" :disabled="option.disabled" :value="option.value || option">
             <span class="weui-icon-checked"></span>
         </div>
-    </label>
-			<a href="javascript:void(0);" class="weui-cell weui-cell_link">
-				<div class="weui-cell__bd">添加更多</div>
-			</a>
+      </label>
 		</div>
 	</div>
 </template>
@@ -32,6 +29,22 @@ export default {
     },
     options: Array,
     value: String
+  },
+
+  data () {
+    return {
+      currentValue: this.value
+    }
+  },
+
+  watch: {
+    currentValue (val) {
+      this.$emit('input', val)
+    },
+
+    value (val) {
+      this.currentValue = val
+    }
   }
 }
 </script>

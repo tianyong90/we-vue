@@ -1,6 +1,6 @@
 <template>
   <div class="weui-cell">
-    <div class="weui-cell__hd"><label class="weui-label">{{ label }}</label></div>
+    <div class="weui-cell__hd"><label class="weui-label" v-html="label"></label></div>
     <div class="weui-cell__bd">
       <input class="weui-input" type="text" :placeholder="placeholder" v-model="currentValue" :readonly="readonly">
     </div>

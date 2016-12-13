@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="page-with-padding">
 		<div class="buttons-big">
 			<vui-button type="primary">页面主要操作 Normal</vui-button>
 			<vui-button type="primary" :disabled="true">页面主要操作 Disabled</vui-button>
@@ -34,7 +34,6 @@ export default {
 <style scoped lang="scss">
 	.buttons-big {
 		display: block;
-		width: 80%;
 		margin: 10px auto;
 	}
 	

@@ -1,7 +1,7 @@
 <template>
   <div>
     <vui-search>
-      <vui-group>
+      <vui-group class="searchbar-result" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
         <vui-cell title="abc" value="123"></vui-cell>
         <vui-cell title="abc" value="123"></vui-cell>
         <vui-cell title="abc" value="123"></vui-cell>

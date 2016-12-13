@@ -11,9 +11,6 @@
                 <p>{{ option.label || option }}</p>
             </div>
         </label>
-        <a href="javascript:void(0);" class="weui-cell weui-cell_link">
-            <div class="weui-cell__bd">添加更多</div>
-        </a>
     </div>
   </div>
 </template>
@@ -48,13 +45,13 @@ export default {
   },
 
   watch: {
-    value (val) {
-      this.currentValue = val
-    },
-
     currentValue (val) {
       if (this.limit) val.pop()
       this.$emit('input', val)
+    },
+
+    value (val) {
+      this.currentValue = val
     }
   }
 }

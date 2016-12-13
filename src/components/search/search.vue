@@ -4,7 +4,7 @@
       <form class="weui-search-bar__form">
         <div class="weui-search-bar__box">
           <i class="weui-icon-search"></i>
-          <input type="search" class="weui-search-bar__input" :placeholder="placeholder" required="" v-model="currentValue" autocomplete="off" ref="searchInput">
+          <input type="text" class="weui-search-bar__input" :placeholder="placeholder" v-model="currentValue" autocomplete="off" ref="searchInput">
           <a href="javascript:" class="weui-icon-clear" @click="searchClear"></a>
         </div>
         <label class="weui-search-bar__label" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);" @click="textClick" v-show="!isActive">
@@ -22,8 +22,8 @@
                   <p>实时搜索文本</p>
               </div>
           </div>
-      </div>  
-    </slot>    
+      </div>
+    </slot>
   </div>
 </template>
 
@@ -42,11 +42,7 @@ export default {
       type: String,
       default: '取消'
     },
-    disabled: Boolean,
-    value: {
-      type: String,
-      default: ''
-    },
+    value: String,
     result: {
       type: Array
     }
@@ -68,22 +64,16 @@ export default {
       // focus the input
       this.$refs.searchInput.focus()
       this.isActive = true
-      console.log('hello')
     },
 
     searchClear () {
       this.currentValue = ''
-      console.log('clear')
     },
 
     searchCancel () {
       this.searchClear()
       this.isActive = false
-      console.log('cancel')
     }
-  },
-
-  computed: {
   },
 
   watch: {
@@ -97,3 +87,10 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.searchbar-result {
+  argin-top: 0;
+  font-size: 14px;
+}
+</style>
