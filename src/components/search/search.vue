@@ -1,17 +1,29 @@
 <template>
-  <div class="weui-search-bar" id="searchBar">
-    <form class="weui-search-bar__form">
-      <div class="weui-search-bar__box">
-        <i class="weui-icon-search"></i>
-        <input type="search" class="weui-search-bar__input" id="searchInput" :placeholder="placeholder" required="" v-model="currentValue" autocomplete="off" auto-focus>
-        <a href="javascript:" class="weui-icon-clear" id="searchClear" @click="searchClear"></a>
-      </div>
-      <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);" @click="textClick" v-show="!isActive">
+  <div>
+    <div class="weui-search-bar">
+      <form class="weui-search-bar__form">
+        <div class="weui-search-bar__box">
           <i class="weui-icon-search"></i>
-          <span>{{ placeholder }}</span>
-      </label>
-    </form>
-    <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel" @click="searchCancel" v-show="isActive" style="display: block;">{{ cancelText }}</a>
+          <input type="search" class="weui-search-bar__input" :placeholder="placeholder" required="" v-model="currentValue" autocomplete="off" ref="searchInput">
+          <a href="javascript:" class="weui-icon-clear" @click="searchClear"></a>
+        </div>
+        <label class="weui-search-bar__label" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);" @click="textClick" v-show="!isActive">
+            <i class="weui-icon-search"></i>
+            <span v-text="placeholder"></span>
+        </label>
+      </form>
+      <a href="javascript:" class="weui-search-bar__cancel-btn" @click="searchCancel" v-show="isActive" style="display: block;" v-text="cancelText"></a>
+    </div>
+
+    <slot>
+      <div class="weui-cells searchbar-result" style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+          <div class="weui-cell weui-cell_access">
+              <div class="weui-cell__bd weui-cell_primary">
+                  <p>实时搜索文本</p>
+              </div>
+          </div>
+      </div>  
+    </slot>    
   </div>
 </template>
 
@@ -31,7 +43,13 @@ export default {
       default: '取消'
     },
     disabled: Boolean,
-    value: String
+    value: {
+      type: String,
+      default: ''
+    },
+    result: {
+      type: Array
+    }
   },
 
   data () {
@@ -46,11 +64,9 @@ export default {
   },
 
   methods: {
-    handleClick ($event) {
-      $event.preventDefault()
-    },
-
-    textClick () {
+    textClick (e) {
+      // focus the input
+      this.$refs.searchInput.focus()
       this.isActive = true
       console.log('hello')
     },
