@@ -1,1 +1,1 @@
-module.exports = require('./cell.vue')
+export { default } from './cell.vue'

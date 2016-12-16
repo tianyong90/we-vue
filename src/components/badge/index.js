@@ -1,1 +1,1 @@
-module.exports = require('./badge.vue')
+export { default } from './badge.vue'

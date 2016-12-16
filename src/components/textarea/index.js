@@ -1,1 +1,1 @@
-module.exports = require('./textarea.vue')
+export { default } from './textarea.vue'

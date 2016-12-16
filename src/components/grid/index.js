@@ -1,1 +1,1 @@
-module.exports = require('./grid.vue')
+export { default } from './grid.vue'

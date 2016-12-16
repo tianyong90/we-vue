@@ -1,1 +1,1 @@
-module.exports = require('./checklist.vue')
+export { default } from './checklist.vue'

@@ -1,1 +1,1 @@
-module.exports = require('./grid-item.vue')
+export { default } from './grid-item.vue'

@@ -1,1 +1,1 @@
-module.exports = require('./search.vue')
+export { default } from './search.vue'

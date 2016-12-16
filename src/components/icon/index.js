@@ -1,1 +1,1 @@
-module.exports = require('./icon.vue')
+export { default } from './icon.vue'

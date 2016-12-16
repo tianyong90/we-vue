@@ -1,1 +1,1 @@
-module.exports = require('./flex.vue')
+export { default } from './flex.vue'

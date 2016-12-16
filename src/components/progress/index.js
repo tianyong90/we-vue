@@ -1,1 +1,1 @@
-module.exports = require('./progress.vue')
+export { default } from './progress.vue'

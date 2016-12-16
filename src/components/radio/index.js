@@ -1,1 +1,1 @@
-module.exports = require('./radio.vue')
+export { default } from './radio.vue'

@@ -1,1 +1,1 @@
-module.exports = require('./loadmore.vue')
+export { default } from './loadmore.vue'

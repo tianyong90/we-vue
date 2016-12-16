@@ -1,1 +1,1 @@
-module.exports = require('./dialog.vue')
+export { default } from './dialog.vue'

@@ -1,1 +1,1 @@
-module.exports = require('./actionsheet.vue')
+export { default } from './actionsheet.vue'

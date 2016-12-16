@@ -1,1 +1,1 @@
-module.exports = require('./slider.vue')
+export { default } from './slider.vue'

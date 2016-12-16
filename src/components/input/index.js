@@ -1,1 +1,1 @@
-module.exports = require('./input.vue')
+export { default } from './input.vue'

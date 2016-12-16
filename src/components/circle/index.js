@@ -1,1 +1,1 @@
-module.exports = require('./circle.vue')
+export { default } from './circle.vue'

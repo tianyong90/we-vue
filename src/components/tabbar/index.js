@@ -1,1 +1,1 @@
-module.exports = require('./tabbar.vue')
+export { default } from './tabbar.vue'

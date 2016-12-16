@@ -1,1 +1,1 @@
-module.exports = require('./button.vue')
+export { default } from './button.vue'

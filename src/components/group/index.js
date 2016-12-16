@@ -1,1 +1,1 @@
-module.exports = require('./group.vue')
+export { default } from './group.vue'

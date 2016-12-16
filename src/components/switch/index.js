@@ -1,1 +1,1 @@
-module.exports = require('./switch.vue')
+export { default } from './switch.vue'
