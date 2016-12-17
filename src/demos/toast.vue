@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div class="buttons">
-      <vui-button type="default" @click.native="showSuccess">成功提示</vui-button>
-      <vui-button type="default" @click.native="showError">出错提示</vui-button>
-    </div>
+  <div class="page-with-padding">
+    <vui-button type="primary" @click.native="showSuccess">成功提示</vui-button>
+    <vui-button type="warn" @click.native="showError">出错提示</vui-button>
   </div>
 </template>
 
@@ -22,11 +20,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-  .buttons {
-    display: block;
-    width: 80%;
-    margin:20px auto;
-  }
-</style>

@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <a class="weui-cell" :class="{'weui-cell_access': isLink}" :href="href" v-if="to">
-      <div class="weui-cell_hd">
-        <slot name="icon"></slot>
-      </div>
-      <div class="weui-cell__bd">
-        <p>{{ title }}</p>
-      </div>
-      <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot></div>
-    </a>
-    <div class="weui-cell" :class="{'weui-cell_access': isLink}" v-else>
-      <div class="weui-cell_hd">
-        <slot name="icon"></slot>
-      </div>
-      <div class="weui-cell__bd">
-        <p>{{ title }}</p>
-      </div>
-      <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot></div>
+  <a class="weui-cell" :class="{'weui-cell_access': isLink}" :href="href" v-if="to">
+    <div class="weui-cell_hd">
+      <slot name="icon"></slot>
     </div>
+    <div class="weui-cell__bd">
+      <p>{{ title }}</p>
+    </div>
+    <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot></div>
+  </a>
+  <div class="weui-cell" :class="{'weui-cell_access': isLink}" v-else>
+    <div class="weui-cell_hd">
+      <slot name="icon"></slot>
+    </div>
+    <div class="weui-cell__bd">
+      <p>{{ title }}</p>
+    </div>
+    <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot></div>
   </div>
 </template>
 

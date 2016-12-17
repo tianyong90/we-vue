@@ -1,16 +1,19 @@
 <template>
   <div>
     <vui-search>
-      <vui-group class="searchbar-result" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
-        <vui-cell title="abc" value="123"></vui-cell>
-        <vui-cell title="abc" value="123"></vui-cell>
-        <vui-cell title="abc" value="123"></vui-cell>
+      <vui-group>
+        <vui-cell title="abc"></vui-cell>
+        <vui-cell title="abc"></vui-cell>
+        <vui-cell title="abc"></vui-cell>
       </vui-group>
     </vui-search>
   </div>
 </template>
 
 <script type="text/babel">
+// import Group from '../components/group/index.js'
+// import Cell from '../components/cell/index.js'
+
 export default {
   mounted () {
   },
@@ -18,6 +21,11 @@ export default {
   data () {
     return {
     }
+  },
+
+  components: {
+    // Group,
+    // Cell
   },
 
   methods: {

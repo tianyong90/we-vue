@@ -1,39 +1,40 @@
 <template>
   <div>
     <div class="weui-search-bar">
-      <form class="weui-search-bar__form">
+      <div class="weui-search-bar__form">
         <div class="weui-search-bar__box">
           <i class="weui-icon-search"></i>
-          <input type="text" class="weui-search-bar__input" :placeholder="placeholder" v-model="currentValue" autocomplete="off" ref="searchInput">
+          <input type="text" class="weui-search-bar__input" :placeholder="placeholder" v-model="currentValue" ref="searchInput">
           <a href="javascript:" class="weui-icon-clear" @click="searchClear"></a>
         </div>
         <label class="weui-search-bar__label" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);" @click="textClick" v-show="!isActive">
-            <i class="weui-icon-search"></i>
-            <span v-text="placeholder"></span>
+          <i class="weui-icon-search"></i>
+          <span v-text="placeholder"></span>
         </label>
-      </form>
+      </div>
       <a href="javascript:" class="weui-search-bar__cancel-btn" @click="searchCancel" v-show="isActive" style="display: block;" v-text="cancelText"></a>
     </div>
 
     <slot>
-      <div class="weui-cells searchbar-result" style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
-          <div class="weui-cell weui-cell_access">
-              <div class="weui-cell__bd weui-cell_primary">
-                  <p>实时搜索文本</p>
-              </div>
-          </div>
+      <div class="weui-cells searchbar-result" v-show="show || currentValue">
+          <XCell title="hello" value="world"></XCell>
       </div>
     </slot>
   </div>
 </template>
 
 <script type="text/babel">
+import XGroup from '../group/index.js'
+import XCell from '../cell/index.js'
 import 'weui/dist/style/weui.min.css'
 
 export default {
   name: 'vui-search',
 
   props: {
+    value: String,
+    autofocus: Boolean,
+    show: Boolean,
     placeholder: {
       type: String,
       default: '搜索'
@@ -42,10 +43,12 @@ export default {
       type: String,
       default: '取消'
     },
-    value: String,
-    result: {
-      type: Array
-    }
+    result: Array
+  },
+
+  components: {
+    XGroup,
+    XCell
   },
 
   data () {
@@ -85,8 +88,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.searchbar-result {
-  argin-top: 0;
-  font-size: 14px;
-}
+  .searchbar-result {
+    display: block;
+    transform-origin: 0px 0px 0px;
+    opacity: 1;
+    transform: scale(1, 1);
+    margin-top: 0;
+    font-size: 14px;
+  }
 </style>
