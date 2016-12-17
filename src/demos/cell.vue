@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <vui-group title="带说明的列表项">
       <vui-cell title="标题文字" value="说明文字"></vui-cell>
     </vui-group>

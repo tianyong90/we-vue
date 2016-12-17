@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <vui-slider :value="10"></vui-slider>
+  <div class="page">
+    <vui-slider :value="10" :disabled="false"></vui-slider>
   </div>
 </template>
 
@@ -20,9 +20,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.cell-icon {
+.page {
   display: block;
-  width: 20px;
-  margin-right: 5px;
+  background-color: white;
 }
 </style>

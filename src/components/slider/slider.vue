@@ -2,8 +2,8 @@
 	<div class="weui-slider-box">
     <div class="weui-slider">
       <div id="sliderInner" class="weui-slider__inner">
-        <div id="sliderTrack" style="width: 52%;" class="weui-slider__track"></div>
-        <div id="sliderHandler" style="left: 52%;" class="weui-slider__handler"></div>
+        <div id="sliderTrack" :style="{width: progress + '%'}" class="weui-slider__track"></div>
+        <div id="sliderHandler" :style="{left: progress + '%'}" class="weui-slider__handler" v-finger:pressmove="onPressmove" v-finger:touchend="onTouchend"></div>
       </div>
     </div>
     <div id="sliderValue" class="weui-slider-box__value">{{ value }}</div>
@@ -11,20 +11,16 @@
 </template>
 
 <script type="text/babel">
-// import Vue from 'vue'
-// import AlloyFingerVue from 'alloyfinger'
+import Vue from 'vue'
+import VueFinger from 'vue-finger'
 
-// Vue.use(AlloyFingerVue)
+Vue.use(VueFinger)
 import 'weui/dist/style/weui.min.css'
 
 export default {
   name: 'vui-slider',
 
   props: {
-    value: {
-      type: Number,
-      default: 0
-    },
     min: {
       type: Number,
       default: 0
@@ -33,18 +29,34 @@ export default {
       type: Number,
       default: 100
     },
+    step: {
+      type: Number,
+      default: 1
+    },
+    value: {
+      type: Number
+    },
     disabled: Boolean
   },
 
-  data () {
-    return {
-      currentValue: 0
+  computed: {
+    progress () {
+      const value = this.value
+      if (typeof value === 'undefined' || value === null) return 0
+
+      return Math.floor((value - this.min) / (this.max - this.min) * 100)
     }
   },
 
-  computed: {
-    width () {
-      return 100
+  methods: {
+    onPressmove (e) {
+      if (this.disabled) return
+
+      this.$emit('input', 100)
+    },
+
+    onTouchend (e) {
+      console.log(e)
     }
   }
 }
