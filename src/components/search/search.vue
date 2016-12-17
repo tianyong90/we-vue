@@ -55,10 +55,6 @@ export default {
     }
   },
 
-  mounted () {
-    this.currentValue = this.value
-  },
-
   methods: {
     textClick (e) {
       // focus the input

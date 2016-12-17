@@ -30,10 +30,6 @@ export default {
     }
   },
 
-  mounted () {
-    this.currentValue = this.value
-  },
-
   watch: {
     currentValue (val) {
       this.$emit('input', val)

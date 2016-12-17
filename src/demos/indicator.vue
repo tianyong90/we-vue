@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-with-padding">
     <div class="buttons">
       <vui-button type="default" @click.native="openIndicator">显示加载指示</vui-button>
     </div>
@@ -25,7 +25,5 @@ export default {
 <style scoped lang="scss">
   .buttons {
     display: block;
-    width: 80%;
-    margin:20px auto;
   }
 </style>
