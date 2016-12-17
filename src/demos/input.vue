@@ -1,11 +1,11 @@
 <template>
   <div>
     <vui-group title="默认">
-      <vui-input label="label" placeholder="请输入内容" v-model="value1"></vui-input>
-      <vui-input label="label" placeholder="请输入内容" v-model="value1"></vui-input>
+      <vui-input label="text 类型" placeholder="请输入内容" v-model="valueText"></vui-input>
+      <vui-input label="number 类型" placeholder="请输入内容" type="number" v-model="valueNumber"></vui-input>
     </vui-group>
     <vui-group title="readonly">
-      <vui-input label="label" placeholder="请输入内容" :readonly="true" v-model="value1"></vui-input>
+      <vui-input label="label" placeholder="请输入内容" :readonly="true" v-model="valueReadonly"></vui-input>
     </vui-group>
   </div>
 </template>
@@ -14,7 +14,10 @@
 export default {
   data () {
     return {
-      value1: 'hello'
+      valueText: 'hello',
+      valueNumber: '1',
+      valueReadonly: '内容是只读的'
+
     }
   }
 }
