@@ -18,9 +18,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "build-all": "node build/build-all.js",
-    "lint": "eslint --ext .js,.vue src",
-    "publish": "npm publish"
+    "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
     "alloyfinger": "^0.1.3",
