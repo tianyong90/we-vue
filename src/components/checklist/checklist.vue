@@ -19,7 +19,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-checklist',
+  name: 'wv-checklist',
 
   props: {
     max: Number,

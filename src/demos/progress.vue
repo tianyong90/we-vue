@@ -1,10 +1,10 @@
 <template>
 	<div class="page-with-padding">
-		<vui-progress :percent="percent1" :show-clear="false"></vui-progress>
-		<vui-progress :percent="percent2"></vui-progress>
-		<vui-progress :percent="percent3"></vui-progress>
+		<wv-progress :percent="percent1" :show-clear="false"></wv-progress>
+		<wv-progress :percent="percent2"></wv-progress>
+		<wv-progress :percent="percent3"></wv-progress>
 
-		<vui-button type="primary" @click.native="upload">上传</vui-button>
+		<wv-button type="primary" @click.native="upload">上传</wv-button>
 	</div>
 </template>
 

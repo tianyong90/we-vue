@@ -21,7 +21,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-input',
+  name: 'wv-input',
 
   props: {
     type: {

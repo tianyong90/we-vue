@@ -27,7 +27,7 @@ function cleanPath (path) {
 }
 
 export default {
-  name: 'vui-cell',
+  name: 'wv-cell',
 
   props: {
     title: String,

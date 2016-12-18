@@ -6,7 +6,7 @@
 
 <script type="text/babel">
 export default {
-  name: 'vui-badge',
+  name: 'wv-badge',
 
   props: {
     color: String,

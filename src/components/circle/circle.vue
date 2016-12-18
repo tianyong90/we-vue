@@ -12,7 +12,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-circle',
+  name: 'wv-circle',
 
   props: {
     strokeWidth: {

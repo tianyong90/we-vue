@@ -1,12 +1,12 @@
 <template>
   <div>
-    <vui-search>
-      <vui-group>
-        <vui-cell title="abc"></vui-cell>
-        <vui-cell title="abc"></vui-cell>
-        <vui-cell title="abc"></vui-cell>
-      </vui-group>
-    </vui-search>
+    <wv-search>
+      <wv-group>
+        <wv-cell title="abc"></wv-cell>
+        <wv-cell title="abc"></wv-cell>
+        <wv-cell title="abc"></wv-cell>
+      </wv-group>
+    </wv-search>
   </div>
 </template>
 

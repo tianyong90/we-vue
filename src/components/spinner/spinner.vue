@@ -12,7 +12,7 @@ function cleanPath (path) {
 }
 
 export default {
-  name: 'vui-spinner',
+  name: 'wv-spinner',
 
   props: {
     title: String,

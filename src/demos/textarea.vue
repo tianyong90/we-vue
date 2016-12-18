@@ -1,7 +1,7 @@
 <template>
   <div>
-    <vui-textarea placeholder="请输入文本" :rows="1" :show-counter="false" v-model="content1"></vui-textarea>
-    <vui-textarea placeholder="请输入文本" :rows="3" :show-counter="true" v-model="content2" :max-length="10"></vui-textarea>
+    <wv-textarea placeholder="请输入文本" :rows="1" :show-counter="false" v-model="content1"></wv-textarea>
+    <wv-textarea placeholder="请输入文本" :rows="3" :show-counter="true" v-model="content2" :max-length="10"></wv-textarea>
   </div>
 </template>
 

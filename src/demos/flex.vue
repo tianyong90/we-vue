@@ -1,46 +1,46 @@
 <template>
   <div class="page-with-padding">
-    <vui-flex>
-      <vui-flex-item>
+    <wv-flex>
+      <wv-flex-item>
         <div class="placeholder">vui</div>
-      </vui-flex-item>
-    </vui-flex>
+      </wv-flex-item>
+    </wv-flex>
 
-    <vui-flex>
-      <vui-flex-item>
+    <wv-flex>
+      <wv-flex-item>
         <div class="placeholder">vui</div>
-      </vui-flex-item>
-      <vui-flex-item>
+      </wv-flex-item>
+      <wv-flex-item>
         <div class="placeholder">vui</div>
-      </vui-flex-item>
-    </vui-flex>
+      </wv-flex-item>
+    </wv-flex>
 
-    <vui-flex>
-      <vui-flex-item>
+    <wv-flex>
+      <wv-flex-item>
         <div class="placeholder">vui</div>
-      </vui-flex-item>
-      <vui-flex-item>
+      </wv-flex-item>
+      <wv-flex-item>
         <div class="placeholder">vui</div>
-      </vui-flex-item>
-      <vui-flex-item>
+      </wv-flex-item>
+      <wv-flex-item>
         <div class="placeholder">vui</div>
-      </vui-flex-item>
-    </vui-flex>
+      </wv-flex-item>
+    </wv-flex>
 
-    <vui-flex>
-      <vui-flex-item>
+    <wv-flex>
+      <wv-flex-item>
         <div class="placeholder">weui</div>
-      </vui-flex-item>
-      <vui-flex-item>
+      </wv-flex-item>
+      <wv-flex-item>
         <div class="placeholder">weui</div>
-      </vui-flex-item>
-      <vui-flex-item>
+      </wv-flex-item>
+      <wv-flex-item>
         <div class="placeholder">weui</div>
-      </vui-flex-item>
-      <vui-flex-item>
+      </wv-flex-item>
+      <wv-flex-item>
         <div class="placeholder">weui</div>
-      </vui-flex-item>
-    </vui-flex>
+      </wv-flex-item>
+    </wv-flex>
   </div>
 </template>
 

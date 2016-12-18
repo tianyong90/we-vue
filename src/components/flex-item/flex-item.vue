@@ -8,7 +8,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-flex-item',
+  name: 'wv-flex-item',
 
   props: {
   }

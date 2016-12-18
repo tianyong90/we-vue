@@ -5,7 +5,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-radio',
+  name: 'wv-radio',
 
   props: {
     disabled: Boolean,

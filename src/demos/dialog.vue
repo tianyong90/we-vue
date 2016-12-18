@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="buttons">
-      <vui-button type="default">default</vui-button>
-      <vui-button type="primary">primary</vui-button>
-      <vui-button type="warn">warn</vui-button>
+      <wv-button type="default">default</wv-button>
+      <wv-button type="primary">primary</wv-button>
+      <wv-button type="warn">warn</wv-button>
     </div>
     
   </div>

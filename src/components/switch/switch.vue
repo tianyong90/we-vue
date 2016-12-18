@@ -12,7 +12,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-switch',
+  name: 'wv-switch',
 
   props: {
     disabled: Boolean,

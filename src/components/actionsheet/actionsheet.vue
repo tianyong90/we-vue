@@ -26,7 +26,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-actionsheet',
+  name: 'wv-actionsheet',
 
   props: {
     type: {

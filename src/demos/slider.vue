@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <vui-slider :value="10" :disabled="false"></vui-slider>
+    <wv-slider :value="10" :disabled="false"></wv-slider>
   </div>
 </template>
 

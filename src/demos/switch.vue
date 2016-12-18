@@ -1,9 +1,9 @@
 <template>
   <div id="home">
-    <vui-group>
-      <vui-switch :disabled="false" v-model="isOpen"></vui-switch>
-      <vui-switch :disabled="false" v-model="isOpen"></vui-switch>
-    </vui-group>
+    <wv-group>
+      <wv-switch :disabled="false" v-model="isOpen"></wv-switch>
+      <wv-switch :disabled="false" v-model="isOpen"></wv-switch>
+    </wv-group>
   </div>
 </template>
 

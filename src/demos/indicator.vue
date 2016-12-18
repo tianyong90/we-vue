@@ -1,7 +1,7 @@
 <template>
   <div class="page-with-padding">
     <div class="buttons">
-      <vui-button type="default" @click.native="openIndicator">显示加载指示</vui-button>
+      <wv-button type="default" @click.native="openIndicator">显示加载指示</wv-button>
     </div>
   </div>
 </template>

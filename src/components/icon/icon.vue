@@ -6,7 +6,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-icon',
+  name: 'wv-icon',
 
   props: {
     type: {

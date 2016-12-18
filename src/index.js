@@ -1,4 +1,3 @@
-// import Header from './components/header/index.js'
 import Button from './components/button/index.js'
 import Group from './components/group/index.js'
 import Cell from './components/cell/index.js'
@@ -22,7 +21,6 @@ import Actionsheet from './components/actionsheet/index.js'
 // import Popup from './components/popup/index.js'
 // import Swipe from './components/swipe/index.js'
 // import SwipeItem from './components/swipe-item/index.js'
-// import Range from './components/range/index.js'
 // import Picker from './components/picker/index.js'
 import Progress from './components/progress/index.js'
 import Circle from './components/circle/index.js'
@@ -43,7 +41,6 @@ import FlexItem from './components/flex-item/index.js'
 const install = function (Vue) {
   if (install.installed) return
 
-  // Vue.component(Header.name, Header)
   Vue.component(Button.name, Button)
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
@@ -67,7 +64,6 @@ const install = function (Vue) {
   // Vue.component(Popup.name, Popup)
   // Vue.component(Swipe.name, Swipe)
   // Vue.component(SwipeItem.name, SwipeItem)
-  // Vue.component(Range.name, Range)
   // Vue.component(Picker.name, Picker)
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
@@ -97,7 +93,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   version: '1.0.0',
   install,
-  // Header,
   Button,
   Group,
   Cell,
@@ -121,7 +116,6 @@ module.exports = {
   // Popup,
   // Swipe,
   // SwipeItem,
-  // Range,
   // Picker,
   Progress,
   Circle,

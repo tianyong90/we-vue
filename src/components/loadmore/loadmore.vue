@@ -6,7 +6,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-loadmore',
+  name: 'wv-loadmore',
 
   props: {
     percent: Number,

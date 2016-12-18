@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<vui-checklist title="基本示例" :options="options" v-model="checkedItems"></vui-checklist>
+		<wv-checklist title="基本示例" :options="options" v-model="checkedItems"></wv-checklist>
 	</div>
 </template>
 

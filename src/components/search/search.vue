@@ -29,7 +29,7 @@ import XCell from '../cell/index.js'
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-search',
+  name: 'wv-search',
 
   props: {
     value: String,

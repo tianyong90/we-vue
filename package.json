@@ -1,12 +1,12 @@
 {
   "name": "we-vue",
   "version": "0.0.3",
-  "description": "Vue components based on Vue2.x and weui1.x.",
+  "description": "Vue components based on Vue2.x and weui1.x",
   "keywords": [
-    "we-vue",
+    "component",
     "vue",
-    "weui",
-    "vue-components"
+    "we-vue",
+    "weui"
   ],
   "author": "tianyong90 <412039588@qq.com>",
   "repository": {
@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "alloyfinger": "^0.1.3",
-    "vue": "^2.1.4"
+    "vue": "^2.1.4",
+    "weui": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -69,8 +70,7 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",
-    "webpack-merge": "^0.15.0",
-    "weui": "^1.1.0"
+    "webpack-merge": "^0.15.0"
   },
   "engines": {
     "node": ">= 4.0.0",

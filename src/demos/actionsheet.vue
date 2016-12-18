@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="buttons">
-      <vui-button type="default" @click.native="showActionsheet('ios')">iOS ActionSheet</vui-button>
-      <vui-button type="default" @click.native="showActionsheet('android')">Android ActionSheet</vui-button>
+      <wv-button type="default" @click.native="showActionsheet('ios')">iOS ActionSheet</wv-button>
+      <wv-button type="default" @click.native="showActionsheet('android')">Android ActionSheet</wv-button>
     </div>
 
-    <vui-actionsheet :type="type" :actions="actions" cancel-text="取消" v-model="sheetVisible"></vui-actionsheet>
+    <wv-actionsheet :type="type" :actions="actions" cancel-text="取消" v-model="sheetVisible"></wv-actionsheet>
   </div>
 </template>
 

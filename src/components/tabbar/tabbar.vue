@@ -8,6 +8,6 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-tabbar'
+  name: 'wv-tabbar'
 }
 </script>

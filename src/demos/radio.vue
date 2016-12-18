@@ -1,6 +1,6 @@
 <template>
 	<div>
-    <vui-radio title="title" v-model="value" :options="options"></vui-radio>
+    <wv-radio title="title" v-model="value" :options="options"></wv-radio>
 	</div>
 </template>
 

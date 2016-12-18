@@ -1,10 +1,10 @@
 <template>
 	<div>
     <div id="circle-1">
-		  <vui-circle :trail-width="3" :stroke-width="3" :percent="percent1">{{ percent1 }}%</vui-circle>
+		  <wv-circle :trail-width="3" :stroke-width="3" :percent="percent1">{{ percent1 }}%</wv-circle>
     </div>
     <div id="circle-2">
-		  <vui-circle :trail-width="3" :stroke-width="3" :percent="percent2">{{ percent2 }}%</vui-circle>
+		  <wv-circle :trail-width="3" :stroke-width="3" :percent="percent2">{{ percent2 }}%</wv-circle>
     </div>
 	</div>
 </template>

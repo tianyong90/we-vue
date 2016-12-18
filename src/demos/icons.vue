@@ -2,7 +2,7 @@
   <div class="page-with-padding">
     <ul class="icon-list icon-list-big">
       <li v-for="type in iconTypeList">
-        <vui-icon type="icon" :type="type" :large="true"></vui-icon>
+        <wv-icon type="icon" :type="type" :large="true"></wv-icon>
         <div class="description">
           {{ type }}
         </div>
@@ -10,7 +10,7 @@
     </ul>
     
     <div class="icon-list icon-list-small">
-      <vui-icon v-for="type in iconTypeList" :type="type"></vui-icon>
+      <wv-icon v-for="type in iconTypeList" :type="type"></wv-icon>
     </div>
   </div>
 </template>

@@ -11,7 +11,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-group',
+  name: 'wv-group',
 
   props: {
     title: String

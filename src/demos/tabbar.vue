@@ -1,16 +1,16 @@
 <template>
 	<div>
-		<vui-tabbar>
-			<vui-tab-item to="">
+		<wv-tabbar>
+			<wv-tab-item to="">
 				<img class="weui-tabbar__icon" src="../assets/icon_tabbar.png" slot="icon"> Home
-			</vui-tab-item>
-			<vui-tab-item to="">
+			</wv-tab-item>
+			<wv-tab-item to="">
 				<img class="weui-tabbar__icon" src="../assets/icon_tabbar.png" slot="icon"> Order
-			</vui-tab-item>
-			<vui-tab-item to="">
+			</wv-tab-item>
+			<wv-tab-item to="">
 				<img class="weui-tabbar__icon" src="../assets/icon_tabbar.png" slot="icon"> Profile
-			</vui-tab-item>
-		</vui-tabbar>
+			</wv-tab-item>
+		</wv-tabbar>
 	</div>
 </template>
 

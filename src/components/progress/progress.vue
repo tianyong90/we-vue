@@ -13,7 +13,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'vui-progress',
+  name: 'wv-progress',
 
   props: {
     percent: Number,

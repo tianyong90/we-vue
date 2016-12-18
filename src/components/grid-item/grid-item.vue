@@ -15,7 +15,7 @@ function cleanPath (path) {
 }
 
 export default {
-  name: 'vui-grid-item',
+  name: 'wv-grid-item',
 
   props: {
     to: String

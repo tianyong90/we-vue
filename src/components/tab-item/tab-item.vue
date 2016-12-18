@@ -15,7 +15,7 @@ function cleanPath (path) {
 }
 
 export default {
-  name: 'vui-tab-item',
+  name: 'wv-tab-item',
 
   props: {
     to: String
