@@ -1,6 +1,6 @@
 {
   "name": "we-vue",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Vue components based on Vue2.x and weui1.x.",
   "keywords": [
     "we-vue",
@@ -20,7 +20,7 @@
     "build": "node build/build.js",
     "build-all": "node build/build-all.js",
     "lint": "eslint --ext .js,.vue src",
-    "publish": "npm run build-all && npm publish"
+    "publish": "npm publish"
   },
   "dependencies": {
     "alloyfinger": "^0.1.3",
