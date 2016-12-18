@@ -1,9 +1,9 @@
 {
-  "name": "vui",
+  "name": "we-vue",
   "version": "0.0.1",
   "description": "Vue components based on Vue2.x and weui1.x.",
   "keywords": [
-    "vui",
+    "we-vue",
     "vue",
     "weui",
     "vue-components"
@@ -11,10 +11,10 @@
   "author": "tianyong90 <412039588@qq.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tianyong90/vui"
+    "url": "https://github.com/tianyong90/we-vue.git"
   },
   "license": "MIT",
-  "main": "dist/vui.js",
+  "main": "dist/we-vue.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
