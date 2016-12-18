@@ -1,12 +1,12 @@
 <template>
 	<div class="weui-slider-box">
     <div class="weui-slider">
-      <div id="sliderInner" class="weui-slider__inner">
-        <div id="sliderTrack" :style="{width: progress + '%'}" class="weui-slider__track"></div>
-        <div id="sliderHandler" :style="{left: progress + '%'}" class="weui-slider__handler" v-finger:pressmove="onPressmove" v-finger:touchend="onTouchend"></div>
+      <div class="weui-slider__inner">
+        <div :style="{width: progress + '%'}" class="weui-slider__track"></div>
+        <div :style="{left: progress + '%'}" class="weui-slider__handler" v-finger:pressmove="onPressmove" v-finger:touchend="onTouchend"></div>
       </div>
     </div>
-    <div id="sliderValue" class="weui-slider-box__value">{{ value }}</div>
+    <div class="weui-slider-box__value">{{ value }}</div>
   </div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
     },
 
     onTouchend (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 }
