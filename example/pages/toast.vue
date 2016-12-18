@@ -6,7 +6,7 @@
 </template>
 
 <script type="text/babel">
-import Toast from '../components/toast/index.js'
+import Toast from '../../src/components/toast'
 
 export default {
   methods: {

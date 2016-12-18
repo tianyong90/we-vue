@@ -7,7 +7,7 @@
 </template>
 
 <script type="text/babel">
-import Indicator from '../components/indicator/index.js'
+import Indicator from '../../src/components/indicator'
 
 export default {
   methods: {

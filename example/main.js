@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Vui from './index.js'
+import Vui from '../src/index.js'
 import FastClick from 'fastclick'
 import 'normalize.css/normalize.css'
 import './assets/demo.scss'
@@ -35,7 +35,7 @@ router.afterEach((to, from) => {
   dispatch('UPDATE_LOADING', false)
 })
 
-Vue.component('mainmenu', require('./demos/mainmenu.vue'))
+Vue.component('mainmenu', require('./pages/mainmenu.vue'))
 
 new Vue({
   // 路由器

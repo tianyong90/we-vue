@@ -7,7 +7,7 @@ const registerRoute = (config) => {
       routes.push(
         {
           path: `${nav.path}`,
-          component: require(`../demos${nav.path}.vue`),
+          component: require(`../pages${nav.path}.vue`),
           name: nav.title || nav.name,
           meta: {
             title: nav.title || nav.name,
@@ -30,7 +30,7 @@ export const navs = route.navs
 
 route.routes.push({
   path: '/',
-  component: require('../demos/home.vue')
+  component: require('../pages/home.vue')
 })
 
 export default route.routes
