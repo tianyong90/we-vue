@@ -14,7 +14,11 @@
     "url": "https://github.com/tianyong90/we-vue.git"
   },
   "license": "MIT",
-  "main": "dist/we-vue.js",
+  "main": "dist/we-vue.common.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
