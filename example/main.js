@@ -15,27 +15,27 @@ Vue.use(Vui)
 
 import store from './store/index.js'
 
-const dispatch = store.commit || store.dispatch
-
 import routes from './route/index.js'
 
 const router = new VueRouter({
+  mode: 'history',
+  base: __dirname,
   routes
 })
 
 router.beforeEach((to, from, next) => {
-  dispatch('UPDATE_LOADING', true)
+  store.commit('UPDATE_LOADING', true)
 
-  dispatch('UPDATE_MAINMENU_VISIBLE', to.matched.some(record => record.meta.showMainmenu))
+  store.commit('UPDATE_MAINMENU_VISIBLE', to.matched.some(record => record.meta.showMainmenu))
 
   next()
 })
 
 router.afterEach((to, from) => {
-  dispatch('UPDATE_LOADING', false)
+  store.commit('UPDATE_LOADING', false)
 })
 
-Vue.component('mainmenu', require('./pages/mainmenu.vue'))
+// Vue.component('mainmenu', require('./pages/mainmenu.vue'))
 
 new Vue({
   // 路由器
