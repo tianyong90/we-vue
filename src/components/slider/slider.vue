@@ -56,7 +56,7 @@ export default {
     },
 
     onTouchend (e) {
-      // console.log(e)
+      console.log(e)
     }
   }
 }
