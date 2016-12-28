@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <wv-slider :value="percent" :disabled="false"></wv-slider>
+    <wv-slider v-model="percent" :disabled="false"></wv-slider>
   </div>
 </template>
 

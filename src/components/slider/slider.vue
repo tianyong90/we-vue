@@ -52,11 +52,13 @@ export default {
     onPressmove (e) {
       if (this.disabled) return
 
-      this.$emit('input', 100)
+      console.log(e)
+
+      return this.$emit('input', this.value + e.deltaX)
     },
 
     onTouchend (e) {
-      console.log(e)
+      this.$emit('change', this.value)
     }
   }
 }
