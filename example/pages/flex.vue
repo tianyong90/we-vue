@@ -2,43 +2,43 @@
   <div class="page-with-padding">
     <wv-flex>
       <wv-flex-item>
-        <div class="placeholder">vui</div>
+        <div class="placeholder"></div>
       </wv-flex-item>
     </wv-flex>
 
     <wv-flex>
       <wv-flex-item>
-        <div class="placeholder">vui</div>
+        <div class="placeholder">1/2</div>
       </wv-flex-item>
       <wv-flex-item>
-        <div class="placeholder">vui</div>
-      </wv-flex-item>
-    </wv-flex>
-
-    <wv-flex>
-      <wv-flex-item>
-        <div class="placeholder">vui</div>
-      </wv-flex-item>
-      <wv-flex-item>
-        <div class="placeholder">vui</div>
-      </wv-flex-item>
-      <wv-flex-item>
-        <div class="placeholder">vui</div>
+        <div class="placeholder">1/2</div>
       </wv-flex-item>
     </wv-flex>
 
     <wv-flex>
       <wv-flex-item>
-        <div class="placeholder">weui</div>
+        <div class="placeholder">1/3</div>
       </wv-flex-item>
       <wv-flex-item>
-        <div class="placeholder">weui</div>
+        <div class="placeholder">1/3</div>
       </wv-flex-item>
       <wv-flex-item>
-        <div class="placeholder">weui</div>
+        <div class="placeholder">1/3</div>
+      </wv-flex-item>
+    </wv-flex>
+
+    <wv-flex>
+      <wv-flex-item>
+        <div class="placeholder">1/4</div>
       </wv-flex-item>
       <wv-flex-item>
-        <div class="placeholder">weui</div>
+        <div class="placeholder">1/4</div>
+      </wv-flex-item>
+      <wv-flex-item>
+        <div class="placeholder">1/4</div>
+      </wv-flex-item>
+      <wv-flex-item>
+        <div class="placeholder">1/4</div>
       </wv-flex-item>
     </wv-flex>
   </div>
@@ -61,11 +61,11 @@ export default {
 
 <style scoped lang="scss">
   .placeholder {
-    background-color: #ebebeb;
+    background-color: #c0c0c0;
     height: 2.3em;
     line-height: 2.3em;
     text-align: center;
     margin: 5px;
-    color: #cfcfcf;
+    color: #fff;
   }
 </style>

@@ -1,8 +1,10 @@
-import NavConfig from './nav.json'
+import Navs from './nav.json'
 
-const registerRoute = (config) => {
+export const navs = Navs
+
+const registerRoute = (navs) => {
   let routes = []
-  config.map(nav => {
+  navs.map(nav => {
     try {
       routes.push(
         {
@@ -21,16 +23,14 @@ const registerRoute = (config) => {
     }
   })
 
-  return { routes, navs: config }
+  return routes
 }
 
-const route = registerRoute(NavConfig)
+const routes = registerRoute(Navs)
 
-export const navs = route.navs
-
-route.routes.push({
+routes.push({
   path: '/',
   component: require('../pages/home.vue')
 })
 
-export default route.routes
+export default routes
