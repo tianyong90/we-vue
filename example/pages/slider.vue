@@ -1,6 +1,6 @@
 <template>
-  <div class="page">
-    <wv-slider v-model="percent" :disabled="false"></wv-slider>
+  <div class="page page-with-padding">
+    <wv-slider v-model="percent" :min="10" :max="80" :disabled="false"></wv-slider>
   </div>
 </template>
 
@@ -16,7 +16,6 @@ export default {
 
 <style scoped lang="scss">
   .page {
-    display: block;
     background-color: white;
   }
 </style>

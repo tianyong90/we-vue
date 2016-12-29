@@ -1,9 +1,9 @@
 <template>
 	<div class="weui-slider-box">
     <div class="weui-slider">
-      <div class="weui-slider__inner">
+      <div class="weui-slider__inner" ref="line">
         <div :style="{width: progress + '%'}" class="weui-slider__track"></div>
-        <div :style="{left: progress + '%'}" class="weui-slider__handler" v-finger:pressmove="onPressmove" v-finger:touchend="onTouchend"></div>
+        <div :style="{left: progress + '%'}" class="weui-slider__handler" v-finger:pressmove="onPressmove" v-finger:touchstart="onTouchstart" v-finger:touchend="onTouchend" ref="thumb"></div>
       </div>
     </div>
     <div class="weui-slider-box__value">{{ value }}</div>
@@ -39,6 +39,12 @@ export default {
     disabled: Boolean
   },
 
+  data () {
+    return {
+      startPosX: 0
+    }
+  },
+
   computed: {
     progress () {
       const value = this.value
@@ -49,15 +55,30 @@ export default {
   },
 
   methods: {
+    onTouchstart (e) {
+      if (this.disabled) return
+      const thumb = this.$refs.thumb
+      this.startPosX = thumb.getBoundingClientRect().left
+    },
+
     onPressmove (e) {
       if (this.disabled) return
 
-      console.log(e)
+      const lineBox = this.$refs.line.getBoundingClientRect()
 
-      return this.$emit('input', this.value + e.deltaX)
+      let newValue = this.value + (this.max - this.min) * e.deltaX / lineBox.width
+
+      if (newValue < this.min) {
+        newValue = this.min
+      } else if (newValue > this.max) {
+        newValue = this.max
+      }
+
+      return this.$emit('input', Math.round(newValue))
     },
 
     onTouchend (e) {
+      if (this.disabled) return
       this.$emit('change', this.value)
     }
   }
