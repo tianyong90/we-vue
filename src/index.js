@@ -11,7 +11,7 @@ import Spinner from './components/spinner/index.js'
 // import TabContainer from './components/tab-container/index.js'
 import Navbar from './components/navbar/index.js'
 import Tabbar from './components/tabbar/index.js'
-import TabItem from './components/tab-item/index.js'
+import TabbarItem from './components/tabbar-item/index.js'
 import Search from './components/search/index.js'
 import Checklist from './components/checklist/index.js'
 import Radio from './components/radio/index.js'
@@ -51,7 +51,7 @@ const install = function (Vue) {
   Vue.component(Switch.name, Switch)
   Vue.component(Spinner.name, Spinner)
   Vue.component(Tabbar.name, Tabbar)
-  Vue.component(TabItem.name, TabItem)
+  Vue.component(TabbarItem.name, TabbarItem)
   // Vue.component(TabContainerItem.name, TabContainerItem)
   // Vue.component(TabContainer.name, TabContainer)
   Vue.component(Navbar.name, Navbar)
@@ -106,7 +106,7 @@ module.exports = {
   // TabContainer,
   Navbar,
   Tabbar,
-  TabItem,
+  TabbarItem,
   Search,
   Checklist,
   Radio,

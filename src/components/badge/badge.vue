@@ -1,6 +1,6 @@
 <template>
-  <span class="weui-badge" :style="{ backgroundColor: color }">
-    <slot></slot>
+  <span class="weui-badge" :class="{ 'weui-badge_dot': isDot }" :style="{ 'background-color': color }">
+    <slot v-if="!isDot"></slot>
   </span>
 </template>
 
@@ -10,13 +10,7 @@ export default {
 
   props: {
     color: String,
-    type: {
-      type: String,
-      default: 'primary'
-    }
+    isDot: Boolean
   }
 }
 </script>
-
-<style scoped lang="scss">
-</style>

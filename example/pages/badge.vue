@@ -1,16 +1,17 @@
 <template>
-	<div>
-		<div class="buttons-big">
-			<div class="row">
-        <wv-badge type="default">default</wv-badge>
-      </div>
+	<div class="page">
+    <wv-badge :is-dot="true" color="yellow">default</wv-badge>
+    <wv-badge>default</wv-badge>
 
-      <wv-cell>
-        <wv-cell title="hello" value="world">
-          未读消息 <wv-badge>10</wv-badge>
-        </wv-cell>
+
+    <wv-group title="默认">
+      <wv-cell title="未读消息 " value="10">
+        <wv-badge :is-dot="true"></wv-badge>
       </wv-cell>
-		</div>
+      <wv-cell title="未读消息 " value="10">
+        <wv-badge :is-dot="true"></wv-badge>
+      </wv-cell>
+    </wv-group>
 	</div>
 </template>
 

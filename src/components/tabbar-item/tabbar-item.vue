@@ -15,7 +15,7 @@ function cleanPath (path) {
 }
 
 export default {
-  name: 'wv-tab-item',
+  name: 'wv-tabbar-item',
 
   props: {
     to: String
