@@ -1,15 +1,15 @@
 <template>
   <div class="page-with-padding">
-    <ul class="icon-list icon-list-big">
+    <ul class="icon-list-big">
       <li v-for="type in iconTypeList">
-        <wv-icon type="icon" :type="type" :large="true"></wv-icon>
+        <wv-icon class="demo-icon-large" type="icon" :type="type" :large="true"></wv-icon>
         <div class="description">
           {{ type }}
         </div>
       </li>
     </ul>
-    
-    <div class="icon-list icon-list-small">
+
+    <div class="icon-list-small">
       <wv-icon v-for="type in iconTypeList" :type="type"></wv-icon>
     </div>
   </div>
@@ -37,31 +37,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.icon-list {
-  display: block;
-  overflow: hidden;
-  list-style: none;
-}
+  .icon-list-big {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 40px;
 
-.icon-list-big {
-  width: 80%;
-  margin: 0 auto;
+    li {
+      display: flex;
+      padding: 0;
+      margin: 1rem 0;
 
-  .icon {
-    display: block;
-    float: left;
+      .demo-icon-large {
+        display: block;
+        margin-right: 1rem;
+      }
+
+      .description {
+        font-size: 1.5rem;
+        display: block;
+        float: left;
+      }
+    }
   }
 
-  .description {
+  .icon-list-small {
     display: block;
-    float: left;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
   }
-}
-
-.icon-list-samll {
-  display: block;
-  overflow: hidden;
-  width: 80%;
-  margin: 20px auto;
-}
 </style>

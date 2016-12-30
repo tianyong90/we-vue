@@ -20,14 +20,15 @@ export default {
         {
           label: '选项3',
           value: 'value3'
+        },
+        {
+          label: '选项4',
+          value: 'value4',
+          disabled: true
         }
       ],
-      checkedItems: ['value1']
+      checkedItems: ['value1', 'value3']
     }
   }
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>

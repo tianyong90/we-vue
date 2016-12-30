@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <wv-grid>
-      <wv-grid-item class="demo-grid-item" v-for="nav in navs" :to="nav.path">
+      <wv-grid-item class="demo-grid-item" :class="{'todo': nav.status === 'todo'}" v-for="nav in navs" :to="nav.path">
         <img src="../assets/icon_tabbar.png" slot="icon">
         {{ nav.name }}
       </wv-grid-item>
@@ -30,6 +30,10 @@ export default {
 <style scoped lang="scss">
   .demo-grid-item {
     background-color: white;
+
+    &.todo {
+      background-color: #eb5555;
+    }
   }
 
   .icon {

@@ -3,132 +3,154 @@
     "path": "/button",
     "name": "Button",
     "description": "按钮",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/toast",
     "name": "Toast",
     "description": "弹出式提示",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/indicator",
     "name": "Indicator",
     "description": "加载指示",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/dialog",
     "name": "Dialog",
     "description": "对话框",
-    "icon": "home"
+    "icon": "home",
+    "status": "todo"
   },
   {
     "path": "/grid",
     "name": "Grid",
     "description": "九宫格",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/tabbar",
     "name": "Tabbar",
     "description": "导航菜单",
-    "icon": "home"
+    "icon": "home",
+    "status": "todo"
   },
   {
     "path": "/cell",
     "name": "Cell",
     "description": "列表",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/flex",
     "name": "Flex",
     "description": "Flex 布局",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/progress",
     "name": "Progress",
     "description": "进度条",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/actionsheet",
     "name": "ActionSheet",
     "description": "弹出式菜单",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/checklist",
     "name": "Checklist",
     "description": "多选列表",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/radio",
     "name": "Radio",
     "description": "单选",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/circle",
     "name": "Circle",
     "description": "圆环进度指示",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/switch",
     "name": "Switch",
     "description": "开关",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/icons",
     "name": "Icons",
     "description": "图标",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/badge",
     "name": "Badge",
     "description": "小徽章",
-    "icon": "home"
+    "icon": "home",
+    "status": "todo"
   },
   {
     "path": "/spinner",
     "name": "Spinner",
     "description": "加载动画",
-    "icon": "home"
+    "icon": "home",
+    "status": "todo"
   },
   {
     "path": "/search",
     "name": "Search",
     "description": "搜索框",
-    "icon": "home"
+    "icon": "home",
+    "status": "todo"
   },
   {
     "path": "/textarea",
     "name": "Textarea",
     "description": "文本框",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/slider",
     "name": "Slider",
     "description": "滑块",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   },
   {
     "path": "/loadmore",
     "name": "Loadmore",
     "description": "加载更多",
-    "icon": "home"
+    "icon": "home",
+    "status": "todo"
   },
   {
     "path": "/input",
     "name": "Input",
     "description": "输入框",
-    "icon": "home"
+    "icon": "home",
+    "status": "finished"
   }
 ]

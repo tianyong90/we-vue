@@ -16,6 +16,11 @@ export default {
       {
         label: 'label2',
         value: 'value2'
+      },
+      {
+        label: 'label3',
+        value: 'value3',
+        disabled: true
       }]
     }
   }
