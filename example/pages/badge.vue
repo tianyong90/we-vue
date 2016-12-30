@@ -1,15 +1,16 @@
 <template>
 	<div class="page">
-    <wv-badge :is-dot="true" color="yellow">default</wv-badge>
-    <wv-badge>default</wv-badge>
-
-
-    <wv-group title="默认">
-      <wv-cell title="未读消息 " value="10">
-        <wv-badge :is-dot="true"></wv-badge>
+    <wv-group title="新消息提示跟摘要信息后，统一在列表右侧">
+      <wv-cell title="单行列表 " is-link>
+        <span slot="ft" style="vertical-align: middle; font-size: 17px;">详细信息</span>
+        <wv-badge :is-dot="true" slot="ft" style="margin-left: 5px; margin-right: 5px;"></wv-badge>
       </wv-cell>
-      <wv-cell title="未读消息 " value="10">
-        <wv-badge :is-dot="true"></wv-badge>
+    </wv-group>
+
+    <wv-group title="未读数红点跟在主题信息后，统一在列表左侧">
+      <wv-cell title="单行列表 " is-link>
+        <span slot="ft" style="vertical-align: middle; font-size: 17px;">详细信息</span>
+        <wv-badge :is-dot="true" slot="ft" style="margin-left: 5px; margin-right: 5px;"></wv-badge>
       </wv-cell>
     </wv-group>
 	</div>

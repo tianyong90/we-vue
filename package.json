@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "alloyfinger": "^0.1.3",
-    "vue": "^2.1.7",
+    "vue": "^2.1.8",
     "weui": "^1.1.0"
   },
   "devDependencies": {

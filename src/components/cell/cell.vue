@@ -4,7 +4,7 @@
       <slot name="icon"></slot>
     </div>
     <div class="weui-cell__bd">
-      <p>{{ title }}</p>
+      <slot name="bd"><p>{{ title }}</p></slot>
     </div>
     <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot></div>
   </a>
@@ -13,7 +13,7 @@
       <slot name="icon"></slot>
     </div>
     <div class="weui-cell__bd">
-      <p>{{ title }}</p>
+      <slot name="bd"><p>{{ title }}</p></slot>
     </div>
     <div class="weui-cell__ft"><slot name="ft">{{ value }}</slot></div>
   </div>
