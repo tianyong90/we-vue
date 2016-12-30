@@ -1,22 +1,22 @@
 <template>
-	<div>
+	<div class="page">
+    <wv-loadmore></wv-loadmore>
+    <wv-loadmore type="line" text="loading"></wv-loadmore>
+    <wv-loadmore type="lineDot" text="loading"></wv-loadmore>
 	</div>
 </template>
 
 <script type="text/babel">
 export default {
-  mounted () {
-  },
-
   data () {
     return {
     }
-  },
-
-  methods: {
   }
 }
 </script>
 
 <style scoped lang="scss">
+  .page {
+    background-color: white;
+  }
 </style>
