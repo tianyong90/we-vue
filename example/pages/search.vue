@@ -1,37 +1,45 @@
 <template>
   <div>
-    <wv-search>
-      <wv-group>
-        <wv-cell title="abc"></wv-cell>
-        <wv-cell title="abc"></wv-cell>
-        <wv-cell title="abc"></wv-cell>
-      </wv-group>
-    </wv-search>
+    <wv-search :autofocus="false" v-model="value" :result="filterResult"></wv-search>
   </div>
 </template>
 
 <script type="text/babel">
-// import Group from '../components/group/index.js'
-// import Cell from '../components/cell/index.js'
-
 export default {
   mounted () {
   },
 
   data () {
     return {
+      value: '',
+      defaultResult: [
+        'Apple',
+        'Banana',
+        'Orange',
+        'Durian',
+        'Lemon',
+        'Peach',
+        'Cherry',
+        'Berry',
+        'Core',
+        'Fig',
+        'Haw',
+        'Melon',
+        'Plum',
+        'Pear',
+        'Peanut',
+        'Other'
+      ]
     }
   },
 
-  components: {
-    // Group,
-    // Cell
-  },
-
-  methods: {
+  computed: {
+    filterResult () {
+      return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value))
+    }
   }
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 </style>

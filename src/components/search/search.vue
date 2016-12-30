@@ -17,7 +17,7 @@
 
     <slot>
       <div class="weui-cells searchbar-result" v-show="show || currentValue">
-          <XCell title="hello" value="world"></XCell>
+        <XCell v-for="item in result" :title="item"></XCell>
       </div>
     </slot>
   </div>
@@ -58,6 +58,13 @@ export default {
     }
   },
 
+  mounted () {
+    if (this.autofocus) {
+      this.$refs.searchInput.focus()
+      this.isActive = true
+    }
+  },
+
   methods: {
     textClick (e) {
       // focus the input
@@ -65,10 +72,12 @@ export default {
       this.isActive = true
     },
 
+    // 清除输入
     searchClear () {
       this.currentValue = ''
     },
 
+    // 取消搜索
     searchCancel () {
       this.searchClear()
       this.isActive = false
