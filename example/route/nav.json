@@ -46,7 +46,7 @@
     "name": "Cell",
     "description": "列表",
     "icon": "home",
-    "status": "todo"
+    "status": "finished"
   },
   {
     "path": "/flex",
@@ -109,7 +109,7 @@
     "name": "Badge",
     "description": "小徽章",
     "icon": "home",
-    "status": "todo"
+    "status": "finished"
   },
   {
     "path": "/spinner",

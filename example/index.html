@@ -5,10 +5,15 @@
     <title>VUI</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
     <meta name="format-detection" content="telephone=no" />
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <div id="app" class="page">
-      <div class="page__hd" v-cloak>
+    <div id="app" v-cloak>
+      <div class="page__hd">
         <h1 class="page__title">{{ this.$route.meta.title }}</h1>
         <p class="page__desc">{{ this.$route.meta.description }}</p>
       </div>
