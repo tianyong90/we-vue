@@ -5,7 +5,7 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'wv-navbar',
+  name: 'wv-navbar-item',
 
   props: {
     disabled: Boolean,
