@@ -11,7 +11,7 @@
     "name": "Toast",
     "description": "弹出式提示",
     "icon": "home",
-    "status": "finished"
+    "status": "todo"
   },
   {
     "path": "/indicator",
@@ -39,7 +39,7 @@
     "name": "Tabbar",
     "description": "导航菜单",
     "icon": "home",
-    "status": "todo"
+    "status": "finished"
   },
   {
     "path": "/cell",

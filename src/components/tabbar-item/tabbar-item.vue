@@ -1,5 +1,5 @@
 <template>
-	<a class="weui-tabbar__item weui-bar__item_on" :href="href">
+	<a class="weui-tabbar__item" :class="{ 'weui-bar__item_on': isOn }" :href="href">
 		<slot name="icon"></slot>
 		<p class="weui-tabbar__label">
 			<slot></slot>
@@ -18,7 +18,8 @@ export default {
   name: 'wv-tabbar-item',
 
   props: {
-    to: String
+    to: String,
+    isOn: Boolean
   },
 
   computed: {
@@ -48,8 +49,6 @@ export default {
   methods: {
     handleClick ($event) {
       $event.preventDefault()
-
-      console.log()
       this.$router.push(this.href)
     }
   }

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>VUI</title>
+    <title>WE-VUE</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
     <meta name="format-detection" content="telephone=no" />
     <style>
@@ -14,8 +14,8 @@
   <body>
     <div id="app" v-cloak>
       <div class="page__hd">
-        <h1 class="page__title">{{ this.$route.meta.title }}</h1>
-        <p class="page__desc">{{ this.$route.meta.description }}</p>
+        <h1 class="page__title">{{ $route.meta.title }}</h1>
+        <p class="page__desc">{{ $route.meta.description }}</p>
       </div>
       <transition name="slide-fade" mode="out-in">
         <router-view></router-view>

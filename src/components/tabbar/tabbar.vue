@@ -1,5 +1,5 @@
 <template>
-	<div class="weui-tabbar">
+	<div class="weui-tabbar" :style="{ position: fixed ? 'fixed' : 'absolute' }">
 		<slot></slot>
 	</div>
 </template>
@@ -8,6 +8,10 @@
 import 'weui/dist/style/weui.min.css'
 
 export default {
-  name: 'wv-tabbar'
+  name: 'wv-tabbar',
+
+  props: {
+    fixed: Boolean
+  }
 }
 </script>
