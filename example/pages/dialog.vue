@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="buttons">
-      <wv-button type="default">default</wv-button>
       <wv-button type="primary">primary</wv-button>
-      <wv-button type="warn">warn</wv-button>
+      <wv-button type="primary">primary</wv-button>
+      <wv-button type="primary">primary</wv-button>
     </div>
     
   </div>

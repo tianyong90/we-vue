@@ -22,7 +22,7 @@ export default {
           value: 'value3'
         },
         {
-          label: '选项4',
+          label: '选项4（禁用）',
           value: 'value4',
           disabled: true
         }

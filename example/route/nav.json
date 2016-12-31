@@ -46,7 +46,7 @@
     "name": "Navbar",
     "description": "选项卡",
     "icon": "home",
-    "status": "todo"
+    "status": "finished"
   },
   {
     "path": "/cell",

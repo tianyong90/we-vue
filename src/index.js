@@ -10,6 +10,7 @@ import Spinner from './components/spinner/index.js'
 // import TabContainerItem from './components/tab-container-item/index.js'
 // import TabContainer from './components/tab-container/index.js'
 import Navbar from './components/navbar/index.js'
+import NavbarItem from './components/navbar-item/index.js'
 import Tabbar from './components/tabbar/index.js'
 import TabbarItem from './components/tabbar-item/index.js'
 import Search from './components/search/index.js'
@@ -55,6 +56,7 @@ const install = function (Vue) {
   // Vue.component(TabContainerItem.name, TabContainerItem)
   // Vue.component(TabContainer.name, TabContainer)
   Vue.component(Navbar.name, Navbar)
+  Vue.component(NavbarItem.name, NavbarItem)
   Vue.component(Search.name, Search)
   Vue.component(Checklist.name, Checklist)
   Vue.component(Radio.name, Radio)
@@ -105,6 +107,7 @@ module.exports = {
   // TabContainerItem,
   // TabContainer,
   Navbar,
+  NavbarItem,
   Tabbar,
   TabbarItem,
   Search,

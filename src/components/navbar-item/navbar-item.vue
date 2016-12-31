@@ -1,4 +1,9 @@
 <template>
+  <a class="weui-navbar__item"
+    @click="$parent.$emit('input', id)"
+    :class="{ 'weui-bar__item_on': $parent.value === id }">
+    <slot></slot>
+  </a>
 </template>
 
 <script type="text/babel">
@@ -7,9 +12,6 @@ import 'weui/dist/style/weui.min.css'
 export default {
   name: 'wv-navbar-item',
 
-  props: {
-    disabled: Boolean,
-    value: Boolean
-  }
+  props: ['id']
 }
 </script>

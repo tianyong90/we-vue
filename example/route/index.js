@@ -30,7 +30,12 @@ const routes = registerRoute(Navs)
 
 routes.push({
   path: '/',
-  component: require('../pages/home.vue')
+  component: require('../pages/home.vue'),
+  name: 'home',
+  meta: {
+    title: 'WE-VUE',
+    description: 'description'
+  }
 })
 
 export default routes
