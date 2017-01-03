@@ -1,5 +1,5 @@
 <template>
-  <div id="actionSheet_wrap">
+  <div>
 		<div class="weui-mask_transparent actionsheet__mask actionsheet__mask_show" id="mask" style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); background-color: rgba(0, 0, 0, 0.6);"
 			v-show="currentValue && type === 'ios'" @click="currentValue = false"></div>
 		<div class="weui-actionsheet weui-actionsheet_toggle" id="weui-actionsheet" v-if="type === 'ios'" v-show="currentValue">

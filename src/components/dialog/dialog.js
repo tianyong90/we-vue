@@ -40,7 +40,6 @@ let Dialog = (options = {}) => {
   instance.closed = false
   clearTimeout(instance.timer)
   instance.message = typeof options === 'string' ? options : options.message
-  instance.icon = options.icon || 'success-no-circle'
 
   document.body.appendChild(instance.$el)
   Vue.nextTick(function () {
