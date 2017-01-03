@@ -11,7 +11,7 @@
     "name": "Toast",
     "description": "弹出式提示",
     "icon": "home",
-    "status": "todo"
+    "status": "finished"
   },
   {
     "path": "/indicator",

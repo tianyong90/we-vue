@@ -15,7 +15,11 @@ export default {
     },
 
     showError () {
-      Toast('操作失败')
+      Toast({
+        duration: 2000,
+        message: '操作失败',
+        icon: 'warn'
+      })
     }
   }
 }

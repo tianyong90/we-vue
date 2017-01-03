@@ -13,10 +13,7 @@ export default {
       type: String,
       required: true
     },
-    large: {
-      type: Boolean,
-      default: false
-    }
+    large: Boolean
   },
 
   computed: {

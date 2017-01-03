@@ -40,9 +40,7 @@ let Toast = (options = {}) => {
   instance.closed = false
   clearTimeout(instance.timer)
   instance.message = typeof options === 'string' ? options : options.message
-  instance.position = options.position || 'middle'
-  instance.className = options.className || ''
-  instance.iconClass = options.iconClass || ''
+  instance.icon = options.icon || 'success-no-circle'
 
   document.body.appendChild(instance.$el)
   Vue.nextTick(function () {

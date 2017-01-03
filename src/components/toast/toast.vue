@@ -2,7 +2,7 @@
   <div v-show="visible">
     <div class="weui-mask_transparent"></div>
     <div class="weui-toast">
-      <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+      <wv-icon :type="icon" class="weui-icon_toast"></wv-icon>
       <p class="weui-toast__content">{{ message }}</p>
     </div>
   </div>
@@ -15,17 +15,18 @@ export default {
   props: {
     visible: {
       default: true
-    }
-  },
-
-  watch: {
-
-  },
-
-  data () {
-    return {
-      message: ''
-    }
+    },
+    icon: {
+      type: String,
+      default: 'success-no-circle'
+    },
+    message: String
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .weui-icon_toast {
+    font-size: 40px;
+  }
+</style>
