@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <div class="buttons">
-      <wv-button type="primary">primary</wv-button>
-      <wv-button type="primary">primary</wv-button>
-      <wv-button type="primary">primary</wv-button>
-    </div>
-    
+  <div class="page page-with-padding buttons">
+    <wv-button type="primary" @click.native="showDialog()">primary</wv-button>
+    <wv-button type="primary" @click.native="showDialog()">primary</wv-button>
   </div>
 </template>
 
 <script type="text/babel">
 export default {
+  methods: {
+    showDialog () {
+      console.log(123)
+    }
+  }
 }
 </script>
 

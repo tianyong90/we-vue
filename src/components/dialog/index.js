@@ -1,1 +1,2 @@
-export { default } from './dialog.vue'
+import Dialog from './dialog.js'
+module.exports = Dialog
