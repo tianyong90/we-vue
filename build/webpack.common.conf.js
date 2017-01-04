@@ -2,7 +2,6 @@ var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var webpack = require('webpack')
-var merge = require('webpack-merge')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = config.build.env
@@ -16,11 +15,13 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 var webpackConfig = {
-  entry: require('../components.json'),
+  entry: {
+    app: './src/index.js'
+  },
   output: {
-    path: config.common.assetsRoot,
+    path: './lib',
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
-    filename: '[name].js'
+    filename: 'we-vue.common.js'
   },
   resolve: {
     extensions: ['', '.js', '.vue'],
@@ -56,6 +57,12 @@ var webpackConfig = {
       {
         test: /\.js$/,
         loader: 'babel',
+        include: projectRoot,
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
         include: projectRoot,
         exclude: /node_modules/
       },

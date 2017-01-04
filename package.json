@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Vue components based on Vue2.x and weui1.x",
   "keywords": [
-    "component",
     "vue",
+    "component",
     "we-vue",
     "weui"
   ],
@@ -14,15 +14,20 @@
     "url": "https://github.com/tianyong90/we-vue.git"
   },
   "license": "MIT",
-  "main": "dist/we-vue.common.js",
+  "main": "lib/we-vue.common.js",
   "files": [
-    "dist",
+    "lib",
     "src"
   ],
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "build:demo": "node build/build-demo.js",
+    "build:component": "node build/build-component.js",
+    "build:common": "node build/build-common.js",
+    "build:all": "build:demo && build:component && build:common",
+    "lint": "eslint --ext .js,.vue src",
+    "publish": "",
+    "deploy": ""
   },
   "dependencies": {
     "alloyfinger": "^0.1.3",
