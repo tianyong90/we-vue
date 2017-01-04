@@ -11,9 +11,6 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
-  entry: {
-    app: './example/main.js'
-  },
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
@@ -26,8 +23,7 @@ module.exports = {
       'vue$': 'vue/dist/vue',
       'src': path.resolve(__dirname, '../example'),
       'assets': path.resolve(__dirname, '../example/assets'),
-      'pages': path.resolve(__dirname, '../example/pages'),
-      'components': path.resolve(__dirname, '../src/components')
+      'pages': path.resolve(__dirname, '../example/pages')
     }
   },
   resolveLoader: {
