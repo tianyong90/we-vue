@@ -15,7 +15,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   devtool: config.component.productionSourceMap ? '#source-map' : false,
   output: {
-    path: path.resolve(__dirname, '../lib/component'),
+    path: path.resolve(__dirname, '../lib'),
     filename: '[name]/index.js'
   },
   vue: {

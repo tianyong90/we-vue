@@ -24,8 +24,8 @@
     "build:demo": "node build/build-demo.js",
     "build:component": "node build/build-component.js",
     "build:common": "node build/build-common.js",
-    "build:all": "build:demo && build:component && build:common",
-    "clean": "rimraf lib",
+    "build:all": "npm run clean && npm run build:demo && npm run build:component && npm run build:common",
+    "clean": "node build/clean.js",
     "lint": "eslint --ext .js,.vue src",
     "publish": "sh build/realease.sh",
     "deploy": ""

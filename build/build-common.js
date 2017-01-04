@@ -12,10 +12,8 @@ var webpackConfig = require('./webpack.common.conf')
 var spinner = ora('building commonjs...')
 spinner.start()
 
-var assetsPath = path.join(config.common.assetsRoot, config.common.assetsSubDirectory)
-rm('-rf', assetsPath)
-mkdir('-p', assetsPath)
-cp('-R', 'static/*', assetsPath)
+// rm('-f', './liv/we-vue.common.js')
+// rm('-f', './liv/we-vue.min.css')
 
 webpack(webpackConfig, function (err, stats) {
   spinner.stop()
