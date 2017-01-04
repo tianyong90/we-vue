@@ -9,6 +9,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
+  entry: {
+    app: './example/main.js'
+  },
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
   },

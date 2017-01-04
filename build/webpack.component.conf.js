@@ -8,8 +8,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = config.build.env
 
-baseWebpackConfig.entry = null
-
 var webpackConfig = merge(baseWebpackConfig, {
   entry: require('../components.json'),
   module: {
