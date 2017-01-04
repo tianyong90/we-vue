@@ -23,6 +23,7 @@ import Actionsheet from './components/actionsheet/index.js'
 // import Swipe from './components/swipe/index.js'
 // import SwipeItem from './components/swipe-item/index.js'
 // import Picker from './components/picker/index.js'
+// import DatetimePicker from './components/datetime-picker/index.js'
 import Progress from './components/progress/index.js'
 import Circle from './components/circle/index.js'
 import Toast from './components/toast/index.js'
@@ -30,9 +31,7 @@ import Indicator from './components/indicator/index.js'
 import Dialog from './components/dialog/index.js'
 // import InfiniteScroll from './components/infinite-scroll/index.js'
 // import Lazyload from './components/lazyload/index.js'
-// import DatetimePicker from './components/datetime-picker/index.js'
-// import IndexList from './components/index-list/index.js'
-// import IndexSection from './components/index-section/index.js'
+
 import Grid from './components/grid/index.js'
 import GridItem from './components/grid-item/index.js'
 import Flex from './components/flex/index.js'
@@ -70,8 +69,6 @@ const install = function (Vue) {
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
   // Vue.component(DatetimePicker.name, DatetimePicker)
-  // Vue.component(IndexList.name, IndexList)
-  // Vue.component(IndexSection.name, IndexSection)
   Vue.component(Grid.name, Grid)
   Vue.component(GridItem.name, GridItem)
   Vue.component(Flex.name, Flex)
@@ -128,8 +125,6 @@ module.exports = {
   // InfiniteScroll,
   // Lazyload,
   // DatetimePicker,
-  // IndexList,
-  // IndexSection
   Grid,
   GridItem,
   Flex,
