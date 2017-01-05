@@ -19,8 +19,8 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.common.assetsRoot,
     publicPath: config.common.assetsPublicPath,
-    filename: 'we-vue.common.js',
-    libraryTarget: 'commonjs'
+    filename: 'index.js',
+    libraryTarget: 'umd'
   },
   vue: {
     loaders: utils.cssLoaders({
