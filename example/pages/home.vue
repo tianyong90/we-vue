@@ -1,11 +1,10 @@
 <template>
   <div class="page">
-    <wv-grid>
-      <wv-grid-item class="demo-grid-item" :class="{'todo': nav.status === 'todo'}" v-for="nav in navs" :to="nav.path">
-        <img src="../assets/icon_tabbar.png" slot="icon">
-        {{ nav.name }}
-      </wv-grid-item>
-    </wv-grid>
+    <wv-group :title="navGroup.groupTitle" v-for="navGroup in navs">
+      <wv-cell v-for="nav in navGroup.navItems" :to="nav.path" is-link :title="nav.name">
+        <wv-badge slot="ft" v-if="nav.status === 'todo'">todo</wv-badge>
+      </wv-cell>
+    </wv-group>
   </div>
 </template>
 
@@ -28,16 +27,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .demo-grid-item {
-    background-color: white;
-
-    &.todo {
-      background-color: #eb5555;
-    }
-  }
-
-  .icon {
-    color: #000;
-    font-size: 18px;
-  }
 </style>

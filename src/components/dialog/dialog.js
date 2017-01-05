@@ -35,7 +35,6 @@ DialogConstructor.prototype.close = function () {
 
 let Dialog = (options = {}) => {
   let duration = options.duration || 3000
-
   let instance = getAnInstance()
   instance.closed = false
   clearTimeout(instance.timer)

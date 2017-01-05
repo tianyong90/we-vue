@@ -2,12 +2,15 @@ import Navs from './nav.json'
 
 export const navs = Navs
 
-const registerRoute = (navs) => {
+const registerRoute = (groups) => {
   let routes = []
-  navs.map(nav => {
-    try {
-      routes.push(
-        {
+
+  groups.map(group => {
+    let groupItems = group.navItems
+
+    groupItems.map(nav => {
+      try {
+        routes.push({
           path: `${nav.path}`,
           component: require(`../pages${nav.path}.vue`),
           name: nav.title || nav.name,
@@ -15,12 +18,12 @@ const registerRoute = (navs) => {
             title: nav.title || nav.name,
             description: nav.description
           }
-        }
-      )
-    } catch (e) {
-      console.error(e)
-      nav.disabled = true
-    }
+        })
+      } catch (e) {
+        console.error(e)
+        nav.disabled = true
+      }
+    })
   })
 
   return routes

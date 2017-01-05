@@ -23,5 +23,7 @@
   "grid": ["./src/components/grid/index.js"],
   "flex": ["./src/components/flex/index.js"],
   "flex-item": ["./src/components/flex-item/index.js"],
-  "icon": ["./src/components/icon/index.js"]
+  "icon": ["./src/components/icon/index.js"],
+  "swipe": ["./src/components/swipe/index.js"],
+  "swipe-item": ["./src/components/swipe-item/index.js"]
 }
