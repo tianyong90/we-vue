@@ -1,6 +1,6 @@
 {
   "name": "we-vue",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Vue components based on Vue2.x and weui1.x",
   "keywords": [
     "vue",
@@ -29,7 +29,7 @@
     "build:all": "npm run clean && npm run build:demo && npm run build:component && npm run build:common && npm run build:umd",
     "clean": "node build/clean.js",
     "lint": "eslint --ext .js,.vue src",
-    "publish": "sh build/realease.sh",
+    "publish": "sh build/release.sh",
     "deploy": ""
   },
   "dependencies": {
