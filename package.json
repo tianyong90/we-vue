@@ -15,6 +15,7 @@
   },
   "license": "MIT",
   "main": "lib/we-vue.common.js",
+  "style": "lib/style.css",
   "files": [
     "lib",
     "src"

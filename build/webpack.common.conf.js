@@ -40,8 +40,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
     new ExtractTextPlugin('style.css')
-  ],
-  externals: ['vue']
+  ]//,
+  //externals: ['vue']
 })
 
 if (config.common.productionGzip) {
