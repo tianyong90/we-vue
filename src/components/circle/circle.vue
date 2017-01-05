@@ -9,8 +9,6 @@
 </template>
 
 <script type="text/babel">
-import 'weui/dist/style/weui.min.css'
-
 export default {
   name: 'wv-circle',
 
@@ -31,9 +29,15 @@ export default {
       type: String,
       default: '#D9D9D9'
     },
-    percent: {
+    value: {
       type: Number,
       default: 0
+    }
+  },
+
+  data () {
+    return {
+      currentValue: this.value
     }
   },
 
@@ -41,20 +45,33 @@ export default {
     radius () {
       return 50 - this.strokeWidth / 2
     },
+
     pathString () {
       return `M 50,50 m 0,-${this.radius}
       a ${this.radius},${this.radius} 0 1 1 0,${2 * this.radius}
       a ${this.radius},${this.radius} 0 1 1 0,-${2 * this.radius}`
     },
+
     len () {
       return Math.PI * 2 * this.radius
     },
+
     pathStyle () {
       return {
         'stroke-dasharray': `${this.len}px ${this.len}px`,
-        'stroke-dashoffset': `${((100 - this.percent) / 100 * this.len)}px`,
+        'stroke-dashoffset': `${((100 - this.currentValue) / 100 * this.len)}px`,
         'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease'
       }
+    }
+  },
+
+  watch: {
+    currentValue (val) {
+      this.$emit('input', val)
+    },
+
+    value (val) {
+      this.currentValue = val
     }
   }
 }
