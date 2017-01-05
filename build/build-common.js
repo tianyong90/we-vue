@@ -12,9 +12,6 @@ var webpackConfig = require('./webpack.common.conf')
 var spinner = ora('building commonjs...')
 spinner.start()
 
-// rm('-f', './liv/we-vue.common.js')
-// rm('-f', './liv/we-vue.min.css')
-
 webpack(webpackConfig, function (err, stats) {
   spinner.stop()
   if (err) throw err

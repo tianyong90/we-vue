@@ -39,7 +39,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin('we-vue.min.css')
+    new ExtractTextPlugin('style.css')
   ],
   externals: ['vue']
 })

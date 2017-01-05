@@ -26,7 +26,6 @@
 <script type="text/babel">
 import XGroup from '../group/index.js'
 import XCell from '../cell/index.js'
-import 'weui/dist/style/weui.min.css'
 
 export default {
   name: 'wv-search',

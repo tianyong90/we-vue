@@ -31,7 +31,6 @@ import Indicator from './components/indicator/index.js'
 import Dialog from './components/dialog/index.js'
 // import InfiniteScroll from './components/infinite-scroll/index.js'
 // import Lazyload from './components/lazyload/index.js'
-
 import Grid from './components/grid/index.js'
 import GridItem from './components/grid-item/index.js'
 import Flex from './components/flex/index.js'
@@ -65,9 +64,9 @@ const install = function (Vue) {
   // Vue.component(Popup.name, Popup)
   // Vue.component(Swipe.name, Swipe)
   // Vue.component(SwipeItem.name, SwipeItem)
-  // Vue.component(Picker.name, Picker)
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
+  // Vue.component(Picker.name, Picker)
   // Vue.component(DatetimePicker.name, DatetimePicker)
   Vue.component(Grid.name, Grid)
   Vue.component(GridItem.name, GridItem)
@@ -116,7 +115,6 @@ module.exports = {
   // Popup,
   // Swipe,
   // SwipeItem,
-  // Picker,
   Progress,
   Circle,
   Toast,
@@ -124,6 +122,7 @@ module.exports = {
   Dialog,
   // InfiniteScroll,
   // Lazyload,
+  // Picker,
   // DatetimePicker,
   Grid,
   GridItem,
