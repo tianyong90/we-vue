@@ -33,7 +33,7 @@
     "deploy": ""
   },
   "dependencies": {
-    "alloyfinger": "^0.1.4",
+    "alloyfinger": "0.1.4",
     "vue": "^2.1.8",
     "weui": "^1.1.0"
   },

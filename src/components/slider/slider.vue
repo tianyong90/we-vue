@@ -3,19 +3,15 @@
     <div class="weui-slider">
       <div class="weui-slider__inner" ref="runWay">
         <div :style="{width: progress + '%'}" class="weui-slider__track"></div>
-        <div :style="{left: progress + '%'}" class="weui-slider__handler" v-finger:pressmove="onPressmove" v-finger:touchend="onTouchend" ref="thumb"></div>
+        <div :style="{left: progress + '%'}" class="weui-slider__handler" ref="thumb"></div>
       </div>
     </div>
     <div class="weui-slider-box__value">{{ value }}</div>
   </div>
 </template>
 
-<script type="text/babel">
-import Vue from 'vue'
-import VueFinger from 'vue-finger'
-
-Vue.use(VueFinger)
-import 'weui/dist/style/weui.min.css'
+<script>
+import AlloyFinger from 'alloyfinger'
 
 export default {
   name: 'wv-slider',
@@ -39,6 +35,12 @@ export default {
     disabled: Boolean
   },
 
+  data () {
+    return {
+      af: null
+    }
+  },
+
   computed: {
     progress () {
       const value = this.value
@@ -48,8 +50,23 @@ export default {
     }
   },
 
+  mounted () {
+    let _this = this
+    this.af = new AlloyFinger(this.$refs.thumb, {
+      touchMove: function (e) {
+        _this.onTouchmove(e)
+      },
+      pressMove: function (e) {
+        _this.onTouchmove(e)
+      },
+      touchEnd: function (e) {
+        _this.onTouchend(e)
+      }
+    })
+  },
+
   methods: {
-    onPressmove (e) {
+    onTouchmove (e) {
       if (this.disabled) return
 
       const runWayBox = this.$refs.runWay.getBoundingClientRect()
@@ -68,6 +85,13 @@ export default {
     onTouchend (e) {
       if (this.disabled) return
       this.$emit('change', this.value)
+    }
+  },
+
+  destroyed () {
+    // 销毁使用的 AlloyFinger 实例
+    if (this.af) {
+      this.af = null
     }
   }
 }

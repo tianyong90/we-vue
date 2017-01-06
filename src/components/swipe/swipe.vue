@@ -5,10 +5,9 @@
 </template>
 
 <script type="text/babel">
-import Vue from 'vue'
-import VueFinger from 'vue-finger'
+import AlloyFinger from 'alloyfinger'
+import { once, addClass, removeClass } from '../../utils/dom.js'
 
-Vue.use(VueFinger)
 export default {
   name: 'wv-swipe',
 
@@ -22,7 +21,8 @@ export default {
       pages: [],
       timer: null,
       reInitTimer: null,
-      noDrag: false
+      noDrag: false,
+      af: null
     }
   },
 
@@ -35,63 +35,253 @@ export default {
       type: Number,
       default: 300
     },
-
     defaultIndex: {
       type: Number,
       default: 0
     },
-
     auto: {
       type: Number,
       default: 3000
     },
-
     continuous: {
       type: Boolean,
       default: true
     },
-
     showIndicators: {
       type: Boolean,
       default: true
     },
-
     noDragWhenSingle: {
       type: Boolean,
       default: true
     },
-
     prevent: {
       type: Boolean,
       default: false
     }
   },
 
-  computed: {
+  mounted () {
+    let _this = this
+    this.af = new AlloyFinger(this.$el, {
+      swipe: function (e) {
+        _this.onSwipe(e)
+      }
+    })
   },
 
   methods: {
     swipeItemCreated () {
       if (!this.ready) return
 
-      // clearTimeout(this.reInitTimer);
+      // clearTimeout(this.reInitTimer)
       // this.reInitTimer = setTimeout(() => {
-      //   this.reInitPages();
-      // }, 100);
+      //   this.reInitPages()
+      // }, 100)
     },
 
     swipeItemDestroyed () {
       if (!this.ready) return
 
-      // clearTimeout(this.reInitTimer);
+      // clearTimeout(this.reInitTimer)
       // this.reInitTimer = setTimeout(() => {
-      //   this.reInitPages();
-      // }, 100);
+      //   this.reInitPages()
+      // }, 100)
+    },
+
+    translate (element, offset, speed, callback) {
+      if (speed) {
+        this.animating = true
+        element.style.webkitTransition = '-webkit-transform ' + speed + 'ms ease-in-out'
+        setTimeout(() => {
+          element.style.webkitTransform = `translate3d(${offset}px, 0, 0)`
+        }, 50)
+
+        var called = false
+
+        var transitionEndCallback = () => {
+          if (called) return
+          called = true
+          this.animating = false
+          element.style.webkitTransition = ''
+          element.style.webkitTransform = ''
+          if (callback) {
+            callback.apply(this, arguments)
+          }
+        }
+
+        once(element, 'webkitTransitionEnd', transitionEndCallback)
+        setTimeout(transitionEndCallback, speed + 100) // webkitTransitionEnd maybe not fire on lower version android.
+      } else {
+        element.style.webkitTransition = ''
+        element.style.webkitTransform = `translate3d(${offset}px, 0, 0)`
+      }
+    },
+
+    reInitPages () {
+      var children = this.$children
+      this.noDrag = children.length === 1 && this.noDragWhenSingle
+
+      var pages = []
+      var intDefaultIndex = Math.floor(this.defaultIndex)
+      var defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < children.length) ? intDefaultIndex : 0
+      this.index = defaultIndex
+
+      children.forEach(function (child, index) {
+        pages.push(child.$el)
+
+        removeClass(child.$el, 'is-active')
+
+        if (index === defaultIndex) {
+          addClass(child.$el, 'is-active')
+        }
+      })
+
+      this.pages = pages
+    },
+
+    doAnimate (towards, options) {
+      if (this.$children.length === 0) return
+      if (!options && this.$children.length < 2) return
+
+      var prevPage, nextPage, currentPage, pageWidth, offsetLeft
+      var speed = this.speed || 300
+      var index = this.index
+      var pages = this.pages
+      var pageCount = pages.length
+
+      if (!options) {
+        pageWidth = this.$el.clientWidth
+        currentPage = pages[index]
+        prevPage = pages[index - 1]
+        nextPage = pages[index + 1]
+        if (this.continuous && pages.length > 1) {
+          if (!prevPage) {
+            prevPage = pages[pages.length - 1]
+          }
+          if (!nextPage) {
+            nextPage = pages[0]
+          }
+        }
+        if (prevPage) {
+          prevPage.style.display = 'block'
+          this.translate(prevPage, -pageWidth)
+        }
+        if (nextPage) {
+          nextPage.style.display = 'block'
+          this.translate(nextPage, pageWidth)
+        }
+      } else {
+        prevPage = options.prevPage
+        currentPage = options.currentPage
+        nextPage = options.nextPage
+        pageWidth = options.pageWidth
+        offsetLeft = options.offsetLeft
+      }
+
+      var newIndex
+
+      var oldPage = this.$children[index].$el
+
+      if (towards === 'prev') {
+        if (index > 0) {
+          newIndex = index - 1
+        }
+        if (this.continuous && index === 0) {
+          newIndex = pageCount - 1
+        }
+      } else if (towards === 'next') {
+        if (index < pageCount - 1) {
+          newIndex = index + 1
+        }
+        if (this.continuous && index === pageCount - 1) {
+          newIndex = 0
+        }
+      }
+
+      var callback = () => {
+        if (newIndex !== undefined) {
+          var newPage = this.$children[newIndex].$el
+          removeClass(oldPage, 'is-active')
+          addClass(newPage, 'is-active')
+
+          this.index = newIndex
+        }
+
+        if (prevPage) {
+          prevPage.style.display = ''
+        }
+
+        if (nextPage) {
+          nextPage.style.display = ''
+        }
+      }
+
+      setTimeout(() => {
+        if (towards === 'next') {
+          this.translate(currentPage, -pageWidth, speed, callback)
+          if (nextPage) {
+            this.translate(nextPage, 0, speed)
+          }
+        } else if (towards === 'prev') {
+          this.translate(currentPage, pageWidth, speed, callback)
+          if (prevPage) {
+            this.translate(prevPage, 0, speed)
+          }
+        } else {
+          this.translate(currentPage, 0, speed, callback)
+          if (typeof offsetLeft !== 'undefined') {
+            if (prevPage && offsetLeft > 0) {
+              this.translate(prevPage, pageWidth * -1, speed)
+            }
+            if (nextPage && offsetLeft < 0) {
+              this.translate(nextPage, pageWidth, speed)
+            }
+          } else {
+            if (prevPage) {
+              this.translate(prevPage, pageWidth * -1, speed)
+            }
+            if (nextPage) {
+              this.translate(nextPage, pageWidth, speed)
+            }
+          }
+        }
+      }, 10)
+    },
+
+    next () {
+      this.doAnimate('next')
+    },
+
+    prev () {
+      this.doAnimate('prev')
+    },
+
+    onSwipe (e) {
+      if (e.direction === 'Left') {
+        console.log(e.target)
+
+        // this.prev()
+      } else if (e.direction === 'Right') {
+        // this.next()
+      }
     }
   },
 
   destroyed () {
-    console.log('destroyed')
+    if (this.timer) {
+      clearInterval(this.timer)
+      this.timer = null
+    }
+    if (this.reInitTimer) {
+      clearTimeout(this.reInitTimer)
+      this.reInitTimer = null
+    }
+
+    // 销毁使用的 AlloyFinger 实例
+    if (this.af) {
+      this.af = null
+    }
   }
 }
 </script>
