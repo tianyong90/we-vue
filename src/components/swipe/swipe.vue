@@ -1,4 +1,7 @@
 <template>
+  <div class="wv-swipe" :style="{ height: height + 'px' }">
+    <slot></slot>
+  </div>
 </template>
 
 <script type="text/babel">
@@ -6,52 +9,99 @@ import Vue from 'vue'
 import VueFinger from 'vue-finger'
 
 Vue.use(VueFinger)
-import 'weui/dist/style/weui.min.css'
-
 export default {
-  name: 'wv-slider',
+  name: 'wv-swipe',
+
+  data () {
+    return {
+      ready: false,
+      dragging: false,
+      userScrolling: false,
+      animating: false,
+      index: 0,
+      pages: [],
+      timer: null,
+      reInitTimer: null,
+      noDrag: false
+    }
+  },
 
   props: {
-    min: {
+    height: {
+      type: Number,
+      default: 180
+    },
+    speed: {
+      type: Number,
+      default: 300
+    },
+
+    defaultIndex: {
       type: Number,
       default: 0
     },
-    max: {
+
+    auto: {
       type: Number,
-      default: 100
+      default: 3000
     },
-    step: {
-      type: Number,
-      default: 1
+
+    continuous: {
+      type: Boolean,
+      default: true
     },
-    value: {
-      type: Number
+
+    showIndicators: {
+      type: Boolean,
+      default: true
     },
-    disabled: Boolean
+
+    noDragWhenSingle: {
+      type: Boolean,
+      default: true
+    },
+
+    prevent: {
+      type: Boolean,
+      default: false
+    }
   },
 
   computed: {
-    progress () {
-      const value = this.value
-      if (typeof value === 'undefined' || value === null) return 0
-
-      return Math.floor((value - this.min) / (this.max - this.min) * 100)
-    }
   },
 
   methods: {
-    onPressmove (e) {
-      if (this.disabled) return
+    swipeItemCreated () {
+      if (!this.ready) return
 
-      this.$emit('input', 100)
+      // clearTimeout(this.reInitTimer);
+      // this.reInitTimer = setTimeout(() => {
+      //   this.reInitPages();
+      // }, 100);
     },
 
-    onTouchend (e) {
-      // console.log(e)
+    swipeItemDestroyed () {
+      if (!this.ready) return
+
+      // clearTimeout(this.reInitTimer);
+      // this.reInitTimer = setTimeout(() => {
+      //   this.reInitPages();
+      // }, 100);
     }
+  },
+
+  destroyed () {
+    console.log('destroyed')
   }
 }
 </script>
 
 <style scoped lang="scss">
+  .wv-swipe {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background: red;
+  }
 </style>

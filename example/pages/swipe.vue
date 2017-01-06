@@ -1,11 +1,17 @@
 <template>
+  <div class="page">
+    <wv-swipe :height="200">
+      <wv-swipe-item></wv-swipe-item>
+      <wv-swipe-item></wv-swipe-item>
+      <wv-swipe-item></wv-swipe-item>
+    </wv-swipe>
+  </div>
 </template>
 
 <script type="text/babel">
 export default {
   data () {
     return {
-      percent: 55
     }
   }
 }

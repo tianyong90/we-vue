@@ -33,8 +33,8 @@ const routes = registerRoute(Navs)
 
 routes.push({
   path: '/',
-  component: require('../pages/home.vue'),
-  name: 'home',
+  component: require('../pages/index.vue'),
+  name: 'index',
   meta: {
     title: 'WE-VUE',
     description: 'description'

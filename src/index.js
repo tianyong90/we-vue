@@ -20,8 +20,8 @@ import Slider from './components/slider/index.js'
 import Loadmore from './components/loadmore/index.js'
 import Actionsheet from './components/actionsheet/index.js'
 // import Popup from './components/popup/index.js'
-// import Swipe from './components/swipe/index.js'
-// import SwipeItem from './components/swipe-item/index.js'
+import Swipe from './components/swipe/index.js'
+import SwipeItem from './components/swipe-item/index.js'
 // import Picker from './components/picker/index.js'
 // import DatetimePicker from './components/datetime-picker/index.js'
 import Progress from './components/progress/index.js'
@@ -62,8 +62,8 @@ const install = function (Vue) {
   Vue.component(Loadmore.name, Loadmore)
   Vue.component(Actionsheet.name, Actionsheet)
   // Vue.component(Popup.name, Popup)
-  // Vue.component(Swipe.name, Swipe)
-  // Vue.component(SwipeItem.name, SwipeItem)
+  Vue.component(Swipe.name, Swipe)
+  Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
   // Vue.component(Picker.name, Picker)
@@ -113,8 +113,8 @@ module.exports = {
   Loadmore,
   Actionsheet,
   // Popup,
-  // Swipe,
-  // SwipeItem,
+  Swipe,
+  SwipeItem,
   Progress,
   Circle,
   Toast,

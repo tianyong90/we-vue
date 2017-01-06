@@ -62,7 +62,8 @@ module.exports = app.listen(port, function (err) {
     console.log(err)
     return
   }
-  var uri = 'http://localhost:' + port
+  var myLocalIp = require('my-local-ip')
+  var uri = 'http://' + myLocalIp() + ':' + port
   console.log('Listening at ' + uri + '\n')
   opn(uri)
 })

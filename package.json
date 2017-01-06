@@ -65,6 +65,7 @@
     "html-webpack-plugin": "^2.24.1",
     "http-proxy-middleware": "^0.17.3",
     "json-loader": "^0.5.4",
+    "my-local-ip": "^1.0.0",
     "node-sass": "^4.1.1",
     "normalize.css": "^5.0.0",
     "opn": "^4.0.2",
