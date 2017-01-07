@@ -130,6 +130,13 @@
         "description": "加载指示",
         "icon": "home",
         "status": "finished"
+      },
+      {
+        "path": "/picker",
+        "name": "Picker",
+        "description": "选择器",
+        "icon": "home",
+        "status": "todo"
       }
     ]
   },
@@ -194,6 +201,13 @@
         "description": "加载更多",
         "icon": "home",
         "status": "finished"
+      },
+      {
+        "path": "/popup",
+        "name": "Popup",
+        "description": "弹出层",
+        "icon": "home",
+        "status": "todo"
       }
     ]
   }

@@ -19,10 +19,10 @@ import Radio from './components/radio/index.js'
 import Slider from './components/slider/index.js'
 import Loadmore from './components/loadmore/index.js'
 import Actionsheet from './components/actionsheet/index.js'
-// import Popup from './components/popup/index.js'
+import Popup from './components/popup/index.js'
 import Swipe from './components/swipe/index.js'
 import SwipeItem from './components/swipe-item/index.js'
-// import Picker from './components/picker/index.js'
+import Picker from './components/picker/index.js'
 // import DatetimePicker from './components/datetime-picker/index.js'
 import Progress from './components/progress/index.js'
 import Circle from './components/circle/index.js'
@@ -61,12 +61,12 @@ const install = function (Vue) {
   Vue.component(Slider.name, Slider)
   Vue.component(Loadmore.name, Loadmore)
   Vue.component(Actionsheet.name, Actionsheet)
-  // Vue.component(Popup.name, Popup)
+  Vue.component(Popup.name, Popup)
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
-  // Vue.component(Picker.name, Picker)
+  Vue.component(Picker.name, Picker)
   // Vue.component(DatetimePicker.name, DatetimePicker)
   Vue.component(Grid.name, Grid)
   Vue.component(GridItem.name, GridItem)
@@ -112,7 +112,7 @@ module.exports = {
   Slider,
   Loadmore,
   Actionsheet,
-  // Popup,
+  Popup,
   Swipe,
   SwipeItem,
   Progress,
@@ -122,7 +122,7 @@ module.exports = {
   Dialog,
   // InfiniteScroll,
   // Lazyload,
-  // Picker,
+  Picker,
   // DatetimePicker,
   Grid,
   GridItem,
