@@ -1,6 +1,11 @@
 <template>
   <div class="wv-swipe" :style="{ height: height + 'px' }">
-    <slot></slot>
+    <div class="wv-swipe-items-wrap" ref="wrap">
+      <slot></slot>
+    </div>
+    <div class="wv-swipe-indicators" v-show="showIndicators">
+      <div class="wv-swipe-indicator" v-for="(page, $index) in pages" :class="{ 'is-active': $index === index }"></div>
+    </div>
   </div>
 </template>
 
@@ -260,10 +265,9 @@ export default {
     onSwipe (e) {
       if (e.direction === 'Left') {
         console.log(e.target)
-
-        // this.prev()
+        this.prev()
       } else if (e.direction === 'Right') {
-        // this.next()
+        this.next()
       }
     }
   },
@@ -293,5 +297,17 @@ export default {
     position: relative;
     width: 100%;
     background: red;
+
+    .wv-swipe-items-wrap {
+      display: block;
+      overflow: hidden;
+      background: blue;
+    }
+
+    .wv-swipe-indicators {
+      position: absolute;
+      background: blue;
+      display: flex;
+    }
   }
 </style>

@@ -46,7 +46,7 @@
       },
       {
         "path": "/swipe",
-        "name": "swipe",
+        "name": "Swipe",
         "description": "图片轮播",
         "icon": "home",
         "status": "todo"

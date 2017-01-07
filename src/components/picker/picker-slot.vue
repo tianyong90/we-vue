@@ -1,42 +1,33 @@
 <template>
-	<div class="" v-show="visible" ref="abc">
-    <div class="weui-mask weui-animate-fade-in"></div>
-      <div class="weui-picker weui-animate-slide-up">
-        <div class="weui-picker__hd">
-          <a href="javascript:;" class="weui-picker__action" @click="cancel">{{ cancelText }}</a>
-          <a href="javascript:;" data-action="select" class="weui-picker__action" id="weui-picker-confirm">{{ confirmText }}</a>
-        </div>
-        <div class="weui-picker__bd">
-          <div class="weui-picker__group">
-              <div class="weui-picker__mask"></div>
-              <div class="weui-picker__indicator"></div>
-              <div class="weui-picker__content" style="transform: translate3d(0px, 34px, 0px);">
-                <div class="weui-picker__item">飞机票</div>
-                <div class="weui-picker__item">火车票</div>
-                <div class="weui-picker__item">的士票</div>
-                <div class="weui-picker__item weui-picker__item_disabled">公交票 (disabled)</div>
-                <div class="weui-picker__item">其他</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="weui-picker__group">
+    <div class="weui-picker__mask"></div>
+    <div class="weui-picker__indicator"></div>
+    <div class="weui-picker__content" :style="pickerContentStyle" ref="listWrap">
+      <div class="weui-picker__item">飞机票</div>
+      <div class="weui-picker__item">火车票</div>
+      <div class="weui-picker__item ">公交票 (disabled)</div>
+      <div class="weui-picker__item">其他</div>
+    </div>
+  </div>
 </template>
 
 <script type="text/babel">
 import AlloyFinger from 'alloyfinger'
 
+// weui-picker__item_disabled
+
+// 每个选项高度
+const ITEM_HEIGHT = 34
+
 export default {
-  name: 'wv-picker',
+  name: 'wv-picker-slot',
 
   props: {
-    confirmText: {
-      type: String,
-      default: '确定'
-    },
-    cancelText: {
-      type: String,
-      default: '取消'
+    values: {
+      type: Array,
+      default () {
+        []
+      }
     },
     value: {}
   },
@@ -49,9 +40,16 @@ export default {
     }
   },
 
+  computed: {
+    pickerContentStyle () {
+      console.log(ITEM_HEIGHT)
+      // return {transform: "translate3d('0px', ITEM_HEIGHT + 'px', '0px')}
+    }
+  },
+
   mounted () {
     let _this = this
-    this.af = new AlloyFinger(this.$refs.abc, {
+    this.af = new AlloyFinger(this.$el, {
       touchMove: function (e) {
         _this.onTouchmove(e)
       },
@@ -65,12 +63,8 @@ export default {
   },
 
   methods: {
-    cancel () {
-      this.visible = false
-    },
-
     onTouchmove (e) {
-      console.log(e)
+      // this.$refs.listWrap
     },
 
     onTouchend (e) {

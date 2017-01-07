@@ -1,9 +1,9 @@
 <template>
   <div class="page">
-    <wv-swipe :height="200">
-      <wv-swipe-item></wv-swipe-item>
-      <wv-swipe-item></wv-swipe-item>
-      <wv-swipe-item></wv-swipe-item>
+    <wv-swipe :height="200" :pages="pages">
+      <wv-swipe-item>1</wv-swipe-item>
+      <wv-swipe-item>2</wv-swipe-item>
+      <wv-swipe-item>3</wv-swipe-item>
     </wv-swipe>
   </div>
 </template>
@@ -12,6 +12,11 @@
 export default {
   data () {
     return {
+      pages: [
+        1,
+        2,
+        3
+      ]
     }
   }
 }

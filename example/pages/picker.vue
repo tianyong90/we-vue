@@ -7,6 +7,7 @@
 </template>
 
 <script type="text/babel">
+// import { PickerSlot } from './picker-slot.vue'
 export default {
   methods: {
     showPopup () {
