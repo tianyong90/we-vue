@@ -1,28 +1,29 @@
 <template>
-	<div class="" v-show="visible">
-    <div class="weui-mask weui-animate-fade-in"></div>
-    <div class="weui-picker weui-animate-slide-up">
-      <div class="weui-picker__hd">
-        <a href="javascript:;" class="weui-picker__action" @click="cancel">{{ cancelText }}</a>
-        <a href="javascript:;" data-action="select" class="weui-picker__action" id="weui-picker-confirm">{{ confirmText }}</a>
-      </div>
-      <div class="weui-picker__bd">
-        <wv-picker-slot></wv-picker-slot>
-        <wv-picker-slot></wv-picker-slot>
-        <wv-picker-slot></wv-picker-slot>
-      </div>
+  <wv-popup is-modal v-show="visible">
+    <div class="weui-picker__hd">
+      <a href="javascript:;" class="weui-picker__action" @click="cancel">{{ cancelText }}</a>
+      <a href="javascript:;" class="weui-picker__action" @click="confirm">{{ confirmText }}</a>
     </div>
-  </div>
+    <div class="weui-picker__bd">
+      <wv-picker-slot></wv-picker-slot>
+      <wv-picker-slot></wv-picker-slot>
+      <wv-picker-slot></wv-picker-slot>
+    </div>
+  </wv-popup>
+
+
 </template>
 
 <script type="text/babel">
+import Popup from '../popup/index.js'
 import WvPickerSlot from './picker-slot.vue'
 
 export default {
   name: 'wv-picker',
 
   components: {
-    WvPickerSlot
+    WvPickerSlot,
+    Popup
   },
 
   props: {
@@ -49,6 +50,10 @@ export default {
 
   methods: {
     cancel () {
+      this.visible = false
+    },
+
+    confirm () {
       this.visible = false
     }
   }

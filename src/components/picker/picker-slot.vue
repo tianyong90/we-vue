@@ -17,7 +17,7 @@ import AlloyFinger from 'alloyfinger'
 // weui-picker__item_disabled
 
 // 每个选项高度
-const ITEM_HEIGHT = 34
+// const ITEM_HEIGHT = 34
 
 export default {
   name: 'wv-picker-slot',
@@ -42,8 +42,7 @@ export default {
 
   computed: {
     pickerContentStyle () {
-      console.log(ITEM_HEIGHT)
-      // return {transform: "translate3d('0px', ITEM_HEIGHT + 'px', '0px')}
+      return { transform: 'translateY(34px)' }
     }
   },
 
