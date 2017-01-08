@@ -5,12 +5,7 @@
 </template>
 
 <script type="text/babel">
-import 'weui/dist/style/weui.min.css'
-
 export default {
-  name: 'wv-flex-item',
-
-  props: {
-  }
+  name: 'wv-flex-item'
 }
 </script>

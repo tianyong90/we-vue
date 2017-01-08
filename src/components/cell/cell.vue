@@ -20,8 +20,6 @@
 </template>
 
 <script type="text/babel">
-import 'weui/dist/style/weui.min.css'
-
 function cleanPath (path) {
   return path.replace(/\/\//g, '/')
 }

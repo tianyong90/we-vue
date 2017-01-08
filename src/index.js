@@ -1,3 +1,4 @@
+import 'weui/dist/style/weui.min.css'
 import Button from './components/button/index.js'
 import Group from './components/group/index.js'
 import Cell from './components/cell/index.js'
