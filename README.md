@@ -23,7 +23,7 @@ we-vue 结合 vue2.0 强大的组件化机制和 weui 的微信官方视觉样�
 
 <p align="center">
   <a href="http://wevue.org">
-    <img src="https://raw.githubusercontent.com/tianyong90/we0vue/master/qrcode.png">
+    <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/qrcode.png">
   </a>
 </p>
 
