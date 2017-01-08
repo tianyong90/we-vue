@@ -189,6 +189,13 @@
         "status": "finished"
       },
       {
+        "path": "/panel",
+        "name": "Panel",
+        "description": "面板",
+        "icon": "home",
+        "status": "todo"
+      },
+      {
         "path": "/flex",
         "name": "Flex",
         "description": "Flex 布局",
