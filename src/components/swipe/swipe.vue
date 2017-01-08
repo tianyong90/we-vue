@@ -308,6 +308,17 @@ export default {
       position: absolute;
       background: blue;
       display: flex;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      height: 20px;
+
+      .wv-swipe-indicator {
+        display: flex;
+        width: 10px;
+        height: 10px;
+        background-color: green;
+      }
     }
   }
 </style>

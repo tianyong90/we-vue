@@ -1,5 +1,8 @@
 import Vue from 'vue'
 
+const CONFIRM_TEXT = '确定'
+const CANCEL_TEXT = '取消'
+
 const DialogConstructor = Vue.extend(require('./dialog.vue'))
 let dialogtPool = []
 
@@ -34,21 +37,16 @@ DialogConstructor.prototype.close = function () {
 }
 
 let Dialog = (options = {}) => {
-  let duration = options.duration || 3000
   let instance = getAnInstance()
   instance.closed = false
   clearTimeout(instance.timer)
+  instance.title = options.title
   instance.message = typeof options === 'string' ? options : options.message
+  instance.skin = options.skin ? options.skin : 'ios'
+  instance.confirmText = options.confirmText ? options.confirmText : CONFIRM_TEXT
+  instance.cancelText = options.cancelText ? options.cancelText : CANCEL_TEXT
 
   document.body.appendChild(instance.$el)
-  Vue.nextTick(function () {
-    instance.visible = true
-    instance.$el.removeEventListener('transitionend', removeDom)
-    instance.timer = setTimeout(function () {
-      if (instance.closed) return
-      instance.close()
-    }, duration)
-  })
   return instance
 }
 

@@ -1,68 +1,66 @@
 <template>
-  <div>
-		<div class="weui-mask_transparent actionsheet__mask actionsheet__mask_show" id="mask" style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); background-color: rgba(0, 0, 0, 0.6);"
-			v-show="currentValue && type === 'ios'" @click="currentValue = false"></div>
-		<div class="weui-actionsheet weui-actionsheet_toggle" id="weui-actionsheet" v-if="type === 'ios'" v-show="currentValue">
-			<div class="weui-actionsheet__menu">
-				<div class="weui-actionsheet__cell" v-for="item in actions" @click="itemClick(item)">{{ item.name }}</div>
-			</div>
-			<div class="weui-actionsheet__action" v-if="cancelText">
-				<div class="weui-actionsheet__cell" @click="currentValue = false">{{ cancelText }}</div>
-			</div>
-		</div>
-
-		<div class="weui-skin_android" id="weui-android-actionsheet" v-if="type === 'android'" v-show="currentValue">
-			<div class="weui-mask" @click="currentValue = false"></div>
-			<div class="weui-actionsheet">
-				<div class="weui-actionsheet__menu">
-					<div v-for="item in actions" class="weui-actionsheet__cell" @click="itemClick(item)">{{ item.name }}</div>
-				</div>
-			</div>
-		</div>
+  <div v-show="currentValue">
+    <div class="weui-mask"></div>
+    <div class="weui-dialog" :class="{ 'weui-skin_android': skin === 'android' }">
+      <div class="weui-dialog__hd" v-if="title"><strong class="weui-dialog__title" v-html="title"></strong></div>
+      <div class="weui-dialog__bd" v-html="message"></div>
+      <div class="weui-dialog__ft">
+        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn" @click="handleCancelAction">{{ cancelText }}</a>
+        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn" @click="handleConfirmAction">{{ confirmText }}</a>
+      </div>
+    </div>
 	</div>
 </template>
 
 <script type="text/babel">
+const CONFIRM_TEXT = '确定'
+const CANCEL_TEXT = '取消'
+
 export default {
   name: 'wv-dialog',
 
   props: {
-    type: {
+    skin: {
       type: String,
       default: 'ios'
     },
-    actions: {
-      type: Array,
-      default: () => []
+    title: String,
+    message: String,
+    confirmText: {
+      type: String,
+      default: CONFIRM_TEXT
     },
     cancelText: {
       type: String,
-      default: 'Cancel'
+      default: CANCEL_TEXT
     },
-    value: Boolean
+    showConfirmBtn: {
+      type: Boolean,
+      default: true
+    },
+    showCancelBtn: {
+      type: Boolean,
+      default: true
+    },
+    callback: {}
   },
 
   data () {
     return {
-      currentValue: false
-    }
-  },
-
-  watch: {
-    currentValue (val) {
-      this.$emit('input', val)
-    },
-
-    value (val) {
-      this.currentValue = val
+      currentValue: true
     }
   },
 
   methods: {
-    itemClick (item) {
-      if (item.method && typeof item.method === 'function') {
-        item.method()
-      }
+    handleCancelAction (e) {
+      console.log(this)
+
+      // this.currentValue = false
+    },
+
+    handleConfirmAction (e) {
+      console.log('confirm')
+
       this.currentValue = false
     }
   },

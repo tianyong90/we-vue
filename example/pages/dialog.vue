@@ -12,8 +12,19 @@ import Dialog from '../../src/components/dialog'
 
 export default {
   methods: {
-    showDialog (type, style) {
-      Dialog('haha')
+    showDialog (skin, style) {
+      if (style === 'style1') {
+        Dialog({
+          title: '窗口标题',
+          message: 'hello world',
+          skin
+        })
+      } else {
+        Dialog({
+          message: 'hello world',
+          skin
+        })
+      }
     }
   }
 }
