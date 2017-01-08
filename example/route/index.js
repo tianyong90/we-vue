@@ -37,7 +37,7 @@ routes.push({
   name: 'index',
   meta: {
     title: 'WE-VUE',
-    description: 'description'
+    description: 'weui1.x + vue2.x = we-vue'
   }
 })
 

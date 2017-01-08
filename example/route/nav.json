@@ -3,9 +3,9 @@
     "groupTitle": "基础组件",
     "navItems": [
       {
-        "path": "/progress",
-        "name": "Progress",
-        "description": "进度条",
+        "path": "/badge",
+        "name": "Badge",
+        "description": "小徽章",
         "icon": "home",
         "status": "finished"
       },
@@ -24,16 +24,9 @@
         "status": "finished"
       },
       {
-        "path": "/badge",
-        "name": "Badge",
-        "description": "小徽章",
-        "icon": "home",
-        "status": "finished"
-      },
-      {
-        "path": "/spinner",
-        "name": "Spinner",
-        "description": "加载动画",
+        "path": "/progress",
+        "name": "Progress",
+        "description": "进度条",
         "icon": "home",
         "status": "finished"
       },
@@ -41,6 +34,13 @@
         "path": "/slider",
         "name": "Slider",
         "description": "滑块",
+        "icon": "home",
+        "status": "finished"
+      },
+      {
+        "path": "/spinner",
+        "name": "Spinner",
+        "description": "加载动画",
         "icon": "home",
         "status": "finished"
       },
@@ -64,16 +64,23 @@
         "status": "finished"
       },
       {
-        "path": "/radio",
-        "name": "Radio",
-        "description": "单选",
+        "path": "/checklist",
+        "name": "Checklist",
+        "description": "多选列表",
         "icon": "home",
         "status": "finished"
       },
       {
-        "path": "/checklist",
-        "name": "Checklist",
-        "description": "多选列表",
+        "path": "/input",
+        "name": "Input",
+        "description": "输入框",
+        "icon": "home",
+        "status": "finished"
+      },
+      {
+        "path": "/radio",
+        "name": "Radio",
+        "description": "单选",
         "icon": "home",
         "status": "finished"
       },
@@ -88,13 +95,6 @@
         "path": "/textarea",
         "name": "Textarea",
         "description": "文本框",
-        "icon": "home",
-        "status": "finished"
-      },
-      {
-        "path": "/input",
-        "name": "Input",
-        "description": "输入框",
         "icon": "home",
         "status": "finished"
       }
@@ -118,16 +118,16 @@
         "status": "todo"
       },
       {
-        "path": "/toast",
-        "name": "Toast",
-        "description": "弹出式提示",
+        "path": "/indicator",
+        "name": "Indicator",
+        "description": "加载指示",
         "icon": "home",
         "status": "finished"
       },
       {
-        "path": "/indicator",
-        "name": "Indicator",
-        "description": "加载指示",
+        "path": "/toast",
+        "name": "Toast",
+        "description": "弹出式提示",
         "icon": "home",
         "status": "finished"
       },
@@ -144,16 +144,16 @@
     "groupTitle": "导航相关",
     "navItems": [
       {
-        "path": "/tabbar",
-        "name": "Tabbar",
-        "description": "导航菜单",
+        "path": "/navbar",
+        "name": "Navbar",
+        "description": "选项卡",
         "icon": "home",
         "status": "finished"
       },
       {
-        "path": "/navbar",
-        "name": "Navbar",
-        "description": "选项卡",
+        "path": "/tabbar",
+        "name": "Tabbar",
+        "description": "导航菜单",
         "icon": "home",
         "status": "finished"
       }
@@ -175,25 +175,11 @@
     "groupTitle": "布局",
     "navItems": [
       {
-        "path": "/grid",
-        "name": "Grid",
-        "description": "九宫格",
-        "icon": "home",
-        "status": "finished"
-      },
-      {
         "path": "/cell",
         "name": "Cell",
         "description": "列表",
         "icon": "home",
         "status": "finished"
-      },
-      {
-        "path": "/panel",
-        "name": "Panel",
-        "description": "面板",
-        "icon": "home",
-        "status": "todo"
       },
       {
         "path": "/flex",
@@ -203,11 +189,25 @@
         "status": "finished"
       },
       {
+        "path": "/grid",
+        "name": "Grid",
+        "description": "九宫格",
+        "icon": "home",
+        "status": "finished"
+      },
+      {
         "path": "/loadmore",
         "name": "Loadmore",
         "description": "加载更多",
         "icon": "home",
         "status": "finished"
+      },
+      {
+        "path": "/panel",
+        "name": "Panel",
+        "description": "面板",
+        "icon": "home",
+        "status": "todo"
       },
       {
         "path": "/popup",

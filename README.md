@@ -19,11 +19,18 @@ we-vue 结合 vue2.0 强大的组件化机制和 weui 的微信官方视觉样�
 
 **目前部分组件已完成，仍有部分在开发中或已计划即使开发。欢迎贡献代码或者提出宝贵建议。**
 
+<p align="center">
+  <a href="http://wevue.org">
+    <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/demo-screenshot.png">
+  </a>
+</p>
+
+
 ## 示例网站
 
 <p align="center">
   <a href="http://wevue.org">
-    <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/qrcode.png">
+    <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode.png">
   </a>
 </p>
 

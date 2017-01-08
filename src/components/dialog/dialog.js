@@ -39,7 +39,6 @@ DialogConstructor.prototype.close = function () {
 let Dialog = (options = {}) => {
   let instance = getAnInstance()
   instance.closed = false
-  clearTimeout(instance.timer)
   instance.title = options.title
   instance.message = typeof options === 'string' ? options : options.message
   instance.skin = options.skin ? options.skin : 'ios'
