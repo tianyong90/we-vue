@@ -1,8 +1,8 @@
 <template>
   <div class="weui-cell weui-cell_switch">
-    <div class="weui-cell__bd">标题文字</div>
+    <div class="weui-cell__bd" v-html="title"></div>
     <div class="weui-cell__ft">
-      <input class="weui-switch" type="checkbox">
+      <input class="weui-switch" v-model="value" type="checkbox">
     </div>
   </div>
   <!--<input class="weui-switch" :disabled="disabled" @change="$emit('change', currentValue)" v-model="currentValue" type="checkbox">-->
@@ -13,8 +13,13 @@ export default {
   name: 'wv-switch',
 
   props: {
+    title: String,
     disabled: Boolean,
     value: Boolean
+  },
+
+  mounted () {
+    this.currentValue = this.value
   },
 
   data () {

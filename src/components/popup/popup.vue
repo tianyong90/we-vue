@@ -1,11 +1,8 @@
 <template>
-	<div>
-    <div class="weui-mask weui-animate-fade-in" v-if="mask">
-    </div>
-    <div class="weui-animate-slide-up">
-      <div class="wv-popup">
-        <slot></slot>
-      </div>
+  <div class="wv-popup" :style="{ height: height }" v-show="currentValue">
+    <div class="weui-mask weui-animate-fade-in" @click="maskClick"></div>
+    <div class="wv-popup-body weui-animate-slide-up">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -15,19 +12,52 @@ export default {
   name: 'wv-popup',
 
   props: {
-    mask: Boolean
+    isModal: {
+      type: Boolean,
+      default: false
+    },
+    height: {
+      type: String,
+      default: 'auto'
+    },
+    value: Boolean
+  },
+
+  data () {
+    return {
+      currentValue: false
+    }
   },
 
   methods: {
+    maskClick (e) {
+      if (this.isModal) return
+
+      this.currentValue = false
+    }
+  },
+
+  watch: {
+    value (val) {
+      this.currentValue = val
+    },
+
+    currentValue (val) {
+      this.$emit('input', val)
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .wv-popup {
+  .wv-popup-body {
     display: block;
     position: fixed;
-    background: red;
-    overflow: hidden;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 5000;
+    transform: translateY(100%);
+    transition: transform .3s;
   }
 </style>

@@ -1,24 +1,19 @@
 <template>
   <div id="home">
     <wv-group>
-      <wv-switch :disabled="false" v-model="isOpen"></wv-switch>
-      <wv-switch :disabled="false" v-model="isOpen"></wv-switch>
+      <wv-switch title="开关1"  v-model="switchValue1"></wv-switch>
+      <wv-switch title="开关2（禁用）" disabled v-model="switchValue2"></wv-switch>
     </wv-group>
   </div>
 </template>
 
 <script type="text/babel">
 export default {
-  mounted () {
-  },
-
   data () {
     return {
-      isOpen: true
+      switchValue1: true,
+      switchValue2: false
     }
-  },
-
-  methods: {
   }
 }
 </script>
