@@ -75,6 +75,7 @@
     "shelljs": "^0.7.5",
     "url-loader": "^0.5.7",
     "vue-finger": "^0.1.0",
+    "vue-lazyload": "^1.0.0-rc7",
     "vue-loader": "^10.0.2",
     "vue-router": "^2.1.1",
     "vue-style-loader": "^1.0.0",
