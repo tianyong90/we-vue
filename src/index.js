@@ -77,7 +77,7 @@ const install = function (Vue) {
   Vue.component(Panel.name, Panel)
   // Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
-    // loading: require('./assets/loading-spin.svg'),
+    loading: require('./assets/loading-spin.svg'),
     try: 3
   })
 
@@ -86,7 +86,7 @@ const install = function (Vue) {
   Vue.$indicator = Vue.prototype.$indicator = Indicator
 }
 
-// auto install
+// 安装
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
