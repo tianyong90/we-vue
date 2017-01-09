@@ -31,7 +31,7 @@ import Toast from './components/toast/index.js'
 import Indicator from './components/indicator/index.js'
 import Dialog from './components/dialog/index.js'
 // import InfiniteScroll from './components/infinite-scroll/index.js'
-// import Lazyload from './components/lazyload/index.js'
+import Lazyload from './components/lazyload/index.js'
 import Grid from './components/grid/index.js'
 import GridItem from './components/grid-item/index.js'
 import Flex from './components/flex/index.js'
@@ -76,10 +76,10 @@ const install = function (Vue) {
   Vue.component(FlexItem.name, FlexItem)
   Vue.component(Panel.name, Panel)
   // Vue.use(InfiniteScroll)
-  // Vue.use(Lazyload, {
-  //   loading: require('./assets/loading-spin.svg'),
-  //   try: 3
-  // })
+  Vue.use(Lazyload, {
+    // loading: require('./assets/loading-spin.svg'),
+    try: 3
+  })
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog
   Vue.$toast = Vue.prototype.$toast = Toast
@@ -124,7 +124,7 @@ module.exports = {
   Indicator,
   Dialog,
   // InfiniteScroll,
-  // Lazyload,
+  Lazyload,
   Picker,
   // DatetimePicker,
   Grid,

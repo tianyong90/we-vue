@@ -24,6 +24,13 @@
         "status": "finished"
       },
       {
+        "path": "/lazyload",
+        "name": "Lazyload",
+        "description": "懒加载",
+        "icon": "home",
+        "status": "finished"
+      },
+      {
         "path": "/progress",
         "name": "Progress",
         "description": "进度条",

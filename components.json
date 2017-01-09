@@ -27,5 +27,6 @@
   "swipe": ["./src/components/swipe/index.js"],
   "swipe-item": ["./src/components/swipe-item/index.js"],
   "popup": ["./src/components/popup/index.js"],
-  "picker": ["./src/components/picker/index.js"]
+  "picker": ["./src/components/picker/index.js"],
+  "lazyload": ["./src/components/lazyload/index.js"]
 }
