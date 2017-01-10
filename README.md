@@ -9,16 +9,9 @@ we-vue 结合 vue2.0 强大的组件化机制和 weui 的微信官方视觉样�
   <a href="https://www.npmjs.com/package/we-vue">
     <img src="https://img.shields.io/npm/dm/we-vue.svg?style=flat-square" alt="">
   </a>
-
 </p>
 
 **目前部分组件已完成，仍有部分在开发中或已计划即使开发。欢迎贡献代码或者提出宝贵建议。**
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/screenshot.png">
-</p>
-
-
 
 ## 安装
 
@@ -34,10 +27,7 @@ yarn
 yarn add we-vue --dev
 ```
 
-
-
-
-## 示例
+## Demo
 
 <p align="center">
   <a href="http://wevue.org">
@@ -49,21 +39,19 @@ yarn add we-vue --dev
 
 ## 开发
 
-### 克隆代码
+1. 克隆代码
 
 ``` bash
 git clone https://github.com/tianyong90/we-vue.git
 ```
 
-**本项目已同步托管到码云，国内用户也可选择如下方式获得源码参与开发 **
+**本项目已同步托管到码云，国内用户也可选择如下方式获得源码参与开发**
 
 ```shell
 git clone https://git.oschina.net/tianyong/we-vue.git
 ```
 
-
-
-### 安装依赖
+2. 安装依赖
 
 ``` bash
 cd we-vue && npm install
@@ -71,11 +59,12 @@ cd we-vue && npm install
 
 > 建议使用 yarn
 
-### 运行本地服务并开发
+3. 运行本地服务并开发
 
 ``` bash
 npm run dev
 ```
+
 > 完成以上步骤后将在浏览器里打开组件示例页面，修改代码保存后会自动完成热加载无需手动刷新
 
 **开发过程中请勿进行构建(勿运行 build 相关命令)，请遵守代码规范，通过 Eslint 语法检查**
