@@ -1,12 +1,13 @@
 <template>
-  <div class="weui-panel weui-panel_access">
-    <div class="weui-panel__hd" v-if="title" v-html="title"></div>
-    <div class="weui-panel__bd">
-      <slot></slot>
+  <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+    <div class="weui-media-box__hd">
+      <img class="weui-media-box__thumb" :src="thumb" alt="">
     </div>
-    <div class="weui-panel__ft">
-      <slot name="ft"></slot>
+    <div class="weui-media-box__bd">
+      <h4 class="weui-media-box__title" v-text="title"></h4>
+      <p class="weui-media-box__desc" v-text="description"></p>
     </div>
+  </a>
 </div>
 </template>
 
@@ -16,13 +17,13 @@ function cleanPath (path) {
 }
 
 export default {
-  name: 'wv-panel',
+  name: 'wv-media-box',
 
   props: {
+    type: String,
+    thumb: String,
     title: String,
-    value: String,
-    label: String,
-    isLink: Boolean,
+    description: String,
     to: String
   },
 

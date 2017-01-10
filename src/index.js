@@ -37,6 +37,7 @@ import GridItem from './components/grid-item/index.js'
 import Flex from './components/flex/index.js'
 import FlexItem from './components/flex-item/index.js'
 import Panel from './components/panel/index.js'
+import MediaBox from './components/media-box/index.js'
 // import '../src/assets/font/iconfont.css'
 
 const install = function (Vue) {
@@ -75,6 +76,7 @@ const install = function (Vue) {
   Vue.component(Flex.name, Flex)
   Vue.component(FlexItem.name, FlexItem)
   Vue.component(Panel.name, Panel)
+  Vue.component(MediaBox.name, MediaBox)
   // Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
@@ -131,5 +133,6 @@ module.exports = {
   GridItem,
   Flex,
   FlexItem,
-  Panel
+  Panel,
+  MediaBox
 }
