@@ -55,6 +55,14 @@ yarn add we-vue --dev
 git clone https://github.com/tianyong90/we-vue.git
 ```
 
+**本项目已同步托管到码云，国内用户也可选择如下方式获得源码参与开发 **
+
+```shell
+git clone https://git.oschina.net/tianyong/we-vue.git
+```
+
+
+
 ### 安装依赖
 
 ``` bash
