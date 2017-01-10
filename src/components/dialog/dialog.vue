@@ -53,9 +53,7 @@ export default {
 
   methods: {
     handleCancelAction (e) {
-      console.log(this)
-
-      // this.currentValue = false
+      this.currentValue = false
     },
 
     handleConfirmAction (e) {
