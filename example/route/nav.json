@@ -214,7 +214,7 @@
         "name": "Panel",
         "description": "面板",
         "icon": "home",
-        "status": "todo"
+        "status": "finished"
       },
       {
         "path": "/popup",

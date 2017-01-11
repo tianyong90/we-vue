@@ -41,4 +41,14 @@ routes.push({
   }
 })
 
+routes.push({
+  path: '*',
+  component: require('../pages/404.vue'),
+  name: '404',
+  meta: {
+    title: '',
+    description: ''
+  }
+})
+
 export default routes

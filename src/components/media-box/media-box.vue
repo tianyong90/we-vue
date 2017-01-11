@@ -1,6 +1,6 @@
 <template>
-  <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-    <div class="weui-media-box__hd">
+  <a :href="href" class="weui-media-box" :class="'weui-media-box_' + type" v-if="type === 'appmsg'">
+    <div class="weui-media-box__hd" v-if="type !== 'text'">
       <img class="weui-media-box__thumb" :src="thumb" alt="">
     </div>
     <div class="weui-media-box__bd">
@@ -8,7 +8,11 @@
       <p class="weui-media-box__desc" v-text="description"></p>
     </div>
   </a>
-</div>
+  <div class="weui-media-box" :class="'weui-media-box_' + type" v-else>
+    <h4 class="weui-media-box__title" v-text="title"></h4>
+    <p class="weui-media-box__desc" v-text="description"></p>
+    <slot name="box_ft"></slot>
+  </div>
 </template>
 
 <script type="text/babel">
@@ -20,7 +24,10 @@ export default {
   name: 'wv-media-box',
 
   props: {
-    type: String,
+    type: {
+      type: String,
+      default: 'appmsg'
+    },
     thumb: String,
     title: String,
     description: String,
