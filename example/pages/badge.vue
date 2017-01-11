@@ -8,6 +8,16 @@
     </wv-group>
 
     <wv-group title="未读数红点跟在主题信息后，统一在列表左侧">
+      <wv-cell class="cell-big-thumb">
+        <div slot="icon" style="position: relative;margin-right: 10px;">
+          <img src="../assets/wevue_placeholder.png" style="width: 50px; height: 50px;display: block">
+          <wv-badge style="position: absolute;top: -.4em;right: -.4em;">2</wv-badge>
+        </div>
+        <template slot="bd">
+          <p>联系人名称</p>
+          <p style="font-size: 13px;color: #888888;">摘要信息</p>
+        </template>
+      </wv-cell>
       <wv-cell is-link>
         <span slot="bd" style="vertical-align: middle;">单行列表</span>
         <wv-badge slot="bd" style="margin-left: 5px;">2</wv-badge>
@@ -23,11 +33,3 @@
     </wv-group>
 	</div>
 </template>
-
-<script type="text/babel">
-export default {
-}
-</script>
-
-<style scoped lang="scss">
-</style>

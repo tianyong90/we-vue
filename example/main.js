@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Vui from '../src/index.js'
+import WeVue from '../src/index.js'
 import FastClick from 'fastclick'
 import 'normalize.css/normalize.css'
 import './assets/demo.scss'
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false)
 
 Vue.use(VueRouter)
-Vue.use(Vui)
+Vue.use(WeVue)
 
 import store from './store/index.js'
 
@@ -26,8 +26,6 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   store.commit('UPDATE_LOADING', true)
 
-  store.commit('UPDATE_MAINMENU_VISIBLE', to.matched.some(record => record.meta.showMainmenu))
-
   next()
 })
 
@@ -35,28 +33,7 @@ router.afterEach((to, from) => {
   store.commit('UPDATE_LOADING', false)
 })
 
-// Vue.component('mainmenu', require('./pages/mainmenu.vue'))
-
 new Vue({
-  // 路由器
   router,
-
-  // vuex store
-  store,
-
-  computed: {
-    isLoading: () => {
-      return store.state.isLoading
-    }
-  },
-
-  watch: {
-    'isLoading': (value) => {
-      if (value) {
-        Vui.Indicator.open()
-      } else {
-        Vui.Indicator.close()
-      }
-    }
-  }
+  store
 }).$mount('#app')
