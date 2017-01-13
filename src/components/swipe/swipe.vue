@@ -5,12 +5,17 @@
     </div>
     <div class="wv-swipe-indicators" v-show="showIndicators">
       <div class="wv-swipe-indicator" v-for="(page, $index) in pages" :class="{ 'is-active': $index === index }"></div>
+
+      <div class="wv-swipe-indicator"></div>
+      <div class="wv-swipe-indicator"></div>
+      <div class="wv-swipe-indicator"></div>
     </div>
   </div>
 </template>
 
 <script type="text/babel">
 import AlloyFinger from 'alloyfinger'
+import Transform from 'css3transform'
 import { once, addClass, removeClass } from '../../utils/dom.js'
 
 export default {
@@ -73,6 +78,8 @@ export default {
         _this.onSwipe(e)
       }
     })
+
+    Transform(this.$refs.wrap, true)
   },
 
   methods: {
@@ -265,9 +272,12 @@ export default {
     onSwipe (e) {
       if (e.direction === 'Left') {
         console.log(e.target)
-        this.prev()
+        Transform(e.target, true)
+        e.target.translateX = -100
+        // this.prev()
       } else if (e.direction === 'Right') {
-        this.next()
+        this.$refs.wrap.translateX = 100
+        // this.next()
       }
     }
   },
@@ -296,28 +306,31 @@ export default {
     overflow: hidden;
     position: relative;
     width: 100%;
-    background: red;
 
     .wv-swipe-items-wrap {
       display: block;
       overflow: hidden;
-      background: blue;
+      background: grey;
+      width: 100%;
+      height: 100%;
+      transition: all .2s ease-in-out;
     }
 
     .wv-swipe-indicators {
       position: absolute;
-      background: blue;
       display: flex;
-      bottom: 0;
+      justify-content: center;
+      bottom: 10px;
       width: 100%;
       left: 0;
-      height: 20px;
 
       .wv-swipe-indicator {
         display: flex;
-        width: 10px;
-        height: 10px;
-        background-color: green;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        margin: 0 5px;
+        background-color: white;
       }
     }
   }

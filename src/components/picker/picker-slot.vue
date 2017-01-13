@@ -29,7 +29,8 @@ export default {
         []
       }
     },
-    value: {}
+    value: {},
+    valueKey: String
   },
 
   data () {

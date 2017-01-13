@@ -1216,6 +1216,10 @@ css-what@2.1:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/css-what/download/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
 
+css3transform@^1.1.2:
+  version "1.1.2"
+  resolved "http://registry.npm.taobao.org/css3transform/download/css3transform-1.1.2.tgz#33e5f396ceea1a68b7fc4b8c2faaebcddc6ef504"
+
 cssesc@^0.1.0:
   version "0.1.0"
   resolved "http://registry.npm.taobao.org/cssesc/download/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"

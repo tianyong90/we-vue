@@ -104,6 +104,13 @@
         "description": "文本框",
         "icon": "home",
         "status": "finished"
+      },
+      {
+        "path": "/preview",
+        "name": "Preview",
+        "description": "表单预览",
+        "icon": "home",
+        "status": "finished"
       }
     ]
   },

@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "alloyfinger": "0.1.4",
+    "css3transform": "^1.1.2",
     "vue": "^2.1.8",
     "weui": "^1.1.0"
   },

@@ -1,6 +1,10 @@
 <template>
   <div class="page">
-    <wv-swipe :height="180" :pages="pages"></wv-swipe>
+    <wv-swipe :height="180" :pages="pages">
+      <wv-swipe-item style="background-color: red"></wv-swipe-item>
+      <wv-swipe-item style="background-color: yellow"></wv-swipe-item>
+      <wv-swipe-item style="background-color: green"></wv-swipe-item>
+    </wv-swipe>
   </div>
 </template>
 
