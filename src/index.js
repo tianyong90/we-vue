@@ -39,6 +39,7 @@ import FlexItem from './components/flex-item/index.js'
 import Panel from './components/panel/index.js'
 import MediaBox from './components/media-box/index.js'
 import Preview from './components/preview/index.js'
+import Footer from './components/footer/index.js'
 // import '../src/assets/font/iconfont.css'
 
 const install = function (Vue) {
@@ -79,6 +80,7 @@ const install = function (Vue) {
   Vue.component(Panel.name, Panel)
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Preview.name, Preview)
+  Vue.component(Footer.name, Footer)
   // Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
@@ -137,5 +139,6 @@ module.exports = {
   FlexItem,
   Panel,
   MediaBox,
-  Preview
+  Preview,
+  Footer
 }

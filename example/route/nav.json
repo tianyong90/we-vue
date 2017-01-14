@@ -203,6 +203,13 @@
         "status": "finished"
       },
       {
+        "path": "/footer",
+        "name": "Footer",
+        "description": "页脚",
+        "icon": "home",
+        "status": "finished"
+      },
+      {
         "path": "/grid",
         "name": "Grid",
         "description": "九宫格",

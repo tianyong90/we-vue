@@ -29,5 +29,6 @@
   "popup": ["./src/components/popup/index.js"],
   "picker": ["./src/components/picker/index.js"],
   "lazyload": ["./src/components/lazyload/index.js"],
-  "preview": ["./src/components/preview/index.js"]
+  "preview": ["./src/components/preview/index.js"],
+  "footer": ["./src/components/footer/index.js"]
 }
