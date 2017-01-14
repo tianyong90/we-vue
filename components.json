@@ -30,5 +30,6 @@
   "picker": ["./src/components/picker/index.js"],
   "lazyload": ["./src/components/lazyload/index.js"],
   "preview": ["./src/components/preview/index.js"],
-  "footer": ["./src/components/footer/index.js"]
+  "footer": ["./src/components/footer/index.js"],
+  "header": ["./src/components/header/index.js"]
 }

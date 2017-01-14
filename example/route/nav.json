@@ -158,6 +158,13 @@
     "groupTitle": "导航相关",
     "navItems": [
       {
+        "path": "/header",
+        "name": "Header",
+        "description": "头部标题栏",
+        "icon": "home",
+        "status": "todo"
+      },
+      {
         "path": "/navbar",
         "name": "Navbar",
         "description": "选项卡",

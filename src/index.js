@@ -1,4 +1,5 @@
 import 'weui/dist/style/weui.min.css'
+import Header from './components/header/index.js'
 import Button from './components/button/index.js'
 import Group from './components/group/index.js'
 import Cell from './components/cell/index.js'
@@ -45,6 +46,7 @@ import Footer from './components/footer/index.js'
 const install = function (Vue) {
   if (install.installed) return
 
+  Vue.component(Header.name, Header)
   Vue.component(Button.name, Button)
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
@@ -100,6 +102,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   version: '1.0.0',
   install,
+  Header,
   Button,
   Group,
   Cell,
