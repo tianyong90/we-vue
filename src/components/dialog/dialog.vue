@@ -1,12 +1,12 @@
 <template>
-  <div v-show="currentValue">
+  <div v-show="this.value">
     <div class="weui-mask"></div>
     <div class="weui-dialog" :class="{ 'weui-skin_android': skin === 'android' }">
       <div class="weui-dialog__hd" v-if="title"><strong class="weui-dialog__title" v-html="title"></strong></div>
       <div class="weui-dialog__bd" v-html="message"></div>
       <div class="weui-dialog__ft">
-        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn" @click="handleCancelAction">{{ cancelText }}</a>
-        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn" @click="handleConfirmAction">{{ confirmText }}</a>
+        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn" @click="handleAction('cancel')" v-text="cancelText"></a>
+        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn" @click="handleAction('confirm')" v-text="confirmText"></a>
       </div>
     </div>
 	</div>
@@ -41,31 +41,22 @@ export default {
     showCancelBtn: {
       type: Boolean,
       default: true
-    },
-    callback: {}
+    }
   },
 
   data () {
     return {
-      currentValue: true
+      value: false
     }
   },
 
   methods: {
-    handleCancelAction (e) {
-      this.currentValue = false
-    },
-
-    handleConfirmAction (e) {
-      console.log('confirm')
-
-      this.currentValue = false
-    }
-  },
-
-  mounted () {
-    if (this.value) {
-      this.currentValue = true
+    handleAction (action) {
+      this.value = false
+      if (action === 'confirm') {
+        let callback = this.callback
+        callback(action)
+      }
     }
   }
 }

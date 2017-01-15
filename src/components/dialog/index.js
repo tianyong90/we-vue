@@ -1,2 +1,1 @@
-import Dialog from './dialog.js'
-module.exports = Dialog
+export { default } from './dialog.js'

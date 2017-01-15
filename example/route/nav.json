@@ -129,7 +129,7 @@
         "name": "Dialog",
         "description": "对话框",
         "icon": "home",
-        "status": "todo"
+        "status": "finished"
       },
       {
         "path": "/indicator",
