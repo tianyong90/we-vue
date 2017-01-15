@@ -10,10 +10,12 @@ const state = {
 
 export default new Vuex.Store({
   state,
+
   mutations: {
     UPDATE_LOADING (state, status) {
       state.isLoading = status
     },
+
     UPDATE_MAINMENU_VISIBLE (state, visible) {
       state.isMainMenuVisible = visible
     }

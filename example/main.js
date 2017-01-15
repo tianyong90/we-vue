@@ -19,7 +19,7 @@ import routes from './route/index.js'
 
 const router = new VueRouter({
   mode: 'history',
-  base: __dirname,
+  base: '/',
   routes
 })
 
@@ -33,7 +33,22 @@ router.afterEach((to, from) => {
   store.commit('UPDATE_LOADING', false)
 })
 
+import { mapState } from 'vuex'
+
 new Vue({
   router,
-  store
+
+  store,
+
+  computed: {
+    ...mapState({
+      isLoading: state => state.isLoading
+    })
+  },
+
+  watch: {
+    'isLoading': (value) => {
+      console.log(value)
+    }
+  }
 }).$mount('#app')
