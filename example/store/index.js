@@ -1,23 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import state from './state'
+import mutations from './mutations'
 
 Vue.use(Vuex)
 
-const state = {
-  isLoading: false,
-  isMainMenuVisible: true
-}
+const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state,
-
-  mutations: {
-    UPDATE_LOADING (state, status) {
-      state.isLoading = status
-    },
-
-    UPDATE_MAINMENU_VISIBLE (state, visible) {
-      state.isMainMenuVisible = visible
-    }
-  }
+  mutations,
+  strict: debug
 })

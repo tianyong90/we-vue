@@ -4,7 +4,7 @@ import WeVue from '../src/index.js'
 import FastClick from 'fastclick'
 import 'normalize.css/normalize.css'
 import './assets/demo.scss'
-import './assets/iconfont/iconfont.css'
+// import './assets/iconfont/iconfont.css'
 
 document.addEventListener('DOMContentLoaded', function () {
   if (FastClick) FastClick.attach(document.body)
