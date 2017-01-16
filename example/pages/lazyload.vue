@@ -13,13 +13,12 @@ export default {
   data () {
     return {
       list: [
-        'https://t2.27270.com/uploads/tu/201611/198/2ve0wmjtx3o.jpg',
-        'https://t2.27270.com/uploads/tu/201611/198/vcwtdvkhcmv.jpg',
-        'https://t2.27270.com/uploads/tu/201611/198/srt3sz32bqd.jpg',
-        'https://t2.27270.com/uploads/tu/201611/198/jy0cqx5krgo.jpg',
-        'https://t2.27270.com/uploads/tu/201611/198/a3egdhnw54r.jpg',
-        'https://t2.27270.com/uploads/tu/201611/198/efk3drjkhhz.jpg',
-        'https://t2.27270.com/uploads/tu/201611/198/ilnyn15pazl.jpg'
+        'https://cdn.pixabay.com/photo/2015/03/18/09/31/prairie-679014__340.jpg',
+        'https://cdn.pixabay.com/photo/2015/03/18/09/29/the-scenery-679011__340.jpg',
+        'https://cdn.pixabay.com/photo/2015/03/28/16/40/lake-696098__340.jpg',
+        'https://cdn.pixabay.com/photo/2013/07/01/17/36/sunset-142698__340.jpg',
+        'https://cdn.pixabay.com/photo/2013/11/10/20/53/forest-208517__340.jpg',
+        'https://cdn.pixabay.com/photo/2015/01/08/15/48/creek-593146__340.jpg'
       ]
     }
   }
