@@ -11,6 +11,8 @@
         <wv-badge slot="ft" v-if="nav.status === 'todo'">Todo</wv-badge>
       </wv-cell>
     </wv-group>
+
+    <wv-footer class="footer-copyright" text="Copyright © 2017 粤ICP备17009332号-1"></wv-footer>
   </div>
 </template>
 
@@ -28,7 +30,6 @@ export default {
 
   mounted () {
     let debug = process.env.NODE_ENV === 'development'
-
     if (!debug) {
       // 生产环境，及线上演示时不显示未完成组件项
       let tempNavs = []
@@ -36,7 +37,6 @@ export default {
         navGroup.navItems = navGroup.navItems.filter(item => item.status === 'finished')
         tempNavs = tempNavs.concat(navGroup)
       })
-
       this.navs = tempNavs
     }
 
@@ -52,3 +52,13 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .page {
+    margin-bottom: 0;
+  }
+
+  .footer-copyright {
+    margin: 40px 0 20px;
+  }
+</style>
