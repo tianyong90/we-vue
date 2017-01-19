@@ -20,13 +20,26 @@ import { navs } from '../route/index.js'
 export default {
   data () {
     return {
-      navs: navs,
+      navs,
       keyword: '',
       componentList: []
     }
   },
 
   mounted () {
+    let debug = process.env.NODE_ENV === 'development'
+
+    if (!debug) {
+      // 生产环境，及线上演示时不显示未完成组件项
+      let tempNavs = []
+      navs.map(navGroup => {
+        navGroup.navItems = navGroup.navItems.filter(item => item.status === 'finished')
+        tempNavs = tempNavs.concat(navGroup)
+      })
+
+      this.navs = tempNavs
+    }
+
     navs.map(navGroup => {
       this.componentList = this.componentList.concat(navGroup.navItems)
     })
