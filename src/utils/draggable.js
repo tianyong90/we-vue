@@ -3,16 +3,16 @@ import Vue from 'vue'
 const supportTouch = !Vue.prototype.$isServer && 'ontouchstart' in window
 
 export default function (element, options) {
-  const onMove = function (event) {
+  const moveFn = function (event) {
     if (options.drag) {
       options.drag(supportTouch ? event.changedTouches[0] || event.touches[0] : event)
     }
   }
 
-  const onEnd = function (event) {
+  const endFn = function (event) {
     if (!supportTouch) {
-      document.removeEventListener('mousemove', onMove)
-      document.removeEventListener('mouseup', onEnd)
+      document.removeEventListener('mousemove', moveFn)
+      document.removeEventListener('mouseup', endFn)
     }
     document.onselectstart = null
     document.ondragstart = null
@@ -31,8 +31,8 @@ export default function (element, options) {
     document.ondragstart = function () { return false }
 
     if (!supportTouch) {
-      document.addEventListener('mousemove', onMove)
-      document.addEventListener('mouseup', onEnd)
+      document.addEventListener('mousemove', moveFn)
+      document.addEventListener('mouseup', endFn)
     }
     isDragging = true
 
@@ -42,8 +42,8 @@ export default function (element, options) {
   })
 
   if (supportTouch) {
-    element.addEventListener('touchmove', onMove)
-    element.addEventListener('touchend', onEnd)
-    element.addEventListener('touchcancel', onEnd)
+    element.addEventListener('touchmove', moveFn)
+    element.addEventListener('touchend', endFn)
+    element.addEventListener('touchcancel', endFn)
   }
 };

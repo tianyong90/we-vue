@@ -12,7 +12,6 @@
 
 <script>
 import draggable from '../../utils/draggable.js'
-// import AlloyFinger from 'alloyfinger'
 
 export default {
   name: 'wv-slider',
@@ -36,12 +35,6 @@ export default {
     disabled: Boolean
   },
 
-  data () {
-    return {
-      af: null
-    }
-  },
-
   computed: {
     progress () {
       const value = this.value
@@ -53,52 +46,44 @@ export default {
 
   mounted () {
     const thumb = this.$refs.thumb
+    const runWay = this.$refs.runWay
 
     const getStartPositionX = () => {
-      return 1
+      const runWayBox = runWay.getBoundingClientRect()
+      const thumbBox = thumb.getBoundingClientRect()
+
+      return thumbBox.left - runWayBox.left
     }
 
-    let dragState = {}
+    let startPositionX = 0
     draggable(thumb, {
-      start: (e) => {
-        // if (this.disabled) return
-
-        console.log(e)
-
-        dragState = getStartPositionX()
+      start: function () {
+        if (this.disabled) return
+        startPositionX = getStartPositionX()
       },
-      drag: (e) => {
-        // console.log(e)
+      drag: (event) => {
+        if (this.disabled) return
+        const runWayBox = runWay.getBoundingClientRect()
+        const deltaX = event.pageX - runWayBox.left - startPositionX
+        const stepCount = Math.ceil((this.max - this.min) / this.step)
+        const newPositionX = (startPositionX + deltaX) - (startPositionX + deltaX) % (runWayBox.width / stepCount)
+
+        let newProgress = newPositionX / runWayBox.width
+
+        if (newProgress < 0) {
+          newProgress = 0
+        } else if (newProgress > 1) {
+          newProgress = 1
+        }
+
+        this.$emit('input', Math.round(this.min + newProgress * (this.max - this.min)))
       },
       end: (e) => {
         if (this.disabled) return
         this.$emit('change', this.value)
-        // startPositionX = null
+        startPositionX = 0
       }
     })
-  },
-
-  methods: {
-    onTouchmove (e) {
-      if (this.disabled) return
-
-      const runWayBox = this.$refs.runWay.getBoundingClientRect()
-
-      let newValue = this.value + (this.max - this.min) * e.deltaX / runWayBox.width
-
-      if (newValue < this.min) {
-        newValue = this.min
-      } else if (newValue > this.max) {
-        newValue = this.max
-      }
-
-      return this.$emit('input', Math.round(newValue))
-    },
-
-    onTouchend (e) {
-      if (this.disabled) return
-      this.$emit('change', this.value)
-    }
   }
 }
 </script>
