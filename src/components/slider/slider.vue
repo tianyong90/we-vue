@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import AlloyFinger from 'alloyfinger'
+import draggable from '../../utils/draggable.js'
+// import AlloyFinger from 'alloyfinger'
 
 export default {
   name: 'wv-slider',
@@ -51,16 +52,28 @@ export default {
   },
 
   mounted () {
-    let _this = this
-    this.af = new AlloyFinger(this.$refs.thumb, {
-      touchMove: function (e) {
-        _this.onTouchmove(e)
+    const thumb = this.$refs.thumb
+
+    const getStartPositionX = () => {
+      return 1
+    }
+
+    let dragState = {}
+    draggable(thumb, {
+      start: (e) => {
+        // if (this.disabled) return
+
+        console.log(e)
+
+        dragState = getStartPositionX()
       },
-      pressMove: function (e) {
-        _this.onTouchmove(e)
+      drag: (e) => {
+        // console.log(e)
       },
-      touchEnd: function (e) {
-        _this.onTouchend(e)
+      end: (e) => {
+        if (this.disabled) return
+        this.$emit('change', this.value)
+        // startPositionX = null
       }
     })
   },
@@ -85,13 +98,6 @@ export default {
     onTouchend (e) {
       if (this.disabled) return
       this.$emit('change', this.value)
-    }
-  },
-
-  destroyed () {
-    // 销毁使用的 AlloyFinger 实例
-    if (this.af) {
-      this.af = null
     }
   }
 }
