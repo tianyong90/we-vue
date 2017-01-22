@@ -48,7 +48,10 @@ git clone https://git.oschina.net/tianyong/we-vue.git
 ``` bash
 cd we-vue && npm install
 ```
-
+或
+``` bash
+cd we-vue && yarn install
+```
 > 建议使用 yarn
 
 3. 运行本地服务并开发
@@ -60,6 +63,10 @@ npm run dev
 > 完成以上步骤后将在浏览器里打开组件示例页面，修改代码保存后会自动完成热加载无需手动刷新
 
 **开发过程中请勿进行构建(勿运行 build 相关命令)，请遵守代码规范，通过 Eslint 语法检查**
+
+## 感谢
+
+本项目大量参考了饿了么前端团队的 mint-ui 项目，感谢该团队提供的大量前端构建经验和思路。
 
 ## Lisense
 
