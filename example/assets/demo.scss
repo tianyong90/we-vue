@@ -1,6 +1,12 @@
 html,
 body {
   background-color: #f8f8f8;
+  user-select: none;
+}
+
+a,
+img {
+  -webkit-touch-callout: none;
 }
 
 .page__hd {

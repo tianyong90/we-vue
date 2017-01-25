@@ -1,13 +1,11 @@
 <template>
-  <header class="wv-header" :class="{ 'is-fixed': fixed }" @click.stop="$emit('headerClick')">
-    <div class="left">
-      <div class="btn btn-back" @click.stop="$emit('btnBackClick')">back</div>
-      <div class="btn btn-close" @click.stop="$emit('btnCloseClick')">close</div>
+  <header class="wv-header" :class="{ 'is-fixed': fixed }" @click.stop="$emit('headerClick')" :style="{ 'background-color': backgroundColor }">
+    <div class="wv-header-btn left">
       <slot name="left"></slot>
     </div>
     <div class="wv-header-title" v-text="title"></div>
-    <div class="wv-header-menu" @click.stop="$emit('menuClick')">
-      <slot name="right">test</slot>
+    <div class="wv-header-btn right">
+      <slot name="right"></slot>
     </div>
   </header>
 </template>
@@ -18,17 +16,14 @@ export default {
 
   props: {
     title: String,
-    skin: {
-      type: String,
-      default: 'ios'
-    },
     fixed: {
       type: Boolean,
       default: true
     },
-    showClose: Boolean,
-    showBack: Boolean,
-    showMenu: Boolean
+    backgroundColor: {
+      type: String,
+      default: '#21292c'
+    }
   }
 }
 </script>
@@ -37,65 +32,38 @@ export default {
   $headerHeight: 50px;
 
   .wv-header {
-    display: block;
-    overflow: hidden;
-    background-color: #21292c;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
     width: 100%;
     height: $headerHeight;
-    padding: 0;
+    line-height: 1;
+    padding: 0 10px;
     margin: 0;
     color: white;
-    font-size: 14px;
+    position: relative;
+    white-space: nowrap;
 
     .left {
       display: block;
       overflow: hidden;
       float: left;
-
-      .btn {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-        width: $headerHeight;
-        height: $headerHeight;
-        background: red;
-        text-align: center;
-        line-height: $headerHeight;
-
-        &:active {
-          background: #00f;
-        }
-      }
+      font-size: 35px;
+      line-height: 35px;
+      font-weight: 100;
     }
 
     .wv-header-title {
-      display: inline;
-      float: left;
-      margin: 0;
-      padding: 0;
-      font-size: 24px;
-      line-height: 50px;
+      font-size: 23px;
       font-weight: 0;
+      text-align: center;
+      flex: 1;
     }
 
     &.is-fixed {
       position: fixed;
       left: 0;
       top: 0;
-    }
-
-    .wv-header-menu {
-      position: absolute;
-      right: 0;
-      width: $headerHeight;
-      height: $headerHeight;
-      text-align: center;
-      line-height: $headerHeight;
-      background: purple;
-
-      &:active {
-        background: red;
-      }
     }
   }
 </style>

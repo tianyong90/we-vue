@@ -1,7 +1,7 @@
 <template>
   <div class="page-with-padding">
     <ul class="icon-list-big">
-      <li v-for="type in iconTypeList">
+      <li v-for="type in iconTypes">
         <wv-icon class="demo-icon-large" type="icon" :type="type" :large="true"></wv-icon>
         <div class="description">
           {{ type }}
@@ -10,7 +10,7 @@
     </ul>
 
     <div class="icon-list-small">
-      <wv-icon v-for="type in iconTypeList" :type="type"></wv-icon>
+      <wv-icon :type="type" v-for="type in iconTypes"></wv-icon>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@
 export default {
   data () {
     return {
-      iconTypeList: [
+      iconTypes: [
         'success',
         'info',
         'warn',
@@ -46,15 +46,16 @@ export default {
     li {
       display: flex;
       padding: 0;
-      margin: 1rem 0;
+      margin: 1.2rem 0;
 
       .demo-icon-large {
         display: block;
         margin-right: 1rem;
+        font-size: 4rem;
       }
 
       .description {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         display: block;
         float: left;
       }

@@ -2,12 +2,15 @@
   <div class="page">
     <wv-search placeholder="搜索组件" v-model="keyword" :result="filterResult">
       <wv-group v-show="keyword">
-        <wv-cell v-for="item in filterResult" :title="item.name" :to="item.path" is-link></wv-cell>
+        <wv-cell v-for="item in filterResult" :title="item.name" :to="item.path" is-link>
+          <i class="cell-icon iconfont" :class="'icon-' + item.icon" slot="icon"></i>
+        </wv-cell>
       </wv-group>
     </wv-search>
 
     <wv-group :title="navGroup.groupTitle" v-for="navGroup in navs">
       <wv-cell v-for="nav in navGroup.navItems" :to="nav.path" is-link :title="nav.name">
+        <i class="cell-icon iconfont" :class="'icon-' + nav.icon" slot="icon"></i>
         <wv-badge slot="ft" v-if="nav.status === 'todo'">Todo</wv-badge>
       </wv-cell>
     </wv-group>
@@ -56,6 +59,14 @@ export default {
 <style scoped lang="scss">
   .page {
     margin-bottom: 0;
+  }
+
+  .cell-icon {
+    display: block;
+    margin-right: 5px;
+    color: #2196f3;
+    overflow: hidden;
+    font-size: 20px;
   }
 
   .footer-copyright {
