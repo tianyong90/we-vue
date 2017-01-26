@@ -57,7 +57,7 @@ export default {
 
     let startPositionX = 0
     draggable(thumb, {
-      start: function () {
+      start: () => {
         if (this.disabled) return
         startPositionX = getStartPositionX()
       },

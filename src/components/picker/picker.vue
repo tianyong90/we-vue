@@ -5,13 +5,9 @@
       <a href="javascript:;" class="weui-picker__action" @click="confirm">{{ confirmText }}</a>
     </div>
     <div class="weui-picker__bd">
-      <wv-picker-slot></wv-picker-slot>
-      <wv-picker-slot></wv-picker-slot>
-      <wv-picker-slot></wv-picker-slot>
+      <wv-picker-slot :values="values"></wv-picker-slot>
     </div>
   </wv-popup>
-
-
 </template>
 
 <script type="text/babel">
@@ -40,6 +36,13 @@ export default {
 
   data () {
     return {
+      values: [
+        '汽车票',
+        '飞机票',
+        '火车票',
+        '轮船票',
+        '其它'
+      ],
       visible: true,
       currentValue: this.value
     }

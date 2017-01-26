@@ -1,5 +1,5 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <div class="buttons">
       <wv-button type="default" @click.native="openIndicator">显示加载指示</wv-button>
     </div>
@@ -25,5 +25,6 @@ export default {
 <style scoped lang="scss">
   .buttons {
     display: block;
+    padding: 0 10px;
   }
 </style>

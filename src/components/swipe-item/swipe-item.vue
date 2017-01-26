@@ -1,6 +1,6 @@
 <template>
   <div class="wv-swipe-item">
-    <slot>hahahah</slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -17,14 +17,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-  .wv-swipe-item {
-    display: block;
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    transition: all .2s ease-in-out;
-  }
-</style>

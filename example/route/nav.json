@@ -56,7 +56,7 @@
         "name": "Swipe",
         "description": "图片轮播",
         "icon": "widget-slider-scroll",
-        "status": "todo"
+        "status": "finished"
       }
     ]
   },

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page page-with-padding">
     <div class="buttons">
       <wv-button type="default" @click.native="showActionsheet('ios')">iOS ActionSheet</wv-button>
       <wv-button type="default" @click.native="showActionsheet('android')">Android ActionSheet</wv-button>
@@ -52,7 +52,7 @@ export default {
 <style scoped lang="scss">
   .buttons {
     display: block;
-    width: 80%;
-    margin:20px auto;
+    padding: 0 20px;
+    margin: 20px auto;
   }
 </style>
