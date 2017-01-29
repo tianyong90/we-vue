@@ -31,7 +31,7 @@ export default {
 <style scoped lang="scss">
   .buttons {
     display: block;
-    width: 80%;
-    margin:20px auto;
+    margin: 20px auto;
+    padding: 0 30px;
   }
 </style>

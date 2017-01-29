@@ -1,17 +1,37 @@
 <template>
-  <div class="page-with-padding">
-    <wv-button type="default" @click.native="showPopup">显示弹出层</wv-button>
+  <div class="page">
+    <wv-group>
+      <wv-cell title="单列选择器" :value="pickerValue1" is-link @click.native="showPicker1"></wv-cell>
+    </wv-group>
 
-    <wv-picker></wv-picker>
+    <wv-picker v-model="pickerVisible" :slots="slots"></wv-picker>
   </div>
 </template>
 
 <script type="text/babel">
-// import { PickerSlot } from './picker-slot.vue'
 export default {
+  data () {
+    return {
+      pickerValue1: '',
+      pickerVisible: false,
+      slots: [
+        {
+          values: [
+            '汽车票',
+            '飞机票',
+            '火车票',
+            '轮船票',
+            '其它'
+          ],
+          defaultIndex: 2
+        }
+      ]
+    }
+  },
+
   methods: {
-    showPopup () {
-      console.log(123)
+    showPicker1 () {
+      this.pickerVisible = true
     }
   }
 }
@@ -21,6 +41,6 @@ export default {
   .popup-body {
     display: block;
     overflow: hidden;
-    background: white;
+    background: #fff;
   }
 </style>

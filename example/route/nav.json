@@ -54,7 +54,7 @@
       {
         "path": "/swipe",
         "name": "Swipe",
-        "description": "图片轮播",
+        "description": "轮播",
         "icon": "widget-slider-scroll",
         "status": "finished"
       }

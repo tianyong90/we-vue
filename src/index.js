@@ -31,7 +31,6 @@ import Circle from './components/circle/index.js'
 import Toast from './components/toast/index.js'
 import Indicator from './components/indicator/index.js'
 import Dialog from './components/dialog/index.js'
-// import InfiniteScroll from './components/infinite-scroll/index.js'
 import Lazyload from './components/lazyload/index.js'
 import Grid from './components/grid/index.js'
 import GridItem from './components/grid-item/index.js'
@@ -83,7 +82,6 @@ const install = function (Vue) {
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Preview.name, Preview)
   Vue.component(Footer.name, Footer)
-  // Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
     try: 3
@@ -132,7 +130,6 @@ module.exports = {
   Toast,
   Indicator,
   Dialog,
-  // InfiniteScroll,
   Lazyload,
   Picker,
   // DatetimePicker,

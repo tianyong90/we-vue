@@ -15,6 +15,8 @@ import Transform from 'css3transform'
 
 // 每个选项高度
 const ITEM_HEIGHT = 34
+// 可见选项个数
+const VISIBLE_ITEM_COUNT = 7
 
 export default {
   name: 'wv-picker-slot',
@@ -30,81 +32,128 @@ export default {
     valueKey: String
   },
 
+  created () {
+    this.dragState = {}
+  },
+
   data () {
     return {
+      isDragging: false,
       mutatingValues: this.values,
-      currentValue: this.value,
-      isDragging: false
+      currentValue: this.value
     }
   },
 
   computed: {
     minTranslateY () {
-      return ITEM_HEIGHT * (4 - this.values.length)
+      return ITEM_HEIGHT * (Math.ceil(VISIBLE_ITEM_COUNT / 2) - this.mutatingValues.length)
     },
 
     maxTranslateY () {
-      return ITEM_HEIGHT * 3
+      return ITEM_HEIGHT * Math.floor(VISIBLE_ITEM_COUNT / 2)
+    },
+
+    valueIndex () {
+      return this.mutatingValues.indexOf(this.currentValue)
     }
   },
 
   mounted () {
+    this.ready = true
     this.currentValue = this.value
-    this.mutatingValues = this.values
-    Transform(this.$refs.listWrapper, true)
+    this.$emit('input', this.currentValue)
 
-    let startPositionY = 0
-    let startTranslateY = 0
+    const wrapper = this.$refs.listWrapper
+    Transform(wrapper, true)
+
+    this.onValueChange()
+
     draggable(this.$el, {
-      start: (e) => {
-        startPositionY = e.clientY
-        startTranslateY = this.$refs.listWrapper.translateY
-
+      start: (event) => {
         this.isDragging = true
-      },
-      drag: (e) => {
-        const deltaY = e.clientY - startPositionY
+        let dragState = this.dragState
 
-        const tempTranslateY = startTranslateY + deltaY
+        dragState.start = new Date()
+        dragState.startPositionY = event.clientY
+        dragState.startTranslateY = wrapper.translateY
+      },
+      drag: (event) => {
+        let dragState = this.dragState
+        const deltaY = event.clientY - dragState.startPositionY
+
+        const tempTranslateY = dragState.startTranslateY + deltaY
 
         if (tempTranslateY <= this.minTranslateY) {
-          this.$refs.listWrapper.translateY = this.minTranslateY
+          wrapper.translateY = this.minTranslateY
         } else if (tempTranslateY >= this.maxTranslateY) {
-          this.$refs.listWrapper.translateY = this.maxTranslateY
+          wrapper.translateY = this.maxTranslateY
         } else {
-          this.$refs.listWrapper.translateY = startTranslateY + deltaY
+          wrapper.translateY = dragState.startTranslateY + deltaY
         }
-      },
-      end: (e) => {
-        this.$refs.listWrapper.translateY = Math.round(this.$refs.listWrapper.translateY / ITEM_HEIGHT) * ITEM_HEIGHT
 
+        dragState.currentPosifionY = event.clientY
+        dragState.currentTranslateY = wrapper.translateY
+        dragState.velocityTranslate = dragState.currentTranslateY - dragState.prevTranslateY
+
+        dragState.prevTranslateY = dragState.currentTranslateY
+      },
+      end: (event) => {
         this.isDragging = false
+
+        let dragState = this.dragState
+        let momentumRatio = 7
+        let currentTranslate = wrapper.translateY
+        let duration = new Date() - dragState.start
+
+        let momentumTranslate
+        if (duration < 300) {
+          momentumTranslate = currentTranslate + dragState.velocityTranslate * momentumRatio
+        }
+
+        this.$nextTick(() => {
+          let translate
+          if (momentumTranslate) {
+            translate = Math.round(momentumTranslate / ITEM_HEIGHT) * ITEM_HEIGHT
+          } else {
+            translate = Math.round(currentTranslate / ITEM_HEIGHT) * ITEM_HEIGHT
+          }
+
+          translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
+
+          wrapper.translateY = translate
+          this.currentValue = this.translate2value(translate)
+        })
+        this.dragState = {}
       }
     })
   },
 
   methods: {
     value2translate (value) {
-      const index = this.mutatingValues.indexOf(this.currentValue)
+      const values = this.mutatingValues
+      const valueIndex = values.indexOf(value)
+      const offset = Math.floor(VISIBLE_ITEM_COUNT / 2)
 
-      return index
+      if (valueIndex !== -1) {
+        return (valueIndex - offset) * -ITEM_HEIGHT
+      }
     },
 
     translate2value (translate) {
-      const index = 1
+      translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT
+      const index = -(translate - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
 
       return this.mutatingValues[index]
     },
 
-    doOnValueChange () {
+    onValueChange () {
       let value = this.currentValue
       let wrapper = this.$refs.listWrapper
 
-      console.log(value)
-      console.log(wrapper)
+      wrapper.translateY = this.value2translate(value)
     },
 
-    doOnValuesChange () {
+    onValuesChange () {
       console.log('values changed')
     }
   },
@@ -121,9 +170,9 @@ export default {
     },
 
     currentValue (val) {
-      this.doOnValueChange()
+      this.onValueChange()
       this.$emit('input', val)
-      this.dispatch('picker', 'slotValueChange', this)
+      // this.dispatch('picker', 'slotValueChange', this)
     }
   }
 }
