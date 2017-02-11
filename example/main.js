@@ -14,7 +14,6 @@ Vue.use(VueRouter)
 Vue.use(WeVue)
 
 import store from './store/index.js'
-
 import routes from './route/index.js'
 
 const router = new VueRouter({

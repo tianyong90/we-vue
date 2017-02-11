@@ -150,7 +150,7 @@
         "name": "Picker",
         "description": "选择器",
         "icon": "selectarrows",
-        "status": "todo"
+        "status": "finished"
       }
     ]
   },

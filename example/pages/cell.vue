@@ -35,7 +35,7 @@
 </template>
 
 <script type="text/babel">
-const imgIcon = require('../assets/icon_tabbar.png')
+import imgIcon from '../assets/icon_tabbar.png'
 
 export default {
   data () {

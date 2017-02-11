@@ -9,9 +9,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
-  entry: {
-    app: './example/main.js'
-  },
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
@@ -43,7 +40,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'example/index.html',
+      template: 'index.html',
       inject: true,
       minify: {
         removeComments: true,
