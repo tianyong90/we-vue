@@ -1,5 +1,4 @@
 import Navs from './nav.json'
-
 export const navs = Navs
 
 const registerRoute = (groups) => {
@@ -37,7 +36,7 @@ routes.push({
   name: 'index',
   meta: {
     title: 'WE-VUE',
-    description: 'weui1.x + vue2.x = we-vue'
+    description: 'weui1.x + vue2.x + webpack2.x = we-vue'
   }
 })
 

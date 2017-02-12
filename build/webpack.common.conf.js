@@ -1,11 +1,11 @@
 var path = require('path')
-var config = require('../config')
 var utils = require('./utils')
 var webpack = require('webpack')
+var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
@@ -13,23 +13,26 @@ var webpackConfig = merge(baseWebpackConfig, {
     common: './src/index.js'
   },
   module: {
-    loaders: utils.styleLoaders({ sourceMap: config.common.productionSourceMap, extract: true })
-  },
-  devtool: config.common.productionSourceMap ? '#source-map' : false,
-  output: {
-    path: config.common.assetsRoot,
-    publicPath: config.common.assetsPublicPath,
-    filename: 'we-vue.common.js',
-    libraryTarget: 'commonjs'
-  },
-  vue: {
-    loaders: utils.cssLoaders({
+    rules: utils.styleLoaders({
       sourceMap: config.common.productionSourceMap,
       extract: true
     })
   },
+  output: {
+    path: config.common.assetsRoot,
+    filename: 'we-vue.common.js',
+    libraryTarget: 'commonjs'
+  },
+  externals: {
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    }
+  },
   plugins: [
-    // http://vuejs.github.io/vue-loader/workflow/production.html
+    // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
@@ -38,18 +41,11 @@ var webpackConfig = merge(baseWebpackConfig, {
         warnings: false
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin('style.css')
-  ],
-  externals: {
-    vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue'
-    }
-  }
+    new ExtractTextPlugin({
+      filename: 'style.css'
+    })
+  ]
 })
 
 if (config.common.productionGzip) {
@@ -68,6 +64,11 @@ if (config.common.productionGzip) {
       minRatio: 0.8
     })
   )
+}
+
+if (config.common.bundleAnalyzerReport) {
+  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
 module.exports = webpackConfig
