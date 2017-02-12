@@ -35,7 +35,7 @@
 </template>
 
 <script type="text/babel">
-import imgIcon from '../assets/icon_tabbar.png'
+import imgIcon from '../assets/images/icon_tabbar.png'
 
 export default {
   data () {

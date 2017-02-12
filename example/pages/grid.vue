@@ -2,39 +2,39 @@
   <div class="page">
     <wv-grid>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
       <wv-grid-item class="demo-grid-item" to="/">
-        <img src="../assets/icon_tabbar.png" slot="icon">
+        <img :src="thumbSmall" slot="icon">
         GridItem
       </wv-grid-item>
     </wv-grid>
@@ -42,7 +42,14 @@
 </template>
 
 <script type="text/babel">
+import thumbSmall from '../assets/images/icon_tabbar.png'
+
 export default {
+  data () {
+    return {
+      thumbSmall
+    }
+  }
 }
 </script>
 
