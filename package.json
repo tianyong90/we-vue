@@ -22,13 +22,13 @@
   ],
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
     "build:demo": "node build/build-demo.js",
     "build:component": "node build/build-component.js",
+    "build:common": "node build/build-common.js",
+    "build:umd": "node build/build-umd.js",
     "build:all": "node build/build-all.js",
     "lint": "eslint --ext .js,.vue src",
-    "pub": "sh build/release.sh",
-    "deploy": ""
+    "pub": "sh build/release.sh"
   },
   "dependencies": {
     "css3transform": "^1.1.2",
