@@ -11,16 +11,16 @@ var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    common: './src/index.js'
+    umd: './src/index.js'
   },
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.common.productionSourceMap,
+      sourceMap: config.umd.productionSourceMap,
       extract: true
     })
   },
   output: {
-    path: config.common.assetsRoot,
+    path: config.umd.assetsRoot,
     filename: 'we-vue.common.js',
     libraryTarget: 'commonjs'
   },

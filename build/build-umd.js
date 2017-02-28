@@ -7,9 +7,9 @@ var path = require('path')
 var config = require('../config')
 var ora = require('ora')
 var webpack = require('webpack')
-var webpackConfig = require('./webpack.common.conf')
+var webpackConfig = require('./webpack.umd.conf')
 
-var spinner = ora('building commonjs...')
+var spinner = ora('building umd...')
 spinner.start()
 
 webpack(webpackConfig, function (err, stats) {
