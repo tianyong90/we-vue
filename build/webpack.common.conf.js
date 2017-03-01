@@ -6,8 +6,6 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
   entry: {
@@ -21,7 +19,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   output: {
     path: config.common.assetsRoot,
-    filename: 'we-vue.common.js',
+    filename: 'we-vue.js',
     libraryTarget: 'commonjs'
   },
   externals: {
@@ -45,15 +43,6 @@ var webpackConfig = merge(baseWebpackConfig, {
     // extract css into its own file
     new ExtractTextPlugin({
       filename: 'style.css'
-    }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessor: require('cssnano'),
-      cssProcessorOptions: {
-        discardComments: {
-          removeAll: true
-        }
-      },
-      canPrint: true
     })
   ]
 })

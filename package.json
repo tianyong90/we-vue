@@ -14,7 +14,7 @@
     "url": "https://github.com/tianyong90/we-vue.git"
   },
   "license": "MIT",
-  "main": "lib/we-vue.common.js",
+  "main": "lib/we-vue.js",
   "style": "lib/style.css",
   "files": [
     "lib",
@@ -26,7 +26,8 @@
     "build:component": "node build/build-component.js",
     "build:common": "node build/build-common.js",
     "build:umd": "node build/build-umd.js",
-    "build:all": "node build/build-all.js",
+    "build:all": "npm run clean && npm run build:demo && npm run build:component && npm run build:common && npm run build:umd",
+    "clean": "node build/clean.js",
     "lint": "eslint --ext .js,.vue src",
     "pub": "sh build/release.sh"
   },
