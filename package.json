@@ -26,7 +26,7 @@
     "build:component": "node build/build-component.js",
     "build:common": "node build/build-common.js",
     "build:umd": "node build/build-umd.js",
-    "build:all": "npm run clean && npm run build:demo && npm run build:component && npm run build:common && npm run build:umd",
+    "build:all": "npm run clean && npm run build:demo && npm run build:component && npm run build:umd",
     "clean": "node build/clean.js",
     "lint": "eslint --ext .js,.vue src",
     "pub": "sh build/release.sh"

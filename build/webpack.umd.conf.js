@@ -21,7 +21,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   output: {
     path: config.umd.assetsRoot,
-    filename: 'we-vue.min.js',
+    filename: 'we-vue.js',
     libraryTarget: 'umd'
   },
   externals: {
@@ -29,7 +29,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       root: 'Vue',
       commonjs: 'vue',
       commonjs2: 'vue',
-      amd: 'vue'
+      amd: 'vue',
+      umd: 'vue'
     }
   },
   plugins: [
@@ -44,7 +45,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'style.min.css'
+      filename: 'style.css'
     }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: require('cssnano'),
