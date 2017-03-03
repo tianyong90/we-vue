@@ -3,6 +3,7 @@
     class="weui-btn"
     :class="classObject"
     :disabled="disabled">
+    <i class="weui-loading" v-if="isLoading"></i>
     <slot></slot>
   </button>
 </template>
@@ -16,6 +17,7 @@ export default {
       type: String,
       default: 'default'
     },
+    isLoading: Boolean,
     disabled: Boolean,
     mini: Boolean,
     plain: Boolean
@@ -35,6 +37,7 @@ export default {
       return {
         [classType]: true,
         [classDisabled]: this.disabled,
+        'weui-btn_loading': this.isLoading,
         'weui-btn_mini': this.mini
       }
     }

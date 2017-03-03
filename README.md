@@ -1,5 +1,7 @@
 # we-vue
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tianyong90/we-vue.svg)](https://greenkeeper.io/)
+
 [![npm](https://img.shields.io/npm/v/we-vue.svg?maxAge=3600)](https://www.npmjs.com/package/we-vue)
 [![NPM downloads](http://img.shields.io/npm/dm/we-vue.svg)](https://npmjs.org/package/we-vue)
 
