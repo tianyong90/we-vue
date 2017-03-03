@@ -59,7 +59,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-if (config.common.productionGzip) {
+if (config.umd.productionGzip) {
   var CompressionWebpackPlugin = require('compression-webpack-plugin')
 
   webpackConfig.plugins.push(
@@ -68,7 +68,7 @@ if (config.common.productionGzip) {
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
-        config.common.productionGzipExtensions.join('|') +
+        config.umd.productionGzipExtensions.join('|') +
         ')$'
       ),
       threshold: 10240,
@@ -77,7 +77,7 @@ if (config.common.productionGzip) {
   )
 }
 
-if (config.common.bundleAnalyzerReport) {
+if (config.umd.bundleAnalyzerReport) {
   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
