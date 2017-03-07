@@ -1,0 +1,20 @@
+<template>
+  <div class="page-with-padding">
+    <wv-button type="primary" @click.native="showTips">显示提示 (5S)</wv-button>
+  </div>
+</template>
+
+<script type="text/babel">
+import TopTips from '../../src/components/top-tips'
+
+export default {
+  methods: {
+    showTips () {
+      TopTips({
+        message: '提示信息',
+        duration: 5000
+      })
+    }
+  }
+}
+</script>

@@ -6,57 +6,49 @@
         "path": "/badge",
         "name": "Badge",
         "description": "小徽章",
-        "icon": "yduiindexbadge",
-        "status": "finished"
+        "icon": "yduiindexbadge"
       },
       {
         "path": "/circle",
         "name": "Circle",
         "description": "圆环进度指示",
-        "icon": "icon_status-progress-circle",
-        "status": "finished"
+        "icon": "icon_status-progress-circle"
       },
       {
         "path": "/icons",
         "name": "Icons",
         "description": "图标",
-        "icon": "icon",
-        "status": "finished"
+        "icon": "icon"
       },
       {
         "path": "/lazyload",
         "name": "Lazyload",
         "description": "懒加载",
-        "icon": "picture",
-        "status": "finished"
+        "icon": "picture"
       },
       {
         "path": "/progress",
         "name": "Progress",
         "description": "进度条",
-        "icon": "iconfile",
-        "status": "finished"
+        "icon": "iconfile"
       },
       {
         "path": "/slider",
         "name": "Slider",
         "description": "滑块",
-        "icon": "slider",
-        "status": "finished"
+        "icon": "slider"
       },
       {
         "path": "/spinner",
         "name": "Spinner",
         "description": "加载动画",
-        "icon": "spinner",
-        "status": "finished"
+        "icon": "spinner"
       },
       {
         "path": "/swipe",
         "name": "Swipe",
         "description": "轮播",
-        "icon": "widget-slider-scroll",
-        "status": "finished"
+        "icon": "widget-slider-scroll"
       }
     ]
   },
@@ -67,50 +59,43 @@
         "path": "/button",
         "name": "Button",
         "description": "按钮",
-        "icon": "buttonminus",
-        "status": "finished"
+        "icon": "buttonminus"
       },
       {
         "path": "/checklist",
         "name": "Checklist",
         "description": "多选列表",
-        "icon": "icon7",
-        "status": "finished"
+        "icon": "icon7"
       },
       {
         "path": "/input",
         "name": "Input",
         "description": "输入框",
-        "icon": "input",
-        "status": "finished"
+        "icon": "input"
       },
       {
         "path": "/radio",
         "name": "Radio",
         "description": "单选",
-        "icon": "radiobuttonon",
-        "status": "finished"
+        "icon": "radiobuttonon"
       },
       {
         "path": "/switch",
         "name": "Switch",
         "description": "开关",
-        "icon": "switch-copy",
-        "status": "finished"
+        "icon": "switch-copy"
       },
       {
         "path": "/textarea",
         "name": "Textarea",
         "description": "文本框",
-        "icon": "amy-ui-textarea",
-        "status": "finished"
+        "icon": "amy-ui-textarea"
       },
       {
         "path": "/preview",
         "name": "Preview",
         "description": "表单预览",
-        "icon": "39liulanyulan",
-        "status": "finished"
+        "icon": "39liulanyulan"
       }
     ]
   },
@@ -121,36 +106,37 @@
         "path": "/actionsheet",
         "name": "ActionSheet",
         "description": "弹出式菜单",
-        "icon": "actionsort",
-        "status": "finished"
+        "icon": "actionsort"
       },
       {
         "path": "/dialog",
         "name": "Dialog",
         "description": "对话框",
-        "icon": "9",
-        "status": "finished"
+        "icon": "9"
       },
       {
         "path": "/indicator",
         "name": "Indicator",
         "description": "加载指示",
-        "icon": "refreshindicatordark2x",
-        "status": "finished"
+        "icon": "refreshindicatordark2x"
       },
       {
         "path": "/toast",
         "name": "Toast",
         "description": "弹出式提示",
-        "icon": "dialog",
-        "status": "finished"
+        "icon": "dialog"
+      },
+      {
+        "path": "/top-tips",
+        "name": "TopTips",
+        "description": "顶部提示条",
+        "icon": "dialog"
       },
       {
         "path": "/picker",
         "name": "Picker",
         "description": "选择器",
-        "icon": "selectarrows",
-        "status": "finished"
+        "icon": "selectarrows"
       }
     ]
   },
@@ -161,22 +147,19 @@
         "path": "/header",
         "name": "Header",
         "description": "头部标题栏",
-        "icon": "header",
-        "status": "finished"
+        "icon": "header"
       },
       {
         "path": "/navbar",
         "name": "Navbar",
         "description": "选项卡",
-        "icon": "tab",
-        "status": "finished"
+        "icon": "tab"
       },
       {
         "path": "/tabbar",
         "name": "Tabbar",
         "description": "导航菜单",
-        "icon": "yduiindextabbar",
-        "status": "finished"
+        "icon": "yduiindextabbar"
       }
     ]
   },
@@ -187,8 +170,7 @@
         "path": "/search",
         "name": "Search",
         "description": "搜索框",
-        "icon": "search",
-        "status": "finished"
+        "icon": "search"
       }
     ]
   },
@@ -199,50 +181,43 @@
         "path": "/cell",
         "name": "Cell",
         "description": "列表",
-        "icon": "cell",
-        "status": "finished"
+        "icon": "cell"
       },
       {
         "path": "/flex",
         "name": "Flex",
         "description": "Flex 布局",
-        "icon": "grid1",
-        "status": "finished"
+        "icon": "grid1"
       },
       {
         "path": "/footer",
         "name": "Footer",
         "description": "页脚",
-        "icon": "footer",
-        "status": "finished"
+        "icon": "footer"
       },
       {
         "path": "/grid",
         "name": "Grid",
         "description": "九宫格",
-        "icon": "grid",
-        "status": "finished"
+        "icon": "grid"
       },
       {
         "path": "/loadmore",
         "name": "Loadmore",
         "description": "加载更多",
-        "icon": "menu",
-        "status": "finished"
+        "icon": "menu"
       },
       {
         "path": "/panel",
         "name": "Panel",
         "description": "面板",
-        "icon": "panel",
-        "status": "finished"
+        "icon": "panel"
       },
       {
         "path": "/popup",
         "name": "Popup",
         "description": "弹出层",
-        "icon": "popup",
-        "status": "finished"
+        "icon": "popup"
       }
     ]
   }
