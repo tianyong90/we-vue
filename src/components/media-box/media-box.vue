@@ -16,10 +16,6 @@
 </template>
 
 <script type="text/babel">
-function cleanPath (path) {
-  return path.replace(/\/\//g, '/')
-}
-
 export default {
   name: 'wv-media-box',
 
@@ -36,25 +32,17 @@ export default {
 
   computed: {
     href () {
-      let href
-
-      if (this.$router && this.to) {
-        const base = this.$router.history.base
+      if (this.to && !this.added && this.$router) {
         const resolved = this.$router.match(this.to)
-        const fullPath = resolved.redirectedFrom || resolved.fullPath
+        if (!resolved.matched.length) return this.to
 
-        href = base ? cleanPath(base + fullPath) : fullPath
-      } else {
-        href = this.to
-      }
-
-      if (href && !this.added && this.$router) {
         this.$nextTick(() => {
           this.added = true
           this.$el.addEventListener('click', this.handleClick)
         })
+        return resolved.path
       }
-      return href
+      return this.to
     }
   },
 
