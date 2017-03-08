@@ -1,15 +1,13 @@
 # we-vue
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/tianyong90/we-vue.svg)](https://greenkeeper.io/)
-
 [![npm](https://img.shields.io/npm/v/we-vue.svg?maxAge=3600)](https://www.npmjs.com/package/we-vue)
 [![NPM downloads](http://img.shields.io/npm/dm/we-vue.svg)](https://npmjs.org/package/we-vue)
 
-we-vue ��� vue2.0 ǿ�����������ƺ� weui ��΢�Źٷ��Ӿ���ʽ���γ���һ�����������������΢�Ź��ںŵ��ƶ��˿�����
+we-vue 结合 vue2.0 强大的组件化机制和 weui 的微信官方视觉样式，形成了一套灵活的组件，适用于微信公众号等移动端开发。
 
-**��ӭ���״��������������顣��ʱû������ĵ����ĵ����������������֮��ʼ,�ڴ��ڼ�����вο�ʾ�����롣**
+**欢迎贡献代码或者提出宝贵建议。暂时没有相关文档，文档工作将在组件定型之后开始,在此期间可自行参考示例代码。**
 
-## ��װ
+## 安装
 
 npm
 
@@ -31,44 +29,39 @@ yarn add we-vue -S
   </a>
 </p>
 
-## ����
+## 开发
 
-1. ��¡����
+1. 克隆代码
 
 ``` bash
 git clone https://github.com/tianyong90/we-vue.git
 ```
 
-**����Ŀ��ͬ���йܵ����ƣ������û�Ҳ��ѡ�����·�ʽ���Դ����뿪��**
+**本项目已同步托管到码云，国内用户也可选择如下方式获得源码参与开发**
 
 ```shell
 git clone https://git.oschina.net/tianyong/we-vue.git
 ```
 
-2. ��װ����
+2. 安装依赖
 
 ``` bash
 cd we-vue && npm install
 ```
-��
-``` bash
-cd we-vue && yarn install
-```
-> ����ʹ�� yarn
 
-3. ���б��ط��񲢿���
+3. 运行本地服务并开发
 
 ``` bash
 npm run dev
 ```
 
-> ������ϲ�����������������ʾ��ҳ�棬�޸Ĵ��뱣�����Զ�����ȼ��������ֶ�ˢ��
+> 完成以上步骤后将在浏览器里打开组件示例页面，修改代码保存后会自动完成热加载无需手动刷新
 
-**����������������й���(������ build �������)�������ش���淶��ͨ�� Eslint �﷨���**
+**开发过程中请勿进行构建(勿运行 build 相关命令)，请遵守代码规范，通过 Eslint 语法检查**
 
-## ��л
+## 感谢
 
-����Ŀ�����ο��˶���ôǰ���Ŷӵ� mint-ui ��Ŀ����л���Ŷ��ṩ�Ĵ���ǰ�˹��������˼·��
+本项目大量参考了饿了么前端团队的 mint-ui 项目，感谢该团队提供的大量前端构建经验和思路。
 
 ## Lisense
 
