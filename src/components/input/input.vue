@@ -1,6 +1,6 @@
 <template>
   <div class="weui-cell">
-    <div class="weui-cell__hd"><label class="weui-label" v-html="label"></label></div>
+    <div class="weui-cell__hd" v-if="label"><label class="weui-label" v-html="label"></label></div>
     <div class="weui-cell__bd">
       <input
         class="weui-input"
