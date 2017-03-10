@@ -1,9 +1,8 @@
 <template>
-  <div v-show="visible">
-    <div class="weui-mask_transparent"></div>
+  <div v-if="visible">
     <div class="weui-toast">
       <wv-icon :type="icon" class="weui-icon_toast"></wv-icon>
-      <p class="weui-toast__content">{{ message }}</p>
+      <p class="weui-toast__content" v-text="message"></p>
     </div>
   </div>
 </template>

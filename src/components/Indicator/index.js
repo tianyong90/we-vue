@@ -28,7 +28,7 @@ export default {
       instance.visible = false
       timer = setTimeout(() => {
         if (instance.$el) {
-          instance.$el.style.display = 'none'
+          instance.$el.remove()
         }
       }, 400)
     }
