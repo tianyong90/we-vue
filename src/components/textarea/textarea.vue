@@ -40,7 +40,7 @@ export default {
 
   computed: {
     length () {
-      return this.currentValue.length
+      return this.currentValue ? this.currentValue.length : 0
     }
   },
 
