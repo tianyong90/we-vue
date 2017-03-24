@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="weui-cells__title" v-if="title">{{ title }}</div>
+		<div class="weui-cells__title" v-if="title" :style="{ color: titleColor }" v-html="title"></div>
 		<div class="weui-cells">
 			<slot></slot>
 		</div>
@@ -12,7 +12,8 @@ export default {
   name: 'wv-group',
 
   props: {
-    title: String
+    title: String,
+    titleColor: String
   }
 }
 </script>
