@@ -1,6 +1,8 @@
 <template>
   <div class="weui-cell">
-    <div class="weui-cell__hd" v-if="label"><label class="weui-label" v-html="label"></label></div>
+    <div class="weui-cell__hd">
+      <label class="weui-label" v-html="label" v-if="label" :style="{ width: labelWidth + 'px' }"></label>
+    </div>
     <div class="weui-cell__bd">
       <input
         class="weui-input"
@@ -13,6 +15,9 @@
         :readonly="readonly"
         @change="$emit('change', currentValue)"
         @input="handleInput">
+    </div>
+    <div class="weui-cell__ft">
+      <slot name="ft"></slot>
     </div>
   </div>
 </template>
@@ -27,6 +32,10 @@ export default {
       default: 'text'
     },
     label: String,
+    labelWidth: {
+      type: Number,
+      default: 105
+    },
     placeholder: String,
     value: String,
     readonly: Boolean,
