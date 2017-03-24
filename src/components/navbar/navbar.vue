@@ -12,15 +12,15 @@ export default {
     fixed: Boolean,
     color: {
       type: String,
-      default: '#444'
+      default: '#333'
     },
     backgroundColor: {
       type: String,
-      default: '#f8f8f8'
+      default: '#e4e4e4'
     },
     activeColor: {
       type: String,
-      default: '#f00'
+      default: '#2196f3'
     },
     disabledColor: {
       type: String,
@@ -55,8 +55,6 @@ export default {
 <style scoped lang="scss">
   .wv-navbar {
     display: flex;
-    display: box;
-    position: absolute;
     width: 100%;
     z-index: 5000;
     background-color: #fff;
