@@ -16,7 +16,7 @@ export default {
     },
     backgroundColor: {
       type: String,
-      default: '#e4e4e4'
+      default: '#fff'
     },
     activeColor: {
       type: String,
@@ -35,12 +35,10 @@ export default {
 
   computed: {
     style () {
-      let result = {}
-
-      result.position = this.fixed ? 'fixed' : 'absolute'
-      result.backgroundColor = this.backgroundColor
-
-      return result
+      return {
+        position: this.fixed ? 'fixed' : 'absolute',
+        backgroundColor: this.backgroundColor
+      }
     }
   },
 

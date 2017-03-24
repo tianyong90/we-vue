@@ -17,11 +17,15 @@ export default {
   },
 
   computed: {
+    isSelected () {
+      return this.id === this.$parent.value
+    },
+
     style () {
       return {
         borderWidth: this.$parent.lineWidth + 'px',
         borderColor: this.$parent.activeColor,
-        color: this.$parent.color
+        color: this.isSelected ? this.$parent.activeColor : this.$parent.color
       }
     }
   }
