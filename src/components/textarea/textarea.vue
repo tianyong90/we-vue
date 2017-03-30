@@ -18,11 +18,11 @@ export default {
       default: true
     },
     rows: {
-      type: Number,
+      type: Number | String,
       default: 3
     },
     maxLength: {
-      type: Number,
+      type: Number | String,
       default: 100
     },
     disabled: Boolean,

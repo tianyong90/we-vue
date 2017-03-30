@@ -32,7 +32,7 @@ export default {
     width: 100%;
     padding: 0;
     margin: 0;
-    textalign: center;
+    text-align: center;
     list-style: none;
 
     .lazyload-list-item {
