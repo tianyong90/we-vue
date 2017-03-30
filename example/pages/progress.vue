@@ -2,7 +2,7 @@
 	<div class="page-with-padding">
 		<wv-progress :percent="percent1" :show-clear="false"></wv-progress>
 		<wv-progress :percent="percent2"></wv-progress>
-		<wv-progress :percent="percent3"></wv-progress>
+		<wv-progress percent="10"></wv-progress>
 
 		<wv-button type="primary" @click.native="upload">上传</wv-button>
 	</div>
@@ -16,8 +16,7 @@ export default {
   data () {
     return {
       percent1: 35,
-      percent2: 0,
-      percent3: 50
+      percent2: 0
     }
   },
 
@@ -30,7 +29,6 @@ export default {
 
         this.percent1 = temp
         this.percent2 = temp
-        this.percent3 = temp
 
         if (temp >= 100) {
           clearInterval(ticker)

@@ -14,7 +14,9 @@ export default {
   name: 'wv-progress',
 
   props: {
-    percent: Number,
+    percent: {
+      type: Number | String
+    },
     showClear: {
       type: Boolean,
       default: true

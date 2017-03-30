@@ -31,7 +31,7 @@
       <wv-flex-item>
         <div class="placeholder">1/4</div>
       </wv-flex-item>
-      <wv-flex-item :flex="2">
+      <wv-flex-item flex="2">
         <div class="placeholder">1/2</div>
       </wv-flex-item>
       <wv-flex-item>

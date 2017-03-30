@@ -24,9 +24,12 @@ export default {
   name: 'wv-cell',
 
   props: {
-    title: String,
-    value: String,
-    label: String,
+    title: {
+      type: String | Number
+    },
+    value: {
+      type: String | Number
+    },
     isLink: Boolean,
     to: String
   },
