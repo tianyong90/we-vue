@@ -1,12 +1,9 @@
 <template>
 	<div class="page-with-padding">
-    <div id="circle-1">
-		  <wv-circle :trail-width="3" :stroke-width="3" v-model="percent1">{{ percent1 }}%</wv-circle>
-    </div>
-    <wv-slider v-model="percent2"></wv-slider>
-    <div id="circle-2">
-		  <wv-circle :trail-width="3" :stroke-width="3" stroke-color="red" v-model="percent2">{{ percent2 }}%</wv-circle>
-    </div>
+		<wv-circle class="circle-1" :line-width="3" value="12">12 %</wv-circle>
+		<wv-circle class="circle-1" :line-width="5" fill-color="yellow" value="12">12 %</wv-circle>
+    <wv-slider v-model="sliderValue"></wv-slider>
+    <wv-circle class="circle-2" :line-width="10" stroke-color="red" v-model="sliderValue" :diameter="200">{{ sliderValue }}%</wv-circle>
 	</div>
 </template>
 
@@ -14,25 +11,20 @@
   export default {
     data () {
       return {
-        percent1: 58,
-        percent2: 20
+        sliderValue: 20
       }
     }
   }
 </script>
 
 <style scoped lang="scss">
-  #circle-1 {
+  .circle-1 {
     display: block;
-    width: 100px;
-    height: 100px;
     margin: 0 auto 40px;
   }
 
-  #circle-2 {
+  .circle-2 {
     display: block;
-    width: 150px;
-    height: 150px;
     margin: 20px auto;
   }
 </style>

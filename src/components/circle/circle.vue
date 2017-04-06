@@ -1,10 +1,10 @@
 <template>
-	<div class="vui-circle">
-    <svg viewBox="0 0 100 100">
-      <path :d="pathString" :stroke="trailColor" :stroke-width="trailWidth" :fill-opacity="0"/>
-      <path :d="pathString" stroke-linecap="round" :stroke="strokeColor" :stroke-width="strokeWidth" fill-opacity="0" :style="pathStyle"/>
+	<div class="wv-circle" :style="style">
+    <svg :width="diameter" :height="diameter" :viewBox="'0 0 ' + diameter + ' ' + diameter">
+      <path :d="pathString" :stroke="trailColor" :stroke-width="lineWidth" fill="none"/>
+      <path :d="pathString" stroke-linecap="round" :stroke="strokeColor" :stroke-width="lineWidth" :style="pathStyle" :fill="fillColor"/>
     </svg>
-    <div class="vui-circle-content"><slot></slot></div>
+    <div class="wv-circle-content"><slot></slot></div>
   </div>
 </template>
 
@@ -13,21 +13,29 @@ export default {
   name: 'wv-circle',
 
   props: {
-    strokeWidth: {
+    diameter: {
       type: Number,
-      default: 1
+      default: 100
+    },
+    lineWidth: {
+      type: Number,
+      default: 4
     },
     strokeColor: {
       type: String,
       default: '#3FC7FA'
     },
-    trailWidth: {
-      type: Number,
-      default: 1
-    },
     trailColor: {
       type: String,
       default: '#D9D9D9'
+    },
+    fillColor: {
+      type: String,
+      default: 'none'
+    },
+    speed: {
+      type: Number,
+      default: 500
     },
     value: {
       type: Number,
@@ -42,25 +50,36 @@ export default {
   },
 
   computed: {
+    style () {
+      return {
+        width: this.diameter + 'px',
+        heigth: this.diameter + 'px'
+      }
+    },
+
+    pathRadius () {
+      return (this.diameter - this.lineWidth) / 2
+    },
+
     radius () {
-      return 50 - this.strokeWidth / 2
+      return this.diameter / 2
     },
 
     pathString () {
-      return `M 50,50 m 0,-${this.radius}
-      a ${this.radius},${this.radius} 0 1 1 0,${2 * this.radius}
-      a ${this.radius},${this.radius} 0 1 1 0,-${2 * this.radius}`
+      return `M ${this.radius},${this.radius} m 0,-${this.pathRadius}
+      a ${this.pathRadius},${this.pathRadius} 0 1 1 0,${2 * this.pathRadius}
+      a ${this.pathRadius},${this.pathRadius} 0 1 1 0,-${2 * this.pathRadius}`
     },
 
     len () {
-      return Math.PI * 2 * this.radius
+      return Math.PI * 2 * this.pathRadius
     },
 
     pathStyle () {
       return {
         'stroke-dasharray': `${this.len}px ${this.len}px`,
         'stroke-dashoffset': `${((100 - this.currentValue) / 100 * this.len)}px`,
-        'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease'
+        'transition': `stroke-dashoffset ${this.speed}ms ease 0s, stroke ${this.speed}ms ease`
       }
     }
   },
@@ -78,12 +97,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.vui-circle {
+.wv-circle {
   position: relative;
   width: 100%;
   height: 100%;
 
-  .vui-circle-content {
+  .wv-circle-content {
     width: 100%;
     text-align: center;
     position: absolute;
