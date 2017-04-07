@@ -1,11 +1,9 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <ul class="icon-list-big">
       <li v-for="type in iconTypes">
         <wv-icon class="demo-icon-large" type="icon" :type="type" :large="true"></wv-icon>
-        <div class="description">
-          {{ type }}
-        </div>
+        <label class="label" v-text="type"></label>
       </li>
     </ul>
 
@@ -54,7 +52,7 @@ export default {
         font-size: 4rem;
       }
 
-      .description {
+      .label {
         font-size: 1.1rem;
         display: block;
         float: left;
@@ -66,6 +64,6 @@ export default {
     display: block;
     overflow: hidden;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 20px;
   }
 </style>

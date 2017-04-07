@@ -16,9 +16,10 @@ export default {
 
     showError () {
       Toast({
-        duration: 2000,
+        duration: 1000,
         message: '操作失败',
-        icon: 'warn'
+        icon: 'warn',
+        type: 'text'
       })
     }
   }

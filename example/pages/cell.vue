@@ -5,11 +5,12 @@
     </wv-group>
 
     <wv-group title="带图标、说明的列表项">
-      <wv-cell title="标题文字" value="说明文字">
-        <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
+      <wv-cell title="标题文字">
+        <img :src="imgIcon" slot="icon" class="cell-icon">
+        <span slot="ft">说明文字</span>
       </wv-cell>
       <wv-cell title="标题文字" value="说明文字">
-        <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
+        <img :src="imgIcon" slot="icon" class="cell-icon">
       </wv-cell>
     </wv-group>
 
@@ -35,15 +36,15 @@
 </template>
 
 <script type="text/babel">
-import imgIcon from '../assets/images/icon_tabbar.png'
+  import imgIcon from '../assets/images/icon_tabbar.png'
 
-export default {
-  data () {
-    return {
-      imgIcon
+  export default {
+    data () {
+      return {
+        imgIcon
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

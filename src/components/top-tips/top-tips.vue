@@ -3,15 +3,15 @@
 </template>
 
 <script type="text/babel">
-export default {
-  props: {
-    visible: {
-      type: Boolean,
-      default: true
-    },
-    message: String
+  export default {
+    props: {
+      visible: {
+        type: Boolean,
+        default: true
+      },
+      message: String
+    }
   }
-}
 </script>
 
 <style scoped lang="scss">

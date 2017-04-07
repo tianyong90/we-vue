@@ -7,19 +7,19 @@
 </template>
 
 <script type="text/babel">
-import Indicator from '../../src/components/indicator'
+  import Indicator from '../../src/components/indicator'
 
-export default {
-  methods: {
-    openIndicator () {
-      Indicator.open('loading')
+  export default {
+    methods: {
+      openIndicator () {
+        Indicator.open('loading')
 
-      setTimeout(() => {
-        Indicator.close()
-      }, 3000)
+        setTimeout(() => {
+          Indicator.close()
+        }, 3000)
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

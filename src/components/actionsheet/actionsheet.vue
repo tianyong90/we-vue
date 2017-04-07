@@ -4,10 +4,10 @@
 			v-show="currentValue && type === 'ios'" @click="currentValue = false"></div>
 		<div class="weui-actionsheet weui-actionsheet_toggle" v-if="type === 'ios'" v-show="currentValue">
 			<div class="weui-actionsheet__menu">
-				<div class="weui-actionsheet__cell" v-for="item in actions" @click="itemClick(item)">{{ item.name }}</div>
+				<div class="weui-actionsheet__cell" v-for="item in actions" @click="itemClick(item)" v-text="item.name"></div>
 			</div>
 			<div class="weui-actionsheet__action" v-if="cancelText">
-				<div class="weui-actionsheet__cell" @click="currentValue = false">{{ cancelText }}</div>
+				<div class="weui-actionsheet__cell" @click="currentValue = false" v-html="cancelText"></div>
 			</div>
 		</div>
 
@@ -15,7 +15,7 @@
 			<div class="weui-mask" @click="currentValue = false"></div>
 			<div class="weui-actionsheet">
 				<div class="weui-actionsheet__menu">
-					<div v-for="item in actions" class="weui-actionsheet__cell" @click="itemClick(item)">{{ item.name }}</div>
+					<div v-for="item in actions" class="weui-actionsheet__cell" @click="itemClick(item)" v-text="item.name"></div>
 				</div>
 			</div>
 		</div>
