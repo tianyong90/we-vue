@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-popup" :style="{ height: height }" v-show="currentValue">
+  <div class="wv-popup" :style="{ height: height }" v-if="currentValue">
     <div class="weui-mask weui-animate-fade-in" @click="maskClick"></div>
     <div class="wv-popup-body weui-animate-slide-up">
       <slot></slot>
@@ -25,14 +25,13 @@ export default {
 
   data () {
     return {
-      currentValue: false
+      currentValue: this.value
     }
   },
 
   methods: {
     maskClick (e) {
       if (this.isModal) return
-
       this.currentValue = false
     }
   },
