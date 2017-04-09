@@ -25,24 +25,33 @@ export default {
       this.sheetVisible = true
     },
 
-    menuClick () {
-      console.log('menuClick')
+    menuClick (key) {
+      console.log(`menu ${key} clicked`)
     }
   },
 
   mounted () {
     this.actions = [
       {
-        name: '示例菜单',
-        method: this.menuClick
+        name: '示例菜单1',
+        key: 'menu1',
+        method: () => {
+          this.menuClick('menu1')
+        }
       },
       {
-        name: '示例菜单',
-        method: this.menuClick
+        name: '示例菜单2',
+        key: 'menu2',
+        method: () => {
+          this.menuClick('menu2')
+        }
       },
       {
-        name: '示例菜单',
-        method: this.menuClick
+        name: '示例菜单3',
+        key: 'menu3',
+        method: () => {
+          this.menuClick('menu3')
+        }
       }
     ]
   }

@@ -33,7 +33,7 @@ export default {
     },
     actions: {
       type: Array,
-      default: () => []
+      default: []
     },
     cancelText: {
       type: String,
@@ -44,7 +44,7 @@ export default {
 
   data () {
     return {
-      currentValue: false
+      currentValue: this.value
     }
   },
 
