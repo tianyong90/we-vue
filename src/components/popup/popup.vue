@@ -47,6 +47,12 @@ export default {
 
     currentValue (val) {
       this.$emit('input', val)
+
+      if (val) {
+        this.$emit('show')
+      } else {
+        this.$emit('hide')
+      }
     }
   }
 }
