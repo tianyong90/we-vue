@@ -1,6 +1,6 @@
 <template>
   <div class="wv-popup" :style="{ height: height }" v-if="currentValue">
-    <div class="weui-mask weui-animate-fade-in" @click="maskClick"></div>
+    <div class="weui-mask weui-animate-fade-in" :style="{ backgroundColor: maskBackgroundColor }" @click="maskClick"></div>
     <div class="wv-popup-body weui-animate-slide-up">
       <slot></slot>
     </div>
@@ -12,15 +12,19 @@ export default {
   name: 'wv-popup',
 
   props: {
-    isModal: {
-      type: Boolean,
-      default: false
-    },
+    value: Boolean,
     height: {
       type: String,
       default: 'auto'
     },
-    value: Boolean
+    hideOnMask: {
+      type: Boolean,
+      default: true
+    },
+    maskBackgroundColor: {
+      type: String,
+      default: ''
+    }
   },
 
   data () {
@@ -31,7 +35,7 @@ export default {
 
   methods: {
     maskClick (e) {
-      if (this.isModal) return
+      if (!this.hideOnMask) return
       this.currentValue = false
     }
   },
