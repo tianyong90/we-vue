@@ -1,48 +1,48 @@
 import 'weui/dist/style/weui.min.css'
-import Header from './components/header/index.js'
-import Button from './components/button/index.js'
-import Group from './components/group/index.js'
-import Cell from './components/cell/index.js'
-import Icon from './components/icon/index.js'
-import Textarea from './components/Textarea/index.js'
-import Input from './components/input/index.js'
-import Badge from './components/badge/index.js'
-import Switch from './components/switch/index.js'
-import Spinner from './components/spinner/index.js'
-// import TabContainerItem from './components/tab-container-item/index.js'
-// import TabContainer from './components/tab-container/index.js'
-import Navbar from './components/navbar/index.js'
-import NavbarItem from './components/navbar-item/index.js'
-import Tabbar from './components/tabbar/index.js'
-import TabbarItem from './components/tabbar-item/index.js'
-import Search from './components/search/index.js'
-import Checklist from './components/checklist/index.js'
-import Radio from './components/radio/index.js'
-import Slider from './components/slider/index.js'
-import Loadmore from './components/loadmore/index.js'
-import Actionsheet from './components/actionsheet/index.js'
-import Popup from './components/popup/index.js'
-import Swipe from './components/swipe/index.js'
-import SwipeItem from './components/swipe-item/index.js'
-import Picker from './components/picker/index.js'
-// import DatetimePicker from './components/datetime-picker/index.js'
-import Progress from './components/progress/index.js'
-import Circle from './components/circle/index.js'
-import Toast from './components/toast/index.js'
-import Indicator from './components/indicator/index.js'
-import Dialog from './components/dialog/index.js'
-import Lazyload from './components/lazyload/index.js'
-import Grid from './components/grid/index.js'
-import GridItem from './components/grid-item/index.js'
-import Flex from './components/flex/index.js'
-import FlexItem from './components/flex-item/index.js'
-import Panel from './components/panel/index.js'
-import MediaBox from './components/media-box/index.js'
-import Preview from './components/preview/index.js'
-import Footer from './components/footer/index.js'
+import Header from './components/header/index'
+import Button from './components/button/index'
+import Group from './components/group/index'
+import Cell from './components/cell/index'
+import Icon from './components/icon/index'
+import Textarea from './components/Textarea/index'
+import Input from './components/input/index'
+import Badge from './components/badge/index'
+import Switch from './components/switch/index'
+import Spinner from './components/spinner/index'
+// import TabContainerItem from './components/tab-container-item/index'
+// import TabContainer from './components/tab-container/index'
+import Navbar from './components/navbar/index'
+import NavbarItem from './components/navbar-item/index'
+import Tabbar from './components/tabbar/index'
+import TabbarItem from './components/tabbar-item/index'
+import Search from './components/search/index'
+import Checklist from './components/checklist/index'
+import Radio from './components/radio/index'
+import Slider from './components/slider/index'
+import Loadmore from './components/loadmore/index'
+import Actionsheet from './components/actionsheet/index'
+import Popup from './components/popup/index'
+import Swipe from './components/swipe/index'
+import SwipeItem from './components/swipe-item/index'
+import Picker from './components/picker/index'
+// import DatetimePicker from './components/datetime-picker/index'
+import Progress from './components/progress/index'
+import Circle from './components/circle/index'
+import Toast from './components/toast/index'
+import Indicator from './components/indicator/index'
+import Dialog from './components/dialog/index'
+import Lazyload from './components/lazyload/index'
+import Grid from './components/grid/index'
+import GridItem from './components/grid-item/index'
+import Flex from './components/flex/index'
+import FlexItem from './components/flex-item/index'
+import Panel from './components/panel/index'
+import MediaBox from './components/media-box/index'
+import Preview from './components/preview/index'
+import Footer from './components/footer/index'
 // import '../src/assets/font/iconfont.css'
 
-const install = function (Vue) {
+const install = function (Vue, config = {}) {
   if (install.installed) return
 
   Vue.component(Header.name, Header)
@@ -84,7 +84,8 @@ const install = function (Vue) {
   Vue.component(Footer.name, Footer)
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
-    try: 3
+    attempt: 3,
+    ...config.lazyload
   })
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog
@@ -97,8 +98,9 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
+const version = '1.0.19'
 export default {
-  version: '1.0.0',
+  version,
   install,
   Header,
   Button,
