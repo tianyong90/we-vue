@@ -2,7 +2,7 @@
   <div class="page">
     <wv-group title="默认">
       <wv-input label="label" placeholder="请输入内容" v-model="valueText"></wv-input>
-      <wv-input label="label" placeholder="请输入内容" type="number" v-model="valueNumber"></wv-input>
+      <wv-input label="label" placeholder="请输入数字" type="number" v-model="valueNumber"></wv-input>
     </wv-group>
     <wv-group title="只读">
       <wv-input label="label" placeholder="请输入内容" :readonly="true" v-model="valueReadonly"></wv-input>
@@ -34,7 +34,7 @@ export default {
   data () {
     return {
       valueText: 'hello we-vue',
-      valueNumber: '110',
+      valueNumber: '',
       valueReadonly: '内容是只读的',
       captcha: '',
       vcode: '',
