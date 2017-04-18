@@ -16,41 +16,41 @@
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-media-box',
+  export default {
+    name: 'wv-media-box',
 
-  props: {
-    type: {
-      type: String,
-      default: 'appmsg'
+    props: {
+      type: {
+        type: String,
+        default: 'appmsg'
+      },
+      thumb: String,
+      title: String,
+      description: String,
+      to: String
     },
-    thumb: String,
-    title: String,
-    description: String,
-    to: String
-  },
 
-  computed: {
-    href () {
-      if (this.to && !this.added && this.$router) {
-        const resolved = this.$router.match(this.to)
-        if (!resolved.matched.length) return this.to
+    computed: {
+      href () {
+        if (this.to && !this.added && this.$router) {
+          const resolved = this.$router.match(this.to)
+          if (!resolved.matched.length) return this.to
 
-        this.$nextTick(() => {
-          this.added = true
-          this.$el.addEventListener('click', this.handleClick)
-        })
-        return resolved.path
+          this.$nextTick(() => {
+            this.added = true
+            this.$el.addEventListener('click', this.handleClick)
+          })
+          return resolved.path
+        }
+        return this.to
       }
-      return this.to
-    }
-  },
+    },
 
-  methods: {
-    handleClick ($event) {
-      $event.preventDefault()
-      this.$router.push(this.href)
+    methods: {
+      handleClick ($event) {
+        $event.preventDefault()
+        this.$router.push(this.href)
+      }
     }
   }
-}
 </script>

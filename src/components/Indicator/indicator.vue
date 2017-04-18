@@ -10,19 +10,19 @@
 </template>
 
 <script type="text/babel">
-export default {
-  props: {
-    spinner: {
-      type: String,
-      default: 'default'
+  export default {
+    props: {
+      spinner: {
+        type: String,
+        default: 'default'
+      },
+      text: String
     },
-    text: String
-  },
 
-  data () {
-    return {
-      visible: false
+    data () {
+      return {
+        visible: false
+      }
     }
   }
-}
 </script>

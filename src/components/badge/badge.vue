@@ -5,12 +5,12 @@
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-badge',
+  export default {
+    name: 'wv-badge',
 
-  props: {
-    color: String,
-    isDot: Boolean
+    props: {
+      color: String,
+      isDot: Boolean
+    }
   }
-}
 </script>

@@ -8,21 +8,21 @@
 </template>
 
 <script type="text/babel">
-import FooterLink from './footer-link.vue'
+  import FooterLink from './footer-link.vue'
 
-export default {
-  name: 'wv-footer',
+  export default {
+    name: 'wv-footer',
 
-  components: {
-    FooterLink
-  },
+    components: {
+      FooterLink
+    },
 
-  props: {
-    text: String,
-    links: {
-      type: Array,
-      default: () => []
+    props: {
+      text: String,
+      links: {
+        type: Array,
+        default: () => []
+      }
     }
   }
-}
 </script>

@@ -3,26 +3,26 @@
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-icon',
+  export default {
+    name: 'wv-icon',
 
-  props: {
-    type: {
-      type: String,
-      required: true
+    props: {
+      type: {
+        type: String,
+        required: true
+      },
+      large: Boolean
     },
-    large: Boolean
-  },
 
-  computed: {
-    classObject: function () {
-      let classType = `weui-icon-${this.type}`
+    computed: {
+      classObject: function () {
+        let classType = `weui-icon-${this.type}`
 
-      return {
-        [classType]: true,
-        'weui-icon_msg': this.large
+        return {
+          [classType]: true,
+          'weui-icon_msg': this.large
+        }
       }
     }
   }
-}
 </script>

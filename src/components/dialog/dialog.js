@@ -123,7 +123,7 @@ var Dialog = function (options, callback) {
   }
 
   if (typeof Promise !== 'undefined') {
-    return new Promise(function(resolve, reject) { // eslint-disable-line
+    return new Promise(function (resolve, reject) { // eslint-disable-line
       dialogQueue.push({
         options: merge({}, defaults, Dialog.defaults || {}, options),
         callback: callback,

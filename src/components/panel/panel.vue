@@ -7,25 +7,23 @@
     <div class="weui-panel__ft">
       <slot name="ft"></slot>
     </div>
-</div>
+  </div>
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-panel',
+  export default {
+    name: 'wv-panel',
 
-  props: {
-    title: String,
-    value: String,
-    label: String,
-    isLink: Boolean,
-    to: String
-  },
+    props: {
+      title: String,
+      value: String,
+      label: String,
+      isLink: Boolean,
+      to: String
+    },
 
-  computed: {
-  },
+    computed: {},
 
-  methods: {
+    methods: {}
   }
-}
 </script>

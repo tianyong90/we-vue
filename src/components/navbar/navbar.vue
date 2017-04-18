@@ -5,49 +5,49 @@
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-navbar',
+  export default {
+    name: 'wv-navbar',
 
-  props: {
-    fixed: Boolean,
-    color: {
-      type: String,
-      default: '#333'
+    props: {
+      fixed: Boolean,
+      color: {
+        type: String,
+        default: '#333'
+      },
+      backgroundColor: {
+        type: String,
+        default: '#fff'
+      },
+      activeColor: {
+        type: String,
+        default: '#2196f3'
+      },
+      disabledColor: {
+        type: String,
+        default: '#cfcfcf'
+      },
+      lineWidth: {
+        type: Number,
+        default: 3
+      },
+      value: {}
     },
-    backgroundColor: {
-      type: String,
-      default: '#fff'
-    },
-    activeColor: {
-      type: String,
-      default: '#2196f3'
-    },
-    disabledColor: {
-      type: String,
-      default: '#cfcfcf'
-    },
-    lineWidth: {
-      type: Number,
-      default: 3
-    },
-    value: {}
-  },
 
-  computed: {
-    style () {
-      return {
-        position: this.fixed ? 'fixed' : 'absolute',
-        backgroundColor: this.backgroundColor
+    computed: {
+      style () {
+        return {
+          position: this.fixed ? 'fixed' : 'absolute',
+          backgroundColor: this.backgroundColor
+        }
+      }
+    },
+
+    watch: {
+      value (newValue, value) {
+        this.$emit('change', newValue)
       }
     }
-  },
-
-  watch: {
-    value (newValue, value) {
-      this.$emit('change', newValue)
-    }
   }
-}
 </script>
 
 <style scoped lang="scss">

@@ -1,18 +1,20 @@
 <template>
-	<div>
-		<div v-if="title" class="weui-cells__title" v-html="title"></div>
-		<div class="weui-cells weui-cells_radio">
-			<label v-for="(option, index) in options" class="weui-cell weui-check__label" :class="{ 'weui-check__label-disabled': option.disabled }">
+  <div>
+    <div v-if="title" class="weui-cells__title" v-html="title"></div>
+    <div class="weui-cells weui-cells_radio">
+      <label v-for="(option, index) in options" class="weui-cell weui-check__label"
+             :class="{ 'weui-check__label-disabled': option.disabled }">
         <div class="weui-cell__bd">
           <p v-text="option.label || option"></p>
         </div>
         <div class="weui-cell__ft">
-          <input type="radio" class="weui-check" v-model="currentValue" :disabled="option.disabled" :value="option.value || option">
+          <input type="radio" class="weui-check" v-model="currentValue" :disabled="option.disabled"
+                 :value="option.value || option">
           <span class="weui-icon-checked"></span>
         </div>
       </label>
-		</div>
-	</div>
+    </div>
+  </div>
 </template>
 
 <script type="text/babel">

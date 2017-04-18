@@ -1,7 +1,7 @@
 <template>
-	<div class="weui-flex__item" :style="style">
-		<slot></slot>
-	</div>
+  <div class="weui-flex__item" :style="style">
+    <slot></slot>
+  </div>
 </template>
 
 <script type="text/babel">

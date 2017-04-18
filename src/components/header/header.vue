@@ -1,5 +1,6 @@
 <template>
-  <header class="wv-header" :class="{ 'is-fixed': fixed }" @click.stop="$emit('headerClick')" :style="{ 'background-color': backgroundColor }">
+  <header class="wv-header" :class="{ 'is-fixed': fixed }" @click.stop="$emit('headerClick')"
+          :style="{ 'background-color': backgroundColor }">
     <div class="wv-header-btn left">
       <slot name="left"></slot>
     </div>
@@ -11,21 +12,21 @@
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-header',
+  export default {
+    name: 'wv-header',
 
-  props: {
-    title: String,
-    fixed: {
-      type: Boolean,
-      default: true
-    },
-    backgroundColor: {
-      type: String,
-      default: '#21292c'
+    props: {
+      title: String,
+      fixed: {
+        type: Boolean,
+        default: true
+      },
+      backgroundColor: {
+        type: String,
+        default: '#21292c'
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

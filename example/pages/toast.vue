@@ -6,22 +6,22 @@
 </template>
 
 <script type="text/babel">
-import Toast from '../../src/components/toast'
+  import Toast from '../../src/components/toast'
 
-export default {
-  methods: {
-    showSuccess () {
-      Toast('操作成功')
-    },
+  export default {
+    methods: {
+      showSuccess () {
+        Toast('操作成功')
+      },
 
-    showError () {
-      Toast({
-        duration: 1000,
-        message: '操作失败',
-        icon: 'warn',
-        type: 'text'
-      })
+      showError () {
+        Toast({
+          duration: 1000,
+          message: '操作失败',
+          icon: 'warn',
+          type: 'text'
+        })
+      }
     }
   }
-}
 </script>

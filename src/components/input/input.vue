@@ -23,59 +23,59 @@
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-input',
+  export default {
+    name: 'wv-input',
 
-  props: {
-    type: {
-      type: String,
-      default: 'text'
-    },
-    label: String,
-    labelWidth: {
-      type: Number,
-      default: 105
-    },
-    placeholder: String,
-    value: String,
-    readonly: Boolean,
-    disabled: Boolean,
-    state: {
-      type: String,
-      default: 'default'
-    }
-  },
-
-  data () {
-    return {
-      active: false,
-      currentValue: this.value
-    }
-  },
-
-  methods: {
-    doCloseActive () {
-      this.active = false
+    props: {
+      type: {
+        type: String,
+        default: 'text'
+      },
+      label: String,
+      labelWidth: {
+        type: Number,
+        default: 105
+      },
+      placeholder: String,
+      value: String,
+      readonly: Boolean,
+      disabled: Boolean,
+      state: {
+        type: String,
+        default: 'default'
+      }
     },
 
-    handleInput (event) {
-      this.currentValue = event.target.value
+    data () {
+      return {
+        active: false,
+        currentValue: this.value
+      }
     },
 
-    handleClear () {
-      if (this.disabled || this.readonly) return
-      this.currentValue = ''
-    }
-  },
+    methods: {
+      doCloseActive () {
+        this.active = false
+      },
 
-  watch: {
-    currentValue (val) {
-      this.$emit('input', val)
+      handleInput (event) {
+        this.currentValue = event.target.value
+      },
+
+      handleClear () {
+        if (this.disabled || this.readonly) return
+        this.currentValue = ''
+      }
     },
 
-    value (val) {
-      this.currentValue = val
+    watch: {
+      currentValue (val) {
+        this.$emit('input', val)
+      },
+
+      value (val) {
+        this.currentValue = val
+      }
     }
   }
-}
 </script>

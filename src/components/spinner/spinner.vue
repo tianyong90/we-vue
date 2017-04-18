@@ -3,15 +3,15 @@
 </template>
 
 <script type="text/babel">
-export default {
-  name: 'wv-spinner',
+  export default {
+    name: 'wv-spinner',
 
-  props: {
-    type: String,
-    color: {
+    props: {
       type: String,
-      default: 'lightgrey'
+      color: {
+        type: String,
+        default: 'lightgrey'
+      }
     }
   }
-}
 </script>

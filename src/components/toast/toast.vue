@@ -27,17 +27,18 @@
       }
     },
 
-    mounted () {
-    },
-
     computed: {
       style () {
-        const messageLength = this.message.length + 2
+        if (this.type === 'text') {
+          const messageLength = this.message.length + 2
 
-        return {
-          width: messageLength + 'em',
-          marginLeft: '-' + (messageLength / 2) + 'em'
+          return {
+            width: messageLength + 'em',
+            marginLeft: '-' + (messageLength / 2) + 'em'
+          }
         }
+
+        return {}
       }
     }
   }
