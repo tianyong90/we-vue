@@ -1,7 +1,7 @@
 # we-vue
 
 [![npm](https://img.shields.io/npm/v/we-vue.svg?maxAge=3600)](https://www.npmjs.com/package/we-vue)
-[![NPM downloads](http://img.shields.io/npm/dm/we-vue.svg)](https://npmjs.org/package/we-vue)
+[![downloads](https://img.shields.io/npm/dt/we-vue.svg)](https://npmjs.org/package/we-vue)
 
 we-vue 结合 vue2.0 强大的组件化机制和 weui 的微信官方视觉样式，形成了一套灵活的组件，适用于微信公众号等移动端开发。
 
