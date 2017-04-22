@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import draggable from '../../utils/draggable.js'
+  import draggable from '../../utils/draggable'
 
   export default {
     name: 'wv-slider',
