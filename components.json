@@ -28,6 +28,7 @@
   "swipe-item": "./src/components/swipe-item/index.js",
   "popup": "./src/components/popup/index.js",
   "picker": "./src/components/picker/index.js",
+  "datetime-picker": "./src/components/datetime-picker/index.js",
   "lazyload": "./src/components/lazyload/index.js",
   "preview": "./src/components/preview/index.js",
   "footer": "./src/components/footer/index.js",

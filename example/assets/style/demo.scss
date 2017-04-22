@@ -26,23 +26,9 @@ img {
   }
 }
 
-.slide-fade-enter-active {
-  transition: all .1s ease;
-}
-
-.slide-fade-leave-active {
-  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter,
-.slide-fade-leave-active {
-  padding-left: 10px;
-  opacity: 0;
-}
-
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .1s
+  transition: opacity .3s
 }
 
 .fade-enter,
@@ -50,10 +36,10 @@ img {
   opacity: 0
 }
 
-.page-with-padding {
-  padding: 0 .7rem;
-}
-
 .page {
   margin-bottom: 50px;
+}
+
+.page-with-padding {
+  padding: 0 .7rem;
 }

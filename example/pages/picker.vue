@@ -1,11 +1,12 @@
 <template>
   <div class="page">
     <wv-group>
-      <wv-cell title="单列选择器" :value="pickerValue1" is-link @click.native="showPicker1"></wv-cell>
-      <wv-cell title="多列选择器" :value="pickerValue1" is-link @click.native="showPicker1"></wv-cell>
+      <wv-cell title="单列选择器" :value="pickerValue1" is-link @click.native="pickerVisible1 = true"></wv-cell>
+      <wv-cell title="多列选择器" :value="pickerValue1" is-link @click.native="pickerVisible2 = true"></wv-cell>
     </wv-group>
 
-    <wv-picker v-model="pickerVisible" :slots="slots"></wv-picker>
+    <wv-picker v-model="pickerVisible1" :slots="slots1"></wv-picker>
+    <wv-picker v-model="pickerVisible2" :slots="slots2"></wv-picker>
   </div>
 </template>
 
@@ -14,8 +15,22 @@
     data () {
       return {
         pickerValue1: '',
-        pickerVisible: false,
-        slots: [
+        pickerValue2: '',
+        pickerVisible1: false,
+        pickerVisible2: false,
+        slots1: [
+          {
+            values: [
+              '汽车票',
+              '飞机票',
+              '火车票',
+              '轮船票',
+              '其它'
+            ],
+            defaultIndex: 2
+          }
+        ],
+        slots2: [
           {
             values: [
               '汽车票',
@@ -41,17 +56,9 @@
     },
 
     methods: {
-      showPicker1 () {
-        this.pickerVisible = true
-      }
     }
   }
 </script>
 
 <style scoped lang="scss">
-  .popup-body {
-    display: block;
-    overflow: hidden;
-    background: #fff;
-  }
 </style>

@@ -4,7 +4,6 @@ var webpack = require('webpack')
 var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 var env = config.build.env
@@ -39,8 +38,15 @@ var webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     new webpack.optimize.UglifyJsPlugin({
+      // 最紧凑
+      beautify: false,
+      // 删除所有注释
+      comments: false,
       compress: {
-        warnings: false
+        warnings: false,
+        drop_console: true,
+        collapse_vars: true,
+        reduce_vars: true
       }
     }),
     // extract css into its own file

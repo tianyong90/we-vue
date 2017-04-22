@@ -25,7 +25,7 @@ import Popup from './components/popup/index'
 import Swipe from './components/swipe/index'
 import SwipeItem from './components/swipe-item/index'
 import Picker from './components/picker/index'
-// import DatetimePicker from './components/datetime-picker/index'
+import DatetimePicker from './components/datetime-picker/index'
 import Progress from './components/progress/index'
 import Circle from './components/circle/index'
 import Toast from './components/toast/index'
@@ -73,7 +73,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
   Vue.component(Picker.name, Picker)
-  // Vue.component(DatetimePicker.name, DatetimePicker)
+  Vue.component(DatetimePicker.name, DatetimePicker)
   Vue.component(Grid.name, Grid)
   Vue.component(GridItem.name, GridItem)
   Vue.component(Flex.name, Flex)
@@ -134,7 +134,7 @@ export default {
   Dialog,
   Lazyload,
   Picker,
-  // DatetimePicker,
+  DatetimePicker,
   Grid,
   GridItem,
   Flex,
