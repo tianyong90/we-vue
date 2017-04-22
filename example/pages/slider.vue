@@ -1,6 +1,7 @@
 <template>
   <div class="page page-with-padding">
-    <wv-slider v-model="percent" :min="10" :max="80" :disabled="false"></wv-slider>
+    <wv-slider :value="50" :min="10" :max="100" disabled :show-value-box="false"></wv-slider>
+    <wv-slider v-model="percent" :min="10" :max="80"></wv-slider>
   </div>
 </template>
 

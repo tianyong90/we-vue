@@ -6,7 +6,9 @@
         <div :style="{left: progress + '%'}" class="weui-slider__handler" ref="thumb"></div>
       </div>
     </div>
-    <div class="weui-slider-box__value">{{ value }}</div>
+    <div class="weui-slider-box__value" v-if="showValueBox">
+      <slot name="value-box">{{ value }}</slot>
+    </div>
   </div>
 </template>
 
@@ -31,6 +33,10 @@
       },
       value: {
         type: Number
+      },
+      showValueBox: {
+        type: Boolean,
+        default: true
       },
       disabled: Boolean
     },
