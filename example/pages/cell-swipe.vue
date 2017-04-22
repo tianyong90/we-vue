@@ -1,0 +1,37 @@
+<template>
+  <div class="page">
+    <wv-group title="带说明的列表项">
+      <wv-cell-swipe title="标题文字" :value="true"></wv-cell-swipe>
+    </wv-group>
+
+    <wv-group title="带图标、说明的列表项">
+      <wv-cell title="标题文字">
+        <img :src="imgIcon" slot="icon" class="cell-icon">
+        <span slot="ft">说明文字</span>
+      </wv-cell>
+      <wv-cell title="标题文字" value="说明文字">
+        <img :src="imgIcon" slot="icon" class="cell-icon">
+      </wv-cell>
+    </wv-group>
+  </div>
+</template>
+
+<script type="text/babel">
+  import imgIcon from '../assets/images/icon_tabbar.png'
+
+  export default {
+    data () {
+      return {
+        imgIcon
+      }
+    }
+  }
+</script>
+
+<style scoped lang="scss">
+  .cell-icon {
+    display: block;
+    width: 20px;
+    margin-right: 5px;
+  }
+</style>

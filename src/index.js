@@ -3,6 +3,7 @@ import Header from './components/header/index'
 import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
+import CellSwipe from './components/cell-swipe/index'
 import Icon from './components/icon/index'
 import Textarea from './components/Textarea/index'
 import Input from './components/input/index'
@@ -49,6 +50,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Button.name, Button)
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
+  Vue.component(CellSwipe.name, CellSwipe)
   Vue.component(Icon.name, Icon)
   Vue.component(Textarea.name, Textarea)
   Vue.component(Input.name, Input)
@@ -106,6 +108,7 @@ export default {
   Button,
   Group,
   Cell,
+  CellSwipe,
   Icon,
   Textarea,
   Input,

@@ -190,6 +190,12 @@
         "icon": "cell"
       },
       {
+        "path": "/cell-swipe",
+        "name": "CellSwipe",
+        "description": "列表",
+        "icon": "cell"
+      },
+      {
         "path": "/flex",
         "name": "Flex",
         "description": "Flex 布局",
