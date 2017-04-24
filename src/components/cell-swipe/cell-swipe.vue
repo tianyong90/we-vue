@@ -3,13 +3,14 @@
     <div class="weui-cell__bd" ref="cellBd">
       <div class="weui-cell">
         <div class="weui-cell__bd">
-          <p>标题文字</p>
+          <p>{{ title }}</p>
         </div>
-        <div class="weui-cell__ft">说明文字</div>
+        <div class="weui-cell__ft">{{ value }}</div>
       </div>
     </div>
     <div class="weui-cell__ft" ref="rightBtns" slot="swipe-btns">
       <a class="weui-swiped-btn weui-swiped-btn_warn" href="javascript:">删除</a>
+      <a class="weui-swiped-btn weui-swiped-btn_default" href="javascript:">查看</a>
     </div>
   </div>
 </template>
@@ -34,8 +35,7 @@
 
     data () {
       return {
-        style: {},
-        btnsWidwh: null
+        style: {}
       }
     },
 
@@ -57,87 +57,64 @@
 
     mounted () {
       this.isDragging = false
-      this.dragState = {}
+      let dragState = {}
 
-      this.btnsWidwh = this.$refs.rightBtns.clientWidth
+      const btnsWidwh = this.$refs.rightBtns.clientWidth
 
       const mainCell = this.$refs.mainCell
-
-      Transform(mainCell, true)
+      const cellBd = this.$refs.cellBd
+      Transform(cellBd, true)
 
       draggable(mainCell, {
         start: (event) => {
+          if (this.isDragging) return
           this.isDragging = true
-          let dragState = this.dragState
 
-          dragState.start = new Date()
           dragState.startPositionX = event.clientX
-          dragState.startTranslateX = mainCell.translateX
+          dragState.startTranslateX = cellBd.translateX
+
+          cellBd.style.transition = ''
         },
         drag: (event) => {
-          let dragState = this.dragState
           const deltaX = event.clientX - dragState.startPositionX
 
-          if (Math.abs(deltaX) <= this.btnsWidwh) {
-            console.log(deltaX)
-            this.$refs.cellBd.translateX = -68
+          let targetTranslateX
+          if (deltaX < 0) {
+            targetTranslateX = Math.abs(dragState.startTranslateX + deltaX) < btnsWidwh ? dragState.startTranslateX + deltaX : -1 * btnsWidwh
+          } else {
+            targetTranslateX = dragState.startTranslateX + deltaX < 0 ? dragState.startTranslateX + deltaX : 0
           }
-
-//          const tempTranslateY = dragState.startTranslateY + deltaY
-//
-//          if (tempTranslateY <= this.minTranslateY) {
-//            wrapper.translateY = this.minTranslateY
-//          } else if (tempTranslateY >= this.maxTranslateY) {
-//            wrapper.translateY = this.maxTranslateY
-//          } else {
-//            wrapper.translateY = dragState.startTranslateY + deltaY
-//          }
-//
-//          dragState.currentPosifionY = event.clientY
-//          dragState.currentTranslateY = wrapper.translateY
-//          dragState.velocityTranslate = dragState.currentTranslateY - dragState.prevTranslateY
-//
-//          dragState.prevTranslateY = dragState.currentTranslateY
+          cellBd.translateX = targetTranslateX
         },
         end: (event) => {
           this.isDragging = false
-//
-//          let dragState = this.dragState
-//          let momentumRatio = 7
-//          let currentTranslate = wrapper.translateY
-//          let duration = new Date() - dragState.start
-//
-//          let momentumTranslate
-//          if (duration < 300) {
-//            momentumTranslate = currentTranslate + dragState.velocityTranslate * momentumRatio
-//          }
-//
-//          this.$nextTick(() => {
-//            let translate
-//            if (momentumTranslate) {
-//              translate = Math.round(momentumTranslate / ITEM_HEIGHT) * ITEM_HEIGHT
-//            } else {
-//              translate = Math.round(currentTranslate / ITEM_HEIGHT) * ITEM_HEIGHT
-//            }
-//
-//            translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
-//
-//            wrapper.translateY = translate
-//            this.currentValue = this.translate2value(translate)
-//          })
-          this.dragState = {}
+
+          dragState.endPositionX = event.clientX
+          dragState.endTranslateX = cellBd.translateX
+          dragState.totalDeltaX = dragState.endPositionX - dragState.startPositionX
+
+          if (dragState.startTranslateX === 0 && dragState.totalDeltaX < 0) {
+            if (Math.abs(dragState.totalDeltaX) >= 30) {
+              cellBd.translateX = -btnsWidwh
+            } else {
+              cellBd.translateX = 0
+            }
+            cellBd.style.transition = 'all 200ms ease'
+          } else if (dragState.startTranslateX === -btnsWidwh && dragState.totalDeltaX > 0) {
+            if (Math.abs(dragState.totalDeltaX) >= 30) {
+              cellBd.translateX = 0
+            } else {
+              cellBd.translateX = -btnsWidwh
+            }
+            cellBd.style.transition = 'all 200ms ease'
+          }
+
+          dragState = {}
         }
       })
     },
 
     methods: {
-      haha () {
-        this.style = {
-          transform: 'translateX(-68px)',
-          transition: 'transform 2s'
-        }
-      },
-
       handleClick ($event) {
         $event.preventDefault()
         this.$router.push(this.href)

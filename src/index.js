@@ -4,6 +4,7 @@ import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
 import CellSwipe from './components/cell-swipe/index'
+import CellSwipeButton from './components/cell-swipe-button/index'
 import Icon from './components/icon/index'
 import Textarea from './components/Textarea/index'
 import Input from './components/input/index'
@@ -26,7 +27,7 @@ import Popup from './components/popup/index'
 import Swipe from './components/swipe/index'
 import SwipeItem from './components/swipe-item/index'
 import Picker from './components/picker/index'
-import DatetimePicker from './components/datetime-picker/index'
+// import DatetimePicker from './components/datetime-picker/index'
 import Progress from './components/progress/index'
 import Circle from './components/circle/index'
 import Toast from './components/toast/index'
@@ -51,6 +52,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
   Vue.component(CellSwipe.name, CellSwipe)
+  Vue.component(CellSwipeButton.name, CellSwipeButton)
   Vue.component(Icon.name, Icon)
   Vue.component(Textarea.name, Textarea)
   Vue.component(Input.name, Input)
@@ -75,7 +77,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
   Vue.component(Picker.name, Picker)
-  Vue.component(DatetimePicker.name, DatetimePicker)
+  // Vue.component(DatetimePicker.name, DatetimePicker)
   Vue.component(Grid.name, Grid)
   Vue.component(GridItem.name, GridItem)
   Vue.component(Flex.name, Flex)
@@ -109,6 +111,7 @@ export default {
   Group,
   Cell,
   CellSwipe,
+  CellSwipeButton,
   Icon,
   Textarea,
   Input,
@@ -137,7 +140,7 @@ export default {
   Dialog,
   Lazyload,
   Picker,
-  DatetimePicker,
+  // DatetimePicker,
   Grid,
   GridItem,
   Flex,

@@ -1,17 +1,9 @@
 <template>
   <div class="page">
     <wv-group title="带说明的列表项">
-      <wv-cell-swipe title="标题文字" :value="true"></wv-cell-swipe>
-    </wv-group>
+      <wv-cell-swipe title="标题文字" value="说明">
 
-    <wv-group title="带图标、说明的列表项">
-      <wv-cell title="标题文字">
-        <img :src="imgIcon" slot="icon" class="cell-icon">
-        <span slot="ft">说明文字</span>
-      </wv-cell>
-      <wv-cell title="标题文字" value="说明文字">
-        <img :src="imgIcon" slot="icon" class="cell-icon">
-      </wv-cell>
+      </wv-cell-swipe>
     </wv-group>
   </div>
 </template>
