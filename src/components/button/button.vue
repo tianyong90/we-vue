@@ -23,11 +23,11 @@
       plain: Boolean
     },
 
-    methods: {
-      handleClick ($event) {
-        $event.preventDefault()
-      }
-    },
+//    methods: {
+//      handleClick ($event) {
+//        $event.preventDefault()
+//      }
+//    },
 
     computed: {
       classObject: function () {

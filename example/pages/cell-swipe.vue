@@ -1,20 +1,27 @@
 <template>
   <div class="page">
-    <wv-group title="带说明的列表项">
-      <wv-cell-swipe title="标题文字" value="说明">
-
+    <wv-group title="向左滑动呼出按钮">
+      <wv-cell-swipe title="标题文字" :value="true">
+        <wv-cell-swipe-button type="warn" slot="right" @click="deleteClicked">删除</wv-cell-swipe-button>
+        <wv-cell-swipe-button type="default" slot="right" @click="readClicked">查看</wv-cell-swipe-button>
       </wv-cell-swipe>
     </wv-group>
   </div>
 </template>
 
 <script type="text/babel">
-  import imgIcon from '../assets/images/icon_tabbar.png'
-
   export default {
     data () {
-      return {
-        imgIcon
+      return {}
+    },
+
+    methods: {
+      deleteClicked () {
+        console.log('delete')
+      },
+
+      readClicked () {
+        console.log('read')
       }
     }
   }

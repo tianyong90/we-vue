@@ -8,9 +8,8 @@
         <div class="weui-cell__ft">{{ value }}</div>
       </div>
     </div>
-    <div class="weui-cell__ft" ref="rightBtns" slot="swipe-btns">
-      <a class="weui-swiped-btn weui-swiped-btn_warn" href="javascript:">删除</a>
-      <a class="weui-swiped-btn weui-swiped-btn_default" href="javascript:">查看</a>
+    <div class="weui-cell__ft" ref="rightBtns">
+      <slot name="right"></slot>
     </div>
   </div>
 </template>
