@@ -4,6 +4,12 @@
       <wv-input label="label" placeholder="请输入内容" v-model="valueText"></wv-input>
       <wv-input label="label" placeholder="请输入数字" type="number" v-model="valueNumber"></wv-input>
     </wv-group>
+
+    <wv-group title="带验证">
+      <wv-input label="请输入 abc" placeholder="请输入 abc" v-model="valueText" pattern="^abc$"></wv-input>
+      <wv-input label="必填" placeholder="请输入数字" type="number" v-model="valueNumber" required></wv-input>
+    </wv-group>
+
     <wv-group title="只读">
       <wv-input label="label" placeholder="请输入内容" :readonly="true" v-model="valueReadonly"></wv-input>
     </wv-group>

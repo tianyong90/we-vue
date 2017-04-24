@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-cell">
+  <div class="weui-cell" :class="{ 'weui-cell_warn': !novalidate && !valid }">
     <div class="weui-cell__hd">
       <label class="weui-label" v-html="label" v-if="label" :style="{ width: labelWidth + 'px' }"></label>
     </div>
@@ -17,6 +17,8 @@
         @input="handleInput">
     </div>
     <div class="weui-cell__ft">
+      <wv-icon type="warn" v-if="!novalidate && !valid"></wv-icon>
+
       <slot name="ft"></slot>
     </div>
   </div>
@@ -40,9 +42,14 @@
       value: String,
       readonly: Boolean,
       disabled: Boolean,
-      state: {
-        type: String,
-        default: 'default'
+      required: {
+        type: Boolean,
+        default: false
+      },
+      pattern: String,
+      novalidate: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -50,6 +57,22 @@
       return {
         active: false,
         currentValue: this.value
+      }
+    },
+
+    computed: {
+      valid () {
+        if (this.pattern) {
+          const reg = new RegExp(this.pattern)
+
+          if (!reg.test(this.currentValue)) {
+            return false
+          }
+        }
+
+        if (this.required && this.currentValue === '') return false
+
+        return true
       }
     },
 
