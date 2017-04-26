@@ -1,9 +1,11 @@
 <template>
   <div>
     <div class="weui-mask_transparent actionsheet__mask actionsheet__mask_show"
-         style="display: block; transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1); background-color: rgba(0, 0, 0, 0.6);"
          v-show="currentValue && type === 'ios'" @click="currentValue = false"></div>
     <div class="weui-actionsheet weui-actionsheet_toggle" v-if="type === 'ios'" v-show="currentValue">
+      <div class="weui-actionsheet__title" v-if="title">
+        <p class="weui-actionsheet__title-text" v-html="title"></p>
+      </div>
       <div class="weui-actionsheet__menu">
         <div class="weui-actionsheet__cell" v-for="item in actions" @click="itemClick(item)" v-text="item.name"></div>
       </div>
@@ -32,6 +34,7 @@
         type: String,
         default: 'ios'
       },
+      title: String,
       actions: {
         type: Array,
         default: []
@@ -75,3 +78,13 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+  .actionsheet__mask_show {
+    display: block;
+    transform-origin: 0px 0px 0px;
+    opacity: 1;
+    transform: scale(1, 1);
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+</style>

@@ -5,7 +5,7 @@
       <wv-button type="default" @click.native="showActionsheet('android')">Android ActionSheet</wv-button>
     </div>
 
-    <wv-actionsheet :type="type" :actions="actions" cancel-text="取消" v-model="sheetVisible"></wv-actionsheet>
+    <wv-actionsheet :type="type" title="<h3 style='color: red;'>一个大标题</h3><p>最多两行</p>" :actions="actions" cancel-text="取消" v-model="sheetVisible"></wv-actionsheet>
   </div>
 </template>
 
