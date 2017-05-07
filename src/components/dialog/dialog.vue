@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   const CONFIRM_TEXT = '确定'
   const CANCEL_TEXT = '取消'
 
@@ -63,3 +63,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

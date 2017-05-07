@@ -2,9 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import WeVue from '../src/index.js'
 import FastClick from 'fastclick'
-import 'normalize.css/normalize.css'
+import App from './app.vue'
 import './assets/style/demo.scss'
 import './assets/iconfont/iconfont.css'
+import store from './store/index.js'
+import routes from './route/index.js'
+import { mapState } from 'vuex'
 
 document.addEventListener('DOMContentLoaded', function () {
   if (FastClick) FastClick.attach(document.body)
@@ -12,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 Vue.use(VueRouter)
 Vue.use(WeVue)
-
-import store from './store/index.js'
-import routes from './route/index.js'
 
 const router = new VueRouter({
   mode: 'history',
@@ -32,9 +32,11 @@ router.afterEach((to, from) => {
   store.commit('UPDATE_LOADING', false)
 })
 
-import { mapState } from 'vuex'
-
 new Vue({
+  el: '#app',
+
+  render: h => h(App),
+
   router,
 
   store,
@@ -50,4 +52,4 @@ new Vue({
       console.log(value)
     }
   }
-}).$mount('#app')
+})

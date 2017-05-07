@@ -1,5 +1,6 @@
 {
   "button": "./src/components/button/index.js",
+  "group": "./src/components/group/index.js",
   "cell": "./src/components/cell/index.js",
   "cell-swipe": "./src/components/cell-swipe/index.js",
   "input": "./src/components/input/index.js",
@@ -20,6 +21,7 @@
   "progress": "./src/components/progress/index.js",
   "circle": "./src/components/circle/index.js",
   "toast": "./src/components/toast/index.js",
+  "dialog": "./src/components/dialog/index.js",
   "indicator": "./src/components/indicator/index.js",
   "grid": "./src/components/grid/index.js",
   "flex": "./src/components/flex/index.js",

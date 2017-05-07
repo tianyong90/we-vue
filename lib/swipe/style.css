@@ -1,1 +1,40 @@
-.wv-swipe[data-v-47370521]{overflow:hidden;position:relative;width:100%}.wv-swipe .wv-swipe-wrapper[data-v-47370521]{position:relative;overflow:hidden;height:100%}.wv-swipe .wv-swipe-wrapper div[data-v-47370521]{position:absolute;transform:translateX(-100%);width:100%;height:100%;display:none}.wv-swipe .wv-swipe-wrapper div.is-active[data-v-47370521]{display:block;transform:none}.wv-swipe .wv-swipe-indicators[data-v-47370521]{position:absolute;bottom:10px;left:50%;transform:translateX(-50%)}.wv-swipe .wv-swipe-indicators .wv-swipe-indicator[data-v-47370521]{display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 4px;background-color:#000;opacity:.3}.wv-swipe .wv-swipe-indicators .wv-swipe-indicator.is-active[data-v-47370521]{background-color:#fff}
+
+.wv-swipe[data-v-47370521] {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.wv-swipe .wv-swipe-wrapper[data-v-47370521] {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.wv-swipe .wv-swipe-wrapper div[data-v-47370521] {
+      position: absolute;
+      transform: translateX(-100%);
+      width: 100%;
+      height: 100%;
+      display: none;
+}
+.wv-swipe .wv-swipe-wrapper div.is-active[data-v-47370521] {
+        display: block;
+        transform: none;
+}
+.wv-swipe .wv-swipe-indicators[data-v-47370521] {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.wv-swipe .wv-swipe-indicators .wv-swipe-indicator[data-v-47370521] {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin: 0 4px;
+      background-color: #000;
+      opacity: 0.3;
+}
+.wv-swipe .wv-swipe-indicators .wv-swipe-indicator.is-active[data-v-47370521] {
+        background-color: #fff;
+}

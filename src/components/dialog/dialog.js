@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import dislogComponent from './dialog.vue'
+
 var CONFIRM_TEXT = '确定'
 var CANCEL_TEXT = '取消'
 
@@ -13,9 +16,6 @@ var defaults = {
   confirmButtonText: CONFIRM_TEXT,
   cancelButtonText: CANCEL_TEXT
 }
-
-import Vue from 'vue'
-import dislogComponent from './dialog.vue'
 
 var merge = function (target) {
   for (var i = 1, j = arguments.length; i < j; i++) {

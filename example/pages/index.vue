@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
 import { navs } from '../route/index.js'
 
 export default {

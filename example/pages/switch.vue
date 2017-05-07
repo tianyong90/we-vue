@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
 export default {
   data () {
     return {

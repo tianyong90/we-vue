@@ -2,7 +2,7 @@
   <a :href="href" class="weui-footer__link">{{ text }}</a>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-footer-link',
 

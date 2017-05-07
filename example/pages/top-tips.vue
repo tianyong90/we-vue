@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
 import TopTips from '../../src/components/top-tips'
 
 export default {

@@ -35,7 +35,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import imgIcon from '../assets/images/icon_tabbar.png'
 
   export default {

@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import WvPickerSlot from './picker-slot.vue'
 
   export default {
@@ -164,3 +164,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

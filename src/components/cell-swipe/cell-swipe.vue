@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import draggable from '../../utils/draggable'
   import Transform from 'css3transform'
 
@@ -121,3 +121,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

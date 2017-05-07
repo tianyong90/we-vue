@@ -10,7 +10,7 @@
          type="checkbox" v-else>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-switch',
 
@@ -41,3 +41,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

@@ -7,7 +7,7 @@
   </a>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-navbar-item',
 

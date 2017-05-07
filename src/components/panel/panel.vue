@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-panel',
 
@@ -27,3 +27,6 @@
     methods: {}
   }
 </script>
+
+<style scoped lang="scss">
+</style>

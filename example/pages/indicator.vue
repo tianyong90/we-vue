@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import Indicator from '../../src/components/indicator'
 
   export default {

@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-group',
 
@@ -17,3 +17,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

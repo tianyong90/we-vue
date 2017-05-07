@@ -2,7 +2,7 @@
   <i class="weui-loading" style="{ 'color': color }"></i>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-spinner',
 
@@ -15,3 +15,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

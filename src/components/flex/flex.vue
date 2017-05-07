@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-flex',
 
@@ -31,3 +31,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

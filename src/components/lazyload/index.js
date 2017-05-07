@@ -1,1 +1,2 @@
-export { default } from './lazyload.js'
+import '../../style/empty.css'
+export { default } from './lazyload'

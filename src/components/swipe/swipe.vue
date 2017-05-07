@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import { once, addClass, removeClass } from '../../utils/dom.js'
 
   export default {

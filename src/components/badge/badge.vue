@@ -4,7 +4,7 @@
   </span>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-badge',
 
@@ -14,3 +14,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

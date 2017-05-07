@@ -8,7 +8,7 @@
   </button>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-button',
 
@@ -31,16 +31,21 @@
 
     computed: {
       classObject: function () {
+        let ret = {}
+
         let classType = this.plain ? `weui-btn_plain-${this.type}` : `weui-btn_${this.type}`
         let classDisabled = this.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
 
-        return {
-          [classType]: true,
-          [classDisabled]: this.disabled,
-          'weui-btn_loading': this.isLoading,
-          'weui-btn_mini': this.mini
-        }
+        ret[classType] = true
+        ret[classDisabled] = this.disabled
+        ret['weui-btn_loading'] = this.isLoading
+        ret['weui-btn_mini'] = this.mini
+
+        return ret
       }
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

@@ -34,7 +34,7 @@
 	</div>
 </template>
 
-<script type="text/babel">
+<script>
 import thumb from '../assets/images/wevue_placeholder.png'
 
 export default {

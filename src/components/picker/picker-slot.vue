@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import draggable from '../../utils/draggable.js'
   import Transform from 'css3transform'
 
@@ -26,9 +26,7 @@
     props: {
       values: {
         type: Array,
-        default () {
-          []
-        }
+        default: []
       },
       value: {},
       valueKey: String
@@ -179,3 +177,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

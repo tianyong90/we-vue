@@ -41,7 +41,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
 import thumbSmall from '../assets/images/icon_tabbar.png'
 
 export default {

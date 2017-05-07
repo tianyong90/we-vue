@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import XGroup from '../group/index.js'
   import XCell from '../cell/index.js'
 

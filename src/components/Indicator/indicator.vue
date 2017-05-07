@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     props: {
       spinner: {
@@ -26,3 +26,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

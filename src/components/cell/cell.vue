@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-cell',
 
@@ -62,3 +62,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

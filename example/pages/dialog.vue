@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
 import Dialog from '../../src/components/dialog'
 
 export default {

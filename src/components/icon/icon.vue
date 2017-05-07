@@ -2,7 +2,7 @@
   <i :class="classObject"></i>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-icon',
 
@@ -26,3 +26,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

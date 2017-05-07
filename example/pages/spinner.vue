@@ -6,7 +6,7 @@
   </wv-group>
 </template>
 
-<script type="text/babel">
+<script>
 export default {
   mounted () {
   }

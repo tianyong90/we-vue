@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
   import FooterLink from './footer-link.vue'
 
   export default {
@@ -26,3 +26,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>

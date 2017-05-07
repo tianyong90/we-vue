@@ -2,7 +2,7 @@
   <div class="weui-toptips weui-toptips_warn" v-if="visible" v-html="message"></div>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     props: {
       visible: {

@@ -33,7 +33,7 @@
   </div>
 </template>
 
-<script type="text/babel">
+<script>
 import vcodeImage from '../assets/images/vcode.jpg'
 
 export default {

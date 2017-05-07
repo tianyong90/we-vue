@@ -11,7 +11,7 @@
   </header>
 </template>
 
-<script type="text/babel">
+<script>
   export default {
     name: 'wv-header',
 
@@ -67,4 +67,7 @@
       top: 0;
     }
   }
+</style>
+
+<style scoped lang="scss">
 </style>

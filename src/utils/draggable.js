@@ -1,5 +1,5 @@
-let isDragging = false
 import Vue from 'vue'
+let isDragging = false
 const supportTouch = !Vue.prototype.$isServer && 'ontouchstart' in window
 
 export default function (element, options) {

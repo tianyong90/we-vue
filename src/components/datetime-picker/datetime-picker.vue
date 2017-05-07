@@ -2,7 +2,7 @@
   <wv-picker></wv-picker>
 </template>
 
-<script type="text/babel">
+<script>
 
   export default {
     name: 'wv-datetime-picker',
@@ -30,3 +30,6 @@
     }
   }
 </script>
+
+<style scoped lang="scss">
+</style>
