@@ -18,14 +18,19 @@
     </div>
     <div class="weui-cell__ft">
       <wv-icon type="warn" v-if="!novalidate && !valid"></wv-icon>
-
       <slot name="ft"></slot>
     </div>
   </div>
 </template>
 
 <script>
+  import icon from '../icon/index'
+
   export default {
+    components: {
+      [icon.name]: icon
+    },
+
     name: 'wv-input',
 
     props: {
