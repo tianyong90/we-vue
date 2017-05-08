@@ -39,7 +39,7 @@ import TopTips from './components/top-tips/index'
 // import '../src/assets/font/iconfont.css'
 import 'weui/dist/style/weui.min.css'
 
-const version = '1.2.1'
+const version = '1.3.0'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
