@@ -14,18 +14,14 @@ cooking.set({
   },
   clean: true,
   hash: true,
-  publicPath: '/we-vue/',
+  publicPath: '/',
   assetsPath: 'static',
   urlLoaderLimit: 10000,
   extractCSS: true,
   sourceMap: true,
   extends: ['vue2', 'lint', 'sass', 'autoprefixer'],
   alias: config.alias,
-  externals: process.env.NODE_ENV === 'production' ? {
-    vue: 'Vue',
-    'vue-router': 'VueRouter',
-    'fastclick': 'FastClick'
-  } : {}
+  externals: {}
 });
 
 cooking.add('loader.js.exclude', config.jsexclude);
