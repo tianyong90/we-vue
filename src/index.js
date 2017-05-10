@@ -2,6 +2,7 @@ import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
 import CellSwipe from './components/cell-swipe/index'
+import CellSwipeButton from './components/cell-swipe-button/index'
 import Input from './components/input/index'
 import Textarea from './components/textarea/index'
 import Badge from './components/badge/index'
@@ -23,12 +24,15 @@ import Toast from './components/toast/index'
 import Dialog from './components/dialog/index'
 import Indicator from './components/indicator/index'
 import Grid from './components/grid/index'
+import GridItem from './components/grid-item/index'
 import Flex from './components/flex/index'
 import FlexItem from './components/flex-item/index'
 import Icon from './components/icon/index'
 import Swipe from './components/swipe/index'
 import SwipeItem from './components/swipe-item/index'
 import Popup from './components/popup/index'
+import Panel from './components/panel/index'
+import MediaBox from './components/media-box/index'
 import Picker from './components/picker/index'
 import DatetimePicker from './components/datetime-picker/index'
 import Lazyload from './components/lazyload/index'
@@ -47,6 +51,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
   Vue.component(CellSwipe.name, CellSwipe)
+  Vue.component(CellSwipeButton.name, CellSwipeButton)
   Vue.component(Input.name, Input)
   Vue.component(Textarea.name, Textarea)
   Vue.component(Badge.name, Badge)
@@ -65,12 +70,15 @@ const install = function (Vue, config = {}) {
   Vue.component(Progress.name, Progress)
   Vue.component(Circle.name, Circle)
   Vue.component(Grid.name, Grid)
+  Vue.component(GridItem.name, GridItem)
   Vue.component(Flex.name, Flex)
   Vue.component(FlexItem.name, FlexItem)
   Vue.component(Icon.name, Icon)
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(Popup.name, Popup)
+  Vue.component(Panel.name, Panel)
+  Vue.component(MediaBox.name, MediaBox)
   Vue.component(Picker.name, Picker)
   Vue.component(DatetimePicker.name, DatetimePicker)
   Vue.component(Preview.name, Preview)
@@ -101,6 +109,7 @@ export default {
   Group,
   Cell,
   CellSwipe,
+  CellSwipeButton,
   Input,
   Textarea,
   Badge,
@@ -122,12 +131,15 @@ export default {
   Dialog,
   Indicator,
   Grid,
+  GridItem,
   Flex,
   FlexItem,
   Icon,
   Swipe,
   SwipeItem,
   Popup,
+  Panel,
+  MediaBox,
   Picker,
   DatetimePicker,
   Lazyload,
