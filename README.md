@@ -1,11 +1,21 @@
-# we-vue
+<p align="center">
+  <img width="120" height="120" src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/logo.png">
+</p>
 
 [![npm](https://img.shields.io/npm/v/we-vue.svg?maxAge=3600)](https://www.npmjs.com/package/we-vue)
 [![downloads](https://img.shields.io/npm/dt/we-vue.svg)](https://npmjs.org/package/we-vue)
 
 we-vue 结合 vue2.0 强大的组件化机制和 weui 的微信官方视觉样式，形成了一套灵活的组件，适用于微信公众号等移动端开发。
 
-**欢迎贡献代码或者提出宝贵建议。暂时没有相关文档，文档工作将在组件定型之后开始,在此期间可自行参考示例代码。**
+## [中文文档](http://wevue.org)
+
+## Demo
+
+<p align="center">
+  <a href="http://demo.wevue.org">
+    <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode.png">
+  </a>
+</p>
 
 ## 安装
 
@@ -20,14 +30,6 @@ yarn
 ```shell
 yarn add we-vue -S
 ```
-
-## Demo
-
-<p align="center">
-  <a href="http://wevue.org">
-    <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode.png">
-  </a>
-</p>
 
 ## 开发
 
