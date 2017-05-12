@@ -4,6 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/we-vue.svg?maxAge=3600)](https://www.npmjs.com/package/we-vue)
 [![downloads](https://img.shields.io/npm/dt/we-vue.svg)](https://npmjs.org/package/we-vue)
+[![travisci](https://travis-ci.org/tianyong90/we-vue.svg?branch=master)](https://travis-ci.org/tianyong90/we-vue)
 
 we-vue 结合 vue2.0 强大的组件化机制和 weui 的微信官方视觉样式，形成了一套灵活的组件，适用于微信公众号等移动端开发。
 
@@ -57,7 +58,7 @@ cd we-vue && npm install
 npm run dev
 ```
 
-> 完成以上步骤后将在浏览器里打开组件示例页面，修改代码保存后会自动完成热加载无需手动刷新
+> 完成以上步骤后在浏览器里打开组件示例页面，修改代码保存后会自动完成热加载无需手动刷新
 
 **开发过程中请勿进行构建(勿运行 build 相关命令)，请遵守代码规范，通过 Eslint 语法检查**
 
