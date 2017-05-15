@@ -8,7 +8,13 @@
 </template>
 
 <script>
+  import WvIcon from '../icon/index'
+
   export default {
+    components: {
+      WvIcon
+    },
+
     props: {
       visible: {
         default: true
