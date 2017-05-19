@@ -2,14 +2,14 @@
   <div class="page">
     <wv-search placeholder="搜索组件" v-model="keyword" :result="filterResult">
       <wv-group v-show="keyword">
-        <wv-cell v-for="item in filterResult" :title="item.name" :to="item.path" is-link>
+        <wv-cell v-for="item in filterResult" :key="item" :title="item.name" :to="item.path" is-link>
           <i class="cell-icon iconfont" :class="'icon-' + item.icon" slot="icon"></i>
         </wv-cell>
       </wv-group>
     </wv-search>
 
-    <wv-group :title="navGroup.groupTitle" v-for="navGroup in navs">
-      <wv-cell v-for="nav in navGroup.navItems" :to="nav.path" is-link :title="nav.name">
+    <wv-group :title="navGroup.groupTitle" v-for="navGroup in navs" :key="navGroup">
+      <wv-cell v-for="nav in navGroup.navItems" :key="nav" :to="nav.path" is-link :title="nav.name">
         <i class="cell-icon iconfont" :class="'icon-' + nav.icon" slot="icon"></i>
         <wv-badge slot="ft" v-if="nav.status === 'todo'">Todo</wv-badge>
       </wv-cell>

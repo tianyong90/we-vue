@@ -1,14 +1,14 @@
 <template>
   <div class="page page-with-padding">
     <ul class="icon-list-big">
-      <li v-for="type in iconTypes">
-        <wv-icon class="demo-icon-large" type="icon" :type="type" :large="true"></wv-icon>
+      <li v-for="type in iconTypes" :key="type">
+        <wv-icon class="demo-icon-large" :type="type" :large="true"></wv-icon>
         <label class="label" v-text="type"></label>
       </li>
     </ul>
 
     <div class="icon-list-small">
-      <wv-icon :type="type" v-for="type in iconTypes"></wv-icon>
+      <wv-icon :type="type" v-for="type in iconTypes" :key="type"></wv-icon>
     </div>
   </div>
 </template>

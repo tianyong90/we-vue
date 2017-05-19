@@ -20,7 +20,7 @@
 
     <slot>
       <div class="weui-cells searchbar-result" v-show="show || currentValue">
-        <XCell v-for="item in result" :title="item"></XCell>
+        <XCell v-for="item in result" :key="item" :title="item"></XCell>
       </div>
     </slot>
   </div>
