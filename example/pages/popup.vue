@@ -1,9 +1,9 @@
 <template>
   <div class="page-with-padding">
-    <wv-button type="default" @click.native="popupVisible1 = true">默认弹出层</wv-button>
-    <wv-button type="default" @click.native="popupVisible1 = true; height = 300">默认弹出层（指定高度为 300px）</wv-button>
-    <wv-button type="default" @click.native="popupVisible2 = true">弹出层（点击遮罩层不关闭）</wv-button>
-    <wv-button type="default" @click.native="popupVisible3 = true">弹出层（自定义遮罩背景色）</wv-button>
+    <wv-button type="default" @click="popupVisible1 = true">默认弹出层</wv-button>
+    <wv-button type="default" @click="popupVisible1 = true; height = 300">默认弹出层（指定高度为 300px）</wv-button>
+    <wv-button type="default" @click="popupVisible2 = true">弹出层（点击遮罩层不关闭）</wv-button>
+    <wv-button type="default" @click="popupVisible3 = true">弹出层（自定义遮罩背景色）</wv-button>
 
     <wv-popup v-model="popupVisible1" @show="onShow" @hide="onHide" :height="height" background-color="white">
       <wv-group>

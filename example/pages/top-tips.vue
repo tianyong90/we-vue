@@ -1,6 +1,6 @@
 <template>
   <div class="page-with-padding">
-    <wv-button type="primary" @click.native="showTips">显示提示 (5S)</wv-button>
+    <wv-button type="primary" @click="showTips">显示提示 (5S)</wv-button>
   </div>
 </template>
 

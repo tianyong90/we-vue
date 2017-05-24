@@ -1,8 +1,8 @@
 <template>
   <div class="page page-with-padding">
     <div class="buttons">
-      <wv-button type="default" @click.native="showActionsheet('ios')">iOS ActionSheet</wv-button>
-      <wv-button type="default" @click.native="showActionsheet('android')">Android ActionSheet</wv-button>
+      <wv-button type="default" @click="showActionsheet('ios')">iOS ActionSheet</wv-button>
+      <wv-button type="default" @click="showActionsheet('android')">Android ActionSheet</wv-button>
     </div>
 
     <wv-actionsheet :type="type" title="<h3 style='color: red;'>一个大标题</h3><p>最多两行</p>" :actions="actions" cancel-text="取消" v-model="sheetVisible"></wv-actionsheet>
