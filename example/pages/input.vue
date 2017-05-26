@@ -22,7 +22,7 @@
       <wv-input placeholder="请输入内容" v-model="valueText"></wv-input>
     </wv-group>
 
-    <wv-group title="缝合示例">
+    <wv-group title="综合示例">
       <wv-input label="短信验证码" placeholder="请输入验证码" v-model="captcha">
         <button class="weui-vcode-btn" slot="ft">获取验证码</button >
       </wv-input>
