@@ -2,6 +2,7 @@
   <button
     class="weui-btn"
     :class="classObject"
+    @click="handleClick"
     :disabled="disabled">
     <i class="weui-loading" v-if="isLoading"></i>
     <slot></slot>
@@ -23,11 +24,11 @@
       plain: Boolean
     },
 
-//    methods: {
-//      handleClick ($event) {
-//        $event.preventDefault()
-//      }
-//    },
+    methods: {
+      handleClick (event) {
+        this.$emit('click', event)
+      }
+    },
 
     computed: {
       classObject: function () {

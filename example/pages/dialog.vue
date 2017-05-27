@@ -1,9 +1,9 @@
 <template>
   <div class="page page-with-padding buttons">
-    <wv-button type="default" @click.native="showDialog('ios', '窗口标题')">iOS Dialog 有标题</wv-button>
-    <wv-button type="default" @click.native="showDialog('ios')">iOS Dialog 无标题</wv-button>
-    <wv-button type="default" @click.native="showDialog('android', '窗口标题')">Android Dialog 有标题</wv-button>
-    <wv-button type="default" @click.native="showDialog('android')">Android Dialog 无标题</wv-button>
+    <wv-button type="default" @click="showDialog('ios', '窗口标题')">iOS Dialog 有标题</wv-button>
+    <wv-button type="default" @click="showDialog('ios')">iOS Dialog 无标题</wv-button>
+    <wv-button type="default" @click="showDialog('android', '窗口标题')">Android Dialog 有标题</wv-button>
+    <wv-button type="default" @click="showDialog('android')">Android Dialog 无标题</wv-button>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="page page-with-padding">
     <div class="buttons">
-      <wv-button type="primary" @click.native="openIndicator">显示加载指示</wv-button>
+      <wv-button type="primary" @click="openIndicator">显示加载指示</wv-button>
     </div>
   </div>
 </template>
