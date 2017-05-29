@@ -4,7 +4,7 @@
       <h1 class="page__title">{{ $route.meta.title }}</h1>
       <p class="page__desc">{{ $route.meta.description }}</p>
     </div>
-    <transition name="fade" mode="out-in">
+    <transition :name="$root.transitionName" mode="out-in">
       <router-view></router-view>
     </transition>
   </div>

@@ -41,6 +41,12 @@ new Vue({
 
   store,
 
+  data () {
+    return {
+      transitionName: ''
+    }
+  },
+
   computed: {
     ...mapState({
       isLoading: state => state.isLoading
@@ -48,8 +54,8 @@ new Vue({
   },
 
   watch: {
-    'isLoading': (value) => {
-      console.log(value)
+    '$route' (to, from) {
+      this.transitionName = from.name === 'index' ? 'slide-right' : 'slide-left'
     }
   }
 })
