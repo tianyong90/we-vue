@@ -43,7 +43,7 @@ new Vue({
 
   data () {
     return {
-      transitionName: ''
+      transitionName: 'slide-left'
     }
   },
 
