@@ -1,5 +1,5 @@
 <template>
-  <i class="weui-loading" style="{ 'color': color }"></i>
+  <i class="weui-loading" style="{ 'fontSize': size + 'px', 'color': color }"></i>
 </template>
 
 <script>
@@ -7,10 +7,17 @@
     name: 'wv-spinner',
 
     props: {
-      type: String,
+      type: {
+        type: String,
+        default: 'default'
+      },
+      size: {
+        type: Number,
+        default: 28
+      },
       color: {
         type: String,
-        default: 'lightgrey'
+        default: '#ccc'
       }
     }
   }

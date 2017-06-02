@@ -8,7 +8,6 @@ cooking.set({
   dist: './lib/',
   clean: false,
   template: false,
-  minimize: false,
   format: 'cjs',
   extractCSS: '[name]/style.css',
   extends: ['vue2', 'lint', 'sass', 'autoprefixer'],
