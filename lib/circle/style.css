@@ -1,14 +1,1 @@
-
-.wv-circle[data-v-12ab642a] {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.wv-circle .wv-circle-content[data-v-12ab642a] {
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
+.wv-circle[data-v-12ab642a]{position:relative;width:100%;height:100%}.wv-circle .wv-circle-content[data-v-12ab642a]{width:100%;text-align:center;position:absolute;left:0;top:50%;transform:translateY(-50%)}

@@ -1,8 +1,1 @@
-
-.actionsheet__mask_show[data-v-4095c8bf] {
-  display: block;
-  transform-origin: 0px 0px 0px;
-  opacity: 1;
-  transform: scale(1, 1);
-  background-color: rgba(0, 0, 0, 0.6);
-}
+.actionsheet__mask_show[data-v-4095c8bf]{display:block;transform-origin:0 0 0;opacity:1;transform:scale(1);background-color:rgba(0,0,0,.6)}
