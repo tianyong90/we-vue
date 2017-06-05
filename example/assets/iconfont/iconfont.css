@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1485332108149'); /* IE9*/
-  src: url('iconfont.eot?t=1485332108149#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1485332108149') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1485332108149') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1485332108149#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1496571699374'); /* IE9*/
+  src: url('iconfont.eot?t=1496571699374#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1496571699374') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1496571699374') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1496571699374#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -67,6 +67,8 @@
 
 .icon-yduiindexbadge:before { content: "\e710"; }
 
+.icon-view:before { content: "\e7fc"; }
+
 .icon-refreshindicatordark2x:before { content: "\e60b"; }
 
 .icon-icon7:before { content: "\e637"; }
@@ -78,4 +80,6 @@
 .icon-icon_status-progress-circle:before { content: "\e63b"; }
 
 .icon-amy-ui-textarea:before { content: "\ed92"; }
+
+.icon-rubish:before { content: "\e60f"; }
 

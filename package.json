@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "css3transform": "^1.1.4",
-    "weui": "^1.1.2",
-    "vue-lazyload": "^1.0.1"
+    "vue-lazyload": "^1.0.4",
+    "weui": "^1.1.2"
   },
   "peerDependencies": {
     "vue": "^2.2.1"

@@ -54,9 +54,14 @@
       }
     },
 
+    mounted () {
+      // 处理在 cell-swipe 中的点击事件
+      this.$on('CLICK_IN_CELLSWIPE', this.handleClick)
+    },
+
     methods: {
-      handleClick ($event) {
-        $event.preventDefault()
+      handleClick (event) {
+        event.preventDefault()
         this.$router.push(this.href)
       }
     }

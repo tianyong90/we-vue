@@ -1,18 +1,48 @@
 <template>
   <div class="page">
-    <wv-group title="向左滑动呼出按钮">
+    <wv-group title="默认">
       <wv-cell-swipe title="标题文字" :value="true">
-        <wv-cell-swipe-button type="warn" slot="right" @click="deleteClicked">删除</wv-cell-swipe-button>
-        <wv-cell-swipe-button type="default" slot="right" @click="readClicked">查看</wv-cell-swipe-button>
+        <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</wv-cell-swipe-button>
+        <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</wv-cell-swipe-button>
+      </wv-cell-swipe>
+    </wv-group>
+
+    <wv-group title="图标按钮">
+      <wv-cell-swipe title="标题文字" :value="true">
+        <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">
+          <i class="iconfont icon-rubish"></i>
+        </wv-cell-swipe-button>
+        <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">
+          <i class="iconfont icon-view"></i>
+        </wv-cell-swipe-button>
+      </wv-cell-swipe>
+    </wv-group>
+
+    <wv-group title="左侧带图标">
+      <wv-cell-swipe title="标题文字">
+        <img :src="imgIcon" slot="icon" class="cell-icon">
+        <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</wv-cell-swipe-button>
+        <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</wv-cell-swipe-button>
+      </wv-cell-swipe>
+    </wv-group>
+
+    <wv-group title="可跳转">
+      <wv-cell-swipe title="标题文字" is-link to="/">
+        <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</wv-cell-swipe-button>
+        <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</wv-cell-swipe-button>
       </wv-cell-swipe>
     </wv-group>
   </div>
 </template>
 
 <script>
+  import imgIcon from '../assets/images/icon_tabbar.png'
+
   export default {
     data () {
-      return {}
+      return {
+        imgIcon
+      }
     },
 
     methods: {
