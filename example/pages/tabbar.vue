@@ -5,7 +5,7 @@
         <img class="weui-tabbar__icon" :src="thumbSmall" slot="icon">
         <wv-badge style="position: absolute;top: -2px;right: -13px;">8</wv-badge>
       </span>
-       微信
+      微信
     </wv-tabbar-item>
     <wv-tabbar-item to="/tabbar">
       <img class="weui-tabbar__icon" :src="thumbSmall" slot="icon"> 通讯录
@@ -15,7 +15,7 @@
         <img class="weui-tabbar__icon" :src="thumbSmall" slot="icon">
         <wv-badge is-dot style="position: absolute;top: 0;right: -6px;">8</wv-badge>
       </span>
-       发现
+      发现
     </wv-tabbar-item>
     <wv-tabbar-item to="/profile">
       <img class="weui-tabbar__icon" :src="thumbSmall" slot="icon"> 我

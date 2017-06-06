@@ -1,10 +1,12 @@
 <template>
-	<div class="page-with-padding">
-		<wv-circle class="circle-1" :line-width="3" value="12">12 %</wv-circle>
-		<wv-circle class="circle-1" :line-width="5" fill-color="yellow" value="12">12 %</wv-circle>
+  <div class="page-with-padding">
+    <wv-circle class="circle-1" :line-width="3" value="12">12 %</wv-circle>
+    <wv-circle class="circle-1" :line-width="5" fill-color="yellow" value="12">12 %</wv-circle>
     <wv-slider v-model="sliderValue"></wv-slider>
-    <wv-circle class="circle-2" :line-width="10" stroke-color="red" v-model="sliderValue" :diameter="200">{{ sliderValue }}%</wv-circle>
-	</div>
+    <wv-circle class="circle-2" :line-width="10" stroke-color="red" v-model="sliderValue" :diameter="200">{{ sliderValue
+      }}%
+    </wv-circle>
+  </div>
 </template>
 
 <script>

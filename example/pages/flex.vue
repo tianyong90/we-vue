@@ -42,18 +42,16 @@
 </template>
 
 <script>
-export default {
-  mounted () {
-  },
+  export default {
+    mounted () {
+    },
 
-  data () {
-    return {
-    }
-  },
+    data () {
+      return {}
+    },
 
-  methods: {
+    methods: {}
   }
-}
 </script>
 
 <style scoped lang="scss">

@@ -14,24 +14,24 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      iconTypes: [
-        'success',
-        'info',
-        'warn',
-        'waiting',
-        'success-no-circle',
-        'circle',
-        'info-circle',
-        'download',
-        'cancel',
-        'search'
-      ]
+  export default {
+    data () {
+      return {
+        iconTypes: [
+          'success',
+          'info',
+          'warn',
+          'waiting',
+          'success-no-circle',
+          'circle',
+          'info-circle',
+          'download',
+          'cancel',
+          'search'
+        ]
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

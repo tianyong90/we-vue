@@ -7,19 +7,19 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      selected: 'item1'
-    }
-  },
+  export default {
+    data () {
+      return {
+        selected: 'item1'
+      }
+    },
 
-  methods: {
-    changed (e) {
-      console.log(e)
+    methods: {
+      changed (e) {
+        console.log(e)
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

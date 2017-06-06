@@ -6,13 +6,13 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      percent: 55
+  export default {
+    data () {
+      return {
+        percent: 55
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

@@ -5,16 +5,16 @@
 </template>
 
 <script>
-import TopTips from '../../src/components/top-tips'
+  import TopTips from '../../src/components/top-tips'
 
-export default {
-  methods: {
-    showTips () {
-      TopTips({
-        message: '提示信息',
-        duration: 5000
-      })
+  export default {
+    methods: {
+      showTips () {
+        TopTips({
+          message: '提示信息',
+          duration: 5000
+        })
+      }
     }
   }
-}
 </script>

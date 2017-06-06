@@ -1,5 +1,5 @@
 <template>
-	<div class="page">
+  <div class="page">
     <wv-header title="wevue" @headerClick="onHeaderClick">
     </wv-header>
 
@@ -17,17 +17,17 @@
         <i class="iconfont icon-menu" @click="$router.push('/')"></i>
       </div>
     </wv-header>
-	</div>
+  </div>
 </template>
 
 <script>
-export default {
-  methods: {
-    onHeaderClick () {
-      console.log('header clicked')
+  export default {
+    methods: {
+      onHeaderClick () {
+        console.log('header clicked')
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

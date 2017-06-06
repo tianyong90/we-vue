@@ -24,7 +24,7 @@
 
     <wv-group title="综合示例">
       <wv-input label="短信验证码" placeholder="请输入验证码" v-model="captcha">
-        <button class="weui-vcode-btn" slot="ft">获取验证码</button >
+        <button class="weui-vcode-btn" slot="ft">获取验证码</button>
       </wv-input>
       <wv-input label="验证码" class="weui-cell_vcode" placeholder="请输入验证码" v-model="vcode">
         <img :src="vcodeImage" class="vcode" slot="ft"/>
@@ -34,18 +34,18 @@
 </template>
 
 <script>
-import vcodeImage from '../assets/images/vcode.jpg'
+  import vcodeImage from '../assets/images/vcode.jpg'
 
-export default {
-  data () {
-    return {
-      valueText: 'hello we-vue',
-      valueNumber: '',
-      valueReadonly: '内容是只读的',
-      captcha: '',
-      vcode: '',
-      vcodeImage
+  export default {
+    data () {
+      return {
+        valueText: 'hello we-vue',
+        valueNumber: '',
+        valueReadonly: '内容是只读的',
+        captcha: '',
+        vcode: '',
+        vcodeImage
+      }
     }
   }
-}
 </script>

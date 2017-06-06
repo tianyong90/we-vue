@@ -36,19 +36,19 @@
 </template>
 
 <script>
-import thumb from '../assets/images/wevue_placeholder.png'
-import thumbSmall from '../assets/images/icon_tabbar.png'
-const description = 'we-vue 是一套丰富灵活的组件包，结合了 vue.js 易用的组件机制和 weui 的官方视觉样式……'
+  import thumb from '../assets/images/wevue_placeholder.png'
+  import thumbSmall from '../assets/images/icon_tabbar.png'
+  const description = 'we-vue 是一套丰富灵活的组件包，结合了 vue.js 易用的组件机制和 weui 的官方视觉样式……'
 
-export default {
-  data () {
-    return {
-      thumb,
-      thumbSmall,
-      description
+  export default {
+    data () {
+      return {
+        thumb,
+        thumbSmall,
+        description
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

@@ -32,25 +32,25 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      height: 'auto',
-      popupVisible1: false,
-      popupVisible2: false,
-      popupVisible3: false
-    }
-  },
-
-  methods: {
-    onShow () {
-      console.log('shown')
+  export default {
+    data () {
+      return {
+        height: 'auto',
+        popupVisible1: false,
+        popupVisible2: false,
+        popupVisible3: false
+      }
     },
 
-    onHide () {
-      this.height = 'auto'
-      console.log('hidden')
+    methods: {
+      onShow () {
+        console.log('shown')
+      },
+
+      onHide () {
+        this.height = 'auto'
+        console.log('hidden')
+      }
     }
   }
-}
 </script>

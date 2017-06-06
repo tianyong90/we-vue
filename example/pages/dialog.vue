@@ -8,24 +8,24 @@
 </template>
 
 <script>
-import Dialog from '../../src/components/dialog'
+  import Dialog from '../../src/components/dialog'
 
-export default {
-  methods: {
-    doSomething () {
-      console.log('hello')
-    },
-
-    showDialog (skin, title) {
-      Dialog({
-        title: title,
-        message: 'hello world',
-        skin
+  export default {
+    methods: {
+      doSomething () {
+        console.log('hello')
       },
-      this.doSomething)
+
+      showDialog (skin, title) {
+        Dialog({
+            title: title,
+            message: 'hello world',
+            skin
+          },
+          this.doSomething)
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

@@ -15,12 +15,12 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      content1: '',
-      content2: null
+  export default {
+    data () {
+      return {
+        content1: '',
+        content2: null
+      }
     }
   }
-}
 </script>

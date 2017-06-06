@@ -8,34 +8,34 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      links1: [
-        {
-          text: '底部链接',
-          link: '/'
-        }
-      ],
-      links2: [
-        {
-          text: '底部链接',
-          link: '/footer'
-        },
-        {
-          text: '底部链接',
-          link: '/footer'
-        }
-      ],
-      links3: [
-        {
-          text: '返回首页',
-          link: '/'
-        }
-      ]
+  export default {
+    data () {
+      return {
+        links1: [
+          {
+            text: '底部链接',
+            link: '/'
+          }
+        ],
+        links2: [
+          {
+            text: '底部链接',
+            link: '/footer'
+          },
+          {
+            text: '底部链接',
+            link: '/footer'
+          }
+        ],
+        links3: [
+          {
+            text: '返回首页',
+            link: '/'
+          }
+        ]
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

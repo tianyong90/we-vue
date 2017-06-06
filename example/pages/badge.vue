@@ -1,5 +1,5 @@
 <template>
-	<div class="page">
+  <div class="page">
     <wv-group title="新消息提示跟摘要信息后，统一在列表右侧">
       <wv-cell title="单行列表" is-link>
         <span slot="ft" style="vertical-align: middle; font-size: 17px;">详细信息</span>
@@ -31,17 +31,17 @@
         <wv-badge slot="bd" style="margin-left: 5px;">New</wv-badge>
       </wv-cell>
     </wv-group>
-	</div>
+  </div>
 </template>
 
 <script>
-import thumb from '../assets/images/wevue_placeholder.png'
+  import thumb from '../assets/images/wevue_placeholder.png'
 
-export default {
-  data () {
-    return {
-      thumb
+  export default {
+    data () {
+      return {
+        thumb
+      }
     }
   }
-}
 </script>
