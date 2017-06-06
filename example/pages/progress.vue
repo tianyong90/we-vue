@@ -1,42 +1,48 @@
 <template>
-	<div class="page-with-padding">
-		<wv-progress :percent="percent1" :show-clear="false"></wv-progress>
-		<wv-progress :percent="percent2"></wv-progress>
-		<wv-progress percent="10"></wv-progress>
+  <div class="page-with-padding">
+    <wv-progress :percent="percent1" :show-clear="false"></wv-progress>
+    <wv-progress :percent="percent2" @cancel="onCancel"></wv-progress>
+    <wv-progress percent="10"></wv-progress>
 
-		<wv-button type="primary" @click="upload">上传</wv-button>
-	</div>
+    <wv-button type="primary" @click="upload">上传</wv-button>
+  </div>
 </template>
 
 <script>
-export default {
-  mounted () {
-  },
+  import Toast from '../../src/components/toast'
 
-  data () {
-    return {
-      percent1: 35,
-      percent2: 0
-    }
-  },
+  export default {
+    data () {
+      return {
+        percent1: 35,
+        percent2: 0
+      }
+    },
 
-  methods: {
-    upload () {
-      let temp = 0
+    methods: {
+      upload () {
+        let temp = 0
 
-      let ticker = setInterval(() => {
-        temp++
+        let ticker = setInterval(() => {
+          temp++
 
-        this.percent1 = temp
-        this.percent2 = temp
+          this.percent1 = temp
+          this.percent2 = temp
 
-        if (temp >= 100) {
-          clearInterval(ticker)
-        }
-      }, 10)
+          if (temp >= 100) {
+            clearInterval(ticker)
+          }
+        }, 10)
+      },
+
+      onCancel () {
+        Toast({
+          message: 'canceled',
+          type: 'text'
+        })
+      }
     }
   }
-}
 </script>
 
 <style scoped lang="scss">

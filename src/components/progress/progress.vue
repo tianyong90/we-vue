@@ -3,9 +3,9 @@
     <div class="weui-progress__bar">
       <div class="weui-progress__inner-bar js_progress" :style="{width: percent + '%'}"></div>
     </div>
-    <a v-if="showClear" href="javascript:;" class="weui-progress__opr">
-      <i class="weui-icon-cancel"></i>
-    </a>
+    <span v-if="showClear" class="weui-progress__opr">
+      <i class="weui-icon-cancel" @click="onCancelClick"></i>
+    </span>
   </div>
 </template>
 
@@ -20,6 +20,13 @@
       showClear: {
         type: Boolean,
         default: true
+      }
+    },
+
+    methods: {
+      onCancelClick (event) {
+        event.preventDefault()
+        this.$emit('cancel', this)
       }
     }
   }
