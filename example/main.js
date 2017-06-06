@@ -9,12 +9,12 @@ import store from './store/index.js'
 import routes from './route/index.js'
 import { mapState } from 'vuex'
 
+Vue.use(VueRouter)
+Vue.use(WeVue)
+
 document.addEventListener('DOMContentLoaded', function () {
   if (FastClick) FastClick.attach(document.body)
 }, false)
-
-Vue.use(VueRouter)
-Vue.use(WeVue)
 
 const router = new VueRouter({
   mode: 'history',

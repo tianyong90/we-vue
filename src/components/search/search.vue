@@ -4,34 +4,34 @@
       <div class="weui-search-bar__form">
         <div class="weui-search-bar__box">
           <i class="weui-icon-search"></i>
-          <input type="text" class="weui-search-bar__input" :placeholder="placeholder" v-model="currentValue"
-                 ref="searchInput">
+          <input type="text" class="weui-search-bar__input" :placeholder="placeholder" v-model="currentValue" ref="searchInput">
           <a href="javascript:" class="weui-icon-clear" @click="searchClear"></a>
         </div>
-        <label class="weui-search-bar__label" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);"
-               @click="textClick" v-show="!isActive">
+        <label class="weui-search-bar__label" @click="textClick" v-show="!isActive">
           <i class="weui-icon-search"></i>
           <span v-text="placeholder"></span>
         </label>
       </div>
-      <a href="javascript:" class="weui-search-bar__cancel-btn" @click="searchCancel" v-show="isActive"
-         style="display: block;" v-text="cancelText"></a>
+      <a href="javascript:" class="weui-search-bar__cancel-btn" @click="searchCancel" v-show="isActive" v-text="cancelText"></a>
     </div>
 
     <slot>
       <div class="weui-cells searchbar-result" v-show="show || currentValue">
-        <XCell v-for="item in result" :key="item" :title="item"></XCell>
+        <wv-cell v-for="item in result" :key="item" :title="item"></wv-cell>
       </div>
     </slot>
   </div>
 </template>
 
 <script>
-  import XGroup from '../group/index.js'
-  import XCell from '../cell/index.js'
+  import Cell from '../cell/index'
 
   export default {
     name: 'wv-search',
+
+    components: {
+      Cell
+    },
 
     props: {
       value: String,
@@ -48,11 +48,6 @@
       result: Array
     },
 
-    components: {
-      XGroup,
-      XCell
-    },
-
     data () {
       return {
         isActive: false,
@@ -62,6 +57,7 @@
 
     mounted () {
       if (this.autofocus) {
+        console.log('fuck')
         this.$refs.searchInput.focus()
         this.isActive = true
       }
@@ -99,6 +95,16 @@
 </script>
 
 <style scoped lang="scss">
+  .weui-search-bar__label {
+    transform-origin: 0px 0px 0px;
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+
+  .weui-search-bar__cancel-btn {
+    display: block;
+  }
+
   .searchbar-result {
     display: block;
     transform-origin: 0px 0px 0px;
