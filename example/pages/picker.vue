@@ -5,7 +5,7 @@
       <wv-cell title="多列选择器" :value="pickerValue1" is-link @click.native="pickerVisible2 = true"></wv-cell>
     </wv-group>
 
-    <wv-picker v-model="pickerVisible1" :slots="slots1"></wv-picker>
+    <wv-picker v-model="pickerVisible1" :slots="slots1" @change="onChange"></wv-picker>
     <wv-picker v-model="pickerVisible2" :slots="slots2"></wv-picker>
   </div>
 </template>
@@ -55,7 +55,15 @@
       }
     },
 
-    methods: {}
+    methods: {
+      onChange (picker, value) {
+        console.log(picker.getSlotValues(0))
+
+//        picker.setValues(['火车票'])
+//        console.log(picker)
+//        console.log(value)
+      }
+    }
   }
 </script>
 
