@@ -19,7 +19,6 @@ const registerRoute = (groups) => {
           }
         })
       } catch (e) {
-        console.error(e)
         nav.disabled = true
       }
     })
@@ -45,7 +44,7 @@ routes.push({
   component: require('../pages/404.vue'),
   name: '404',
   meta: {
-    title: '',
+    title: '404 Not Found',
     description: ''
   }
 })
