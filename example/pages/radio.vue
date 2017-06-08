@@ -13,15 +13,15 @@
           label: 'label1',
           value: 'value1'
         },
-          {
-            label: 'label2',
-            value: 'value2'
-          },
-          {
-            label: 'label3 (disabled)',
-            value: 'value3',
-            disabled: true
-          }]
+        {
+          label: 'label2',
+          value: 'value2'
+        },
+        {
+          label: 'label3 (disabled)',
+          value: 'value3',
+          disabled: true
+        }]
       }
     },
 

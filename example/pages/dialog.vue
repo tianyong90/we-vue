@@ -18,11 +18,11 @@
 
       showDialog (skin, title) {
         Dialog({
-            title: title,
-            message: 'hello world',
-            skin
-          },
-          this.doSomething)
+          title: title,
+          message: 'hello world',
+          skin
+        },
+        this.doSomething)
       }
     }
   }
