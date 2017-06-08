@@ -14,6 +14,7 @@
 <script>
   import draggable from '../../utils/draggable.js'
   import Transform from 'css3transform'
+  import dispatch from '../../mixins/dispatch'
 
   // 每个选项高度
   const ITEM_HEIGHT = 34
@@ -23,13 +24,22 @@
   export default {
     name: 'wv-picker-slot',
 
+    mixins: [dispatch],
+
     props: {
       values: {
         type: Array,
-        default: []
+        default () {
+          return []
+        }
       },
       value: {},
-      valueKey: String
+      valueKey: String,
+      defaultIndex: {
+        type: Number,
+        default: 0,
+        required: false
+      }
     },
 
     created () {
@@ -39,8 +49,8 @@
     data () {
       return {
         isDragging: false,
-        mutatingValues: this.values,
-        currentValue: this.value
+        currentValue: this.value,
+        mutatingValues: this.values
       }
     },
 
@@ -172,7 +182,9 @@
       currentValue (val) {
         this.onValueChange()
         this.$emit('input', val)
-        // this.dispatch('picker', 'slotValueChange', this)
+        console.log(this.$parent)
+
+        this.dispatch('wv-picker', 'slotValueChange', this)
       }
     }
   }
