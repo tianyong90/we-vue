@@ -3,8 +3,8 @@
     <div class="weui-mask weui-animate-fade-in"></div>
     <div class="weui-picker weui-animate-slide-up">
       <div class="weui-picker__hd">
-        <a class="weui-picker__action" @click="cancel">{{ cancelText }}</a>
-        <a class="weui-picker__action" @click="confirm">{{ confirmText }}</a>
+        <a class="weui-picker__action" @click="cancel" v-text="cancelText"></a>
+        <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
       </div>
       <div class="weui-picker__bd">
         <wv-picker-slot v-for="slot in slots" :key="slot" :values="slot.values || []" :valueKey="valueKey"
