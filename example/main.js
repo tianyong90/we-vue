@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-router.afterEach((to, from) => {
+router.afterEach(() => {
   store.commit('UPDATE_LOADING', false)
 })
 
@@ -43,7 +43,7 @@ new Vue({
 
   data () {
     return {
-      transitionName: 'slide-left'
+      transitionName: 'slide-right'
     }
   },
 
@@ -55,7 +55,7 @@ new Vue({
 
   watch: {
     '$route' (to, from) {
-      this.transitionName = from.name === 'index' ? 'slide-right' : 'slide-left'
+      this.transitionName = from.name === 'index' ? 'slide-left' : 'slide-right'
     }
   }
 })
