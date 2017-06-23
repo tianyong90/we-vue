@@ -29,8 +29,8 @@
     "lint": "eslint src/**/*.js build/**/*.js --quiet"
   },
   "dependencies": {
-    "css3transform": "^1.1.4",
-    "vue-lazyload": "^1.0.4",
+    "css3transform": "^1.1.7",
+    "vue-lazyload": "^1.0.5",
     "weui": "^1.1.2"
   },
   "peerDependencies": {
@@ -53,13 +53,13 @@
     "eslint-config-defaults": "^9.0.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^2.0.7",
-    "eslint-loader": "^1.7.1",
+    "eslint-loader": "^1.8.0",
     "eslint-plugin-html": "^2.0.3",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "^2.0.1",
+    "eslint-plugin-vue": "^2.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "fastclick": "^1.0.6",
     "file-loader": "^0.9.0",
@@ -75,15 +75,15 @@
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "uppercamelcase": "^1.1.0",
-    "url-loader": "^0.5.7",
+    "url-loader": "^0.5.9",
     "vue": "^2.3.4",
     "vue-loader": "^12.2.1",
-    "vue-router": "^2.0.0",
+    "vue-router": "^2.6.0",
     "vue-template-compiler": "^2.3.4",
     "vue-template-es2015-compiler": "^1.4.2",
     "vuex": "^2.3.1",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5",
+    "webpack-dev-server": "^2.5.0",
     "webpack-shell-plugin": "^0.4.3"
   },
   "engines": {

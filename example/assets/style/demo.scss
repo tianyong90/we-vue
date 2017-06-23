@@ -33,3 +33,36 @@ img {
 .page-with-padding {
   padding: 0 .7rem;
 }
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  will-change: transform;
+  transition: all 250ms;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+.slide-left-enter {
+  opacity: 0;
+  transform: translateX(100%)
+}
+
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translateX(-100%)
+}
+
+.slide-right-enter {
+  opacity: 0;
+  transform: translateX(-100%)
+}
+
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translateX(100%)
+}

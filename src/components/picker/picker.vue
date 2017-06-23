@@ -1,5 +1,5 @@
 <template>
-  <div v-show="currentValue">
+  <div v-show="visible">
     <div class="weui-mask weui-animate-fade-in"></div>
     <div class="weui-picker weui-animate-slide-up">
       <div class="weui-picker__hd">
@@ -7,8 +7,7 @@
         <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
       </div>
       <div class="weui-picker__bd">
-        <wv-picker-slot v-for="slot in slots" :key="slot" :values="slot.values || []" :valueKey="valueKey"
-                        v-model="values[slot.valueIndex]"></wv-picker-slot>
+        <wv-picker-slot v-for="slot in slots" :key="slot" :values="slot.values || []" :valueKey="valueKey" v-model="values[slot.valueIndex]"></wv-picker-slot>
       </div>
     </div>
   </div>
@@ -34,15 +33,16 @@
         default: '取消'
       },
       slots: {
-        type: Array
+        type: Array,
+        required: true
       },
       valueKey: String,
-      value: Boolean
+      value: []
     },
 
     data () {
       return {
-        currentValue: this.value
+        visible: false
       }
     },
 
@@ -64,6 +64,10 @@
     },
 
     created () {
+      this.$on('update:show', (val) => {
+        console.log(val)
+        this.show = val
+      })
       this.$on('slotValueChange', this.slotValueChange)
       let slots = this.slots || []
       this.values = []
@@ -109,7 +113,7 @@
       setSlotValue (index, value) {
         let slot = this.getSlot(index)
         if (slot) {
-          slot.currentValue = value
+          slot.currentShow = value
         }
       },
 
@@ -145,22 +149,17 @@
       },
 
       cancel () {
-        this.currentValue = false
+        this.$emit('canceled', this)
+        this.visible = false
       },
 
       confirm () {
-        this.currentValue = false
+        this.$emit('confirmed', this)
+        this.visible = false
       }
     },
 
     watch: {
-      value (val) {
-        this.currentValue = val
-      },
-
-      currentValue (val) {
-        this.$emit('input', val)
-      }
     }
   }
 </script>

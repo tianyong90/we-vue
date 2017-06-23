@@ -1,12 +1,12 @@
 <template>
   <div class="page">
     <wv-group>
-      <wv-cell title="单列选择器" :value="pickerValue1" is-link @click.native="pickerVisible1 = true"></wv-cell>
-      <wv-cell title="多列选择器" :value="pickerValue1" is-link @click.native="pickerVisible2 = true"></wv-cell>
+      <wv-cell title="单列选择器" is-link @click.native="picker1Show = true"></wv-cell>
+      <wv-cell title="多列选择器" is-link @click.native="pickerVisible2 = true"></wv-cell>
     </wv-group>
 
-    <wv-picker v-model="pickerVisible1" :slots="slots1" @change="onChange"></wv-picker>
-    <wv-picker v-model="pickerVisible2" :slots="slots2"></wv-picker>
+    <wv-picker :show="picker1Show" :slots="slots1" @change="onChange"></wv-picker>
+    <wv-picker :show="picker2Show" :slots="slots2"></wv-picker>
   </div>
 </template>
 
@@ -14,10 +14,10 @@
   export default {
     data () {
       return {
-        pickerValue1: '',
-        pickerValue2: '',
-        pickerVisible1: false,
-        pickerVisible2: false,
+        pickerValue1: [],
+        pickerValue2: [],
+        picker1Show: true,
+        picker2Show: false,
         slots1: [
           {
             values: [

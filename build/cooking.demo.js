@@ -21,7 +21,9 @@ cooking.set({
   sourceMap: true,
   extends: ['vue2', 'lint', 'sass', 'autoprefixer'],
   alias: config.alias,
-  externals: {}
+  externals: {},
+  static: 'example/static',
+
 });
 
 cooking.add('loader.js.exclude', config.jsexclude);
