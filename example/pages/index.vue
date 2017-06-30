@@ -1,5 +1,9 @@
 <template>
   <div class="page">
+    <div class="page__hd">
+      <img :src="logoImg" alt="" class="logo">
+      <h1 class="page__title">WE-VUE</h1>
+    </div>
     <wv-search placeholder="搜索组件" v-model="keyword" :result="filterResult">
       <wv-group v-show="keyword">
         <wv-cell v-for="item in filterResult" :key="item" :title="item.name" :to="item.path" is-link>
@@ -21,10 +25,12 @@
 
 <script>
   import { navs } from '../route/index.js'
+  import logoImg from '../assets/images/logo.png'
 
   export default {
     data () {
       return {
+        logoImg,
         navs,
         keyword: '',
         componentList: []

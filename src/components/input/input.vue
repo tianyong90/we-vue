@@ -66,13 +66,11 @@
     },
 
     computed: {
+      // 数据验证
       valid () {
         if (this.pattern) {
           const reg = new RegExp(this.pattern)
-
-          if (!reg.test(this.currentValue)) {
-            return false
-          }
+          if (!reg.test(this.currentValue)) return false
         }
 
         if (this.required && this.currentValue === '') return false

@@ -1,5 +1,5 @@
 <template>
-  <div v-show="visible">
+  <div v-show="currentValue">
     <div class="weui-mask weui-animate-fade-in"></div>
     <div class="weui-picker weui-animate-slide-up">
       <div class="weui-picker__hd">
@@ -37,12 +37,12 @@
         required: true
       },
       valueKey: String,
-      value: []
+      value: Boolean
     },
 
     data () {
       return {
-        visible: false
+        currentValue: this.value
       }
     },
 
@@ -64,18 +64,15 @@
     },
 
     created () {
-      this.$on('update:show', (val) => {
-        console.log(val)
-        this.show = val
-      })
       this.$on('slotValueChange', this.slotValueChange)
       let slots = this.slots || []
       this.values = []
       let values = this.values
       let valueIndexCount = 0
-      slots.forEach(function (slot) {
+      slots.forEach(slot => {
         slot.valueIndex = valueIndexCount++
         values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0]
+        this.slotValueChange()
       })
     },
 
@@ -88,7 +85,9 @@
         let slots = this.slots || []
         let count = 0
         let target
-        let children = this.$children.filter(child => child.$options.name === 'picker-slot')
+
+        let children = this.$children
+        children = children.filter(child => child.$options.name === 'wv-picker-slot')
 
         slots.forEach(function (slot, index) {
           if (!slot.divider) {
@@ -98,23 +97,25 @@
             count++
           }
         })
-
         return target
       },
 
       getSlotValue (index) {
         let slot = this.getSlot(index)
         if (slot) {
+          console.log(slot.value)
           return slot.value
         }
         return null
       },
 
       setSlotValue (index, value) {
-        let slot = this.getSlot(index)
-        if (slot) {
-          slot.currentShow = value
-        }
+        this.$nextTick(() => {
+          let slot = this.getSlot(index)
+          if (slot) {
+            slot.currentValue = value
+          }
+        })
       },
 
       getSlotValues (index) {
@@ -126,10 +127,12 @@
       },
 
       setSlotValues (index, values) {
-        let slot = this.getSlot(index)
-        if (slot) {
-          slot.mutatingValues = values
-        }
+        this.$nextTick(() => {
+          let slot = this.getSlot(index)
+          if (slot) {
+            slot.mutatingValues = values
+          }
+        })
       },
 
       getValues () {
@@ -137,9 +140,8 @@
       },
 
       setValues (values) {
-        let slotCount = this.slotCount
         values = values || []
-        if (slotCount !== values.length) {
+        if (this.slotCount !== values.length) {
           throw new Error('values length is not equal slot count.')
         }
 
@@ -150,16 +152,23 @@
 
       cancel () {
         this.$emit('canceled', this)
-        this.visible = false
+        this.currentValue = false
       },
 
       confirm () {
         this.$emit('confirmed', this)
-        this.visible = false
+        this.currentValue = false
       }
     },
 
     watch: {
+      'value': function (val) {
+        this.currentValue = val
+      },
+
+      'currentValue': function (val) {
+        this.$emit('input', val)
+      }
     }
   }
 </script>

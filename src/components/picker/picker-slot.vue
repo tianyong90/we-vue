@@ -5,8 +5,7 @@
     <div class="weui-picker__content" ref="listWrapper">
       <div class="weui-picker__item"
            :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }"
-           v-for="item in mutatingValues"
-           v-text="typeof item === 'object' && item[valueKey] ? item[valueKey] : item"></div>
+           v-for="item in mutatingValues">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
     </div>
   </div>
 </template>
@@ -107,7 +106,7 @@
 
           dragState.prevTranslateY = dragState.currentTranslateY
         },
-        end: (event) => {
+        end: () => {
           this.isDragging = false
 
           let dragState = this.dragState
@@ -177,6 +176,9 @@
         if (this.valueIndex === -1) {
           this.currentValue = (val || [])[0]
         }
+        this.$nextTick(() => {
+          this.onValuesChange()
+        })
       },
 
       currentValue (val) {

@@ -28,8 +28,10 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-router.afterEach(() => {
+router.afterEach((to, from) => {
   store.commit('UPDATE_LOADING', false)
+
+  document.title = to.meta.title
 })
 
 new Vue({
