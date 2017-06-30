@@ -151,12 +151,12 @@
       },
 
       cancel () {
-        this.$emit('canceled', this)
+        this.$emit('cancel', this)
         this.currentValue = false
       },
 
       confirm () {
-        this.$emit('confirmed', this)
+        this.$emit('confirm', this)
         this.currentValue = false
       }
     },

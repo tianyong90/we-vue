@@ -5,7 +5,7 @@
     <div class="weui-picker__content" ref="listWrapper">
       <div class="weui-picker__item"
            :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }"
-           v-for="item in mutatingValues">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
+           v-for="item in mutatingValues" :key="item">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
     </div>
   </div>
 </template>
@@ -160,11 +160,10 @@
         let wrapper = this.$refs.listWrapper
 
         wrapper.translateY = this.value2translate(value)
-      },
-
-      onValuesChange () {
-        // TODO: 待完善
       }
+      // onValuesChange () {
+      //   // TODO: 待完善
+      // }
     },
 
     watch: {
@@ -176,9 +175,9 @@
         if (this.valueIndex === -1) {
           this.currentValue = (val || [])[0]
         }
-        this.$nextTick(() => {
-          this.onValuesChange()
-        })
+        // this.$nextTick(() => {
+        //   this.onValuesChange()
+        // })
       },
 
       currentValue (val) {
