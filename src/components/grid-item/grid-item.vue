@@ -1,11 +1,13 @@
 <template>
   <a :href="href" class="weui-grid">
-    <div class="weui-grid__icon">
+    <div class="weui-grid__icon" v-if="$slots.icon">
       <slot name="icon"></slot>
     </div>
-    <p class="weui-grid__label">
-      <slot></slot>
+    <p class="weui-grid__label" v-if="$slots.label">
+      <slot name="label"></slot>
     </p>
+    <slot>
+    </slot>
   </a>
 </template>
 
