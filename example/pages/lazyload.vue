@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <ul class="lazyload-list">
-      <li class="lazyload-list-item" v-for="item in list">
+      <li class="lazyload-list-item" v-for="item in list" :key="item">
         <img v-lazy="item" class="lazyload-image">
       </li>
     </ul>

@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-cell" :class="{ 'weui-cell_warn': !novalidate && !valid }">
+  <div class="weui-cell" :class="{ 'weui-cell_warn': !valid }">
     <div class="weui-cell__hd">
       <label class="weui-label" v-html="label" v-if="label" :style="{ width: labelWidth + 'px' }"></label>
     </div>
@@ -8,16 +8,17 @@
         class="weui-input"
         rel="input"
         :type="type"
-        :number="type === 'number'"
-        @focus="active = true"
         :placeholder="placeholder"
         :value="currentValue"
         :readonly="readonly"
-        @change="$emit('change', currentValue)"
+        :number="type === 'number'"
+        @focus="onFocus"
+        @blur="onBlur"
+        @change="onChange"
         @input="handleInput">
     </div>
     <div class="weui-cell__ft">
-      <wv-icon type="warn" v-if="!novalidate && !valid"></wv-icon>
+      <wv-icon type="warn" v-if="!valid"></wv-icon>
       <slot name="ft"></slot>
     </div>
   </div>
@@ -52,30 +53,21 @@
         default: false
       },
       pattern: String,
-      novalidate: {
-        type: Boolean,
-        default: false
+      validateMode: {
+        type: String,
+        defualt: 'always',
+        validator: function (value) {
+          const availableModes = ['always', 'never', 'on-blur']
+          return availableModes.indexOf(value) !== -1
+        }
       }
     },
 
     data () {
       return {
         active: false,
+        valid: true,
         currentValue: this.value
-      }
-    },
-
-    computed: {
-      // 数据验证
-      valid () {
-        if (this.pattern) {
-          const reg = new RegExp(this.pattern)
-          if (!reg.test(this.currentValue)) return false
-        }
-
-        if (this.required && this.currentValue === '') return false
-
-        return true
       }
     },
 
@@ -91,6 +83,35 @@
       handleClear () {
         if (this.disabled || this.readonly) return
         this.currentValue = ''
+      },
+
+      onFocus () {
+        this.active = true
+      },
+
+      onBlur () {
+        if (this.validateMode === 'on-blur') {
+          this.validate()
+        }
+      },
+
+      onChange () {
+        this.$emit('change', this.currentValue)
+      },
+
+      validate () {
+        if (this.pattern) {
+          const reg = new RegExp(this.pattern)
+          if (!reg.test(this.currentValue)) {
+            this.valid = false
+          }
+        }
+
+        if (this.required && this.currentValue === '') {
+          this.valid = false
+        }
+
+        this.valid = true
       }
     },
 

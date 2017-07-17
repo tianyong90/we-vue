@@ -39,7 +39,11 @@
 </script>
 
 <style scoped lang="scss">
-  .footer-demo {
-    margin-bottom: 40px;
+  .page {
+    padding: 5em 0;
+
+    .footer-demo {
+      margin-bottom: 40px;
+    }
   }
 </style>

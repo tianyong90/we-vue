@@ -17,6 +17,7 @@
 
 <style scoped lang="scss">
   .page {
+    padding-top: 5em;
     background-color: white;
   }
 </style>

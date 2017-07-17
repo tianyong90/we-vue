@@ -43,6 +43,7 @@
     "babel-preset-es2015": "^6.0.0",
     "babel-preset-stage-0": "^6.0.0",
     "babel-preset-stage-2": "^6.0.0",
+    "china-area-data": "^3.0.0",
     "cooking": "^1.5.2",
     "cooking-autoprefixer": "^1.0.0",
     "cooking-lint": "^0.1.4",

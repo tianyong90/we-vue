@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-popup" v-if="currentValue">
+  <div class="wv-popup" v-show="currentValue">
     <div class="weui-mask weui-animate-fade-in" :style="{ backgroundColor: maskBackgroundColor }"
          @click="maskClick"></div>
     <div class="wv-popup-body weui-animate-slide-up" :style="style">

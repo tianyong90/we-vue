@@ -10,7 +10,7 @@
 
     props: {
       flex: {
-        type: Number | String,
+        type: [Number, String],
         default: 1
       }
     },

@@ -103,7 +103,6 @@
       getSlotValue (index) {
         let slot = this.getSlot(index)
         if (slot) {
-          console.log(slot.value)
           return slot.value
         }
         return null

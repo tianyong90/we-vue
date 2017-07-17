@@ -19,11 +19,11 @@
         default: true
       },
       rows: {
-        type: Number | String,
+        type: [Number, String],
         default: 3
       },
       maxLength: {
-        type: Number | String,
+        type: [Number, String],
         default: 100
       },
       disabled: Boolean,

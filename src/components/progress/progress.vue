@@ -15,7 +15,7 @@
 
     props: {
       percent: {
-        type: Number | String
+        type: [Number, String]
       },
       showClear: {
         type: Boolean,

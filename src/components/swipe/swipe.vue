@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
     <div class="wv-swipe-indicators" v-show="showIndicators">
-      <div class="wv-swipe-indicator" v-for="(page, $index) in pages" :class="{ 'is-active': $index === index }"></div>
+      <div class="wv-swipe-indicator" v-for="(page, $index) in pages" :key="page" :class="{ 'is-active': $index === index }"></div>
     </div>
   </div>
 </template>

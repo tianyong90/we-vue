@@ -5,7 +5,7 @@
       <em class="weui-form-preview__value" v-html="value"></em>
     </div>
     <div class="weui-form-preview__bd">
-      <div class="weui-form-preview__item" v-for="item in dataItems">
+      <div class="weui-form-preview__item" v-for="item in dataItems" :key="item">
         <label class="weui-form-preview__label">{{ item.label }}</label>
         <span class="weui-form-preview__value">{{ item.value }}</span>
       </div>
@@ -13,7 +13,7 @@
     <div class="weui-form-preview__ft">
       <a class="weui-form-preview__btn"
          :class="item.type === 'primary' ? 'weui-form-preview__btn_primary' : 'weui-form-preview__btn_default'"
-         href="javascript:" v-text="item.text" @click="item.action" v-for="item in buttons"></a>
+         href="javascript:" v-text="item.text" @click="item.action" v-for="item in buttons" :key="item"></a>
     </div>
   </div>
 </template>

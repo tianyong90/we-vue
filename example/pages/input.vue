@@ -6,7 +6,7 @@
     </wv-group>
 
     <wv-group title="带验证">
-      <wv-input label="请输入 abc" placeholder="请输入 abc" v-model="valueText" pattern="^abc$"></wv-input>
+      <wv-input label="请输入 abc" placeholder="请输入 abc" v-model="valueText" pattern="^abc$" validate-mode="never"></wv-input>
       <wv-input label="必填" placeholder="请输入数字" type="number" v-model="valueNumber" required></wv-input>
     </wv-group>
 

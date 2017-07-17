@@ -7,7 +7,7 @@
         <p class="weui-actionsheet__title-text" v-html="title"></p>
       </div>
       <div class="weui-actionsheet__menu">
-        <div class="weui-actionsheet__cell" v-for="item in actions" @click="itemClick(item)" v-text="item.name"></div>
+        <div class="weui-actionsheet__cell" v-for="item in actions" :key="item" @click="itemClick(item)" v-text="item.name"></div>
       </div>
       <div class="weui-actionsheet__action" v-if="cancelText">
         <div class="weui-actionsheet__cell" @click="currentValue = false" v-html="cancelText"></div>
@@ -18,7 +18,7 @@
       <div class="weui-mask" @click="currentValue = false"></div>
       <div class="weui-actionsheet">
         <div class="weui-actionsheet__menu">
-          <div v-for="item in actions" class="weui-actionsheet__cell" @click="itemClick(item)" v-text="item.name"></div>
+          <div v-for="item in actions" :key="item" class="weui-actionsheet__cell" @click="itemClick(item)" v-text="item.name"></div>
         </div>
       </div>
     </div>

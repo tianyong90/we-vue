@@ -175,9 +175,6 @@
         if (this.valueIndex === -1) {
           this.currentValue = (val || [])[0]
         }
-        // this.$nextTick(() => {
-        //   this.onValuesChange()
-        // })
       },
 
       currentValue (val) {
