@@ -13,6 +13,10 @@
     "type": "git",
     "url": "https://github.com/tianyong90/we-vue.git"
   },
+  "homepage": "https://github.com/tianyong90/we-vue#readme",
+  "bugs": {
+    "url": "https://github.com/tianyong90/we-vue/issues"
+  },
   "license": "MIT",
   "main": "lib/we-vue.common.js",
   "style": "lib/style.css",
@@ -34,7 +38,7 @@
     "weui": "^1.1.2"
   },
   "peerDependencies": {
-    "vue": "^2.2.1"
+    "vue": "^2.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
