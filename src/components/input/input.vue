@@ -54,11 +54,13 @@
       },
       pattern: String,
       validateMode: {
-        type: String,
-        defualt: 'always',
-        validator: function (value) {
-          const availableModes = ['always', 'never', 'on-blur']
-          return availableModes.indexOf(value) !== -1
+        type: Object,
+        defualt: function () {
+          return {
+            onFocus: true,
+            onBlur: true,
+            onChange: true
+          }
         }
       }
     },
@@ -87,16 +89,24 @@
 
       onFocus () {
         this.active = true
+
+        if (typeof this.validateMode === 'undefined' || this.validateMode.onFocus !== false) {
+          this.validate()
+        }
       },
 
       onBlur () {
-        if (this.validateMode === 'on-blur') {
+        if (typeof this.validateMode === 'undefined' || this.validateMode.onBlur !== false) {
           this.validate()
         }
       },
 
       onChange () {
         this.$emit('change', this.currentValue)
+
+        if (typeof this.validateMode === 'undefined' || this.validateMode.onChange !== false) {
+          this.validate()
+        }
       },
 
       validate () {
@@ -104,11 +114,13 @@
           const reg = new RegExp(this.pattern)
           if (!reg.test(this.currentValue)) {
             this.valid = false
+            return
           }
         }
 
         if (this.required && this.currentValue === '') {
           this.valid = false
+          return
         }
 
         this.valid = true

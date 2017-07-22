@@ -7,7 +7,7 @@
         <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
       </div>
       <div class="weui-picker__bd">
-        <wv-picker-slot v-for="slot in slots" :key="slot" :values="slot.values || []" :valueKey="valueKey" v-model="values[slot.valueIndex]"></wv-picker-slot>
+        <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey" v-model="values[slot.valueIndex]"></wv-picker-slot>
       </div>
     </div>
   </div>

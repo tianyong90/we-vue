@@ -5,7 +5,7 @@
     <div class="weui-picker__content" ref="listWrapper">
       <div class="weui-picker__item"
            :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }"
-           v-for="item in mutatingValues" :key="item">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
+           v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
     </div>
   </div>
 </template>
