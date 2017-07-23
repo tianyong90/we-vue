@@ -1,5 +1,5 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <wv-circle class="circle-1" :line-width="3" :value="12">12 %</wv-circle>
     <wv-circle class="circle-1" :line-width="5" fill-color="yellow" :value="12">12 %</wv-circle>
     <wv-slider v-model="sliderValue"></wv-slider>

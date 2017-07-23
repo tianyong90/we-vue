@@ -1,5 +1,5 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <div class="buttons-big">
       <wv-button type="primary">页面主要操作 Normal</wv-button>
       <wv-button type="primary" is-loading>页面主要操作 Loading</wv-button>

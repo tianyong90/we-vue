@@ -1,5 +1,5 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <wv-button type="primary" @click="showTips">显示提示 (5S)</wv-button>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <wv-progress :percent="percent1" :show-clear="false"></wv-progress>
     <wv-progress :percent="percent2" @cancel="onCancel"></wv-progress>
     <wv-progress percent="10"></wv-progress>

@@ -1,5 +1,5 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <wv-flex :gutter="10" class="demo-flex">
       <wv-flex-item>
         <div class="placeholder"></div>

@@ -63,6 +63,21 @@
 </script>
 
 <style scoped lang="scss">
+  .logo {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .page__hd {
+    padding: 40px;
+
+    .page__title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+
   .page {
     margin-bottom: 0;
   }

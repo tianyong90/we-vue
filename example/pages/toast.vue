@@ -1,5 +1,5 @@
 <template>
-  <div class="page-with-padding">
+  <div class="page page-with-padding">
     <wv-button type="default" @click="showSuccess">成功提示</wv-button>
     <wv-button type="default" @click="showError">出错提示</wv-button>
     <wv-button type="default" @click="showText">纯文本提示</wv-button>
