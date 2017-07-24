@@ -161,9 +161,6 @@
 
         wrapper.translateY = this.value2translate(value)
       }
-      // onValuesChange () {
-      //   // TODO: 待完善
-      // }
     },
 
     watch: {

@@ -66,7 +66,6 @@
     created () {
       this.$on('slotValueChange', this.slotValueChange)
       let slots = this.slots || []
-      this.values = []
       let values = this.values
       let valueIndexCount = 0
       slots.forEach(slot => {
@@ -161,11 +160,11 @@
     },
 
     watch: {
-      'value': function (val) {
+      value (val) {
         this.currentValue = val
       },
 
-      'currentValue': function (val) {
+      currentValue (val) {
         this.$emit('input', val)
       }
     }
