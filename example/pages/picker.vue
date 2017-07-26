@@ -1,12 +1,14 @@
 <template>
-  <div class="page page-with-padding">
-    <wv-button @click="ticketPickerShow = true">单列选择器</wv-button>
-    <wv-button @click="dayPickerShow = true">多列选择器</wv-button>
-    <wv-button @click="addressPickerShow = true">多列联动选择器（省市区）</wv-button>
+  <div class="page">
+    <wv-group title="选择器示例">
+      <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true"></wv-cell>
+      <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true"></wv-cell>
+      <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true"></wv-cell>
+    </wv-group>
 
-    <wv-picker v-model="ticketPickerShow" :slots="ticketSlots" @change="onChange"></wv-picker>
-    <wv-picker v-model="dayPickerShow" :slots="daySlots" @change="onChange"></wv-picker>
-    <wv-picker v-model="addressPickerShow" :slots="addressSlots" @change="onAddressChange"></wv-picker>
+    <wv-picker v-model="ticketPickerShow" :slots="ticketSlots" @change="onChange" @confirm="confirmTicket"></wv-picker>
+    <wv-picker v-model="dayPickerShow" :slots="daySlots" @change="onChange" @confirm="confirmDayTime"></wv-picker>
+    <wv-picker v-model="addressPickerShow" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
   </div>
 </template>
 
@@ -61,6 +63,9 @@
         ticketPickerShow: false,
         dayPickerShow: false,
         addressPickerShow: false,
+        ticket: '',
+        dayAndTime: '',
+        address: '',
         ticketSlots: [
           {
             values: [
@@ -111,9 +116,33 @@
         console.log(value)
       },
 
+      confirmTicket (picker) {
+        this.ticket = picker.getValues()
+      },
+
+      confirmDayTime (picker) {
+        this.dayAndTime = picker.getValues()
+      },
+
       onAddressChange (picker, value) {
         picker.setSlotValues(1, getCities(value[0]))
         picker.setSlotValues(2, getAreas(value[0], value[1]))
+      },
+
+      confirmAddress (picker) {
+        this.address = picker.getValues()
+      }
+    },
+
+    filters: {
+      pickerValueFilter (val) {
+        console.log(typeof val)
+
+        if (Array.isArray(val)) {
+          return val.toString()
+        } else {
+          return '请先择'
+        }
       }
     }
   }
@@ -121,7 +150,6 @@
 
 <style scoped lang="scss">
   .page {
-    padding-top: 5em;
     background-color: #fff;
   }
 </style>
