@@ -13,7 +13,7 @@
     <div class="weui-form-preview__ft">
       <a class="weui-form-preview__btn"
          :class="item.type === 'primary' ? 'weui-form-preview__btn_primary' : 'weui-form-preview__btn_default'"
-         href="javascript:" v-text="item.text" @click="item.action" v-for="(item, key, index) in buttons" :key="key"></a>
+         v-text="item.text" @click="item.action" v-for="(item, key, index) in buttons" :key="key"></a>
     </div>
   </div>
 </template>

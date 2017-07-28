@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "css3transform": "^1.1.7",
-    "vue-lazyload": "^1.0.5",
+    "vue-lazyload": "^1.0.6",
     "weui": "^1.1.2"
   },
   "peerDependencies": {
@@ -61,7 +61,7 @@
     "eslint-loader": "^1.9.0",
     "eslint-plugin-html": "^2.0.3",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-node": "^4.2.3",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^2.1.0",
@@ -71,7 +71,7 @@
     "gh-pages": "^0.11.0",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.29.0",
-    "json-loader": "^0.5.4",
+    "json-loader": "^0.5.7",
     "json-templater": "^1.0.4",
     "lerna": "2.0.0-beta.18",
     "my-local-ip": "^1.0.0",

@@ -5,9 +5,9 @@
       <div class="weui-dialog__hd" v-if="title"><strong class="weui-dialog__title" v-html="title"></strong></div>
       <div class="weui-dialog__bd" v-html="message"></div>
       <div class="weui-dialog__ft">
-        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn"
+        <a class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn"
            @click="handleAction('cancel')" v-text="cancelText"></a>
-        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn"
+        <a class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn"
            @click="handleAction('confirm')" v-text="confirmText"></a>
       </div>
     </div>
