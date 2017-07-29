@@ -1,6 +1,8 @@
 {
   "env": {
-    "browser": true
+    "browser": true,
+    "node": true,
+    "es6": true
   },
   "plugins": ["vue", "html"],
   "extends": ["standard"],

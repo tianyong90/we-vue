@@ -6,9 +6,9 @@
       <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true"></wv-cell>
     </wv-group>
 
-    <wv-picker v-model="ticketPickerShow" :slots="ticketSlots" @change="onChange" @confirm="confirmTicket"></wv-picker>
-    <wv-picker v-model="dayPickerShow" :slots="daySlots" @change="onChange" @confirm="confirmDayTime"></wv-picker>
-    <wv-picker v-model="addressPickerShow" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
+    <wv-picker v-model="ticketPickerShow" :slots="ticketSlots" @confirm="confirmTicket"></wv-picker>
+    <wv-picker v-model="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime"></wv-picker>
+    <wv-picker v-model="addressPickerShow" ref="addressPicker" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
   </div>
 </template>
 
@@ -111,6 +111,12 @@
       }
     },
 
+    mounted () {
+      this.$nextTick(() => {
+        this.$refs.addressPicker.setValues(['湖北省', '宜昌市', '长阳土家族自治县'])
+      })
+    },
+
     methods: {
       onChange (picker, value) {
         console.log(value)
@@ -136,12 +142,10 @@
 
     filters: {
       pickerValueFilter (val) {
-        console.log(typeof val)
-
         if (Array.isArray(val)) {
           return val.toString()
         } else {
-          return '请先择'
+          return '请选择'
         }
       }
     }

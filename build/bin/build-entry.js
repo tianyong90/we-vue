@@ -57,11 +57,11 @@ ComponentNames.forEach(name => {
   }))
 
   if ([
-      // directives
+    // directives
     // 'InfiniteScroll',
     'Lazyload',
 
-      // services
+    // services
     'Dialog',
     'Toast',
     'Indicator'
