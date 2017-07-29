@@ -50,8 +50,8 @@
     if (chinaAreaData[cityCode]) {
       return Object.values(chinaAreaData[cityCode])
     } else {
-      // 只有两级的情况，地区列表直接返回市名
-      return [city]
+      // 只有两级的情况
+      return []
     }
   }
 
@@ -153,7 +153,4 @@
 </script>
 
 <style scoped lang="scss">
-  .page {
-    background-color: #fff;
-  }
 </style>
