@@ -42,7 +42,7 @@ import TopTips from './components/top-tips/index'
 import InfiniteScroll from './components/infinite-scroll/index'
 import 'weui/dist/style/weui.min.css'
 
-const version = '1.4.2'
+const version = '1.4.3'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
