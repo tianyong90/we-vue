@@ -8,7 +8,6 @@ var OUTPUT_PATH = path.join(__dirname, '../../src/index.js')
 var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}/index\''
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})'
 var MAIN_TEMPLATE = `{{include}}
-// import '../src/assets/font/iconfont.css'
 import 'weui/dist/style/weui.min.css'
 
 const version = '{{version}}'
@@ -16,7 +15,7 @@ const install = function (Vue, config = {}) {
   if (install.installed) return
 
 {{install}}
-  // Vue.use(InfiniteScroll)
+  Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
     attempt: 3,
@@ -40,8 +39,6 @@ export default {
 }
 `
 
-delete Components.font
-
 var ComponentNames = Object.keys(Components)
 
 var includeComponentTemplate = []
@@ -58,7 +55,7 @@ ComponentNames.forEach(name => {
 
   if ([
     // directives
-    // 'InfiniteScroll',
+    'InfiniteScroll',
     'Lazyload',
 
     // services

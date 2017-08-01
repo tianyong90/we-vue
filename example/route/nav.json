@@ -143,6 +143,12 @@
         "name": "DatetimePicker",
         "description": "时间日期选择器",
         "icon": "selectarrows"
+      },
+      {
+        "path": "/infinite-scroll",
+        "name": "InfiniteScroll",
+        "description": "无限滚动加载",
+        "icon": "selectarrows"
       }
     ]
   },

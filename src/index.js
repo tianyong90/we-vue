@@ -40,7 +40,7 @@ import Preview from './components/preview/index'
 import Footer from './components/footer/index'
 import Header from './components/header/index'
 import TopTips from './components/top-tips/index'
-// import '../src/assets/font/iconfont.css'
+import InfiniteScroll from './components/infinite-scroll/index'
 import 'weui/dist/style/weui.min.css'
 
 const version = '1.4.2'
@@ -85,7 +85,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Footer.name, Footer)
   Vue.component(Header.name, Header)
   Vue.component(TopTips.name, TopTips)
-  // Vue.use(InfiniteScroll)
+  Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
     attempt: 3,
@@ -146,5 +146,6 @@ export default {
   Preview,
   Footer,
   Header,
-  TopTips
+  TopTips,
+  InfiniteScroll
 }

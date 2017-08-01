@@ -40,5 +40,6 @@
   "preview": "./src/components/preview/index.js",
   "footer": "./src/components/footer/index.js",
   "header": "./src/components/header/index.js",
-  "top-tips": "./src/components/top-tips/index.js"
+  "top-tips": "./src/components/top-tips/index.js",
+  "infinite-scroll": "./src/components/infinite-scroll/index.js"
 }
