@@ -34,7 +34,6 @@ import Popup from './components/popup/index'
 import Panel from './components/panel/index'
 import MediaBox from './components/media-box/index'
 import Picker from './components/picker/index'
-import DatetimePicker from './components/datetime-picker/index'
 import Lazyload from './components/lazyload/index'
 import Preview from './components/preview/index'
 import Footer from './components/footer/index'
@@ -80,7 +79,6 @@ const install = function (Vue, config = {}) {
   Vue.component(Panel.name, Panel)
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Picker.name, Picker)
-  Vue.component(DatetimePicker.name, DatetimePicker)
   Vue.component(Preview.name, Preview)
   Vue.component(Footer.name, Footer)
   Vue.component(Header.name, Header)
@@ -141,7 +139,6 @@ export default {
   Panel,
   MediaBox,
   Picker,
-  DatetimePicker,
   Lazyload,
   Preview,
   Footer,

@@ -35,7 +35,6 @@
   "panel": "./src/components/panel/index.js",
   "media-box": "./src/components/media-box/index.js",
   "picker": "./src/components/picker/index.js",
-  "datetime-picker": "./src/components/datetime-picker/index.js",
   "lazyload": "./src/components/lazyload/index.js",
   "preview": "./src/components/preview/index.js",
   "footer": "./src/components/footer/index.js",

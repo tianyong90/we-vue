@@ -49,7 +49,7 @@
   @import "../../assets/iconfont/iconfont.css";
 
   .wv-spinner {
-    display: block;
+    display: inline-block;
     overflow: hidden;
     -webkit-animation: circle 1.2s infinite linear;
     -o-animation: circle 1.2s infinite linear;

@@ -18,7 +18,6 @@
       </wv-cell>
     </wv-group>
   </div>
-
 </template>
 
 <script>

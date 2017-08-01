@@ -5,8 +5,7 @@
         <wv-cell title="条目" v-for="item in list" :key="item" :value="item"></wv-cell>
       </wv-group>
       <p v-show="loading" class="loading-tips">
-        <wv-spinner type="default"></wv-spinner>
-        加载中...
+        <wv-spinner type="snake" color="#444" :size="24"></wv-spinner>
       </p>
     </div>
   </div>
