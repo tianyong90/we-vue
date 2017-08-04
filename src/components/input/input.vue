@@ -6,6 +6,7 @@
     <div class="weui-cell__bd">
       <input
         class="weui-input"
+        ref="input"
         rel="input"
         :type="type"
         :placeholder="placeholder"
@@ -85,6 +86,10 @@
       handleClear () {
         if (this.disabled || this.readonly) return
         this.currentValue = ''
+      },
+
+      focus () {
+        this.$refs.input.focus()
       },
 
       onFocus () {
