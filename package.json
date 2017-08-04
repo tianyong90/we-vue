@@ -29,7 +29,7 @@
     "dist": "npm run clean && npm run build:entry && npm run lint && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js,build/cooking.demo.js -p",
     "build:entry": "node build/bin/build-entry.js",
     "pub": "sh build/release.sh",
-    "clean": "rimraf lib",
+    "clean": "rm -rf lib",
     "lint": "eslint src/**/*.js build/**/*.js --quiet"
   },
   "dependencies": {
@@ -75,7 +75,6 @@
     "my-local-ip": "^1.0.0",
     "postcss": "^5.2.0",
     "postcss-loader": "^0.13.0",
-    "rimraf": "^2.5.4",
     "style-loader": "^0.18.2",
     "uppercamelcase": "^3.0.0",
     "url-loader": "^0.5.9",
