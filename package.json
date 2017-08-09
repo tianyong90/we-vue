@@ -33,7 +33,7 @@
     "lint": "eslint src/**/*.js build/**/*.js --quiet"
   },
   "dependencies": {
-    "css3transform": "^1.1.7",
+    "css3transform": "^1.1.8",
     "vue-lazyload": "^1.0.6",
     "weui": "^1.1.2"
   },
@@ -84,8 +84,8 @@
     "vue-template-compiler": "^2.4.1",
     "vue-template-es2015-compiler": "^1.5.3",
     "vuex": "^2.3.1",
-    "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.5.1",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1",
     "webpack-shell-plugin": "^0.4.3"
   },
   "engines": {
