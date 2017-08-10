@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import dislogComponent from './dialog.vue'
 
-var CONFIRM_TEXT = '确定'
-var CANCEL_TEXT = '取消'
+let CONFIRM_TEXT = '确定'
+let CANCEL_TEXT = '取消'
 
-var defaults = {
+let defaults = {
   title: '提示',
   message: '',
   type: '',
@@ -13,16 +13,16 @@ var defaults = {
   closeOnClickModal: true,
   showConfirmButton: true,
   showCancelButton: false,
-  confirmButtonText: CONFIRM_TEXT,
-  cancelButtonText: CANCEL_TEXT
+  confirmText: CONFIRM_TEXT,
+  cancelText: CANCEL_TEXT
 }
 
-var merge = function (target) {
-  for (var i = 1, j = arguments.length; i < j; i++) {
-    var source = arguments[i]
-    for (var prop in source) {
+let merge = function (target) {
+  for (let i = 1, j = arguments.length; i < j; i++) {
+    let source = arguments[i]
+    for (let prop in source) {
       if (source.hasOwnProperty(prop)) {
-        var value = source[prop]
+        let value = source[prop]
         if (value !== undefined) {
           target[prop] = value
         }
@@ -33,14 +33,14 @@ var merge = function (target) {
   return target
 }
 
-var DialogConstructor = Vue.extend(dislogComponent)
+let DialogConstructor = Vue.extend(dislogComponent)
 
-var currentDialog, instance
-var dialogQueue = []
+let currentDialog, instance
+let dialogQueue = []
 
 const defaultCallback = action => {
   if (currentDialog) {
-    var callback = currentDialog.callback
+    let callback = currentDialog.callback
     if (typeof callback === 'function') {
       if (instance.showInput) {
         callback(instance.inputValue, action)
@@ -49,7 +49,7 @@ const defaultCallback = action => {
       }
     }
     if (currentDialog.resolve) {
-      var $type = currentDialog.options.$type
+      let $type = currentDialog.options.$type
       if ($type === 'confirm') {
         if (action === 'confirm') {
           if (instance.showInput) {
@@ -67,7 +67,7 @@ const defaultCallback = action => {
   }
 }
 
-var initInstance = function () {
+let initInstance = function () {
   instance = new DialogConstructor({
     el: document.createElement('div')
   })
@@ -75,7 +75,7 @@ var initInstance = function () {
   instance.callback = defaultCallback
 }
 
-var showNextMsg = function () {
+let showNextMsg = function () {
   if (!instance) {
     initInstance()
   }
@@ -84,8 +84,8 @@ var showNextMsg = function () {
     if (dialogQueue.length > 0) {
       currentDialog = dialogQueue.shift()
 
-      var options = currentDialog.options
-      for (var prop in options) {
+      let options = currentDialog.options
+      for (let prop in options) {
         if (options.hasOwnProperty(prop)) {
           instance[prop] = options[prop]
         }
@@ -107,7 +107,7 @@ var showNextMsg = function () {
   }
 }
 
-var Dialog = function (options, callback) {
+let Dialog = function (options, callback) {
   if (typeof options === 'string') {
     options = {
       title: options
