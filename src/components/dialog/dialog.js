@@ -11,8 +11,8 @@ let defaults = {
   modalFade: false,
   lockScroll: false,
   closeOnClickModal: true,
-  showConfirmButton: true,
-  showCancelButton: false,
+  showConfirmBtn: true,
+  showCancelBtn: false,
   confirmText: CONFIRM_TEXT,
   cancelText: CANCEL_TEXT
 }
@@ -157,7 +157,8 @@ Dialog.alert = function (message, title, options) {
     message: message,
     $type: 'alert',
     closeOnPressEscape: false,
-    closeOnClickModal: false
+    closeOnClickModal: false,
+    showCancelBtn: false
   }, options))
 }
 
