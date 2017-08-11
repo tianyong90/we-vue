@@ -1,22 +1,23 @@
 <template>
-  <div v-show="visible">
-    <div class="weui-toast">
-      <template v-if="spinner !== 'none'">
-        <i class="weui-loading weui-icon_toast"></i>
-      </template>
-      <p class="weui-toast__content" v-text="text"></p>
-    </div>
+  <div class="weui-toast" v-show="visible">
+    <wv-spinner class="weui-icon_toast" v-if="spinnerType !=='none'" :type="spinnerType" :size="25"></wv-spinner>
+    <p class="weui-toast__content" v-text="text"></p>
   </div>
 </template>
 
 <script>
+  import WvSpinner from '../spinner/index'
+
   export default {
+    components: {
+      WvSpinner
+    },
+
     props: {
-      spinner: {
-        type: String,
-        default: 'default'
-      },
-      text: String
+      text: String,
+      spinnerType: {
+        type: String
+      }
     },
 
     data () {
