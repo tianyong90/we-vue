@@ -44,6 +44,7 @@
     color: white;
     position: relative;
     white-space: nowrap;
+    z-index: 500;
 
     .left {
       display: block;
@@ -67,7 +68,4 @@
       top: 0;
     }
   }
-</style>
-
-<style scoped lang="scss">
 </style>
