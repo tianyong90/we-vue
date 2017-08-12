@@ -1,18 +1,13 @@
 language: node_js
-
 sudo: false
-
 node_js:
   - "5"
-
 cache:
   apt: true
   directories:
     - node_modules
-
 env:
   - CXX=g++-4.8
-
 addons:
   apt:
     sources:
@@ -20,13 +15,14 @@ addons:
     packages:
       - g++-4.8
   ssh_known_hosts: github.com
-
+branchs:
+  only:
+    - master
 before_install:
   # Set Git config
   - git config --global user.name "tianyong90"
   - git config --global user.email "412039588@qq.com"
   - git config --global push.default simple
-
 script:
   - npm install -no-optional
   - npm run dist
