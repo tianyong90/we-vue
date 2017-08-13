@@ -22,7 +22,10 @@ export default {
 
   close () {
     if (instance) {
-      instance.visible = false
+      Vue.nextTick(() => {
+        instance.visible = false
+        instance.$el.remove()
+      })
     }
   }
 }
