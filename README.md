@@ -1,6 +1,6 @@
-<p align="center">
+<div align="center">
   <img width="120" height="120" src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/logo.png">
-</p>
+</div>
 
 <div align="center">
   <a href="https://www.npmjs.com/package/we-vue"><img src="https://img.shields.io/npm/v/we-vue.svg?maxAge=3600" alt="npm"></a>
@@ -15,12 +15,12 @@ we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库�
 
 ## Demo
 
-<p align="center">
+<div align="center">
   <a href="http://demo.wevue.org">
     <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode-demo.png" width="120">
   </a>
   <p align="center">使用手机扫描或直接点击二维码查看在线示例</p align="center">
-</p>
+</div>
 
 ## 安装
 
