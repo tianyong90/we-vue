@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-  - "5"
+  - '7'
 cache:
   apt: true
   directories:
@@ -11,18 +11,24 @@ env:
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+    - g++-4.8
   ssh_known_hosts: github.com
-branchs:
-  only:
-    - master
 before_install:
-  # Set Git config
+  - openssl aes-256-cbc -K $encrypted_0231095cfdaa_key -iv $encrypted_0231095cfdaa_iv -in ./travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - eval $(ssh-agent)
+  - ssh-add ~/.ssh/id_rsa
+  - cp .travis/ssh_config ~/.ssh/config
   - git config --global user.name "tianyong90"
-  - git config --global user.email "412039588@qq.com"
-  - git config --global push.default simple
+  - git config --global user.email 412039588@qq.com
 script:
   - npm install -no-optional
+after_success:
+  - ssh $ssh_user@$ssh_host
+  - cd /data/wwwroot
+  - git checkout master -f
+  - git fetch origin
+  - git reset --hard origin/master
   - npm run dist
