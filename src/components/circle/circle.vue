@@ -55,7 +55,7 @@
       style () {
         return {
           width: this.diameter + 'px',
-          heigth: this.diameter + 'px'
+          height: this.diameter + 'px'
         }
       },
 
@@ -101,14 +101,18 @@
 <style scoped lang="scss">
   .wv-circle {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      display: block;
+      position: absolute;
+      z-index: 1;
+    }
 
     .wv-circle-content {
-      width: 100%;
-      text-align: center;
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      z-index: 1000;
     }
   }
 </style>
