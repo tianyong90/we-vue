@@ -1,3 +1,8 @@
+## v1.4.11
+
+- 完善 datetime-picker 组件
+- picker 组件的 slot 支持显示为分隔符
+
 ## v1.4.10
 
 ### fix
