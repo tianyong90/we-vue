@@ -7,7 +7,7 @@
         <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
       </div>
       <div class="weui-picker__bd">
-        <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey" v-model="values[slot.valueIndex]"></wv-picker-slot>
+        <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey" :divider="slot.divider" :content="slot.content" v-model="values[slot.valueIndex]"></wv-picker-slot>
       </div>
     </div>
   </div>
@@ -51,15 +51,18 @@
         let slots = this.slots || []
         let values = []
         slots.forEach(function (slot) {
-          values.push(slot.value)
+          if (!slot.divider) values.push(slot.value)
         })
-
         return values
       },
 
       slotCount () {
         let slots = this.slots || []
-        return slots.length
+        let count = 0
+        slots.forEach((slot) => {
+          if (!slot.divider) count++
+        })
+        return count
       }
     },
 
@@ -69,9 +72,11 @@
       let values = this.values
       let valueIndexCount = 0
       slots.forEach(slot => {
-        slot.valueIndex = valueIndexCount++
-        values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0]
-        this.slotValueChange()
+        if (!slot.divider) {
+          slot.valueIndex = valueIndexCount++
+          values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0]
+          this.slotValueChange()
+        }
       })
     },
 

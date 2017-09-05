@@ -1,5 +1,5 @@
 <template>
-  <wv-picker v-model="currentValue" :slots="pickerSlots"></wv-picker>
+  <wv-picker v-model="visible" :slots="dateSlots" @change="onChange" @confirm="onConfirm" @cnncel="onCancel" ref="picker" :confirm-text="confirmText" :cancel-text="cancelText"></wv-picker>
 </template>
 
 <script>
@@ -73,14 +73,13 @@
         type: String,
         default: '{value}'
       },
-      value: Boolean
+      value: null
     },
 
     data () {
       return {
-        // currentValue: this.value
-        currentValue: true,
         visible: false,
+        currentValue: null,
         startYear: null,
         endYear: null,
         startMonth: 1,
@@ -97,28 +96,6 @@
     },
 
     computed: {
-      pickerSlots () {
-        if (this.type === 'time') {
-          return [
-            {
-              values: [1, 2, 3]
-            },
-            {
-              values: [10, 20]
-            }
-          ]
-        } else {
-          return [
-            {
-              values: [1, 2, 3]
-            },
-            {
-              values: [10, 20]
-            }
-          ]
-        }
-      },
-
       rims () {
         if (!this.currentValue) return { year: [], month: [], date: [], hour: [], min: [] }
         let result
@@ -132,12 +109,12 @@
         result = {
           year: [this.startDate.getFullYear(), this.endDate.getFullYear()],
           month: [1, 12],
-          date: [1, this.getMonthEndDay(this.getYear(this.currentVAlue), this.getMonth(this.curretValue))],
+          date: [1, this.getMonthEndDay(this.getYear(this.currentValue), this.getMonth(this.currentValue))],
           hour: [0, 23],
           min: [0, 59]
         }
-        this.rimDatect(result, 'start')
-        this.rimDatect(result, 'end')
+        this.rimDetect(result, 'start')
+        this.rimDetect(result, 'end')
         return result
       },
 
@@ -167,7 +144,7 @@
       },
 
       isSortMonth (month) {
-        return [4, 6, 9, 11].Of(month) > -1
+        return [4, 6, 9, 11].indexOf(month) > -1
       },
 
       getMonthEndDay (year, month) {
@@ -251,7 +228,64 @@
             this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]))
           }
         })
-        // TODO:
+        if (/Hm$/.test(this.typeStr)) {
+          dateSlots.splice(typesArr.length - 1, 0, {
+            divider: true,
+            content: ':'
+          })
+        }
+        this.dateSlots = dateSlots
+        this.handleExceededValue()
+      },
+
+      handleExceededValue() {
+        let values = []
+        if (this.type === 'time') {
+          const currentValue = this.currentValue.split(':')
+          values = [
+            this.hourFormat.replace('{value}', currentValue[0]),
+            this.minuteFormat.replace('{value}', currentValue[1])
+          ];
+        } else {
+          values = [
+            this.yearFormat.replace('{value}', this.getYear(this.currentValue)),
+            this.monthFormat.replace('{value}', ('0' + this.getMonth(this.currentValue)).slice(-2)),
+            this.dateFormat.replace('{value}', ('0' + this.getDate(this.currentValue)).slice(-2))
+          ]
+          if (this.type === 'datetime') {
+            values.push(
+              this.hourFormat.replace('{value}', ('0' + this.getHour(this.currentValue)).slice(-2)),
+              this.minuteFormat.replace('{value}', ('0' + this.getMinute(this.currentValue)).slice(-2))
+            )
+          }
+        }
+        this.dateSlots.filter(child => child.values !== undefined)
+          .map(slot => slot.values).forEach((slotValues, index) => {
+          if (slotValues.indexOf(values[index]) === -1) {
+            values[index] = slotValues[0]
+          }
+        })
+        this.$nextTick(() => {
+          this.setSlotsByValues(values)
+        })
+      },
+
+      setSlotsByValues(values) {
+        const setSlotValue = this.$refs.picker.setSlotValue
+        if (this.type === 'time') {
+          setSlotValue(0, values[0])
+          setSlotValue(1, values[1])
+        }
+        if (this.type !== 'time') {
+          setSlotValue(0, values[0])
+          setSlotValue(1, values[1])
+          setSlotValue(2, values[2])
+          if (this.type === 'datetime') {
+            setSlotValue(3, values[3])
+            setSlotValue(4, values[4])
+          }
+        }
+        [].forEach.call(this.$refs.picker.$children, child => child.doOnValueChange())
       },
 
       isDateString (str) {
@@ -293,7 +327,46 @@
 
       handleValueChange () {
         this.$emit('input', this.currentValue)
+      },
+
+      rimDetect (result, rim) {
+        let position = rim === 'start' ? 0 : 1
+        let rimDate = rim === 'start' ? this.startDate : this.endDate
+        if (this.getYear(this.currentValue) === rimDate.getFullYear()) {
+          result.month[position] = rimDate.getMonth() + 1
+          if (this.getMonth(this.currentValue) === rimDate.getMonth() + 1) {
+            result.date[position] = rimDate.getDate()
+            if (this.getDate(this.currentValue) === rimDate.getDate()) {
+              result.hour[position] = rimDate.getHours()
+              if (this.getHour(this.currentValue) === rimDate.getHours()) {
+                result.min[position] = rimDate.getMinutes()
+              }
+            }
+          }
+        }
+      },
+
+      onConfirm () {
+        this.visible = false
+        this.$emit('confirm', this.currentValue)
+      },
+
+      onCancel () {
+        this.visible = false
+        this.$emit('cancel')
       }
+    },
+
+    mounted () {
+      this.currentValue = this.value
+      if (!this.value) {
+        if (this.type.indexOf('date') > -1) {
+          this.currentValue = this.startDate
+        } else {
+          this.currentValue = `${ ('0' + this.startHour).slice(-2) }:00`
+        }
+      }
+      this.generateSlots()
     },
 
     watch: {
@@ -302,7 +375,7 @@
       },
 
       rims () {
-        // TODO:
+        this.generateSlots()
       }
     }
   }

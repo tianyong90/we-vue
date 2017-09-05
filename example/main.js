@@ -9,6 +9,8 @@ import store from './store/index.js'
 import routes from './route/index.js'
 import { mapState } from 'vuex'
 
+Vue.config.productionTip = false
+
 Vue.use(VueRouter)
 Vue.use(WeVue)
 
@@ -24,13 +26,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   store.commit('UPDATE_LOADING', true)
-
   next()
 })
 
 router.afterEach((to, from) => {
   store.commit('UPDATE_LOADING', false)
-
   document.title = to.meta.title
 })
 

@@ -1,13 +1,12 @@
 <template>
-  <div class="weui-picker__group">
+  <div class="weui-picker__group" v-if="!divider">
     <div class="weui-picker__mask"></div>
     <div class="weui-picker__indicator"></div>
     <div class="weui-picker__content" ref="listWrapper">
-      <div class="weui-picker__item"
-           :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }"
-           v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
+      <div class="weui-picker__item" :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
     </div>
   </div>
+  <div class="wv-picker-slot-divider" v-else v-html="content"></div>
 </template>
 
 <script>
@@ -36,9 +35,13 @@
       valueKey: String,
       defaultIndex: {
         type: Number,
-        default: 0,
-        required: false
-      }
+        default: 0
+      },
+      divider: {
+        type: Boolean,
+        default: false
+      },
+      content: {}
     },
 
     created () {
@@ -72,10 +75,12 @@
       this.currentValue = this.value
       this.$emit('input', this.currentValue)
 
+      if (this.divider) return
+
       const wrapper = this.$refs.listWrapper
       Transform(wrapper, true)
 
-      this.onValueChange()
+      this.doOnValueChange()
 
       draggable(this.$el, {
         start: (event) => {
@@ -155,9 +160,11 @@
         return this.mutatingValues[index]
       },
 
-      onValueChange () {
+      doOnValueChange () {
         let value = this.currentValue
         let wrapper = this.$refs.listWrapper
+
+        if (this.divider) return
 
         wrapper.translateY = this.value2translate(value)
       }
@@ -175,7 +182,7 @@
       },
 
       currentValue (val) {
-        this.onValueChange()
+        this.doOnValueChange()
         this.$emit('input', val)
         this.dispatch('wv-picker', 'slotValueChange', this)
       }
@@ -184,4 +191,7 @@
 </script>
 
 <style scoped lang="scss">
+  .wv-picker-slot-divider {
+    transform:translateY(106px);
+  }
 </style>
