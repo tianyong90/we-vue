@@ -29,10 +29,10 @@
 
     props: {
       title: {
-        type: String | Number
+        type: [String, Number]
       },
       value: {
-        type: String | Number
+        type: [String, Number]
       },
       isLink: Boolean,
       to: String

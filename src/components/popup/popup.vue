@@ -15,7 +15,7 @@
     props: {
       value: Boolean,
       height: {
-        type: String | Number,
+        type: [String, Number],
         default: 'auto'
       },
       hideOnMask: {
