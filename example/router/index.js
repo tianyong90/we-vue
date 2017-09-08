@@ -1,5 +1,9 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Navs from './nav.json'
 export const navs = Navs
+
+Vue.use(VueRouter)
 
 const registerRoute = (groups) => {
   let routes = []
@@ -11,7 +15,7 @@ const registerRoute = (groups) => {
       try {
         routes.push({
           path: `${nav.path}`,
-          component: require(`../pages${nav.path}.vue`),
+          component: resolve => require([`../pages${nav.path}.vue`], resolve),
           name: nav.title || nav.name,
           meta: {
             title: nav.title || nav.name,
@@ -31,7 +35,7 @@ const routes = registerRoute(Navs)
 
 routes.push({
   path: '/',
-  component: require('../pages/index.vue'),
+  component: resolve => require(['../pages/index.vue'], resolve),
   name: 'index',
   meta: {
     title: 'WE-VUE',
@@ -41,7 +45,7 @@ routes.push({
 
 routes.push({
   path: '*',
-  component: require('../pages/404.vue'),
+  component: resolve => require(['../pages/404.vue'], resolve),
   name: '404',
   meta: {
     title: '404 Not Found',
@@ -49,4 +53,10 @@ routes.push({
   }
 })
 
-export default routes
+const router = new VueRouter({
+  mode: 'history',
+  base: '/',
+  routes
+})
+
+export default router

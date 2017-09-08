@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import { navs } from '../route/index.js'
+  import { navs } from '../router'
   import logoImg from '../assets/images/logo.png'
 
   export default {
