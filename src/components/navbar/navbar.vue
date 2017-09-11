@@ -43,8 +43,8 @@
     },
 
     watch: {
-      value (newValue, value) {
-        this.$emit('change', newValue)
+      value (val) {
+        this.$emit('change', val)
       }
     }
   }
