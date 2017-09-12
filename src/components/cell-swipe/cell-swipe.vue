@@ -1,6 +1,6 @@
 <template>
   <div class="weui-cell weui-cell_swiped">
-    <div class="weui-cell__bd" ref="cellBd" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+    <div class="weui-cell__bd" ref="cellBd" @touchstart="touchStart" @mousedown="touchStart" @touchmove="touchMove" @mousemove="touchMove" @touchend="touchEnd" @mouseup="touchEnd">
       <wv-cell :title="title" :value="value" :is-link="isLink" :to="to">
         <template slot="icon">
           <slot name="icon"></slot>
@@ -61,7 +61,12 @@
 
         const cellBd = this.$refs.cellBd
 
-        this.dragState.startPositionX = event.changedTouches[0].clientX
+        if (event.type === 'touchstart') {
+          this.dragState.startPositionX = event.changedTouches[0].clientX
+        } else {
+          this.dragState.startPositionX = event.clientX
+        }
+
         this.dragState.startTranslateX = cellBd.translateX
         this.dragState.startTimestamp = new Date()
 
@@ -73,7 +78,13 @@
 
         this.isDragging = true
 
-        const deltaX = event.changedTouches[0].clientX - this.dragState.startPositionX
+        let deltaX
+        if (event.type === 'touchmove') {
+          deltaX = event.changedTouches[0].clientX - this.dragState.startPositionX
+        } else {
+          deltaX = event.clientX - this.dragState.startPositionX
+        }
+
         const cellBd = this.$refs.cellBd
         const btnsWidth = this.$refs.rightBtns.clientWidth
 
@@ -94,7 +105,11 @@
         const cellBd = this.$refs.cellBd
         const btnsWidth = this.$refs.rightBtns.clientWidth
 
-        this.dragState.endPositionX = event.changedTouches[0].clientX
+        if (event.type === 'touchend') {
+          this.dragState.endPositionX = event.changedTouches[0].clientX
+        } else {
+          this.dragState.endPositionX = event.clientX
+        }
         this.dragState.endTranslateX = cellBd.translateX
         this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
 

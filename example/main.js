@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-router.afterEach((to, from) => {
+router.afterEach((to) => {
   store.commit('UPDATE_LOADING', false)
   document.title = to.meta.title
 })

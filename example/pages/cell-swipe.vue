@@ -1,14 +1,14 @@
 <template>
   <div class="page">
     <wv-group title="默认">
-      <wv-cell-swipe title="标题文字" :value="true">
+      <wv-cell-swipe title="标题文字" value="hello">
         <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</wv-cell-swipe-button>
         <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</wv-cell-swipe-button>
       </wv-cell-swipe>
     </wv-group>
 
     <wv-group title="图标按钮">
-      <wv-cell-swipe title="标题文字" :value="true">
+      <wv-cell-swipe title="标题文字" value="hello">
         <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">
           <i class="iconfont icon-rubish"></i>
         </wv-cell-swipe-button>
