@@ -74,6 +74,12 @@
         "icon": "input"
       },
       {
+        "path": "/number-spinner",
+        "name": "NumberSpinner",
+        "description": "数字输入框",
+        "icon": "input"
+      },
+      {
         "path": "/radio",
         "name": "Radio",
         "description": "单选",

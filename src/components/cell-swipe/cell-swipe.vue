@@ -23,6 +23,7 @@
   import Cell from '../cell/index'
   import Transform from 'css3transform'
 
+  // TODO: 处理 mouse 事件
   export default {
     name: 'wv-cell-swipe',
 
