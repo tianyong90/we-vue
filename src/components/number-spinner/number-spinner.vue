@@ -1,8 +1,8 @@
 <template>
   <div class="wv-number-spinner">
-    <span class="spinner-btn btn-decrease" :class="{ 'btn-disabled': currentValue === min}" @click="decrease">-</span>
-    <input type="number" :value="currentValue" @change="onChange" @input="handleInput" :style="{ width: inputWidth }"/>
-    <span class="spinner-btn btn-increase" :class="{ 'btn-disabled': currentValue === max}" @click="increase">+</span>
+    <button class="spinner-btn btn-decrease" :class="{ 'btn-disabled': btnDecreaseDisabled}" :disabled="disabled" @click="decrease">-</button>
+    <input type="number" v-model.number="currentValue" :disabled="disabled" :readonly="!enableKeyboardInput" @blur="onBlur" :style="inputStyle"/>
+    <button class="spinner-btn btn-increase" :class="{ 'btn-disabled': btnIncreaseDisabled}"  :disabled="disabled" @click="increase">+</button>
   </div>
 </template>
 
@@ -27,12 +27,24 @@
         type: String,
         default: '4em'
       },
-      allowInput: {
+      enableKeyboardInput: {
         type: Boolean,
         default: true
       },
-      disabled: Boolean,
-      value: Number
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      align: {
+        type: String,
+        default: 'center'
+      },
+      value: {
+        validator (val) {
+          return typeof val === 'number' || val === ''
+        },
+        default: 0
+      }
     },
 
     data () {
@@ -41,22 +53,35 @@
       }
     },
 
-    methods: {
-      handleInput (event) {
-        // TODO:
-        const targetValue = Number.parseInt(event.target.value)
-
-        if (targetValue <= this.min) {
-          this.currentValue = this.min
-        } else if (targetValue >= this.max) {
-          this.currentValue = this.max
-        } else {
-          this.currentValue = targetValue
-        }
+    computed: {
+      btnDecreaseDisabled () {
+        return this.disabled || (this.currentValue === this.min)
       },
 
-      onChange () {
-        this.$emit('change', this.currentValue)
+      btnIncreaseDisabled () {
+        return this.disabled || (this.currentValue === this.max)
+      },
+
+      inputStyle () {
+        return {
+          width: this.inputWidth,
+          textAlign: this.align
+        }
+      }
+    },
+
+    methods: {
+      onBlur () {
+        if (this.currentValue === '') {
+          this.currentValue = this.min
+          return
+        }
+
+        if (this.currentValue >= this.max) {
+          this.currentValue = this.max
+        } else if (this.currentValue <= this.min) {
+          this.currentValue = this.min
+        }
       },
 
       increase () {
@@ -71,7 +96,7 @@
     watch: {
       currentValue (val) {
         this.$emit('input', val)
-        this.$emit('change', val)
+        this.$emit('on-change', val)
       },
 
       value (val) {
@@ -100,7 +125,6 @@
       float: left;
       border: none;
       outline: none;
-      text-align: center;
     }
 
     .spinner-btn {
@@ -109,6 +133,7 @@
       color: #000;
       font-size: 13px;
       padding: 0 .6em;
+      border: none;
     }
 
     .btn-decrease {
@@ -119,8 +144,8 @@
       border-left: 1px solid #ccc;
     }
 
-    .btn-disabled {
-      color: #ccc;
+    .spinner-btn[disabled] {
+      color: #888;
     }
   }
 </style>
