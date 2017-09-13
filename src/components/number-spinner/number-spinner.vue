@@ -100,12 +100,16 @@
       },
 
       value (val) {
-        if (val <= this.min) {
-          this.currentValue = this.min
-        } else if (val >= this.max) {
-          this.currentValue = this.max
-        } else {
-          this.currentValue = val
+        if (typeof val === 'number') {
+          if (val <= this.min) {
+            this.currentValue = this.min
+          } else if (val >= this.max) {
+            this.currentValue = this.max
+          } else {
+            this.currentValue = val
+          }
+        } else if (val === '') {
+          this.currentValue = ''
         }
       }
     }
