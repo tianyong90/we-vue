@@ -89,6 +89,8 @@
     color: #2196f3;
     overflow: hidden;
     font-size: 20px;
+    width: 25px;
+    text-align: center;
   }
 
   .footer-copyright {

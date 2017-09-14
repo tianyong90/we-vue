@@ -6,7 +6,7 @@
         "path": "/badge",
         "name": "Badge",
         "description": "小徽章",
-        "icon": "yduiindexbadge"
+        "icon": "badge_new"
       },
       {
         "path": "/circle",
@@ -77,7 +77,7 @@
         "path": "/number-spinner",
         "name": "NumberSpinner",
         "description": "数字输入框",
-        "icon": "input"
+        "icon": "amy-ui-spinner"
       },
       {
         "path": "/radio",
@@ -136,7 +136,7 @@
         "path": "/top-tips",
         "name": "TopTips",
         "description": "顶部提示条",
-        "icon": "dialog"
+        "icon": "tips"
       },
       {
         "path": "/picker",
@@ -148,13 +148,13 @@
         "path": "/datetime-picker",
         "name": "DatetimePicker",
         "description": "时间日期选择器",
-        "icon": "selectarrows"
+        "icon": "date_time"
       },
       {
         "path": "/infinite-scroll",
         "name": "InfiniteScroll",
         "description": "无限滚动加载",
-        "icon": "selectarrows"
+        "icon": "scrollvertical"
       }
     ]
   },
@@ -205,7 +205,7 @@
         "path": "/cell-swipe",
         "name": "CellSwipe",
         "description": "列表",
-        "icon": "cell"
+        "icon": "swipe"
       },
       {
         "path": "/flex",
