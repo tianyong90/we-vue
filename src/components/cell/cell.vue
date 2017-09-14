@@ -62,7 +62,9 @@
     methods: {
       handleClick (event) {
         event.preventDefault()
-        this.$router.push(this.href)
+        if (typeof this.href !== 'undefined') {
+          this.$router.push(this.href)
+        }
       }
     }
   }

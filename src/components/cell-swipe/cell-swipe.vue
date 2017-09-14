@@ -1,6 +1,6 @@
 <template>
   <div class="weui-cell weui-cell_swiped">
-    <div class="weui-cell__bd" ref="cellBd" @touchstart="touchStart" @mousedown="touchStart" @touchmove="touchMove" @mousemove="touchMove" @touchend="touchEnd" @mouseup="touchEnd">
+    <div class="weui-cell__bd" ref="cellBd" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
       <wv-cell :title="title" :value="value" :is-link="isLink" :to="to">
         <template slot="icon">
           <slot name="icon"></slot>
@@ -23,7 +23,6 @@
   import Cell from '../cell/index'
   import Transform from 'css3transform'
 
-  // TODO: 处理 mouse 事件
   export default {
     name: 'wv-cell-swipe',
 
