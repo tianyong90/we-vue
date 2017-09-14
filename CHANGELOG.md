@@ -1,3 +1,12 @@
+## v1.4.12 (2017-09-14)
+
+### new
+
+- 新增 number-spinner 组件
+
+### fix
+- 未定义跳转链接的 cell-swipe 点击事件处理优化
+
 ## v1.4.11
 
 - 完善 datetime-picker 组件
