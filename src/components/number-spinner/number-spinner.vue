@@ -1,7 +1,7 @@
 <template>
   <div class="wv-number-spinner">
     <button class="spinner-btn btn-decrease" :class="{ 'btn-disabled': btnDecreaseDisabled}" :disabled="disabled" @click="decrease">-</button>
-    <input type="number" v-model.number="currentValue" :disabled="disabled" :readonly="!enableKeyboardInput" @blur="onBlur" :style="inputStyle"/>
+    <input type="number" v-model.number="currentValue" :disabled="disabled" :readonly="!fillable" @blur="onBlur" :style="inputStyle"/>
     <button class="spinner-btn btn-increase" :class="{ 'btn-disabled': btnIncreaseDisabled}"  :disabled="disabled" @click="increase">+</button>
   </div>
 </template>
@@ -25,9 +25,9 @@
       },
       inputWidth: {
         type: String,
-        default: '4em'
+        default: '3em'
       },
-      enableKeyboardInput: {
+      fillable: {
         type: Boolean,
         default: true
       },
@@ -74,13 +74,6 @@
       onBlur () {
         if (this.currentValue === '') {
           this.currentValue = this.min
-          return
-        }
-
-        if (this.currentValue >= this.max) {
-          this.currentValue = this.max
-        } else if (this.currentValue <= this.min) {
-          this.currentValue = this.min
         }
       },
 
@@ -96,7 +89,7 @@
     watch: {
       currentValue (val) {
         this.$emit('input', val)
-        this.$emit('on-change', val)
+        this.$emit('change', val)
       },
 
       value (val) {
@@ -129,6 +122,7 @@
       float: left;
       border: none;
       outline: none;
+      padding: 0 .5em;
     }
 
     .spinner-btn {

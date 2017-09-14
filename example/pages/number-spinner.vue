@@ -1,19 +1,31 @@
 <template>
   <div class="page">
     <wv-group title="在 cell 中使用">
-      <wv-cell title="title1">
+      <wv-cell title="默认">
         <wv-number-spinner slot="ft" v-model="number1"></wv-number-spinner>
       </wv-cell>
-      <wv-cell title="title1">
-        <wv-number-spinner slot="ft" v-model="number2"></wv-number-spinner>
+      <wv-cell title="禁用">
+        <wv-number-spinner :disabled="true" slot="ft" v-model="number2"></wv-number-spinner>
       </wv-cell>
-      <wv-cell title="title1">
-        <wv-number-spinner slot="ft" v-model="number3"></wv-number-spinner>
+      <wv-cell title="禁止键盘输入">
+        <wv-number-spinner :fillable="false" slot="ft" v-model="number3"></wv-number-spinner>
+      </wv-cell>
+      <wv-cell title="min=1,max=5">
+        <wv-number-spinner :min="1" :max="5" slot="ft" v-model="number4" @change="onChange"></wv-number-spinner>
+      </wv-cell>
+      <wv-cell title="step=5">
+        <wv-number-spinner :step="5" slot="ft" v-model="number5"></wv-number-spinner>
+      </wv-cell>
+      <wv-cell title="自定义输入框宽度">
+        <wv-number-spinner input-width="6em" slot="ft" v-model="number6"></wv-number-spinner>
+      </wv-cell>
+      <wv-cell title="自定义文本对齐方式">
+        <wv-number-spinner align="right" slot="ft" v-model="number7"></wv-number-spinner>
       </wv-cell>
     </wv-group>
 
-    <div>
-      <wv-number-spinner slot="ft" v-model="number1"></wv-number-spinner>
+    <div class="independent-spinner">
+      <wv-number-spinner slot="ft" v-model="number8"></wv-number-spinner>
     </div>
   </div>
 </template>
@@ -23,10 +35,19 @@
     data () {
       return {
         number1: 1,
-        number2: 2,
-        number3: 3,
-        number4: 4,
-        number5: 5
+        number2: 1,
+        number3: 1,
+        number4: 1,
+        number5: 1,
+        number6: 1,
+        number7: 1,
+        number8: 1
+      }
+    },
+
+    methods: {
+      onChange (evt) {
+        console.log(evt)
       }
     }
   }
@@ -35,5 +56,12 @@
 <style scoped lang="scss">
   .page {
     background-color: #f2f2f2;
+  }
+
+  .independent-spinner {
+    display: block;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 1em;
   }
 </style>

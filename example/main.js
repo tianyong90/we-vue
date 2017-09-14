@@ -9,6 +9,7 @@ import router from './router'
 import { mapState } from 'vuex'
 
 Vue.config.productionTip = false
+Vue.config.devtools = true
 
 Vue.use(WeVue)
 
