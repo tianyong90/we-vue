@@ -37,9 +37,9 @@
     position: relative;
     display: block;
     flex: 1;
-    padding: 13px 0;
-    text-align: center;
     font-size: 15px;
+    padding: 6px 0;
+    text-align: center;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     &.wv-navbar__item_on {
