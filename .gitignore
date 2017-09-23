@@ -6,6 +6,5 @@ yarn-error.log
 /.idea/
 /.vscode/
 /yarn.lock
-package-lock.json
 dist/
 /deploy.sh
