@@ -1,7 +1,7 @@
 <template>
   <a class="wv-navbar__item"
-     @click="$parent.$emit('input', id)"
-     :class="{ 'wv-navbar__item_on': $parent.value === id }"
+     @click="onClick"
+     :class="{ 'wv-navbar__item_on': !$parent.animate && $parent.value === id, disabled: disabled }"
      :style="style">
     <slot></slot>
   </a>
@@ -28,6 +28,13 @@
           color: this.isSelected ? this.$parent.activeColor : this.$parent.color
         }
       }
+    },
+
+    methods: {
+      onClick () {
+        if (this.disabled) return
+        this.$parent.$emit('input', this.id)
+      }
     }
   }
 </script>
@@ -44,6 +51,10 @@
 
     &.wv-navbar__item_on {
       border-bottom: 3px solid red;
+    }
+
+    &.disabled {
+      color: #888 !important;
     }
   }
 </style>
