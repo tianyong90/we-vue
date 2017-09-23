@@ -60,10 +60,11 @@
       },
 
       lineStyle () {
+        const itemWidthPercentage = 1 / this.childrenCount * 100
         return {
           backgroundColor: this.activeColor,
-          left: 100 * this.currentIndex + 'px',
-          width: 1 / this.childrenCount * 100 + '%',
+          left: itemWidthPercentage * this.currentIndex + '%',
+          width: itemWidthPercentage + '%',
           height: this.lineWidth + 'px'
         }
       }
