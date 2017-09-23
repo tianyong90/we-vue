@@ -388,7 +388,7 @@
         this.$pageContainer.removeEventListener('transitionend', this.transitionendProcessor);
       },
 
-      animate (i_from, i_to){
+      animate (i_from, i_to, info){
         var $pageContainer = this.$pageContainer,
           $pages = this.$pages,
           index = this.index,
