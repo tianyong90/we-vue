@@ -1,9 +1,10 @@
 <template>
   <div class="page">
-    <wv-swipe class="demo-swipe" :height="130" :auto="4000">
+    <!-- <wv-swipe class="demo-swipe" :height="130" :auto="4000">
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336">1</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
+      <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">4</wv-swipe-item>
     </wv-swipe>
 
     <wv-swipe class="demo-swipe" :height="130" :auto="0">
@@ -14,7 +15,21 @@
 
     <wv-swipe class="demo-swipe" :height="130" :show-indicators="false" :auto="5000">
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336">单张轮播</wv-swipe-item>
-    </wv-swipe>
+    </wv-swipe> -->
+
+    <!-- <wv-swipe2 class="demo-swipe" :height="130" :auto="0">
+      <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336">1</wv-swipe-item>
+      <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
+      <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
+    </wv-swipe2> -->
+
+    <wv-swipe3 class="demo-swipe" :height="130" :auto="0" :continuous="true">
+      <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336"><div class="page1">1</div></wv-swipe-item>
+      <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
+      <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
+    </wv-swipe3>
+
+    
   </div>
 </template>
 
@@ -28,6 +43,11 @@
       font-weight: bold;
       text-align: center;
       line-height: 130px;
+
+      .page1 {
+        width: 100%;
+        height: 200px;
+      }
     }
   }
 </style>
