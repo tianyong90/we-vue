@@ -356,16 +356,17 @@
               self.index--;
             else
               needPass = true;
-          } else
+          } else {
             if (self.index < $pages.length - 1 || continuous)
               self.index++;
             else
               needPass = true;
+          }
+
+          i_to = (info.offset > 0) ? i_from - 1 : i_from + 1;
         } else
           needPass = true;
-
-        i_to = (info.offset > 0) ? i_from - 1 : i_from + 1;
-
+        
         if(continuous){
           if(i_to < 0){
             i_to = $pages.length-1;
