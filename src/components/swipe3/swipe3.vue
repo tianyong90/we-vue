@@ -27,7 +27,7 @@
         $pageContainer: null,
         $indicators: null,
         $indicatorContainer: null,
-        pageWidth: null,
+        swipeItemWidth: null,
         actualSwipeValue: null,
       }
       this.status = {
@@ -100,9 +100,9 @@
       //新增的
       gap: {
         type: Number,
-        default: 0
+        default: 10
       },
-      pageWidth: {
+      swipeItemWidth: {
         type: Number,
         default: null
       }
@@ -169,10 +169,10 @@
             continuous = this.continuous,
             gap = this.gap,
             self = this,
-            actualSwipeValue, pageWidth;
+            actualSwipeValue, swipeItemWidth;
 
-        pageWidth = this.dom.pageWidth = this.pageWidth || $swiper.clientWidth;
-        actualSwipeValue = this.dom.actualSwipeValue = this.dom.pageWidth + gap;
+        swipeItemWidth = this.dom.swipeItemWidth = this.swipeItemWidth || $swiper.clientWidth;
+        actualSwipeValue = this.dom.actualSwipeValue = this.dom.swipeItemWidth + gap;
         this.status.swipeStartOffset = index * actualSwipeValue;
 
         requestAnimationFrame(function () {
@@ -183,7 +183,7 @@
           requestAnimationFrame(function () {
             $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
             Array.prototype.forEach.call($pages, function ($page) {
-              $page.style.width = pageWidth + 'px';
+              $page.style.width = swipeItemWidth + 'px';
               $page.style.marginRight = gap + 'px';
               
             });
@@ -191,7 +191,7 @@
             if(continuous){
               $swiper.classList.add('loop');
               Array.prototype.forEach.call($pages, function ($page ,i) {
-                $page.currentPosition = i * pageWidth ;
+                $page.currentPosition = i * swipeItemWidth ;
                 $page.index = i;
                 $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)';
                 $page.style.webkitTransition = 
@@ -331,7 +331,7 @@
       onSwipeDone (info){
         var $pageContainer = this.$pageContainer,
           $pages = this.$pages,
-          pageWidth = this.dom.pageWidth,
+          swipeItemWidth = this.dom.swipeItemWidth,
           continuous = this.continuous,
           actualSwipeValue = this.dom.actualSwipeValue,
           self = this,
@@ -347,7 +347,7 @@
 
         if (self.status.edgeLocker == 1) return;
 
-        if (Math.abs(info.offset) / pageWidth > 0.15 &&
+        if (Math.abs(info.offset) / swipeItemWidth > 0.15 &&
           self.status.swipeCurrentOffset <= maxOffset &&
           self.status.swipeCurrentOffset >= 0
         ) {//跳转
