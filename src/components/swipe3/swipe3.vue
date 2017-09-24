@@ -1,6 +1,6 @@
 <template>
   <div class="wv-swipe" :style="{ height: height + 'px' }">
-    <div class="wv-swipe-wrapper" ref="wrapper" v-swipe:horizonal.lock="swipeConfig">
+    <div class="wv-swipe-wrapper" v-swipe:horizonal.lock="swipeConfig">
       <div class="wv-swipe-items">
         <slot></slot>
       </div>
@@ -25,8 +25,6 @@
       this.dom = {
         $pages: null,
         $pageContainer: null,
-        $indicators: null,
-        $indicatorContainer: null,
         itemWidth: null,
         actualSwipeValue: null,
       }
@@ -36,12 +34,6 @@
         edgeLocker: false,
         swipeCurrentOffset: null,
         swipeStartOffset: null
-      };
-      this.event = {
-        onPageEnter: [],
-        onPageLeave: [],
-        onIndicatorEnter: [],
-        onIndicatorLeave: [],
       };
       this.swipeConfig = {
         onSwipe: this.onSwipe,

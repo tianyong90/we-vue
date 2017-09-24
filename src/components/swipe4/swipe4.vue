@@ -1,6 +1,6 @@
 <template>
   <div class="wv-swipe" :style="{ height: height + 'px' }">
-    <div class="wv-swipe-wrapper" ref="wrapper" v-swipe:horizonal.lock="swipeConfig">
+    <div class="wv-swipe-wrapper" v-swipe:horizonal.lock="swipeConfig">
       <div class="wv-swipe-items">
         <slot></slot>
       </div>
@@ -33,7 +33,8 @@
         rafLocker: false,
         edgeLocker: false,
         swipeCurrentOffset: null,
-        swipeStartOffset: null
+        swipeStartOffset: null,
+        activatedClass: 'is-active'
       };
       this.event = {
         onPageEnter: [],
@@ -53,7 +54,6 @@
         dragging: false,
         animating: false,
         index: 0,
-        pages: [],
         timer: null,
         reInitTimer: null,
       }
@@ -105,14 +105,19 @@
       overflow: {
         type: String,
         default: 'default'
-      }
+      },
+      onSwitch: {
+        type: Function,
+        default: null
+      },
     },
 
     mounted () {
       this.ready = true
 
       this.setTimer();
-      this.reInitPages()
+      this.reInitPages();
+      window.addEventListener('resize',this.reSize);
     },
 
     methods: {
@@ -135,33 +140,24 @@
       },
 
       reInitPages () {
-        let children = this.$children
+        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.wv-swipe-items'),
+            $pages = this.dom.$pages = $pageContainer.children;
 
-        let pages = []
         let intDefaultIndex = Math.floor(this.defaultIndex)
-        let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < children.length) ? intDefaultIndex : 0
+        let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < $pages.length) ? intDefaultIndex : 0
         this.index = defaultIndex;
-
-        children.forEach(function (child, index) {
-          pages.push(child.$el)
-
-          removeClass(child.$el, 'is-active')
-
-          if (index === defaultIndex) {
-            addClass(child.$el, 'is-active')
-          }
-        })
-
-        this.pages = pages;
+        this.dom.$pages = $pages;
+        this.dom.$indicatorContainer = this.$el.querySelector('.wv-swipe-indicators');
+        this.dom.$indicators = this.dom.$indicatorContainer.children;
 
         this.reSize();
-        window.addEventListener('resize',this.reSize);
       },
 
       reSize (){
-        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.wv-swipe-items'),
+        var $pageContainer = this.dom.$pageContainer,
             $swiper = this.$el.children[0],
-            $pages = this.dom.$pages = $pageContainer.children,
+            $pages = this.dom.$pages,
+            $indicators = this.dom.$indicators,
             index = this.index,
             speed = this.speed,
             continuous = this.continuous,
@@ -177,7 +173,8 @@
           $pageContainer.classList.add('noneAnimation','subNoneAnimation');
           $swiper.classList.add('subNoneAnimation');
           $swiper.style['opacity'] = 0;
-          $pages[index].classList.add('is-active');
+          $pages[index].classList.add(self.status.activatedClass);
+          $indicators[index] && $indicators[index].classList.add(self.status.activatedClass);
           requestAnimationFrame(function () {
             $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
             Array.prototype.forEach.call($pages, function ($page) {
@@ -258,7 +255,7 @@
       setTimer (){
         if (this.auto > 0) {
           this.timer = setInterval(() => {
-            if (!this.continuous && (this.index >= this.pages.length - 1)) {
+            if (!this.continuous && (this.index >= this.dom.$pages.length - 1)) {
               return this.clearTimer()
             }
             if (!this.dragging && !this.animating) {
@@ -321,6 +318,14 @@
                 `translate3d(${-offset}px,0,0)`;
             }
 
+            self.indicatorOnSwipe instanceof Function && self.indicatorOnSwipe({
+              $form: self.dom.$indicators[i_from],
+              $to: self.dom.$indicators[i_to],
+              from: i_from,
+              to: i_to,
+              percentage: Math.abs(info.offset / pageWidth)
+            });
+
             self.status.rafLocker = false;
           });
         }
@@ -378,6 +383,12 @@
           i_to = i_from;
 
         this.animate(i_from, i_to, info);
+        this.indicatorOnSwipe instanceof Function && this.indicatorOnSwipe({
+          $form: self.dom.$indicators[i_from],
+          $to: self.dom.$indicators[i_to],
+          from: i_from,
+          to: i_to
+        });
         if (needPass && !continuous) return needPass;
       },
 
@@ -404,15 +415,6 @@
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
         requestAnimationFrame(function () {
-          $showing && $showing.classList.remove('is-active');
-
-          if (self.index > $pages.length-1)
-            $pages[0].classList.add('is-active');
-          else if(self.index < 0)
-            $pages[$pages.length - 1].classList.add('is-active');
-          else
-            $pages[i_to].classList.add('is-active');
-
           if(!continuous){
             $pageContainer.classList.remove('noneAnimation');
             $pageContainer.style['transform'] = 'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
@@ -524,6 +526,33 @@
 
         return true;
       },
+
+      updateIndex (val, oldVal){
+        var max = this.dom.$pages.length - 1;
+
+        if( val >= 0 && val <= max ){
+          if(oldVal < 0) oldVal = max;
+          if(oldVal > max) oldVal = 0;
+
+          this.dom.$pages[val].classList.add(this.status.activatedClass);
+          this.dom.$pages[oldVal].classList.remove(this.status.activatedClass);
+
+          this.dom.$indicators[val] && this.dom.$indicators[val].classList.add(this.status.activatedClass);
+          this.dom.$indicators[oldVal] && this.dom.$indicators[oldVal].classList.remove(this.status.activatedClass);
+
+          this.event.onPageEnter instanceof Function && 
+            this.event.onPageEnter[val]();
+          this.event.onPageLeave instanceof Function && 
+            this.event.onPageLeave[oldVal]();
+          this.event.onIndicatorEnter instanceof Function && 
+            this.event.onIndicatorEnter[val]();
+          this.event.onIndicatorLeave instanceof Function && 
+            this.event.onIndicatorLeave[oldVal]();
+
+          this.event.onSwitch instanceof Function && 
+            this.event.onSwitch(val, oldVal);
+        }
+      }
     },
 
     destroyed () {
@@ -540,6 +569,7 @@
     watch: {
       index (val) {
         this.$emit('change', val)
+        this.updateIndex.apply(this, arguments);
       }
     },
 
