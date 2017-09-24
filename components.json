@@ -34,6 +34,7 @@
   "swipe3": "./src/components/swipe3/index.js",
   "swipe4": "./src/components/swipe4/index.js",
   "swipe-item": "./src/components/swipe-item/index.js",
+  "swipe-indicator": "./src/components/swipe-indicator/index.js",
   "popup": "./src/components/popup/index.js",
   "panel": "./src/components/panel/index.js",
   "media-box": "./src/components/media-box/index.js",

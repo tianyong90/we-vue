@@ -7,6 +7,9 @@
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336"><div class="page1">1</div></wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
+
+      <div slot="indicator">1</div>
+      <div slot="indicator">2</div>
     </wv-swipe4>
 
     <div class="description">
@@ -25,6 +28,9 @@
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336"><div class="page1">1</div></wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
+      
+      <wv-swipe-indicator slot="indicator">123</wv-swipe-indicator>
+      <wv-swipe-indicator slot="indicator">123</wv-swipe-indicator>
     </wv-swipe4>
   </div>
 </template>

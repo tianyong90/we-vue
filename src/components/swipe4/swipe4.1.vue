@@ -102,7 +102,7 @@
         type: Number,
         default: 0
       },
-      pageWidth: {
+      itemWidth: {
         type: Number,
         default: null
       },
@@ -110,11 +110,11 @@
         type: Function,
         default: null
       },
-      onEveryPageLeave: {
+      onEveryItemLeave: {
         type: Function,
         default: null
       },
-      onEveryPageEnter: {
+      onEveryItemEnter: {
         type: Function,
         default: null
       },

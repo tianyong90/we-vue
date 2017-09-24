@@ -1,7 +1,7 @@
 <template>
   <div class="wv-swipe" :style="{ height: height + 'px' }">
     <div class="wv-swipe-wrapper" ref="wrapper" v-swipe:horizonal.lock="swipeConfig">
-      <div class="page-container">
+      <div class="wv-swipe-items">
         <slot></slot>
       </div>
     </div>
@@ -116,7 +116,8 @@
       this.ready = true
 
       this.setTimer();
-      this.reInitPages()
+      this.reInitPages();
+      window.addEventListener('resize',this.reSize);
     },
 
     methods: {
@@ -139,33 +140,20 @@
       },
 
       reInitPages () {
-        let children = this.$children
+        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.wv-swipe-items'),
+            $pages = this.dom.$pages = $pageContainer.children;
 
-        let pages = []
         let intDefaultIndex = Math.floor(this.defaultIndex)
-        let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < children.length) ? intDefaultIndex : 0
+        let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < $pages.length) ? intDefaultIndex : 0
         this.index = defaultIndex;
-
-        children.forEach(function (child, index) {
-          pages.push(child.$el)
-
-          removeClass(child.$el, 'is-active')
-
-          if (index === defaultIndex) {
-            addClass(child.$el, 'is-active')
-          }
-        })
-
-        this.pages = pages;
-
+        this.pages = $pages;
         this.reSize();
-        window.addEventListener('resize',this.reSize);
       },
 
       reSize (){
-        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.page-container'),
+        var $pageContainer = this.dom.$pageContainer,
             $swiper = this.$el.children[0],
-            $pages = this.dom.$pages = $pageContainer.children,
+            $pages = this.dom.$pages,
             index = this.index,
             speed = this.speed,
             continuous = this.continuous,
@@ -262,7 +250,7 @@
       setTimer (){
         if (this.auto > 0) {
           this.timer = setInterval(() => {
-            if (!this.continuous && (this.index >= this.pages.length - 1)) {
+            if (!this.continuous && (this.index >= this.dom.$pages.length - 1)) {
               return this.clearTimer()
             }
             if (!this.dragging && !this.animating) {
@@ -562,7 +550,7 @@
     .wv-swipe-wrapper {
       height: 100%;
 
-      .page-container {
+      .wv-swipe-items {
         height: 100%;
         overflow-y: hidden;
         will-change: transform;
@@ -579,7 +567,7 @@
         }
       }
 
-      &.loop .page-container{
+      &.loop .wv-swipe-items{
         will-change: unset;
         transition: none;
         position: relative;
@@ -607,6 +595,9 @@
         background-color: #000;
         opacity: 0.3;
 
+        &.is-active {
+          background-color:#fff; 
+        }
       }
     }
   }
