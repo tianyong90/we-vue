@@ -181,7 +181,7 @@
           $pageContainer.classList.add('noneAnimation','subNoneAnimation');
           $swiper.classList.add('subNoneAnimation');
           $swiper.style['opacity'] = 0;
-          $pages[index].classList.add('showing');
+          $pages[index].classList.add('is-active');
           requestAnimationFrame(function () {
             $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
             Array.prototype.forEach.call($pages, function ($page) {
@@ -402,20 +402,20 @@
 
           needPass = false,
           maxOffset = ($pages.length - 1) * actualSwipeValue,
-          $showing = $pageContainer.querySelector('.showing');
+          $showing = $pageContainer.querySelector('.is-active');
 
         $pageContainer.addEventListener('transitionend', self.transitionendProcessor);
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
         requestAnimationFrame(function () {
-          $showing && $showing.classList.remove('showing');
+          $showing && $showing.classList.remove('is-active');
 
           if (self.index > $pages.length-1)
-            $pages[0].classList.add('showing');
+            $pages[0].classList.add('is-active');
           else if(self.index < 0)
-            $pages[$pages.length - 1].classList.add('showing');
+            $pages[$pages.length - 1].classList.add('is-active');
           else
-            $pages[i_to].classList.add('showing');
+            $pages[i_to].classList.add('is-active');
 
           if(!continuous){
             $pageContainer.classList.remove('noneAnimation');
@@ -576,10 +576,6 @@
           float: left;
           overflow-y: scroll;
 
-          &.is-active {
-            display: block;
-            transform: none;
-          }
         }
       }
 
@@ -611,9 +607,6 @@
         background-color: #000;
         opacity: 0.3;
 
-        &.is-active {
-          background-color: #fff;
-        }
       }
     }
   }

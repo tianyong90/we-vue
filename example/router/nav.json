@@ -49,6 +49,12 @@
         "name": "Swipe",
         "description": "轮播",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/swipeplus",
+        "name": "SwipePlus",
+        "description": "滑动页面切换",
+        "icon": "widget-slider-scroll"
       }
     ]
   },
