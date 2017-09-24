@@ -105,6 +105,10 @@
       itemWidth: {
         type: Number,
         default: null
+      },
+      overflow: {
+        type: String,
+        default: 'backDrag'
       }
     },
 
@@ -159,11 +163,9 @@
       },
 
       reSize (){
-        var $pageContainer = this.$pageContainer = this.$el.querySelector('.page-container'),
+        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.page-container'),
             $swiper = this.$el.children[0],
-            $pages = this.$pages = $pageContainer.children,
-            $indicators = this.$indicators = this.$el.querySelector('.wv-swipe-indicators'),
-            $indicatorContainer = this.$indicatorContainer,
+            $pages = this.dom.$pages = $pageContainer.children,
             index = this.index,
             speed = this.speed,
             continuous = this.continuous,
@@ -199,7 +201,7 @@
               });
             }else{
               $pageContainer.style.webkitTransition = 
-                `-webkit-transform${speed}ms ease`;
+                `-webkit-transform ${speed}ms ease`;
             }
             self.goTo(index);
             requestAnimationFrame(function(){
@@ -215,8 +217,8 @@
 
       goTo (page){
         var fromPage = this.index,
-          $pageContainer = this.$pageContainer,
-          $pages = this.$pages,
+          $pageContainer = this.dom.$pageContainer,
+          $pages = this.dom.$pages,
           self = this,
           swipeStartOffset;
 
@@ -271,13 +273,14 @@
       },
 
       onSwipe (info){
-        var $pageContainer = this.$pageContainer,
-          $pages = this.$pages,
+        var $pageContainer = this.dom.$pageContainer,
+          $pages = this.dom.$pages,
           continuous = this.continuous,
           actualSwipeValue = this.dom.actualSwipeValue,
+          handleOverflow = this.handleOverflow,
           self = this,
 
-          offset = self.status.swipeStartOffset - info.offset,
+          offset = self.status.swipeStartOffset + info.offset,
           i_to = (info.offset > 0) ? this.index - 1 : this.index + 1,
           i_from = this.index,
           maxOffset = ($pages.length - 1) * actualSwipeValue,
@@ -292,11 +295,11 @@
         if (i_to > $pages.length - 1) i_to = 0;
         if (self.status.edgeLocker == 1) return;
 
-        if (offset < 0) {
+        if (offset > 0) {
           offset = 0;
           needPass = true;
-        } else if (offset > maxOffset) {
-          offset = maxOffset;
+        } else if (offset < -maxOffset) {
+          offset = -maxOffset;
           needPass = true;
         }
         self.status.swipeCurrentOffset = offset;
@@ -312,25 +315,25 @@
               else
                 $pageContainer.classList.add('noneAnimation');
             }
-            if (!continuous) {
-              $pageContainer.style.transform = 
-                `translate3d(${self.status.swipeCurrentOffset}px,0,0)`;
-            } else {
+            if (continuous) {
               Array.prototype.forEach.call($pages,function($li){
                 $li.style.transform = 
                   `translate3d(${$li.currentPosition + info.offset}px,0,0)`;
               });
+            } else {
+              $pageContainer.style.transform = 
+                `translate3d(${offset}px,0,0)`;
             }
 
             self.status.rafLocker = false;
           });
         }
-        if (needPass && !continuous) return needPass;
+        if (needPass && !continuous) return handleOverflow(info);
       },
 
       onSwipeDone (info){
-        var $pageContainer = this.$pageContainer,
-          $pages = this.$pages,
+        var $pageContainer = this.dom.$pageContainer,
+          $pages = this.dom.$pages,
           itemWidth = this.dom.itemWidth,
           continuous = this.continuous,
           actualSwipeValue = this.dom.actualSwipeValue,
@@ -348,8 +351,8 @@
         if (self.status.edgeLocker == 1) return;
 
         if (Math.abs(info.offset) / itemWidth > 0.15 &&
-          self.status.swipeCurrentOffset <= maxOffset &&
-          self.status.swipeCurrentOffset >= 0
+          self.status.swipeCurrentOffset >= -maxOffset &&
+          self.status.swipeCurrentOffset <= 0
         ) {//跳转
           if (info.offset > 0) {
             if (self.index != 0 || continuous)
@@ -386,12 +389,12 @@
         this.clearTimer();
         this.setTimer();
         this.animating = false;
-        this.$pageContainer.removeEventListener('transitionend', this.transitionendProcessor);
+        this.dom.$pageContainer.removeEventListener('transitionend', this.transitionendProcessor);
       },
 
       animate (i_from, i_to, info){
-        var $pageContainer = this.$pageContainer,
-          $pages = this.$pages,
+        var $pageContainer = this.dom.$pageContainer,
+          $pages = this.dom.$pages,
           index = this.index,
           continuous = this.continuous,
           actualSwipeValue = this.dom.actualSwipeValue,
@@ -503,6 +506,27 @@
 
           i_from === i_to && self.transitionendProcessor()
         });
+      },
+
+      handleOverflow (info){
+        var type = this.overflow;
+
+        if(type === 'backDrag')
+          this.overflowBackDrag(info);
+
+        return true;
+      },
+
+      overflowBackDrag (info){
+        var x = 288 / 3 / 360; // 默认为微信的转换比例
+
+        x = - this.status.swipeStartOffset + info.offset * x;
+
+        requestAnimationFrame(() => {
+          this.dom.$pageContainer.style.transform = 'translate3d(' + x + 'px,0,0)';
+        });
+
+        return true;
       },
     },
 
