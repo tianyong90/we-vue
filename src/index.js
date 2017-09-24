@@ -33,6 +33,7 @@ import Swipe2 from './components/swipe2/index'
 import Swipe3 from './components/swipe3/index'
 import Swipe4 from './components/swipe4/index'
 import SwipeItem from './components/swipe-item/index'
+import SwipeIndicator from './components/swipe-indicator/index'
 import Popup from './components/popup/index'
 import Panel from './components/panel/index'
 import MediaBox from './components/media-box/index'
@@ -83,6 +84,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Swipe3.name, Swipe3)
   Vue.component(Swipe4.name, Swipe4)
   Vue.component(SwipeItem.name, SwipeItem)
+  Vue.component(SwipeIndicator.name, SwipeIndicator)
   Vue.component(Popup.name, Popup)
   Vue.component(Panel.name, Panel)
   Vue.component(MediaBox.name, MediaBox)
@@ -148,6 +150,7 @@ export default {
   Swipe3,
   Swipe4,
   SwipeItem,
+  SwipeIndicator,
   Popup,
   Panel,
   MediaBox,

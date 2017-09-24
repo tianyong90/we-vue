@@ -1,12 +1,12 @@
 <template>
   <div class="wv-swipe" :style="{ height: height + 'px' }">
     <div class="wv-swipe-wrapper" ref="wrapper" v-swipe:horizonal.lock="swipeConfig">
-      <div class="page-container">
+      <div class="wv-swipe-items">
         <slot></slot>
       </div>
     </div>
     <div class="wv-swipe-indicators" v-show="showIndicators">
-      <div class="wv-swipe-indicator" v-for="(page, $index) in pages" :key="$index" :class="{ 'is-active': $index === index }"></div>
+      <slot name="indicator" class="wv-swipe-indicator"></slot>
     </div>
   </div>
 </template>
@@ -159,7 +159,7 @@
       },
 
       reSize (){
-        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.page-container'),
+        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.wv-swipe-items'),
             $swiper = this.$el.children[0],
             $pages = this.dom.$pages = $pageContainer.children,
             index = this.index,
@@ -177,7 +177,7 @@
           $pageContainer.classList.add('noneAnimation','subNoneAnimation');
           $swiper.classList.add('subNoneAnimation');
           $swiper.style['opacity'] = 0;
-          $pages[index].classList.add('showing');
+          $pages[index].classList.add('is-active');
           requestAnimationFrame(function () {
             $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
             Array.prototype.forEach.call($pages, function ($page) {
@@ -398,20 +398,20 @@
 
           needPass = false,
           maxOffset = ($pages.length - 1) * actualSwipeValue,
-          $showing = $pageContainer.querySelector('.showing');
+          $showing = $pageContainer.querySelector('.is-active');
 
         $pageContainer.addEventListener('transitionend', self.transitionendProcessor);
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
         requestAnimationFrame(function () {
-          $showing && $showing.classList.remove('showing');
+          $showing && $showing.classList.remove('is-active');
 
           if (self.index > $pages.length-1)
-            $pages[0].classList.add('showing');
+            $pages[0].classList.add('is-active');
           else if(self.index < 0)
-            $pages[$pages.length - 1].classList.add('showing');
+            $pages[$pages.length - 1].classList.add('is-active');
           else
-            $pages[i_to].classList.add('showing');
+            $pages[i_to].classList.add('is-active');
 
           if(!continuous){
             $pageContainer.classList.remove('noneAnimation');
@@ -558,7 +558,7 @@
     .wv-swipe-wrapper {
       height: 100%;
 
-      .page-container {
+      .wv-swipe-items {
         height: 100%;
         overflow-y: hidden;
         will-change: transform;
@@ -572,14 +572,10 @@
           float: left;
           overflow-y: scroll;
 
-          &.is-active {
-            display: block;
-            transform: none;
-          }
         }
       }
 
-      &.loop .page-container{
+      &.loop .wv-swipe-items{
         will-change: unset;
         transition: none;
         position: relative;
@@ -607,9 +603,6 @@
         background-color: #000;
         opacity: 0.3;
 
-        &.is-active {
-          background-color: #fff;
-        }
       }
     }
   }
