@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="wv-swipe-indicators" v-show="showIndicators">
-      <slot name="indicator" class="wv-swipe-indicator"></slot>
+      <slot name="indicator"></slot>
     </div>
   </div>
 </template>
@@ -35,12 +35,6 @@
         swipeCurrentOffset: null,
         swipeStartOffset: null,
         activatedClass: 'is-active'
-      };
-      this.event = {
-        onPageEnter: [],
-        onPageLeave: [],
-        onIndicatorEnter: [],
-        onIndicatorLeave: [],
       };
       this.swipeConfig = {
         onSwipe: this.onSwipe,
@@ -527,30 +521,41 @@
         return true;
       },
 
-      updateIndex (val, oldVal){
+      updateIndex (val, oVal){
         var max = this.dom.$pages.length - 1;
 
         if( val >= 0 && val <= max ){
-          if(oldVal < 0) oldVal = max;
-          if(oldVal > max) oldVal = 0;
+          if(oVal < 0) oVal = max;
+          if(oVal > max) oVal = 0;
 
           this.dom.$pages[val].classList.add(this.status.activatedClass);
-          this.dom.$pages[oldVal].classList.remove(this.status.activatedClass);
+          this.dom.$pages[oVal].classList.remove(this.status.activatedClass);
 
           this.dom.$indicators[val] && this.dom.$indicators[val].classList.add(this.status.activatedClass);
-          this.dom.$indicators[oldVal] && this.dom.$indicators[oldVal].classList.remove(this.status.activatedClass);
+          this.dom.$indicators[oVal] && this.dom.$indicators[oVal].classList.remove(this.status.activatedClass);
 
-          this.event.onPageEnter instanceof Function && 
-            this.event.onPageEnter[val]();
-          this.event.onPageLeave instanceof Function && 
-            this.event.onPageLeave[oldVal]();
-          this.event.onIndicatorEnter instanceof Function && 
-            this.event.onIndicatorEnter[val]();
-          this.event.onIndicatorLeave instanceof Function && 
-            this.event.onIndicatorLeave[oldVal]();
+          this.dom.$pages[val] && 
+            this.dom.$pages[val].__vue__&&
+              this.dom.$pages[val].__vue__.onEnter instanceof Function && 
+                this.dom.$pages[val].__vue__.onEnter[val]();
 
-          this.event.onSwitch instanceof Function && 
-            this.event.onSwitch(val, oldVal);
+          this.dom.$pages[oVal] && 
+            this.dom.$pages[oVal].__vue__&&
+              this.dom.$pages[oVal].__vue__.onLeave instanceof Function &&
+                this.dom.$pages[oVal].__vue__.onLeave[oVal]();
+
+          this.dom.$indicators[val] && 
+            this.dom.$indicators[val].__vue__&&
+              this.dom.$indicators[val].__vue__.onEnter instanceof Function && 
+                this.dom.$indicators[val].__vue__.onEnter[val]();
+
+          this.dom.$indicators[oVal] && 
+            this.dom.$indicators[oVal].__vue__&&
+              this.dom.$indicators[oVal].__vue__.onLeave instanceof Function &&
+                this.dom.$indicators[oVal].__vue__.onLeave[oldVal]();
+
+          this.onSwitch instanceof Function && 
+            this.onSwitch(val, oldVal);
         }
       }
     },
@@ -633,6 +638,9 @@
         background-color: #000;
         opacity: 0.3;
 
+        &.is-active {
+          background-color:#fff; 
+        }
       }
     }
   }

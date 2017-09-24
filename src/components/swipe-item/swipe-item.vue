@@ -10,6 +10,17 @@
   export default {
     name: 'wv-swipe-item',
 
+    props: {
+      onEnter: {
+        type: Function,
+        default: null
+      },
+      onLeave: {
+        type: Function,
+        default: null
+      },
+    },
+
     mounted () {
       this.$parent && this.$parent.swipeItemCreated();
     },
