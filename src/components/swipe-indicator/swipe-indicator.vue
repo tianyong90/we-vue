@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-swipe-indicator" @click="switchTo">
+  <div class="wv-swipe-indicator" @click="switchTo" ref="test3">
     <slot></slot>
   </div>
 </template>
@@ -10,6 +10,17 @@
 
     created (){
       this.key = null;
+    },
+
+    props: {
+      onEnter: {
+        type: Function,
+        default: null
+      },
+      onLeave: {
+        type: Function,
+        default: null
+      },
     },
 
     mounted () {
