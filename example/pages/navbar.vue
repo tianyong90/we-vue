@@ -34,7 +34,7 @@
     </div>
 
     <div class="demo-wrapper">
-      <span class="demo-label">禁用过渡动效</span>
+      <span class="demo-label">有禁用项</span>
       <wv-navbar v-model="navbar5_selected" @change="changed">
         <wv-navbar-item id="navbar5_item1">选项1</wv-navbar-item>
         <wv-navbar-item id="navbar5_item2">选项2</wv-navbar-item>
