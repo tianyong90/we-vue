@@ -19,13 +19,15 @@
     name: 'wv-swipe4',
 
     created () {
+      this.dragState = {}
+      //新增
       this.info = null
       this.dom = {
         $pages: null,
         $pageContainer: null,
         $indicators: null,
         $indicatorContainer: null,
-        itemWidth: null,
+        pageWidth: null,
         actualSwipeValue: null,
       }
       this.status = {
@@ -51,11 +53,13 @@
       return {
         ready: false,
         dragging: false,
+        userScrolling: false,
         animating: false,
         index: 0,
         pages: [],
         timer: null,
         reInitTimer: null,
+        noDrag: false
       }
     },
 
@@ -66,7 +70,7 @@
       },
       speed: {
         type: Number,
-        default: 240
+        default: 300
       },
       defaultIndex: {
         type: Number,
@@ -98,20 +102,46 @@
         type: Number,
         default: 0
       },
-      itemWidth: {
+      pageWidth: {
         type: Number,
         default: null
       },
-      overflow: {
-        type: String,
-        default: 'default'
+      handleOverflow: {
+        type: Function,
+        default: null
+      },
+      onEveryPageLeave: {
+        type: Function,
+        default: null
+      },
+      onEveryPageEnter: {
+        type: Function,
+        default: null
+      },
+      onEveryIndicatorLeave: {
+        type: Function,
+        default: null
+      },
+      onEveryIndicatorEnter: {
+        type: Function,
+        default: null
       }
     },
 
     mounted () {
       this.ready = true
 
-      this.setTimer();
+      if (this.auto > 0) {
+        this.timer = setInterval(() => {
+          if (!this.continuous && (this.index >= this.pages.length - 1)) {
+            return this.clearTimer()
+          }
+          if (!this.dragging && !this.animating) {
+            this.next()
+          }
+        }, this.auto)
+      }
+
       this.reInitPages()
     },
 
@@ -154,67 +184,92 @@
 
         this.pages = pages;
 
-        this.reSize();
-        window.addEventListener('resize',this.reSize);
-      },
-
-      reSize (){
-        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.page-container'),
+        //新增
+        var $pageContainer = this.$pageContainer = this.$el.querySelector('.page-container'),
             $swiper = this.$el.children[0],
-            $pages = this.dom.$pages = $pageContainer.children,
+            $pages = this.$pages = $pageContainer.children,
+            $indicators = this.$indicators = this.$el.querySelector('.wv-swipe-indicators'),
+            $indicatorContainer = this.$indicatorContainer,
             index = this.index,
             speed = this.speed,
             continuous = this.continuous,
             gap = this.gap,
-            self = this,
-            actualSwipeValue, itemWidth;
+            actualSwipeValue, pageWidth;
 
-        itemWidth = this.dom.itemWidth = this.itemWidth || $swiper.clientWidth;
-        actualSwipeValue = this.dom.actualSwipeValue = this.dom.itemWidth + gap;
-        this.status.swipeStartOffset = index * actualSwipeValue;
+        pageWidth = this.dom.pageWidth = this.pageWidth || $pageContainer.clientWidth;
+        actualSwipeValue = this.dom.actualSwipeValue = this.dom.pageWidth + gap,
 
         requestAnimationFrame(function () {
           $pageContainer.classList.add('noneAnimation','subNoneAnimation');
-          $swiper.classList.add('subNoneAnimation');
-          $swiper.style['opacity'] = 0;
+          $pageContainer.style['opacity'] = 0;
           $pages[index].classList.add('showing');
           requestAnimationFrame(function () {
             $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
             Array.prototype.forEach.call($pages, function ($page) {
-              $page.style.width = itemWidth + 'px';
+              $page.style.width = pageWidth + 'px';
               $page.style.marginRight = gap + 'px';
               
             });
+            $pageContainer.style['opacity'] = 1;
             
             if(continuous){
-              $swiper.classList.add('loop');
+              $swiper.classList.add('loop','subNoneAnimation');
               Array.prototype.forEach.call($pages, function ($page ,i) {
-                $page.currentPosition = i * itemWidth ;
+                $page.currentPosition = i * pageWidth ;
                 $page.index = i;
                 $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)';
                 $page.style.webkitTransition = 
                   `-webkit-transform ${speed}ms ease`;
               });
+              requestAnimationFrame(function(){
+                $swiper.classList.remove('subNoneAnimation');
+              });
             }else{
               $pageContainer.style.webkitTransition = 
-                `-webkit-transform ${speed}ms ease`;
+                `-webkit-transform${speed}ms ease`;
             }
-            self.goTo(index);
             requestAnimationFrame(function(){
               $pageContainer.classList.remove('subNoneAnimation');
-              setTimeout(function(){
-                $swiper.style['opacity'] = 1;
-                $swiper.classList.remove('subNoneAnimation');
-              },50);
             });
           });
         });
       },
 
+      translate (element, offset, speed, callback) {
+        if (speed) {
+          this.animating = true
+          element.style.webkitTransition = '-webkit-transform ' + speed + 'ms ease-in-out'
+          setTimeout(() => {
+            element.style.webkitTransform = `translate3d(${offset}px, 0, 0)`
+          }, 50)
+
+          let called = false
+
+          let transitionEndCallback = () => {
+            if (called) return
+            called = true
+            this.animating = false
+            element.style.webkitTransition = ''
+            element.style.webkitTransform = ''
+            if (callback) {
+              callback.apply(this, arguments)
+            }
+          }
+
+          once(element, 'webkitTransitionEnd', transitionEndCallback)
+          setTimeout(transitionEndCallback, speed + 100) // webkitTransitionEnd maybe not fire on lower version android.
+        } else {
+          element.style.webkitTransition = ''
+          element.style.webkitTransform = `translate3d(${offset}px, 0, 0)`
+        }
+      },
+
       goTo (page){
         var fromPage = this.index,
-          $pageContainer = this.dom.$pageContainer,
-          $pages = this.dom.$pages,
+          $pageContainer = this.$pageContainer,
+          $pages = this.$pages,
+          onEnter = this.onEnter,
+          onLeave = this.onLeave,
           self = this,
           swipeStartOffset;
 
@@ -237,9 +292,120 @@
         requestAnimationFrame(function () {
           $pageContainer.classList.remove('noneAnimation');
           requestAnimationFrame(function () {
+            onEnter(page);
+            onLeave(fromPage);
             self.animate(fromPage, page);
           });
         });
+      },
+
+      doAnimate (towards, options) {
+        if (this.$children.length === 0) return
+        if (!options && this.$children.length < 2) return
+
+        let prevPage, nextPage, currentPage, pageWidth, offsetLeft
+        let speed = this.speed || 300
+        let index = this.index
+        let pages = this.pages
+        let pageCount = pages.length
+
+        if (!options) {
+          pageWidth = this.$el.clientWidth
+          currentPage = pages[index]
+          prevPage = pages[index - 1]
+          nextPage = pages[index + 1]
+          if (this.continuous && pages.length > 1) {
+            if (!prevPage) {
+              prevPage = pages[pages.length - 1]
+            }
+            if (!nextPage) {
+              nextPage = pages[0]
+            }
+          }
+          if (prevPage) {
+            prevPage.style.display = 'block'
+            this.translate(prevPage, -pageWidth)
+          }
+          if (nextPage) {
+            nextPage.style.display = 'block'
+            this.translate(nextPage, pageWidth)
+          }
+        } else {
+          prevPage = options.prevPage
+          currentPage = options.currentPage
+          nextPage = options.nextPage
+          pageWidth = options.pageWidth
+          offsetLeft = options.offsetLeft
+        }
+
+        let newIndex
+
+        let oldPage = this.$children[index].$el
+
+        if (towards === 'prev') {
+          if (index > 0) {
+            newIndex = index - 1
+          }
+          if (this.continuous && index === 0) {
+            newIndex = pageCount - 1
+          }
+        } else if (towards === 'next') {
+          if (index < pageCount - 1) {
+            newIndex = index + 1
+          }
+          if (this.continuous && index === pageCount - 1) {
+            newIndex = 0
+          }
+        }
+
+        let callback = () => {
+          if (newIndex !== undefined) {
+            let newPage = this.$children[newIndex].$el
+            removeClass(oldPage, 'is-active')
+            addClass(newPage, 'is-active')
+
+            this.index = newIndex
+          }
+
+          if (prevPage) {
+            prevPage.style.display = ''
+          }
+
+          if (nextPage) {
+            nextPage.style.display = ''
+          }
+        }
+
+        setTimeout(() => {
+          if (towards === 'next') {
+            this.translate(currentPage, -pageWidth, speed, callback)
+            if (nextPage) {
+              this.translate(nextPage, 0, speed)
+            }
+          } else if (towards === 'prev') {
+            this.translate(currentPage, pageWidth, speed, callback)
+            if (prevPage) {
+              this.translate(prevPage, 0, speed)
+            }
+          } else {
+            this.translate(currentPage, 0, speed, callback)
+            if (typeof offsetLeft !== 'undefined') {
+              if (prevPage && offsetLeft > 0) {
+                this.translate(prevPage, pageWidth * -1, speed)
+              }
+              if (nextPage && offsetLeft < 0) {
+                this.translate(nextPage, pageWidth, speed)
+              }
+            } else {
+              if (prevPage) {
+                this.translate(prevPage, pageWidth * -1, speed)
+              }
+              if (nextPage) {
+                this.translate(nextPage, pageWidth, speed)
+              }
+            }
+          }
+        }, 10)
       },
 
       next () {
@@ -255,31 +421,25 @@
         this.timer = null
       },
 
-      setTimer (){
-        if (this.auto > 0) {
-          this.timer = setInterval(() => {
-            if (!this.continuous && (this.index >= this.pages.length - 1)) {
-              return this.clearTimer()
-            }
-            if (!this.dragging && !this.animating) {
-              this.next()
-            }
-          }, this.auto)
-        }
-      },
-
       onSwipe (info){
-        var $pageContainer = this.dom.$pageContainer,
-          $pages = this.dom.$pages,
-          continuous = this.continuous,
-          actualSwipeValue = this.dom.actualSwipeValue,
+        var $pageContainer = this.$pageContainer,
+          $pages = this.$pages,
+          $inindicators = this.$indicators,
+          $inindicatorContainer = this.$indicatorContainer,
+          index = this.index,
+          onEveryPageLeave = this.onEveryPageLeave,
+          onLeave = this.onLeave,
+          pageWidth = this.dom.pageWidth,
           handleOverflow = this.handleOverflow,
+          continuous = this.continuous,
+          transitionendProcessor = this.transitionendProcessor,
+          actualSwipeValue = this.dom.actualSwipeValue,
           self = this,
 
           offset = self.status.swipeStartOffset - info.offset,
-          i_to = (info.offset > 0) ? this.index - 1 : this.index + 1,
-          i_from = this.index,
-          maxOffset = ($pages.length - 1) * actualSwipeValue,
+          i_to = (info.offset > 0) ? index - 1 : index + 1,
+          i_from = index,
+          percentage = Math.abs(info.offset / pageWidth),
           needPass = false;
         
         // 更新状态
@@ -294,8 +454,8 @@
         if (offset < 0) {
           offset = 0;
           needPass = true;
-        } else if (offset > maxOffset) {
-          offset = maxOffset;
+        } else if (offset > ($pages.length - 1) * actualSwipeValue) {
+          offset = ($pages.length - 1) * actualSwipeValue;
           needPass = true;
         }
         self.status.swipeCurrentOffset = offset;
@@ -310,35 +470,54 @@
                 $pageContainer.classList.add('subNoneAnimation');
               else
                 $pageContainer.classList.add('noneAnimation');
+
+              self.onLeave(index);
             }
-            if (continuous) {
+            if (!continuous) {
+              $pageContainer.style.transform = 
+                `translate3d(${self.status.swipeCurrentOffset}px,0,0)`;
+            } else {
               Array.prototype.forEach.call($pages,function($li){
                 $li.style.transform = 
                   `translate3d(${$li.currentPosition + info.offset}px,0,0)`;
               });
-            } else {
-              $pageContainer.style.transform = 
-                `translate3d(${-offset}px,0,0)`;
             }
 
             self.status.rafLocker = false;
+            // if ((!needPass || continuous) && $ctrl){
+            //   ctrlOnSlide(
+            //     $ctrl.children[i_from],
+            //     $ctrl.children[i_to],
+            //     percentage,
+            //     i_from,
+            //     i_to
+            //   );
+            // }
           });
         }
-        if (needPass && !continuous) return handleOverflow(info);
+        if (needPass && !continuous){
+          if(handleOverflow instanceof Function)
+            return handleOverflow(info);
+          else
+            return needPass;
+        }
       },
 
       onSwipeDone (info){
-        var $pageContainer = this.dom.$pageContainer,
-          $pages = this.dom.$pages,
-          itemWidth = this.dom.itemWidth,
+        var $pageContainer = this.$pageContainer,
+          $pages = this.$pages,
+          index = this.index,
+          onEveryPageLeave = this.onEveryPageLeave,
+          pageWidth = this.dom.pageWidth,
           continuous = this.continuous,
           actualSwipeValue = this.dom.actualSwipeValue,
           self = this,
 
           needPass = false,
           maxOffset = ($pages.length - 1) * actualSwipeValue,
-          i_from = this.index,
-          i_to = i_from;
+          i_from = index,
+          i_to = i_from,
+          $showing = $pageContainer.querySelector('.showing');
 
         // 状态更新
         this.animating = true;
@@ -346,7 +525,7 @@
 
         if (self.status.edgeLocker == 1) return;
 
-        if (Math.abs(info.offset) / itemWidth > 0.15 &&
+        if (Math.abs(info.offset) / pageWidth > 0.15 &&
           self.status.swipeCurrentOffset <= maxOffset &&
           self.status.swipeCurrentOffset >= 0
         ) {//跳转
@@ -355,43 +534,63 @@
               self.index--;
             else
               needPass = true;
-          } else {
+          } else
             if (self.index < $pages.length - 1 || continuous)
               self.index++;
             else
               needPass = true;
-          }
-
-          i_to = (info.offset > 0) ? i_from - 1 : i_from + 1;
         } else
           needPass = true;
-        
+
+        i_to = (info.offset > 0) ? i_from - 1 : i_from + 1;
+
         if(continuous){
           if(i_to < 0){
-            i_to = $pages.length-1;
+            i_to =  $pages.length-1;
             self.status.edgeLocker++;
           }else if (i_to > $pages.length - 1){
             i_to = 0;
             self.status.edgeLocker++;
           }
-        }else if (i_to < 0 || i_to > $pages.length - 1)
-          i_to = i_from;
+        }else
+          if (i_to < 0 || i_to > $pages.length - 1)
+            i_to = i_from;
 
         this.animate(i_from, i_to, info);
-        if (needPass && !continuous) return needPass;
+
+        if (needPass && !continuous)
+          return needPass;
       },
 
       transitionendProcessor () {
-        this.clearTimer();
-        this.setTimer();
+        var $pageContainer = this.$pageContainer,
+          $pages = this.$pages,
+          index = this.index;
+
+        // 状态更新
         this.animating = false;
-        this.dom.$pageContainer.removeEventListener('transitionend', this.transitionendProcessor);
+      
+        this.onEnter(index);
+        
+        requestAnimationFrame(function () {
+          // 禁止滚动的处理不过这不是最好的办法来的,其实我希望可以同标记就可以默认禁用对应的事件了
+          if (index > $pages.length - 1)
+            $pages[0].style['overflow-y'] = 'auto';
+          else if (index < 0)
+            $pages[$pages.length - 1].style['overflow-y'] = 'auto';
+          else
+            $pages[index].style['overflow-y'] = 'auto';
+        });
+
+        $pageContainer.removeEventListener('transitionend', this.transitionendProcessor);
       },
 
       animate (i_from, i_to, info){
-        var $pageContainer = this.dom.$pageContainer,
-          $pages = this.dom.$pages,
+        var $pageContainer = this.$pageContainer,
+          $pages = this.$pages,
           index = this.index,
+          onEveryPageLeave = this.onEveryPageLeave,
+          pageWidth = this.dom.pageWidth,
           continuous = this.continuous,
           actualSwipeValue = this.dom.actualSwipeValue,
           self = this,
@@ -418,7 +617,9 @@
             $pageContainer.style['transform'] = 'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
           }else{
             var _loop = function(reset){
-              if (!reset) $pageContainer.classList.remove('subNoneAnimation');
+              
+              if (!reset)
+                $pageContainer.classList.remove('subNoneAnimation');
 
               Array.prototype.forEach.call($pages, function ($li,i) {
                 $li.classList.add('noneAnimation');
@@ -427,43 +628,38 @@
 
                 if(i == i_to || i == i_from)
                   $li.classList.remove('noneAnimation');
+                
               });
 
-              //如果是确认到达边缘修把另一头挪过来,这里重构一下
-              function switchTo(where){
-                var i, currentPosition;
-                if(where === 'tial'){
-                  i = $pages.length - 1;
-                  currentPosition = (-1 - self.index) * actualSwipeValue;
-                }else if(where === 'head'){
-                  i = 0;
-                  currentPosition = ($pages.length - self.index) * actualSwipeValue;
-                }
-
-                $pages[i].classList.add('noneAnimation');
-                $pages[i].currentPosition = currentPosition;
-                $pages[i].style.transform = 'translate3d(' + $pages[i].currentPosition + 'px,0,0)';
+              //如果是确认到达边缘修把另一头挪过来
+              if (self.index == 0) {
+                $pages[$pages.length - 1].classList.add('noneAnimation');
+                $pages[$pages.length - 1].currentPosition = (-1 - self.index) * actualSwipeValue;
+                $pages[$pages.length - 1].style.transform = 'translate3d(' + $pages[$pages.length - 1].currentPosition + 'px,0,0)';
                 requestAnimationFrame(function(){
-                  $pages[i].classList.remove('noneAnimation');
+                  $pages[$pages.length - 1].classList.remove('noneAnimation');
+                });
+              } else if (self.index == $pages.length - 1) {
+                $pages[0].classList.add('noneAnimation');
+                $pages[0].currentPosition = ($pages.length - self.index) * actualSwipeValue;
+                $pages[0].style.transform = 'translate3d(' + $pages[0].currentPosition + 'px,0,0)';
+                requestAnimationFrame(function () {
+                  $pages[0].classList.remove('noneAnimation');
                 });
               }
 
-              if (self.index == 0)
-                switchTo('tial');
-              else if (self.index == $pages.length - 1)
-                switchTo('head');
-
               //溢出重置处理
               var animationEnd = function () {
+                var info = arguments[0];
                 requestAnimationFrame(function () {
                   $pageContainer.classList.add('subNoneAnimation');
 
                   if (self.index > $pages.length - 1) {
                     self.index = 0;
-                    once($pages[0], 'transitionend' ,animationEnd);
+                    $pages[0].addEventListener('transitionend', animationEnd);
                   } else if (self.index < 0) {
                     self.index = $pages.length - 1;
-                    once($pages[$pages.length - 1], 'transitionend' ,animationEnd);
+                    $pages[$pages.length - 1].addEventListener('transitionend', animationEnd);
                   }
 
                   Array.prototype.forEach.call($pages, function ($li) {
@@ -480,14 +676,15 @@
                 });
               };
               if (self.index > $pages.length - 1) {
-                once($pages[0], 'transitionend' ,animationEnd.bind(null, info));
+                $pages[0].addEventListener('transitionend', animationEnd.bind(null, info));
+                // 需要维持位置一会儿
                 $pages[0].classList.remove('noneAnimation');
                 $pages[0].currentPosition = ($pages.length - self.index) * actualSwipeValue;
                 $pages[0].style.transform = 'translate3d(' + $pages[0].currentPosition + 'px,0,0)';
 
               } else if (self.index < 0) {
-                once($pages[$pages.length - 1], 'transitionend' ,animationEnd.bind(null, info));
                 $pages[$pages.length - 1].classList.remove('noneAnimation');
+                $pages[$pages.length - 1].addEventListener('transitionend', animationEnd.bind(null, info));
                 $pages[$pages.length - 1].currentPosition = (-1 - self.index) * actualSwipeValue;
                 $pages[$pages.length - 1].style.transform = 'translate3d(' + $pages[$pages.length - 1].currentPosition + 'px,0,0)';
               }
@@ -501,29 +698,76 @@
           self.status.initLocker = false;
 
           i_from === i_to && self.transitionendProcessor()
+
+          // if ($ctrl){
+          //   i_from = (i_from > $pages.length - 1) ? $pages.length - 1: i_from;
+          //   i_from = (i_from < 0) ? 0 : i_from;
+
+          //   if (i_from == self.index) {
+          //     if (i_from != i_to){
+          //       ctrlOnSlideDone(
+          //         $ctrl.children[i_to],
+          //         $ctrl.children[i_from],
+          //         i_to,
+          //         i_from
+          //       );
+          //     }
+          //   } else{
+          //     ctrlOnSlideDone(
+          //       $ctrl.children[i_from],
+          //       $ctrl.children[self.index],
+          //       i_from,
+          //       self.index
+          //     );
+          //   }
+          // }
         });
       },
 
-      handleOverflow (info){
-        var type = this.overflow;
+      onLeave (index){
+        if (this.event.onPageLeave[index] instanceof Function)
+          this.event.onPageLeave[index]();
 
-        if(type === 'backDrag')
-          this.overflowBackDrag(info);
+        if (this.event.onIndicatorLeave[index] instanceof Function)
+          this.event.onIndicatorLeave[index]();
 
-        return true;
+        if (this.onEveryPageLeave instanceof Function)
+          this.onEveryPageLeave(index);
+
+        if (this.onEveryIndicatorLeave instanceof Function)
+          this.onEveryIndicatorLeave(index);
       },
 
-      overflowBackDrag (info){
-        var x = 288 / 3 / 360; // 默认为微信的转换比例
+      onEnter (index){
+        if (this.event.onPageEnter[index] instanceof Function)
+          this.event.onPageEnter[index]();
 
-        x = - this.status.swipeStartOffset + info.offset * x;
+        if (this.event.onIndicatorEnter[index] instanceof Function)
+          this.event.onIndicatorEnter[index]();
 
-        requestAnimationFrame(() => {
-          this.dom.$pageContainer.style.transform = 'translate3d(' + x + 'px,0,0)';
-        });
+        if (this.onEveryPageEnter instanceof Function)
+          this.onEveryPageEnter(index);
 
-        return true;
+        if (this.onEveryIndicatorEnter instanceof Function)
+          this.onEveryIndicatorEnter(index);
       },
+
+      onPageEnter (index , callback){
+        this.event.onPageEnter[index] = callback;
+      },
+
+      onPageLeave (index , callback){
+        this.event.onPageLeave[index] = callback;
+      },
+
+      onIndicatorEnter (index , callback){
+        this.event.onIndicatorEnter[index] = callback;
+      },
+
+      onIndicatorLeave (index , callback){
+        this.event.onIndicatorLeave[index] = callback;
+      }
+
     },
 
     destroyed () {
