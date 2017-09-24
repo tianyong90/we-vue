@@ -110,11 +110,11 @@
         type: Function,
         default: null
       },
-      onEveryItemLeave: {
+      onEveryPageLeave: {
         type: Function,
         default: null
       },
-      onEveryItemEnter: {
+      onEveryPageEnter: {
         type: Function,
         default: null
       },
