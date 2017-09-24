@@ -100,7 +100,7 @@
       //新增的
       gap: {
         type: Number,
-        default: 10
+        default: 0
       },
       itemWidth: {
         type: Number,
@@ -108,7 +108,7 @@
       },
       overflow: {
         type: String,
-        default: 'backDrag'
+        default: 'default'
       }
     },
 
@@ -280,7 +280,7 @@
           handleOverflow = this.handleOverflow,
           self = this,
 
-          offset = self.status.swipeStartOffset + info.offset,
+          offset = self.status.swipeStartOffset - info.offset,
           i_to = (info.offset > 0) ? this.index - 1 : this.index + 1,
           i_from = this.index,
           maxOffset = ($pages.length - 1) * actualSwipeValue,
@@ -295,11 +295,11 @@
         if (i_to > $pages.length - 1) i_to = 0;
         if (self.status.edgeLocker == 1) return;
 
-        if (offset > 0) {
+        if (offset < 0) {
           offset = 0;
           needPass = true;
-        } else if (offset < -maxOffset) {
-          offset = -maxOffset;
+        } else if (offset > maxOffset) {
+          offset = maxOffset;
           needPass = true;
         }
         self.status.swipeCurrentOffset = offset;
@@ -322,7 +322,7 @@
               });
             } else {
               $pageContainer.style.transform = 
-                `translate3d(${offset}px,0,0)`;
+                `translate3d(${-offset}px,0,0)`;
             }
 
             self.status.rafLocker = false;
@@ -351,8 +351,8 @@
         if (self.status.edgeLocker == 1) return;
 
         if (Math.abs(info.offset) / itemWidth > 0.15 &&
-          self.status.swipeCurrentOffset >= -maxOffset &&
-          self.status.swipeCurrentOffset <= 0
+          self.status.swipeCurrentOffset <= maxOffset &&
+          self.status.swipeCurrentOffset >= 0
         ) {//跳转
           if (info.offset > 0) {
             if (self.index != 0 || continuous)
