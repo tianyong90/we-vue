@@ -29,9 +29,7 @@ import Flex from './components/flex/index'
 import FlexItem from './components/flex-item/index'
 import Icon from './components/icon/index'
 import Swipe from './components/swipe/index'
-import Swipe2 from './components/swipe2/index'
-import Swipe3 from './components/swipe3/index'
-import Swipe4 from './components/swipe4/index'
+import Swipeplus from './components/swipeplus/index'
 import SwipeItem from './components/swipe-item/index'
 import SwipeIndicator from './components/swipe-indicator/index'
 import Popup from './components/popup/index'
@@ -80,9 +78,7 @@ const install = function (Vue, config = {}) {
   Vue.component(FlexItem.name, FlexItem)
   Vue.component(Icon.name, Icon)
   Vue.component(Swipe.name, Swipe)
-  Vue.component(Swipe2.name, Swipe2)
-  Vue.component(Swipe3.name, Swipe3)
-  Vue.component(Swipe4.name, Swipe4)
+  Vue.component(Swipeplus.name, Swipeplus)
   Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(SwipeIndicator.name, SwipeIndicator)
   Vue.component(Popup.name, Popup)
@@ -146,9 +142,7 @@ export default {
   FlexItem,
   Icon,
   Swipe,
-  Swipe2,
-  Swipe3,
-  Swipe4,
+  Swipeplus,
   SwipeItem,
   SwipeIndicator,
   Popup,

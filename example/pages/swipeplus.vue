@@ -3,38 +3,38 @@
     <div class="description">
       循环
     </div>
-    <wv-swipe4 class="demo-swipe" :height="130" :auto="0" :continuous="true">
+    <wv-swipeplus class="demo-swipe" :height="130" :auto="0" :continuous="true">
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336"><div class="page1">1</div></wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
 
       <wv-swipe-indicator slot="indicator"></wv-swipe-indicator>
       <wv-swipe-indicator slot="indicator"></wv-swipe-indicator>
-    </wv-swipe4>
+    </wv-swipeplus>
 
     <div class="description">
       循环|间隔10px
     </div>
-    <wv-swipe4 class="demo-swipe" :height="130" :auto="0" :continuous="true" :gap="10">
+    <wv-swipeplus class="demo-swipe" :height="130" :auto="0" :continuous="true" :gap="10">
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336"><div class="page1">1</div></wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
 
       <wv-swipe-indicator slot="indicator"></wv-swipe-indicator>
       <wv-swipe-indicator slot="indicator"></wv-swipe-indicator>
-    </wv-swipe4>
+    </wv-swipeplus>
     
     <div class="description">
       不循环|溢出缓动
     </div>
-    <wv-swipe4 class="demo-swipe" :height="130" :auto="0" :continuous="false" overflow="backDrag">
+    <wv-swipeplus class="demo-swipe" :height="130" :auto="0" :continuous="false" overflow="backDrag">
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336"><div class="page1">1</div></wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
       
       <wv-swipe-indicator slot="indicator"></wv-swipe-indicator>
       <wv-swipe-indicator slot="indicator"></wv-swipe-indicator>
-    </wv-swipe4>
+    </wv-swipeplus>
   </div>
 </template>
 
