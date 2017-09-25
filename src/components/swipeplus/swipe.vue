@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="wv-swipe-indicators" v-show="showIndicators">
-      <div class="wv-swipe-indicator" v-for="(page, $index) in pages" :key="$index" :class="{ 'is-active': $index == index }"></div>
+      <slot name="indicator"></slot>
     </div>
   </div>
 </template>
@@ -16,15 +16,15 @@
   import { swipeDirective } from '../../custom/event/swipe.js'
 
   export default {
-    name: 'wv-swipe3',
+    name: 'wv-swipeplus',
 
     created () {
-      this.dragState = {}
-      //新增
       this.info = null
       this.dom = {
         $pages: null,
         $pageContainer: null,
+        $indicators: null,
+        $indicatorContainer: null,
         itemWidth: null,
         actualSwipeValue: null,
       }
@@ -33,7 +33,8 @@
         rafLocker: false,
         edgeLocker: false,
         swipeCurrentOffset: null,
-        swipeStartOffset: null
+        swipeStartOffset: null,
+        activatedClass: 'is-active'
       };
       this.swipeConfig = {
         onSwipe: this.onSwipe,
@@ -45,13 +46,10 @@
       return {
         ready: false,
         dragging: false,
-        userScrolling: false,
         animating: false,
         index: 0,
-        pages: [],
         timer: null,
         reInitTimer: null,
-        noDrag: false
       }
     },
 
@@ -62,7 +60,7 @@
       },
       speed: {
         type: Number,
-        default: 300
+        default: 240
       },
       defaultIndex: {
         type: Number,
@@ -101,7 +99,11 @@
       overflow: {
         type: String,
         default: 'default'
-      }
+      },
+      onSwitch: {
+        type: Function,
+        default: null
+      },
     },
 
     mounted () {
@@ -138,7 +140,10 @@
         let intDefaultIndex = Math.floor(this.defaultIndex)
         let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < $pages.length) ? intDefaultIndex : 0
         this.index = defaultIndex;
-        this.pages = $pages;
+        this.dom.$pages = $pages;
+        this.dom.$indicatorContainer = this.$el.querySelector('.wv-swipe-indicators');
+        this.dom.$indicators = this.dom.$indicatorContainer.children;
+
         this.reSize();
       },
 
@@ -146,6 +151,7 @@
         var $pageContainer = this.dom.$pageContainer,
             $swiper = this.$el.children[0],
             $pages = this.dom.$pages,
+            $indicators = this.dom.$indicators,
             index = this.index,
             speed = this.speed,
             continuous = this.continuous,
@@ -161,7 +167,8 @@
           $pageContainer.classList.add('noneAnimation','subNoneAnimation');
           $swiper.classList.add('subNoneAnimation');
           $swiper.style['opacity'] = 0;
-          $pages[index].classList.add('is-active');
+          $pages[index].classList.add(self.status.activatedClass);
+          $indicators[index] && $indicators[index].classList.add(self.status.activatedClass);
           requestAnimationFrame(function () {
             $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
             Array.prototype.forEach.call($pages, function ($page) {
@@ -305,6 +312,14 @@
                 `translate3d(${-offset}px,0,0)`;
             }
 
+            self.indicatorOnSwipe instanceof Function && self.indicatorOnSwipe({
+              $form: self.dom.$indicators[i_from],
+              $to: self.dom.$indicators[i_to],
+              from: i_from,
+              to: i_to,
+              percentage: Math.abs(info.offset / pageWidth)
+            });
+
             self.status.rafLocker = false;
           });
         }
@@ -362,6 +377,12 @@
           i_to = i_from;
 
         this.animate(i_from, i_to, info);
+        this.indicatorOnSwipe instanceof Function && this.indicatorOnSwipe({
+          $form: self.dom.$indicators[i_from],
+          $to: self.dom.$indicators[i_to],
+          from: i_from,
+          to: i_to
+        });
         if (needPass && !continuous) return needPass;
       },
 
@@ -388,15 +409,6 @@
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
         requestAnimationFrame(function () {
-          $showing && $showing.classList.remove('is-active');
-
-          if (self.index > $pages.length-1)
-            $pages[0].classList.add('is-active');
-          else if(self.index < 0)
-            $pages[$pages.length - 1].classList.add('is-active');
-          else
-            $pages[i_to].classList.add('is-active');
-
           if(!continuous){
             $pageContainer.classList.remove('noneAnimation');
             $pageContainer.style['transform'] = 'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
@@ -508,6 +520,44 @@
 
         return true;
       },
+
+      updateIndex (val, oVal){
+        var max = this.dom.$pages.length - 1;
+
+        if( val >= 0 && val <= max ){
+          if(oVal < 0) oVal = max;
+          if(oVal > max) oVal = 0;
+
+          this.dom.$pages[val].classList.add(this.status.activatedClass);
+          this.dom.$pages[oVal].classList.remove(this.status.activatedClass);
+
+          this.dom.$indicators[val] && this.dom.$indicators[val].classList.add(this.status.activatedClass);
+          this.dom.$indicators[oVal] && this.dom.$indicators[oVal].classList.remove(this.status.activatedClass);
+
+          this.dom.$pages[val] && 
+            this.dom.$pages[val].__vue__&&
+              this.dom.$pages[val].__vue__.onEnter instanceof Function && 
+                this.dom.$pages[val].__vue__.onEnter[val]();
+
+          this.dom.$pages[oVal] && 
+            this.dom.$pages[oVal].__vue__&&
+              this.dom.$pages[oVal].__vue__.onLeave instanceof Function &&
+                this.dom.$pages[oVal].__vue__.onLeave[oVal]();
+
+          this.dom.$indicators[val] && 
+            this.dom.$indicators[val].__vue__&&
+              this.dom.$indicators[val].__vue__.onEnter instanceof Function && 
+                this.dom.$indicators[val].__vue__.onEnter[val]();
+
+          this.dom.$indicators[oVal] && 
+            this.dom.$indicators[oVal].__vue__&&
+              this.dom.$indicators[oVal].__vue__.onLeave instanceof Function &&
+                this.dom.$indicators[oVal].__vue__.onLeave[oldVal]();
+
+          this.onSwitch instanceof Function && 
+            this.onSwitch(val, oldVal);
+        }
+      }
     },
 
     destroyed () {
@@ -524,6 +574,7 @@
     watch: {
       index (val) {
         this.$emit('change', val)
+        this.updateIndex.apply(this, arguments);
       }
     },
 
