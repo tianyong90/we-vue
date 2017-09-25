@@ -60,7 +60,7 @@
       },
       speed: {
         type: Number,
-        default: 240
+        default: 230
       },
       defaultIndex: {
         type: Number,
