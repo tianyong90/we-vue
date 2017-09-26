@@ -27,6 +27,7 @@
         $indicatorContainer: null,
         itemWidth: null,
         actualSwipeValue: null,
+        speedAjustRange: 100
       }
       this.status = {
         initLocker: false,
@@ -34,7 +35,8 @@
         edgeLocker: false,
         swipeCurrentOffset: null,
         swipeStartOffset: null,
-        activatedClass: 'is-active'
+        activatedClass: 'is-active',
+        swipeStartTime: null
       };
       this.swipeConfig = {
         onSwipe: this.onSwipe,
@@ -60,7 +62,7 @@
       },
       speed: {
         type: Number,
-        default: 230
+        default: 280
       },
       defaultIndex: {
         type: Number,
@@ -149,7 +151,7 @@
 
       reSize (){
         var $pageContainer = this.dom.$pageContainer,
-            $swiper = this.$el.children[0],
+            $swiper =  this.$el.children[0],
             $pages = this.dom.$pages,
             $indicators = this.dom.$indicators,
             index = this.index,
@@ -176,20 +178,16 @@
               $page.style.marginRight = gap + 'px';
               
             });
-            
+
             if(continuous){
               $swiper.classList.add('loop');
               Array.prototype.forEach.call($pages, function ($page ,i) {
                 $page.currentPosition = i * itemWidth ;
                 $page.index = i;
                 $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)';
-                $page.style.webkitTransition = 
-                  `-webkit-transform ${speed}ms ease`;
               });
-            }else{
-              $pageContainer.style.webkitTransition = 
-                `-webkit-transform ${speed}ms ease`;
             }
+            
             self.goTo(index);
             requestAnimationFrame(function(){
               $pageContainer.classList.remove('subNoneAnimation');
@@ -301,6 +299,8 @@
                 $pageContainer.classList.add('subNoneAnimation');
               else
                 $pageContainer.classList.add('noneAnimation');
+
+              self.status.swipeStartTime = Date.now();
             }
             if (continuous) {
               Array.prototype.forEach.call($pages,function($li){
@@ -376,7 +376,11 @@
         }else if (i_to < 0 || i_to > $pages.length - 1)
           i_to = i_from;
 
-        this.animate(i_from, i_to, info);
+        if(i_to === i_from)
+          this.animate(i_from, i_to);
+        else
+          this.animate(i_from, i_to, info);
+          
         this.indicatorOnSwipe instanceof Function && this.indicatorOnSwipe({
           $form: self.dom.$indicators[i_from],
           $to: self.dom.$indicators[i_to],
@@ -399,6 +403,7 @@
           index = this.index,
           continuous = this.continuous,
           actualSwipeValue = this.dom.actualSwipeValue,
+          speed = this.ajustSpeed(info),
           self = this,
 
           needPass = false,
@@ -411,15 +416,22 @@
         requestAnimationFrame(function () {
           if(!continuous){
             $pageContainer.classList.remove('noneAnimation');
-            $pageContainer.style['transform'] = 'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
+            $pageContainer.style['transform'] = 
+              'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
+            $pageContainer.style.webkitTransition = 
+              `-webkit-transform ${speed}ms ease`;
           }else{
             var _loop = function(reset){
               if (!reset) $pageContainer.classList.remove('subNoneAnimation');
 
               Array.prototype.forEach.call($pages, function ($li,i) {
                 $li.classList.add('noneAnimation');
-                $li.currentPosition = ($li.index - self.index) * actualSwipeValue;
-                $li.style.transform = 'translate3d(' + $li.currentPosition + 'px,0,0)';
+                $li.currentPosition = 
+                  ($li.index - self.index) * actualSwipeValue;
+                $li.style.transform = 
+                  'translate3d(' + $li.currentPosition + 'px,0,0)';
+                $li.style.webkitTransition = 
+                  `-webkit-transform ${speed}ms ease`;
 
                 if(i == i_to || i == i_from)
                   $li.classList.remove('noneAnimation');
@@ -510,12 +522,16 @@
       },
 
       overflowBackDrag (info){
-        var x = 288 / 3 / 360; // 默认为微信的转换比例
+        var x = 288 / 3 / 360,
+          speed = this.speed || 280; // 默认为微信的转换比例
 
         x = - this.status.swipeStartOffset + info.offset * x;
 
         requestAnimationFrame(() => {
-          this.dom.$pageContainer.style.transform = 'translate3d(' + x + 'px,0,0)';
+          this.dom.$pageContainer.style.transform = 
+            'translate3d(' + x + 'px,0,0)';
+          this.dom.$pageContainer.style.webkitTransition = 
+            `-webkit-transform ${speed}ms ease`;
         });
 
         return true;
@@ -557,6 +573,30 @@
           this.onSwitch instanceof Function && 
             this.onSwitch(val, oldVal);
         }
+      },
+
+      ajustSpeed (info){
+        var speed = this.speed || 240,
+          swipeTime = Date.now() - this.status.swipeStartTime,
+          avgSwipeSpeed , offsetToAnimate , swipeOffset, speedOfAnimate, _speed;
+
+        if(info){
+          swipeOffset = Math.abs(info.offset);
+          avgSwipeSpeed = swipeOffset / swipeTime;
+          offsetToAnimate = this.dom.itemWidth - swipeOffset;
+          speedOfAnimate = offsetToAnimate * avgSwipeSpeed;
+          
+          _speed = offsetToAnimate / (swipeOffset / swipeTime) * 1.2;
+
+          if(_speed > 1.6 * speed)
+            _speed = 1.6 * speed;
+
+          if(_speed < 0.5 * speed)
+            _speed = 0.5 * speed;
+          speed = _speed;
+        }
+        
+        return speed;
       }
     },
 
