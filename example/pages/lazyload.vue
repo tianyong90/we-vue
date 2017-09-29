@@ -2,7 +2,7 @@
   <div class="page">
     <ul class="lazyload-list">
       <li class="lazyload-list-item" v-for="item in list" :key="item">
-        <img v-lazy="item" class="lazyload-image">
+        <img v-lazy="item" class="lazyload-image lazyload-slideIn">
       </li>
     </ul>
   </div>
@@ -50,5 +50,14 @@
         margin: auto;
       }
     }
+  }
+
+  .lazyload-slideIn[lazy=loaded] {
+    animation: slideIn 0.5s ease 0s forwards;
+  }
+
+  @keyframes slideIn {
+    0%{ opacity: 0; transform: translateY(20%) translateZ(0) scale(0.8);}
+    100%{ opacity: 1; transform: translateY(0%) translateZ(0) scale(1);}
   }
 </style>
