@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import WeVue from '../src/index.js'
-import FastClick from 'fastclick'
 import App from './app.vue'
 import './assets/style/demo.scss'
 import './assets/iconfont/iconfont.css'
@@ -12,10 +11,6 @@ Vue.config.productionTip = false
 Vue.config.devtools = true
 
 Vue.use(WeVue)
-
-document.addEventListener('DOMContentLoaded', function () {
-  if (FastClick) FastClick.attach(document.body)
-}, false)
 
 router.beforeEach((to, from, next) => {
   store.commit('UPDATE_LOADING', true)
