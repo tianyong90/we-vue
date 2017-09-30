@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <wv-group title="带说明的列表项">
-      <wv-cell title="标题文字" :value="true"></wv-cell>
+      <wv-cell title="标题文字" value="说明文字"></wv-cell>
     </wv-group>
 
     <wv-group title="带图标、说明的列表项">
