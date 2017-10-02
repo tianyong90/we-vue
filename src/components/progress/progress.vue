@@ -40,5 +40,6 @@
     transform-origin: left;
     will-change: transform;
     z-index: 1;
+    position: relative; //奇怪了怎么现在z-index还需要,配合定位来生效的捏?
   }
 </style>
