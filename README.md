@@ -64,6 +64,6 @@ npm run dev
 
 本项目大量参考了饿了么前端团队的 [Mint-UI](https://github.com/ElemeFE/mint-ui) 项目，感谢该团队提供的大量前端构建经验和思路。
 
-## Lisense
+## License
 
 MIT
