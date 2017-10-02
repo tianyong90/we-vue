@@ -1,8 +1,10 @@
 <template>
-  <div class="wv-number-spinner">
-    <button class="spinner-btn btn-decrease" :class="{ 'btn-disabled': btnDecreaseDisabled}" :disabled="disabled" @click="decrease">-</button>
-    <input type="number" v-model.number="currentValue" :disabled="disabled" :readonly="!fillable" @blur="onBlur" :style="inputStyle"/>
-    <button class="spinner-btn btn-increase" :class="{ 'btn-disabled': btnIncreaseDisabled}"  :disabled="disabled" @click="increase">+</button>
+  <div class="wv-number-spinner-wrapper">
+    <div class="wv-number-spinner">
+      <button class="spinner-btn btn-decrease" :class="{ 'btn-disabled': btnDecreaseDisabled}" :disabled="disabled" @click="decrease">-</button>
+      <input type="number" v-model.number="currentValue" :disabled="disabled" :readonly="!fillable" @blur="onBlur" :style="inputStyle"/>
+      <button class="spinner-btn btn-increase" :class="{ 'btn-disabled': btnIncreaseDisabled}"  :disabled="disabled" @click="increase">+</button>
+    </div>
   </div>
 </template>
 
@@ -110,12 +112,18 @@
 </script>
 
 <style scoped lang="scss">
+  .wv-number-spinner-wrapper {
+    width: 100%;
+    height: 100%;
+    font-size: 0px;
+  }
   .wv-number-spinner {
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 12px;
     overflow: hidden;
+    height: 22.8px;
 
     input {
       display: inline-block;
@@ -123,6 +131,7 @@
       border: none;
       outline: none;
       padding: 0 .5em;
+      height: 100%;
     }
 
     .spinner-btn {
@@ -132,6 +141,7 @@
       font-size: 13px;
       padding: 0 .6em;
       border: none;
+      height: 100%;
     }
 
     .btn-decrease {
