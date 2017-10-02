@@ -97,12 +97,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    & .weui-actionsheet {
+      display: inline-block;
+      flex: 0 0 auto;
+      top:unset;
+      left: unset;
+      transform: unset;
+    }
   }
 
-  .weui-actionsheet {
-    display: inline-block;
-    flex: 0 0 auto;
-    position: static;
-    transform: unset;
-  }
 </style>
