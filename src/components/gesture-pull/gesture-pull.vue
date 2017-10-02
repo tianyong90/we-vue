@@ -6,7 +6,7 @@
   import lazyload from './lazyload'
 
   export default {
-    name: 'lazyload',
+    name: 'gesture-pull',
 
     props: {
       src: {
