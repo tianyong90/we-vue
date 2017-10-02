@@ -5,13 +5,6 @@
         <img v-lazy="item" class="lazyload-image lazyload-slideIn-ordered" @load="imgLoadDone">
       </li>
     </ul>
-
-    <!-- 可以在v-lazy里面传入自定义的参数 loading / error, 路径通过data-srcset来传入 -->
-    <!-- <ul class="lazyload-list">
-      <li class="lazyload-list-item" v-for="item in list" :key="item">
-        <img v-lazy="{}" class="lazyload-image lazyload-slideIn-ordered" :data-srcset="item" @load="imgLoadDone">
-      </li>
-    </ul> -->
   </div>
 </template>
 
@@ -93,7 +86,9 @@ export default {
       margin: auto;
     }
   }
-} // 加载成功显示动画样例
+} 
+
+// 加载成功显示动画样例
 .lazyload-slideIn[lazy=loaded] ,
 .lazyload-slideIn-ordered[lazy=loaded][prev-lazy=loaded] {
   animation: slideIn 0.5s ease 0s forwards;
