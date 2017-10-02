@@ -8,6 +8,10 @@
         class="weui-input"
         ref="input"
         rel="input"
+        :spellcheck="spellcheck"
+        :autocapitalize="autocapitalize"
+        :autocomplete="autocomplete"
+        :autocorrect="autocorrect"
         :type="type"
         :placeholder="placeholder"
         :value="currentValue"
@@ -44,6 +48,22 @@
       labelWidth: {
         type: Number,
         default: 105
+      },
+      spellcheck: {
+        type: Boolean,
+        default: false
+      },
+      autocapitalize: {
+        type: Boolean,
+        default: false
+      },
+      autocomplete: {
+        type: Boolean,
+        default: false
+      },
+      autocorrect: {
+        type: Boolean,
+        default: false
       },
       placeholder: String,
       value: String,
