@@ -63,13 +63,13 @@ export const swipeDirective = {
         var y = movingY - startY
         var check
 
-        directionTwo == null && (
+        (directionTwo == null || binding.arg === 'any') && (
           directionTwo = (Math.abs(y) <= Math.abs(x)) ? 'horizonal' : 'vertical'
         )
 
         if (directionTwo === 'vertical') {
           offset = y
-          directionFour = (y >= 0) ? 'up' : 'down'
+          directionFour = (y <= 0) ? 'up' : 'down'
         } else {
           offset = x
           directionFour = (x > 0) ? 'right' : 'left'
