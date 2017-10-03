@@ -55,6 +55,12 @@
         "name": "SwipePlus",
         "description": "滑动页面切换",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/android-list",
+        "name": "androidList",
+        "description": "安卓列表溢出效果",
+        "icon": "widget-slider-scroll"
       }
     ]
   },

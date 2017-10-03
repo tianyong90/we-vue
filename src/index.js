@@ -1,3 +1,4 @@
+import AndroidList from './components/android-list/index'
 import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
@@ -6,7 +7,6 @@ import CellSwipeButton from './components/cell-swipe-button/index'
 import Input from './components/input/index'
 import Textarea from './components/textarea/index'
 import Badge from './components/badge/index'
-import BigList from './components/big-list/index'
 import Switch from './components/switch/index'
 import Spinner from './components/spinner/index'
 import Navbar from './components/navbar/index'
@@ -51,6 +51,7 @@ const version = '1.4.12'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
+  Vue.component(AndroidList.name, AndroidList)
   Vue.component(Button.name, Button)
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
@@ -59,7 +60,6 @@ const install = function (Vue, config = {}) {
   Vue.component(Input.name, Input)
   Vue.component(Textarea.name, Textarea)
   Vue.component(Badge.name, Badge)
-  Vue.component(BigList.name, BigList)
   Vue.component(Switch.name, Switch)
   Vue.component(Spinner.name, Spinner)
   Vue.component(Navbar.name, Navbar)
@@ -113,6 +113,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
+  AndroidList,
   Button,
   Group,
   Cell,
@@ -121,7 +122,6 @@ export default {
   Input,
   Textarea,
   Badge,
-  BigList,
   Switch,
   Spinner,
   Navbar,
