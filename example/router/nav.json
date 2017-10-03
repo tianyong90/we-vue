@@ -55,12 +55,6 @@
         "name": "SwipePlus",
         "description": "滑动页面切换",
         "icon": "widget-slider-scroll"
-      },
-      {
-        "path": "/biglist",
-        "name": "bigList",
-        "description": "大列表",
-        "icon": "widget-slider-scroll"
       }
     ]
   },
