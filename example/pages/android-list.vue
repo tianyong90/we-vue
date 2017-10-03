@@ -1,6 +1,8 @@
 <template>
   <div class="page">
-    <wv-android-list class="list">test</wv-android-list>
+    <wv-android-list class="list">
+      <div class="content">test</div>
+    </wv-android-list>
   </div>
 </template>
 
@@ -16,5 +18,11 @@
   .list{
     width: 100vw;
     height: 100vh;
+  }
+
+  .content{
+    width: 120%;
+    height: 120%;
+    background: lavender;
   }
 </style>
