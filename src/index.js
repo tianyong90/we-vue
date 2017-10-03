@@ -6,6 +6,7 @@ import CellSwipeButton from './components/cell-swipe-button/index'
 import Input from './components/input/index'
 import Textarea from './components/textarea/index'
 import Badge from './components/badge/index'
+import BigList from './components/big-list/index'
 import Switch from './components/switch/index'
 import Spinner from './components/spinner/index'
 import Navbar from './components/navbar/index'
@@ -58,6 +59,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Input.name, Input)
   Vue.component(Textarea.name, Textarea)
   Vue.component(Badge.name, Badge)
+  Vue.component(BigList.name, BigList)
   Vue.component(Switch.name, Switch)
   Vue.component(Spinner.name, Spinner)
   Vue.component(Navbar.name, Navbar)
@@ -119,6 +121,7 @@ export default {
   Input,
   Textarea,
   Badge,
+  BigList,
   Switch,
   Spinner,
   Navbar,

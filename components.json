@@ -7,6 +7,7 @@
   "input": "./src/components/input/index.js",
   "textarea": "./src/components/textarea/index.js",
   "badge": "./src/components/badge/index.js",
+  "big-list": "./src/components/big-list/index.js",
   "switch": "./src/components/switch/index.js",
   "spinner": "./src/components/spinner/index.js",
   "navbar": "./src/components/navbar/index.js",
