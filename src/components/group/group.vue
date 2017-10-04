@@ -19,4 +19,7 @@
 </script>
 
 <style scoped lang="scss">
+  .weui-cells{
+    z-index: 0;
+  }
 </style>

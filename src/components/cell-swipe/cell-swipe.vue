@@ -66,7 +66,7 @@
     methods: {
       cellClick (e) {
         if (this.isDragging) return
-        
+
         if(this.status === 'unfold'){
           e.preventDefault();
           this.fold();
@@ -164,8 +164,8 @@
           rightBtns.translateX = btnsWidth
           cellBd.style.transition = 'all 200ms ease'
           rightBtns.style.transition = 'all 200ms ease'
+          this.status = 'fold';
         });
-        this.status = 'fold';
       },
     },
 
