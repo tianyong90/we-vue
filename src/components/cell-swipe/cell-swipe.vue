@@ -1,7 +1,7 @@
 <template>
   <div class="weui-cell weui-cell_swiped">
     <div class="weui-cell__bd" ref="cellBd" v-swipe:horizonal.lock="swipeConfig" @touchstart="touchStart">
-      <wv-cell :title="title" :value="value" :is-link="isLink" :to="to">
+      <wv-cell :title="title" :value="value" :is-link="isLink" :to="to" @touchend="cellClick">
         <template slot="icon">
           <slot name="icon"></slot>
         </template>
@@ -64,6 +64,15 @@
     },
 
     methods: {
+      cellClick (e) {
+        if (this.isDragging) return
+        
+        if(this.status === 'unfold'){
+          e.preventDefault();
+          this.fold();
+        }
+      },
+
       touchStart (event) {
         if (this.isDragging) return
 
@@ -121,9 +130,11 @@
           if (Math.abs(this.dragState.totalDeltaX) >= 30) {
             cellBd.translateX = -btnsWidth
             rightBtns.translateX = 0
+            this.status = 'unfold';
           } else {
             cellBd.translateX = 0
             rightBtns.translateX = btnsWidth
+            this.status = 'fold';
           }
           cellBd.style.transition = 'all 200ms ease'
           rightBtns.style.transition = 'all 200ms ease'
@@ -131,15 +142,31 @@
           if (Math.abs(this.dragState.totalDeltaX) >= 30) {
             cellBd.translateX = 0
             rightBtns.translateX = btnsWidth
+            this.status = 'fold';
           } else {
             cellBd.translateX = -btnsWidth
             rightBtns.translateX = 0
+            this.status = 'unfold';
           }
           cellBd.style.transition = 'all 200ms ease'
           rightBtns.style.transition = 'all 200ms ease'
         }
         this.dragState = {}
-      }
+      },
+
+      fold () {
+        const cellBd = this.$refs.cellBd
+        const rightBtns = this.$refs.rightBtns
+        const btnsWidth = this.$refs.rightBtns.clientWidth
+        
+        requestAnimationFrame(()=>{
+          cellBd.translateX = 0
+          rightBtns.translateX = btnsWidth
+          cellBd.style.transition = 'all 200ms ease'
+          rightBtns.style.transition = 'all 200ms ease'
+        });
+        this.status = 'fold';
+      },
     },
 
     directives: {
