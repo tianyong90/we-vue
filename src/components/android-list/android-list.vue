@@ -62,10 +62,11 @@
         let trigger = ($edge, type) => {
           offset = getOffset(type);
           if(typeof $edge.lastOffset === 'number'){
+            console.log(offset, $edge.lastOffset);
             if(offset > $edge.lastOffset){
               $edge.lastOffset = offset;
               $edge.style.transform = `scale${type}(${offset})`;
-              $edge.style.opacity = offset/1.8;
+              $edge.style.opacity = offset/2;
               $edge.style.transitionDuration = '0s';
             }else
               $edge.lastOffset = 'toBeClear';
@@ -84,6 +85,9 @@
             trigger($top,'Y');
           }else if(Math.ceil(scrollTop) === scrollHeight - clientHeight ){
             trigger($bottom,'Y');
+          }else{
+            this._reset($top, true);
+            this._reset($bottom, true);
           }
         }
         
@@ -92,6 +96,9 @@
             trigger($left,'X');
           }else if(Math.ceil(scrollLeft) === scrollWidth - clientWidth ){
             trigger($right,'X');
+          }else{
+            this._reset($right, true);
+            this._reset($left, true);
           }
         }
       },
@@ -111,7 +118,7 @@
         $edge.style.opacity = null;
         $edge.style.transitionDuration = null;
         $edge.style.transform = null;
-        final && ($edge.lastOffset = -1)
+        final && ($edge.lastOffset = -0.01)
       }
     },
 
