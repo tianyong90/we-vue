@@ -1,5 +1,5 @@
 <template>
-  <a class="weui-cell" :class="{'weui-cell_access': isLink}" :href="href" v-if="to">
+  <a class="weui-cell" :class="{'weui-cell_access': isLink}" :href="href" v-if="to" @touchend="touchEnd">
     <div class="weui-cell_hd">
       <slot name="icon"></slot>
     </div>
@@ -10,7 +10,7 @@
       <slot name="ft">{{ value }}</slot>
     </div>
   </a>
-  <div class="weui-cell" :class="{'weui-cell_access': isLink}" v-else>
+  <div class="weui-cell" :class="{'weui-cell_access': isLink}" @touchend="touchEnd" v-else>
     <div class="weui-cell_hd">
       <slot name="icon"></slot>
     </div>
@@ -60,6 +60,10 @@
     },
 
     methods: {
+      touchEnd (e){
+        this.$emit('touchend', e);
+      },
+
       handleClick (event) {
         event.preventDefault()
         if (typeof this.href !== 'undefined') {
