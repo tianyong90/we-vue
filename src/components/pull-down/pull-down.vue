@@ -213,6 +213,7 @@
   .wv-pull-down-content{
     transition: all 250ms ease 0ms;
     z-index: 0;
+    position: relative;
   }
 
   .wv-pull-down-panel{
