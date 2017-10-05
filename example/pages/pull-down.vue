@@ -18,9 +18,9 @@
 
     methods: {
       loadMore (success, error, noMore){
-        if( this.attempt === 3 ){
+        if( this.attempt === 2 ){
           setTimeout(error, 800);
-        }else if(this.attempt == 5 ){
+        }else if(this.attempt == 3 ){
           setTimeout(noMore, 800);
         }else{
           setTimeout(()=>{
