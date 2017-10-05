@@ -61,6 +61,12 @@
         "name": "androidList",
         "description": "安卓列表溢出效果",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/pull-down",
+        "name": "pullDown",
+        "description": "下拉刷新",
+        "icon": "widget-slider-scroll"
       }
     ]
   },

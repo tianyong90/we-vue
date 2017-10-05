@@ -35,6 +35,7 @@ import SwipeItem from './components/swipe-item/index'
 import SwipeIndicator from './components/swipe-indicator/index'
 import Popup from './components/popup/index'
 import Panel from './components/panel/index'
+import PullDown from './components/pull-down/index'
 import MediaBox from './components/media-box/index'
 import Picker from './components/picker/index'
 import DatetimePicker from './components/datetime-picker/index'
@@ -85,6 +86,7 @@ const install = function (Vue, config = {}) {
   Vue.component(SwipeIndicator.name, SwipeIndicator)
   Vue.component(Popup.name, Popup)
   Vue.component(Panel.name, Panel)
+  Vue.component(PullDown.name, PullDown)
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Picker.name, Picker)
   Vue.component(DatetimePicker.name, DatetimePicker)
@@ -150,6 +152,7 @@ export default {
   SwipeIndicator,
   Popup,
   Panel,
+  PullDown,
   MediaBox,
   Picker,
   DatetimePicker,

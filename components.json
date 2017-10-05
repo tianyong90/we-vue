@@ -36,6 +36,7 @@
   "swipe-indicator": "./src/components/swipe-indicator/index.js",
   "popup": "./src/components/popup/index.js",
   "panel": "./src/components/panel/index.js",
+  "pull-down": "./src/components/pull-down/index.js",
   "media-box": "./src/components/media-box/index.js",
   "picker": "./src/components/picker/index.js",
   "datetime-picker": "./src/components/datetime-picker/index.js",
