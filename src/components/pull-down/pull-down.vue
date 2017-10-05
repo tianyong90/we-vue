@@ -69,9 +69,13 @@
         
         if(
           $wrapper.scrollTop !== 0 || 
-          info.directionFour !== 'down' ||
-          this.status === 3
-        ) return;
+          info.directionFour !== 'down'
+        ){
+          this.status = 0;
+          return;
+        };
+
+        if(this.status === 3) return ;
 
         var $panel = this.$refs.panel,
           $content = this.$refs.content,
@@ -208,6 +212,7 @@
 
   .wv-pull-down-content{
     transition: all 250ms ease 0ms;
+    z-index: 0;
   }
 
   .wv-pull-down-panel{
@@ -220,6 +225,7 @@
     align-items: center;
     visibility: hidden;
     color: #7676a1;
+    z-index: 1;
   }
 
   .wv-pull-down-panel-message {
