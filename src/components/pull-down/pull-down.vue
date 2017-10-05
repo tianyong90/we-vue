@@ -5,8 +5,9 @@
         <div class="loading-circle-icon" ref="circle"></div>
         <div class="arrows-icon" ref="arrow"></div>
         <div class="done-icon" ref="done"></div>
+        <div class="error-icon" ref="error"></div>
       </div>
-      <div class="wv-pull-down-panel-message" ref="message">下拉刷新</div>
+      <div class="wv-pull-down-panel-message" ref="message"></div>
     </div>
     <div class="wv-pull-down-content" ref="content">
       <slot></slot>
@@ -32,6 +33,11 @@
      * 1 未达到阈值
      * 2 达到阈值
      * 3 正在加载
+     * 4 加载失败
+     */
+
+    /** 事件
+     * onLoad 用户一定交互之后会触发加载更多
      */
 
     data (){
@@ -42,7 +48,9 @@
           '下拉刷新',
           '松开刷新',
           '正在刷新',
-          '刷新成功'
+          '刷新成功',
+          '加载失败',
+          '没有更多'
         ]
       }
     },
@@ -57,101 +65,64 @@
 
     methods: {
       _onSwipe (info){
-        var $wrapper = this.$refs.wrapper,
-          status = this.status;
+        var $wrapper = this.$refs.wrapper;
         
         if(
           $wrapper.scrollTop !== 0 || 
           info.directionFour !== 'down' ||
-          status === 3
+          this.status === 3
         ) return;
 
         var $panel = this.$refs.panel,
           $content = this.$refs.content,
           offset;
 
-        if(status === 0){
-          this.status = 1;
-          $panel.style.willChange = 'transform, opacity';
-          $content.style.willChange = 'transform, opacity';
-          $panel.style.transitionDuration = '0ms';
-          $content.style.transitionDuration = '0ms';
-          $panel.style.visibility = 'visible';
+        if(this.status === 0){
           this.startY = info.movingY;
-          this._message(0);
+          this.status = 1;
         }else {
           offset = parseInt((info.movingY - this.startY) / 2);
           $panel.style.transform = `translateY(${offset}px)`;
           $content.style.transform = `translateY(${offset}px)`;
 
-          if(offset > 130 && this.status === 1) {
+          if(offset > 110 && this.status === 1)
             this.status = 2;
-            this._message(1);
-          };
 
-          if(offset < 130 && this.status === 2) {
+          if(offset < 110 && this.status === 2)
             this.status = 1;
-            this._message(0);
-          };
         }
       },
 
       _onSwipeDone (){
         var $panel = this.$refs.panel,
-          $content = this.$refs.content,
-          status = this.status;
+          $content = this.$refs.content;
 
         requestAnimationFrame(()=>{
           $panel.style.transitionDuration = null;
           $content.style.transitionDuration = null;
 
-          if(status === 1){
-            //回到默认
-            this._backToStatic();
-          }else if(status === 2){
-            //开始加载
-            this._startLoad();
-
-            setTimeout(() => {
-              
-              this._endLoad();
-            },2000);
-          }
+          if(this.status === 1)
+            this.status = 0;
+          else if(this.status === 2)
+            this.status = 3;
         });
       },
 
-      _backToStatic (){
-        var $panel = this.$refs.panel,
-          $content = this.$refs.content;
-
-        this.status = 0;
-        $panel.style.transform = null;
-        $content.style.transform = null;
-        $panel.style.visibility = null;
-        $panel.style.willChange = null;
-        $content.style.willChange = null;
-      },
-
-      _startLoad(){
-        var $panel = this.$refs.panel,
-          $content = this.$refs.content;
-
-        this.status = 3;
-        this._message(2);
-
-        $panel.style.transform = `translateY(50.4px)`;
-        $content.style.transform = `translateY(50.4px)`;
-
-        console.log('开始加载');
-      },
-
-      _endLoad(){
-        console.log('加载完成');
+      _success(){
         this._message(3);
-
-        setTimeout(this._backToStatic, 500);
+        setTimeout(() => this.status = 0, 500);
       },
-      
+
+       _error(){
+        this._message(4);
+        setTimeout(() => this.status = 0, 500);
+      },
+
+      _noMore(){
+        this._message(5);
+        setTimeout(() => this.status = 0, 500);
+      },
+
       _message(which){
         var $message = this.$refs.message,
           $panel = this.$refs.panel,
@@ -162,26 +133,66 @@
 
         if(which === 2)
           this.$refs.circle.classList.add('active');
-        else if(which === 3){
-          this.$refs.done.classList.add('active');
-          $panel.style.opacity = 0;
-          $panel.style.transitionDuration = '0s';
-          requestAnimationFrame(()=>{
-            requestAnimationFrame(()=>{
-              $panel.style.opacity = 1;
-              $panel.style.transitionDuration = null;
-            })
-          });
-        }else{
+        else if(which === 0 || which === 1){
           this.$refs.arrow.classList.add('active');
 
           if(which === 1){
             this.$refs.arrow.classList.add('reverse');
           }else
             this.$refs.arrow.classList.remove('reverse');
+        }else{
+          ( which === 3 || which === 5) && 
+            this.$refs.done.classList.add('active');
+          which === 4 && 
+            this.$refs.error.classList.add('active');
+
+          requestAnimationFrame(()=>{
+            $panel.style.opacity = 0;
+            $panel.style.transitionDuration = '0s';
+            requestAnimationFrame(()=>{
+              $panel.style.opacity = 1;
+              $panel.style.transitionDuration = null;
+            })
+          });
         }
       }
 
+    },
+
+    watch: {
+      status (val) {
+        var $panel = this.$refs.panel,
+          $content = this.$refs.content;
+
+        switch(val){
+          case 0:
+            $panel.style.transform = null;
+            $content.style.transform = null;
+            $panel.style.visibility = null;
+            $panel.style.willChange = null;
+            $content.style.willChange = null;
+          break;
+          case 1:
+            $panel.style.willChange = 'transform, opacity';
+            $content.style.willChange = 'transform, opacity';
+            $panel.style.transitionDuration = '0ms';
+            $content.style.transitionDuration = '0ms';
+            $panel.style.visibility = 'visible';
+            this._message(0);
+          break;
+          case 2:
+            this._message(1);
+          break;
+          case 3:
+            this._message(2);
+
+            $panel.style.transform = `translateY(50.4px)`;
+            $content.style.transform = `translateY(50.4px)`;
+
+            this.$emit('onLoad', this._success, this._error, this._noMore);
+          break;
+        }
+      }
     },
 
     directives: {
@@ -305,6 +316,39 @@
       left: 0px;
       transform: rotate(-50deg);
       transform-origin: left;
+    }
+
+  }
+
+  .error-icon {
+    display: inline-block;
+    font-size: 2em;
+    vertical-align: middle;
+    position: relative;
+    transition: transform .3s ease;
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    border: 1px solid;
+    border-radius: 100%;
+    margin-left: -13px;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      font-size: .5em;
+      width: 12.5px;
+      top: 50%;
+      left: 23%;
+      border-top: 1px solid;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
     }
 
   }
