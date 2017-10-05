@@ -75,7 +75,4 @@
 </script>
 
 <style scoped lang="scss">
-  .weui-cell{
-    z-index: 0;
-  }
 </style>
