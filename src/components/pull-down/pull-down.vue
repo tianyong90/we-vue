@@ -114,17 +114,17 @@
 
       _success(){
         this._message(3);
-        setTimeout(() => this.status = 0, 500);
+        setTimeout(() => this.status = 0, 720);
       },
 
        _error(){
         this._message(4);
-        setTimeout(() => this.status = 0, 500);
+        setTimeout(() => this.status = 0, 720);
       },
 
       _noMore(){
         this._message(5);
-        setTimeout(() => this.status = 0, 500);
+        setTimeout(() => this.status = 0, 720);
       },
 
       _message(which){
@@ -208,6 +208,8 @@
 <style scoped lang="scss">
   .wv-pull-down-warpper {
     overflow: auto;
+    z-index: 0;
+    position: relative;
   }
 
   .wv-pull-down-content{
@@ -357,7 +359,6 @@
     &:after {
       transform: rotate(-45deg);
     }
-
   }
 
   @keyframes circle {
