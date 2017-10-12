@@ -10,7 +10,7 @@ let popUpBase = {
     this.popUp.vm_slot = this.slot //我觉得我的命名开始凌乱了...
     this.slot.$controller = this
     this.popUp.init(this.popUpConfig)
-    this.slot.init(this.config)
+    this.slot.init(this.config, e)
     popUpController.open(this.popUp, this.getRouterId())
   },
 

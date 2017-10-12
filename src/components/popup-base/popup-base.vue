@@ -20,7 +20,7 @@
     },
 
     mounted (){
-      this.$refs.mask.onclick = () => history.back()
+      once(this.$refs.mask, 'click', () => history.back())
     },
 
     methods: {
@@ -38,15 +38,15 @@
       },
 
       maskOpacity (val) {
-        this.mask.style.opacity = val;
+        this.$refs.mask.style.opacity = val;
       },
 
       trunOffMaskTransition () {
-        this.mask.style.transitionDuration = '0ms';
+        this.$refs.mask.style.transitionDuration = '0ms';
       },
 
       trunOnMaskTransition () {
-        this.mask.style.transitionDuration = null;
+        this.$refs.mask.style.transitionDuration = null;
       },
 
       maskClassAdd (name) {
@@ -62,7 +62,7 @@
       _beforeEnter () {
         requestAnimationFrame(function(){
           //设置mask的初始化样式
-          
+          this.maskOpacity(0);
           //设置事件
           once(this.$refs.slot, 'transitionend', this._afterEnter)
 
@@ -71,6 +71,9 @@
           this.vm_slot.event.beforeEnter instanceof Function && 
             this.vm_slot.event.beforeEnter();
           
+          requestAnimationFrame(()=>{
+            this.maskOpacity(0.2);
+          })
         }.bind(this))
       },
 
@@ -83,7 +86,7 @@
       _beforeLeave () {
         requestAnimationFrame(function(){
           once(this.$refs.slot, 'transitionend', this._afterLeave)
-
+          this.maskOpacity(0);
           this.vm_slot.event && 
           this.vm_slot.event.beforeLeave instanceof Function && 
             this.vm_slot.event.beforeLeave();
@@ -124,6 +127,7 @@
     top: 0;
     left: 0;
     opacity: 0;
+    background-color: #000000;
     transition: opacity 250ms ease 0s;
   }
 </style>

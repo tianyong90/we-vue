@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import popUpBase from '../popup-base/popup-base.js'
-// import popUpController from '../popup-base/index.js'
+import popUpController from '../popup-base/index.js'
 import template from './popup-bottom-menu.vue'
 
 let popUpConfig = {
@@ -19,8 +19,10 @@ function BottomMenu (config) {
   this.popUpConfig = popUpConfig
   this.config = Object.assign({}, defaultConfig, config)
   this.instancesMap[this.getRouterId()] = this
+  popUpController.register(this.getRouterId(), this.open.bind(this))
 }
 
 BottomMenu.prototype = popUpBase
+BottomMenu.prototype.constructor = BottomMenu
 
 export default BottomMenu

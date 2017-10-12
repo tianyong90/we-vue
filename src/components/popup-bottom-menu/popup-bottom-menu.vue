@@ -20,7 +20,7 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          console.log('slot before enter',this,$el);
+          console.log('slot before enter');
           //先手动更新样式
           $el.classList.add('inital');
           requestAnimationFrame(function(){
@@ -51,7 +51,7 @@
     },
 
     methods: {
-      init (config) {
+      init (config, e) {
         this.items = config.items
         this.animationClassName = config.animation
       },
@@ -69,10 +69,10 @@
     left: 0;
     width: 100vw;
     height: auto;
-    transition: all 300ms ease 0s;
+    transition: all 350ms ease 0s;
 
     &.inital {
-      opacity: 0.7;
+      opacity: 0;
       transform: translateY(100%) translateZ(0);
     }
 
@@ -82,9 +82,9 @@
     }
 
     &.outAnimation {
-      opacity: 0.7;
+      opacity: 0;
       transform: translateY(100%) translateZ(0);
-      transition-duration: 240ms;
+      transition-duration: 400ms;
     }
   }
 </style>

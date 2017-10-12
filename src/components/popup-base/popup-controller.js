@@ -9,14 +9,22 @@ let vm_popUpContainer = new popUpContainerConstructor({
   el: document.createElement('div')
 })
 let RouterIdToPopUp = {}
+let RouterIdToTrigger = {}
+let popUpIdQueue = []
 
 // 注入contianer
 document.body.appendChild(vm_popUpContainer.$el);
 
+Router.parseHashCommand('&popUp=');
+
 let PopUp = {
+  fromUpdateRouter: false,
+  fromHashChange: false,
+
   open (vm_base, routerId) {
     vm_popUpContainer.turnOn()
     vm_base.enter()
+    popUpIdQueue.push(routerId)
     this.updateRouter(routerId)
     requestAnimationFrame(function(){
       //和那边的enter和enter的执行位置同步
@@ -26,15 +34,21 @@ let PopUp = {
 
   close (routerId) {
     var vm_popUp = RouterIdToPopUp[routerId];
-    //之前是正向的,这次就是反过来咯~
-    vm_popUp.leave(()=>{
+    
+    vm_popUp && vm_popUp.leave(()=>{
       this.destroyPopUp(routerId)
-      vm_popUpContainer.turnOff()
+      popUpIdQueue.pop()
+      if(popUpIdQueue.length === 0)
+        vm_popUpContainer.turnOff()
     })
   },
 
   createUrl () {
     return ``;
+  },
+
+  register (routerId, trigger) {
+    RouterIdToTrigger[routerId] = trigger
   },
 
   createPopUp (routerId) {
@@ -51,10 +65,16 @@ let PopUp = {
   },
 
   updateRouter (popUpName) {
-    var value = Router.getParamValue('popUp');
+    if(this.fromHashChange)
+      return this.fromHashChange = false;
 
-    if(value) value += '/' + popUpName;
-    else value = popUpName;
+    var value = Router.getParamValue('popUp');
+    if(value && value.split('/').pop() !== popUpName)
+      value += '/' + popUpName;
+    else 
+      value = popUpName;
+    
+    this.fromUpdateRouter = true;
     Router.parseHashCommand('&popUp='+value);
   }
 }
@@ -62,13 +82,25 @@ let PopUp = {
 Router.listenParam('popUp', {
   onEnter (val) {
     console.log('enter ' + val)
+    if(PopUp.fromUpdateRouter)
+      return PopUp.fromUpdateRouter = false;
+
+    var list = val.split('/');
+    var trigger = RouterIdToTrigger[top(list)];
+    PopUp.fromHashChange = true;
+    trigger && trigger();
   },
 
-  onLeave (val) {
+  onLeave (val, oldVal) {
+    var oldList = oldVal.split('/');
     var list = val.split('/');
-    
-    PopUp.close(list[list.length-1])
-    console.log('leave ' + val)
+    var oldListTop = top(oldList)
+
+    if(prev(list) !== oldListTop){
+      PopUp.fromUpdateRouter = false;
+      PopUp.close(oldListTop)
+    }
+    console.log('leave ' + oldVal)
   },
 
   onBack (val) {
@@ -76,6 +108,13 @@ Router.listenParam('popUp', {
   },
 })
 
+function top(arr){
+  return arr[arr.length-1];
+}
+
+function prev(arr){
+  return arr[arr.length-2];
+}
 
 export default PopUp
 export { PopUp }

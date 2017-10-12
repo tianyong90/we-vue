@@ -41,10 +41,10 @@ let Router = {
 
           forEach(this.listeners, function(config, name){
             if(params.hasOwnProperty(name)){
-              config.onBack(params[name])
+              config.onBack(params[name], lastParams[name])
             }
             if(lastParams.hasOwnProperty(name)){
-              config.onLeave(lastParams[name])
+              config.onLeave(params[name], lastParams[name])
             }
           })
 
@@ -57,10 +57,10 @@ let Router = {
 
           forEach(this.listeners, function(config, name){
             if(params.hasOwnProperty(name)){
-              config.onEnter(params[name])
+              config.onEnter(params[name], lastParams[name])
             }
             if(lastParams.hasOwnProperty(name)){
-              config.onLeave(lastParams[name])
+              config.onLeave(params[name], lastParams[name])
             }
           })
         } 
@@ -68,10 +68,6 @@ let Router = {
 
       this.history.push(location.hash)
     }
-  },
-
-  init () {
-    
   },
 
   getUrlParams (url) {
@@ -141,6 +137,11 @@ let Router = {
 
   getParamValue (paramName) {
     return this.getUrlParams(location.hash)[paramName]
+  },
+
+  initialParam (paramName) {
+    // 但是不知道之前的url状态哦,怎么来使用捏?
+    
   }
 }
 
