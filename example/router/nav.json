@@ -67,6 +67,12 @@
         "name": "pullDown",
         "description": "下拉刷新",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-base",
+        "name": "popUpBase",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
       }
     ]
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <wv-pull-down class="pull-down" @onLoad="loadMore">
-      <wv-cell :title="item" v-for="item in list" :key="item"></wv-cell>
+      <wv-cell :title="item" v-for="(item, $index) in list" :key="$index" @touchend="msg(list, $index)"></wv-cell>
       <!-- <div v-for="item in list" :key="item" >{{item}}</div> -->
     </wv-pull-down>
   </div>
@@ -34,6 +34,12 @@
           }, 800);
         }
         this.attempt++;
+      },
+
+      msg (list, index){
+        this.$set(list, index, list[index]+'_edited')
+        console.log('%O',list);
+        console.log(index);
       }
     }
   }
