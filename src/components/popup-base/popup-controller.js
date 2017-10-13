@@ -21,7 +21,7 @@ let PopUp = {
   fromUpdateRouter: false,
   fromHashChange: false,
 
-  open (vm_base, routerId) {
+  open (vm_base, routerId, domLoadCallback) {
     vm_popUpContainer.turnOn()
     vm_base.enter()
     popUpIdQueue.push(routerId)
@@ -29,6 +29,7 @@ let PopUp = {
     requestAnimationFrame(function(){
       //和那边的enter和enter的执行位置同步
       vm_popUpContainer.addPopUp(vm_base.$el)
+      domLoadCallback && domLoadCallback()
     })
   },
 

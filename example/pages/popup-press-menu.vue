@@ -1,0 +1,64 @@
+<template>
+  <div class="page" @click="click">
+  </div>
+</template>
+
+<script>
+  import PressMenu from '../../src/components/popup-press-menu'
+
+  export default {
+
+    created () {
+      this.pressMenu = new PressMenu({
+        items: [
+          {
+            name: '分享二维码',
+            click: () => {console.log('btn0 clicked');}
+          },
+          {
+            name: '换个样式',
+            click: () => {this.pressMenu2.open()}
+          },
+          {
+            name: '保存到手机',
+            click: () => {this.pressMenu2.open()}
+          },
+          {
+            name: '扫描二维码',
+            click: () => {this.pressMenu2.open()}
+          }
+        ]
+      })
+
+      this.pressMenu2 = new PressMenu({
+        items: [
+          {
+            name: '样式一',
+            click: () => {
+              console.log('btn2 clicked');
+              this.pressMenu2.close();
+            }
+          },
+          {
+            name: '样式二',
+            click: () => {
+              console.log('btn3 clicked');
+              this.pressMenu2.close();
+            }
+          }
+        ]
+      })
+    },
+
+    methods: {
+      click (e) {
+        this.pressMenu.open(e)
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  
+</style>
+

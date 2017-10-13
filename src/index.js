@@ -35,6 +35,9 @@ import SwipeItem from './components/swipe-item/index'
 import SwipeIndicator from './components/swipe-indicator/index'
 import Popup from './components/popup/index'
 import PopupBase from './components/popup-base/index'
+import PopupBottomMenu from './components/popup-bottom-menu/index'
+import PopupCenterMenu from './components/popup-center-menu/index'
+import PopupPressMenu from './components/popup-press-menu/index'
 import Panel from './components/panel/index'
 import PullDown from './components/pull-down/index'
 import MediaBox from './components/media-box/index'
@@ -105,6 +108,9 @@ const install = function (Vue, config = {}) {
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog
   Vue.$popup = Vue.prototype.$popup = PopupBase
+  Vue.$bottomMenu = Vue.prototype.$bottomMenu = PopupBottomMenu
+  Vue.$centerMenu = Vue.prototype.$centerMenu = PopupCenterMenu
+  Vue.$pressMenu = Vue.prototype.$pressMenu = PopupPressMenu
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$indicator = Vue.prototype.$indicator = Indicator
 }
@@ -154,6 +160,9 @@ export default {
   SwipeIndicator,
   Popup,
   PopupBase,
+  PopupBottomMenu,
+  PopupCenterMenu,
+  PopupPressMenu,
   Panel,
   PullDown,
   MediaBox,

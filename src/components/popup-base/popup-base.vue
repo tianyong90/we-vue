@@ -66,6 +66,7 @@
       //内部使用的
       _beforeEnter () {
         requestAnimationFrame(function(){
+          this.$refs.slot.style.transitionDuration = '0ms';
           //设置mask的初始化样式
           this.maskOpacity(0);
           //设置事件
@@ -77,6 +78,7 @@
             this.vm_slot.event.beforeEnter();
           
           requestAnimationFrame(()=>{
+            this.$refs.slot.style.transitionDuration = null;
             this.maskOpacity(0.2);
           })
         }.bind(this))

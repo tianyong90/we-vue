@@ -1,13 +1,13 @@
 <template>
-  <ul class="wv-popup-bottom-menu">
-    <li class="wv-popup-bottom-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+  <ul class="wv-popup-press-menu">
+    <li class="wv-popup-press-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
   </ul>
 </template>
 
 <script>
 
   export default {
-    name: 'wv-popup-bottom-menu',
+    name: 'wv-popup-press-menu',
 
     props: {
       items: {
@@ -68,41 +68,37 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-bottom-menu {
+  .wv-popup-press-menu {
     will-change: opacity, transform;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: auto;
+    box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 350ms ease 0s;
+    flex: 0 0 auto;
 
     &.inital {
       opacity: 0;
-      transform: translateY(100%) translateZ(0);
+      transform: scale(0.8) translateZ(0);
     }
 
     &.inAnimation {
       opacity: 1;
-      transform: translateY(0%) translateZ(0);
+      transform: scale(1) translateZ(0);
     }
 
     &.outAnimation {
       opacity: 0;
-      transform: translateY(100%) translateZ(0);
+      transform: scale(0.75) translateZ(0);
       transition-duration: 400ms;
     }
   }
 
-  .wv-popup-bottom-menu-li {
+  .wv-popup-press-menu-li {
+    height: 43px;
+    line-height: 43px;
+    padding: 0 30px 0 15px;
+    font-size: 14px;
+    display: block;
     background: white;
-    padding: 0 21px;
-    font-size: 16px;
-    width: calc(100vw - 21px*2);
-    color: #5e5e5e;
-    min-height: 42px;
-    display: flex;
-    align-items: center;
+    min-width: calc(90px - 45px);
   }
 </style>
 <style lang="scss">

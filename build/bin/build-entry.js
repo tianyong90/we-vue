@@ -26,6 +26,7 @@ const install = function (Vue, config = {}) {
   Vue.$popup = Vue.prototype.$popup = PopupBase
   Vue.$bottomMenu = Vue.prototype.$bottomMenu = PopupBottomMenu
   Vue.$centerMenu = Vue.prototype.$centerMenu = PopupCenterMenu
+  Vue.$pressMenu = Vue.prototype.$pressMenu = PopupPressMenu
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$indicator = Vue.prototype.$indicator = Indicator
 }
@@ -64,6 +65,9 @@ ComponentNames.forEach(name => {
     // services
     'Dialog',
     'PopupBase',
+    'PopupBottomMenu',
+    'PopupCenterMenu',
+    'PopupPressMenu',
     'Toast',
     'Indicator'
   ].indexOf(componentName) === -1) {

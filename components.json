@@ -38,6 +38,7 @@
   "popup-base": "./src/components/popup-base/index.js",
   "popup-bottom-menu": "./src/components/popup-bottom-menu/index.js",
   "popup-center-menu": "./src/components/popup-center-menu/index.js",
+  "popup-press-menu": "./src/components/popup-press-menu/index.js",
   "panel": "./src/components/panel/index.js",
   "pull-down": "./src/components/pull-down/index.js",
   "media-box": "./src/components/media-box/index.js",
