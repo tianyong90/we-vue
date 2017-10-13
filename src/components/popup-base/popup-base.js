@@ -28,6 +28,11 @@ let popUpBase = {
   enter: function () {
     this.popUp.enter();
     this.slot.enter();
+  },
+
+  close: function(){
+    if(this.popUp.status === 'on')
+      history.back()
   }
 }
 

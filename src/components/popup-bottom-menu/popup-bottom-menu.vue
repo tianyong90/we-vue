@@ -1,6 +1,6 @@
 <template>
   <ul class="wv-popup-bottom-menu">
-    <wv-button v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</wv-button>
+    <li class="wv-popup-bottom-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
   </ul>
 </template>
 
@@ -86,6 +86,17 @@
       transform: translateY(100%) translateZ(0);
       transition-duration: 400ms;
     }
+  }
+
+  .wv-popup-bottom-menu-li {
+    background: white;
+    padding: 0 21px;
+    font-size: 16px;
+    width: calc(100vw - 21px*2);
+    color: #5e5e5e;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
   }
 </style>
 <style lang="scss">

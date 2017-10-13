@@ -15,7 +15,7 @@ let popUpIdQueue = []
 // 注入contianer
 document.body.appendChild(vm_popUpContainer.$el);
 
-Router.parseHashCommand('&popUp=');
+Router.initialParam('popUp');
 
 let PopUp = {
   fromUpdateRouter: false,
@@ -85,15 +85,15 @@ Router.listenParam('popUp', {
     if(PopUp.fromUpdateRouter)
       return PopUp.fromUpdateRouter = false;
 
-    var list = val.split('/');
+    var list = val ? val.split('/'): [];
     var trigger = RouterIdToTrigger[top(list)];
     PopUp.fromHashChange = true;
     trigger && trigger();
   },
 
   onLeave (val, oldVal) {
-    var oldList = oldVal.split('/');
-    var list = val.split('/');
+    var oldList = oldVal ? oldVal.split('/'): [];
+    var list = val ? val.split('/'): [];
     var oldListTop = top(oldList)
 
     if(prev(list) !== oldListTop){

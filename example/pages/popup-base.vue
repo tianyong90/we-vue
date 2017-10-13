@@ -19,11 +19,19 @@
       this.bottomMenu = new BottomMenu({
         items: [
           {
-            name: 'btn0',
+            name: '分享二维码',
             click: () => {console.log('btn0 clicked');}
           },
           {
-            name: 'btn1',
+            name: '换个样式',
+            click: () => {this.bottomMenu2.open()}
+          },
+          {
+            name: '保存到手机',
+            click: () => {this.bottomMenu2.open()}
+          },
+          {
+            name: '扫描二维码',
             click: () => {this.bottomMenu2.open()}
           }
         ]
@@ -32,12 +40,18 @@
       this.bottomMenu2 = new BottomMenu({
         items: [
           {
-            name: 'btn2',
-            click: () => {console.log('btn2 clicked');}
+            name: '样式一',
+            click: () => {
+              console.log('btn2 clicked');
+              this.bottomMenu2.close();
+            }
           },
           {
-            name: 'btn3',
-            click: () => {console.log('btn3 clicked');}
+            name: '样式二',
+            click: () => {
+              console.log('btn3 clicked');
+              this.bottomMenu2.close();
+            }
           }
         ]
       })

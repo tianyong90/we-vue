@@ -83,6 +83,38 @@ let Router = {
     return params
   },
 
+  setUrlParams (params) {
+    if (Object.keys(params).length > 0) {
+      history.replaceState({}, null, 
+        this.getNoHashUrl() + this.getHashOfParams(params));
+    } else {
+      history.replaceState({}, null, 
+        this.getNoHashUrl());
+    }
+  },
+
+  getNoHashUrl () {
+    return location.href.replace(location.hash,'');
+  },
+
+  getHashOfParams (params) {
+    //保存非params部分
+    var hash = location.hash;
+    
+    if(hash.indexOf('#') === -1){
+      hash = '#';
+    } else if(hash.indexOf('?') !== -1) {
+      hash = hash.slice(0,hash.indexOf('?',0))
+    }
+
+    // 生成params部分
+    hash += '?';
+    for(var p in params)
+      hash += `${p}=${params}&`;
+    
+    return hash.slice(0, hash.length-1)
+  },
+
   listenParam (paramName, config) {
     this.listeners[paramName] = config
   },
@@ -140,8 +172,11 @@ let Router = {
   },
 
   initialParam (paramName) {
-    // 但是不知道之前的url状态哦,怎么来使用捏?
+    var params = this.getUrlParams(location.hash)
     
+    delete params[paramName]
+    
+    this.setUrlParams(params);
   }
 }
 

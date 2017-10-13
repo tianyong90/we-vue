@@ -73,6 +73,12 @@
         "name": "popUpBase",
         "description": "popUp",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-dialog",
+        "name": "popUpDialog",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
       }
     ]
   },

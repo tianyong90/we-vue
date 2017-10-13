@@ -23,6 +23,7 @@ const install = function (Vue, config = {}) {
   })
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog
+  Vue.$popup = Vue.prototype.$popup = PopupBase
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$indicator = Vue.prototype.$indicator = Indicator
 }
@@ -60,6 +61,7 @@ ComponentNames.forEach(name => {
 
     // services
     'Dialog',
+    'PopupBase',
     'Toast',
     'Indicator'
   ].indexOf(componentName) === -1) {

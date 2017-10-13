@@ -1,6 +1,6 @@
 <template>
   <div class="wv-popup-base" :routerId="routerId">
-    <div class="wv-popup-mask" ref="mask"></div>
+    <div class="wv-popup-mask" ref="mask" @click="turnOffMask"></div>
     <div class="wv-popup-slot">
       <div ref="slot"></div>
     </div>
@@ -15,26 +15,31 @@
 
     data () {
       return {
-        routerId: null
+        routerId: null,
+        status: null
       }
-    },
-
-    mounted (){
-      once(this.$refs.mask, 'click', () => history.back())
     },
 
     methods: {
       init (config) {
         this.routerId = config.routerId
+        this.maskDisable = config.maskDisable
       },
 
       enter () {
         this._beforeEnter()
+        this.status = 'on'
       },
 
       leave (callback) {
+        this.status = 'off'
         this._beforeLeave()
         this._afterLeaveCallback = callback
+      },
+
+      turnOffMask () {
+        if(!this.maskDisable)
+          this.vm_slot.$controller.close()
       },
 
       maskOpacity (val) {
@@ -120,6 +125,14 @@
     }
   }
 
+  .wv-popup-slot{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .wv-popup-mask {
     position: fixed;
     width: 100vw;
@@ -128,6 +141,6 @@
     left: 0;
     opacity: 0;
     background-color: #000000;
-    transition: opacity 250ms ease 0s;
+    transition: opacity 350ms ease 0s;
   }
 </style>
