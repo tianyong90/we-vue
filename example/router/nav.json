@@ -69,8 +69,14 @@
         "icon": "widget-slider-scroll"
       },
       {
-        "path": "/popup-base",
-        "name": "popUpBase",
+        "path": "/popup-bottom-menu",
+        "name": "popUpBottomMenu",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-center-menu",
+        "name": "popUpCenterMenu",
         "description": "popUp",
         "icon": "widget-slider-scroll"
       },

@@ -24,6 +24,8 @@ const install = function (Vue, config = {}) {
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog
   Vue.$popup = Vue.prototype.$popup = PopupBase
+  Vue.$bottomMenu = Vue.prototype.$bottomMenu = PopupBottomMenu
+  Vue.$centerMenu = Vue.prototype.$centerMenu = PopupCenterMenu
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$indicator = Vue.prototype.$indicator = Indicator
 }

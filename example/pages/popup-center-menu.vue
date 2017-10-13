@@ -1,22 +1,15 @@
 <template>
   <div class="page" @click="click">
-    <img :src="logoImg" alt="">
   </div>
 </template>
 
 <script>
-  import BottomMenu from '../../src/components/popup-bottom-menu'
-  import logoImg from '../assets/images/logo.png'
+  import CenterMenu from '../../src/components/popup-center-menu'
 
   export default {
-    data () {
-      return {
-        logoImg
-      }
-    },
 
     created () {
-      this.bottomMenu = new BottomMenu({
+      this.centerMenu = new CenterMenu({
         items: [
           {
             name: '分享二维码',
@@ -24,33 +17,33 @@
           },
           {
             name: '换个样式',
-            click: () => {this.bottomMenu2.open()}
+            click: () => {this.centerMenu2.open()}
           },
           {
             name: '保存到手机',
-            click: () => {this.bottomMenu2.open()}
+            click: () => {this.centerMenu2.open()}
           },
           {
             name: '扫描二维码',
-            click: () => {this.bottomMenu2.open()}
+            click: () => {this.centerMenu2.open()}
           }
         ]
       })
 
-      this.bottomMenu2 = new BottomMenu({
+      this.centerMenu2 = new CenterMenu({
         items: [
           {
             name: '样式一',
             click: () => {
               console.log('btn2 clicked');
-              this.bottomMenu2.close();
+              this.centerMenu2.close();
             }
           },
           {
             name: '样式二',
             click: () => {
               console.log('btn3 clicked');
-              this.bottomMenu2.close();
+              this.centerMenu2.close();
             }
           }
         ]
@@ -59,7 +52,7 @@
 
     methods: {
       click (e) {
-        this.bottomMenu.open(e)
+        this.centerMenu.open(e)
       }
     }
   }
