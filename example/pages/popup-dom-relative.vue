@@ -35,14 +35,14 @@
             name: '样式一',
             click: () => {
               console.log('btn2 clicked');
-              this.pressMenu2.close();
+              this.pressMenu.close();
             }
           },
           {
             name: '样式二',
             click: () => {
               console.log('btn3 clicked');
-              this.pressMenu2.close();
+              this.pressMenu.close();
             }
           }
         ]
