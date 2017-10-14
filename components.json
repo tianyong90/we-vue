@@ -1,4 +1,5 @@
 {
+  "android-list": "./src/components/android-list/index.js",
   "button": "./src/components/button/index.js",
   "group": "./src/components/group/index.js",
   "cell": "./src/components/cell/index.js",
@@ -30,9 +31,12 @@
   "flex-item": "./src/components/flex-item/index.js",
   "icon": "./src/components/icon/index.js",
   "swipe": "./src/components/swipe/index.js",
+  "swipeplus": "./src/components/swipeplus/index.js",
   "swipe-item": "./src/components/swipe-item/index.js",
+  "swipe-indicator": "./src/components/swipe-indicator/index.js",
   "popup": "./src/components/popup/index.js",
   "panel": "./src/components/panel/index.js",
+  "pull-down": "./src/components/pull-down/index.js",
   "media-box": "./src/components/media-box/index.js",
   "picker": "./src/components/picker/index.js",
   "datetime-picker": "./src/components/datetime-picker/index.js",

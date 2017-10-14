@@ -1,14 +1,16 @@
 <template>
-  <div class="wv-swipe-item" v-swipe:vertical="{}">
+  <div class="wv-swipe-indicator" @click="switchTo" ref="test3">
     <slot></slot>
   </div>
 </template>
 
 <script>
-  import { swipeDirective } from '../../custom/event/swipe.js'
-
   export default {
-    name: 'wv-swipe-item',
+    name: 'wv-swipe-indicator',
+
+    created (){
+      this.key = null;
+    },
 
     props: {
       onEnter: {
@@ -22,16 +24,14 @@
     },
 
     mounted () {
-      this.$parent && this.$parent.swipeItemCreated();
+      this.key = Array.prototype.indexOf.call(this.$el.parentElement.children,this.$el);
     },
 
-    destroyed () {
-      this.$parent && this.$parent.swipeItemDestroyed()
+    methods: {
+      switchTo (){
+        this.$parent.goTo(this.key);
+      }
     },
-
-    directives: {
-      swipe: swipeDirective
-    }
   }
 </script>
 

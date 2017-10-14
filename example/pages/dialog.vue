@@ -18,13 +18,15 @@
       },
 
       showDialog (skin, title) {
-        Dialog({
+        var p = Dialog({
           title: title,
           message: '欢迎使用 we-vue!',
           skin,
           showCancelBtn: true
         },
         this.doSomething)
+
+        console.log(p);
       }
     }
   }

@@ -59,7 +59,7 @@
   }
 
   .independent-spinner {
-    display: block;
+    display: flex;
     background-color: #fff;
     margin-top: 20px;
     padding: 1em;

@@ -1,3 +1,4 @@
+import AndroidList from './components/android-list/index'
 import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
@@ -29,9 +30,12 @@ import Flex from './components/flex/index'
 import FlexItem from './components/flex-item/index'
 import Icon from './components/icon/index'
 import Swipe from './components/swipe/index'
+import Swipeplus from './components/swipeplus/index'
 import SwipeItem from './components/swipe-item/index'
+import SwipeIndicator from './components/swipe-indicator/index'
 import Popup from './components/popup/index'
 import Panel from './components/panel/index'
+import PullDown from './components/pull-down/index'
 import MediaBox from './components/media-box/index'
 import Picker from './components/picker/index'
 import DatetimePicker from './components/datetime-picker/index'
@@ -48,6 +52,7 @@ const version = '1.4.14'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
+  Vue.component(AndroidList.name, AndroidList)
   Vue.component(Button.name, Button)
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
@@ -76,9 +81,12 @@ const install = function (Vue, config = {}) {
   Vue.component(FlexItem.name, FlexItem)
   Vue.component(Icon.name, Icon)
   Vue.component(Swipe.name, Swipe)
+  Vue.component(Swipeplus.name, Swipeplus)
   Vue.component(SwipeItem.name, SwipeItem)
+  Vue.component(SwipeIndicator.name, SwipeIndicator)
   Vue.component(Popup.name, Popup)
   Vue.component(Panel.name, Panel)
+  Vue.component(PullDown.name, PullDown)
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Picker.name, Picker)
   Vue.component(DatetimePicker.name, DatetimePicker)
@@ -107,6 +115,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
+  AndroidList,
   Button,
   Group,
   Cell,
@@ -138,9 +147,12 @@ export default {
   FlexItem,
   Icon,
   Swipe,
+  Swipeplus,
   SwipeItem,
+  SwipeIndicator,
   Popup,
   Panel,
+  PullDown,
   MediaBox,
   Picker,
   DatetimePicker,

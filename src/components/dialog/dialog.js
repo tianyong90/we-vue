@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import dislogComponent from './dialog.vue'
+import dialogComponent from './dialog.vue'
 
 let CONFIRM_TEXT = '确定'
 let CANCEL_TEXT = '取消'
@@ -33,7 +33,7 @@ let merge = function (target) {
   return target
 }
 
-let DialogConstructor = Vue.extend(dislogComponent)
+let DialogConstructor = Vue.extend(dialogComponent)
 
 let currentDialog, instance
 let dialogQueue = []

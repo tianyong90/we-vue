@@ -49,6 +49,24 @@
         "name": "Swipe",
         "description": "轮播",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/swipeplus",
+        "name": "SwipePlus",
+        "description": "滑动页面切换",
+        "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/android-list",
+        "name": "androidList",
+        "description": "安卓列表溢出效果",
+        "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/pull-down",
+        "name": "pullDown",
+        "description": "下拉刷新",
+        "icon": "widget-slider-scroll"
       }
     ]
   },

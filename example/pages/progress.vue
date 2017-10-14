@@ -22,17 +22,18 @@
     methods: {
       upload () {
         let temp = 0
-
-        let ticker = setInterval(() => {
+        let runner = () => {
           temp++
 
           this.percent1 = temp
           this.percent2 = temp
 
-          if (temp >= 100) {
-            clearInterval(ticker)
+          if (temp < 100) {
+            requestAnimationFrame(runner);
           }
-        }, 10)
+        };
+
+        requestAnimationFrame(runner);
       },
 
       onCancel () {
