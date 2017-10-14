@@ -17,15 +17,15 @@
           },
           {
             name: '换个样式',
-            click: () => {this.pressMenu2.open()}
+            click: (e) => {this.pressMenu2.open(e)}
           },
           {
             name: '保存到手机',
-            click: () => {this.pressMenu2.open()}
+            click: (e) => {this.pressMenu2.open(e)}
           },
           {
             name: '扫描二维码',
-            click: () => {this.pressMenu2.open()}
+            click: (e) => {this.pressMenu2.open(e)}
           }
         ]
       })

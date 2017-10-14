@@ -1,13 +1,13 @@
 <template>
-  <ul class="wv-popup-press-menu">
-    <li class="wv-popup-press-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+  <ul class="wv-popup-dom-relative">
+    <li class="wv-popup-dom-relative-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
   </ul>
 </template>
 
 <script>
 
   export default {
-    name: 'wv-popup-press-menu',
+    name: 'wv-popup-dom-relative',
 
     props: {
       items: {
@@ -68,7 +68,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-press-menu {
+  .wv-popup-dom-relative {
     will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 350ms ease 0s;
@@ -91,7 +91,7 @@
     }
   }
 
-  .wv-popup-press-menu-li {
+  .wv-popup-dom-relative-li {
     height: 43px;
     line-height: 43px;
     padding: 0 30px 0 15px;
@@ -101,7 +101,7 @@
     min-width: calc(90px - 45px);
   }
 
-  .wv-popup-press-menu-li:active {
+  .wv-popup-dom-relative-li:active {
     background: #E8E8E8;
     transition: all 80ms linear 0ms;
   }

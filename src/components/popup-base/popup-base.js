@@ -42,13 +42,26 @@ let popUpBase = {
   configPosition: function(e){
     var config = this.config,
         $slot = this.slot.$el,
+
+        //公用
         fromLeft, fromTop, originX, originY,
         fromFrameLeft, fromFrameTop,
         placeLeftOffset, placeRightOffset, placeBottomOffset, placeTopOffset,
         margins = [],
         frame = {},
-        d_width, d_height,
-        clickX, clickY;
+        d_width = $slot.clientWidth,
+        d_height = $slot.clientHeight,
+        //clickRelative 需要的
+        clickX, clickY,
+        
+        //domRelative 需要的
+        $refDom, refRect,
+        refCorner, relativeToCorner,
+        validVertical_RefCorner = ['top','bottom','center'],
+        validHorizonal_RefCorner = ['left','right','center'],
+        validVertical_RelativeToCorner = ['below','above'],
+        validHorizonal_RelativeToCorner = ['before','after']
+        ;
 
     if (config.position === 'clickRelative') {
 
@@ -61,12 +74,6 @@ let popUpBase = {
         clickY = e.clientY;
       }
       //endregion
-      
-      //region 初始化
-
-      //先弄fixed的版本
-      d_width = $slot.clientWidth;
-      d_height = $slot.clientHeight;
 
       //region 外框 格式化 TODO 之后可以缓存这个,不过动态也是有好处的, 性能优化的时候在做吧
       if(config.frame instanceof Object){
@@ -202,6 +209,77 @@ let popUpBase = {
       $slot.style.left = fromLeft + 'px';
       $slot.style.top = fromTop + 'px';
     }
+
+    //region
+    if(config.position === 'domRelative' && config.refDom instanceof HTMLElement) {
+      $refDom = config.refDom;
+      refRect = $refDom.getBoundingClientRect();
+      
+      //解析参数
+
+      //解析refCorner
+
+      if(config.refCorner === undefined){
+        //缺省默认
+        refCorner = ['top', 'right']
+      }else if(typeof config.refCorner === 'string'){
+        refCorner = config.refCorner.split(' ');
+        //检查参数是否合法
+        if(
+          refCorner.length !== 2 ||
+          !validVertical_RefCorner.includes(refCorner[0]) || !validHorizonal_RefCorner.includes(refCorner[1])
+        ){
+          console.log('refCorner配置有误~')
+        }
+      }else{
+        //非法参数,或者不可解析的参数
+        console.log('refCorner配置有误~')
+      }
+
+      //解析relativeToCorner
+      if(config.relativeToCorner === undefined){
+        //缺省默认
+        relativeToCorner = ['below', 'after']
+      }else if(typeof config.relativeToCorner === 'string'){
+        relativeToCorner = config.relativeToCorner.split(' ');
+        //检查参数是否合法
+        if(
+          relativeToCorner.length !== 2 ||
+          !validVertical_RelativeToCorner.includes(relativeToCorner[0]) || !validHorizonal_RelativeToCorner.includes(relativeToCorner[1])
+        ){
+          console.log('relativeToCorner配置有误~')
+        }
+      }else{
+        //非法参数,或者不可解析的参数
+        console.log('relativeToCorner配置有误~')
+      }
+
+      //设定位置
+      fromLeft = refRect.left;
+      fromTop = refRect.top;
+
+      if(refCorner[0] === 'bottom')
+        fromTop += refRect.height;
+      else if(refCorner[0] === 'center')
+        fromTop += refRect.height/2 - d_height/2;
+      
+      if(refCorner[1] === 'right')
+        fromLeft += refRect.width;
+      else if(refCorner[1] === 'center')
+        fromLeft += refRect.width/2 - d_width/2;
+      
+      if(relativeToCorner[0] === 'above' && refCorner[0] !== 'center')
+        fromTop -= d_height;
+      
+      if(relativeToCorner[1] === 'before' && refCorner[1] !== 'center')
+        fromLeft -= d_width;
+
+      $slot.style.position = 'absolute';
+      $slot.style.left = fromLeft + 'px';
+      $slot.style.top = fromTop + 'px';
+    }
+    //endregion
+
 
     //设置动画重心
     if (config.autoSetOrthocenter === true)

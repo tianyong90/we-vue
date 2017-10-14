@@ -91,6 +91,12 @@
         "name": "popUpPressMenu",
         "description": "popUp",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-dom-relative",
+        "name": "popUpDomRelative",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
       }
     ]
   },

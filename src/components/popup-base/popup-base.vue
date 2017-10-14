@@ -121,6 +121,7 @@
     height: 100vh;
     top: 0;
     left: 0;
+    overflow: hidden;
 
     &.absolute {
       position: absolute;
