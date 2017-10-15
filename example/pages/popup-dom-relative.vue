@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page" @click="click">
     <div class="btn" ref="btn0" @click="click0">蓝精灵</div>
     <div class="btn" ref="btn1" @click="click1">蓝精灵</div>
     <div class="btn" ref="btn2" @click="click2">蓝精灵</div>
@@ -98,7 +98,11 @@
     },
 
     methods: {
+      click (e){
+        console.log('from page',e);
+      },
       click0 (e) {
+        console.log(e);
         this.pressMenu_topLeft_belowAfter.open(e)
       },
       click1 (e) {

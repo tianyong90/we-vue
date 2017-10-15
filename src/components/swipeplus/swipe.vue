@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-swipe" :style="{ height: height + 'px' }">
+  <div class="wv-swipe">
     <div class="wv-swipe-wrapper" v-swipe:horizonal.lock="swipeConfig">
       <div class="wv-swipe-items">
         <slot></slot>
@@ -56,10 +56,6 @@
     },
 
     props: {
-      height: {
-        type: Number,
-        default: 180
-      },
       speed: {
         type: Number,
         default: 280

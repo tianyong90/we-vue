@@ -1,6 +1,6 @@
 <template>
   <div class="wv-popup-base" :routerId="routerId">
-    <div class="wv-popup-mask" ref="mask" @click="turnOffMask"></div>
+    <div class="wv-popup-mask" ref="mask" @click="turnOffMask" @touchmove="maskPreventScroll"></div>
     <div class="wv-popup-slot">
       <div ref="slot"></div>
     </div>
@@ -60,6 +60,11 @@
 
       maskClassRemove (name) {
         this.$refs.mask.classList.remove(name)
+      },
+
+      maskPreventScroll(e){
+        if(this.status === 'on')
+          e.preventDefault()
       },
 
 

@@ -27,7 +27,7 @@
     <div class="description">
       不循环|溢出缓动
     </div>
-    <wv-swipeplus class="demo-swipe" :height="130" :auto="0" :continuous="false" overflow="backDrag">
+    <wv-swipeplus class="demo-swipe" :auto="0" :continuous="false" overflow="backDrag">
       <wv-swipe-item class="demo-swipe-item" style="background-color: #f44336"><div class="page1">1</div></wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #ffc107">2</wv-swipe-item>
       <wv-swipe-item class="demo-swipe-item" style="background-color: #03a9f4">3</wv-swipe-item>
