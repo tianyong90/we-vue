@@ -49,15 +49,8 @@
 
           var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale } = this.getAnimationSettings(this.defaultIndex);
 
-          //生成结束位置
-          if(i_ratio > w_rotaio){
-            //设置垂直居中
-            fromTop = (w_height - w_width)/2;
-          }
-          //else 设置自然布局
-
+          this.initPosition();
           //集中设置属性
-          $onSwipeImg.style.top = fromTop + 'px';
           $onSwipeImg.style.transform = 
             `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
           $onSwipeImg.style.clipPath = 
@@ -137,6 +130,32 @@
 
       getSwipeImg(index){
         return this.$refs.swiper.$refs.swipeItems.children[index].children[0];
+      },
+
+      initPosition (){
+        var i, i_ratio, i_height, i_width, $img, fromTop,
+            w_height = window.innerHeight,
+            w_width = window.innerWidth,
+            w_rotaio = w_width/w_height;
+
+        for(i = 0; i < this.originalImgs.length; i++){
+          $img = this.originalImgs[i];
+          i_height = $img.naturalHeight;
+          i_width = $img.naturalWidth;
+          i_ratio = i_width/i_height;
+
+          //生成结束位置
+          if(i_ratio > w_rotaio){
+            //设置垂直居中
+            fromTop = (w_height - (w_width/i_width)*i_height)/2;
+          }else
+            fromTop = 0;
+          //else 设置自然布局
+          this.getSwipeImg(i).style.top = fromTop + 'px';
+          this.getSwipeImg(i).style.clipPath = 
+            `inset(0px 0px 0px 0px)`;
+        }
+        $img = null;
       }
     }
 
