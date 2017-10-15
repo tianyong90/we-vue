@@ -97,6 +97,12 @@
         "name": "popUpDomRelative",
         "description": "popUp",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-img-viewer",
+        "name": "popUpImgViewer",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
       }
     ]
   },

@@ -1,7 +1,7 @@
 <template>
-  <wv-swipeplus class="demo-swipe" :auto="0" :continuous="false" overflow="backDrag" ref="swiper">
-      <wv-swipe-item v-for="(img, $index) in imgs" :key="$index">
-        <img src="img.src" alt="">
+  <wv-swipeplus class="popup-swipe" overflow="backDrag" :defaultIndex="defaultIndex" ref="swiper">
+      <wv-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
+        <img class="swipe-img" :src="img.src" alt="">
       </wv-swipe-item>
     </wv-swipeplus>
 </template>
@@ -10,6 +10,13 @@
 
   export default {
     name: 'wv-popup-img-viewer',
+
+    data (){
+      return {
+        defaultIndex: 0,
+        originalImgs: []
+      }
+    },
 
     created () {
       this.event = {
@@ -22,74 +29,128 @@
 
     methods: {
       init (config, e) {
-        this.imgs = config.imgs
+        this.originalImgs = config.imgs
+        this.defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.target)
         
-        var $originalImg = e.target,
-            i_height = $originalImg.naturalHeight,
-            i_width = $originalImg.naturalWidth,
+        var $triggerImg = e.target,
+            i_height = $triggerImg.naturalHeight,
+            i_width = $triggerImg.naturalWidth,
             i_ratio = i_width/i_height,
 
             w_height = window.innerHeight,
             w_width = window.innerWidth,
             w_rotaio = w_width/w_height,
 
-            rect = $originalImg.getBoundingClientRect();
-
+            fromTop
+            ;
+        
         this.event.beforeEnter = () => {
+          var $onSwipeImg = this.getSwipeImg(this.defaultIndex);
+
+          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale } = this.getAnimationSettings(this.defaultIndex);
+
           //生成结束位置
-          if(d_ratio > w_rotaio){
-
-          }else{
-
+          if(i_ratio > w_rotaio){
+            //设置垂直居中
+            fromTop = (w_height - w_width)/2;
           }
+          //else 设置自然布局
 
-          //生成开始位置
+          //集中设置属性
+          $onSwipeImg.style.top = fromTop + 'px';
+          $onSwipeImg.style.transform = 
+            `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
+          $onSwipeImg.style.clipPath = 
+            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
 
-          //开始动画
+          //开始动画,这里为什么会延迟的有部分动画看不到了
+          this.$nextTick(()=>{
+            requestAnimationFrame(() => {
+              $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
+              $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px)`;
+            })
+          });
         }
+
+        this.event.beforeLeave = function () {
+          var index = this.$refs.swiper.index,
+              $onSwipeImg = this.getSwipeImg(index);
+
+          
+          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale} = this.getAnimationSettings(index);
+
+          //集中设置属性
+          $onSwipeImg.style.top = fromTop + 'px';
+          $onSwipeImg.style.transform = 
+            `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
+          $onSwipeImg.style.clipPath = 
+            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
+
+        }.bind(this)
       },
 
+      getAnimationSettings (index){
+        var w_height = window.innerHeight,
+          w_width = window.innerWidth,
 
+          scale, translateX, translateY,
+          triggeredImgCenterX, triggeredImgCenterY, 
+          zoomedImgCenterX, zoomedImgCenterY,
+          clipTop, clipRight, clipBottom, clipLeft,
+
+          $img = this.originalImgs[index],
+          imgRect = $img.getBoundingClientRect(),
+          contianerRect = $img.parentElement.getBoundingClientRect();
+
+        //生成开始位置
+        scale = imgRect.width / w_width;
+        zoomedImgCenterX = w_width/2;
+        zoomedImgCenterY = w_height/2;
+        triggeredImgCenterX = imgRect.left + imgRect.width/2;
+        triggeredImgCenterY = imgRect.top + imgRect.height/2;
+
+        //然后做动画偏移(需要区分布局偏移
+        translateX = triggeredImgCenterX - zoomedImgCenterX;
+        translateY = triggeredImgCenterY - zoomedImgCenterY;
+        
+        //设置clip-path
+        clipTop = contianerRect.top - imgRect.top;
+        clipLeft = contianerRect.left - imgRect.left;
+        clipBottom = imgRect.bottom - contianerRect.bottom;
+        clipRight = imgRect.right - contianerRect.right;
+
+        clipTop = clipTop > 0 ? clipTop/scale : 0;
+        clipLeft = clipLeft > 0 ? clipLeft/scale : 0;
+        clipBottom = clipBottom > 0 ? clipBottom/scale : 0;
+        clipRight = clipRight > 0 ? clipRight/scale : 0;
+
+        return {
+          clipTop: clipTop,
+          clipLeft: clipLeft,
+          clipBottom: clipBottom,
+          clipRight: clipRight,
+          translateX: translateX,
+          translateY: translateY,
+          scale: scale
+        };
+      },
+
+      getSwipeImg(index){
+        return this.$refs.swiper.$refs.swipeItems.children[index].children[0];
+      }
     }
+
   }
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-press-menu {
-    will-change: opacity, transform;
-    box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
-    transition: all 350ms ease 0s;
-    flex: 0 0 auto;
-
-    &.inital {
-      opacity: 0;
-      transform: scale(0.8) translateZ(0);
-    }
-
-    &.inAnimation {
-      opacity: 1;
-      transform: scale(1) translateZ(0);
-    }
-
-    &.outAnimation {
-      opacity: 0;
-      transform: scale(0.75) translateZ(0);
-      transition-duration: 400ms;
-    }
+  .popup-swipe{
+    height: 100vh;
   }
 
-  .wv-popup-press-menu-li {
-    height: 43px;
-    line-height: 43px;
-    padding: 0 30px 0 15px;
-    font-size: 14px;
-    display: block;
-    background: white;
-    min-width: calc(90px - 45px);
-  }
-
-  .wv-popup-press-menu-li:active {
-    background: #E8E8E8;
-    transition: all 80ms linear 0ms;
+  .swipe-img{
+    width: 100vw;
+    position: absolute;
+    transition: all 400ms ease;
   }
 </style>

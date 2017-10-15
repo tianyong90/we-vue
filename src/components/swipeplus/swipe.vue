@@ -1,7 +1,7 @@
 <template>
   <div class="wv-swipe">
     <div class="wv-swipe-wrapper" v-swipe:horizonal.lock="swipeConfig">
-      <div class="wv-swipe-items">
+      <div class="wv-swipe-items" ref="swipeItems">
         <slot></slot>
       </div>
     </div>
@@ -66,7 +66,7 @@
       },
       auto: {
         type: Number,
-        default: 3000
+        default: 0
       },
       continuous: {
         type: Boolean,
@@ -119,7 +119,7 @@
         clearTimeout(this.reInitTimer)
         this.reInitTimer = setTimeout(() => {
           this.reInitPages()
-        }, 100)
+        }, 0)
       },
 
       swipeItemDestroyed () {
@@ -128,7 +128,7 @@
         clearTimeout(this.reInitTimer)
         this.reInitTimer = setTimeout(() => {
           this.reInitPages()
-        }, 100)
+        }, 10)
       },
 
       reInitPages () {
@@ -196,7 +196,7 @@
         });
       },
 
-      goTo (page){
+      goTo (page, immediately){
         var fromPage = this.index,
           $pageContainer = this.dom.$pageContainer,
           $pages = this.dom.$pages,
