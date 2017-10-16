@@ -10,6 +10,13 @@
     name: 'wv-popup-press-menu',
 
     props: {
+      config: {
+        type: Object,
+        default: null
+      },
+      e: {
+        default: null
+      },
       items: {
         type: Array
       },
@@ -54,14 +61,17 @@
       }
     },
 
-    methods: {
-      init (config, e) {
-        this.items = config.items
-        this.animationClassName = config.animation
-        this.onOpen = config.onOpen
-        this.onClose = config.onClose
-      },
+    mounted (){
+      var config = this.config,
+        e = this.e;
 
+      this.items = config.items
+      this.animationClassName = config.animation
+      this.onOpen = config.onOpen
+      this.onClose = config.onClose
+    },
+
+    methods: {
 
     }
   }

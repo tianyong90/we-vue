@@ -42,6 +42,8 @@
         onSwipe: this.onSwipe,
         onSwipeDone: this.onSwipeDone
       };
+
+      console.log('swiper created');
     },
 
     data () {
@@ -110,6 +112,8 @@
       this.setTimer();
       this.reInitPages();
       window.addEventListener('resize',this.reSize);
+
+      console.log('swiper mounted');
     },
 
     methods: {
@@ -118,8 +122,8 @@
 
         clearTimeout(this.reInitTimer)
         this.reInitTimer = setTimeout(() => {
-          this.reInitPages()
-        }, 4)
+          this.reInitPages(true)
+        }, 3)
       },
 
       swipeItemDestroyed () {
@@ -128,10 +132,10 @@
         clearTimeout(this.reInitTimer)
         this.reInitTimer = setTimeout(() => {
           this.reInitPages()
-        }, 10)
+        }, 3)
       },
 
-      reInitPages () {
+      reInitPages (fromSwipeItem) {
         var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.wv-swipe-items'),
             $pages = this.dom.$pages = $pageContainer.children;
 

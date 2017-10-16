@@ -10,6 +10,13 @@
     name: 'wv-popup-bottom-menu',
 
     props: {
+      config: {
+        type: Object,
+        default: null
+      },
+      e: {
+        default: null
+      },
       items: {
         type: Array
       },
@@ -48,20 +55,14 @@
       }
     },
 
-    data () {
-      return {
-        
-      }
-    },
-
-    methods: {
-      init (config, e) {
-        this.items = config.items
-        this.animationClassName = config.animation
-        this.onOpen = config.onOpen
-        this.onClose = config.onClose
+    mounted () {
+        this.items = this.config.items
+        this.animationClassName = this.config.animation
+        this.onOpen = this.config.onOpen
+        this.onClose = this.config.onClose
       },
 
+    methods: {
 
     }
   }

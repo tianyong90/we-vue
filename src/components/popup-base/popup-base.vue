@@ -20,6 +20,14 @@
       }
     },
 
+    mounted (){
+      console.log('poup-base mounted');
+    },
+
+    created () {
+      console.log('poup-base created');
+    },
+
     methods: {
       init (config) {
         this.routerId = config.routerId

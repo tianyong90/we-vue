@@ -18,14 +18,24 @@
       }
     },
 
+    props: {
+      config: {
+        type: Object,
+        default: null
+      },
+      e: {
+        default: null
+      }
+    },
+
     created () {
       this.event = {
         beforeEnter: () => {
-          var $onSwipeImg = this.getSwipeImg(this.defaultIndex);
+          var $onSwipeImg = this._getSwipeImg(this.defaultIndex);
 
-          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale } = this.getAnimationSettings(this.defaultIndex);
+          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale } = this._getAnimationSettings(this.defaultIndex);
 
-          this.initPosition();
+          this._initPosition();
           
           $onSwipeImg.style.transform = 
             `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
@@ -44,9 +54,9 @@
         // afterEnter: () => {},
         beforeLeave: () => {
           var index = this.$refs.swiper.index,
-              $onSwipeImg = this.getSwipeImg(index);
+              $onSwipeImg = this._getSwipeImg(index);
           
-          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale} = this.getAnimationSettings(index);
+          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale} = this._getAnimationSettings(index);
 
           //集中设置属性
           $onSwipeImg.style.transform = 
@@ -56,15 +66,26 @@
         },
         // afterLeave: () => {},
       }
+
+      console.log('popup-img-viewer created');
+    },
+
+    mounted (){
+      console.log('poup-img-viewer mounted');
+
+      var config = this.config, 
+          e = this.e;
+
+      this.originalImgs = config.imgs
+      this.defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.target)
+
+      this.w_height = window.innerHeight
+      this.w_width = window.innerWidth
+      this.w_rotaio = this.w_width/this.w_height
     },
 
     methods: {
-      init (config, e) {
-        this.originalImgs = config.imgs
-        this.defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.target)
-      },
-
-      getAnimationSettings (index){
+      _getAnimationSettings (index){
         var w_height = window.innerHeight,
           w_width = window.innerWidth,
 
@@ -110,15 +131,15 @@
         };
       },
 
-      getSwipeImg(index){
+      _getSwipeImg(index){
         return this.$refs.swiper.$refs.swipeItems.children[index].children[0];
       },
 
-      initPosition (){
+      _initPosition (){
         var i, i_ratio, i_height, i_width, $img, fromTop,
-            w_height = window.innerHeight,
-            w_width = window.innerWidth,
-            w_rotaio = w_width/w_height;
+            w_height = this.w_height,
+            w_width = this.w_width,
+            w_rotaio = this.w_rotaio;
 
         for(i = 0; i < this.originalImgs.length; i++){
           $img = this.originalImgs[i];
@@ -134,7 +155,7 @@
             fromTop = 0;
           //else 设置自然布局
           //设置的是swiper里面的图片
-          $img = this.getSwipeImg(i)
+          $img = this._getSwipeImg(i)
           $img.style.top = fromTop + 'px';
           $img.style.clipPath = `inset(0px 0px 0px 0px)`;
         }

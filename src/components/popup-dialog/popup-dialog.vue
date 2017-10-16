@@ -15,6 +15,16 @@
   export default {
     name: 'wv-popup-dialog',
 
+    props: {
+      config: {
+        type: Object,
+        default: null
+      },
+      e: {
+        default: null
+      }
+    },
+
     created () {
       this.event = {
         beforeEnter: () => {
@@ -51,22 +61,26 @@
       }
     },
 
+    mounted () {
+      var config = this.config ,
+        e = this.e;
+
+      this.items = config.items
+      this.animationClassName = config.animation
+      this.onCancel = config.onCancel
+      this.onComfrim = config.onComfrim
+
+      config.confirmText != undefined && 
+      typeof config.confirmText === 'string' &&
+        (this.confirmText = config.confirmText)
+
+      config.cancelText != undefined && 
+      typeof config.cancelText === 'string' &&
+        (this.cancelText = config.cancelText)
+
+    },
+
     methods: {
-      init (config, e) {
-        this.items = config.items
-        this.animationClassName = config.animation
-        this.onCancel = config.onCancel
-        this.onComfrim = config.onComfrim
-
-        config.confirmText != undefined && 
-        typeof config.confirmText === 'string' &&
-          (this.confirmText = config.confirmText)
-
-        config.cancelText != undefined && 
-        typeof config.cancelText === 'string' &&
-          (this.cancelText = config.cancelText)
-
-      },
 
       close (){
         this.$controller.close();

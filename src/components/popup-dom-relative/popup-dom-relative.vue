@@ -10,6 +10,13 @@
     name: 'wv-popup-dom-relative',
 
     props: {
+      config: {
+        type: Object,
+        default: null
+      },
+      e: {
+        default: null
+      },
       items: {
         type: Array
       },
@@ -48,20 +55,17 @@
       }
     },
 
-    data () {
-      return {
-        
-      }
+    mounted (){
+      var config = this.config,
+        e = this.e;
+
+      this.items = config.items
+      this.animationClassName = config.animation
+      this.onOpen = config.onOpen
+      this.onClose = config.onClose
     },
 
     methods: {
-      init (config, e) {
-        this.items = config.items
-        this.animationClassName = config.animation
-        this.onOpen = config.onOpen
-        this.onClose = config.onClose
-      },
-
 
     }
   }

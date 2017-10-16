@@ -52,10 +52,16 @@ let PopUp = {
     RouterIdToTrigger[routerId] = trigger
   },
 
-  createPopUp (routerId) {
+  createPopUp (routerId, config, e) {
     RouterIdToPopUp[routerId] = new popUpBaseConstructor({
-      el: document.createElement('div')
+      el: document.createElement('div'),
+      porpsData: {
+        config: config,
+        e: e
+      }
     })
+
+    console.log(popUpBaseConstructor);
     return RouterIdToPopUp[routerId]
   },
 

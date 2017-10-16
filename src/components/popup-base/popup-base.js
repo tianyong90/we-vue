@@ -2,16 +2,20 @@ import popUpController from '../popup-base/index.js'
 
 let popUpBase = {
   open: function (e) {
-    this.popUp = popUpController.createPopUp(this.getRouterId())
+    this.popUp = popUpController.createPopUp(this.getRouterId(), this.popUpConfig, e)
     this.slot = new this.Factory({
-      el: this.popUp.$refs.slot
+      el: this.popUp.$refs.slot,
+      propsData: {
+        config: this.config,
+        e: e
+      }
     })
     this.popUp.$refs.slot = this.slot.$el
     this.popUp.vm_slot = this.slot //我觉得我的命名开始凌乱了...
     this.slot.$controller = this
     
-    this.popUp.init(this.popUpConfig, e)
-    this.slot.init(this.config, e)
+    // this.popUp.init(this.popUpConfig, e)
+    // this.slot.init(this.config, e)
     
     popUpController.open(this.popUp, this.getRouterId(), ()=>{
       this.configPosition(e)
