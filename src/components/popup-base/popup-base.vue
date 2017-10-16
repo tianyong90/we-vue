@@ -78,13 +78,13 @@
 
       //内部使用的
       _beforeEnter () {
-        requestAnimationFrame(function(){
-          this.$refs.slot.style.transitionDuration = '0ms';
-          //设置mask的初始化样式
-          this.maskOpacity(0);
-          //设置事件
-          once(this.$refs.slot, 'transitionend', this._afterEnter)
+        this.$refs.slot.style.transitionDuration = '0ms';
+        //设置mask的初始化样式
+        this.maskOpacity(0);
+        //设置事件
+        once(this.$refs.slot, 'transitionend', this._afterEnter)
 
+        this.vm_slot.$nextTick(()=>{
           //设置slot的初始化样式
           this.vm_slot.event && 
           this.vm_slot.event.beforeEnter instanceof Function && 
@@ -94,7 +94,7 @@
             this.$refs.slot.style.transitionDuration = null;
             this.maskOpacity(0.2);
           })
-        }.bind(this))
+        })
       },
 
       _afterEnter () {

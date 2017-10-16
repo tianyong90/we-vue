@@ -36,7 +36,7 @@
           var { clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(this.defaultIndex);
 
           this._initPosition();
-          
+
           $onSwipeImg.style.transform = 
             `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
           
@@ -45,14 +45,11 @@
             `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px round ${clipRadius})`
 
           //开始动画,这里为什么会延迟的,开始有部分动画看不到了
-          this.$nextTick(()=>{
-            requestAnimationFrame(() => {
-              // this.$controller.popUp.maskOpacity(1);
-              $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
-              if(hasClip)
-              $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`;
-            })
-          });
+          requestAnimationFrame(()=>{
+            $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
+            if(hasClip)
+            $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`;
+          })
         },
         // afterEnter: () => {},
         beforeLeave: () => {

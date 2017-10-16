@@ -165,37 +165,26 @@
         actualSwipeValue = this.dom.actualSwipeValue = this.dom.itemWidth + gap;
         this.status.swipeStartOffset = index * actualSwipeValue;
 
-        $pageContainer.classList.add('noneAnimation','subNoneAnimation');
-        $swiper.classList.add('subNoneAnimation');
         requestAnimationFrame(function () {
-          $swiper.style['opacity'] = 0;
           $pages[index].classList.add(self.status.activatedClass);
           $indicators[index] && $indicators[index].classList.add(self.status.activatedClass);
-          requestAnimationFrame(function () {
-            $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
-            Array.prototype.forEach.call($pages, function ($page) {
-              $page.style.width = itemWidth + 'px';
-              $page.style.marginRight = gap + 'px';
-            });
 
-            if(continuous){
-              $swiper.classList.add('loop');
-              Array.prototype.forEach.call($pages, function ($page ,i) {
-                $page.currentPosition = i * itemWidth ;
-                $page.index = i;
-                $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)';
-              });
-            }
-            
-            self.goTo(index, true);
-            requestAnimationFrame(function(){
-              setTimeout(function(){
-                $pageContainer.classList.remove('subNoneAnimation');
-                $swiper.style['opacity'] = 1;
-                $swiper.classList.remove('subNoneAnimation');
-              },35);
-            });
+          $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
+          Array.prototype.forEach.call($pages, function ($page) {
+            $page.style.width = itemWidth + 'px';
+            $page.style.marginRight = gap + 'px';
           });
+
+          if(continuous){
+            $swiper.classList.add('loop');
+            Array.prototype.forEach.call($pages, function ($page ,i) {
+              $page.currentPosition = i * itemWidth ;
+              $page.index = i;
+              $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)';
+            });
+          }
+          
+          self.goTo(index, true);
         });
       },
 
@@ -519,25 +508,24 @@
           $showing = $pageContainer.querySelector('.is-active');
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
-        requestAnimationFrame(function () {
-          if(!continuous){
-            $pageContainer.style['transform'] = 
-              'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
-            $pageContainer.style.webkitTransition = 
+        
+        if(!continuous){
+          $pageContainer.style['transform'] = 
+            'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
+          $pageContainer.style.webkitTransition = 
+            `-webkit-transform 0ms ease`;
+        }else{
+          Array.prototype.forEach.call($pages, function ($li,i) {
+            $li.currentPosition = 
+              ($li.index - self.index) * actualSwipeValue;
+            $li.style.transform = 
+              'translate3d(' + $li.currentPosition + 'px,0,0)';
+            $li.style.webkitTransition = 
               `-webkit-transform 0ms ease`;
-          }else{
-            Array.prototype.forEach.call($pages, function ($li,i) {
-              $li.currentPosition = 
-                ($li.index - self.index) * actualSwipeValue;
-              $li.style.transform = 
-                'translate3d(' + $li.currentPosition + 'px,0,0)';
-              $li.style.webkitTransition = 
-                `-webkit-transform 0ms ease`;
-            });
-          }
+          });
+        }
 
-          self.transitionendProcessor()
-        });
+        self.transitionendProcessor()
       },
 
       handleOverflow (info){
