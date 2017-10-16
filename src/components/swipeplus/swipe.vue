@@ -119,7 +119,7 @@
         clearTimeout(this.reInitTimer)
         this.reInitTimer = setTimeout(() => {
           this.reInitPages()
-        }, 0)
+        }, 4)
       },
 
       swipeItemDestroyed () {
@@ -635,7 +635,7 @@
         will-change: transform;
         transition: all 0.2s ease 0s;
 
-        div {
+        div { //这嵌套层次有点多...
           position: relative;
           height: 100%;
           width:100vw;

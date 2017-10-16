@@ -20,9 +20,40 @@
 
     created () {
       this.event = {
-        // beforeEnter: () => {},
+        beforeEnter: () => {
+          var $onSwipeImg = this.getSwipeImg(this.defaultIndex);
+
+          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale } = this.getAnimationSettings(this.defaultIndex);
+
+          this.initPosition();
+          
+          $onSwipeImg.style.transform = 
+            `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
+          $onSwipeImg.style.clipPath = 
+            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
+
+          //开始动画,这里为什么会延迟的,开始有部分动画看不到了
+          this.$nextTick(()=>{
+            requestAnimationFrame(() => {
+              // this.$controller.popUp.maskOpacity(1);
+              $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
+              $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px)`;
+            })
+          });
+        },
         // afterEnter: () => {},
-        // beforeLeave: () => {},
+        beforeLeave: () => {
+          var index = this.$refs.swiper.index,
+              $onSwipeImg = this.getSwipeImg(index);
+          
+          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale} = this.getAnimationSettings(index);
+
+          //集中设置属性
+          $onSwipeImg.style.transform = 
+            `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
+          $onSwipeImg.style.clipPath = 
+            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
+        },
         // afterLeave: () => {},
       }
     },
@@ -31,55 +62,6 @@
       init (config, e) {
         this.originalImgs = config.imgs
         this.defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.target)
-        
-        var $triggerImg = e.target,
-            i_height = $triggerImg.naturalHeight,
-            i_width = $triggerImg.naturalWidth,
-            i_ratio = i_width/i_height,
-
-            w_height = window.innerHeight,
-            w_width = window.innerWidth,
-            w_rotaio = w_width/w_height,
-
-            fromTop
-            ;
-        
-        this.event.beforeEnter = () => {
-          var $onSwipeImg = this.getSwipeImg(this.defaultIndex);
-
-          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale } = this.getAnimationSettings(this.defaultIndex);
-
-          this.initPosition();
-          //集中设置属性
-          $onSwipeImg.style.transform = 
-            `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
-          $onSwipeImg.style.clipPath = 
-            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
-
-          //开始动画,这里为什么会延迟的有部分动画看不到了
-          this.$nextTick(()=>{
-            requestAnimationFrame(() => {
-              $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
-              $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px)`;
-            })
-          });
-        }
-
-        this.event.beforeLeave = function () {
-          var index = this.$refs.swiper.index,
-              $onSwipeImg = this.getSwipeImg(index);
-
-          
-          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale} = this.getAnimationSettings(index);
-
-          //集中设置属性
-          $onSwipeImg.style.top = fromTop + 'px';
-          $onSwipeImg.style.transform = 
-            `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
-          $onSwipeImg.style.clipPath = 
-            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
-
-        }.bind(this)
       },
 
       getAnimationSettings (index){
@@ -151,9 +133,10 @@
           }else
             fromTop = 0;
           //else 设置自然布局
-          this.getSwipeImg(i).style.top = fromTop + 'px';
-          this.getSwipeImg(i).style.clipPath = 
-            `inset(0px 0px 0px 0px)`;
+          //设置的是swiper里面的图片
+          $img = this.getSwipeImg(i)
+          $img.style.top = fromTop + 'px';
+          $img.style.clipPath = `inset(0px 0px 0px 0px)`;
         }
         $img = null;
       }
@@ -165,11 +148,14 @@
 <style scoped lang="scss">
   .popup-swipe{
     height: 100vh;
+    z-index: 1;
   }
 
   .swipe-img{
     width: 100vw;
     position: absolute;
-    transition: all 400ms ease;
+    transition: all 300ms ease;
+    will-change: transform, opacity;
+    z-index: 0;
   }
 </style>
