@@ -148,7 +148,6 @@
 <style scoped lang="scss">
   .popup-swipe{
     height: 100vh;
-    z-index: 1;
   }
 
   .swipe-img{

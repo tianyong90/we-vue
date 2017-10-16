@@ -624,7 +624,6 @@
   .wv-swipe {
     overflow: hidden;
     width: 100%;
-    position: relative;
 
     .wv-swipe-wrapper {
       height: 100%;
