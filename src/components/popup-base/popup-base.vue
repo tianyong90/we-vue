@@ -104,13 +104,18 @@
       },
 
       _beforeLeave () {
-        requestAnimationFrame(function(){
-          once(this.$refs.slot, 'transitionend', this._afterLeave)
+        requestAnimationFrame(()=>{
           this.maskOpacity(0);
+
           this.vm_slot.event && 
           this.vm_slot.event.beforeLeave instanceof Function && 
             this.vm_slot.event.beforeLeave();
-        }.bind(this))
+
+          //防止提前触发
+          setTimeout(()=>{
+            once(this.$refs.slot, 'transitionend', this._afterLeave)
+          },35)
+        })
       },
 
       _afterLeave () {
