@@ -4,6 +4,9 @@
     <div class="container">
       <img src="http://cn.vuejs.org/images/logo.png" alt="">
     </div>
+    <div class="container-raduis">
+      <img src="http://cn.vuejs.org/images/logo.png" alt="">
+    </div>
   </div>
 </template>
 
@@ -42,7 +45,7 @@
     width: 100px;
   }
 
-  .container{
+  .container, .container-raduis{
     width: 50px;
     height: 50px;
     display: inline-flex;
@@ -51,6 +54,9 @@
     background-color: lightblue;
     margin: 50px;
     overflow: hidden;
+  }
+  .container-raduis{
+    border-radius: 10px;
   }
 </style>
 

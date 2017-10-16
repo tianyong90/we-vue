@@ -33,21 +33,24 @@
         beforeEnter: () => {
           var $onSwipeImg = this._getSwipeImg(this.defaultIndex);
 
-          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale } = this._getAnimationSettings(this.defaultIndex);
+          var { clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(this.defaultIndex);
 
           this._initPosition();
           
           $onSwipeImg.style.transform = 
             `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
+          
+          if(hasClip)
           $onSwipeImg.style.clipPath = 
-            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
+            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px round ${clipRadius})`
 
           //开始动画,这里为什么会延迟的,开始有部分动画看不到了
           this.$nextTick(()=>{
             requestAnimationFrame(() => {
               // this.$controller.popUp.maskOpacity(1);
               $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
-              $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px)`;
+              if(hasClip)
+              $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`;
             })
           });
         },
@@ -56,13 +59,18 @@
           var index = this.$refs.swiper.index,
               $onSwipeImg = this._getSwipeImg(index);
           
-          var { clipTop, clipLeft, clipBottom, clipRight, translateX, translateY, scale} = this._getAnimationSettings(index);
+          var { clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(index);
 
-          //集中设置属性
-          $onSwipeImg.style.transform = 
+          if(hasClip)
+            $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`;
+          
+          requestAnimationFrame(()=>{
+            $onSwipeImg.style.transform = 
             `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`;
-          $onSwipeImg.style.clipPath = 
-            `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
+            if(hasClip)
+            $onSwipeImg.style.clipPath = 
+              `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px round ${clipRadius})`;
+          })
         },
         // afterLeave: () => {},
       }
@@ -92,11 +100,13 @@
           scale, translateX, translateY,
           triggeredImgCenterX, triggeredImgCenterY, 
           zoomedImgCenterX, zoomedImgCenterY,
-          clipTop, clipRight, clipBottom, clipLeft,
+          clipTop, clipRight, clipBottom, clipLeft, clipRadius,
+          hasClip, clipRightVals,
 
           $img = this.originalImgs[index],
           imgRect = $img.getBoundingClientRect(),
-          contianerRect = $img.parentElement.getBoundingClientRect();
+          contianerRect = $img.parentElement.getBoundingClientRect(),
+          containerStyle = getComputedStyle($img.parentElement);
 
         //生成开始位置
         scale = imgRect.width / w_width;
@@ -114,20 +124,41 @@
         clipLeft = contianerRect.left - imgRect.left;
         clipBottom = imgRect.bottom - contianerRect.bottom;
         clipRight = imgRect.right - contianerRect.right;
+        clipRadius = containerStyle.borderRadius
 
         clipTop = clipTop > 0 ? clipTop/scale : 0;
         clipLeft = clipLeft > 0 ? clipLeft/scale : 0;
         clipBottom = clipBottom > 0 ? clipBottom/scale : 0;
         clipRight = clipRight > 0 ? clipRight/scale : 0;
 
+        //clipRadius放大麻烦一丢丢,仅仅px,先是最简单版本
+        clipRightVals = clipRadius.split(' ');
+
+        clipRightVals.forEach((val, i) => {
+          //提取数值
+          var num = parseFloat(val);
+          var unit = val.replace(num.toString(),'');
+
+          if(unit !== '%'){
+            num /= scale;
+            clipRightVals[i] = num+unit;
+          }
+        })
+        clipRadius = clipRightVals.join(' ');
+
+        hasClip = clipTop !== 0 && clipLeft !== 0 && 
+                  clipBottom !== 0 && clipRight !== 0 ;
+
         return {
           clipTop: clipTop,
           clipLeft: clipLeft,
           clipBottom: clipBottom,
           clipRight: clipRight,
+          clipRadius: clipRadius,
           translateX: translateX,
           translateY: translateY,
-          scale: scale
+          scale: scale,
+          hasClip: hasClip
         };
       },
 
@@ -157,7 +188,7 @@
           //设置的是swiper里面的图片
           $img = this._getSwipeImg(i)
           $img.style.top = fromTop + 'px';
-          $img.style.clipPath = `inset(0px 0px 0px 0px)`;
+          $img.style.clipPath = `inset(0px 0px 0px 0px 0px)`;
         }
         $img = null;
       }
@@ -174,7 +205,7 @@
   .swipe-img{
     width: 100vw;
     position: absolute;
-    transition: all 300ms ease;
+    transition: all 600ms ease;
     will-change: transform, opacity;
     z-index: 0;
   }

@@ -14,9 +14,6 @@ let popUpBase = {
     this.popUp.vm_slot = this.slot //我觉得我的命名开始凌乱了...
     this.slot.$controller = this
     
-    // this.popUp.init(this.popUpConfig, e)
-    // this.slot.init(this.config, e)
-    
     popUpController.open(this.popUp, this.getRouterId(), ()=>{
       this.configPosition(e)
     })
@@ -70,15 +67,17 @@ let popUpBase = {
     if (config.position === 'clickRelative') {
 
       //region 点击坐标初始化
-      if(e.touches){
+      if(e === undefined) return 
+
+      if(e.touches && e.touches[0]){
         clickX = e.touches[0].clientX,
         clickY = e.touches[0].clientY;
-      }else{
+      }else if(e.clientX){
         clickX = e.clientX,
         clickY = e.clientY;
       }
+      
       //endregion
-
       //region 外框 格式化 TODO 之后可以缓存这个,不过动态也是有好处的, 性能优化的时候在做吧
       if(config.frame instanceof Object){
         frame.top = config.frame.top
