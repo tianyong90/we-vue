@@ -176,7 +176,6 @@
             Array.prototype.forEach.call($pages, function ($page) {
               $page.style.width = itemWidth + 'px';
               $page.style.marginRight = gap + 'px';
-              
             });
 
             if(continuous){
