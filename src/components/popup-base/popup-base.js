@@ -1,7 +1,21 @@
+import Vue from 'vue'
 import popUpController from '../popup-base/index.js'
 
 let popUpBase = {
-  open: function (e) {
+  init: function(
+    defaultConfig, constructConfig, popUpConfig, instancesMap, template, id
+  ){
+    this.constructConfig = Object.assign({}, defaultConfig ,constructConfig)
+    this.popUpConfig = popUpConfig
+    this.instancesMap = instancesMap
+    this.constructConfig.id = id
+    this.config = this.constructConfig
+    this.Factory = Vue.extend(template)
+    this.instancesMap[this.getRouterId()] = this
+    popUpController.register(this.getRouterId(), this.open.bind(this))
+  },
+  open: function (e, runtimeConfig) {
+    this.config = Object.assign({}, this.constructConfig, runtimeConfig);
     this.popUp = popUpController.createPopUp(this.getRouterId(), this.popUpConfig, e)
     this.slot = new this.Factory({
       el: this.popUp.$refs.slot,

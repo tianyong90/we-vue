@@ -61,7 +61,6 @@ let PopUp = {
       }
     })
 
-    console.log(popUpBaseConstructor);
     return RouterIdToPopUp[routerId]
   },
 

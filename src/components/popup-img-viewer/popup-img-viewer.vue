@@ -1,5 +1,5 @@
 <template>
-  <wv-swipeplus class="popup-swipe" overflow="backDrag" :defaultIndex="defaultIndex" ref="swiper">
+  <wv-swipeplus class="popup-swipe" overflow="backDrag" :gap="16" :defaultIndex="defaultIndex" ref="swiper">
       <wv-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
         <img class="swipe-img" :src="img.src" alt="">
       </wv-swipe-item>

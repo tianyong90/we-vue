@@ -165,9 +165,9 @@
         actualSwipeValue = this.dom.actualSwipeValue = this.dom.itemWidth + gap;
         this.status.swipeStartOffset = index * actualSwipeValue;
 
+        $pageContainer.classList.add('noneAnimation','subNoneAnimation');
+        $swiper.classList.add('subNoneAnimation');
         requestAnimationFrame(function () {
-          $pageContainer.classList.add('noneAnimation','subNoneAnimation');
-          $swiper.classList.add('subNoneAnimation');
           $swiper.style['opacity'] = 0;
           $pages[index].classList.add(self.status.activatedClass);
           $indicators[index] && $indicators[index].classList.add(self.status.activatedClass);
@@ -190,11 +190,11 @@
             
             self.goTo(index);
             requestAnimationFrame(function(){
-              $pageContainer.classList.remove('subNoneAnimation');
               setTimeout(function(){
+                $pageContainer.classList.remove('subNoneAnimation');
                 $swiper.style['opacity'] = 1;
                 $swiper.classList.remove('subNoneAnimation');
-              },50);
+              },35);
             });
           });
         });
