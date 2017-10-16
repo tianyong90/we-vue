@@ -187,7 +187,7 @@
               });
             }
             
-            self.goTo(index);
+            self.goTo(index, true);
             requestAnimationFrame(function(){
               setTimeout(function(){
                 $pageContainer.classList.remove('subNoneAnimation');
@@ -203,8 +203,7 @@
         var fromPage = this.index,
           $pageContainer = this.dom.$pageContainer,
           $pages = this.dom.$pages,
-          self = this,
-          swipeStartOffset;
+          self = this;
 
         if(page === 'next')
           page = this.index + 1;
@@ -219,15 +218,12 @@
         }
 
         this.index = page;
-        swipeStartOffset = this.status.swipeStartOffset = page * this.dom.actualSwipeValue;
-        $pageContainer.addEventListener('transitionend', this.transitionendProcessor);
+        this.status.swipeStartOffset = page * this.dom.actualSwipeValue;
 
-        requestAnimationFrame(function () {
-          $pageContainer.classList.remove('noneAnimation');
-          requestAnimationFrame(function () {
-            self.animate(fromPage, page);
-          });
-        });
+        if(immediately)
+          self.noAnimate(fromPage, page);
+        else
+          self.animate(fromPage, page);
       },
 
       next () {
@@ -508,6 +504,39 @@
           self.status.initLocker = false;
 
           i_from === i_to && self.transitionendProcessor()
+        });
+      },
+
+      noAnimate (i_from, i_to){
+        var $pageContainer = this.dom.$pageContainer,
+          $pages = this.dom.$pages,
+          index = this.index,
+          continuous = this.continuous,
+          actualSwipeValue = this.dom.actualSwipeValue,
+          self = this,
+
+          needPass = false,
+          $showing = $pageContainer.querySelector('.is-active');
+
+        self.status.swipeStartOffset = self.index * actualSwipeValue;
+        requestAnimationFrame(function () {
+          if(!continuous){
+            $pageContainer.style['transform'] = 
+              'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
+            $pageContainer.style.webkitTransition = 
+              `-webkit-transform 0ms ease`;
+          }else{
+            Array.prototype.forEach.call($pages, function ($li,i) {
+              $li.currentPosition = 
+                ($li.index - self.index) * actualSwipeValue;
+              $li.style.transform = 
+                'translate3d(' + $li.currentPosition + 'px,0,0)';
+              $li.style.webkitTransition = 
+                `-webkit-transform 0ms ease`;
+            });
+          }
+
+          self.transitionendProcessor()
         });
       },
 
