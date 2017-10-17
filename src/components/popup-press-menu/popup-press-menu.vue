@@ -30,12 +30,12 @@
           console.log('slot before enter');
           //先手动更新样式
           $el.classList.add('inital');
-          requestAnimationFrame(function(){
+          requestAnimationFrame(()=>{
             $el.classList.remove('inital');
             $el.classList.add('inAnimation');
 
             this.onOpen instanceof Function && this.onOpen();
-          }.bind(this))
+          })
         },
         afterEnter: () => {
           console.log('afterEntered')

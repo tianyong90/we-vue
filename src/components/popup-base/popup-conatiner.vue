@@ -30,7 +30,7 @@
 
 <style scoped lang="scss">
   .wv-popup-conatiner {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;

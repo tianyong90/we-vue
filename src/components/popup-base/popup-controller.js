@@ -3,6 +3,14 @@ import Router from './router.js'
 import popUpContainerComponent from './popup-conatiner.vue'
 import popUpBaseComponent from './popup-base.vue'
 
+function top(arr){
+  return arr[arr.length-1];
+}
+
+function prev(arr){
+  return arr[arr.length-2];
+}
+
 let popUpContainerConstructor = Vue.extend(popUpContainerComponent)
 let popUpBaseConstructor = Vue.extend(popUpBaseComponent)
 let vm_popUpContainer = new popUpContainerConstructor({
@@ -14,7 +22,6 @@ let popUpIdQueue = []
 
 // 注入contianer
 document.body.appendChild(vm_popUpContainer.$el);
-
 Router.initialParam('popUp');
 
 let PopUp = {
@@ -42,10 +49,6 @@ let PopUp = {
       if(popUpIdQueue.length === 0)
         vm_popUpContainer.turnOff()
     })
-  },
-
-  createUrl () {
-    return ``;
   },
 
   register (routerId, trigger) {
@@ -87,7 +90,6 @@ let PopUp = {
 
 Router.listenParam('popUp', {
   onEnter (val) {
-    console.log('enter ' + val)
     if(PopUp.fromUpdateRouter)
       return PopUp.fromUpdateRouter = false;
 
@@ -106,21 +108,12 @@ Router.listenParam('popUp', {
       PopUp.fromUpdateRouter = false;
       PopUp.close(oldListTop)
     }
-    console.log('leave ' + oldVal)
   },
 
   onBack (val) {
-    console.log('back ' + val)
+
   },
 })
-
-function top(arr){
-  return arr[arr.length-1];
-}
-
-function prev(arr){
-  return arr[arr.length-2];
-}
 
 export default PopUp
 export { PopUp }

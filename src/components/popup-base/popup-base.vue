@@ -9,6 +9,7 @@
 
 <script>
   import { once } from '../../utils/dom.js'
+  import { PopUp } from './popup-controller'
 
   export default {
     name: 'wv-popup-base',
@@ -78,21 +79,23 @@
 
       //内部使用的
       _beforeEnter () {
-        this.$refs.slot.style.transitionDuration = '0ms';
-        //设置mask的初始化样式
-        this.maskOpacity(0);
-        //设置事件
-        once(this.$refs.slot, 'transitionend', this._afterEnter)
+        requestAnimationFrame(()=>{
+          this.$refs.slot.style.transitionDuration = '0ms';
+          //设置mask的初始化样式
+          this.maskOpacity(0);
+          //设置事件
+          once(this.$refs.slot, 'transitionend', this._afterEnter)
 
-        this.vm_slot.$nextTick(()=>{
-          //设置slot的初始化样式
-          this.vm_slot.event && 
-          this.vm_slot.event.beforeEnter instanceof Function && 
-            this.vm_slot.event.beforeEnter();
-          
-          requestAnimationFrame(()=>{
-            this.$refs.slot.style.transitionDuration = null;
-            this.maskOpacity(0.2);
+          this.vm_slot.$nextTick(()=>{
+            //设置slot的初始化样式
+            this.vm_slot.event && 
+            this.vm_slot.event.beforeEnter instanceof Function && 
+              this.vm_slot.event.beforeEnter();
+            
+            requestAnimationFrame(()=>{
+              this.$refs.slot.style.transitionDuration = null;
+              this.maskOpacity(0.2);
+            })
           })
         })
       },
@@ -133,19 +136,10 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-base {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-
-    &.absolute {
-      position: absolute;
-    }
+  .wv-popup-base{
+    width: 0px;
+    height: 0px;
   }
-
   .wv-popup-slot{
     width: 100vw;
     height: 100vh;
@@ -163,5 +157,6 @@
     opacity: 0;
     background-color: #000000;
     transition: opacity 350ms ease 0s;
+    will-change: opacity;
   }
 </style>
