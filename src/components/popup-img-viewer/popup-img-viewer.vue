@@ -92,6 +92,10 @@
       else
         defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.target)
 
+      if(defaultIndex === -1){
+        console.log('popup-img-viewer open的时候指定的img不在所导入的列表当中,检查传递的是否正确~')
+        defaultIndex = 0
+      }
       this.defaultIndex = defaultIndex
     },
 
