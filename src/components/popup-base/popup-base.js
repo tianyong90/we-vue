@@ -14,7 +14,10 @@ let popUpBase = {
     this.instancesMap[this.getRouterId()] = this
     popUpController.register(this.getRouterId(), this.open.bind(this))
   },
+
   open: function (e, runtimeConfig) {
+    //先检查状态
+    
     this.config = Object.assign({}, this.constructConfig, runtimeConfig);
     this.popUp = popUpController.createPopUp(this.getRouterId(), this.popUpConfig, e)
     this.slot = new this.Factory({

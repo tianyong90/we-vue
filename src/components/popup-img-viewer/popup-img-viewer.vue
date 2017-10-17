@@ -79,14 +79,20 @@
       console.log('poup-img-viewer mounted');
 
       var config = this.config, 
-          e = this.e;
+          e = this.e,
+          defaultIndex;
 
       this.originalImgs = config.imgs
-      this.defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.target)
-
       this.w_height = window.innerHeight
       this.w_width = window.innerWidth
       this.w_rotaio = this.w_width/this.w_height
+
+      if(e.targetChangeTo)
+        defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.targetChangeTo)
+      else
+        defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.target)
+
+      this.defaultIndex = defaultIndex
     },
 
     methods: {

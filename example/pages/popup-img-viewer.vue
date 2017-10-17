@@ -1,11 +1,14 @@
 <template>
-  <div class="page" @click="click">
+  <div class="page">
     <img src="http://cn.vuejs.org/images/logo.png" alt="">
     <div class="container">
       <img src="http://cn.vuejs.org/images/logo.png" alt="">
     </div>
     <div class="container-raduis">
       <img src="http://cn.vuejs.org/images/logo.png" alt="">
+    </div>
+    <div class="container-raduis" @click="triggerNotOnImgTag">
+      <img src="http://cn.vuejs.org/images/logo.png" alt="" style="margin-left:55px;transform:translateY(55px)" ref="imgTarget">
     </div>
   </div>
 </template>
@@ -25,6 +28,8 @@
       //添加事件
       Array.prototype.forEach.call(imgs, $img => {
         $img.addEventListener('click', e =>{
+          e.stopPropagation()
+          //没办法了,现在想到只能这样来处理重复点击,就是并非内置
           this.imgViwer.open(e)
         })
       })
@@ -33,8 +38,10 @@
     },
 
     methods: {
-      click (e) {
-        
+      triggerNotOnImgTag (e) {
+        //需要手动指定target
+        e.targetChangeTo = this.$refs.imgTarget
+        this.imgViwer.open(e)
       }
     }
   }
