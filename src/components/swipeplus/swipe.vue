@@ -660,7 +660,7 @@
           width:100vw;
           display: block;
           float: left;
-          overflow-y: scroll;
+          overflow-y: auto;
 
         }
       }
@@ -669,6 +669,7 @@
         will-change: unset;
         transition: none;
         position: relative;
+        z-index: 0;
 
         div {
           will-change: transform;
