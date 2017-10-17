@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import { once } from '../../utils/dom.js'
   import { PopUp } from './popup-controller'
 
   export default {
@@ -17,7 +16,8 @@
     data () {
       return {
         routerId: null,
-        status: null
+        status: null,
+        animationendTriggered: false
       }
     },
 
@@ -78,13 +78,37 @@
 
 
       //内部使用的
+      _addAnimationEndListener (callback){
+        this.animationendTriggered = false
+
+        this._onAnimationEnd = () => {
+          if(this.animationendTriggered) return
+          this.animationendTriggered = true
+          this.$refs.slot.removeEventListener(
+            'transitionend', this._onAnimationEnd);
+          this.$refs.slot.removeEventListener(
+            'animationend', this._onAnimationEnd);
+          
+          callback instanceof Function && callback();
+        }
+
+        this.$refs.slot.addEventListener(
+          'transitionend', this._onAnimationEnd);
+        this.$refs.slot.addEventListener(
+          'animationend', this._onAnimationEnd);
+      },
+
+      _onAnimationEnd (){
+        
+      },
+
       _beforeEnter () {
         requestAnimationFrame(()=>{
           this.$refs.slot.style.transitionDuration = '0ms';
           //设置mask的初始化样式
           this.maskOpacity(0);
           //设置事件
-          once(this.$refs.slot, 'transitionend', this._afterEnter)
+          this._addAnimationEndListener(this._afterEnter)
 
           this.vm_slot.$nextTick(()=>{
             //设置slot的初始化样式
@@ -101,9 +125,13 @@
       },
 
       _afterEnter () {
+        if(this.animationendTriggered === true) return
+
         this.vm_slot.event && 
         this.vm_slot.event.afterEnter instanceof Function && 
           this.vm_slot.event.afterEnter();
+        
+        this.animationendTriggered === true
       },
 
       _beforeLeave () {
@@ -116,7 +144,7 @@
 
           //防止提前触发
           setTimeout(()=>{
-            once(this.$refs.slot, 'transitionend', this._afterLeave)
+            this._addAnimationEndListener(this._afterLeave)
           },35)
         })
       },
@@ -125,7 +153,8 @@
         this.$refs.slot.event && 
         this.$refs.slot.event.beforeLeave instanceof Function && 
           this.$refs.slot.event.beforeLeave();
-
+        
+        this.animationendTriggered === true
         requestAnimationFrame(() => {
           this._afterLeaveCallback instanceof Function &&
             this._afterLeaveCallback()

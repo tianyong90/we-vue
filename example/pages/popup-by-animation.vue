@@ -4,7 +4,7 @@
 </template>
 
 <script>
-  import PressMenu from '../../src/components/popup-press-menu'
+  import PressMenu from '../../src/components/popup-by-animation'
 
   export default {
 

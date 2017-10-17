@@ -103,6 +103,12 @@
         "name": "popUpImgViewer",
         "description": "popUp",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-by-animation",
+        "name": "popUpByAnimation",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
       }
     ]
   },
