@@ -143,8 +143,8 @@
         })
         clipRadius = clipRightVals.join(' ');
 
-        hasClip = clipTop !== 0 && clipLeft !== 0 && 
-                  clipBottom !== 0 && clipRight !== 0 ;
+        hasClip = clipTop !== 0 || clipLeft !== 0 || 
+                  clipBottom !== 0 || clipRight !== 0 ;
 
         return {
           clipTop: clipTop,
@@ -204,6 +204,5 @@
     position: absolute;
     transition: all 600ms ease;
     will-change: transform, opacity;
-    z-index: 0;
   }
 </style>
