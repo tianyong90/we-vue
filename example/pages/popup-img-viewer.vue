@@ -1,22 +1,32 @@
 <template>
   <div class="page">
-    <img src="http://cn.vuejs.org/images/logo.png" alt="">
+    <img :src="logo" alt="">
     <div class="container">
-      <img src="http://cn.vuejs.org/images/logo.png" alt="">
+      <img :src="logo" alt="">
     </div>
     <div class="container-raduis">
-      <img src="http://cn.vuejs.org/images/logo.png" alt="">
+      <img :src="logo" alt="">
     </div>
     <div class="container-raduis" @click="triggerNotOnImgTag">
-      <img src="http://cn.vuejs.org/images/logo.png" alt="" style="margin-left:55px;transform:translateY(55px)" ref="imgTarget">
+      <img :src="logo" alt="" style="margin-left:55px;transform:translateY(55px)" ref="imgTarget">
+    </div>
+    <div class="container-raduis">
+      <img :src="sample" alt="">
     </div>
   </div>
 </template>
 
 <script>
   import ImgViwer from '../../src/components/popup-img-viewer'
+  import logo from '../../img/logo.png'
+  import sample from '../../img/sample.jpg'
 
   export default {
+
+    created (){
+      this.logo = logo
+      this.sample = sample
+    },
 
     mounted () {
       var imgs = this.$el.getElementsByTagName('img');
@@ -33,8 +43,6 @@
           this.imgViwer.open(e)
         })
       })
-
-
     },
 
     methods: {

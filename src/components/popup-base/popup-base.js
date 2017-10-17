@@ -115,15 +115,6 @@ let popUpBase = {
       }
       //endregion 
 
-      //工具函数
-      //坐标系,不过感觉不会用...名字太长了,就是一个减法
-      function coordinateFromFrame (x,y){
-        return {
-          x: x - frame.left,
-          y: y - frame.top
-        }
-      }
-
       //region margin 导入
       if(typeof config.margin === 'number' || typeof config.margin === 'string'){
         margins[0] = margins[1] = margins[2] = margins[3] = config.margin;

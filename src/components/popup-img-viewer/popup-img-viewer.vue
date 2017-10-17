@@ -101,8 +101,9 @@
 
     methods: {
       _getAnimationSettings (index){
-        var w_height = window.innerHeight,
-          w_width = window.innerWidth,
+        var w_height = this.w_height,
+          w_width = this.w_width,
+          w_rotaio = this.w_rotaio,
 
           scale, translateX, translateY,
           triggeredImgCenterX, triggeredImgCenterY, 
@@ -111,6 +112,7 @@
           hasClip, clipRightVals,
 
           $img = this.originalImgs[index],
+          i_ratio = $img.naturalWidth/$img.naturalHeight,
           imgRect = $img.getBoundingClientRect(),
           contianerRect = $img.parentElement.getBoundingClientRect(),
           containerStyle = getComputedStyle($img.parentElement);
@@ -118,11 +120,11 @@
         //生成开始位置
         scale = imgRect.width / w_width;
         zoomedImgCenterX = w_width/2;
-        zoomedImgCenterY = w_height/2;
+        zoomedImgCenterY = (i_ratio > w_rotaio)? w_height/2 : w_width/i_ratio/2;
         triggeredImgCenterX = imgRect.left + imgRect.width/2;
         triggeredImgCenterY = imgRect.top + imgRect.height/2;
 
-        //然后做动画偏移(需要区分布局偏移
+        //然后做动画偏移, 需要区分布局偏移
         translateX = triggeredImgCenterX - zoomedImgCenterX;
         translateY = triggeredImgCenterY - zoomedImgCenterY;
         
