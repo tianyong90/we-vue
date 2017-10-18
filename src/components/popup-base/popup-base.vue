@@ -17,7 +17,8 @@
       return {
         routerId: null,
         status: null,
-        animationendTriggered: false
+        afterEnterLocker: false,
+        afterLeaveLocker: false
       }
     },
 
@@ -78,28 +79,25 @@
 
 
       //内部使用的
-      _addAnimationEndListener (callback){
-        this.animationendTriggered = false
+      _addAnimationEndListener (callback, lock){
+        this[lock] = false
 
-        this._onAnimationEnd = () => {
-          if(this.animationendTriggered) return
-          this.animationendTriggered = true
+        var onAnimationEnd = (e) => {
+          if(this[lock]) return
+          this[lock] = true
+
           this.$refs.slot.removeEventListener(
-            'transitionend', this._onAnimationEnd);
+            'transitionend', onAnimationEnd);
           this.$refs.slot.removeEventListener(
-            'animationend', this._onAnimationEnd);
+            'animationend', onAnimationEnd);
           
           callback instanceof Function && callback();
         }
 
         this.$refs.slot.addEventListener(
-          'transitionend', this._onAnimationEnd);
+          'transitionend', onAnimationEnd);
         this.$refs.slot.addEventListener(
-          'animationend', this._onAnimationEnd);
-      },
-
-      _onAnimationEnd (){
-        
+          'animationend', onAnimationEnd);
       },
 
       _beforeEnter () {
@@ -108,7 +106,7 @@
           //设置mask的初始化样式
           this.maskOpacity(0);
           //设置事件
-          this._addAnimationEndListener(this._afterEnter)
+          this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
 
           this.vm_slot.$nextTick(()=>{
             //设置slot的初始化样式
@@ -141,20 +139,19 @@
           this.vm_slot.event && 
           this.vm_slot.event.beforeLeave instanceof Function && 
             this.vm_slot.event.beforeLeave();
-
-          //防止提前触发
+          
+          //前一个animationend导致提前触发
           setTimeout(()=>{
-            this._addAnimationEndListener(this._afterLeave)
-          },35)
+            this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
+          }, 28)
         })
       },
 
       _afterLeave () {
         this.$refs.slot.event && 
-        this.$refs.slot.event.beforeLeave instanceof Function && 
-          this.$refs.slot.event.beforeLeave();
+        this.$refs.slot.event.afterLeave instanceof Function && 
+          this.$refs.slot.event.afterLeave();
         
-        this.animationendTriggered === true
         requestAnimationFrame(() => {
           this._afterLeaveCallback instanceof Function &&
             this._afterLeaveCallback()
