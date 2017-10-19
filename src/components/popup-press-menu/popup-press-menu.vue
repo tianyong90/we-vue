@@ -109,10 +109,11 @@
     display: block;
     background: white;
     min-width: calc(90px - 45px);
+    transition: all 200ms ease 0ms;
   }
 
   .wv-popup-press-menu-li:active {
     background: #E8E8E8;
-    transition: all 80ms linear 0ms;
+    transition-duration: 85ms;
   }
 </style>
