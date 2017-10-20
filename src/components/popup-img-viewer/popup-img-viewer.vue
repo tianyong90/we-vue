@@ -19,12 +19,12 @@
     },
 
     props: {
-      config: {
-        type: Object,
-        default: null
-      },
       e: {
         default: null
+      },
+      imgs: {
+        type: [Array, HTMLCollection],
+        required: true
       }
     },
 
@@ -45,7 +45,6 @@
           $onSwipeImg.style.clipPath = 
             `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px round ${clipRadius})`
 
-          //开始动画,这里为什么会延迟的,开始有部分动画看不到了
           requestAnimationFrame(()=>{
             $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
             if(hasClip)
@@ -74,18 +73,13 @@
         },
         // afterLeave: () => {},
       }
-
-      console.log('popup-img-viewer created');
     },
 
     mounted (){
-      console.log('poup-img-viewer mounted');
-
-      var config = this.config, 
-          e = this.e,
+      var e = this.e,
           defaultIndex;
 
-      this.originalImgs = config.imgs
+      this.originalImgs = this.imgs
       this.w_height = window.innerHeight
       this.w_width = window.innerWidth
       this.w_rotaio = this.w_width/this.w_height

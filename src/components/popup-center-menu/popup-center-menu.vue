@@ -1,6 +1,6 @@
 <template>
   <ul class="wv-popup-center-menu">
-    <li class="wv-popup-center-menu-li" v-for="(item, key) in config.items" @click="item.click" :key="key">{{item.name}}</li>
+    <li class="wv-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
   </ul>
 </template>
 
@@ -10,13 +10,15 @@
     name: 'wv-popup-center-menu',
 
     props: {
-      config: {
-        type: Object,
-        default: null
-      },
       e: {
         default: null
-      }
+      },
+      items: {
+        type: Array,
+        required: true
+      },
+      onClose: Function,
+      onOpen: Function
     },
 
     created () {
@@ -48,13 +50,6 @@
       }
     },
 
-    init () {
-      this.animationClassName = this.config.animation
-    },
-
-    methods: {
-
-    }
   }
 </script>
 

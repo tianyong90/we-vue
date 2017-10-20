@@ -1,19 +1,16 @@
 <template>
-  <div class="weui-dialog" :class="{ 'weui-skin_android': skin === 'android' }">
-    <div class="weui-dialog__hd" v-if="title"><strong class="weui-dialog__title" v-html="title"></strong></div>
-    <div class="weui-dialog__bd" v-html="message"></div>
-    <div class="weui-dialog__ft">
-      <a class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn"
-          @click="cancelClick" v-text="cancelText"></a>
-      <a class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn"
-          @click="confirmClick" v-text="confirmText"></a>
+  <div class="wv-popUp-dialog">
+    <div class="dialog-content">
+      <p>保存本次编辑?</p>
+    </div>
+    <div class="controll-bar">
+      <div class="btn-cancel controll-item" @click="cancelClick">不保存</div>
+      <div class="btn-confirm controll-ttem" @click="confirmClick">保存</div>
     </div>
   </div>
 </template>
 
 <script>
-  const CONFIRM_TEXT = '确定'
-  const CANCEL_TEXT = '取消'
 
   export default {
     name: 'wv-popup-dialog',
@@ -22,31 +19,13 @@
       e: {
         default: null
       },
-      onCancel: Function,
-      onComfrim: Function,
-
-      //原本
-      skin: {
-        type: String,
-        default: 'ios'
-      },
-      title: String,
-      message: String,
-      confirmText: {
-        type: String,
-        default: CONFIRM_TEXT
-      },
       cancelText: {
         type: String,
-        default: CANCEL_TEXT
+        default: '取消'
       },
-      showConfirmBtn: {
-        type: Boolean,
-        default: true
-      },
-      showCancelBtn: {
-        type: Boolean,
-        default: true
+      confirmText: {
+        type: String,
+        default: '确认'
       }
     },
 
@@ -79,6 +58,7 @@
       }
     },
 
+
     methods: {
 
       close (){
@@ -102,18 +82,15 @@
 </script>
 
 <style scoped lang="scss">
-  .weui-dialog {
+  .wv-popUp-dialog {
     will-change: opacity, transform;
     flex: 0 0 auto;
+    width: 244.5px;
+    padding: 22px 22px 14.5px 22px;
     background: white;
     border-radius: 3px;
     font-size: 15px;
     transition: all 270ms ease 0s;
-    //清除原本的定位方式...唉
-    position: static;
-    z-index: unset;
-    top: unset;
-    left: unset;
 
     &.inital {
       opacity: 0;
@@ -132,6 +109,46 @@
     }
   }
 
+  .wv-popup-bottom-menu-li {
+    background: white;
+    padding: 0 21px;
+    font-size: 16px;
+    width: calc(100vw - 21px*2);
+    color: #5e5e5e;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .dialog-content{
+    margin-bottom: 15px;
+    margin-top: calc(43px/3);
+    display: flex;
+    align-items: center;
+  }
+
+  .controll-bar{
+    position: relative;
+    left:7px;
+    height: 27px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .controll-item{
+    flex:0 0 57.5px;
+    width: 57.5px;
+    text-align: center;
+  }
+
+  .btn-cancel{
+    color: #7F7F7F;
+  }
+
+  .btn-confirm{
+    color: #14AB20;
+  }
 </style>
 <style lang="scss">
   //这里编写用class可以应用到mask上面的,不过命名尽量不要污染太多

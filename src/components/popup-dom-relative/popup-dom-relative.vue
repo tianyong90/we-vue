@@ -10,16 +10,15 @@
     name: 'wv-popup-dom-relative',
 
     props: {
-      config: {
-        type: Object,
-        default: null
-      },
       e: {
         default: null
       },
       items: {
-        type: Array
+        type: Array,
+        required: true
       },
+      onClose: Function,
+      onOpen: Function
     },
 
     created () {
@@ -54,20 +53,6 @@
         },
       }
     },
-
-    mounted (){
-      var config = this.config,
-        e = this.e;
-
-      this.items = config.items
-      this.animationClassName = config.animation
-      this.onOpen = config.onOpen
-      this.onClose = config.onClose
-    },
-
-    methods: {
-
-    }
   }
 </script>
 

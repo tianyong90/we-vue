@@ -22,13 +22,16 @@ const install = function (Vue, config = {}) {
     ...config.lazyload
   })
 
-  Vue.$dialog = Vue.prototype.$dialog = Dialog
-  Vue.$popup = Vue.prototype.$popup = PopupBase
-  Vue.$bottomMenu = Vue.prototype.$bottomMenu = PopupBottomMenu
-  Vue.$centerMenu = Vue.prototype.$centerMenu = PopupCenterMenu
-  Vue.$pressMenu = Vue.prototype.$pressMenu = PopupPressMenu
-  Vue.$toast = Vue.prototype.$toast = Toast
-  Vue.$indicator = Vue.prototype.$indicator = Indicator
+  Vue.prototype.$dialog = Dialog
+  Vue.prototype.$popup = PopupBase
+  Vue.prototype.$bottomMenu = PopupBottomMenu
+  Vue.prototype.$centerMenu = PopupCenterMenu
+  Vue.prototype.$pressMenu = PopupPressMenu
+  Vue.prototype.$popUpDialog = PopupDialog
+  Vue.prototype.$popUpDialogCustom = PopupDialogCustom
+  Vue.prototype.$popupImgViewer = PopupImgViewer
+  Vue.prototype.$toast = Toast
+  Vue.prototype.$indicator = Indicator
 }
 
 // auto install
@@ -68,6 +71,9 @@ ComponentNames.forEach(name => {
     'PopupBottomMenu',
     'PopupCenterMenu',
     'PopupPressMenu',
+    'PopupDialog',
+    'PopupDialogCustom',
+    'PopupImgViewer',
     'Toast',
     'Indicator'
   ].indexOf(componentName) === -1) {

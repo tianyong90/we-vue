@@ -16,16 +16,13 @@ let popUpBase = {
   },
 
   open: function (e, runtimeConfig) {
-    //先检查状态
-    
     this.config = Object.assign({}, this.constructConfig, runtimeConfig);
+    this.config.e = e;
+
     this.vm_popUp = popUpController.createPopUp(this.getRouterId(), this.popUpConfig, e)
     this.vm_slot = new this.Factory({
       el: this.vm_popUp.$refs.slot,
-      propsData: {
-        config: this.config,
-        e: e
-      }
+      propsData: this.config
     })
     this.vm_popUp.$refs.slot = this.vm_slot.$el
     this.vm_popUp.vm_slot = this.vm_slot //我觉得我的命名开始凌乱了...
