@@ -8,14 +8,27 @@
 </template>
 
 <script>
-  import { PopUp } from './popup-controller'
+  import popUpController from '../popup-base/index.js'
 
   export default {
     name: 'wv-popup-base',
 
+    props: {
+      e: {
+        default: null
+      },
+      routerId: {
+        type: String,
+        required: true
+      },
+      maskDisable: {
+        type: Boolean,
+        default: false
+      }
+    },
+
     data () {
       return {
-        routerId: null,
         status: null,
         afterEnterLocker: false,
         afterLeaveLocker: false,
@@ -32,11 +45,6 @@
     },
 
     methods: {
-      init (config) {
-        this.routerId = config.routerId
-        this.maskDisable = config.maskDisable
-      },
-
       enter () {
         this._beforeEnter()
         this.status = 'on'

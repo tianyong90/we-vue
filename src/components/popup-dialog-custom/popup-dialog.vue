@@ -58,7 +58,6 @@
       }
     },
 
-
     methods: {
 
       close (){
