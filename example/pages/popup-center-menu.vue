@@ -13,7 +13,10 @@
         items: [
           {
             name: '分享二维码',
-            click: () => {console.log('btn0 clicked');}
+            click: () => {
+              console.log('btn0 clicked');
+              this.centerMenu.close()
+            }
           },
           {
             name: '换个样式',

@@ -20,37 +20,42 @@
         type: Number,
         default: 2
       },
+      unsetOnPressEnd: {
+        type: Boolean,
+        default: true
+      }
     },
 
     methods: {
+      //私有方法
       _touchStart (e) {
-        var rect = this.$el.getBoundingClientRect(),
-          orthocenterX = rect.left + rect.width/2,
-          orthocenterY = rect.top + rect.height/2,
-          clickX = e.touches[0].clientX,
-          clickY = e.touches[0].clientY,
-          destance = this._getDestance(
-            orthocenterX, orthocenterY, clickX, clickY),
-          diagonal = this._getDestance(
-            rect.right, rect.top, rect.left, rect.bottom),
-          orientationX = (clickX - orthocenterX) > 0 ? 1 : -1,
-          orientationY = (clickY - orthocenterY) > 0 ? -1 : 1;
+        var rect = this.$el.getBoundingClientRect();
+        this.orthocenterX = rect.left + rect.width/2
+        this.orthocenterY = rect.top + rect.height/2
+        this.clickX = e.touches[0].clientX
+        this.clickY = e.touches[0].clientY
+        this.destance = this._getDestance(
+          this.orthocenterX, this.orthocenterY, this.clickX, this.clickY)
+        this.diagonal = this._getDestance(
+          rect.right, rect.top, rect.left, rect.bottom)
+        this.orientationX = (this.clickX - this.orthocenterX) > 0 ? 1 : -1
+        this.orientationY = (this.clickY - this.orthocenterY) > 0 ? -1 : 1
 
-        //然后就是一些流程化的workflow了
-        //获取重心
-        //计算click到重心的距离,方位
-        //然后设置按压效果
-        this._setPressEffect(orientationX, orientationY, destance, diagonal)
+        this.setPressEffect(
+          this.orientationX,
+          this.orientationY,
+          this.destance,
+          this.diagonal
+        )
       },
 
       _touchMove (){
-        //取消按压效果
-        this._unsetPressEffect()
+        this.unsetPressEffect()
       },
 
       _touchEnd (){
-        // 取消按压效果
-        this._unsetPressEffect()
+        if(this.unsetOnPressEnd === true)
+          this._unsetPressEffect(true)
       },
 
       _getDestance(x0, y0, x1, y1){
@@ -59,20 +64,33 @@
         )
       },
 
-      _setPressEffect (orientationX, orientationY, destance, diagonal){
+
+      //对外可用的方法
+      setPressEffect (orientationX, orientationY, destance, diagonal){
         var deg = this.maxDeg * (destance/(diagonal/2))
 
         deg = deg < this.minDeg ? this.minDeg : deg
 
         this.$refs.content.style.transform = 
-          `rotateX(${orientationY * deg}deg) rotateY(${orientationX * deg}deg) translateZ(-3px)`
+          `rotateX(${orientationY * deg}deg) rotateY(${orientationX * deg}deg) translateZ(-6px)`
       },
 
-      _unsetPressEffect (){
+      unsetPressEffect (force){
         setTimeout(()=>{
           this.$refs.content.style.transform = null
-        }, 50)
+        }, 30)
       }
+    },
+
+    destroyed(){
+      this.orthocenterX = null
+      this.orthocenterY = null
+      this.clickX = null
+      this.clickY = null
+      this.destance = null
+      this.diagonal = null
+      this.orientationX = null
+      this.orientationY = null
     }
   }
 </script>

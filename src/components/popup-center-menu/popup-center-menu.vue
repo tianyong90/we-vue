@@ -1,6 +1,6 @@
 <template>
-  <wv-gesture-tile-press>
-    <ul class="wv-popup-center-menu" ref="menu">
+  <wv-gesture-tile-press :unsetOnPressEnd="false" ref="tile">
+    <ul class="wv-popup-center-menu" ref="menu" @touchend="_checkCloseTrigger">
       <li class="wv-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
     </ul>
   </wv-gesture-tile-press>
@@ -37,17 +37,40 @@
         },
         afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$refs.menu;
-          this._controller.vm_popUp.setAnimateDom($el)
-          $el.classList.add('outAnimation');
+          var $el = this.$refs.menu,
+            vm_tile = this.$refs.tile,
+            $content = vm_tile.$refs.content,
+            deg = vm_tile.maxDeg * 1.2;
+          
+          this._controller.vm_popUp.setAnimateDom($content)
+          vm_tile.orientationY = vm_tile.orientationY === undefined ? 0 : vm_tile.orientationY;
+          vm_tile.orientationX = vm_tile.orientationX === undefined ? 0 : vm_tile.orientationX;
+          
+          // $el.classList.add('outAnimation')
           requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
+            // $el.classList.remove('inAnimation')
+            $content.style.transitionDuration = '280ms';
+            $content.style.transform = 
+              `rotateX(${vm_tile.orientationY * deg}deg) rotateY(${vm_tile.orientationX * deg}deg) translateZ(-100px)`
+            $content.style.opacity = 0
           })
         },
         afterLeave: () => {},
       }
     },
+    
+    methods: {
+      _checkCloseTrigger (){
+        setTimeout(()=>{
+          var status = this._controller.vm_popUp.status,
+            vm_tile = this.$refs.tile;
 
+          console.log(this._controller.vm_popUp.status)
+          if(status === 'on')
+            vm_tile.unsetPressEffect()
+        }, 30)
+      }
+    }
   }
 </script>
 
@@ -61,17 +84,17 @@
 
     &.inital {
       opacity: 0;
-      transform: skew(6deg, 8deg) translateZ(0);
+      transform: scale(0.9) translateZ(0);
     }
 
     &.inAnimation {
       opacity: 1;
-      transform: skew(0deg, 0deg) translateZ(0);
+      transform: scale(1) translateZ(0);
     }
 
     &.outAnimation {
       opacity: 0;
-      transform: skew(-3deg, -4deg) translateZ(0);
+      transform: scale(0.9) translateZ(0);
       transition-duration: 300ms;
     }
   }
