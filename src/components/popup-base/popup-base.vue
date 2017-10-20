@@ -18,7 +18,8 @@
         routerId: null,
         status: null,
         afterEnterLocker: false,
-        afterLeaveLocker: false
+        afterLeaveLocker: false,
+        $animateDom: null
       }
     },
 
@@ -77,26 +78,34 @@
           e.preventDefault()
       },
 
+      setAnimateDom ($dom){
+        this.$animateDom = $dom
+      },
+
 
       //内部使用的
       _addAnimationEndListener (callback, lock){
+        var $dom = this.$animateDom || this.$refs.slot
+
         this[lock] = false
 
         var onAnimationEnd = (e) => {
-          if(this[lock]) return
-          this[lock] = true
+          if(e.target === $dom){
+            if(this[lock]) return
+            this[lock] = true
 
-          this.$refs.slot.removeEventListener(
-            'transitionend', onAnimationEnd);
-          this.$refs.slot.removeEventListener(
-            'animationend', onAnimationEnd);
-          
-          callback instanceof Function && callback();
+            $dom.removeEventListener(
+              'transitionend', onAnimationEnd);
+            $dom.removeEventListener(
+              'animationend', onAnimationEnd);
+            
+            callback instanceof Function && callback();
+          }
         }
 
-        this.$refs.slot.addEventListener(
+        $dom.addEventListener(
           'transitionend', onAnimationEnd);
-        this.$refs.slot.addEventListener(
+        $dom.addEventListener(
           'animationend', onAnimationEnd);
       },
 
@@ -105,14 +114,15 @@
           this.$refs.slot.style.transitionDuration = '0ms';
           //设置mask的初始化样式
           this.maskOpacity(0);
-          //设置事件
-          this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
 
           this.vm_slot.$nextTick(()=>{
             //设置slot的初始化样式
             this.vm_slot.event && 
             this.vm_slot.event.beforeEnter instanceof Function && 
               this.vm_slot.event.beforeEnter();
+            
+            //设置事件
+            this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
             
             requestAnimationFrame(()=>{
               this.$refs.slot.style.transitionDuration = null;

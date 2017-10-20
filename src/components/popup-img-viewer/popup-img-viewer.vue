@@ -35,6 +35,8 @@
 
           var { clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(this.defaultIndex);
 
+          //设置动画的作为进入动画的节点
+          this.$controller.popUp.setAnimateDom($onSwipeImg)
           this._initPosition();
 
           $onSwipeImg.style.transform = 
@@ -57,6 +59,8 @@
               $onSwipeImg = this._getSwipeImg(index);
           
           var { clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(index);
+
+          this.$controller.popUp.setAnimateDom($onSwipeImg)
 
           if(hasClip)
             $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`;
