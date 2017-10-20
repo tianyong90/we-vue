@@ -83,17 +83,15 @@
         this[lock] = false
 
         var onAnimationEnd = (e) => {
-          if(e.target ===  this.$refs.slot){
-            if(this[lock]) return
-            this[lock] = true
+          if(this[lock]) return
+          this[lock] = true
 
-            this.$refs.slot.removeEventListener(
-              'transitionend', onAnimationEnd);
-            this.$refs.slot.removeEventListener(
-              'animationend', onAnimationEnd);
-            
-            callback instanceof Function && callback();
-          }
+          this.$refs.slot.removeEventListener(
+            'transitionend', onAnimationEnd);
+          this.$refs.slot.removeEventListener(
+            'animationend', onAnimationEnd);
+          
+          callback instanceof Function && callback();
         }
 
         this.$refs.slot.addEventListener(
