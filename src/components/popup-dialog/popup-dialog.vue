@@ -83,7 +83,7 @@
     methods: {
 
       close (){
-        this.$controller.close();
+        this._controller.close();
       },
 
       confirmClick () {

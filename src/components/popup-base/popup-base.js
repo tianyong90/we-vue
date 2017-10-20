@@ -19,19 +19,19 @@ let popUpBase = {
     //先检查状态
     
     this.config = Object.assign({}, this.constructConfig, runtimeConfig);
-    this.popUp = popUpController.createPopUp(this.getRouterId(), this.popUpConfig, e)
-    this.slot = new this.Factory({
-      el: this.popUp.$refs.slot,
+    this.vm_popUp = popUpController.createPopUp(this.getRouterId(), this.popUpConfig, e)
+    this.vm_slot = new this.Factory({
+      el: this.vm_popUp.$refs.slot,
       propsData: {
         config: this.config,
         e: e
       }
     })
-    this.popUp.$refs.slot = this.slot.$el
-    this.popUp.vm_slot = this.slot //我觉得我的命名开始凌乱了...
-    this.slot.$controller = this
+    this.vm_popUp.$refs.slot = this.vm_slot.$el
+    this.vm_popUp.vm_slot = this.vm_slot //我觉得我的命名开始凌乱了...
+    this.vm_slot._controller = this
     
-    popUpController.open(this.popUp, this.getRouterId(), ()=>{
+    popUpController.open(this.vm_popUp, this.getRouterId(), ()=>{
       this.configPosition(e)
     })
   },
@@ -53,13 +53,13 @@ let popUpBase = {
   },
 
   close: function(){
-    if(this.popUp.status === 'on')
+    if(this.vm_popUp.status === 'on')
       history.back()
   },
 
   configPosition: function(e){
     var config = this.config,
-        $slot = this.slot.$el,
+        $slot = this.vm_slot.$el,
 
         //公用
         fromLeft, fromTop, originX, originY,

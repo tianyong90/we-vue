@@ -50,7 +50,7 @@
 
       turnOffMask () {
         if(!this.maskDisable)
-          this.vm_slot.$controller.close()
+          this.vm_slot._controller.close()
       },
 
       maskOpacity (val) {
