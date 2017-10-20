@@ -43,6 +43,7 @@ import PopupDialogCustom from './components/popup-dialog-custom/index'
 import PopupImgViewer from './components/popup-img-viewer/index'
 import Panel from './components/panel/index'
 import PullDown from './components/pull-down/index'
+import GestureTilePress from './components/gesture-tile-press/index'
 import MediaBox from './components/media-box/index'
 import Picker from './components/picker/index'
 import DatetimePicker from './components/datetime-picker/index'
@@ -94,6 +95,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Popup.name, Popup)
   Vue.component(Panel.name, Panel)
   Vue.component(PullDown.name, PullDown)
+  Vue.component(GestureTilePress.name, GestureTilePress)
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Picker.name, Picker)
   Vue.component(DatetimePicker.name, DatetimePicker)
@@ -174,6 +176,7 @@ export default {
   PopupImgViewer,
   Panel,
   PullDown,
+  GestureTilePress,
   MediaBox,
   Picker,
   DatetimePicker,

@@ -1,7 +1,9 @@
 <template>
-  <ul class="wv-popup-center-menu">
-    <li class="wv-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
-  </ul>
+  <wv-gesture-tile-press>
+    <ul class="wv-popup-center-menu" ref="menu">
+      <li class="wv-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+    </ul>
+  </wv-gesture-tile-press>
 </template>
 
 <script>
@@ -24,29 +26,25 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$refs.menu;
 
-          console.log('slot before enter');
-          //先手动更新样式
+          this._controller.vm_popUp.setAnimateDom($el)
           $el.classList.add('inital');
           requestAnimationFrame(function(){
             $el.classList.remove('inital');
             $el.classList.add('inAnimation');
           })
         },
-        afterEnter: () => {
-          console.log('afterEntered')
-        },
+        afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$el;
+          var $el = this.$refs.menu;
+          this._controller.vm_popUp.setAnimateDom($el)
           $el.classList.add('outAnimation');
           requestAnimationFrame(function(){
             $el.classList.remove('inAnimation');
           })
         },
-        afterLeave: () => {
-          console.log('afterLeaved')
-        },
+        afterLeave: () => {},
       }
     },
 
