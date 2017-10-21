@@ -122,12 +122,6 @@
       })
     },
 
-    mounted (){
-      this.$nextTick(() => {
-        // this.$refs.addressPicker.setValues(['湖北省', '宜昌市', '长阳土家族自治县'])
-      })
-    },
-
     methods: {
       ticketPickerClick (e) {
         this.ticketPicker.open(e, {
