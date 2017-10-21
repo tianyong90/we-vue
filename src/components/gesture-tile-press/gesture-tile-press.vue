@@ -50,25 +50,23 @@
           rect.right, rect.top, rect.left, rect.bottom)
         // this.orientationX = (this.clickX - this.orthocenterX) > 0 ? 1 : -1
         // this.orientationY = (this.clickY - this.orthocenterY) > 0 ? -1 : 1
-        fromLeft = this.clickX - rect.left
+        fromLeft =  this.clickX - rect.left
         fromTop = this.clickY - rect.top
 
-        if(fromLeft < rect.width / 3){
+        if(fromLeft < rect.width / 3)
           this.orientationX = -1
-        }else if(fromLeft >= rect.width / 3 && fromLeft < rect.width * 2/3){
+        else if(fromLeft >= rect.width / 3 && fromLeft < rect.width * 2/3)
           this.orientationX = 0
-        }else{
+        else
           this.orientationX = 1
-        }
-
-        if(fromTop < rect.height / 3){
+        
+        if(fromTop < rect.height / 3)
           this.orientationY = 1
-        }else if(fromTop >= rect.height / 3 && fromTop < rect.height * 2/3){
+        else if(fromTop >= rect.height / 3 && fromTop < rect.height * 2/3)
           this.orientationY = 0
-        }else{
+        else
           this.orientationY = -1
-        }
-
+        
         this.setPressEffect(
           this.orientationX,
           this.orientationY,
