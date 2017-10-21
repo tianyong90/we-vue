@@ -26,9 +26,13 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$refs.menu;
-
-          this._controller.vm_popUp.setAnimateDom($el)
+          var $el = this.$refs.menu,
+            vm_tile = this.$refs.tile,
+            $content = vm_tile.$refs.content,
+            deg = vm_tile.maxDeg * 1.2;
+          
+          this._controller.vm_popUp.setAnimateDom($content)
+          
           $el.classList.add('inital');
           requestAnimationFrame(function(){
             $el.classList.remove('inital');
@@ -84,12 +88,12 @@
 
     &.inital {
       opacity: 0;
-      transform: scale(0.9) translateZ(0);
+      transform: rotateX(15deg) translateZ(-80px);
     }
 
     &.inAnimation {
       opacity: 1;
-      transform: scale(1) translateZ(0);
+      transform: rotateX(0deg) translateZ(0px);
     }
 
     &.outAnimation {
