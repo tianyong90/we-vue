@@ -41,6 +41,7 @@ import PopupPressMenu from './components/popup-press-menu/index'
 import PopupDialog from './components/popup-dialog/index'
 import PopupDialogCustom from './components/popup-dialog-custom/index'
 import PopupImgViewer from './components/popup-img-viewer/index'
+import PopupPicker from './components/popup-picker/index'
 import Panel from './components/panel/index'
 import PullDown from './components/pull-down/index'
 import GestureTilePress from './components/gesture-tile-press/index'
@@ -119,6 +120,7 @@ const install = function (Vue, config = {}) {
   Vue.prototype.$popUpDialog = PopupDialog
   Vue.prototype.$popUpDialogCustom = PopupDialogCustom
   Vue.prototype.$popupImgViewer = PopupImgViewer
+  Vue.prototype.$picker = PopupPicker
   Vue.prototype.$toast = Toast
   Vue.prototype.$indicator = Indicator
 }
@@ -174,6 +176,7 @@ export default {
   PopupDialog,
   PopupDialogCustom,
   PopupImgViewer,
+  PopupPicker,
   Panel,
   PullDown,
   GestureTilePress,

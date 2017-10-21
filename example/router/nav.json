@@ -109,6 +109,12 @@
         "name": "popUpByAnimation",
         "description": "popUp",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-picker",
+        "name": "popUpPicker",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
       }
     ]
   },
