@@ -68,10 +68,12 @@
 
           $el.classList.add('inital');
           requestAnimationFrame(function(){
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
+            setTimeout(()=>{//给50ms来处理dom的一些设置
+              $el.classList.remove('inital');
+              $el.classList.add('inAnimation');
 
-            this.onOpen instanceof Function && this.onOpen();
+              this.onOpen instanceof Function && this.onOpen();
+            }, 50)
           }.bind(this))
         },
         beforeLeave: () => {
@@ -179,7 +181,6 @@
               this.setSlotValue(index, value, taskQueue)
             })
         })
-        debugger
         this.setSlotValue(0, values[0], taskQueue)
       },
 
