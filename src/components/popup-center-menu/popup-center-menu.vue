@@ -44,10 +44,10 @@
           var $el = this.$refs.menu,
             vm_tile = this.$refs.tile,
             $content = vm_tile.$refs.content,
-            deg = vm_tile.maxDeg * 1.2;
+            deg = vm_tile.maxDeg * 1.15;
           
           this._controller.vm_popUp.setAnimateDom($content)
-          vm_tile.orientationY = vm_tile.orientationY === undefined ? 0 : vm_tile.orientationY;
+          vm_tile.orientationY = vm_tile.orientationY === undefined ? 1 : vm_tile.orientationY;
           vm_tile.orientationX = vm_tile.orientationX === undefined ? 0 : vm_tile.orientationX;
           
           // $el.classList.add('outAnimation')
@@ -98,7 +98,7 @@
 
     &.outAnimation {
       opacity: 0;
-      transform: scale(0.9) translateZ(0);
+      transform: rotateX(-25deg) translateZ(-80px);
       transition-duration: 300ms;
     }
   }
