@@ -108,6 +108,7 @@
     background: white;
     padding: 13px 21px;
     font-size: 16px;
+    line-height: 1.4;
     color: black;
     border-bottom: calc(2px/3) solid #EBEBEB;
   }

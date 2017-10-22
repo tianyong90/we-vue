@@ -219,7 +219,7 @@
     transition: all 350ms ease 0s;
 
     &.inital {
-      opacity: 0;
+      opacity: 0.3;
       transform: translateY(100%) translateZ(0);
     }
 

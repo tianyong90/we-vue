@@ -191,6 +191,20 @@
 </script>
 
 <style scoped lang="scss">
+  .weui-picker__group{
+    z-index: 0;
+    overflow: hidden;
+  }
+  .weui-picker__mask{
+    z-index: 2;
+  }
+  .weui-picker__indicator{
+    z-index: 3;
+  }
+  .weui-picker__content{
+    z-index: 1;
+  }
+
   .wv-picker-slot-divider {
     transform:translateY(106px);
   }
