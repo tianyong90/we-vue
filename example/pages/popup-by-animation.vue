@@ -1,6 +1,5 @@
 <template>
   <div class="page" @click="click" ref="page">
-    <img :src="logoImg" alt=""><br>
     <wv-group title="通过animation实现过度示例">
       <wv-cell title="PopUpByAnimation" is-link></wv-cell>
     </wv-group>
