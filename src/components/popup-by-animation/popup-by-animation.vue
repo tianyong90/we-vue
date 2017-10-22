@@ -26,7 +26,7 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          //先手动更新样式
+          
           $el.classList.add('inital');
           requestAnimationFrame(()=>{
             $el.classList.remove('inital');

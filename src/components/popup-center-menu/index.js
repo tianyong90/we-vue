@@ -11,6 +11,7 @@ let incrId = 0
 let instancesMap = {}
 
 function CenterMenu (constructConfig) {
+  this.constructor = CenterMenu
   this.init(
     defaultConfig, constructConfig,
     popUpConfig, instancesMap,
@@ -19,6 +20,5 @@ function CenterMenu (constructConfig) {
 }
 
 CenterMenu.prototype = popUpBase
-CenterMenu.prototype.constructor = CenterMenu
 
 export default CenterMenu

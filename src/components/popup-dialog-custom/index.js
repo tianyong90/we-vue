@@ -11,6 +11,7 @@ let incrId = 0
 let instancesMap = {}
 
 function Dialog (constructConfig) {
+  this.constructor = Dialog
   this.init(
     defaultConfig, constructConfig,
     popUpConfig, instancesMap,
@@ -19,6 +20,5 @@ function Dialog (constructConfig) {
 }
 
 Dialog.prototype = popUpBase
-Dialog.prototype.constructor = Dialog
 
 export default Dialog

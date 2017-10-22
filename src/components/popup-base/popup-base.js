@@ -46,11 +46,6 @@ let popUpBase = {
     }
   },
 
-  enter: function () {
-    this.popUp.enter();
-    this.slot.enter();
-  },
-
   close: function(){
     if(this.vm_popUp.status === 'on')
       history.back()

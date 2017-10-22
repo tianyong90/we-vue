@@ -11,6 +11,7 @@ let incrId = 0
 let instancesMap = {}
 
 function ImgViewer (constructConfig) {
+  this.constructor = ImgViewer
   this.init(
     defaultConfig, constructConfig,
     popUpConfig, instancesMap,
@@ -19,6 +20,5 @@ function ImgViewer (constructConfig) {
 }
 
 ImgViewer.prototype = popUpBase
-ImgViewer.prototype.constructor = ImgViewer
 
 export default ImgViewer

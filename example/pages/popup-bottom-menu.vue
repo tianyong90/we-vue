@@ -1,8 +1,8 @@
 <template>
-  <div class="page" @click="click" ref="page">
+  <div class="page" ref="page">
     <img :src="logoImg" alt=""><br>
     <wv-group title="底部弹出菜单示例">
-      <wv-cell title="背景模糊" is-link></wv-cell>
+      <wv-cell title="背景模糊" is-link @click="click"></wv-cell>
     </wv-group>
   </div>
 </template>
@@ -20,6 +20,7 @@
     },
 
     created () {
+      console.log(new BottomMenu)
       this.bottomMenu = new BottomMenu({
         items: [
           {

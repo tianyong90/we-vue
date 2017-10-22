@@ -11,6 +11,7 @@ let incrId = 0
 let instancesMap = {}
 
 function BottomMenu (constructConfig) {
+  this.constructor = BottomMenu
   this.init(
     defaultConfig, constructConfig,
     popUpConfig, instancesMap,
@@ -19,6 +20,5 @@ function BottomMenu (constructConfig) {
 }
 
 BottomMenu.prototype = popUpBase
-BottomMenu.prototype.constructor = BottomMenu
 
 export default BottomMenu

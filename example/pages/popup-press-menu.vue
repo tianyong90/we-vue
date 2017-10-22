@@ -1,7 +1,7 @@
 <template>
-  <div class="page" @click="click" ref="page">
+  <div class="page" ref="page">
     <wv-group title="弹出菜单示例">
-      <wv-cell title="根据点击的位置" is-link></wv-cell>
+      <wv-cell title="根据点击的位置" is-link @click="click"></wv-cell>
     </wv-group>
   </div>
 </template>

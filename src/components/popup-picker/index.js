@@ -11,6 +11,7 @@ let incrId = 0
 let instancesMap = {}
 
 function Picker (constructConfig) {
+  this.constructor = Picker
   this.init(
     defaultConfig, constructConfig,
     popUpConfig, instancesMap,
@@ -19,6 +20,5 @@ function Picker (constructConfig) {
 }
 
 Picker.prototype = popUpBase
-Picker.prototype.constructor = Picker
 
 export default Picker

@@ -36,14 +36,6 @@
       }
     },
 
-    mounted (){
-      console.log('poup-base mounted');
-    },
-
-    created () {
-      console.log('poup-base created');
-    },
-
     methods: {
       enter () {
         this._beforeEnter()

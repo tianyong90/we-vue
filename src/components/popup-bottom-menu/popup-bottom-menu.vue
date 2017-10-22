@@ -26,8 +26,8 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          console.log('slot before enter');
-          //先手动更新样式
+          
+          
           $el.classList.add('inital');
           requestAnimationFrame(function(){
             $el.classList.remove('inital');
@@ -37,7 +37,7 @@
           }.bind(this))
         },
         afterEnter: () => {
-          console.log('afterEntered')
+          
         },
         beforeLeave: () => {
           var $el = this.$el;
@@ -49,7 +49,7 @@
           }.bind(this))
         },
         afterLeave: () => {
-          console.log('afterLeaved')
+          
         },
       }
     },

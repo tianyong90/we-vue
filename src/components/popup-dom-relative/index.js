@@ -14,6 +14,7 @@ let incrId = 0
 let instancesMap = {}
 
 function PressMenu (constructConfig) {
+  this.constructor = PressMenu
   this.init(
     defaultConfig, constructConfig,
     popUpConfig, instancesMap,
@@ -22,6 +23,5 @@ function PressMenu (constructConfig) {
 }
 
 PressMenu.prototype = popUpBase
-PressMenu.prototype.constructor = PressMenu
 
 export default PressMenu
