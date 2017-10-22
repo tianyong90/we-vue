@@ -34,17 +34,13 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          
-          
           $el.classList.add('inital');
           requestAnimationFrame(function(){
             $el.classList.remove('inital');
             $el.classList.add('inAnimation');
           })
         },
-        afterEnter: () => {
-          
-        },
+        afterEnter: () => {},
         beforeLeave: () => {
           var $el = this.$el;
           $el.classList.add('outAnimation');
@@ -52,9 +48,7 @@
             $el.classList.remove('inAnimation');
           })
         },
-        afterLeave: () => {
-          
-        },
+        afterLeave: () => {},
       }
     },
 

@@ -26,7 +26,6 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          
           $el.classList.add('inital');
           requestAnimationFrame(()=>{
             $el.classList.remove('inital');
@@ -35,9 +34,7 @@
             this.onOpen instanceof Function && this.onOpen();
           })
         },
-        afterEnter: () => {
-          
-        },
+        afterEnter: () => {},
         beforeLeave: () => {
           var $el = this.$el;
 
@@ -48,9 +45,7 @@
             this.onClose instanceof Function && this.onClose();
           }.bind(this))
         },
-        afterLeave: () => {
-          
-        },
+        afterLeave: () => {},
       }
     },
   }
