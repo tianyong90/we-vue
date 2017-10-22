@@ -64,7 +64,7 @@
       {
         "path": "/popup-bottom-menu",
         "name": "popUpBottomMenu",
-        "description": "popUp",
+        "description": "popUpBottomMenu",
         "icon": "widget-slider-scroll"
       },
       {
@@ -75,32 +75,32 @@
       },
       {
         "path": "/popup-dialog",
-        "name": "popUpDialog",
-        "description": "popUp",
+        "name": "PopUpDialog",
+        "description": "PopUpDialogpUp",
         "icon": "widget-slider-scroll"
       },
       {
         "path": "/popup-press-menu",
-        "name": "popUpPressMenu",
-        "description": "popUp",
+        "name": "PopUpPressMenu",
+        "description": "PopUpPressMenu",
         "icon": "widget-slider-scroll"
       },
       {
         "path": "/popup-dom-relative",
-        "name": "popUpDomRelative",
-        "description": "popUp",
+        "name": "PopUpDomRelative",
+        "description": "PopUpDomRelative",
         "icon": "widget-slider-scroll"
       },
       {
         "path": "/popup-img-viewer",
-        "name": "popUpImgViewer",
-        "description": "popUp",
+        "name": "PopUpImgViewer",
+        "description": "PopUpImgViewer",
         "icon": "widget-slider-scroll"
       },
       {
         "path": "/popup-by-animation",
-        "name": "popUpByAnimation",
-        "description": "popUp",
+        "name": "PopUpByAnimation",
+        "description": "PopUpByAnimation",
         "icon": "widget-slider-scroll"
       },
       {
@@ -217,7 +217,7 @@
       },
       {
         "path": "/pull-down-refresh",
-        "name": "pullDownRefresh",
+        "name": "PullDownRefresh",
         "description": "下拉刷新",
         "icon": "widget-slider-scroll"
       }

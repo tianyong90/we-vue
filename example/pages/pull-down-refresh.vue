@@ -2,7 +2,6 @@
   <div class="page">
     <wv-pull-down-refresh class="pull-down" @onLoad="loadMore">
       <wv-cell :title="item" v-for="(item, $index) in list" :key="$index" @click="msg(list, $index)"></wv-cell>
-      <!-- <div v-for="item in list" :key="item" >{{item}}</div> -->
     </wv-pull-down-refresh>
   </div>
 </template>
@@ -16,7 +15,12 @@
         attempt: 0
       }
     },
-
+    
+    mounted (){
+      this.loadMore(()=>{
+        console.log('inital load');
+      })
+    },
     methods: {
       loadMore (success, error, noMore){
         if( this.attempt === 2 ){
@@ -27,7 +31,7 @@
           setTimeout(()=>{
             var start = this.list.length, i ;
             for(i = 0; i < 5; i++){
-              this.list.push('标题'+(i+start));
+              this.list.push('下拉查看更多状态'+(i+start));
             }
             
             success();

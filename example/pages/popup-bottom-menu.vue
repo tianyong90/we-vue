@@ -1,15 +1,15 @@
 <template>
   <div class="page" @click="click" ref="page">
     <img :src="logoImg" alt=""><br>
-    <span>
-      文字模糊
-    </span>
+    <wv-group title="底部弹出菜单示例">
+      <wv-cell title="背景模糊" is-link></wv-cell>
+    </wv-group>
   </div>
 </template>
 
 <script>
   import BottomMenu from '../../src/components/popup-bottom-menu'
-  import logoImg from '../assets/images/logo.png'
+  import logoImg from '../../img/logo.png'
   import { once } from '../../src/utils/dom.js'
 
   export default {
@@ -85,6 +85,11 @@
   img {
     position: fixed;
     z-index: 1000000000000000000000000000;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    margin: -50px 0 0 -50px;
+    /* 用于测试z-index的绝对覆盖 */
   }
 
   span{

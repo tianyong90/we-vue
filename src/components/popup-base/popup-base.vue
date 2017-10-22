@@ -134,7 +134,7 @@
             
             requestAnimationFrame(()=>{
               this.$refs.slot.style.transitionDuration = null;
-              this.maskOpacity(0.5);
+              this.maskOpacity(0.25);
             })
           })
         })

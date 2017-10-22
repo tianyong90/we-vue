@@ -1,5 +1,9 @@
 <template>
-  <div class="page" @click="click">
+  <div class="page" @click="click" ref="page">
+    <img :src="logoImg" alt=""><br>
+    <wv-group title="上下居中的菜单示例">
+      <wv-cell title="点击弹出" is-link></wv-cell>
+    </wv-group>
   </div>
 </template>
 
