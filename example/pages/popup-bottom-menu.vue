@@ -29,7 +29,7 @@
           },
           {
             name: '换个样式',
-            click: () => {this.bottomMenu2.open()}
+            click: () => {alert('不换~')}
           },
           {
             name: '保存到手机',
@@ -42,7 +42,7 @@
         ],
 
         onOpen: function(){
-          this.$refs.page.style.filter = 'blur(1px)';
+          this.$refs.page.style.filter = 'blur(0.5px)';
           this.$refs.page.style.transition = 'all 300ms ease 0ms';
         }.bind(this),
 

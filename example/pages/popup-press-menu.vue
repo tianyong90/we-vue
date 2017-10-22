@@ -1,5 +1,6 @@
 <template>
   <div class="page" ref="page">
+    <br>
     <wv-group title="弹出菜单示例">
       <wv-cell title="根据点击的位置" is-link @click="click"></wv-cell>
     </wv-group>
