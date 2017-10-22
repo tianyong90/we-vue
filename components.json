@@ -1,5 +1,5 @@
 {
-  "android-list": "./src/components/android-list/index.js",
+  "android-overflow-effect": "./src/components/android-overflow-effect/index.js",
   "button": "./src/components/button/index.js",
   "group": "./src/components/group/index.js",
   "cell": "./src/components/cell/index.js",

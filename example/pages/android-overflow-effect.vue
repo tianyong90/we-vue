@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <wv-android-list class="list">
-      <div class="content">test</div>
-    </wv-android-list>
+    <wv-android-overflow-effect class="list">
+      <div class="content">拖动出现安卓溢出效果</div>
+    </wv-android-overflow-effect>
   </div>
 </template>
 
@@ -23,6 +23,5 @@
   .content{
     width: 120%;
     height: 120%;
-    background: lavender;
   }
 </style>

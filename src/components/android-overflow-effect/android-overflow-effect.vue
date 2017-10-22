@@ -14,7 +14,7 @@
   import { swipeDirective } from '../../custom/event/swipe.js'
 
   export default {
-    name: 'wv-android-list',
+    name: 'wv-android-overflow-effect',
 
     created (){
       this.triggerX = null;

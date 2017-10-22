@@ -1,4 +1,4 @@
-import AndroidList from './components/android-list/index'
+import AndroidOverflowEffect from './components/android-overflow-effect/index'
 import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
@@ -61,7 +61,7 @@ const version = '1.4.18'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
-  Vue.component(AndroidList.name, AndroidList)
+  Vue.component(AndroidOverflowEffect.name, AndroidOverflowEffect)
   Vue.component(Button.name, Button)
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
@@ -133,7 +133,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
-  AndroidList,
+  AndroidOverflowEffect,
   Button,
   Group,
   Cell,

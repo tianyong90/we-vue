@@ -314,8 +314,8 @@
     "groupTitle": "交互效果",
     "navItems": [
       {
-        "path": "/android-list",
-        "name": "androidList",
+        "path": "/android-overflow-effect",
+        "name": "AndroidOverflowEffect",
         "description": "安卓列表溢出效果",
         "icon": "widget-slider-scroll"
       }
