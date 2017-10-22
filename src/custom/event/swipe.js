@@ -86,7 +86,11 @@ export const swipeDirective = {
 
           processor.onSwipe instanceof Function && (
             continuePropagation = setDefault(
-              processor.onSwipe(getInfo()), false
+              processor.onSwipe(getInfo(), () => {
+                e.preventDefault()
+              }, () => {
+                e.stopPropagation()
+              }), false
             )
           )
           !continuePropagation && e.stopPropagation()
@@ -99,7 +103,11 @@ export const swipeDirective = {
 
         directionCheckDone && processor.onSwipeDone instanceof Function && (
           continuePropagation = setDefault(
-            processor.onSwipeDone(getInfo()), true
+            processor.onSwipeDone(getInfo(), () => {
+              e.preventDefault()
+            }, () => {
+              e.stopPropagation()
+            }), true
           )
         )
         !continuePropagation && e.stopPropagation()

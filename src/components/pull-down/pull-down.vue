@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-pull-down-warpper" ref="wrapper" v-swipe:vertical="swipeConfig" @touchmove="_onScroll">
+  <div class="wv-pull-down-warpper" ref="wrapper" v-swipe:vertical="swipeConfig">
     <div class="wv-pull-down-panel" ref="panel">
       <div class="wv-pull-down-panel-icons" ref="icons">
         <div class="loading-circle-icon" ref="circle"></div>
@@ -65,11 +65,7 @@
     },
 
     methods: {
-      _onScroll (e){
-        this.scrollLock && e.preventDefault()
-      },
-
-      _onSwipe (info){
+      _onSwipe (info, preventDefault){
         var $wrapper = this.$refs.wrapper;
         
         if(
@@ -100,8 +96,7 @@
           if(offset < 110 && this.status === 2)
             this.status = 1;
         }
-
-        this.scrollLock = true
+        preventDefault()
       },
 
       _onSwipeDone (){
@@ -117,7 +112,6 @@
           else if(this.status === 2)
             this.status = 3;
         });
-        this.scrollLock = false
       },
 
       _success(){
