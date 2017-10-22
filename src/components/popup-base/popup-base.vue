@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-popup-base" :routerId="routerId">
+  <div class="wv-popup-base" :routerId="routerId" ref="base">
     <div class="wv-popup-mask" ref="mask" @click="turnOffMask" @touchmove="maskPreventScroll"></div>
     <div class="wv-popup-slot">
       <div ref="slot"></div>
@@ -151,6 +151,7 @@
             this.vm_slot.event.beforeLeave();
           
           //前一个animationend导致提前触发
+          this._freezeEvents()
           setTimeout(()=>{
             this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
           }, 28)
@@ -167,6 +168,20 @@
             this._afterLeaveCallback()
         })
       },
+
+      _freezeEvents () {
+        this.$refs.base.addEventListener(
+          'touchstart', this._stopPropagation, true)
+        this.$refs.base.addEventListener(
+          'touchmove', this._stopPropagation, true)
+        this.$refs.base.addEventListener(
+          'touchend', this._stopPropagation, true)
+      },
+
+      _stopPropagation (e){
+        e.stopPropagation()
+        e.preventDefault()
+      }
     }
   }
 </script>

@@ -69,7 +69,6 @@
           var status = this._controller.vm_popUp.status,
             vm_tile = this.$refs.tile;
 
-          console.log(this._controller.vm_popUp.status)
           if(status === 'on')
             vm_tile.unsetPressEffect()
         }, 30)
