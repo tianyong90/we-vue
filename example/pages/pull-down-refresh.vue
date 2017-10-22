@@ -1,9 +1,9 @@
 <template>
   <div class="page">
-    <wv-pull-down class="pull-down" @onLoad="loadMore">
+    <wv-pull-down-refresh class="pull-down" @onLoad="loadMore">
       <wv-cell :title="item" v-for="(item, $index) in list" :key="$index" @click="msg(list, $index)"></wv-cell>
       <!-- <div v-for="item in list" :key="item" >{{item}}</div> -->
-    </wv-pull-down>
+    </wv-pull-down-refresh>
   </div>
 </template>
 

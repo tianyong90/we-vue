@@ -43,7 +43,7 @@ import PopupDialogCustom from './components/popup-dialog-custom/index'
 import PopupImgViewer from './components/popup-img-viewer/index'
 import PopupPicker from './components/popup-picker/index'
 import Panel from './components/panel/index'
-import PullDown from './components/pull-down/index'
+import PullDownRefresh from './components/pull-down-refresh/index'
 import GestureTilePress from './components/gesture-tile-press/index'
 import MediaBox from './components/media-box/index'
 import Picker from './components/picker/index'
@@ -95,7 +95,7 @@ const install = function (Vue, config = {}) {
   Vue.component(SwipeIndicator.name, SwipeIndicator)
   Vue.component(Popup.name, Popup)
   Vue.component(Panel.name, Panel)
-  Vue.component(PullDown.name, PullDown)
+  Vue.component(PullDownRefresh.name, PullDownRefresh)
   Vue.component(GestureTilePress.name, GestureTilePress)
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Picker.name, Picker)
@@ -178,7 +178,7 @@ export default {
   PopupImgViewer,
   PopupPicker,
   Panel,
-  PullDown,
+  PullDownRefresh,
   GestureTilePress,
   MediaBox,
   Picker,

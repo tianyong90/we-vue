@@ -44,7 +44,7 @@
   "popup-img-viewer": "./src/components/popup-img-viewer/index.js",
   "popup-picker": "./src/components/popup-picker/index.js",
   "panel": "./src/components/panel/index.js",
-  "pull-down": "./src/components/pull-down/index.js",
+  "pull-down-refresh": "./src/components/pull-down-refresh/index.js",
   "gesture-tile-press": "./src/components/gesture-tile-press/index.js",
   "media-box": "./src/components/media-box/index.js",
   "picker": "./src/components/picker/index.js",

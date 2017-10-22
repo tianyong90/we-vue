@@ -55,19 +55,12 @@
         "name": "SwipePlus",
         "description": "滑动页面切换",
         "icon": "widget-slider-scroll"
-      },
-      {
-        "path": "/android-list",
-        "name": "androidList",
-        "description": "安卓列表溢出效果",
-        "icon": "widget-slider-scroll"
-      },
-      {
-        "path": "/pull-down",
-        "name": "pullDown",
-        "description": "下拉刷新",
-        "icon": "widget-slider-scroll"
-      },
+      }
+    ]
+  },
+  {
+    "groupTitle": "弹层(支持返回键)",
+    "navItems": [
       {
         "path": "/popup-bottom-menu",
         "name": "popUpBottomMenu",
@@ -221,6 +214,12 @@
         "name": "InfiniteScroll",
         "description": "无限滚动加载",
         "icon": "scrollvertical"
+      },
+      {
+        "path": "/pull-down-refresh",
+        "name": "pullDownRefresh",
+        "description": "下拉刷新",
+        "icon": "widget-slider-scroll"
       }
     ]
   },
@@ -308,6 +307,17 @@
         "name": "Popup",
         "description": "弹出层",
         "icon": "popup"
+      }
+    ]
+  },
+  {
+    "groupTitle": "交互效果",
+    "navItems": [
+      {
+        "path": "/android-list",
+        "name": "androidList",
+        "description": "安卓列表溢出效果",
+        "icon": "widget-slider-scroll"
       }
     ]
   }

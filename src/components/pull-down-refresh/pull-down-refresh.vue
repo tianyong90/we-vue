@@ -1,15 +1,15 @@
 <template>
-  <div class="wv-pull-down-warpper" ref="wrapper" v-swipe:vertical="swipeConfig">
-    <div class="wv-pull-down-panel" ref="panel">
-      <div class="wv-pull-down-panel-icons" ref="icons">
+  <div class="wv-pull-down-refresh-warpper" ref="wrapper" v-swipe:vertical="swipeConfig">
+    <div class="wv-pull-down-refresh-panel" ref="panel">
+      <div class="wv-pull-down-refresh-panel-icons" ref="icons">
         <div class="loading-circle-icon" ref="circle"></div>
         <div class="arrows-icon" ref="arrow"></div>
         <div class="done-icon" ref="done"></div>
         <div class="error-icon" ref="error"></div>
       </div>
-      <div class="wv-pull-down-panel-message" ref="message"></div>
+      <div class="wv-pull-down-refresh-panel-message" ref="message"></div>
     </div>
-    <div class="wv-pull-down-content" ref="content">
+    <div class="wv-pull-down-refresh-content" ref="content">
       <slot></slot>
     </div>
   </div>
@@ -19,7 +19,7 @@
   import { swipeDirective } from '../../custom/event/swipe.js'
 
   export default {
-    name: 'wv-pull-down',
+    name: 'wv-pull-down-refresh',
 
     created (){
       this.swipeConfig = {
@@ -33,7 +33,7 @@
      * 1 未达到阈值
      * 2 达到阈值
      * 3 正在加载
-     * 4 加载失败
+     * 4 加载失败/成功
      */
 
     /** 事件
@@ -134,6 +134,7 @@
           $panel = this.$refs.panel,
           $active = this.$refs.icons.getElementsByClassName('active')[0];
 
+        $panel.setAttribute('data-status', which)
         $message.innerText = this.messages[which];
         $active && $active.classList.remove('active');
 
@@ -208,20 +209,20 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-pull-down-warpper {
+  .wv-pull-down-refresh-warpper {
     overflow: auto;
     z-index: 0;
     position: relative;
   }
 
-  .wv-pull-down-content{
+  .wv-pull-down-refresh-content{
     transition: all 250ms ease 0ms;
     z-index: 0;
     position: relative;
     height: 200vh;
   }
 
-  .wv-pull-down-panel{
+  .wv-pull-down-refresh-panel{
     position: absolute;
     height: 50px;
     width: 100%;
@@ -230,16 +231,35 @@
     justify-content: center;
     align-items: center;
     visibility: hidden;
-    color: #7676a1;
     z-index: 1;
+    color:#e0e0e0;
+
+    &[data-status='0'] {
+      color: grey;
+    }
+    &[data-status='1'] {
+      color: #252525;
+    }
+    &[data-status='2'] {
+      color: #607d8b;
+    }
+    &[data-status='3'] {
+      color: green;
+    }
+    &[data-status='4'] {
+      color: red;
+    }
+    &[data-status='5'] {
+      color: #2196f3;
+    }
   }
 
-  .wv-pull-down-panel-message {
+  .wv-pull-down-refresh-panel-message {
     display: inline-block;
     margin-left: 10px;
   }
 
-  .wv-pull-down-panel-icons{
+  .wv-pull-down-refresh-panel-icons{
     width: 24px;
     height: 24px;
     display: inline-block;
