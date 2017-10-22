@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-pull-down-warpper" ref="wrapper" v-swipe:vertical="swipeConfig">
+  <div class="wv-pull-down-warpper" ref="wrapper" v-swipe:vertical="swipeConfig" @touchmove="_onScroll">
     <div class="wv-pull-down-panel" ref="panel">
       <div class="wv-pull-down-panel-icons" ref="icons">
         <div class="loading-circle-icon" ref="circle"></div>
@@ -44,6 +44,7 @@
       return {
         status: 0,
         startY: null,
+        scrollLock: null,
         messages: [
           '下拉刷新',
           '松开刷新',
@@ -64,6 +65,10 @@
     },
 
     methods: {
+      _onScroll (e){
+        this.scrollLock && e.preventDefault()
+      },
+
       _onSwipe (info){
         var $wrapper = this.$refs.wrapper;
         
@@ -95,6 +100,8 @@
           if(offset < 110 && this.status === 2)
             this.status = 1;
         }
+
+        this.scrollLock = true
       },
 
       _onSwipeDone (){
@@ -110,6 +117,7 @@
           else if(this.status === 2)
             this.status = 3;
         });
+        this.scrollLock = false
       },
 
       _success(){
@@ -216,6 +224,7 @@
     transition: all 250ms ease 0ms;
     z-index: 0;
     position: relative;
+    height: 200vh;
   }
 
   .wv-pull-down-panel{
