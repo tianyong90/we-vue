@@ -9,8 +9,8 @@
       <div class="week-indicator-item">五</div>
       <div class="week-indicator-item grey">六</div>
     </div>
-    <div class="months-warpper">
-      <wv-month @monthClick="_click" :year="2017" :month="10"></wv-month>
+    <div class="months-warpper" @click="_click">
+      <wv-month :year="2017" :month="10"></wv-month>
     </div>
   </div>
 </template>
@@ -26,8 +26,8 @@
     },
 
     methods: {
-      _click (year, month, day){
-        console.log(year, month, day)
+      _click (e){
+        console.log(e.carrier)
       }
     }
   }

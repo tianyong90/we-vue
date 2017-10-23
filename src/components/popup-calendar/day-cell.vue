@@ -73,8 +73,9 @@
 
       _click(e){
         if(this.isPlaceholder === false && this.isDisable === false)
-          this.$emit('dayClick', this.day)
-        console.log(this)
+          e.carrier = {
+            vm_day: this
+          }
       }
     },
 
