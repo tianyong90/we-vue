@@ -60,7 +60,8 @@
           return {
             onFocus: true,
             onBlur: true,
-            onChange: true
+            onChange: true,
+            onInput: true
           }
         }
       }
@@ -81,6 +82,10 @@
 
       handleInput (event) {
         this.currentValue = event.target.value
+
+        if (typeof this.validateMode === 'undefined' || this.validateMode.onInput !== false) {
+          this.validate()
+        }
       },
 
       handleClear () {
