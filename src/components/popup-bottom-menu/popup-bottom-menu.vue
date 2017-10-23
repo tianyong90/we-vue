@@ -26,10 +26,13 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          $el.classList.add('inital');
+          if(!this.$options.propsData.animation)
+            $el.classList.add('inital');
           requestAnimationFrame(function(){
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
+            if(!this.$options.propsData.animation){
+              $el.classList.remove('inital');
+              $el.classList.add('inAnimation');
+            }
 
             this.onOpen instanceof Function && this.onOpen();
           }.bind(this))
@@ -37,9 +40,12 @@
         afterEnter: () => {},
         beforeLeave: () => {
           var $el = this.$el;
-          $el.classList.add('outAnimation');
+
+          if(!this.$options.propsData.animation)
+            $el.classList.add('outAnimation');
           requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
+            if(!this.$options.propsData.animation)
+              $el.classList.remove('inAnimation');
 
             this.onClose instanceof Function && this.onClose();
           }.bind(this))

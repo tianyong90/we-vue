@@ -56,6 +56,7 @@ import TopTips from './components/top-tips/index'
 import InfiniteScroll from './components/infinite-scroll/index'
 import NumberSpinner from './components/number-spinner/index'
 import 'weui/dist/style/weui.min.css'
+import './style/animate.min.css'
 
 const version = '1.4.18'
 const install = function (Vue, config = {}) {

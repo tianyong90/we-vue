@@ -244,13 +244,13 @@
       color: #607d8b;
     }
     &[data-status='3'] {
-      color: green;
+      color: #1AAD19;
     }
     &[data-status='4'] {
-      color: red;
+      color: #E64340;
     }
     &[data-status='5'] {
-      color: #2196f3;
+      color: #586C94;
     }
   }
 

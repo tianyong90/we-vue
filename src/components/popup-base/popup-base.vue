@@ -82,6 +82,10 @@
         this.$animateDom = $dom
       },
 
+      getAnimateDom ($dom){
+        return this.$animateDom || this.$refs.slot
+      },
+
 
       //内部使用的
       _addAnimationEndListener (callback, lock){
@@ -111,12 +115,15 @@
 
       _beforeEnter () {
         requestAnimationFrame(()=>{
-          this.$refs.slot.style.transitionDuration = '0ms';
+          if(!this.vm_slot.$options.propsData.animationInEventOff)
+            this.$refs.slot.style.transitionDuration = '0ms';
           //设置mask的初始化样式
           this.maskOpacity(0);
 
           this.vm_slot.$nextTick(()=>{
             //设置slot的初始化样式
+            this._animation('in')
+            
             this.vm_slot.event && 
             this.vm_slot.event.beforeEnter instanceof Function && 
               this.vm_slot.event.beforeEnter();
@@ -125,7 +132,8 @@
             this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
             
             requestAnimationFrame(()=>{
-              this.$refs.slot.style.transitionDuration = null;
+              if(!this.vm_slot.$options.propsData.animationInEventOff)
+                this.$refs.slot.style.transitionDuration = null;
               this.maskOpacity(0.25);
             })
           })
@@ -134,6 +142,8 @@
 
       _afterEnter () {
         if(this.animationendTriggered === true) return
+
+        this._animation('in', true)
 
         this.vm_slot.event && 
         this.vm_slot.event.afterEnter instanceof Function && 
@@ -145,6 +155,7 @@
       _beforeLeave () {
         requestAnimationFrame(()=>{
           this.maskOpacity(0);
+          this._animation('out')
 
           this.vm_slot.event && 
           this.vm_slot.event.beforeLeave instanceof Function && 
@@ -159,6 +170,8 @@
       },
 
       _afterLeave () {
+        this._animation('out', true)
+
         this.$refs.slot.event && 
         this.$refs.slot.event.afterLeave instanceof Function && 
           this.$refs.slot.event.afterLeave();
@@ -181,7 +194,36 @@
       _stopPropagation (e){
         e.stopPropagation()
         e.preventDefault()
-      }
+      },
+
+      _animation (progressName, unset=false){// in/out
+        var animation = this.vm_slot.$options.propsData.animation,
+          value, $dom = this.getAnimateDom();
+
+        if(animation instanceof Object){
+          value = animation[progressName]
+
+          if(value instanceof String){
+            if(unset === false)
+              $dom.classList.add(value)
+            else
+              $dom.classList.remove(value)
+          }else if(value instanceof Array){
+            if(unset === false)
+              value.forEach( val => $dom.classList.add(val))
+            else
+              value.forEach( val => $dom.classList.remove(val))
+          }
+        }
+
+        animation = null
+        $dom = null
+        value = null
+      },
+    },
+
+    destroyed () {
+      this.$animateDom = null
     }
   }
 </script>

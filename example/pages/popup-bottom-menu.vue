@@ -51,7 +51,14 @@
           once(this.$refs.page, 'transitionend', function(){
             this.$refs.page.style.transition = null;
           }.bind(this))
-        }.bind(this)
+        }.bind(this),
+
+        animationInEventOff: true,
+
+        animation: {
+          in: ['animated', 'bounceIn'],
+          out: ['animated', 'bounceOut']
+        }
       })
 
       this.bottomMenu2 = new BottomMenu({
@@ -70,7 +77,14 @@
               this.bottomMenu2.close();
             }
           }
-        ]
+        ],
+
+        animationInEventOff: true,
+
+        animation: {
+          in: ['animated', 'bounce'],
+          out: ['animated', 'pulse']
+        }
       })
     },
 
