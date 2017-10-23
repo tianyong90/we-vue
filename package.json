@@ -4,9 +4,9 @@
   "description": "Vue components based on Vue2.x and weui1.x",
   "keywords": [
     "vue",
-    "component",
+    "weui",
     "we-vue",
-    "weui"
+    "component"
   ],
   "author": "tianyong90 <412039588@qq.com>",
   "repository": {
