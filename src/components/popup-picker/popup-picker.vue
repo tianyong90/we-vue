@@ -1,8 +1,9 @@
 <template>
   <div class="weui-picker">
     <div class="weui-picker__hd">
-      <a class="weui-picker__action" @click="cancel" v-text="cancelText"></a>
-      <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
+      <a class="weui-picker__action noExpand" @click="cancel" v-text="cancelText"></a>
+      <a class="weui-picker__action"></a>
+      <a class="weui-picker__action noExpand" @click="confirm" v-text="confirmText"></a>
     </div>
     <div class="weui-picker__bd">
       <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey" :divider="slot.divider" :content="slot.content" v-model="values[slot.valueIndex]"></wv-picker-slot>
@@ -232,6 +233,16 @@
       opacity: 0;
       transform: translateY(100%) translateZ(0);
       transition-duration: 280ms;
+    }
+  }
+
+  .weui-picker__action.noExpand{
+    flex: 0 0 auto;
+    padding: 0 5px;
+    transition: all 40ms linear 0ms;
+
+    &:active {
+      background: #ececec;
     }
   }
 </style>
