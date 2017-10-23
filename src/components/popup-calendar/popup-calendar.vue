@@ -7,18 +7,7 @@
     </div>
 
     <div class="calendar-picker">
-      <div class="week-indicator">
-        <div class="week-indicator-item grey">日</div>
-        <div class="week-indicator-item">一</div>
-        <div class="week-indicator-item">二</div>
-        <div class="week-indicator-item">三</div>
-        <div class="week-indicator-item">四</div>
-        <div class="week-indicator-item">五</div>
-        <div class="week-indicator-item grey">六</div>
-      </div>
-      <div class="months-warpper">
-        
-      </div>
+      <wv-calendar></wv-calendar>
     </div>
 
     <div class="controll-bar">
@@ -28,9 +17,14 @@
 </template>
 
 <script>
+  import WvCalendar from './calendar.vue'
 
   export default {
     name: 'wv-popup-calendar',
+
+    components: {
+      WvCalendar
+    },
 
     props: {
       e: {
@@ -74,7 +68,7 @@
     background-color: white;
     will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
-    transition: all 250ms ease 0s;
+    transition: all 280ms ease 0s;
     position: absolute;
     top: 0;
     left: 0;
@@ -83,7 +77,7 @@
 
     &.inital {
       opacity: 0;
-      transform: translateY(50%) translateZ(0);
+      transform: translateY(15%) translateZ(0);
     }
 
     &.inAnimation {
@@ -93,8 +87,8 @@
 
     &.outAnimation {
       opacity: 0;
-      transform: translateY(50%) translateZ(0);
-      transition-duration: 280ms;
+      transform: translateY(15%) translateZ(0);
+      transition-duration: 300ms;
     }
   }
 
@@ -113,21 +107,6 @@
       flex: auto;
       text-align: center;
 
-    }
-  }
-
-  .week-indicator{
-    display: flex;
-    width: 100%;
-  }
-
-  .week-indicator-item{
-    flex: auto;
-    text-align: center;
-    border-bottom: 1px solid #ddd; 
-
-    &.grey{
-      color: #bbb;
     }
   }
 </style>
