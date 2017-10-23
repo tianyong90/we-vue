@@ -74,6 +74,12 @@
         "icon": "widget-slider-scroll"
       },
       {
+        "path": "/popup-calendar",
+        "name": "PopUpCalendar",
+        "description": "PopUpCalendar",
+        "icon": "widget-slider-scroll"
+      },
+      {
         "path": "/popup-dialog",
         "name": "PopUpDialog(不兼容老版",
         "description": "PopUpDialogpUp",

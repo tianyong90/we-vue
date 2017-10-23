@@ -1,7 +1,7 @@
 <template>
   <div class="wv-pull-down-refresh-warpper" ref="wrapper" v-swipe:vertical="swipeConfig">
     <div class="wv-pull-down-refresh-panel" ref="panel">
-      <div class="wv-pull-down-refresh-panel-icons" ref="icons">
+      <div class="wv-pull-down-refresh-panel-icons" ref="icons" v-show="showMsgIcon">
         <div class="loading-circle-icon" ref="circle"></div>
         <div class="arrows-icon" ref="arrow"></div>
         <div class="done-icon" ref="done"></div>
@@ -57,7 +57,10 @@
     },
 
     props: {
-      
+      showMsgIcon: {
+        type: Boolean,
+        default: true
+      }
     },
 
     mounted () {

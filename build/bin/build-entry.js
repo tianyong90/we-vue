@@ -32,6 +32,7 @@ const install = function (Vue, config = {}) {
   Vue.prototype.$popUpDialogCustom = PopupDialogCustom
   Vue.prototype.$popupImgViewer = PopupImgViewer
   Vue.prototype.$picker = PopupPicker
+  Vue.prototype.$calendar = PopupCalendar
   Vue.prototype.$toast = Toast
   Vue.prototype.$indicator = Indicator
 }
@@ -77,6 +78,7 @@ ComponentNames.forEach(name => {
     'PopupDialogCustom',
     'PopupImgViewer',
     'PopupPicker',
+    'PopupCalendar',
     'Toast',
     'Indicator'
   ].indexOf(componentName) === -1) {

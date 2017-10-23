@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <wv-pull-down-refresh class="pull-down" @onLoad="loadMore">
+    <wv-pull-down-refresh class="pull-down" @onLoad="loadMore" :showMsgIcon="true">
       <wv-cell :title="item" v-for="(item, $index) in list" :key="$index" @click="msg(list, $index)"></wv-cell>
     </wv-pull-down-refresh>
   </div>

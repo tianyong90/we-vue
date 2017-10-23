@@ -43,6 +43,7 @@
   "popup-dialog-custom": "./src/components/popup-dialog-custom/index.js",
   "popup-img-viewer": "./src/components/popup-img-viewer/index.js",
   "popup-picker": "./src/components/popup-picker/index.js",
+  "popup-calendar": "./src/components/popup-calendar/index.js",
   "panel": "./src/components/panel/index.js",
   "pull-down-refresh": "./src/components/pull-down-refresh/index.js",
   "gesture-tile-press": "./src/components/gesture-tile-press/index.js",
