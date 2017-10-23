@@ -68,20 +68,20 @@
         "icon": "widget-slider-scroll"
       },
       {
-        "path": "/popup-dialog",
-        "name": "PopUpDialog",
-        "description": "PopUpDialogpUp",
-        "icon": "widget-slider-scroll"
-      },
-      {
         "path": "/popup-img-viewer",
         "name": "PopUpImgViewer",
         "description": "PopUpImgViewer",
         "icon": "widget-slider-scroll"
       },
       {
+        "path": "/popup-dialog",
+        "name": "PopUpDialog(不兼容老版",
+        "description": "PopUpDialogpUp",
+        "icon": "widget-slider-scroll"
+      },
+      {
         "path": "/popup-picker",
-        "name": "popUpPicker",
+        "name": "popUpPicker(不兼容老版",
         "description": "popUp",
         "icon": "widget-slider-scroll"
       }
