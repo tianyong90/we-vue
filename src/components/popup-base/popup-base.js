@@ -214,7 +214,7 @@ let popUpBase = {
       $slot.style.left = fromLeft + 'px';
       $slot.style.top = fromTop + 'px';
     }
-
+    
     //region
     if(config.position === 'domRelative' && config.refDom instanceof HTMLElement) {
       $refDom = config.refDom;

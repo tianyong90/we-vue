@@ -62,15 +62,9 @@
     "groupTitle": "弹层(支持返回键)",
     "navItems": [
       {
-        "path": "/popup-bottom-menu",
-        "name": "popUpBottomMenu",
-        "description": "popUpBottomMenu",
-        "icon": "widget-slider-scroll"
-      },
-      {
-        "path": "/popup-center-menu",
-        "name": "popUpCenterMenu",
-        "description": "popUp",
+        "path": "/popup-menu",
+        "name": "popUpMenu",
+        "description": "popUpMenu",
         "icon": "widget-slider-scroll"
       },
       {
@@ -80,27 +74,9 @@
         "icon": "widget-slider-scroll"
       },
       {
-        "path": "/popup-press-menu",
-        "name": "PopUpPressMenu",
-        "description": "PopUpPressMenu",
-        "icon": "widget-slider-scroll"
-      },
-      {
-        "path": "/popup-dom-relative",
-        "name": "PopUpDomRelative",
-        "description": "PopUpDomRelative",
-        "icon": "widget-slider-scroll"
-      },
-      {
         "path": "/popup-img-viewer",
         "name": "PopUpImgViewer",
         "description": "PopUpImgViewer",
-        "icon": "widget-slider-scroll"
-      },
-      {
-        "path": "/popup-by-animation",
-        "name": "PopUpByAnimation",
-        "description": "PopUpByAnimation",
         "icon": "widget-slider-scroll"
       },
       {
