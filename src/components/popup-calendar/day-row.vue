@@ -1,12 +1,12 @@
 <template>
   <div class="day-row">
-    <wv-day-cell :day="day" status="selected-right" :isPlaceholder="isPlaceholder"></wv-day-cell>
-    <wv-day-cell :day="2" status="selected-full"></wv-day-cell>
-    <wv-day-cell :day="3" status="selected-left"></wv-day-cell>
-    <wv-day-cell :day="4"></wv-day-cell>
-    <wv-day-cell :day="5"></wv-day-cell>
-    <wv-day-cell :day="6"></wv-day-cell>
-    <wv-day-cell :day="7" :isDisable="true"></wv-day-cell>
+    <wv-day-cell v-for="(day, $index ) in days" 
+    :key="$index"
+    :day="day.day" 
+    :status="day.status" 
+    :isPlaceholder="day.isPlaceholder"
+    :class="_checkGrey($index)"
+  ></wv-day-cell>
   </div>
 </template>
 
@@ -40,6 +40,13 @@
     methods: {
       _rowClick (day) {
         this.$emit('rowClick', day)
+      },
+
+      _checkGrey (i){
+        if(i === 0 || i === 6)
+          return 'grey'
+        
+        return ''
       }
     }
   }

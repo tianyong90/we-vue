@@ -2,8 +2,7 @@
   <div class="month">
     <div class="month-title">2017年10月</div>
     <div class="days-wrapper" @click="_click">
-      <wv-day-row></wv-day-row>
-      <wv-day-row></wv-day-row>
+      <wv-day-row v-for="(row, $index) in dayRows" :key="$index" :days="row"></wv-day-row>
     </div>
   </div>
 </template>
@@ -24,19 +23,52 @@
         required: true
       },
       year: {
-        type: Number
-      }
+        type: Number,
+        required: true
+      },
+      dayRules: Array
     },
 
     data (){
       return {
-        rows: []
+        dayRows: []
       }
     },
 
     created () {
-      for(var i = 1 ; i <= 12; i++)
-        console.log(this._countDays(2017,i))
+      var days = this._countDays(this.year, this.month),
+        startPlaceholders, endPlaceholders, rows,
+        i, j, i_day = 1, dayRows;
+
+      startPlaceholders = +new Date( this.year, this.month-1 ).getDay()
+      rows = Math.ceil( (days + startPlaceholders) / 7 )
+      endPlaceholders = rows*7 - days - startPlaceholders
+
+      //生成dayRows
+      dayRows = []
+      for(i = 0 ; i < rows; i ++){
+        var dayRow = []
+
+        for(j = 0; j < 7; j++){
+          if( 
+            (i === 0 && j < startPlaceholders) || 
+            (i === rows-1 && j > 7-endPlaceholders)
+          ){
+            dayRow.push({
+              isPlaceholder: true
+            })
+          }else{
+            dayRow.push({
+              day: i_day,
+              status: ''
+            })
+            i_day++
+          }
+        }
+        dayRows.push(dayRow)
+      }
+
+      this.dayRows = dayRows
     },
 
     methods: {

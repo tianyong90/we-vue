@@ -151,6 +151,10 @@
         color: #888;
       }
     }
+
+    &.grey {
+      color: #bbb;
+    }
   }
 
   .day-number{
