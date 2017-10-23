@@ -6,6 +6,7 @@
       <wv-cell title="支持animation.css动画库" is-link @click="click2"></wv-cell>
       <wv-cell title="bounceInUp, bounceOutDown" is-link @click="click3"></wv-cell>
       <wv-cell title="flipInX, flipOutX" is-link @click="click4"></wv-cell>
+      <wv-cell title="jackInTheBox hinge" is-link @click="click12"></wv-cell>
     </wv-group>
 
     <wv-group title="通过animation实现过度示例">
@@ -336,6 +337,14 @@
       },
       click11 (e) {
         this.pressMenu_centerRight_aboveAfter.open(e)
+      },
+      click12 (e) {
+        this.bottomMenu.open(e, {
+          animation: {
+            in: ['animated', 'jackInTheBox'],
+            out: ['animated', 'hinge']
+          }
+        })
       },
     }
   }
