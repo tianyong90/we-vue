@@ -216,7 +216,7 @@
     left: 0;
     width: 100vw;
     height: auto;
-    transition: all 350ms ease 0s;
+    transition: all 250ms ease 0s;
 
     &.inital {
       opacity: 0.3;
@@ -231,7 +231,7 @@
     &.outAnimation {
       opacity: 0;
       transform: translateY(100%) translateZ(0);
-      transition-duration: 400ms;
+      transition-duration: 280ms;
     }
   }
 </style>

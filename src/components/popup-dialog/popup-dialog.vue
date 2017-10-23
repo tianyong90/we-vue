@@ -102,7 +102,7 @@
     background: white;
     border-radius: 3px;
     font-size: 15px;
-    transition: all 270ms ease 0s;
+    transition: all 200ms ease 0s;
     //清除原本的定位方式...唉
     position: static;
     z-index: unset;

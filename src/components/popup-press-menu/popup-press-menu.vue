@@ -54,7 +54,7 @@
   .wv-popup-press-menu {
     will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
-    transition: all 350ms ease 0s;
+    transition: all 250ms ease 0s;
     flex: 0 0 auto;
 
     &.inital {
@@ -70,7 +70,7 @@
     &.outAnimation {
       opacity: 0;
       transform: scale(0.75) translateZ(0);
-      transition-duration: 400ms;
+      transition-duration: 280ms;
     }
   }
 

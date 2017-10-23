@@ -63,11 +63,11 @@
     }
 
     &.inAnimation {
-      animation: animation 300ms ease forwards;
+      animation: animation 280ms ease forwards;
     }
 
     &.outAnimation {
-      animation: animation 300ms ease reverse ;
+      animation: animation 280ms ease reverse ;
     }
   }
 

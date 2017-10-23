@@ -211,7 +211,7 @@
   .swipe-img{
     width: 100vw;
     position: absolute;
-    transition: all 600ms ease;
+    transition: all 270ms ease;
     will-change: transform, opacity;
   }
 </style>

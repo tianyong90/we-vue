@@ -83,7 +83,7 @@
     width: calc(100vw - 36px*2 - 4px*2);
     border-radius: 3.5px;
     overflow: hidden;
-    transition: all 280ms ease 0s;
+    transition: all 250ms ease 0s;
 
     &.inital {
       opacity: 0;

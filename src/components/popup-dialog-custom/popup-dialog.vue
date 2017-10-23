@@ -83,7 +83,7 @@
     background: white;
     border-radius: 3px;
     font-size: 15px;
-    transition: all 270ms ease 0s;
+    transition: all 200ms ease 0s;
 
     &.inital {
       opacity: 0;
@@ -98,7 +98,7 @@
     &.outAnimation {
       opacity: 0;
       transform: scale(0.9) translateZ(0);
-      transition-duration: 300ms;
+      transition-duration: 220ms;
     }
   }
 

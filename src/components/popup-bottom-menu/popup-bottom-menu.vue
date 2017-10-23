@@ -58,7 +58,7 @@
     left: 0;
     width: 100vw;
     height: auto;
-    transition: all 350ms ease 0s;
+    transition: all 250ms ease 0s;
 
     &.inital {
       opacity: 0;
