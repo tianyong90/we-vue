@@ -1,3 +1,9 @@
+## v1.4.17 (2017-10-24)
+
+- popup 组件 heigt 属性，支持指定 % 及 vh 形式高度
+- switch 禁用状态对应颜色调整
+- input 组件新增 maxlength, name, minlength, autofocus, auto-complete 属性
+
 ## v1.4.16 (2017-10-24)
 
 - switch 组件支持滑动操作，同时兼容点击操作
