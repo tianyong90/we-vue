@@ -54,21 +54,22 @@
 
       _setRange (start, end){
         //需要算出所涉及的月份
-        var monthsInvolved = 0, i = 0, next,
+        var monthsInvolved = 0, i,
           vm_months = this.$refs.calendar.$refs.$months,
           startOffset, git = [], hashDisableOnSelect, disableDaySelected;
 
-        next = offsetMonth(start.year, start.month, i++)
-        while(next[0] <= end.year && next[1] <= end.month){
-          monthsInvolved++
-          next = offsetMonth(start.year, start.month, i++)
-        }
+        monthsInvolved = monthsBetween(
+          end.year, end.month,
+          start.year, start.month
+        ) + 1
         
         //转发给对应的vm_month
         startOffset = monthsBetween(
           start.year, start.month,
           vm_months[0].year, vm_months[0].month
         )
+
+        console.log(startOffset, monthsInvolved)
 
         for(i = 0; i < monthsInvolved; i++){
           git.push(vm_months[startOffset++].setRange(start, end))
@@ -89,8 +90,6 @@
             result.commit()
           })
         }
-        //清除引用
-        next = null
       },
 
       _selectedTwo (){

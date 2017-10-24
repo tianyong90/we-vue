@@ -137,7 +137,8 @@
 
     &[data-status="selected-start"],
     &[data-status="selected-end"],
-    &[data-status="selected-start-end"] {
+    &[data-status="selected-start-end"],
+    &[data-status="selected-left-right"] {
       & .day-number {
         border-radius: 100%;
         background-color: #1AAD19;

@@ -70,6 +70,7 @@
         config.row[startAdjusted].status = 'selected-right'
         config.row[endAdjusted].status = 'selected-left'
 
+
         function setStart (){
           //设置设置开始的点
           if(config.startOffset[0] === config.whichRow){
@@ -118,8 +119,25 @@
           setStartEnd()
         }else if(config.hasStartOrEnd === 'start'){
           setStart()
+           //末行首
+          if( config.whichRow === config.rowsLen-1 && endAdjusted === 0 ){
+            config.row[endAdjusted].status = 'selected-left-right'
+          }
         }else if(config.hasStartOrEnd === 'end'){
           setEnd()
+          //首行末
+          if( config.whichRow === 0 && startAdjusted === 6 ){
+            config.row[startAdjusted].status = 'selected-left-right'
+          }
+        }else{
+          //首行末
+          if( config.whichRow === 0 && startAdjusted === 6 ){
+            config.row[startAdjusted].status = 'selected-left-right'
+          }
+          //末行首
+          if( config.whichRow === config.rowsLen-1 && endAdjusted === 0 ){
+            config.row[endAdjusted].status = 'selected-left-right'
+          }
         }
       }
     }
