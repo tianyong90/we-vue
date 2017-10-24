@@ -58,10 +58,14 @@
         if(this.isDisable)
           return 'disable'
 
-        if(val === 'selected-left')
+        if(val === 'selected-end-left' || val === 'selected-end')
           return '止'
-        if(val === 'selected-right')
+        if(val === 'selected-start-right' || val === 'selected-start')
           return '起'
+        if(val === 'selected-start-end')
+          return '起/止'
+        
+        return ''
       },
 
       _checkDay (val){
@@ -76,17 +80,6 @@
           e.carrier = {
             vm_day: this
           }
-      }
-    },
-
-    filters: {
-      statusDescriptionFilter (val) {
-        switch (val){
-          case 'selected-left':
-            return '起'
-          case 'selected-right':
-            return '止'
-        }
       }
     },
 
@@ -105,14 +98,15 @@
     color: black;
 
     &[data-status|="selected"]{
-      color: #1AAD19;
+      color: #1AAD19!important;
       & .day-number {
         color: white;
         background-color: #1AAD19;
       }
     }
 
-    &[data-status="selected-right"]{
+    &[data-status="selected-right"],
+    &[data-status="selected-start-right"]{
       & .day-number {
         border-top-left-radius: 100%;
         border-bottom-left-radius: 100%;
@@ -123,7 +117,8 @@
       }
     }
 
-    &[data-status="selected-left"]{
+    &[data-status="selected-left"],
+    &[data-status="selected-end-left"]{
       & .day-number {
         border-top-right-radius: 100%;
         border-bottom-right-radius: 100%;
@@ -136,6 +131,15 @@
 
     &[data-status="selected-full"]{
       & .day-number-left , & .day-number-right{
+        background-color: #1AAD19;
+      }
+    }
+
+    &[data-status="selected-start"],
+    &[data-status="selected-end"],
+    &[data-status="selected-start-end"] {
+      & .day-number {
+        border-radius: 100%;
         background-color: #1AAD19;
       }
     }

@@ -6,9 +6,7 @@
       <span class="btn">清除</span>
     </div>
 
-    <div class="calendar-picker">
-      <wv-calendar></wv-calendar>
-    </div>
+    <wv-calendar-picker></wv-calendar-picker>
 
     <div class="controll-bar">
 
@@ -17,13 +15,13 @@
 </template>
 
 <script>
-  import WvCalendar from './calendar.vue'
+  import WvCalendarPicker from './calendar-picker.vue'
 
   export default {
     name: 'wv-popup-calendar',
 
     components: {
-      WvCalendar
+      WvCalendarPicker
     },
 
     props: {
@@ -74,6 +72,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
 
     &.inital {
       opacity: 0;

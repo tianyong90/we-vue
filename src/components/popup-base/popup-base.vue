@@ -2,7 +2,7 @@
   <div class="wv-popup-base" :routerId="routerId" ref="base">
     <div class="wv-popup-mask" ref="mask" @click="turnOffMask" @touchmove="maskPreventScroll"></div>
     <div class="wv-popup-slot">
-      <div ref="slot"></div>
+      <div ref="slot" @touchmove="_stopPropagation"></div>
     </div>
   </div>
 </template>
