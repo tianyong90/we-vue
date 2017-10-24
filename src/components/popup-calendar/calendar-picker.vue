@@ -26,8 +26,7 @@
     methods: {
       //公共方法
       clearSelection (){
-        this.selectedOne = null
-        this.selectedTwo = null
+        this.$refs.calendar.clearSelection()
       },
 
       //私有方法
@@ -42,8 +41,10 @@
             this.selectedTwo = e.carrier
 
           this.clickedCount++
-          if(this.clickedCount > 1)
+          if(this.clickedCount > 1){
             this.clickedCount = 0
+            this._selectedTwo()
+          }
         }
       },
 
@@ -90,47 +91,43 @@
         }
         //清除引用
         next = null
+      },
+
+      _selectedTwo (){
+        var start = {
+              year: this.selectedOne.vm_month.year,
+              month: this.selectedOne.vm_month.month,
+              day: this.selectedOne.vm_day.day,
+              vms: this.selectedOne
+            },
+            end = {
+              year: this.selectedTwo.vm_month.year,
+              month: this.selectedTwo.vm_month.month,
+              day: this.selectedTwo.vm_day.day,
+              vms: this.selectedTwo
+            },
+            tmp, 
+            startTime = this._toTime(start), 
+            endTime = this._toTime(end);
+
+        if(startTime > endTime){
+          tmp = start
+          start = end
+          end = tmp
+          tmp = null
+        }
+
+        this._setRange(start, end)
       }
     },
 
     watch: {
       selectedOne (val, oldVal){
+        if(oldVal)
+          this.clearSelection()
         if(val)
         val.vm_month.getDay(val.vm_day.day).status = 'selected-start'
-        if(oldVal)
-        oldVal.vm_month.getDay(oldVal.vm_day.day).status = ''
-        console.log('selectedOne',val,oldVal)
       },
-
-      selectedTwo (val){
-        console.log('selectedTwo',val)
-        if(val){
-          var start = {
-                year: this.selectedOne.vm_month.year,
-                month: this.selectedOne.vm_month.month,
-                day: this.selectedOne.vm_day.day,
-                vms: this.selectedOne
-              },
-              end = {
-                year: this.selectedTwo.vm_month.year,
-                month: this.selectedTwo.vm_month.month,
-                day: this.selectedTwo.vm_day.day,
-                vms: this.selectedTwo
-              },
-              tmp, 
-              startTime = this._toTime(start), 
-              endTime = this._toTime(end);
-
-          if(start < end){
-            tmp = start
-            start = end
-            end = tmp
-            tmp = null
-          }
-
-          this._setRange(start, end)
-        }
-      }
     }
   }
 </script>

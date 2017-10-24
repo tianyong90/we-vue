@@ -177,6 +177,14 @@
             })
           }
         }
+      },
+
+      clearSelection (){
+        this.dayRows.forEach( row => {
+          row.forEach( day => {
+            day.status = ''
+          })
+        })
       }
     }
   }

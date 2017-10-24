@@ -9,7 +9,7 @@
       <div class="week-indicator-item">五</div>
       <div class="week-indicator-item grey">六</div>
     </div>
-    <div class="months-warpper" @click="_click">
+    <div class="months-warpper">
       <wv-month 
         v-for="(month, $index) in months"
         :key="$index"
@@ -92,8 +92,10 @@
     },
 
     methods: {
-      _click (e){
-        console.log(e.carrier)
+      clearSelection (){
+        this.$refs.$months.forEach( vm_month => {
+          vm_month.clearSelection()
+        })
       }
     }
 
