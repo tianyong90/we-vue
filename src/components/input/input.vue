@@ -7,8 +7,9 @@
       <input
         class="weui-input"
         ref="input"
-        rel="input"
         :type="type"
+        :auto-complete="autoComplete"
+        :autofocus="autofocus"
         :placeholder="placeholder"
         :value="currentValue"
         :readonly="readonly"
@@ -47,6 +48,14 @@
       },
       placeholder: String,
       value: String,
+      name: String,
+      autoComplete: {
+        type: String,
+        default: 'off'
+      },
+      maxlength: Number,
+      minlength: Number,
+      autofocus: Boolean,
       readonly: Boolean,
       disabled: Boolean,
       required: {
@@ -82,6 +91,11 @@
 
       handleInput (event) {
         this.currentValue = event.target.value
+
+        // 当有最大长度属性时，限制过长的输入
+        if (this.maxlength && event.target.value.length >= this.maxlength) {
+          this.currentValue = event.target.value.substr(0, this.maxlength)
+        }
 
         if (typeof this.validateMode === 'undefined' || this.validateMode.onInput !== false) {
           this.validate()
@@ -129,6 +143,11 @@
         }
 
         if (this.required && this.currentValue === '') {
+          this.valid = false
+          return
+        }
+
+        if (this.minlength && this.currentValue.length < this.minlength) {
           this.valid = false
           return
         }

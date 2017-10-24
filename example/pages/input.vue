@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <wv-group title="默认">
-      <wv-input label="默认类型" placeholder="请输入内容" v-model="valueText" ref="firstInput"></wv-input>
+      <wv-input label="默认类型" :autofocus="true" placeholder="请输入内容" v-model="valueText" ref="firstInput"></wv-input>
       <wv-input label="数字类型" placeholder="请输入数字" type="number" v-model="valueNumber"></wv-input>
     </wv-group>
 
@@ -52,7 +52,6 @@
     },
 
     mounted () {
-      this.$refs.firstInput.focus()
     }
   }
 </script>
