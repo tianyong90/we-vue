@@ -11,10 +11,15 @@
       ref="calendarPicker"
       type="range"
       @onSelect="_onSelect"
+      class="calendar-picker"
     ></wv-calendar-picker>
 
-    <div class="controll-bar">
-
+    <div class="controll-bar" v-show="selectedStart || selectedEnd">
+      <div class="result">
+        <p>开始: {{selectedStart | selectionFilter}}</p>
+        <p>结束: {{selectedEnd | selectionFilter}}</p>
+      </div>
+      <div class="btn-confirm">确认</div>
     </div>
   </div>
 </template>
@@ -35,6 +40,13 @@
       },
       onClose: Function,
       onOpen: Function
+    },
+
+    data (){
+      return {
+        selectedStart: null,
+        selectedEnd: null
+      }
     },
 
     created () {
@@ -75,6 +87,15 @@
 
       _onSelect(start, end){
         console.log(start, end)
+        this.selectedStart = start
+        this.selectedEnd = end
+      }
+    },
+
+    filters: {
+      selectionFilter (select){
+        if(select)
+          return `${select.year}-${select.month}-${select.day}`
       }
     }
   }
@@ -92,6 +113,12 @@
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: flex;
 
     &.inital {
       opacity: 0;
@@ -114,6 +141,8 @@
     display: flex;
     width: 100%;
     margin-top: 5px;
+    flex-shrink: 0;
+    -webkit-box-align: center;
 
     & .btn {
       flex: 0 0 auto;
@@ -125,6 +154,44 @@
       flex: auto;
       text-align: center;
 
+    }
+  }
+
+  .calendar-picker{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: flex;
+    overflow-y: auto;
+  }
+
+  .controll-bar{
+    display: flex;
+    height: 53px;
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    background: #f7f7f7;
+    flex: 0 0 auto;
+
+    & .result {
+      flex: auto;
+      font-size: 12px;
+    }
+
+    & .btn-confirm {
+      flex: 0 0 auto;
+      text-align: center;
+      width: 80px;
+      height: 36px;
+      line-height: 36px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 18px;
+      background: #1aad19;
     }
   }
 </style>

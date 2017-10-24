@@ -47,7 +47,7 @@
       //公共方法
       clearSelection (check=true){
         this.$refs.calendar.clearSelection()
-        
+
         if(check){
           this.selectedOne = null
           this.clickedCount = 0
@@ -120,7 +120,7 @@
           })
           this._emitDone(start, end)
         }else{
-          this.clearSelection(false)
+          this.clearSelection()
           this.$emit('onSelectHasDisableDate', disableDaySelected)
         }
       },
