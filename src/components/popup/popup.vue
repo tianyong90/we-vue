@@ -16,7 +16,10 @@
       value: Boolean,
       height: {
         type: [String, Number],
-        default: 'auto'
+        default: 'auto',
+        validator: function (val) {
+          return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
+        }
       },
       hideOnMask: {
         type: Boolean,
@@ -42,10 +45,10 @@
       style () {
         let ret = { backgroundColor: this.backgroundColor }
 
-        if (this.height === 'auto') {
-          ret.height = 'auto'
-        } else {
+        if (/^\d+$/.test(this.height)) {
           ret.height = parseInt(this.height) + 'px'
+        } else {
+          ret.height = this.height
         }
 
         return ret
