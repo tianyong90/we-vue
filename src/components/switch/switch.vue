@@ -6,7 +6,7 @@
     </div>
   </wv-cell>
 
-  <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick" ref="root" v-else>
+  <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick" v-else>
     <div class="background"></div>
     <div class="thumb" @touchstart="onTouchstart" @touchmove="onTouchmove" @touchend="onTouchend" ref="thumb"></div>
   </div>
@@ -150,6 +150,10 @@
 
 <style scoped lang="scss">
   $wv-switch-height: 32px;
+  $thumb-background-color: #fff;
+  $on-color: #04BE02;
+  $off-color: #FDFDFD;
+  $thumb-color: #fff;
 
   .wv-switch {
     position: relative;
@@ -178,6 +182,10 @@
       transition: transform .35s cubic-bezier(0.45, 1, 0.4, 1);
     }
 
+    &.wv-switch-disabled .background {
+      background-color: darken($off-color, 10%);
+    }
+
     .thumb {
       content: " ";
       position: absolute;
@@ -186,22 +194,34 @@
       width: $wv-switch-height - 2;
       height: $wv-switch-height - 2;
       border-radius: 15px;
-      background-color: #FFFFFF;
+      background-color: $thumb-color;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-      /*transition: transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35);*/
-    }
-  }
-
-  .wv-switch.wv-switch-on {
-    border-color: #04BE02;
-    background-color: #04BE02;
-
-    .background {
-      transform: scale(0);
     }
 
-    .thumb {
-      transform: translateX(20px);
+    &.wv-switch-disabled .thumb {
+      background-color: darken($thumb-color, 10%);
+    }
+
+    &.wv-switch-on {
+      border-color: $on-color;
+      background-color: $on-color;
+
+      .background {
+        transform: scale(0);
+      }
+
+      .thumb {
+        transform: translateX(20px);
+      }
+
+      &.wv-switch-disabled {
+        border-color: darken($on-color, 5%);
+        background-color: darken($on-color, 5%);
+
+        .thumb {
+          background-color: darken($thumb-color, 10%);
+        }
+      }
     }
   }
 
