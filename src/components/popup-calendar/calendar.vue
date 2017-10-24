@@ -23,7 +23,7 @@
 
 <script>
   import WvMonth from './month.vue'
-  import { countDays, offsetMonth } from '../../custom/utils'
+  import { countDays, offsetMonth, monthsBetween } from '../../custom/utils'
 
   export default {
     name: 'wv-calendar',
@@ -47,7 +47,8 @@
         minMonth: null,
         maxYear: null,
         maxMonth: null,
-        months: {}
+        months: {},
+        rules: {}
       }
     },
 
@@ -96,6 +97,33 @@
         this.$refs.$months.forEach( vm_month => {
           vm_month.clearSelection()
         })
+      },
+
+      getMonth (year, month){
+        var vm_months = this.$refs.$months,
+          offset = monthsBetween(
+            year, month,
+            vm_months[0].year, vm_months[0].month
+          );
+        
+        return vm_months[offset]
+      },
+
+      disableDay (year, month, day){
+        //获取,那个vm_month,然后设置就好了
+        var vm_month = this.getMonth(year, month);
+          day = vm_month.getDay(day)
+        
+        this.$set(day, 'isDisable', true)
+        this.$parent && this.$parent.clearSelection()
+      },
+
+      enableDay (year, month, day){
+        var vm_month = this.getMonth(year, month);
+          day = vm_month.getDay(day)
+
+        this.$set(day, 'isDisable', false)
+        this.$parent && this.$parent.clearSelection()
       }
     }
 

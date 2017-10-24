@@ -5,6 +5,7 @@
     :day="day.day" 
     :status="day.status" 
     :isPlaceholder="day.isPlaceholder"
+    :isDisable="day.isDisable"
     :class="_checkGrey($index)"
     ref="$days"
   ></wv-day-cell>

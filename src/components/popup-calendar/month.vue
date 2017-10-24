@@ -32,12 +32,6 @@
         type: Number,
         required: true
       },
-      dayRules: {
-        type: Array,
-        default (){
-          return []
-        }
-      }
     },
 
     data (){
@@ -70,10 +64,10 @@
             })
           }else{
             i_day++
-            dayRow.push(Object.assign({
+            dayRow.push({
               day: i_day,
               status: ''
-            }, this.dayRules[i_day]))
+            })
           }
         }
         dayRows.push(dayRow)
@@ -161,7 +155,27 @@
         //分发,但是感觉有点奇怪啊,这样直接执行的话,是不行的哦,在转发之前判断吧
         //我是需要检查这个dayRules
         disableDaySelected = []
-        for(i = startOffset[0]; i <= endOffset[0]; i++){
+        //检查第一行
+        if(startOffset[0] === endOffset[0]){
+          //同一行
+          for(j = startOffset[1]; j <= endOffset[1]; j++){
+            if(this.dayRows[startOffset[0]][j].isDisable)
+              disableDaySelected.push(this.dayRows[i][j])
+          }
+        }else{
+          //检查第一行开始到末尾
+          for(j = startOffset[1]; j <= 6; j++){
+            if(this.dayRows[startOffset[0]][j].isDisable)
+              disableDaySelected.push(this.dayRows[startOffset[0]][j])
+          }
+          //检查最后一行开始到末尾
+          for(j = 0; j <= endOffset[1]; j++){
+            if(this.dayRows[endOffset[0]][j].isDisable)
+              disableDaySelected.push(this.dayRows[endOffset[0]][j])
+          }
+        }
+        
+        for(i = startOffset[0] + 1; i <= endOffset[0] - 1; i++){
           for(j = 0; j < 7; j++){
             if(this.dayRows[i][j].isDisable)
               disableDaySelected.push(this.dayRows[i][j])
@@ -182,7 +196,7 @@
       clearSelection (){
         this.dayRows.forEach( row => {
           row.forEach( day => {
-            day.status = ''
+            day.status = undefined
           })
         })
       }

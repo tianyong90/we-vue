@@ -3,10 +3,15 @@
     <div class="header">
       <span class="btn">x</span>
       <span class="title">日期选择</span>
-      <span class="btn">清除</span>
+      <span class="btn" @click="_clearSelection">清除</span>
     </div>
 
-    <wv-calendar-picker></wv-calendar-picker>
+    <wv-calendar-picker 
+      @onSelectHasDisableDate="_disableDaySelected"
+      ref="calendarPicker"
+      type="range"
+      @onSelect="_onSelect"
+    ></wv-calendar-picker>
 
     <div class="controll-bar">
 
@@ -58,6 +63,20 @@
         afterLeave: () => {},
       }
     },
+
+    methods: {
+      _disableDaySelected (days){
+        console.log(days)
+      },
+
+      _clearSelection (){
+        this.$refs.calendarPicker.clearSelection()
+      },
+
+      _onSelect(start, end){
+        console.log(start, end)
+      }
+    }
   }
 </script>
 

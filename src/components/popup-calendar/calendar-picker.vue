@@ -15,35 +15,66 @@
       WvCalendar
     },
 
+    /** {Event}
+     * @function{onSelectHasDisableDate}
+     * @function{onSelect}
+     */
+
+    props: {
+      type: {
+        type: String,
+        default: 'range'
+      }
+    },
+
     data (){
       return {
         selectedOne: null,
         selectedTwo: null,
+        selectedStart: null,
+        selectedEnd: null,
         clickedCount: 0
       }
     },
 
+    mounted (){
+      setTimeout(()=>{
+        this.$refs.calendar.disableDay(2017,10,24)
+      },2000)
+    },
+
     methods: {
       //公共方法
-      clearSelection (){
+      clearSelection (check=true){
         this.$refs.calendar.clearSelection()
+        
+        if(check){
+          this.selectedOne = null
+          this.clickedCount = 0
+          this._emitDone()
+        }
       },
 
       //私有方法
       _click (e) {
         if(e.carrier){
-          if(this.clickedCount === 0){
-            this.selectedOne = e.carrier
-            this.selectedTwo = null
-          }
-          
-          if(this.clickedCount === 1)
-            this.selectedTwo = e.carrier
+          if(this.type === 'range'){
+            if(this.clickedCount === 0){
+              this.selectedOne = e.carrier
+              this.selectedTwo = null
+              this._selectedOne()
+            }
+            
+            if(this.clickedCount === 1)
+              this.selectedTwo = e.carrier
 
-          this.clickedCount++
-          if(this.clickedCount > 1){
-            this.clickedCount = 0
-            this._selectedTwo()
+            this.clickedCount++
+            if(this.clickedCount > 1){
+              this.clickedCount = 0
+              this._selectedTwo()
+            }
+          }else if(this.type === 'point'){
+            this.selectedOne = e.carrier
           }
         }
       },
@@ -69,8 +100,6 @@
           vm_months[0].year, vm_months[0].month
         )
 
-        console.log(startOffset, monthsInvolved)
-
         for(i = 0; i < monthsInvolved; i++){
           git.push(vm_months[startOffset++].setRange(start, end))
         }
@@ -79,9 +108,9 @@
         hashDisableOnSelect = false
         disableDaySelected = []
         git.forEach( result =>{
-          if(result.hashDisableOnSelect === true){
+          if(result.hashDisableDay === true){
             hashDisableOnSelect = true
-            disableDaySelected.push.apply(null, result.disableDaySelected)
+            disableDaySelected.push.apply(disableDaySelected, result.disableDaySelected)
           }
         })
 
@@ -89,6 +118,10 @@
           git.forEach( result =>{
             result.commit()
           })
+          this._emitDone(start, end)
+        }else{
+          this.clearSelection(false)
+          this.$emit('onSelectHasDisableDate', disableDaySelected)
         }
       },
 
@@ -117,16 +150,59 @@
         }
 
         this._setRange(start, end)
+      },
+
+      _selectedOne (){
+        var val = this.selectedOne
+
+        this.clearSelection(false)
+        if(val){
+          val.vm_month.getDay(val.vm_day.day).status = 
+             this.type === 'range' ? 'selected-start' : 'selected-left-right'
+          
+          this._emitDone()
+        }
+      },
+
+      _emitDone (start, end){
+        if(this.type === 'point'){
+          this.selectedStart = {
+            year: this.selectedOne.vm_month.year,
+            month: this.selectedOne.vm_month.month,
+            day: this.selectedOne.vm_day.day
+          }
+          this.$emit('onSelect', this.selectedStart)
+        }else if(this.type === 'range'){
+          this.selectedStart = null
+
+          if(this.selectedOne)
+          this.selectedStart = {
+            year: this.selectedOne.vm_month.year,
+            month: this.selectedOne.vm_month.month,
+            day: this.selectedOne.vm_day.day
+          }
+
+          this.selectedEnd = null
+          if(start)
+          this.selectedStart = {
+            year: start.year,
+            month: start.month,
+            day: start.day
+          }
+
+          if(end)
+          this.selectedEnd = {
+            year: end.year,
+            month: end.month,
+            day: end.day
+          }
+          this.$emit('onSelect', this.selectedStart, this.selectedEnd)
+        }
       }
     },
 
     watch: {
-      selectedOne (val, oldVal){
-        if(oldVal)
-          this.clearSelection()
-        if(val)
-        val.vm_month.getDay(val.vm_day.day).status = 'selected-start'
-      },
+      
     }
   }
 </script>
