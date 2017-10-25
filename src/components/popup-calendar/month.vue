@@ -32,6 +32,7 @@
         type: Number,
         required: true
       },
+      dayRules: Object
     },
 
     data (){
@@ -64,10 +65,10 @@
             })
           }else{
             i_day++
-            dayRow.push({
+            dayRow.push(Object.assign({
               day: i_day,
               status: ''
-            })
+            }, this.dayRules ? this.dayRules[i_day] : {}))
           }
         }
         dayRows.push(dayRow)

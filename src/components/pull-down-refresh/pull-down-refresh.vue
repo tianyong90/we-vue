@@ -96,8 +96,12 @@
         default: 'transparent'
       },
       maxDragOffset: Number,
+      customMsg: Array,
       triggerScrollLoadOffset: Number,
-      customMsg: Array
+      throttleDelay: {
+        type: Number,
+        default: 100
+      }
     },
 
     mounted () {
@@ -113,7 +117,7 @@
         })
       
       Object.assign(this.messages, this.customMsg)
-      this.$refs.wrapper.onscroll = throttle(this._scroll, 90)
+      this.$refs.wrapper.onscroll = throttle(this._scroll, this.throttleDelay)
     },
 
     methods: {

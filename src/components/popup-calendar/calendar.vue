@@ -25,6 +25,7 @@
             :key="$index"
             :year="month.Y" 
             :month="month.M"
+            :dayRules="month.R"
           ></wv-month>
         </div>
       </wv-pull-down-refresh>
@@ -87,7 +88,7 @@
     created (){
       var months = {},
         date = new Date(),
-        i, tmpY, tmpM; 
+        i, tmpY, tmpM, tmpD; 
 
       this.year = this.initYear ? this.initYear : date.getFullYear()
       this.month = this.inilMonth ? this.inilMonth : date.getMonth()+1
@@ -118,6 +119,25 @@
 
       this.currentMinY = this.year
       this.currentMinM = this.month
+      this.minMonthDayRules = {}
+      this.maxMonthDayRules = {}
+
+      //生成最后最前面的一些不可用的日子
+      tmpD = Math.min(countDays(this.minYear, this.minMonth), this.day)
+      for(i = 1 ; i <= tmpD; i++){
+        this.minMonthDayRules[i] = {
+          isUnavailable: true
+        }
+      }
+
+      tmpD = countDays(this.maxYear, this.maxMonth)
+      if(tmpD > this.day){
+        for(i = this.day + 1; i <= tmpD; i++){
+          this.maxMonthDayRules[i] = {
+            isUnavailable: true
+          }
+        }
+      }
     },
 
     methods: {
@@ -153,20 +173,19 @@
       },
 
       disableDay (year, month, day){
-        //获取,那个vm_month,然后设置就好了
-        var vm_month = this.getMonth(year, month),
-          day = vm_month.getDay(day);
-          
-        this.$set(day, 'isDisable', true)
-        this.$parent && this.$parent.clearSelection()
+        this._setDayProps(year, month, day, 'isDisable', true)
       },
 
       enableDay (year, month, day){
-        var vm_month = this.getMonth(year, month);
-          day = vm_month.getDay(day)
+        this._setDayProps(year, month, day, 'isDisable', false)
+      },
 
-        this.$set(day, 'isDisable', false)
-        this.$parent && this.$parent.clearSelection()
+      availableDay (year, month, day){
+        this._setDayProps(year, month, day, 'isUnavailable', false)
+      },
+
+      unavailableDay (year, month, day){
+        this._setDayProps(year, month, day, 'isUnavailable', true)
       },
 
       //私有方法
@@ -178,10 +197,19 @@
           this.currentMinM !== this.minMonth
         ){
           next = offsetMonth(this.currentMinY, this.currentMinM, -1)
-          this.$set(this.months, next[0]*12 + next[1] ,{
-            Y: next[0],
-            M: next[1]
-          })
+
+          if(next[0] === this.minYear && next[1] === this.minMonth)
+            this.$set(this.months, next[0]*12 + next[1] ,{
+              Y: next[0],
+              M: next[1],
+              R: this.minMonthDayRules
+            })
+          else
+            this.$set(this.months, next[0]*12 + next[1] ,{
+              Y: next[0],
+              M: next[1]
+            })
+          
           this.currentMinY = next[0]
           this.currentMinM = next[1]
           success()
@@ -199,16 +227,33 @@
           this.currentMaxM !== this.maxMonth
         ){
           next = offsetMonth(this.currentMaxY, this.currentMaxM, 1)
-          this.$set(this.months, next[0]*12 + next[1] ,{
-            Y: next[0],
-            M: next[1]
-          })
+          
+          if(next[0] === this.maxYear && next[1] === this.maxMonth)
+            this.$set(this.months, next[0]*12 + next[1] ,{
+              Y: next[0],
+              M: next[1],
+              R: this.maxMonthDayRules
+            })
+          else
+            this.$set(this.months, next[0]*12 + next[1] ,{
+              Y: next[0],
+              M: next[1]
+            })
+            
           this.currentMaxY = next[0]
           this.currentMaxM = next[1]
         }else{
           noMoreTry()
-          noMore()
         }
+      },
+
+      _setDayProps(year, month, day ,name, val){
+        var vm_month = this.getMonth(year, month);
+          day = vm_month.getDay(day)
+
+        this.$set(day, name, val)
+        this.$parent && this.$parent.clearSelection()
+        day = null
       }
     }
 

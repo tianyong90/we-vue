@@ -24,6 +24,10 @@
         type: Boolean,
         default: false
       },
+      isUnavailable: {
+        type: Boolean,
+        default: false
+      }
     },
     
     data (){
@@ -44,11 +48,14 @@
         if(this.isDisable)
           return 'disabled'
 
+        if(this.isUnavailable)
+          return 'unavailable'
+
         return val
       },
 
       _checkDescription(val){
-        if(this.isPlaceholder)
+        if(this.isPlaceholder || this.isUnavailable)
           return ''
         
         if(this.isDisable)
@@ -72,7 +79,7 @@
       },
 
       _click(e){
-        if(this.isPlaceholder === false && this.isDisable === false)
+        if(this.isPlaceholder === false && this.isDisable === false && this.isUnavailable === false)
           e.carrier = {
             vm_day: this
           }
@@ -150,6 +157,14 @@
 
       & .day-description {
         color: #888;
+      }
+    }
+
+    &[data-status="unavailable"]{
+      & .day-number {
+        color: #bbb;
+        border-radius: 100%;
+        background-color: #eee;
       }
     }
 
