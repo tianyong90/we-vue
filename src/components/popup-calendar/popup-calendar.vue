@@ -28,10 +28,7 @@
     </div>
 
     <div class="time-select-bar" v-show="false">
-      <div @click="_select('today')">今天</div>
-      <div @click="_select('yesterday')">昨天</div>
-      <div @click="_select('lastWeek')">近一周</div>
-      <div @click="_select('lastMonth')">近一个月</div>
+      
     </div>
 
     <div class="controll-bar" v-show="selectedStart || selectedEnd">
@@ -145,7 +142,7 @@
         this.selectedStart = start
         this.selectedEnd = end
         this.event.afterLeave = null
-        
+
         this.status = this.type === 'range' ? (start && end) : start
       },
 

@@ -201,6 +201,8 @@
 
       _emitDone (start, end){
         if(this.type === 'point'){
+          this.selectedStart = null
+          
           if(this.selectedOne)
           this.selectedStart = {
             year: this.selectedOne.vm_month.year,
@@ -261,14 +263,14 @@
           vm_month: vm_month_start,
           vm_day: vm_day_start
         }
-        this.selectedTwo = {
-          vm_month: vm_month_end,
-          vm_day: vm_day_end
-        }
 
-        if(this.type === 'range')
+        if(this.type === 'range'){
+          this.selectedTwo = {
+            vm_month: vm_month_end,
+            vm_day: vm_day_end
+          }
           this._selectedTwo()
-        else if(this.type === 'point'){
+        }else if(this.type === 'point'){
           this._selectedOne()
         }
       }
