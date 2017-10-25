@@ -17,13 +17,14 @@
         class="pull-down-refresh"
         :customMsg="pullDownMsg"
       >
-        <wv-month 
-          v-for="(month, $index) in months"
-          :key="$index"
-          ref="$months"
-          :year="month.Y" 
-          :month="month.M"
-        ></wv-month>
+        <div class="wrapper" ref="wrapper">
+          <wv-month 
+            v-for="(month, $index) in months"
+            :key="$index"
+            :year="month.Y" 
+            :month="month.M"
+          ></wv-month>
+        </div>
       </wv-pull-down-refresh>
     </div>
   </div>
@@ -55,7 +56,7 @@
         minMonth: null,
         maxYear: null,
         maxMonth: null,
-        months: [],
+        months: {},
         rules: {},
         pullDownMsg: [
           {
@@ -68,13 +69,13 @@
             text: '正在刷新',
             color: ''
           },{
-            text: '加载成功',
-            color: ''
+            text: '~OK~',
+            color: '#88b786'
           },{
             text: '加载失败',
             color: ''
           },{
-            text: '~没~',
+            text: '~不给~',
             color: '#bbb'
           }
         ],
@@ -105,9 +106,9 @@
       //默认显示5个月,从initMonth开始
       for(i = 0; i < 5; i++){
         [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
-        this.months.push({
-          M: tmpM,
-          Y: tmpY
+        this.$set(this.months, tmpY*12 + tmpM ,{
+          Y: tmpY,
+          M: tmpM
         })
       }
 
@@ -117,26 +118,41 @@
 
     methods: {
       clearSelection (){
-        this.$refs.$months.forEach( vm_month => {
+        this.getVmMonths().forEach( vm_month => {
           vm_month.clearSelection()
         })
       },
 
       getMonth (year, month){
-        var vm_months = this.$refs.$months,
+        var vm_monthFirst = this.getMonthByOffset(0),
           offset = monthsBetween(
             year, month,
-            vm_months[0].year, vm_months[0].month
+            vm_monthFirst.year, vm_monthFirst.month
           );
         
-        return vm_months[offset]
+        return this.getMonthByOffset(offset)
+      },
+
+      getMonthByOffset (offset){
+        return this.$refs.wrapper.children[offset].__vue__
+      },
+
+      getVmMonths (){
+        var $wrapper = this.$refs.wrapper;
+        var vm_months = [];
+
+        Array.prototype.forEach.call($wrapper.children, (ele)=>{
+          vm_months.push(ele.__vue__)
+        })
+        
+        return vm_months
       },
 
       disableDay (year, month, day){
         //获取,那个vm_month,然后设置就好了
-        var vm_month = this.getMonth(year, month);
-          day = vm_month.getDay(day)
-        
+        var vm_month = this.getMonth(year, month),
+          day = vm_month.getDay(day);
+          
         this.$set(day, 'isDisable', true)
         this.$parent && this.$parent.clearSelection()
       },
@@ -158,7 +174,7 @@
           this.currentMinM !== this.minMonth
         ){
           next = offsetMonth(this.currentMinY, this.currentMinM, -1)
-          this.months.unshift({
+          this.$set(this.months, next[0]*12 + next[1] ,{
             Y: next[0],
             M: next[1]
           })
@@ -168,13 +184,6 @@
         }else{
           noMoreTry()
           noMore()
-        }
-      },
-
-      _currentMinMonth(){
-        return {
-          Y: [0].year,
-          M: this.$refs.$months[0].month
         }
       },
     }

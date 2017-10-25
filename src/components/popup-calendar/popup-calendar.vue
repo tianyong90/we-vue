@@ -15,13 +15,14 @@
     ></wv-calendar-picker>
 
     <div class="controll-bar" v-show="selectedStart || selectedEnd">
-      <div class="result">
+      <div class="result" v-show="type === 'range'">
         <p>开始: {{selectedStart | selectionFilter}}</p>
         <p>结束: {{selectedEnd | selectionFilter}}</p>
       </div>
       <div class="btn-confirm" 
         @click="_confirm" 
         :data-status="status | statusFilter"
+        :data-style="type | typeFilter"
       >确认</div>
     </div>
   </div>
@@ -144,6 +145,11 @@
       statusFilter (val){
         if(val === null)
           return 'disable'
+      },
+
+      typeFilter(val){
+        if(val === 'point')
+          return 'oneline'
       }
     },
 
@@ -280,6 +286,11 @@
     &[data-status='disable'] {
       color: #bbb;
       background: #ddd;
+    }
+
+    &[data-style='oneline'] {
+      flex: auto;
+      width: auto;
     }
   }
 </style>

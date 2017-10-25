@@ -37,12 +37,6 @@
       }
     },
 
-    mounted (){
-      setTimeout(()=>{
-        this.$refs.calendar.disableDay(2017,10,24)
-      },2000)
-    },
-
     methods: {
       //公共方法
       clearSelection (check=true){
@@ -75,6 +69,7 @@
             }
           }else if(this.type === 'point'){
             this.selectedOne = e.carrier
+            this._selectedOne()
           }
         }
       },
@@ -86,22 +81,24 @@
       _setRange (start, end){
         //需要算出所涉及的月份
         var monthsInvolved = 0, i,
-          vm_months = this.$refs.calendar.$refs.$months,
+          getVmMonth = this.$refs.calendar.getMonthByOffset,
+          vm_month0 = getVmMonth(0),
           startOffset, git = [], hashDisableOnSelect, disableDaySelected;
 
         monthsInvolved = monthsBetween(
           end.year, end.month,
           start.year, start.month
         ) + 1
+
         
         //转发给对应的vm_month
         startOffset = monthsBetween(
           start.year, start.month,
-          vm_months[0].year, vm_months[0].month
+          vm_month0.year, vm_month0.month
         )
 
         for(i = 0; i < monthsInvolved; i++){
-          git.push(vm_months[startOffset++].setRange(start, end))
+          git.push(getVmMonth(startOffset++).setRange(start, end))
         }
 
         //在这里检查是否有disable的情况咯
@@ -166,6 +163,7 @@
 
       _emitDone (start, end){
         if(this.type === 'point'){
+          if(this.selectedOne)
           this.selectedStart = {
             year: this.selectedOne.vm_month.year,
             month: this.selectedOne.vm_month.month,

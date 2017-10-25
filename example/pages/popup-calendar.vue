@@ -1,7 +1,8 @@
 <template>
   <div class="page" ref="page">
     <wv-group title="Canlendar">
-      <wv-cell title="样例" is-link @click="click0"></wv-cell>
+      <wv-cell title="选择日期" is-link @click="click0"></wv-cell>
+      <wv-cell title="选择日期区间" is-link @click="click1"></wv-cell>
     </wv-group>
   </div>
 </template>
@@ -16,6 +17,20 @@
 
     methods: {
       click0 (e) {
+        this.calendar.open(e, {
+          type: 'point',
+          
+          onConfirm: (result) => {
+            console.log(result)
+          },
+
+          onDisableDaySelected: (days) => {
+            console.log(days)
+          }
+        })
+      },
+
+      click1 (e) {
         this.calendar.open(e, {
           onConfirm: (start, end) => {
             console.log(start, end)
