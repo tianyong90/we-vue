@@ -10,13 +10,21 @@
       <div class="week-indicator-item grey">六</div>
     </div>
     <div class="months-warpper">
-      <wv-month 
-        v-for="(month, $index) in months"
-        :key="$index"
-        ref="$months"
-        :year="month.Y" 
-        :month="month.M"
-      ></wv-month>
+      <wv-pull-down-refresh 
+        @onLoad="_loadMore" 
+        :showMsgIcon="false" 
+        :maxDragOffset="80" 
+        class="pull-down-refresh"
+        :customMsg="pullDownMsg"
+      >
+        <wv-month 
+          v-for="(month, $index) in months"
+          :key="$index"
+          ref="$months"
+          :year="month.Y" 
+          :month="month.M"
+        ></wv-month>
+      </wv-pull-down-refresh>
     </div>
   </div>
 </template>
@@ -48,7 +56,28 @@
         maxYear: null,
         maxMonth: null,
         months: {},
-        rules: {}
+        rules: {},
+        pullDownMsg: [
+          {
+            text: '加载上个月',
+            color: '#bbb'
+          },{
+            text: '加载上个月',
+            color: '#bbb'
+          },{
+            text: '正在刷新',
+            color: ''
+          },{
+            text: '刷新成功',
+            color: ''
+          },{
+            text: '加载失败',
+            color: ''
+          },{
+            text: '~没~',
+            color: '#bbb'
+          }
+        ],
       }
     },
 
@@ -124,6 +153,11 @@
 
         this.$set(day, 'isDisable', false)
         this.$parent && this.$parent.clearSelection()
+      },
+
+      _loadMore(success, error, noMore, noMoreTry){
+        noMoreTry()
+        noMore()
       }
     }
 
@@ -163,5 +197,6 @@
     -webkit-box-direction: normal;
     -webkit-box-orient: vertical;
     overflow-y: auto;
+    background-color: #eee;
   }
 </style>

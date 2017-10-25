@@ -44,6 +44,7 @@
       onClose: Function,
       onOpen: Function,
       onConfirm: Function,
+      onDisableDaySelected: Function,
       type: {
         type: String,
         default: 'range'
@@ -87,7 +88,8 @@
 
     methods: {
       _disableDaySelected (days){
-        console.log(days)
+        this.onDisableDaySelected instanceof Function && 
+          this.onDisableDaySelected(days)
       },
 
       _clearSelection (){

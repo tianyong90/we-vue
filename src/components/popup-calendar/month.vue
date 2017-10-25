@@ -211,6 +211,7 @@
 
   .month {
     width: 100%;
+    background: white;
   }
 
   .month-title{

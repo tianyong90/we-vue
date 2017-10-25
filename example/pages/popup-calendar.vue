@@ -17,8 +17,12 @@
     methods: {
       click0 (e) {
         this.calendar.open(e, {
-          onConfirm: (start, end)=>{
+          onConfirm: (start, end) => {
             console.log(start, end)
+          },
+
+          onDisableDaySelected: (days) => {
+            console.log(days)
           }
         })
       }

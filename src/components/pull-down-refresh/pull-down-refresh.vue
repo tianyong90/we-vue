@@ -1,6 +1,6 @@
 <template>
   <div class="wv-pull-down-refresh-warpper" ref="wrapper" v-swipe:vertical="swipeConfig">
-    <div class="wv-pull-down-refresh-panel" ref="panel">
+    <div class="wv-pull-down-refresh-panel" ref="panel" :style="{ 'background-color': backgroundColor }">
       <div class="wv-pull-down-refresh-panel-icons" ref="icons" v-show="showMsgIcon">
         <div class="loading-circle-icon" ref="circle"></div>
         <div class="arrows-icon" ref="arrow"></div>
@@ -45,6 +45,7 @@
         status: 0,
         startY: null,
         scrollLock: null,
+        noMoreTry: false,
         messages: [
           '下拉刷新',
           '松开刷新',
@@ -53,6 +54,29 @@
           '加载失败',
           '没有更多'
         ]
+
+        //有color选项的数据格式,课混合使用~
+        // messages: [
+        //   {
+        //     text: '下拉刷新',
+        //     color: ''
+        //   },{
+        //     text: '松开刷新',
+        //     color: ''
+        //   },{
+        //     text: '正在刷新',
+        //     color: ''
+        //   },{
+        //     text: '刷新成功',
+        //     color: ''
+        //   },{
+        //     text: '加载失败',
+        //     color: ''
+        //   },{
+        //     text: '没有更多',
+        //     color: ''
+        //   }
+        // ]
       }
     },
 
@@ -60,11 +84,32 @@
       showMsgIcon: {
         type: Boolean,
         default: true
-      }
+      },
+      triggerOffset: {
+        type: Number,
+        default: 40
+      },
+      backgroundColor: {
+        type: String,
+        default: 'transparent'
+      },
+      maxDragOffset: Number,
+      customMsg: Array
     },
 
     mounted () {
-      this.$refs.panel.style.marginTop = -this.$refs.panel.clientHeight + 'px';
+      if(this.$parent)
+        this.$parent.$nextTick(()=>{
+          requestAnimationFrame(()=>{
+            this.$refs.panel.style.marginTop = -this.$refs.panel.clientHeight + 'px';
+          })
+        })
+      else
+        requestAnimationFrame(()=>{
+          this.$refs.panel.style.marginTop = -this.$refs.panel.clientHeight + 'px';
+        })
+      
+      Object.assign(this.messages, this.customMsg)
     },
 
     methods: {
@@ -90,14 +135,22 @@
           this.status = 1;
         }else {
           offset = parseInt((info.movingY - this.startY) / 2);
+
+          if(typeof this.maxDragOffset === 'number')
+            offset = offset > this.maxDragOffset ? this.maxDragOffset : offset
+             
           $panel.style.transform = `translateY(${offset}px)`;
           $content.style.transform = `translateY(${offset}px)`;
 
-          if(offset > 110 && this.status === 1)
-            this.status = 2;
+          if(this.noMoreTry === true){
+            this._noMore(false)
+          }else{
+            if(offset > this.triggerOffset && this.status === 1)
+              this.status = 2;
 
-          if(offset < 110 && this.status === 2)
-            this.status = 1;
+            if(offset < this.triggerOffset && this.status === 2)
+              this.status = 1;
+          }
         }
         preventDefault()
       },
@@ -110,7 +163,7 @@
           $panel.style.transitionDuration = null;
           $content.style.transitionDuration = null;
 
-          if(this.status === 1)
+          if(this.status === 1 || this.noMoreTry === true)
             this.status = 0;
           else if(this.status === 2)
             this.status = 3;
@@ -127,19 +180,33 @@
         setTimeout(() => this.status = 0, 720);
       },
 
-      _noMore(){
-        this._message(5);
-        setTimeout(() => this.status = 0, 720);
+      _noMore(backInital = true){
+        this._message(5, false);
+
+        if(backInital)
+          setTimeout(() => this.status = 0, 720);
       },
 
-      _message(which){
+      _noMoreTry(){
+        this.noMoreTry = true
+      },
+
+      _message(which, withAnimation=true){
         var $message = this.$refs.message,
           $panel = this.$refs.panel,
-          $active = this.$refs.icons.getElementsByClassName('active')[0];
+          $active = this.$refs.icons.getElementsByClassName('active')[0],
+          msg = this.messages[which];
 
         $panel.setAttribute('data-status', which)
-        $message.innerText = this.messages[which];
         $active && $active.classList.remove('active');
+
+        if(typeof msg === 'object'){
+          $message.innerText = msg.text
+          $message.style.color = msg.color
+        }else if(typeof msg === 'string'){
+          $message.innerText = msg
+          $message.style.color = ''
+        }
 
         if(which === 2)
           this.$refs.circle.classList.add('active');
@@ -156,6 +223,7 @@
           which === 4 && 
             this.$refs.error.classList.add('active');
 
+          if(withAnimation)
           requestAnimationFrame(()=>{
             $panel.style.opacity = 0;
             $panel.style.transitionDuration = '0s';
@@ -165,8 +233,7 @@
             })
           });
         }
-      }
-
+      },
     },
 
     watch: {
@@ -188,7 +255,8 @@
             $panel.style.transitionDuration = '0ms';
             $content.style.transitionDuration = '0ms';
             $panel.style.visibility = 'visible';
-            this._message(0);
+            if(this.noMoreTry === false)
+              this._message(0);
           break;
           case 2:
             this._message(1);
@@ -199,7 +267,7 @@
             $panel.style.transform = `translateY(50.4px)`;
             $content.style.transform = `translateY(50.4px)`;
 
-            this.$emit('onLoad', this._success, this._error, this._noMore);
+            this.$emit('onLoad', this._success, this._error, this._noMore, this._noMoreTry);
           break;
         }
       }

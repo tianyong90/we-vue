@@ -173,7 +173,7 @@
         this._animation('out', true)
 
         this.vm_slot.event && 
-          this.vm_slot.event.beforeLeave instanceof Function && 
+          this.vm_slot.event.afterLeave instanceof Function && 
             this.vm_slot.event.afterLeave();
         
         requestAnimationFrame(() => {
