@@ -41,6 +41,11 @@
     '星期六'
   ]
 
+  const fixZero = function (val){
+    if(val < 9) val = '0'+val
+    return val
+  }
+
   export default {
     name: 'wv-popup-calendar',
 
@@ -155,7 +160,7 @@
         if(select){
           var date = new Date(`${select.year}-${select.month}-${select.day}`)
           
-          return `${select.year}-${select.month}-${select.day} ${weekToZh[date.getDay()]}`
+          return `${select.year}-${fixZero(select.month)}-${fixZero(select.day)} ${weekToZh[date.getDay()]}`
         }
 
         return '未选择'
@@ -169,12 +174,6 @@
       typeFilter(val){
         if(val === 'point')
           return 'oneline'
-      }
-    },
-
-    watch: {
-      status (){
-
       }
     }
   }
