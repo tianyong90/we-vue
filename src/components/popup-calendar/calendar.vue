@@ -55,7 +55,7 @@
         minMonth: null,
         maxYear: null,
         maxMonth: null,
-        months: {},
+        months: [],
         rules: {},
         pullDownMsg: [
           {
@@ -68,7 +68,7 @@
             text: '正在刷新',
             color: ''
           },{
-            text: '刷新成功',
+            text: '加载成功',
             color: ''
           },{
             text: '加载失败',
@@ -105,20 +105,14 @@
       //默认显示5个月,从initMonth开始
       for(i = 0; i < 5; i++){
         [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
-        this.months[tmpY*12+tmpM] = {
-          M: tmpM,
-          Y: tmpY
-        }
-      }
-
-      setTimeout(()=>{
-        tmpY = 2018
-        tmpM = 10
-        this.$set(this.months, tmpY*12+tmpM, {
+        this.months.push({
           M: tmpM,
           Y: tmpY
         })
-      },2000)
+      }
+
+      this.currentMinY = this.year
+      this.currentMinM = this.month
     },
 
     methods: {
@@ -155,10 +149,34 @@
         this.$parent && this.$parent.clearSelection()
       },
 
+      //私有方法
       _loadMore(success, error, noMore, noMoreTry){
-        noMoreTry()
-        noMore()
-      }
+        var  next;
+        
+        if(
+          this.currentMinY !== this.minYear || 
+          this.currentMinM !== this.minMonth
+        ){
+          next = offsetMonth(this.currentMinY, this.currentMinM, -1)
+          this.months.unshift({
+            Y: next[0],
+            M: next[1]
+          })
+          this.currentMinY = next[0]
+          this.currentMinM = next[1]
+          success()
+        }else{
+          noMoreTry()
+          noMore()
+        }
+      },
+
+      _currentMinMonth(){
+        return {
+          Y: [0].year,
+          M: this.$refs.$months[0].month
+        }
+      },
     }
 
   }

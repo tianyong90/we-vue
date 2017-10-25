@@ -110,8 +110,23 @@
 
       _confirm (){
         if(this.status !== null){
+          var start, end;
+          if(this.selectedStart)
+          start = {
+            year: this.selectedStart.year,
+            month: this.selectedStart.month,
+            day: this.selectedStart.day
+          }
+
+          if(this.selectedEnd)
+          end = {
+            year: this.selectedEnd.year,
+            month: this.selectedEnd.month,
+            day: this.selectedEnd.day
+          }
+          
           this.event.afterLeave = ()=>{
-            this.onConfirm(this.selectedStart, this.selectedEnd)
+            this.onConfirm(start, end) //不传递observable的对象感觉设置的时候会报错什么的
           }
           this._close()
         }
@@ -259,6 +274,7 @@
     border-radius: 5px;
     color: #fff;
     font-size: 18px;
+    font-weight: 300;
     background: #1aad19;
 
     &[data-status='disable'] {
