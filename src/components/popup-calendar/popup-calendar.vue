@@ -14,6 +14,13 @@
       class="calendar-picker"
     ></wv-calendar-picker>
 
+    <div class="shortcut-bar" v-show="enableShortcut">
+      <div @click="_select('today')">今天</div>
+      <div @click="_select('yesterday')">昨天</div>
+      <div @click="_select('lastWeek')">近一周</div>
+      <div @click="_select('lastMonth')">近一个月</div>
+    </div>
+
     <div class="controll-bar" v-show="selectedStart || selectedEnd">
       <div class="result" v-show="type === 'range'">
         <p>开始: {{selectedStart | selectionFilter}}</p>
@@ -62,6 +69,10 @@
       onConfirm: Function,
       onConfirmLeaved: Function,
       onDisableDaySelected: Function,
+      enableShortcut: {
+        type: Boolean,
+        default: false
+      },
       type: {
         type: String,
         default: 'range'
@@ -152,6 +163,10 @@
 
           this._close()
         }
+      },
+
+      _select (val){
+        this.$refs.calendarPicker.select(val)
       }
     },
 
@@ -287,6 +302,17 @@
       flex: auto;
       font-size: 12px;
     }
+  }
+
+  .shortcut-bar{
+    display: flex;
+    flex: 0 0 auto;
+    height: 43px;
+    justify-content: space-around;
+    align-items: center;
+    color: green;
+    border-top: 1px solid #ddd;
+    font-size: 16px;
   }
 
   .btn-confirm {

@@ -92,6 +92,12 @@
         return this.dayRows[row][offset]
       },
 
+      getVmDay (day) {
+        var [row, offset] = this.getDayOffset(day)
+
+        return this.$refs.$rows[row].getVmDay(offset)
+      },
+
       getDayOffset (day){
         var row, offset
         row = Math.ceil( (this.startPlaceholders + day) / 7)

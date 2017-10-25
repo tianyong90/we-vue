@@ -141,6 +141,10 @@
             config.row[endAdjusted].status = 'selected-left-right'
           }
         }
+      },
+
+      getVmDay(offset){
+        return this.$refs.$days[offset]
       }
     }
   }

@@ -190,7 +190,7 @@
 
       //私有方法
       _loadMorePrev(success, error, noMore, noMoreTry){
-        var  next;
+        var next;
         
         if(
           this.currentMinY !== this.minYear || 

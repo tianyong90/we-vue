@@ -49,6 +49,39 @@
         }
       },
 
+      select(range){
+        var date = new Date(),
+          endY = date.getFullYear(),
+          endM = date.getMonth(),
+          endD = date.getDate(),
+          startY, startM, startD;
+
+        if(range === 'today'){
+          startY = endY
+          startM = endM
+          startD = endD
+        }else if(range === 'yesterday'){
+          date.setDate(date.getDate() - 1)
+          startY = endY = date.getFullYear()
+          startM = endM = date.getMonth()
+          startD = endD = date.getDate()
+        }else if(range === 'lastWeek'){
+          date.setDate(date.getDate() - 6)
+          startY = date.getFullYear()
+          startM = date.getMonth()
+          startD = date.getDate()
+        }else if(range === 'lastMonth'){
+          date.setDate(date.getDate() - 30)
+          startY = date.getFullYear()
+          startM = date.getMonth()
+          startD = date.getDate()
+        }else if(range instanceof Object){
+          var {startY, startM, startD, endY, endM, endD} = range; //感觉解构有问题啊...
+        }
+
+        this._select(startY, startM+1, startD, endY, endM+1, endD);
+      },
+
       //私有方法
       _click (e) {
         if(e.carrier){
@@ -196,6 +229,34 @@
           }
           this.$emit('onSelect', this.selectedStart, this.selectedEnd)
         }
+      },
+
+      _select(startY, startM, startD, endY, endM, endD){
+        var vm_calendar = this.$refs.calendar
+        //检查月份是否加载
+        if(monthsBetween(startY, startM, vm_calendar.currentMinY, vm_calendar.currentMinM) < 0){
+          vm_calendar._loadMorePrev(()=>{})
+          this.$nextTick(()=>{
+            this._select.apply(this, arguments)
+          })
+          return
+        }
+
+        var vm_month_start = this.$refs.calendar.getMonth(startY, startM),
+          vm_month_end = this.$refs.calendar.getMonth(endY, endM),
+          vm_day_start = vm_month_start.getVmDay(startD),
+          vm_day_end = vm_month_end.getVmDay(endD);
+
+        this.selectedOne = {
+          vm_month: vm_month_start,
+          vm_day: vm_day_start
+        }
+        this.selectedTwo = {
+          vm_month: vm_month_end,
+          vm_day: vm_day_end
+        }
+
+        this._selectedTwo()
       }
     },
 
