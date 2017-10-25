@@ -14,7 +14,20 @@
       class="calendar-picker"
     ></wv-calendar-picker>
 
-    <div class="shortcut-bar" v-show="enableShortcut">
+    <div class="shortcut-bar" v-show="enableShortcut && type === 'range'">
+      <div @click="_select('today')">今天</div>
+      <div @click="_select('yesterday')">昨天</div>
+      <div @click="_select('lastWeek')">近一周</div>
+      <div @click="_select('lastMonth')">近一个月</div>
+    </div>
+
+    <div class="shortcut-bar" v-show="enableShortcut && type === 'point'">
+      <div @click="_select('today')">今天</div>
+      <div @click="_select('yesterday')">昨天</div>
+      <div @click="_select('tomorrow')">明天</div>
+    </div>
+
+    <div class="time-select-bar" v-show="false">
       <div @click="_select('today')">今天</div>
       <div @click="_select('yesterday')">昨天</div>
       <div @click="_select('lastWeek')">近一周</div>
@@ -69,6 +82,10 @@
       onConfirm: Function,
       onConfirmLeaved: Function,
       onDisableDaySelected: Function,
+      enableTimeSelect:{
+        type: Boolean,
+        default: false
+      },
       enableShortcut: {
         type: Boolean,
         default: false
@@ -313,6 +330,10 @@
     color: green;
     border-top: 1px solid #ddd;
     font-size: 16px;
+  }
+
+  .time-select-bar{
+    flex: 0 0 auto;
   }
 
   .btn-confirm {

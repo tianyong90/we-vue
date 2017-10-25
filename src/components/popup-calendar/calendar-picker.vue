@@ -65,6 +65,11 @@
           startY = endY = date.getFullYear()
           startM = endM = date.getMonth()
           startD = endD = date.getDate()
+        }else if(range === 'tomorrow'){
+          date.setDate(date.getDate() + 1)
+          startY = endY = date.getFullYear()
+          startM = endM = date.getMonth()
+          startD = endD = date.getDate()
         }else if(range === 'lastWeek'){
           date.setDate(date.getDate() - 6)
           startY = date.getFullYear()
@@ -261,7 +266,11 @@
           vm_day: vm_day_end
         }
 
-        this._selectedTwo()
+        if(this.type === 'range')
+          this._selectedTwo()
+        else if(this.type === 'point'){
+          this._selectedOne()
+        }
       }
     },
 
