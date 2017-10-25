@@ -45,6 +45,7 @@
       onClose: Function,
       onOpen: Function,
       onConfirm: Function,
+      onConfirmLeaved: Function,
       onDisableDaySelected: Function,
       type: {
         type: String,
@@ -127,8 +128,13 @@
           }
           
           this.event.afterLeave = ()=>{
-            this.onConfirm(start, end) //不传递observable的对象感觉设置的时候会报错什么的
+            this.onConfirmLeaved instanceof Function &&
+              this.onConfirmLeaved(start, end) //不传递observable的对象感觉设置的时候会报错什么的
           }
+          
+          this.onConfirm instanceof Function &&
+            this.onConfirm(start, end)
+
           this._close()
         }
       }

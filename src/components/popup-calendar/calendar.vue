@@ -11,11 +11,13 @@
     </div>
     <div class="months-warpper">
       <wv-pull-down-refresh 
-        @onLoad="_loadMore" 
+        @onLoad="_loadMorePrev" 
+        @onScrollLoad="_loadMoreNext"
         :showMsgIcon="false" 
         :maxDragOffset="80" 
         class="pull-down-refresh"
         :customMsg="pullDownMsg"
+        :triggerScrollLoadOffset="300"
       >
         <div class="wrapper" ref="wrapper">
           <wv-month 
@@ -110,6 +112,8 @@
           Y: tmpY,
           M: tmpM
         })
+        this.currentMaxY = tmpY
+        this.currentMaxM = tmpM
       }
 
       this.currentMinY = this.year
@@ -141,7 +145,7 @@
         var $wrapper = this.$refs.wrapper;
         var vm_months = [];
 
-        Array.prototype.forEach.call($wrapper.children, (ele)=>{
+        Array.prototype.forEach.call($wrapper.children  , (ele)=>{
           vm_months.push(ele.__vue__)
         })
         
@@ -166,7 +170,7 @@
       },
 
       //私有方法
-      _loadMore(success, error, noMore, noMoreTry){
+      _loadMorePrev(success, error, noMore, noMoreTry){
         var  next;
         
         if(
@@ -186,6 +190,26 @@
           noMore()
         }
       },
+
+      _loadMoreNext(noMoreTry){
+        var next;
+        
+        if(
+          this.currentMaxY !== this.maxYear || 
+          this.currentMaxM !== this.maxMonth
+        ){
+          next = offsetMonth(this.currentMaxY, this.currentMaxM, 1)
+          this.$set(this.months, next[0]*12 + next[1] ,{
+            Y: next[0],
+            M: next[1]
+          })
+          this.currentMaxY = next[0]
+          this.currentMaxM = next[1]
+        }else{
+          noMoreTry()
+          noMore()
+        }
+      }
     }
 
   }

@@ -67,19 +67,19 @@ export default {
     },
 
     _throttle(delay, callback, tail) {
-      var timer = null;
+      var timer = null, context;
       tail = tail === undefined ? true : tail;
 
       return function() {
         if (timer) return
 
         let args = arguments;
-        let context = this;
+        context = this;
 
-        if (!tail) callback.apply(content, args);
+        if (!tail) callback.apply(context, args);
         timer = setTimeout(function() {
           timer = null;
-          if (tail) callback.apply(content, args);
+          if (tail) callback.apply(context, args);
         }, delay);
       }
     }

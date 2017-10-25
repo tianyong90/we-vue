@@ -45,3 +45,21 @@ export function monthsBetween (y1, m1, y2, m2) {
 
   return months1 - months2
 }
+
+export function throttle (callback, delay, tail = true) {
+  var timer = null
+  var context
+
+  return function () {
+    if (timer) return
+
+    let args = arguments
+    context = this
+
+    if (!tail) callback.apply(context, args)
+    timer = setTimeout(function () {
+      timer = null
+      if (tail) callback.apply(context, args)
+    }, delay)
+  }
+}

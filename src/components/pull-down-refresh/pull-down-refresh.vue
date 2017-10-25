@@ -17,6 +17,7 @@
 
 <script>
   import { swipeDirective } from '../../custom/event/swipe.js'
+  import { throttle } from '../../custom/utils'
 
   export default {
     name: 'wv-pull-down-refresh',
@@ -46,6 +47,7 @@
         startY: null,
         scrollLock: null,
         noMoreTry: false,
+        noMoreScrollTry: false,
         messages: [
           '下拉刷新',
           '松开刷新',
@@ -94,6 +96,7 @@
         default: 'transparent'
       },
       maxDragOffset: Number,
+      triggerScrollLoadOffset: Number,
       customMsg: Array
     },
 
@@ -110,6 +113,7 @@
         })
       
       Object.assign(this.messages, this.customMsg)
+      this.$refs.wrapper.onscroll = throttle(this._scroll, 90)
     },
 
     methods: {
@@ -191,6 +195,11 @@
         this.noMoreTry = true
       },
 
+      _noMoreScrollTry(){
+        this.noMoreScrollTry = true
+        this.$refs.wrapper.onscroll = null
+      },
+
       _message(which, withAnimation=true){
         var $message = this.$refs.message,
           $panel = this.$refs.panel,
@@ -234,6 +243,16 @@
           });
         }
       },
+
+      //下滑到一定程度自动加载更多
+      _scroll (e){
+        var $wrapper = this.$refs.wrapper,
+          {scrollTop, scrollHeight, clientHeight} = $wrapper;
+        
+        if(this.triggerScrollLoadOffset > (scrollHeight - clientHeight - scrollTop)){
+          this.$emit('onScrollLoad', this._noMoreScrollTry);
+        }
+      }
     },
 
     watch: {
