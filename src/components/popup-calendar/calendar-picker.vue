@@ -78,7 +78,7 @@
         }else if(range instanceof Object){
           var {startY, startM, startD, endY, endM, endD} = range; //感觉解构有问题啊...
         }
-
+        this.clearSelection()
         this._select(startY, startM+1, startD, endY, endM+1, endD);
       },
 
@@ -231,11 +231,16 @@
         }
       },
 
-      _select(startY, startM, startD, endY, endM, endD){
-        var vm_calendar = this.$refs.calendar
+      _select(startY, startM, startD, endY, endM, endD, oldScrollHeight, oldScrollTop){
+        var vm_calendar = this.$refs.calendar,
+          $wrapper = vm_calendar.$refs.pullDownRefresh.getScrollContainer(),
+          newScrollHeight, newScrollTop, arguments_;
         //检查月份是否加载
         if(monthsBetween(startY, startM, vm_calendar.currentMinY, vm_calendar.currentMinM) < 0){
-          vm_calendar._loadMorePrev(()=>{})
+          vm_calendar._loadMorePrev(()=>{});
+          // 保存滚动状态
+          if($wrapper.scrollTop === 0)
+            $wrapper.scrollTop = 1
           this.$nextTick(()=>{
             this._select.apply(this, arguments)
           })

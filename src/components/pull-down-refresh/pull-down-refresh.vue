@@ -256,7 +256,11 @@
         if(this.triggerScrollLoadOffset > (scrollHeight - clientHeight - scrollTop)){
           this.$emit('onScrollLoad', this._noMoreScrollTry);
         }
-      }
+      },
+
+      getScrollContainer(){
+        return this.$refs.wrapper
+      },
     },
 
     watch: {

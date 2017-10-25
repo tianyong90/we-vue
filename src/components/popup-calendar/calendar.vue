@@ -15,9 +15,10 @@
         @onScrollLoad="_loadMoreNext"
         :showMsgIcon="false" 
         :maxDragOffset="80" 
-        class="pull-down-refresh"
         :customMsg="pullDownMsg"
         :triggerScrollLoadOffset="300"
+        class="pull-down-refresh"
+        ref="pullDownRefresh"
       >
         <div class="wrapper" ref="wrapper">
           <wv-month 

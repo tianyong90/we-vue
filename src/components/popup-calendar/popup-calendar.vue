@@ -49,7 +49,7 @@
   ]
 
   const fixZero = function (val){
-    if(val < 9) val = '0'+val
+    if(val < 10) val = '0'+val
     return val
   }
 
