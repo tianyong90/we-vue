@@ -134,6 +134,7 @@
   .week-indicator {
     width: 100%;
     display: flex;
+    flex-shrink: 0;
   }
 
   .week-indicator-item {
@@ -144,5 +145,23 @@
     &.grey{
       color: #bbb;
     }
+  }
+
+  .calendar{
+    display: flex;
+    overflow-y: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .months-warpper{
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    overflow-y: auto;
   }
 </style>

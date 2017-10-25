@@ -172,9 +172,9 @@
       _afterLeave () {
         this._animation('out', true)
 
-        this.$refs.slot.event && 
-        this.$refs.slot.event.afterLeave instanceof Function && 
-          this.$refs.slot.event.afterLeave();
+        this.vm_slot.event && 
+          this.vm_slot.event.beforeLeave instanceof Function && 
+            this.vm_slot.event.afterLeave();
         
         requestAnimationFrame(() => {
           this._afterLeaveCallback instanceof Function &&

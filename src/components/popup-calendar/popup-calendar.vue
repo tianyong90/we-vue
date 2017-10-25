@@ -1,15 +1,15 @@
 <template>
   <div class="wv-popup-calendar">
     <div class="header">
-      <span class="btn">x</span>
+      <span class="btn btn-close" @click="_close"></span>
       <span class="title">日期选择</span>
-      <span class="btn" @click="_clearSelection">清除</span>
+      <span class="btn btn-clear" @click="_clearSelection" v-show="selectedStart || selectedEnd">清除</span>
     </div>
 
     <wv-calendar-picker 
       @onSelectHasDisableDate="_disableDaySelected"
       ref="calendarPicker"
-      type="range"
+      :type="type"
       @onSelect="_onSelect"
       class="calendar-picker"
     ></wv-calendar-picker>
@@ -19,7 +19,10 @@
         <p>开始: {{selectedStart | selectionFilter}}</p>
         <p>结束: {{selectedEnd | selectionFilter}}</p>
       </div>
-      <div class="btn-confirm">确认</div>
+      <div class="btn-confirm" 
+        @click="_confirm" 
+        :data-status="status | statusFilter"
+      >确认</div>
     </div>
   </div>
 </template>
@@ -39,13 +42,19 @@
         default: null
       },
       onClose: Function,
-      onOpen: Function
+      onOpen: Function,
+      onConfirm: Function,
+      type: {
+        type: String,
+        default: 'range'
+      }
     },
 
     data (){
       return {
         selectedStart: null,
-        selectedEnd: null
+        selectedEnd: null,
+        status: null
       }
     },
 
@@ -86,9 +95,24 @@
       },
 
       _onSelect(start, end){
-        console.log(start, end)
         this.selectedStart = start
         this.selectedEnd = end
+        this.event.afterLeave = null
+        
+        this.status = this.type === 'range' ? (start && end) : start
+      },
+
+      _close(){
+        this._controller.close()
+      },
+
+      _confirm (){
+        if(this.status !== null){
+          this.event.afterLeave = ()=>{
+            this.onConfirm(this.selectedStart, this.selectedEnd)
+          }
+          this._close()
+        }
       }
     },
 
@@ -96,6 +120,19 @@
       selectionFilter (select){
         if(select)
           return `${select.year}-${select.month}-${select.day}`
+
+        return '未选择'
+      },
+
+      statusFilter (val){
+        if(val === null)
+          return 'disable'
+      }
+    },
+
+    watch: {
+      status (){
+
       }
     }
   }
@@ -115,14 +152,12 @@
     overflow-y: auto;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
     display: flex;
 
     &.inital {
       opacity: 0;
-      transform: translateY(15%) translateZ(0);
+      transform: translateY(5%) translateZ(0);
     }
 
     &.inAnimation {
@@ -132,36 +167,66 @@
 
     &.outAnimation {
       opacity: 0;
-      transform: translateY(15%) translateZ(0);
+      transform: translateY(5%) translateZ(0);
       transition-duration: 300ms;
     }
   }
 
   .header {
-    display: flex;
     width: 100%;
     margin-top: 5px;
     flex-shrink: 0;
-    -webkit-box-align: center;
 
     & .btn {
-      flex: 0 0 auto;
+      position: absolute;
       padding: 0 8px;
       margin: 0 5px;
+      font-size: 14px;
+      color: #1aad19;
+      line-height: 23px;
+      height: 23px;
+    }
+
+    & .btn-close {
+      width: 22px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before, &::after{
+        content: ' ';
+        position: relative;
+        width: 0px;
+        height: 15px;
+        border-left: 1.5px solid;
+        border-radius: 0.2px;
+      }
+
+      &::before{
+        transform: rotate(45deg);
+      }
+
+      &::after{
+        transform: translateX(-1.5px) rotate(-45deg);
+      }
+    }
+
+    & .btn-clear {
+      right: 0px;
+      top: 5px;
     }
 
     & .title{
-      flex: auto;
+      display: inline-block;
       text-align: center;
-
+      width: 100%;
     }
   }
 
   .calendar-picker{
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
     display: flex;
     overflow-y: auto;
@@ -181,17 +246,22 @@
       flex: auto;
       font-size: 12px;
     }
+  }
 
-    & .btn-confirm {
-      flex: 0 0 auto;
-      text-align: center;
-      width: 80px;
-      height: 36px;
-      line-height: 36px;
-      border-radius: 5px;
-      color: #fff;
-      font-size: 18px;
-      background: #1aad19;
+  .btn-confirm {
+    flex: 0 0 auto;
+    text-align: center;
+    width: 80px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    background: #1aad19;
+
+    &[data-status='disable'] {
+      color: #bbb;
+      background: #ddd;
     }
   }
 </style>

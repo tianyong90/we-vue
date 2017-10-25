@@ -13,10 +13,6 @@
   export default {
     name: 'wv-day-cell',
 
-    model:{
-      status
-    },
-
     props: {
       status: String,
       day: Number,
