@@ -31,6 +31,16 @@
 <script>
   import WvCalendarPicker from './calendar-picker.vue'
 
+  const weekToZh = [
+    '星期日',
+    '星期一',
+    '星期二',
+    '星期三',
+    '星期四',
+    '星期五',
+    '星期六'
+  ]
+
   export default {
     name: 'wv-popup-calendar',
 
@@ -142,8 +152,11 @@
 
     filters: {
       selectionFilter (select){
-        if(select)
-          return `${select.year}-${select.month}-${select.day}`
+        if(select){
+          var date = new Date(`${select.year}-${select.month}-${select.day}`)
+          
+          return `${select.year}-${select.month}-${select.day} ${weekToZh[date.getDay()]}`
+        }
 
         return '未选择'
       },
