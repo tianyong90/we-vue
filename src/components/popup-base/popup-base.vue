@@ -132,8 +132,10 @@
             this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
             
             requestAnimationFrame(()=>{
-              if(!this.vm_slot.$options.propsData.animationInEventOff)
-                this.$refs.slot.style.transitionDuration = null;
+              if(!this.vm_slot.$options.propsData.animationInEventOff){
+                if(!this._animationNoneReday)
+                  this.$refs.slot.style.transitionDuration = null;
+              }
               this.maskOpacity(0.25);
             })
           })
@@ -203,6 +205,7 @@
         if(animation instanceof Object){
           value = animation[progressName]
 
+          //string,array被classname设置占用了,只剩下object用于扩展了
           if(value instanceof String){
             if(unset === false)
               $dom.classList.add(value)
@@ -213,6 +216,9 @@
               value.forEach( val => $dom.classList.add(val))
             else
               value.forEach( val => $dom.classList.remove(val))
+          }else if(value instanceof Object){
+            if(value.effect === 'zoomFromDom')
+              this._triggerZoomFromDom(progressName, value, unset)
           }
         }
 
@@ -220,6 +226,57 @@
         $dom = null
         value = null
       },
+
+      _triggerZoomFromDom (progress, value, unset){
+        var $fromDom = value.fromDom || (this.e ? this.e.target : null),
+          $slot = this.vm_slot.$el,
+          fromDomRect , slotRect,
+
+          scaleAdjusted = 2/3 ,
+          scale, translateX, translateY,
+          fromDomCenterX, fromDomCenterY, 
+          slotCenterX, slotCenterY;
+
+        if($fromDom && !unset){
+          this._animationNoneReday = true
+          $slot.style.opacity = 0
+          requestAnimationFrame(()=>{
+            fromDomRect = $fromDom.getBoundingClientRect()
+            slotRect = $slot.getBoundingClientRect()
+
+            if(value.offset !== undefined)
+              scaleAdjusted = value.offset
+
+            slotCenterX = slotRect.left + slotRect.width/2;
+            slotCenterY = slotRect.left + slotRect.width/2;
+            fromDomCenterX = fromDomRect.left + fromDomRect.width/2;
+            fromDomCenterY = fromDomRect.top + fromDomRect.height/2;
+
+            //然后做动画偏移, 需要区分布局偏移
+            translateX = fromDomCenterX - slotCenterX;
+            translateY = fromDomCenterY - slotCenterY;
+
+            if(progress === 'in'){
+              this.$refs.slot.style.transitionDuration = '0ms';
+              $slot.style.opacity = 0
+              //无论in或者out都是一样的
+              $slot.style.transform = 
+                `translate3d(${translateX*scaleAdjusted}px, ${translateY*scaleAdjusted}px,0) scale(${scaleAdjusted})`;
+
+              requestAnimationFrame(()=>{
+                $slot.style.transform = null
+                $slot.style.transitionDuration = null;
+                this._animationNoneReday = null
+                $slot.style.opacity = null
+              })
+            }else if(progress === 'out'){
+              $slot.style.transform = 
+                `translate3d(${translateX*scaleAdjusted}px, ${translateY*scaleAdjusted}px,0) scale(${scaleAdjusted})`;
+              $slot.style.opacity = 0
+            }
+          })
+        }
+      }
     },
 
     destroyed () {

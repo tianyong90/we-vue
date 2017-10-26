@@ -314,7 +314,7 @@
   }
 
   .wv-pull-down-refresh-content{
-    transition: all 250ms ease 0ms;
+    transition: transform, opacity 250ms ease 0ms;
     z-index: 0;
     position: relative;
     height: 200vh;
@@ -324,7 +324,7 @@
     position: absolute;
     height: 50px;
     width: 100%;
-    transition: all 250ms ease 0ms;
+    transition: transform, opacity 250ms ease 0ms;
     display: inline-flex;
     justify-content: center;
     align-items: center;
