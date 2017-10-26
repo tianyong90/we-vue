@@ -1,7 +1,7 @@
 <template>
   <div class="weui-picker__group" v-if="!divider">
     <div class="weui-picker__mask"></div>
-    <div class="weui-picker__indicator"></div>
+    <div class="weui-picker__indicator" ref="indicator"></div>
     <div class="weui-picker__content" ref="listWrapper">
       <div class="weui-picker__item" :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
     </div>
@@ -78,6 +78,7 @@
       if (this.divider) return
 
       const wrapper = this.$refs.listWrapper
+      const $indicator = this.$refs.indicator
       Transform(wrapper, true)
 
       this.doOnValueChange()
@@ -90,39 +91,53 @@
           dragState.start = new Date()
           dragState.startPositionY = event.clientY
           dragState.startTranslateY = wrapper.translateY
+
+          wrapper.style.transition = null
         },
         drag: (event) => {
           let dragState = this.dragState
           const deltaY = event.clientY - dragState.startPositionY
 
-          const tempTranslateY = dragState.startTranslateY + deltaY
-
-          if (tempTranslateY <= this.minTranslateY) {
-            wrapper.translateY = this.minTranslateY
-          } else if (tempTranslateY >= this.maxTranslateY) {
-            wrapper.translateY = this.maxTranslateY
-          } else {
-            wrapper.translateY = dragState.startTranslateY + deltaY
-          }
-
+          wrapper.translateY = dragState.startTranslateY + deltaY
           dragState.currentPosifionY = event.clientY
           dragState.currentTranslateY = wrapper.translateY
           dragState.velocityTranslate = dragState.currentTranslateY - dragState.prevTranslateY
 
           dragState.prevTranslateY = dragState.currentTranslateY
         },
-        end: () => {
+        end: (event) => {
           this.isDragging = false
 
           let dragState = this.dragState
           let momentumRatio = 7
           let currentTranslate = wrapper.translateY
           let duration = new Date() - dragState.start
+          let distance = dragState.startTranslateY - currentTranslate
+
+          let rect, offset
+          if(distance === 0){
+            rect = $indicator.getBoundingClientRect()
+            offset = Math.floor((event.clientY - rect.top)/ITEM_HEIGHT) * ITEM_HEIGHT
+            
+            if(offset < this.minTranslateY )
+              offset = this.minTranslateY
+            
+            if(offset > this.maxTranslateY )
+              offset = this.maxTranslateY
+
+            dragState.velocityTranslate = 0
+            currentTranslate -= offset
+            // console.log(event, rect)
+            console.log(currentTranslate)
+            
+          }
 
           let momentumTranslate
           if (duration < 300) {
             momentumTranslate = currentTranslate + dragState.velocityTranslate * momentumRatio
           }
+
+          wrapper.style.transition = 'all 200ms ease'
 
           this.$nextTick(() => {
             let translate
