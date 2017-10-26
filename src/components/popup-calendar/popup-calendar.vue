@@ -200,31 +200,33 @@
         }
         if(this.status !== null){
           var start = {}, end = {};
-          if(this.selectedStart)
+          if(this.selectedStart){
             Object.assign(start ,{
               year: this.selectedStart.year,
               month: this.selectedStart.month,
               day: this.selectedStart.day,
             })
 
-          if(this.selectedTimeStart)
-            Object.assign(start, {
-              hour: parseTimeHour(this.selectedTimeStart),
-              minute: parseInt(this.selectedTimeStart[1], 10)
-            })
+            if(this.selectedTimeStart)
+              Object.assign(start, {
+                hour: parseTimeHour(this.selectedTimeStart),
+                minute: parseInt(this.selectedTimeStart[1], 10)
+              })
+          }
           
-          if(this.selectedEnd)
+          if(this.selectedEnd){
             Object.assign(end ,{
               year: this.selectedEnd.year,
               month: this.selectedEnd.month,
               day: this.selectedEnd.day,
             })
 
-          if(this.selectedTimeEnd)
-            Object.assign(end, {
-              hour: parseTimeHour(this.selectedTimeEnd),
-              minute: parseInt(this.selectedTimeEnd[1], 10)
-            })
+            if(this.selectedTimeEnd)
+              Object.assign(end, {
+                hour: parseTimeHour(this.selectedTimeEnd),
+                minute: parseInt(this.selectedTimeEnd[1], 10)
+              })
+          }
           
           this.event.afterLeave = ()=>{
             this.onConfirmLeaved instanceof Function &&
