@@ -12,6 +12,7 @@
       :type="type"
       @onSelect="_onSelect"
       class="calendar-picker"
+      :data-style="isLargeRowledge ? 'row-xl' : ''"
     ></wv-calendar-picker>
 
     <div class="shortcut-bar" v-show="enableShortcut && type === 'range'">
@@ -105,6 +106,11 @@
       type: {
         type: String,
         default: 'range'
+      },
+      defaultRange: Object,
+      isLargeRowledge: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -140,10 +146,13 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          $el.classList.add('inital');
+          if(!this.$options.propsData.animation)
+            $el.classList.add('inital');
           requestAnimationFrame(()=>{
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
+            if(!this.$options.propsData.animation){
+              $el.classList.remove('inital');
+              $el.classList.add('inAnimation');
+            }
 
             this.onOpen instanceof Function && this.onOpen();
           })
@@ -151,9 +160,12 @@
         afterEnter: () => {},
         beforeLeave: () => {
           var $el = this.$el;
-          $el.classList.add('outAnimation');
+
+          if(!this.$options.propsData.animation)
+            $el.classList.add('outAnimation');
           requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
+            if(!this.$options.propsData.animation)
+              $el.classList.remove('inAnimation');
 
             this.onClose instanceof Function && this.onClose();
           }.bind(this))
@@ -167,7 +179,11 @@
         this.timeSlots[0].values.push(fixZero(i))
       for(i = 0; i <= 59 ; i++)
         this.timeSlots[1].values.push(fixZero(i))
-      
+    },
+
+    mounted (){
+      if(this.defaultRange)
+        this.$refs.calendarPicker.select(this.defaultRange)
     },
 
     methods: {
@@ -418,6 +434,7 @@
   .time-select-bar{
     flex: 0 0 auto;
   }
+
   .time-select-title{
     height: 44px;
     font-size: 16px;
@@ -448,5 +465,11 @@
       flex: auto;
       width: auto;
     }
+  }
+</style>
+
+<style>
+  .calendar-picker[data-style='row-xl'] .day-row+.day-row{
+    margin-top: 21px;
   }
 </style>

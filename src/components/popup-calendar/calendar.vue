@@ -48,7 +48,8 @@
     props: {
       initYear: Number,
       inilMonth: Number,
-      initDay: Number
+      initDay: Number,
+      isLargeRowledge: Boolean
     },
 
     data (){

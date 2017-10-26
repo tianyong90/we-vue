@@ -82,6 +82,9 @@
           startD = date.getDate()
         }else if(range instanceof Object){
           var {startY, startM, startD, endY, endM, endD} = range; //感觉解构有问题啊...
+          startM--
+          endM--
+          // 格式还是从1还是算
         }
         this.clearSelection()
         this._select(startY, startM+1, startD, endY, endM+1, endD);

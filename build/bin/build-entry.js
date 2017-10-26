@@ -10,6 +10,7 @@ var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})'
 var MAIN_TEMPLATE = `{{include}}
 import 'weui/dist/style/weui.min.css'
 import './style/animate.min.css'
+import './style/animated-preset.css'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {

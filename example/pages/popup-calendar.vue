@@ -9,6 +9,10 @@
       <wv-cell title="选择日期时间(快捷)" is-link @click="click5"></wv-cell>
       <wv-cell title="选择日期时间区间" is-link @click="click6"></wv-cell>
       <wv-cell title="选择日期时间区间(快捷)" is-link @click="click7"></wv-cell>
+      <wv-cell title="默认选择范围" is-link @click="click8"></wv-cell>
+      <wv-cell title="大行距" is-link @click="click9"></wv-cell>
+      <wv-cell title="水平进入" is-link @click="click10"></wv-cell>
+      <wv-cell title="支持animation.css的所有动画~" is-link @click="click11"></wv-cell>
     </wv-group>
   </div>
 </template>
@@ -131,6 +135,79 @@
 
           onDisableDaySelected: (days) => {
             console.log(days)
+          }
+        })
+      },
+
+      click8 (e) {
+        this.calendar.open(e, {
+          defaultRange: {
+            startY: 2017,
+            startM: 10,
+            startD: 26,
+            endY: 2017,
+            endM: 11,
+            endD: 7
+          },
+
+          onConfirm: (start, end) => {
+            console.log(start, end)
+          },
+
+          onDisableDaySelected: (days) => {
+            console.log(days)
+          }
+        })
+      },
+
+      click9 (e) {
+        this.calendar.open(e, {
+          isLargeRowledge: true,
+          
+          onConfirm: (start, end) => {
+            console.log(start, end)
+          },
+
+          onDisableDaySelected: (days) => {
+            console.log(days)
+          }
+        })
+      },
+
+      click10 (e) {
+        this.calendar.open(e, {
+          isLargeRowledge: true,
+          
+          onConfirm: (start, end) => {
+            console.log(start, end)
+          },
+
+          onDisableDaySelected: (days) => {
+            console.log(days)
+          },
+
+          animation: {
+            in: ['animated-500', 'slideInRight'],
+            out: ['animated-350', 'slideOutRight']
+          }
+        })
+      },
+
+      click11 (e) {
+        this.calendar.open(e, {
+          isLargeRowledge: true,
+          
+          onConfirm: (start, end) => {
+            console.log(start, end)
+          },
+
+          onDisableDaySelected: (days) => {
+            console.log(days)
+          },
+
+          animation: {
+            in: ['animated', 'bounceIn'],
+            out: ['animated', 'bounceOut']
           }
         })
       },
