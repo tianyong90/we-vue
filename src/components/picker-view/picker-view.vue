@@ -1,12 +1,17 @@
 <template>
   <div class="weui-picker">
-    <div class="weui-picker__hd">
-      <a class="weui-picker__action noExpand" @click="cancel" v-text="cancelText"></a>
-      <a class="weui-picker__action"></a>
-      <a class="weui-picker__action noExpand" @click="confirm" v-text="confirmText"></a>
-    </div>
-    <div class="weui-picker__bd">
-      <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey" :divider="slot.divider" :content="slot.content" v-model="values[slot.valueIndex]"></wv-picker-slot>
+    <div class="weui-picker__bd" ref="body">
+      <wv-picker-slot 
+        v-for="(slot, key, index) in slots" 
+        :key="key" 
+        :values="slot.values || []" 
+        :valueKey="valueKey" 
+        :divider="slot.divider" 
+        :showItemNum="showItemNum" 
+        :showItemHeight="showItemHeight" 
+        :content="slot.content" 
+        v-model="values[slot.valueIndex]"
+      ></wv-picker-slot>
     </div>
   </div>
 </template>
@@ -15,29 +20,27 @@
   import WvPickerSlot from './picker-slot.vue'
 
   export default {
-    name: 'wv-picker',
+    name: 'wv-picker-view',
 
     components: {
       WvPickerSlot
     },
 
     props: {
-      confirmText: {
-        type: String,
-        default: '确定'
-      },
-      cancelText: {
-        type: String,
-        default: '取消'
-      },
       slots: {
         type: Array,
         required: true
       },
       defaultValues: Array,
+      showItemNum: {
+        type: Number,
+        default: 7
+      },
+      showItemHeight: {
+        type: Number,
+        default: 34
+      },
       valueKey: String,
-      onConfirm: Function,
-      onCancel: Function,
       onChange: Function
     },
 
@@ -62,31 +65,6 @@
     },
 
     created () {
-      this.event = {
-        beforeEnter: () => {
-          var $el = this.$el;
-
-          $el.classList.add('inital');
-          requestAnimationFrame(function(){
-            setTimeout(()=>{//给50ms来处理dom的一些设置
-              $el.classList.remove('inital');
-              $el.classList.add('inAnimation');
-
-              this.onOpen instanceof Function && this.onOpen();
-            }, 50)
-          }.bind(this))
-        },
-        beforeLeave: () => {
-          var $el = this.$el;
-          $el.classList.add('outAnimation');
-          requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
-
-            this.onClose instanceof Function && this.onClose();
-          }.bind(this))
-        }
-      }
-
       this.$on('slotValueChange', this.slotValueChange)
       let slots = this.slots || []
       let values = this.values
@@ -101,6 +79,13 @@
 
       this.defaultValues instanceof Array && 
         this.setValues(this.defaultValues)
+      
+      if(this.showItemNum > 7)
+        this.showItemNum = 7
+    },
+
+    mounted(){
+      this.$refs.body.style.height = this.showItemHeight * this.showItemNum + 'px'
     },
 
     methods: {
@@ -182,16 +167,6 @@
             })
         })
         this.setSlotValue(0, values[0], taskQueue)
-      },
-
-      cancel () {
-        this.onCancel instanceof Function && this.onCancel(this)
-        this._controller.close()
-      },
-
-      confirm () {
-        this.onConfirm instanceof Function && this.onConfirm(this)
-        this._controller.close()
       }
     }
   }
@@ -199,29 +174,13 @@
 
 <style scoped lang="scss">
   .weui-picker{
-    will-change: opacity, transform;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100vw;
     height: auto;
-    transition: all 250ms ease 0s;
-
-    &.inital {
-      opacity: 0.3;
-      transform: translateY(100%) translateZ(0);
-    }
-
-    &.inAnimation {
-      opacity: 1;
-      transform: translateY(0%) translateZ(0);
-    }
-
-    &.outAnimation {
-      opacity: 0;
-      transform: translateY(100%) translateZ(0);
-      transition-duration: 280ms;
-    }
+    position: static;
+    transform: unset;
+    left: unset;
+    bottom: unset;
+    z-index: unset;
   }
 
   .weui-picker__action.noExpand{

@@ -27,14 +27,29 @@
       <div @click="_select('tomorrow')">明天</div>
     </div>
 
-    <div class="time-select-bar" v-show="false">
-      
+    <div class="time-select-bar" v-show="enableTimeSelect && (selectedStart || selectedEnd)">
+      <div v-show="selectedStart && !selectedEnd">
+        <div class="time-select-title">选择开始时间</div>
+        <wv-picker-view 
+          :slots="timeSlots" 
+          :onChange="_changeStartTime"
+          :showItemNum="5"
+        ></wv-picker-view>
+      </div>
+      <div v-show="selectedEnd">
+        <div class="time-select-title">选择结束时间</div>
+        <wv-picker-view 
+          :slots="timeSlots" 
+          :onChange="_changeEndTime"
+          :showItemNum="5"
+        ></wv-picker-view>
+      </div>
     </div>
 
     <div class="controll-bar" v-show="selectedStart || selectedEnd">
       <div class="result" v-show="type === 'range'">
-        <p>开始: {{selectedStart | selectionFilter}}</p>
-        <p>结束: {{selectedEnd | selectionFilter}}</p>
+        <p>开始: {{selectedStart | selectionFilter}} {{selectedTimeStart | selectionTimeFilter}}</p>
+        <p>结束: {{selectedEnd |selectionFilter}} {{selectedTimeEnd | selectionTimeFilter}}</p>
       </div>
       <div class="btn-confirm" 
         @click="_confirm" 
@@ -97,7 +112,26 @@
       return {
         selectedStart: null,
         selectedEnd: null,
-        status: null
+        selectedTimeStart: null,
+        selectedTimeEnd: null,
+        status: null,
+        timeSlots: [
+          {
+            values: [],
+            defaultIndex: 7
+          },
+          {
+            values: [],
+            defaultIndex: 0
+          },
+          {
+            values: [
+              '上午',
+              '下午'
+            ],
+            defaultIndex: 0
+          }
+        ],
       }
     },
 
@@ -126,6 +160,14 @@
         },
         afterLeave: () => {},
       }
+
+      //初始化timeSlot
+      var i
+      for(i = 1; i <= 12; i++)
+        this.timeSlots[0].values.push(fixZero(i))
+      for(i = 0; i <= 59 ; i++)
+        this.timeSlots[1].values.push(fixZero(i))
+      
     },
 
     methods: {
@@ -151,21 +193,38 @@
       },
 
       _confirm (){
+        function parseTimeHour(time){
+          return time[2] === '下午' 
+                 ? parseInt(time[0], 10) + 12
+                 : parseInt(time[0], 10)
+        }
         if(this.status !== null){
-          var start, end;
+          var start = {}, end = {};
           if(this.selectedStart)
-          start = {
-            year: this.selectedStart.year,
-            month: this.selectedStart.month,
-            day: this.selectedStart.day
-          }
+            Object.assign(start ,{
+              year: this.selectedStart.year,
+              month: this.selectedStart.month,
+              day: this.selectedStart.day,
+            })
 
+          if(this.selectedTimeStart)
+            Object.assign(start, {
+              hour: parseTimeHour(this.selectedTimeStart),
+              minute: parseInt(this.selectedTimeStart[1], 10)
+            })
+          
           if(this.selectedEnd)
-          end = {
-            year: this.selectedEnd.year,
-            month: this.selectedEnd.month,
-            day: this.selectedEnd.day
-          }
+            Object.assign(end ,{
+              year: this.selectedEnd.year,
+              month: this.selectedEnd.month,
+              day: this.selectedEnd.day,
+            })
+
+          if(this.selectedTimeEnd)
+            Object.assign(end, {
+              hour: parseTimeHour(this.selectedTimeEnd),
+              minute: parseInt(this.selectedTimeEnd[1], 10)
+            })
           
           this.event.afterLeave = ()=>{
             this.onConfirmLeaved instanceof Function &&
@@ -181,18 +240,43 @@
 
       _select (val){
         this.$refs.calendarPicker.select(val)
+      },
+
+      _changeStartTime (vm_picker, val){
+        if(this.enableTimeSelect)
+          this.selectedTimeStart = val
+      },
+
+      _changeEndTime (vm_picker, val){
+        if(this.enableTimeSelect)
+          this.selectedTimeEnd = val
       }
     },
 
     filters: {
-      selectionFilter (select){
-        if(select){
-          var date = new Date(`${select.year}-${select.month}-${select.day}`)
-          
-          return `${select.year}-${fixZero(select.month)}-${fixZero(select.day)} ${weekToZh[date.getDay()]}`
+      selectionFilter (selectedDate){
+        if(selectedDate){
+          var date = new Date(`${selectedDate.year}-${selectedDate.month}-${selectedDate.day}`)
+
+          return `${selectedDate.year}-${fixZero(selectedDate.month)}-${fixZero(selectedDate.day)} ${weekToZh[date.getDay()]}`
         }
 
         return '未选择'
+      },
+
+      selectionTimeFilter (selectedTime){
+        var hour
+
+        if(selectedTime){
+          if(selectedTime[2] === '下午')
+            hour = parseInt(selectedTime[0], 10) + 12
+          else
+            hour = selectedTime[0]
+          
+          return `${hour}:${selectedTime[1]}` 
+        }
+
+        return ''
       },
 
       statusFilter (val){
@@ -331,6 +415,14 @@
 
   .time-select-bar{
     flex: 0 0 auto;
+  }
+  .time-select-title{
+    height: 44px;
+    font-size: 16px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    line-height: 44px;
   }
 
   .btn-confirm {
