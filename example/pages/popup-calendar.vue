@@ -78,6 +78,15 @@
 
           onDisableDaySelected: (days) => {
             console.log(days)
+          },
+
+          animation: {
+            in: {
+              effect: 'zoomFromDom'
+            },
+            out: {
+              effect: 'zoomFromDom'
+            }
           }
         })
       },
@@ -136,6 +145,15 @@
 
           onDisableDaySelected: (days) => {
             console.log(days)
+          },
+
+          animation: {
+            in: {
+              effect: 'zoomFromDom'
+            },
+            out: {
+              effect: 'zoomFromDom'
+            }
           }
         })
       },
