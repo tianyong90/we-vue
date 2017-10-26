@@ -112,10 +112,10 @@
           let momentumRatio = 7
           let currentTranslate = wrapper.translateY
           let duration = new Date() - dragState.start
-          let distance = dragState.startTranslateY - currentTranslate
+          let distance = Math.abs(dragState.startTranslateY - currentTranslate)
 
           let rect, offset
-          if(distance === 0){
+          if(distance < 7){
             rect = $indicator.getBoundingClientRect()
             offset = Math.floor((event.clientY - rect.top)/ITEM_HEIGHT) * ITEM_HEIGHT
             
