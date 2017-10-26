@@ -127,9 +127,6 @@
 
             dragState.velocityTranslate = 0
             currentTranslate -= offset
-            // console.log(event, rect)
-            console.log(currentTranslate)
-            
           }
 
           let momentumTranslate
@@ -169,7 +166,7 @@
       },
 
       translate2value (translate) {
-        translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT
+        translate = Math.floor(translate / ITEM_HEIGHT) * ITEM_HEIGHT
         const index = -(translate - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
 
         return this.mutatingValues[index]
