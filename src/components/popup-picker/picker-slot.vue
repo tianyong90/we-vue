@@ -119,9 +119,6 @@
             rect = $indicator.getBoundingClientRect()
             offset = Math.floor((event.clientY - rect.top)/ITEM_HEIGHT) * ITEM_HEIGHT
             
-            if(offset < this.minTranslateY )
-              offset = this.minTranslateY
-            
             if(offset > this.maxTranslateY )
               offset = this.maxTranslateY
 

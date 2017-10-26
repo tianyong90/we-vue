@@ -11,7 +11,7 @@
       ref="calendarPicker"
       :type="type"
       @onSelect="_onSelect"
-      class="calendar-picker"
+      class="wv-calendar-picker"
       :data-style="isLargeRowledge ? 'row-xl' : ''"
     ></wv-calendar-picker>
 
@@ -469,7 +469,7 @@
 </style>
 
 <style>
-  .calendar-picker[data-style='row-xl'] .day-row+.day-row{
+  .wv-calendar-picker[data-style='row-xl'] .day-row+.day-row{
     margin-top: 21px;
   }
 </style>

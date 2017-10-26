@@ -106,8 +106,8 @@
           wrapper.translateY = dragState.startTranslateY + deltaY
           dragState.currentPosifionY = event.clientY
           dragState.currentTranslateY = wrapper.translateY
-          dragState.velocityTranslate = dragState.currentTranslateY - dragState.prevTranslateY
-
+          dragState.velocityTranslate = 
+            dragState.currentTranslateY - dragState.prevTranslateY
           dragState.prevTranslateY = dragState.currentTranslateY
         },
         end: (event) => {
@@ -124,11 +124,8 @@
             rect = $indicator.getBoundingClientRect()
             offset = Math.floor((event.clientY - rect.top)/this.showItemHeight) * this.showItemHeight
             
-            console.log(offset, this.minTranslateY, this.maxTranslateY, currentTranslate)
             if(offset > this.maxTranslateY )
               offset = this.maxTranslateY
-            else if(offset < this.minTranslateY )
-              offset = this.minTranslateY
             
             dragState.velocityTranslate = 0
             currentTranslate -= offset
