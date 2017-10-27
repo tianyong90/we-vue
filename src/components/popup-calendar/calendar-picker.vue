@@ -76,7 +76,7 @@
           startM = date.getMonth()
           startD = date.getDate()
         }else if(range === 'lastMonth'){
-          date.setDate(date.getDate() - 30)
+          date.setDate(date.getDate() - 29)
           startY = date.getFullYear()
           startM = date.getMonth()
           startD = date.getDate()
