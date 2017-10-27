@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-search-bar" :data-expand="expand" :data-has-value="hasValue" :data-status="status">
+  <div class="wv-search-bar" :data-expand="expand" :data-has-value="hasValue" :data-status="status" :data-fixed-cancel="fixedCancelBtn">
     <div class="input-container">
       <span class="placeholder-container">
         <i class="weui-icon-search"></i>
@@ -18,7 +18,10 @@
         <div class="btn-clear" @click="_clear" v-show="showCancelBtn"></div>
       </div>
     </div>
-    <div class="btn-cancel" @click="_cancel">取消</div>
+    <div class="btn-cancel" @click="_cancel">
+      <span class="btn-cancel-container">{{cancelBtnText}}</span>
+      <div class="btn-cancel-takeplace">{{cancelBtnText}}</div>
+    </div>
   </div>
 </template>
 
@@ -31,12 +34,20 @@
     height: 28px;
     overflow: hidden;
 
+    &[data-fixed-cancel=true],
     &[data-expand=true]{
       & .btn-cancel{
-        margin-right: 0;
         opacity: 1;
+        margin-left: 0px;
+        transform: translateX(0px);
       }
 
+      & .btn-cancel-takeplace{
+        letter-spacing: unset;
+      }
+    }
+
+    &[data-expand=true]{
       & .input-container::before{
         flex: 0 0 auto;
       }
@@ -90,7 +101,21 @@
     transition: all 300ms ease;
     transition-delay: 100ms;
     opacity: 0;
-    margin-right: -44px;
+    margin-left: -10px;
+    transform: translateX(10px);
+    overflow: hidden;
+  }
+
+  .btn-cancel-container{
+    position: absolute;
+    width: 100vw;
+  }
+
+  .btn-cancel-takeplace{
+    opacity: 0;
+    transition: all 300ms ease;
+    transition-delay: 100ms;
+    letter-spacing: -17px;
   }
 
   .placeholder-container{
@@ -154,6 +179,14 @@
       autoFocus: {
         type: Boolean,
         default: false
+      },
+      fixedCancelBtn: {
+        type: Boolean,
+        default: false
+      },
+      cancelBtnText: {
+        type: String,
+        default: '取消'
       },
     },
 
