@@ -1,18 +1,16 @@
 <template>
-  <div class="weui-picker">
-    <div class="weui-picker__bd" ref="body">
-      <wv-picker-slot 
-        v-for="(slot, key, index) in slots" 
-        :key="key" 
-        :values="slot.values || []" 
-        :valueKey="valueKey" 
-        :divider="slot.divider" 
-        :showItemNum="showItemNum" 
-        :showItemHeight="showItemHeight" 
-        :content="slot.content" 
-        v-model="values[slot.valueIndex]"
-      ></wv-picker-slot>
-    </div>
+  <div class="weui-picker__bd" ref="body">
+    <wv-picker-slot 
+      v-for="(slot, key, index) in slots" 
+      :key="key" 
+      :values="slot.values || []" 
+      :valueKey="valueKey" 
+      :divider="slot.divider" 
+      :showItemNum="showItemNum" 
+      :showItemHeight="showItemHeight" 
+      :content="slot.content" 
+      v-model="values[slot.valueIndex]"
+    ></wv-picker-slot>
   </div>
 </template>
 
@@ -173,23 +171,5 @@
 </script>
 
 <style scoped lang="scss">
-  .weui-picker{
-    width: 100vw;
-    height: auto;
-    position: static;
-    transform: unset;
-    left: unset;
-    bottom: unset;
-    z-index: unset;
-  }
-
-  .weui-picker__action.noExpand{
-    flex: 0 0 auto;
-    padding: 0 5px;
-    transition: all 40ms linear 0ms;
-
-    &:active {
-      background: #ececec;
-    }
-  }
+  
 </style>
