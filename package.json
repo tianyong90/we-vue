@@ -32,7 +32,7 @@
     "pub": "sh build/release.sh",
     "clean": "rm -rf lib",
     "lint": "eslint src/**/*.js build/**/*.js --quiet",
-    "test": "echo 'success'"
+    "test": "echo 0"
   },
   "dependencies": {
     "css3transform": "^1.1.8",
