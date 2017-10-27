@@ -13,6 +13,7 @@
           @focus="focus"
           @blur="_blur"
           @input="_input"
+          v-model="currentValue"
         >
         <div class="btn-clear" @click="_clear" v-show="showCancelBtn"></div>
       </div>
@@ -141,6 +142,7 @@
     name: 'wv-search-bar',
 
     props: {
+      value: String,
       placeholder: {
         type: String,
         default: 'Search'
@@ -157,9 +159,10 @@
 
     data (){
       return {
-        status: 'blur',
-        expand: false,
-        hasValue: false
+        status: this.value ? 'blur' : 'focus',
+        expand: !!this.value,
+        hasValue: !!this.value,
+        currentValue: this.value
       }
     },
 
@@ -172,7 +175,7 @@
     methods: {
       _clear (focus=true){
         focus && this.focus()
-        this.$refs.input.value = ''
+        this.currentValue = ''
         this.hasValue = false
       },
 
@@ -182,7 +185,7 @@
       },
 
       _input (){
-        this.hasValue = !!this.$refs.input.value
+        this.hasValue = !!this.currentValue
       },
 
       _blur(){
@@ -198,6 +201,16 @@
         this.$refs.input.focus()
       }
       
+    },
+    
+    watch: {
+      currentValue (val) {
+        this.$emit('input', val)
+      },
+
+      value (val) {
+        this.currentValue = val
+      }
     }
   }
 </script>
