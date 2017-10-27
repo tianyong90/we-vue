@@ -184,6 +184,7 @@
       focus(){
         this.status = 'focus'
         this.expand = true
+        this.$refs.input.focus()
       }
       
     }
