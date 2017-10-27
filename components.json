@@ -15,6 +15,7 @@
   "tabbar": "./src/components/tabbar/index.js",
   "tabbar-item": "./src/components/tabbar-item/index.js",
   "search": "./src/components/search/index.js",
+  "search-animated": "./src/components/search-animated/index.js",
   "checklist": "./src/components/checklist/index.js",
   "radio": "./src/components/radio/index.js",
   "loadmore": "./src/components/loadmore/index.js",

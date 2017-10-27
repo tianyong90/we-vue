@@ -1,5 +1,9 @@
 <template>
-  <wv-search v-model="value" :result="filterResult"></wv-search>
+  <div>
+    <wv-search v-model="value" :result="filterResult"></wv-search>
+    <wv-search-bar></wv-search-bar>
+  </div>
+  
 </template>
 
 <script>

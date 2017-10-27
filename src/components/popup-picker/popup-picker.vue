@@ -85,7 +85,6 @@
         this._controller.close()
       }
     }
-
   }
 </script>
 

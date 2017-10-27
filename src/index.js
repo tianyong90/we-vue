@@ -14,6 +14,7 @@ import NavbarItem from './components/navbar-item/index'
 import Tabbar from './components/tabbar/index'
 import TabbarItem from './components/tabbar-item/index'
 import Search from './components/search/index'
+import SearchAnimated from './components/search-animated/index'
 import Checklist from './components/checklist/index'
 import Radio from './components/radio/index'
 import Loadmore from './components/loadmore/index'
@@ -81,6 +82,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(TabbarItem.name, TabbarItem)
   Vue.component(Search.name, Search)
+  Vue.component(SearchAnimated.name, SearchAnimated)
   Vue.component(Checklist.name, Checklist)
   Vue.component(Radio.name, Radio)
   Vue.component(Loadmore.name, Loadmore)
@@ -155,6 +157,7 @@ export default {
   Tabbar,
   TabbarItem,
   Search,
+  SearchAnimated,
   Checklist,
   Radio,
   Loadmore,
