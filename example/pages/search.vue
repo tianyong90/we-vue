@@ -2,6 +2,10 @@
   <div>
     <wv-search v-model="value" :result="filterResult"></wv-search>
     <wv-search-bar></wv-search-bar>
+    <wv-search-bar :showCancelBtn="false" placeholder="关闭删除小图标"></wv-search-bar>
+    <wv-search-bar :autoFocus="true" placeholder="自动获取焦点"></wv-search-bar>
+    <wv-search-bar ref="searchBar" placeholder="也可以手动"></wv-search-bar>
+    <wv-button type="primary" @click="_focus">获取焦点</wv-button>
   </div>
   
 </template>
@@ -35,6 +39,12 @@
     computed: {
       filterResult () {
         return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value))
+      }
+    },
+
+    methods: {
+      _focus (){
+        this.$refs.searchBar.focus()
       }
     }
   }

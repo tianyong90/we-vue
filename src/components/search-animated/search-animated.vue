@@ -3,7 +3,7 @@
     <div class="input-container">
       <span class="placeholder-container">
         <i class="weui-icon-search"></i>
-        <span class="placeholder">Search</span>
+        <span class="placeholder">{{placeholder}}</span>
       </span>
       <div class="text-input-container">
         <input 
@@ -120,11 +120,12 @@
     display: block;
     font-size: 15px;
     flex: auto;
+    margin-right: 5px;
   }
 
   .btn-clear{
     flex: 0 0 auto;
-    margin: 0 5px;
+    margin-right: 5px;
     z-index: 1;
     width: 15px;
     height: 15px;
@@ -148,6 +149,10 @@
         type: Boolean,
         default: true
       },
+      autoFocus: {
+        type: Boolean,
+        default: false
+      },
     },
 
     data (){
@@ -156,6 +161,12 @@
         expand: false,
         hasValue: false
       }
+    },
+
+    mounted (){
+      setTimeout(()=>{
+        this.autoFocus && this.focus()
+      },50)
     },
 
     methods: {
