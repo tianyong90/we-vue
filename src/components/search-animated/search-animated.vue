@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-search-bar" :data-status="status" :data-has-value="hasValue">
+  <div class="wv-search-bar" :data-expand="expand" :data-has-value="hasValue" :data-status="status">
     <div class="input-container">
       <span class="placeholder-container">
         <i class="weui-icon-search"></i>
@@ -10,11 +10,11 @@
           ref="input"
           type="text"
           class="text-input"
-          @focus="status = 'focus'"
-          @blur="_cancel"
+          @focus="focus"
+          @blur="_blur"
           @input="_input"
         >
-        <div class="btn-clear" @click="_clear"></div>
+        <div class="btn-clear" @click="_clear" v-show="showCancelBtn"></div>
       </div>
     </div>
     <div class="btn-cancel" @click="_cancel">取消</div>
@@ -30,7 +30,7 @@
     height: 28px;
     overflow: hidden;
 
-    &[data-status='focus']{
+    &[data-expand=true]{
       & .btn-cancel{
         margin-right: 0;
         opacity: 1;
@@ -53,6 +53,12 @@
 
       & .btn-clear{
         opacity: 1;
+      }
+    }
+
+    &[data-status='blur']{
+      & .btn-clear{
+        opacity: 0;
       }
     }
   }
@@ -138,34 +144,47 @@
         type: String,
         default: 'Search'
       },
-      cancelText: {
-        type: String,
-        default: '取消'
+      showCancelBtn: {
+        type: Boolean,
+        default: true
       },
     },
 
     data (){
       return {
         status: 'blur',
-        hasValue: true
+        expand: false,
+        hasValue: false
       }
     },
 
     methods: {
       _clear (focus=true){
-        focus && this.$refs.input.focus()
+        focus && this.focus()
         this.$refs.input.value = ''
         this.hasValue = false
       },
 
       _cancel (){
         this._clear(false)
-        this.status = 'blur'
+        this.expand = false
       },
 
       _input (){
         this.hasValue = !!this.$refs.input.value
       },
+
+      _blur(){
+        this.status = 'blur'
+        if(this.hasValue) return
+        this._cancel()
+      },
+
+      //对外可用的方法
+      focus(){
+        this.status = 'focus'
+        this.expand = true
+      }
       
     }
   }
