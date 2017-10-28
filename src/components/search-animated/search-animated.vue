@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-search-bar" :data-expand="expand" :data-has-value="hasValue" :data-status="status" :data-fixed-cancel="fixedCancelBtn">
+  <div class="wv-search-bar" :data-expand="expand" :data-has-value="hasValue" :data-status="status" :data-fixed-cancel="fixedCancelBtn" :data-lang="lang">
     <div class="input-container">
       <span class="placeholder-container">
         <i class="weui-icon-search"></i>
@@ -33,6 +33,7 @@
     background-color: #EFEFF4;
     height: 28px;
     overflow: hidden;
+    will-change: opacity;
 
     &[data-fixed-cancel=true],
     &[data-expand=true]{
@@ -42,9 +43,17 @@
         transform: translateX(0px);
       }
 
-      & .btn-cancel-takeplace{
+      &[data-lang] .btn-cancel-takeplace{
         letter-spacing: unset;
       }
+    }
+
+    &[data-lang='zh'] .btn-cancel-takeplace{
+      letter-spacing: -17px;
+    }
+
+    &[data-lang='en'] .btn-cancel-takeplace{
+      letter-spacing: -9px;
     }
 
     &[data-expand=true]{
@@ -98,24 +107,20 @@
   .btn-cancel{
     flex: 0 0 auto;
     color: #09bb07;
-    transition: all 300ms ease;
-    transition-delay: 100ms;
-    opacity: 0;
     margin-left: -10px;
     transform: translateX(10px);
-    overflow: hidden;
   }
 
   .btn-cancel-container{
     position: absolute;
     width: 100vw;
+    z-index: -1;
   }
 
-  .btn-cancel-takeplace{
+  .btn-cancel-takeplace, .btn-cancel{
     opacity: 0;
     transition: all 300ms ease;
-    transition-delay: 100ms;
-    letter-spacing: -17px;
+    transition-delay: 80ms;
   }
 
   .placeholder-container{
@@ -152,7 +157,7 @@
   .btn-clear{
     flex: 0 0 auto;
     margin-right: 5px;
-    z-index: 1;
+    z-index: 0;
     width: 15px;
     height: 15px;
     overflow: hidden;
@@ -162,7 +167,6 @@
 </style>
 
 <script>
-
   export default {
     name: 'wv-search-bar',
 
@@ -188,6 +192,10 @@
         type: String,
         default: '取消'
       },
+      lang: {
+        type: String,
+        default: 'zh'
+      }
     },
 
     data (){
