@@ -8,7 +8,7 @@ cooking.set({
   template: './example/index.html',
   devServer: {
     port: 8080,
-    host: require('myz-local-ip')(),
+    host: require('my-local-ip')(),
     publicPath: '/',
     log: false
   },
