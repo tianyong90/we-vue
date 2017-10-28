@@ -247,6 +247,7 @@
     watch: {
       currentValue (val) {
         this.$emit('input', val)
+        this.hasValue = !!this.currentValue
       },
 
       value (val) {
