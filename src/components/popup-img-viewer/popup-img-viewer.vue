@@ -1,5 +1,5 @@
 <template>
-  <wv-swipeplus class="popup-swipe" overflow="backDrag" :gap="16" :continuous="true" :defaultIndex="defaultIndex" ref="swiper">
+  <wv-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="true" :defaultIndex="defaultIndex" ref="swiper">
       <wv-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
         <img class="swipe-img" :src="img.src" alt="">
       </wv-swipe-item>
@@ -204,8 +204,9 @@
 </script>
 
 <style scoped lang="scss">
-  .popup-swipe{
+  .popup-swipe.addWeight{
     height: 100vh;
+    width: 100vw;
   }
 
   .swipe-img{

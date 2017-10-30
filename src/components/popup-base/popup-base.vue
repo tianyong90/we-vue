@@ -54,6 +54,12 @@
         this._afterLeaveCallback = callback
       },
 
+      afterDomLoad (){
+        this.vm_slot.event &&
+        this.vm_slot.event.afterDomLoad && 
+          this.vm_slot.event.afterDomLoad()
+      },
+
       turnOffMask () {
         if(!this.maskDisable)
           this.vm_slot._controller.close()
@@ -310,6 +316,7 @@
   .wv-popup-slot{
     position: relative;
     height: 0;
+    width: 150vw;
   }
 
   .wv-popup-mask {

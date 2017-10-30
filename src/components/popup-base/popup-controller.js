@@ -37,6 +37,7 @@ let PopUp = {
       //和那边的enter和enter的执行位置同步
       vm_popUpContainer.addPopUp(vm_base.$el)
       domLoadCallback && domLoadCallback()
+      vm_base.afterDomLoad()
     })
   },
 

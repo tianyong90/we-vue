@@ -29,6 +29,8 @@
       <div class="btn" ref="btn11" @click="click11">按钮</div>
       <div class="btn" ref="btn13" @click="click13">absolute定位</div>
       <div class="btn" ref="btn16" @click="click16">popover</div>
+      <div class="btn" ref="btn17" @click="click17">popover(absolute)</div>
+      <div class="btn"></div>
     </wv-group>
   </div>
 </template>
@@ -286,8 +288,8 @@
 
       this.popupOver = new this.$popupOver({
         refDom: this.$refs.btn16,
-        refCorner: 'bottom right',
-        relativeToCorner: 'below before',
+        refCorner: 'center right',
+        relativeToCorner: 'above after',
         items: [
           {
             name: '扫描',
@@ -295,11 +297,11 @@
             src: 'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
           },{
             name: '二维码',
-            click: e => {this.pressMenu.close(e)},
+            click: e => {this.popupOver.close(e)},
             src: 'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
           },{
             name: '帮助',
-            click: e => {this.pressMenu.close(e)},
+            click: e => {this.popupOver.close(e)},
             src: 'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'
           }
         ]
@@ -387,6 +389,13 @@
         this.popupOver.open(e, {
 
         })
+      },
+
+      click17 (e){
+        this.popupOver.open(e, {
+          refDom: this.$refs.btn17,
+          positionType: 'absolute'
+        })
       }
     }
   }
@@ -412,7 +421,7 @@
   }
 
   .btn {
-    width: 92px;
+    width: 180px;
     height: 38px;
     background: #009688;
     color: #fff;

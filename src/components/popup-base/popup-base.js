@@ -70,11 +70,7 @@ let popUpBase = {
         
         //domRelative 需要的
         $refDom, refRect,
-        refCorner, relativeToCorner,
-        validVertical_RefCorner = ['top','bottom','center'],
-        validHorizonal_RefCorner = ['left','right','center'],
-        validVertical_RelativeToCorner = ['below','above'],
-        validHorizonal_RelativeToCorner = ['before','after']
+        refCorner, relativeToCorner
         ;
 
     this.vm_popUp.positionType = config.positionType || 'fixed'
@@ -277,43 +273,8 @@ let popUpBase = {
       refRect = $refDom.getBoundingClientRect();
       
       //解析参数
-
-      //解析refCorner
-
-      if(config.refCorner === undefined){
-        //缺省默认
-        refCorner = ['top', 'right']
-      }else if(typeof config.refCorner === 'string'){
-        refCorner = config.refCorner.split(' ');
-        //检查参数是否合法
-        if(
-          refCorner.length !== 2 ||
-          !validVertical_RefCorner.includes(refCorner[0]) || !validHorizonal_RefCorner.includes(refCorner[1])
-        ){
-          console.log('refCorner配置有误~')
-        }
-      }else{
-        //非法参数,或者不可解析的参数
-        console.log('refCorner配置有误~')
-      }
-
-      //解析relativeToCorner
-      if(config.relativeToCorner === undefined){
-        //缺省默认
-        relativeToCorner = ['below', 'after']
-      }else if(typeof config.relativeToCorner === 'string'){
-        relativeToCorner = config.relativeToCorner.split(' ');
-        //检查参数是否合法
-        if(
-          relativeToCorner.length !== 2 ||
-          !validVertical_RelativeToCorner.includes(relativeToCorner[0]) || !validHorizonal_RelativeToCorner.includes(relativeToCorner[1])
-        ){
-          console.log('relativeToCorner配置有误~')
-        }
-      }else{
-        //非法参数,或者不可解析的参数
-        console.log('relativeToCorner配置有误~')
-      }
+      refCorner = this.parseRefCorner(config.refCorner)
+      relativeToCorner = this.parseRelativeToCorner(config.relativeToCorner)
 
       //设定位置
       fromLeft = refRect.left;
@@ -348,6 +309,56 @@ let popUpBase = {
       $slot.style['transform-origin'] = (originY + ' ' + originX);
   },
 
+  parseRefCorner: function(c_refCorner){
+    //解析refCorner
+    var refCorner,
+    validVertical_RefCorner = ['top','bottom','center'],
+    validHorizonal_RefCorner = ['left','right','center'];
+
+    if(c_refCorner === undefined){
+      //缺省默认
+      refCorner = ['top', 'right']
+    }else if(typeof c_refCorner === 'string'){
+      refCorner = c_refCorner.split(' ');
+      //检查参数是否合法
+      if(
+        refCorner.length !== 2 ||
+        !validVertical_RefCorner.includes(refCorner[0]) || !validHorizonal_RefCorner.includes(refCorner[1])
+      ){
+        console.log('refCorner配置有误~')
+      }
+    }else{
+      //非法参数,或者不可解析的参数
+      console.log('refCorner配置有误~')
+    }
+    return refCorner
+  },
+
+  parseRelativeToCorner: function(c_relativeToCorner){
+    //解析refCorner
+    var relativeToCorner,
+      validVertical_RelativeToCorner = ['below','above'],
+      validHorizonal_RelativeToCorner = ['before','after'];
+
+    //解析relativeToCorner
+    if(c_relativeToCorner === undefined){
+      //缺省默认
+      relativeToCorner = ['below', 'after']
+    }else if(typeof c_relativeToCorner === 'string'){
+      relativeToCorner = c_relativeToCorner.split(' ');
+      //检查参数是否合法
+      if(
+        relativeToCorner.length !== 2 ||
+        !validVertical_RelativeToCorner.includes(relativeToCorner[0]) || !validHorizonal_RelativeToCorner.includes(relativeToCorner[1])
+      ){
+        console.log('relativeToCorner配置有误~')
+      }
+    }else{
+      //非法参数,或者不可解析的参数
+      console.log('relativeToCorner配置有误~')
+    }
+    return relativeToCorner
+  }
 }
 
 export default popUpBase
