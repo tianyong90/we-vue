@@ -28,6 +28,7 @@
       <div class="btn" ref="btn10" @click="click10">按钮</div>
       <div class="btn" ref="btn11" @click="click11">按钮</div>
       <div class="btn" ref="btn13" @click="click13">absolute定位</div>
+      <div class="btn" ref="btn16" @click="click16">popover</div>
     </wv-group>
   </div>
 </template>
@@ -282,6 +283,27 @@
           }
         ]
       })
+
+      this.popupOver = new this.$popupOver({
+        refDom: this.$refs.btn16,
+        refCorner: 'bottom right',
+        relativeToCorner: 'below before',
+        items: [
+          {
+            name: '扫描',
+            click: e => {console.log('btn0 clicked');},
+            src: 'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
+          },{
+            name: '二维码',
+            click: e => {this.pressMenu.close(e)},
+            src: 'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
+          },{
+            name: '帮助',
+            click: e => {this.pressMenu.close(e)},
+            src: 'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'
+          }
+        ]
+      })
     },
 
     methods: {
@@ -360,6 +382,12 @@
           positionType: 'absolute'
         })
       },
+
+      click16 (e){
+        this.popupOver.open(e, {
+
+        })
+      }
     }
   }
 </script>

@@ -46,6 +46,7 @@
   "popup-picker": "./src/components/popup-picker/index.js",
   "picker-view": "./src/components/picker-view/index.js",
   "popup-calendar": "./src/components/popup-calendar/index.js",
+  "popup-over": "./src/components/popup-over/index.js",
   "panel": "./src/components/panel/index.js",
   "pull-down-refresh": "./src/components/pull-down-refresh/index.js",
   "gesture-tile-press": "./src/components/gesture-tile-press/index.js",
