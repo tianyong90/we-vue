@@ -77,7 +77,7 @@
 <style scoped lang="scss">
   .wv-popUp-dialog {
     will-change: opacity, transform;
-    flex: 0 0 auto;
+    display: inline-block;
     width: 244.5px;
     padding: 22px 22px 14.5px 22px;
     background: white;

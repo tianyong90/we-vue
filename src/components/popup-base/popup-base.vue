@@ -1,7 +1,11 @@
 <template>
-  <div class="wv-popup-base" :routerId="routerId" ref="base">
+  <div class="wv-popup-base" 
+    :routerId="routerId" 
+    ref="base"
+    :style="{ position: positionType }"
+  >
     <div class="wv-popup-mask" ref="mask" @click="turnOffMask" @touchmove="maskPreventScroll"></div>
-    <div class="wv-popup-slot">
+    <div class="wv-popup-slot" ref="slotContainer">
       <div ref="slot" @touchmove="_stopPropagation"></div>
     </div>
   </div>
@@ -24,7 +28,8 @@
       maskDisable: {
         type: Boolean,
         default: false
-      }
+      },
+      runtimeConfig: Object
     },
 
     data () {
@@ -32,7 +37,8 @@
         status: null,
         afterEnterLocker: false,
         afterLeaveLocker: false,
-        $animateDom: null
+        $animateDom: null,
+        positionType: null
       }
     },
 
@@ -74,6 +80,8 @@
       },
 
       maskPreventScroll(e){
+        if(this.runtimeConfig && this.runtimeConfig.positionType === 'absolute')
+          return 
         if(this.status === 'on')
           e.preventDefault()
       },
@@ -287,15 +295,21 @@
 
 <style scoped lang="scss">
   .wv-popup-base{
-    width: 0px;
-    height: 0px;
+    width: 100%;
+    height: 100%;
   }
-  .wv-popup-slot{
+
+  .wv-popup-slot-old{
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+  }
+  .wv-popup-slot{
+    position: relative;
+    height: 0;
   }
 
   .wv-popup-mask {

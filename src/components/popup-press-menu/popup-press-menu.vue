@@ -55,7 +55,7 @@
     will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 250ms ease 0s;
-    flex: 0 0 auto;
+    display: inline-block;
 
     &.inital {
       opacity: 0;

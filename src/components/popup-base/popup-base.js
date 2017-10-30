@@ -21,7 +21,7 @@ let popUpBase = {
     this.config = Object.assign({}, this.constructConfig, runtimeConfig);
     this.config.e = e;
 
-    this.vm_popUp = popUpController.createPopUp(this.popUpConfig, routerId, e)
+    this.vm_popUp = popUpController.createPopUp(this.popUpConfig, routerId, e,this.config)
     this.vm_slot = new this.Factory({
       el: this.vm_popUp.$refs.slot,
       propsData: this.config
@@ -54,6 +54,8 @@ let popUpBase = {
   configPosition: function(e){
     var config = this.config,
         $slot = this.vm_slot.$el,
+        $slotContainer = this.vm_popUp.$refs.slotContainer,
+        position = config.position,
 
         //公用
         fromLeft, fromTop, originX, originY,
@@ -75,7 +77,61 @@ let popUpBase = {
         validHorizonal_RelativeToCorner = ['before','after']
         ;
 
-    if (config.position === 'clickRelative') {
+    this.vm_popUp.positionType = config.positionType || 'fixed'
+
+    if(config.positionType === 'absolute'){
+      $slotContainer.style.marginTop = window.scrollY + 'px'
+      $slotContainer.style.marginLeft = window.scrollX + 'px'
+    }
+
+    if(position === 'center' || position === undefined){
+      position = {}
+    }
+
+    if(position instanceof Object){
+      frame.width = window.innerWidth
+      frame.height = window.innerHeight
+
+      function helper(one, another){
+        var tmp,
+          frameOne = one === 'top' ? frame.height : frame.width ,
+          dOne = one === 'top' ? d_height : d_width;
+
+        one = position[one]
+        another = position[another]
+
+        if(one !== undefined){
+          //百分比处理
+          if(typeof one === 'string' && one.indexOf('%') !== -1){
+            tmp = parseFloat(one.slice(0, one.indexOf('%'))) * frameOne
+          }else if(typeof one === 'string' || typeof one === 'number'){
+            tmp = one
+          }else{
+            console.log('position.top的参数类型不对~')
+          }
+        }else if(another !== undefined){
+          //百分比处理
+          if(typeof another === 'string' && another.indexOf('%') !== -1){
+            tmp = (1 - parseFloat(another.slice(0, another.indexOf('%')))) * frameOne
+          }else if(typeof another === 'string' || typeof another === 'number'){
+            tmp = frameOne - parseFloat(another) - dOne
+          }else{
+            console.log('position.bottom的参数类型不对~')
+          }
+        }else{//居中
+          tmp = (frameOne - dOne)/2
+        }
+
+        return tmp
+      }
+
+      fromTop = helper('top','bottom')
+      fromLeft = helper('left','right')
+      $slot.style.marginLeft = fromLeft + 'px';
+      $slot.style.marginTop = fromTop + 'px';
+    }
+
+    if (position === 'clickRelative') {
 
       //region 点击坐标初始化
       if(e === undefined) return 
@@ -147,7 +203,7 @@ let popUpBase = {
 
       fromFrameLeft = clickX - frame.left;
       fromFrameTop = clickY - frame.top;
-
+      
       //region 左右
       //假设放在左右边的情况
       placeLeftOffset = frame.width - fromFrameLeft - d_width - margins[1];
@@ -216,7 +272,7 @@ let popUpBase = {
     }
     
     //region
-    if(config.position === 'domRelative' && config.refDom instanceof HTMLElement) {
+    if(position === 'domRelative' && config.refDom instanceof HTMLElement) {
       $refDom = config.refDom;
       refRect = $refDom.getBoundingClientRect();
       
@@ -279,12 +335,13 @@ let popUpBase = {
       if(relativeToCorner[1] === 'before' && refCorner[1] !== 'center')
         fromLeft -= d_width;
 
+
       $slot.style.position = 'absolute';
       $slot.style.left = fromLeft + 'px';
       $slot.style.top = fromTop + 'px';
     }
     //endregion
-
+    
 
     //设置动画重心
     if (config.autoSetOrthocenter === true)

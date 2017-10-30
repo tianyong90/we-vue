@@ -13,7 +13,6 @@
       <wv-cell title="大行距" is-link @click="click9"></wv-cell>
       <wv-cell title="水平进入" is-link @click="click10"></wv-cell>
       <wv-cell title="支持animation.css的所有动画~" is-link @click="click11"></wv-cell>
-      <wv-cell title="test ZoomFromDom" is-link @click="click12"></wv-cell>
     </wv-group>
   </div>
 </template>
@@ -229,24 +228,7 @@
             out: ['animated', 'bounceOut']
           }
         })
-      },
-
-      click12 (e) {
-        this.calendar.open(e, {
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
-
-          animation: {
-            in: {
-              effect: 'zoomFromDom'
-            },
-            out: {
-              effect: 'zoomFromDom'
-            }
-          }
-        })
-      },
+      }
     }
   }
 </script>

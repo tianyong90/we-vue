@@ -127,6 +127,7 @@
   .gesture-tile-press-wrapper {
     perspective: 1000px;
     transform-style: preserve-3d;
+    display: inline-block;
   }
 
   .gesture-tile-press-content {

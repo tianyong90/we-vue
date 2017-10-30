@@ -55,10 +55,11 @@ let PopUp = {
     RouterIdToTrigger[routerId] = trigger
   },
 
-  createPopUp (config, routerId, e) {
+  createPopUp (config, routerId, e, runtimeConfig) {
     var config = Object.assign({}, config)
     config.e = e
     config.routerId = routerId
+    config.runtimeConfig = runtimeConfig
 
     RouterIdToPopUp[routerId] = new popUpBaseConstructor({
       el: document.createElement('div'),

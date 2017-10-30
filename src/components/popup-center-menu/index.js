@@ -2,6 +2,7 @@ import popUpBase from '../popup-base/popup-base.js'
 import template from './popup-center-menu.vue'
 
 let popUpConfig = {
+  position: 'center'
 }
 
 let defaultConfig = {

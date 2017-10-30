@@ -15,6 +15,7 @@
 
     <wv-group title="上下居中的菜单示例">
       <wv-cell title="支持有事件上下文的动效" is-link @click="click5"></wv-cell>
+      <wv-cell title="支持有事件上下文的动效absolute" is-link @click="click15"></wv-cell>
     </wv-group>
 
     <wv-group title="微信长按菜单示例">
@@ -26,6 +27,7 @@
       <div class="btn" ref="btn9" @click="click9">按钮</div>
       <div class="btn" ref="btn10" @click="click10">按钮</div>
       <div class="btn" ref="btn11" @click="click11">按钮</div>
+      <div class="btn" ref="btn13" @click="click13">absolute定位</div>
     </wv-group>
   </div>
 </template>
@@ -318,6 +320,13 @@
         this.centerMenu.open(e)
       },
 
+      click15 (e) {
+        this.centerMenu.open(e,{
+          positionType: 'absolute',
+          position: 'center'
+        })
+      },
+
       click6 (e) {
         this.pressMenu.open(e)
       },
@@ -344,6 +353,11 @@
             in: ['animated', 'jackInTheBox'],
             out: ['animated', 'hinge']
           }
+        })
+      },
+      click13 (e) {
+        this.pressMenu_centerRight_aboveAfter.open(e, {
+          positionType: 'absolute'
         })
       },
     }

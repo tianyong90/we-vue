@@ -98,7 +98,7 @@
 <style scoped lang="scss">
   .weui-dialog {
     will-change: opacity, transform;
-    flex: 0 0 auto;
+    display: inline-block;
     background: white;
     border-radius: 3px;
     font-size: 15px;
