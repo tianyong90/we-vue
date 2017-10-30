@@ -137,6 +137,7 @@
       click7 (e) {
         this.calendar.open(e, {
           enableTimeSelect: true,
+          enableShortcut: true,
           
           onConfirm: (start, end) => {
             console.log(start, end)

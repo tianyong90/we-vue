@@ -319,8 +319,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow-y: auto;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
