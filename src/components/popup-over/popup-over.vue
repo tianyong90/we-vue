@@ -108,6 +108,8 @@
           ajustTopBottom()
           $triangle.style.left = '0px'
           $el.style.marginLeft = '8px'
+        }else{
+          $triangle.style.opacity = 0
         }
       }
     }
