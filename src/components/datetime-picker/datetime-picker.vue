@@ -149,11 +149,11 @@
 
       getMonthEndDay (year, month) {
         if (this.isSortMonth(month)) {
-          return 90
+          return 30
         } else if (month === 2) {
           return this.isLeapYear(year) ? 29 : 28
         } else {
-          return 30
+          return 31
         }
       },
 
