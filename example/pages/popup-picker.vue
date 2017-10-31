@@ -6,10 +6,10 @@
       <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click="addressPickerClick"></wv-cell>
     </wv-group>
     <wv-group title="日期选择器示例">
-      <wv-cell title="时间" is-link :value="time | pickerValueFilter" @click="timePickerClick"></wv-cell>
-      <wv-cell title="时间(24h)" is-link :value="time24 | pickerValueFilter" @click="time24PickerClick"></wv-cell>
-      <wv-cell title="日期" is-link :value="date | pickerValueFilter" @click="datePickerClick"></wv-cell>
-      <wv-cell title="日期时间" is-link :value="datetime | pickerValueFilter" @click="datetimePickerClick"></wv-cell>
+      <wv-cell title="时间" is-link :value="time | dateValueFilter" @click="timePickerClick"></wv-cell>
+      <wv-cell title="时间(24h)" is-link :value="time24 | dateValueFilter" @click="time24PickerClick"></wv-cell>
+      <wv-cell title="日期" is-link :value="date | dateValueFilter" @click="datePickerClick"></wv-cell>
+      <wv-cell title="日期时间" is-link :value="datetime | dateValueFilter" @click="datetimePickerClick"></wv-cell>
     </wv-group>
   </div>
 </template>
@@ -250,9 +250,16 @@
         }
       },
 
-      timeValueFilter (val){
+      dateValueFilter (val){
+        var values = []
         if (Array.isArray(val)) {
-          return `${val[0]}:${val[1]} ${val[2]}`
+          val.forEach((obj)=>{
+            if(obj.text)
+              values.push(obj.text)
+            else
+              values.push(obj)
+          })
+          return values.toString()
         } else {
           return '请选择'
         }

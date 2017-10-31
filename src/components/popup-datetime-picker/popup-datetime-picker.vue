@@ -262,13 +262,11 @@
         }
 
         for(i; i <= total; i++){
-          // months.push(this.showUnit? fixZero(i)+unit: fixZero(i))
           months.push({
             text: this.showUnit? fixZero(i)+unit: fixZero(i),
             value: i
           })
         }
-        // debugger
         return months
       }
     }

@@ -144,7 +144,6 @@
           var oldVal
           if (slot) {
             oldVal = slot.currentValue
-            // debugger
             slot.mutatingValues = values
             slot.$nextTick(()=>{
               if(oldVal !== undefined && oldVal !== null)
