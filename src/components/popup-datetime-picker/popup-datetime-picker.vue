@@ -20,6 +20,17 @@
 <script>
   import { countDays, fixZero } from '../../custom/utils'
 
+  const defaultTimeUnits = {
+    Y: '年',
+    M: '月',
+    D: '日',
+    h: '时',
+    m: '分',
+    s: '秒',
+    am: '上午',
+    pm: '下午'
+  }
+
   export default {
     name: 'wv-picker',
 
@@ -72,12 +83,14 @@
       showUnit: {
         type: Boolean,
         default: true
-      }
+      },
+      customUnits: Object
     },
 
     data (){
       return {
-        slots: []
+        slots: [],
+        timeUnits: null
       }
     },
 
@@ -107,8 +120,10 @@
         }
       }
 
+      this.timeUnits = Object.assign({}, defaultTimeUnits, this.defaultTimeUnits)
+
       var i, minYear, maxYear, slots = [], tmp, end, start,
-        now = new Date();
+        now = new Date(), unit = this.timeUnits;
 
       //这里就是根据mode,生成slots
       if(this.mode.indexOf('date') !== -1){
@@ -117,22 +132,31 @@
         //年
         tmp = {
           values: [],
+          valueKey: 'text',
           defaultIndex: now.getFullYear() - minYear
         }
         for(i = minYear; i <= maxYear; i++)
-          tmp.values.push(this.showUnit? i+'年' : i)
+          tmp.values.push({
+            text: this.showUnit? fixZero(i)+unit.Y : fixZero(i),
+            value: i
+          })
         slots.push(tmp)
         //月
         tmp = {
           values: [],
+          valueKey: 'text',
           defaultIndex: now.getMonth()
         }
         for(i = 1; i <= 12 ; i++)
-          tmp.values.push(this.showUnit? fixZero(i)+'月' : fixZero(i))
+          tmp.values.push({
+            text: this.showUnit? fixZero(i)+unit.M : fixZero(i),
+            value: i
+          })
         slots.push(tmp)
         //日
         tmp = {
           values: [],
+          valueKey: 'text',
           defaultIndex: now.getFullYear() - minYear
         }
         tmp.values = this._getMonthDays(now.getFullYear(), now.getMonth()+1)
@@ -145,31 +169,37 @@
         start = this.use12Hours === true ? 1: 0
         tmp = {
           values: [],
+          valueKey: 'text',
           defaultIndex: 7
         }
         for(i = start; i <= end; i++)
-          tmp.values.push(this.showUnit? fixZero(i)+'时': fixZero(i))
+          tmp.values.push({
+            text: this.showUnit? fixZero(i)+unit.h : fixZero(i),
+            value: i
+          })
         slots.push(tmp)
         //分钟
         tmp = {
           values: [],
+          valueKey: 'text',
           defaultIndex: 0
         }
         for(i = 0; i <= 59 ; i++)
-          tmp.values.push(this.showUnit? fixZero(i)+'分': fixZero(i))
+          tmp.values.push({
+            text: this.showUnit? fixZero(i)+unit.m : fixZero(i),
+            value: i
+          })
         slots.push(tmp)
 
         if(this.use12Hours === true)
           slots.push({
             values: [
-              '上午',
-              '下午'
+              unit.am,
+              unit.pm
             ],
             defaultIndex: 0
           })
       }
-
-      
 
       this.slots = slots
     },
@@ -187,8 +217,12 @@
 
       _onChange (picker, val){
         if(this.mode === 'date' || this.mode === 'datetime'){
-          picker.setSlotValues(1, this._getMonths(val[0]))
-          picker.setSlotValues(2, this._getMonthDays(val[0], val[1]))
+          picker.setSlotValues(1, 
+            this._getMonths(val[0].value))
+          
+          val[0] && val[1] &&
+          picker.setSlotValues(2, 
+            this._getMonthDays(val[0].value, val[1].value))
         }
         this.onChange(picker, val)
       },
@@ -198,7 +232,7 @@
         month = parseInt(month, 10)
 
         var i = 1, total = countDays(year, month),
-          days = [];
+          days = [], unit = this.timeUnits.D;
 
         if(this.minDate.getFullYear() === year && this.minDate.getMonth()+1 === month){
           i = this.minDate.getDate()
@@ -207,7 +241,10 @@
         }
 
         for(i; i <= total; i++){
-          days.push(this.showUnit? fixZero(i)+'日': fixZero(i))
+          days.push({
+            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            value: i
+          })
         }
         return days
       },
@@ -216,7 +253,7 @@
         year = parseInt(year, 10)
 
         var i = 1, total = 12,
-          months = [];
+          months = [], unit = this.timeUnits.M;
 
         if(this.minDate.getFullYear() === year){
           i = this.minDate.getMonth()+1
@@ -225,8 +262,13 @@
         }
 
         for(i; i <= total; i++){
-          months.push(this.showUnit? fixZero(i)+'月': fixZero(i))
+          // months.push(this.showUnit? fixZero(i)+unit: fixZero(i))
+          months.push({
+            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            value: i
+          })
         }
+        // debugger
         return months
       }
     }

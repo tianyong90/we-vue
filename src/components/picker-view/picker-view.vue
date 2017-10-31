@@ -4,7 +4,7 @@
       v-for="(slot, key, index) in slots" 
       :key="key" 
       :values="slot.values || []" 
-      :valueKey="valueKey" 
+      :valueKey="slot.valueKey" 
       :divider="slot.divider" 
       :showItemNum="showItemNum" 
       :showItemHeight="showItemHeight" 
@@ -144,11 +144,11 @@
           var oldVal
           if (slot) {
             oldVal = slot.currentValue
+            // debugger
             slot.mutatingValues = values
             slot.$nextTick(()=>{
-              if(oldVal !== undefined && oldVal !== null){
+              if(oldVal !== undefined && oldVal !== null)
                 slot.doOnValueChange(oldVal)
-              }
               oldVal = null
             })
           }

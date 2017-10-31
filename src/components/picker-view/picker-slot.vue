@@ -47,7 +47,6 @@
 
     data () {
       return {
-        isDragging: false,
         currentValue: this.value,
         mutatingValues: this.values
       }
@@ -63,7 +62,16 @@
       },
 
       valueIndex () {
-        return this.mutatingValues.indexOf(this.currentValue)
+        var valueKey = this.valueKey
+        if(this.currentValue instanceof Object){
+          //写个顺序查找好了
+          for(var i = 0, len = this.mutatingValues.length; i < len ; i++){
+            if(this.currentValue[valueKey] === this.mutatingValues[i][valueKey])
+              return i
+          }
+          return -1
+        }else
+          return this.mutatingValues.indexOf(this.currentValue)
       }
     },
 
@@ -90,7 +98,6 @@
 
       draggable(this.$el, {
         start: (event) => {
-          this.isDragging = true
           let dragState = this.dragState
 
           dragState.start = new Date()
@@ -111,8 +118,6 @@
           dragState.prevTranslateY = dragState.currentTranslateY
         },
         end: (event) => {
-          this.isDragging = false
-
           let dragState = this.dragState
           let momentumRatio = 7
           let currentTranslate = wrapper.translateY
@@ -158,8 +163,7 @@
 
     methods: {
       value2translate (value) {
-        const values = this.mutatingValues
-        const valueIndex = values.indexOf(value)
+        const valueIndex = this.valueIndex
         const offset = Math.floor(this.showItemNum / 2)
 
         if (valueIndex !== -1) {
