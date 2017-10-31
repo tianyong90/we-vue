@@ -7,6 +7,8 @@ export function last (arr) {
 export function countDays (year, month) {
   var date
 
+  year = parseInt(year, 10)
+  month = parseInt(month, 10)
   month-- // 月份从0开始算,上面就是从1开始算
 
   if (month === 11) {
@@ -62,4 +64,9 @@ export function throttle (callback, delay, tail = true) {
       if (tail) callback.apply(context, args)
     }, delay)
   }
+}
+
+export function fixZero (val) {
+  if (val < 10) val = '0' + val
+  return val
 }

@@ -141,8 +141,16 @@
       setSlotValues (index, values) {
         this.$nextTick(() => {
           let slot = this.getSlot(index)
+          var oldVal
           if (slot) {
+            oldVal = slot.currentValue
             slot.mutatingValues = values
+            slot.$nextTick(()=>{
+              if(oldVal !== undefined && oldVal !== null){
+                slot.doOnValueChange(oldVal)
+              }
+              oldVal = null
+            })
           }
         })
       },

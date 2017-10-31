@@ -305,6 +305,7 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: visible;
+    top: 0;
   }
 
   .wv-popup-slot{

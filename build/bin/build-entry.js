@@ -35,6 +35,7 @@ const install = function (Vue, config = {}) {
   Vue.prototype.$picker = PopupPicker
   Vue.prototype.$calendar = PopupCalendar
   Vue.prototype.$popupOver = PopupOver
+  Vue.prototype.$datetimePicker = PopupDatetimePicker
   Vue.prototype.$toast = Toast
   Vue.prototype.$indicator = Indicator
 }
@@ -82,6 +83,7 @@ ComponentNames.forEach(name => {
     'PopupPicker',
     'PopupCalendar',
     'PopupOver',
+    'PopupDatetimePicker',
     'Toast',
     'Indicator'
   ].indexOf(componentName) === -1) {

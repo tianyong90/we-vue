@@ -5,6 +5,12 @@
       <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click="dayPickerClick"></wv-cell>
       <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click="addressPickerClick"></wv-cell>
     </wv-group>
+    <wv-group title="日期选择器示例">
+      <wv-cell title="时间" is-link :value="time | pickerValueFilter" @click="timePickerClick"></wv-cell>
+      <wv-cell title="时间(24h)" is-link :value="time24 | pickerValueFilter" @click="time24PickerClick"></wv-cell>
+      <wv-cell title="日期" is-link :value="date | pickerValueFilter" @click="datePickerClick"></wv-cell>
+      <wv-cell title="日期时间" is-link :value="datetime | pickerValueFilter" @click="datetimePickerClick"></wv-cell>
+    </wv-group>
   </div>
 </template>
 
@@ -59,6 +65,10 @@
         ticket: null,
         dayAndTime: null,
         address: null,
+        time: null,
+        time24: null,
+        date: null,
+        datetime: null,
         ticketSlots: [
           {
             values: [
@@ -120,6 +130,25 @@
         onConfirm: this.confirmAddress,
         onChange: this.onAddressChange
       })
+
+      this.timePicker = new this.$datetimePicker({
+        mode: 'time',
+        use12Hours: true,
+        onConfirm: this.confirmTimePicker,
+        onChange: this.onTimePickerChange
+      })
+
+      this.datePicker = new this.$datetimePicker({
+        mode: 'date',
+        onConfirm: this.confirmDatePicker,
+        onChange: this.onDatePickerChange
+      })
+
+      this.datetimePicker = new this.$datetimePicker({
+        mode: 'datetime',
+        onConfirm: this.confirmDatetimePicker,
+        onChange: this.onDatetimePickerChange
+      })
     },
 
     methods: {
@@ -136,6 +165,28 @@
       addressPickerClick (e) {
         this.addressPicker.open(e, {
           defaultValues: this.address
+        })
+      },
+      timePickerClick(e){
+        this.timePicker.open(e, {
+          defaultValues: this.time
+        })
+      },
+      datePickerClick (e){
+        this.datePicker.open(e, {
+          defaultValues: this.date
+        })
+      },
+      datetimePickerClick (e){
+        this.datetimePicker.open(e, {
+          defaultValues: this.datetime
+        })
+      },
+      time24PickerClick(e){
+        this.timePicker.open(e, {
+          defaultValues: this.time24,
+          use12Hours: false,
+          onConfirm: this.confirmTime24Picker
         })
       },
 
@@ -158,13 +209,50 @@
       onAddressChange (picker, value) {
         picker.setSlotValues(1, getCities(value[0]))
         picker.setSlotValues(2, getAreas(value[0], value[1]))
-      }
+      },
+
+      confirmTimePicker (picker){
+        this.time = picker.getValues()
+      },
+      confirmTime24Picker (picker){
+        this.time24 = picker.getValues()
+      },
+
+      onTimePickerChange (picker, value){
+        // picker.setSlotValues(1, getCities(value[0]))
+        // picker.setSlotValues(2, getAreas(value[0], value[1]))
+        console.log(value)
+      },
+
+      confirmDatePicker (picker){
+        this.date = picker.getValues()
+      },
+
+      onDatePickerChange (picker, val){
+        console.log(val)
+      },
+
+      confirmDatetimePicker (picker){
+        this.datetime = picker.getValues()
+      },
+
+      onDatetimePickerChange (picker, val){
+        console.log(val)
+      },
     },
 
     filters: {
       pickerValueFilter (val) {
         if (Array.isArray(val)) {
           return val.toString()
+        } else {
+          return '请选择'
+        }
+      },
+
+      timeValueFilter (val){
+        if (Array.isArray(val)) {
+          return `${val[0]}:${val[1]} ${val[2]}`
         } else {
           return '请选择'
         }

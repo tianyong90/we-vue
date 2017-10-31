@@ -18,14 +18,14 @@
 </template>
 
 <script>
-  import WvPickerSlot from './picker-slot.vue'
+
+  const fixZero = function (val){
+    if(val < 10) val = '0'+val
+    return val
+  }
 
   export default {
     name: 'wv-picker',
-
-    components: {
-      WvPickerSlot
-    },
 
     props: {
       slots: Array,

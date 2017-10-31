@@ -174,8 +174,8 @@
         return this.mutatingValues[index]
       },
 
-      doOnValueChange () {
-        let value = this.currentValue
+      doOnValueChange (val) {
+        let value = val || this.currentValue
         let wrapper = this.$refs.listWrapper
 
         if (this.divider) return

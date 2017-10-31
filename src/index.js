@@ -46,6 +46,7 @@ import PopupPicker from './components/popup-picker/index'
 import PickerView from './components/picker-view/index'
 import PopupCalendar from './components/popup-calendar/index'
 import PopupOver from './components/popup-over/index'
+import PopupDatetimePicker from './components/popup-datetime-picker/index'
 import Panel from './components/panel/index'
 import PullDownRefresh from './components/pull-down-refresh/index'
 import GestureTilePress from './components/gesture-tile-press/index'
@@ -131,6 +132,7 @@ const install = function (Vue, config = {}) {
   Vue.prototype.$picker = PopupPicker
   Vue.prototype.$calendar = PopupCalendar
   Vue.prototype.$popupOver = PopupOver
+  Vue.prototype.$datetimePicker = PopupDatetimePicker
   Vue.prototype.$toast = Toast
   Vue.prototype.$indicator = Indicator
 }
@@ -191,6 +193,7 @@ export default {
   PickerView,
   PopupCalendar,
   PopupOver,
+  PopupDatetimePicker,
   Panel,
   PullDownRefresh,
   GestureTilePress,
