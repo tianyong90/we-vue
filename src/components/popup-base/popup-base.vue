@@ -303,20 +303,14 @@
   .wv-popup-base{
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
   }
 
-  .wv-popup-slot-old{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
   .wv-popup-slot{
     position: relative;
     height: 0;
-    width: 150vw;
+    width: 500vw;
   }
 
   .wv-popup-mask {
