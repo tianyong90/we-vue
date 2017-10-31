@@ -219,8 +219,6 @@
       },
 
       onTimePickerChange (picker, value){
-        // picker.setSlotValues(1, getCities(value[0]))
-        // picker.setSlotValues(2, getAreas(value[0], value[1]))
         console.log(value)
       },
 

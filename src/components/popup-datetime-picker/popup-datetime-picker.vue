@@ -90,7 +90,8 @@
     data (){
       return {
         slots: [],
-        timeUnits: null
+        timeUnits: null,
+        slotsMeaning: []
       }
     },
 
@@ -123,7 +124,8 @@
       this.timeUnits = Object.assign({}, defaultTimeUnits, this.defaultTimeUnits)
 
       var i, minYear, maxYear, slots = [], tmp, end, start,
-        now = new Date(), unit = this.timeUnits;
+        now = new Date(), unit = this.timeUnits,
+        slotsMeaning = this.slotsMeaning;
 
       //这里就是根据mode,生成slots
       if(this.mode.indexOf('date') !== -1){
@@ -137,10 +139,11 @@
         }
         for(i = minYear; i <= maxYear; i++)
           tmp.values.push({
-            text: this.showUnit? fixZero(i)+unit.Y : fixZero(i),
+            text: this.showUnit? i + unit.Y : i,
             value: i
           })
         slots.push(tmp)
+        slotsMeaning.push('Y')
         //月
         tmp = {
           values: [],
@@ -153,6 +156,7 @@
             value: i
           })
         slots.push(tmp)
+        slotsMeaning.push('M')
         //日
         tmp = {
           values: [],
@@ -161,6 +165,7 @@
         }
         tmp.values = this._getMonthDays(now.getFullYear(), now.getMonth()+1)
         slots.push(tmp)
+        slotsMeaning.push('D')
       }
 
       if(this.mode.indexOf('time') !== -1){
@@ -178,6 +183,7 @@
             value: i
           })
         slots.push(tmp)
+        slotsMeaning.push('h')
         //分钟
         tmp = {
           values: [],
@@ -190,15 +196,25 @@
             value: i
           })
         slots.push(tmp)
+        slotsMeaning.push('m')
 
-        if(this.use12Hours === true)
+        if(this.use12Hours === true){
           slots.push({
             values: [
-              unit.am,
-              unit.pm
+              {
+                text: unit.am,
+                value: 'am'
+              },
+              {
+                text: unit.pm,
+                value: 'pm'
+              }
             ],
-            defaultIndex: 0
+            defaultIndex: 0,
+            valueKey: 'text'
           })
+          slotsMeaning.push('apm')
+        }
       }
 
       this.slots = slots
@@ -225,6 +241,46 @@
             this._getMonthDays(val[0].value, val[1].value))
         }
         this.onChange(picker, val)
+      },
+
+      _parseVal (rawVal){
+        var val = {}, endFunc, tmp
+
+        this.slotsMeaning.forEach( (type, i) =>{
+          if(type === 'apm'){
+            tmp = i
+            endFunc = ()=>{
+              if(rawVal[tmp].value === 'pm')
+                val.h += 12
+            }
+          }else{
+            val[type] = rawVal[i].value
+          }
+        })
+        endFunc && endFunc()
+        return val
+      },
+
+      _setValue (parsedVal){
+        var rawVal = [], 
+          unit = this.timeUnits, 
+          showUnit = this.showUnit;
+
+        this.slotsMeaning.forEach( (type, i) => {
+          if(type === 'apm'){
+            rawVal.push({
+              text: unit[type],
+              value: parsedVal.apm
+            })
+          }else{
+            rawVal.push({
+              text: showUnit? fixZero(parsedVal[type]) + unit[type] : fixZero(parsedVal[type]),
+              value: parsedVal[type]
+            })
+          }
+        })
+
+        return rawVal
       },
 
       _getMonthDays (year, month){
