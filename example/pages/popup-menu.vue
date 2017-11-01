@@ -22,11 +22,67 @@
       <div class="btn" ref="btn16" @click="click16">按钮</div>
     </wv-group>
 
-    <wv-group title="支持相对于dom定位">
+    <wv-group title="支持相对于dom定位(24个位置)">
       <div class="btn" ref="btn8" @click="click8">左上角的下右</div>
       <div class="btn" ref="btn9" @click="click9">右上角的下右</div>
       <div class="btn" ref="btn10" @click="click10">右下角的上右</div>
       <div class="btn" ref="btn11" @click="click11">下中间的下</div>
+      <div style="height:20px;"></div>
+      <wv-cell title="位置定位示意图"></wv-cell>
+
+      <div class="refDom" ref="demoRefDom">
+        <div class="corner top_left">
+          <div class="above_before" @click="clickDomRefDemo('top','left','above','before')"></div>
+          <div class="above_after" @click="clickDomRefDemo('top','left','above','after')"></div>
+          <div class="below_after" @click="clickDomRefDemo('top','left','below','after')"></div>
+          <div class="below_before" @click="clickDomRefDemo('top','left','below','before')"></div>
+        </div>
+        <div class="corner top_right">
+          <div class="above_before" @click="clickDomRefDemo('top','right','above','before')"></div>
+          <div class="above_after" @click="clickDomRefDemo('top','right','above','after')"></div>
+          <div class="below_after" @click="clickDomRefDemo('top','right','below','after')"></div>
+          <div class="below_before" @click="clickDomRefDemo('top','right','below','before')"></div>
+        </div>
+        <div class="corner bottom_right">
+          <div class="above_before" @click="clickDomRefDemo('bottom','right','above','before')"></div>
+          <div class="above_after" @click="clickDomRefDemo('bottom','right','above','after')"></div>
+          <div class="below_after" @click="clickDomRefDemo('bottom','right','below','after')"></div>
+          <div class="below_before" @click="clickDomRefDemo('bottom','right','below','before')"></div>
+        </div>
+        <div class="corner bottom_left">
+          <div class="above_before" @click="clickDomRefDemo('bottom','left','above','before')"></div>
+          <div class="above_after" @click="clickDomRefDemo('bottom','left','above','after')"></div>
+          <div class="below_after" @click="clickDomRefDemo('bottom','left','below','after')"></div>
+          <div class="below_before" @click="clickDomRefDemo('bottom','left','below','before')"></div>
+        </div>
+        
+        <div class="edge bottom_center">
+          <div class="above" @click="clickDomRefDemo('bottom','center','above','before')"></div>
+          <div class="below" @click="clickDomRefDemo('bottom','center','below','before')"></div>
+        </div>
+        <div class="edge top_center">
+          <div class="above" @click="clickDomRefDemo('top','center','above','before')"></div>
+          <div class="below" @click="clickDomRefDemo('top','center','below','before')"></div>
+        </div>
+        <div class="edge center_left">
+          <div class="before" @click="clickDomRefDemo('center','left','above','before')"></div>
+          <div class="after" @click="clickDomRefDemo('center','left','below','after')"></div>
+        </div>
+        <div class="edge center_right">
+          <div class="before" @click="clickDomRefDemo('center','right','above','before')"></div>
+          <div class="after" @click="clickDomRefDemo('center','right','below','after')"></div>
+        </div>
+      </div>
+
+      <wv-cell title="#定位说明"></wv-cell>
+      <wv-cell title="top,bottom,left,right,center 定位点"></wv-cell>
+      <wv-cell title="above,below,before,after 偏移"></wv-cell>
+      <wv-cell title="红色-> above after"></wv-cell>
+      <wv-cell title="绿色-> above before"></wv-cell>
+      <wv-cell title="黄色-> below after"></wv-cell>
+      <wv-cell title="蓝色-> below before"></wv-cell>
+      <wv-cell title="边缘居中的时候,所居中的轴的对应的偏移设置将会失效"></wv-cell>
+      <wv-cell title="比如做边缘的垂直居中,垂直方向的above,below偏移设置将会无效"></wv-cell>
     </wv-group>
     
     <wv-group title="absolute的定位模式">
@@ -395,6 +451,16 @@
           refDom: this.$refs.btn17,
           positionType: 'absolute'
         })
+      },
+
+      clickDomRefDemo (top, left, above, after){
+        this.centerMenu2.open(null, {
+          autoSetOrthocenter: true,
+          position: 'domRelative',
+          refDom: this.$refs.demoRefDom,
+          refCorner: `${top} ${left}`,
+        relativeToCorner: `${above} ${after}`
+        })
       }
     }
   }
@@ -432,6 +498,127 @@
   }
   .btn:last-child {
     margin-bottom: 20px;
+  }
+
+  .refDom{
+    width: 75vw;
+    height: 60vw;
+    background-color: rgba(0, 150, 136, 0.5);
+    margin: 30px auto;
+    position: relative;
+  }
+  
+  .corner{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    /* border: 1px solid black; */
+  }
+  .top_left{
+    top: 0px;
+    left: 0px;
+    transform: translate(-50%, -50%);
+  }
+  .top_right{
+    top: 0px;
+    right: 0px;
+    transform: translate(50%, -50%);
+  }
+  .bottom_left{
+    bottom: 0px;
+    left: 0px;
+    transform: translate(-50%, 50%);
+  }
+  .bottom_right{
+    bottom: 0px;
+    right: 0px;
+    transform: translate(50%, 50%);
+  }
+  .edge{
+    position: absolute;
+    /* border: 1px solid black; */
+  }
+  .top_center{
+    height: 50px;
+    width: 25px;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .bottom_center{
+    height: 50px;
+    width: 25px;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+  .center_left{
+    height: 25px;
+    width: 50px;
+    left: 0px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .center_right{
+    height: 25px;
+    width: 50px;
+    right: 0px;
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  .corner > div{
+    position: absolute;
+    border-radius: 100%;
+    height: 50%;
+    width: 50%;
+  }
+  .above_before{
+    top: 0;
+    left: 0;
+    background: #009688;
+  }
+  .above_after{
+    top: 0;
+    right: 0;
+    background: #f44336;
+  }
+  .below_before{
+    bottom: 0;
+    left: 0;
+    background: #2196f3;
+  }
+  .below_after{
+    bottom: 0;
+    right: 0;
+    background: #ffeb3b;
+  }
+
+  .edge > div{
+    position: absolute;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+  }
+  .after{
+    top: 0;
+    left: 0;
+    background: #2196f3;
+  }
+  .before{
+    top: 0;
+    right: 0;
+    background: #ffeb3b;
+  }
+  .below{
+    bottom: 0;
+    left: 0;
+    background: #ffeb3b;
+  }
+  .above{
+    top: 0;
+    left: 0;
+    background: #009688;
   }
 </style>
 
