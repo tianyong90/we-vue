@@ -30,7 +30,7 @@
 
     <div class="time-select-bar" v-show="enableTimeSelect && (selectedStart || selectedEnd)">
       <div v-show="selectedStart && !selectedEnd">
-        <div class="time-select-title">选择开始时间</div>
+        <div class="time-select-title">选择<span v-show="type === 'range'">开始</span>时间</div>
         <wv-picker-view 
           :slots="timeSlots" 
           :onChange="_changeStartTime"

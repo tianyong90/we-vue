@@ -513,7 +513,7 @@
   .refDom{
     width: 70vw;
     height: 60vw;
-    background-color: rgba(0, 150, 136, 0.5);
+    background-color: rgba(0, 150, 136, 0.2);
     margin: 30px auto;
     position: relative;
   }
