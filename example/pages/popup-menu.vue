@@ -76,7 +76,7 @@
         <div class="corner center_center" @click="clickDomRefDemo('center','center','above','before')"></div>
       </div>
 
-      <wv-cell title="#定位说明"></wv-cell>
+      <wv-cell title="#定位说明(25种)"></wv-cell>
       <wv-cell title="top,bottom,left,right,center 设置定位点"></wv-cell>
       <wv-cell title="above,below,before,after 相对定位点偏移"></wv-cell>
       <wv-cell title="红色-> above after"></wv-cell>

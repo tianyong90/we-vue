@@ -1,19 +1,14 @@
 <template>
   <div class="page">
-    <img :src="logo" alt="">
-    <div class="container">
-      <img :src="logo" alt="">
-    </div>
-    <div class="container-raduis">
-      <img :src="logo" alt="">
-    </div>
-    <div class="container-raduis" @click="triggerNotOnImgTag">
-      <img :src="logo" alt="" style="margin-left:55px;transform:translateY(55px)" ref="imgTarget">
-    </div>
-    <div class="container-raduis">
-      <img :src="sample" alt="">
-    </div>
+    <wv-group title="支持过度动画做裁切,显示更加自然">
+      <div class="row">
+        <div class="row-item"><img :src="sample" alt=""></div>
+        <div class="row-item"><img :src="logo" alt=""></div>
+        <div class="row-item" @click="triggerNotOnImgTag"><img :src="logo" alt="" ref="imgTarget"></div>
+      </div>
+    </wv-group>
   </div>
+  
 </template>
 
 <script>
@@ -60,18 +55,20 @@
     width: 100px;
   }
 
-  .container, .container-raduis{
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: lightblue;
-    margin: 50px;
-    overflow: hidden;
+  .row{
+    display: flex;
+    justify-content: space-around;
   }
-  .container-raduis{
-    border-radius: 10px;
+  .row-item{
+    height: 80px;
+    width: 80px;
+    flex: 0 0 auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid black;
   }
 </style>
 

@@ -153,7 +153,7 @@
         clipRadius = clipRightVals.join(' ');
 
         hasClip = clipTop !== 0 || clipLeft !== 0 || 
-                  clipBottom !== 0 || clipRight !== 0 ;
+                  clipBottom !== 0 || clipRight !== 0 || clipRadius !== '0px';
 
         return {
           clipTop: clipTop,
