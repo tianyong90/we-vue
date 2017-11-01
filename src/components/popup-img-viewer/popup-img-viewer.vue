@@ -1,5 +1,5 @@
 <template>
-  <wv-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="true" :defaultIndex="defaultIndex" ref="swiper">
+  <wv-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
       <wv-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
         <img class="swipe-img" :src="img.src" alt="">
       </wv-swipe-item>
@@ -25,6 +25,10 @@
       imgs: {
         type: [Array, HTMLCollection],
         required: true
+      },
+      loop: {
+         type: Boolean,
+         default: false
       }
     },
 
