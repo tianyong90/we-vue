@@ -3,7 +3,7 @@
     <div class="weui-picker__mask" ref="mask"></div>
     <div class="weui-picker__indicator" ref="indicator"></div>
     <div class="weui-picker__content" ref="listWrapper">
-      <div class="weui-picker__item" :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}</div>
+      <div class="weui-picker__item" :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}</div>
     </div>
   </div>
   <div class="wv-picker-slot-divider" v-else v-html="content"></div>
@@ -27,7 +27,7 @@
         }
       },
       value: {},
-      valueKey: String,
+      labelKey: String,
       defaultIndex: {
         type: Number,
         default: 0
@@ -62,11 +62,11 @@
       },
 
       valueIndex () {
-        var valueKey = this.valueKey
+        var labelKey = this.labelKey
         if(this.currentValue instanceof Object){
           //写个顺序查找好了
           for(var i = 0, len = this.mutatingValues.length; i < len ; i++){
-            if(this.currentValue[valueKey] === this.mutatingValues[i][valueKey])
+            if(this.currentValue[labelKey] === this.mutatingValues[i][labelKey])
               return i
           }
           return -1
@@ -185,6 +185,41 @@
         if (this.divider) return
 
         wrapper.translateY = this.value2translate(value)
+      },
+
+      nearby (val, values){
+        var minOffset,  minIndex, offset
+
+        if(Array.isArray(values) === false) 
+          return undefined
+        
+        minIndex = 0
+        if(typeof val === 'number'){
+          minOffset = Math.abs(values[0] - val)
+
+          values.forEach((value, i)=>{
+            offset = Math.abs(value - val)
+            if(offset < minOffset){
+              minIndex = i
+              minOffset = offset
+            }
+          })
+          return values[minIndex]
+        }else if(val instanceof Object){
+          if(typeof val.value === 'number'){
+            minOffset = Math.abs(values[0].value - val.value)
+
+            values.forEach((value, i)=>{
+              offset = Math.abs(value.value - val.value)
+              if(offset < minOffset){
+                minIndex = i
+                minOffset = offset
+              }
+            })
+            return values[minIndex]
+          }
+        }
+        return values[0]
       }
     },
 
@@ -194,8 +229,9 @@
       },
 
       mutatingValues (val) {
+        var tmp
         if (this.valueIndex === -1) {
-          this.currentValue = (val || [])[0]
+          this.currentValue = this.nearby(this.currentValue, val)
         }
       },
 

@@ -4,7 +4,7 @@
       v-for="(slot, key, index) in slots" 
       :key="key" 
       :values="slot.values || []" 
-      :valueKey="slot.valueKey" 
+      :labelKey="slot.labelKey" 
       :divider="slot.divider" 
       :showItemNum="showItemNum" 
       :showItemHeight="showItemHeight" 

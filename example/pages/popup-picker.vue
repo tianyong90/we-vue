@@ -179,7 +179,8 @@
       },
       datetimePickerClick (e){
         this.datetimePicker.open(e, {
-          defaultValues: this.datetime
+          defaultValues: this.datetime,
+          use12Hours: false,
         })
       },
       time24PickerClick(e){

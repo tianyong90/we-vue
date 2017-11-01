@@ -9,7 +9,7 @@
       :slots="slots" 
       :onChange="_onChange"
       :defaultValues="defaultValues"
-      :valueKey="valueKey"
+      :labelKey="labelKey"
       :showItemNum="showItemNum"
       :showItemHeight="showItemHeight"
       ref="picker"
@@ -38,7 +38,7 @@
       showItemNum: Number,
       showItemHeight: Number,
       defaultValues: Array,
-      valueKey: String,
+      labelKey: String,
       onChange: Function,
 
       confirmText: {
@@ -134,7 +134,7 @@
         //年
         tmp = {
           values: [],
-          valueKey: 'text',
+          labelKey: 'text',
           defaultIndex: now.getFullYear() - minYear
         }
         for(i = minYear; i <= maxYear; i++)
@@ -147,7 +147,7 @@
         //月
         tmp = {
           values: [],
-          valueKey: 'text',
+          labelKey: 'text',
           defaultIndex: now.getMonth()
         }
         for(i = 1; i <= 12 ; i++)
@@ -160,7 +160,7 @@
         //日
         tmp = {
           values: [],
-          valueKey: 'text',
+          labelKey: 'text',
           defaultIndex: now.getFullYear() - minYear
         }
         tmp.values = this._getMonthDays(now.getFullYear(), now.getMonth()+1)
@@ -174,7 +174,7 @@
         start = this.use12Hours === true ? 1: 0
         tmp = {
           values: [],
-          valueKey: 'text',
+          labelKey: 'text',
           defaultIndex: 7
         }
         for(i = start; i <= end; i++)
@@ -187,7 +187,7 @@
         //分钟
         tmp = {
           values: [],
-          valueKey: 'text',
+          labelKey: 'text',
           defaultIndex: 0
         }
         for(i = 0; i <= 59 ; i++)
@@ -211,7 +211,7 @@
               }
             ],
             defaultIndex: 0,
-            valueKey: 'text'
+            labelKey: 'text'
           })
           slotsMeaning.push('apm')
         }
