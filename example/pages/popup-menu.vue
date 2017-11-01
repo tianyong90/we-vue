@@ -22,7 +22,7 @@
       <div class="btn" ref="btn16" @click="click16">按钮</div>
     </wv-group>
 
-    <wv-group title="支持相对于dom定位(24个位置)">
+    <wv-group title="支持相对于dom定位(25个位置)">
       <div class="btn" ref="btn8" @click="click8">左上角的下右</div>
       <div class="btn" ref="btn9" @click="click9">右上角的下右</div>
       <div class="btn" ref="btn10" @click="click10">右下角的上右</div>
@@ -72,11 +72,13 @@
           <div class="before" @click="clickDomRefDemo('center','right','above','before')"></div>
           <div class="after" @click="clickDomRefDemo('center','right','below','after')"></div>
         </div>
+
+        <div class="corner center_center" @click="clickDomRefDemo('center','center','above','before')"></div>
       </div>
 
       <wv-cell title="#定位说明"></wv-cell>
-      <wv-cell title="top,bottom,left,right,center 定位点"></wv-cell>
-      <wv-cell title="above,below,before,after 偏移"></wv-cell>
+      <wv-cell title="top,bottom,left,right,center 设置定位点"></wv-cell>
+      <wv-cell title="above,below,before,after 相对定位点偏移"></wv-cell>
       <wv-cell title="红色-> above after"></wv-cell>
       <wv-cell title="绿色-> above before"></wv-cell>
       <wv-cell title="黄色-> below after"></wv-cell>
@@ -454,12 +456,20 @@
       },
 
       clickDomRefDemo (top, left, above, after){
-        this.centerMenu2.open(null, {
+        this.pressMenu2.open(null, {
           autoSetOrthocenter: true,
           position: 'domRelative',
           refDom: this.$refs.demoRefDom,
           refCorner: `${top} ${left}`,
-        relativeToCorner: `${above} ${after}`
+          relativeToCorner: `${above} ${after}`,
+          items:[
+            {
+              name: '',
+              click: () => {
+                this.pressMenu2.close();
+              }
+            }
+          ]
         })
       }
     }
@@ -501,7 +511,7 @@
   }
 
   .refDom{
-    width: 75vw;
+    width: 70vw;
     height: 60vw;
     background-color: rgba(0, 150, 136, 0.5);
     margin: 30px auto;
@@ -534,6 +544,16 @@
     right: 0px;
     transform: translate(50%, 50%);
   }
+  .center_center{
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    height: 25px;
+    width: 25px;
+    background-color: #607d8b;
+    border-radius: 100%;
+  }
+
   .edge{
     position: absolute;
     /* border: 1px solid black; */
