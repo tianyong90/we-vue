@@ -602,13 +602,13 @@
   }
   .after{
     top: 0;
-    left: 0;
-    background: #2196f3;
+    right: 0;
+    background: #ffeb3b;
   }
   .before{
     top: 0;
-    right: 0;
-    background: #ffeb3b;
+    left: 0;
+    background: #2196f3;
   }
   .below{
     bottom: 0;
