@@ -229,7 +229,6 @@
       },
 
       mutatingValues (val) {
-        var tmp
         if (this.valueIndex === -1) {
           this.currentValue = this.nearby(this.currentValue, val)
         }

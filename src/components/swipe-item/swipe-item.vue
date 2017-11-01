@@ -21,12 +21,7 @@
       },
     },
 
-    created () {
-      console.log('swipe-item created');
-    },
-
     mounted () {
-      console.log('swipe-item mounted');
       this.$parent && this.$parent.swipeItemCreated();
     },
 

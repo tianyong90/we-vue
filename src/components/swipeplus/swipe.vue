@@ -42,8 +42,6 @@
         onSwipe: this.onSwipe,
         onSwipeDone: this.onSwipeDone
       };
-
-      console.log('swiper created');
     },
 
     data () {
@@ -112,8 +110,6 @@
       this.setTimer();
       this.reInitPages();
       window.addEventListener('resize',this.reSize);
-
-      console.log('swiper mounted');
     },
 
     methods: {

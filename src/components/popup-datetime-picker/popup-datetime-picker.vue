@@ -84,6 +84,10 @@
         type: Boolean,
         default: true
       },
+      showDivider: {
+        type: Boolean,
+        default: false
+      },
       customUnits: Object
     },
 
@@ -144,6 +148,14 @@
           })
         slots.push(tmp)
         slotsMeaning.push('Y')
+        //区分符 -
+        if(this.showDivider){
+          tmp = {
+            divider: true,
+            content: '-'
+          }
+          slots.push(tmp)
+        }
         //月
         tmp = {
           values: [],
@@ -157,6 +169,14 @@
           })
         slots.push(tmp)
         slotsMeaning.push('M')
+        //区分符 -
+        if(this.showDivider){
+          tmp = {
+            divider: true,
+            content: '-'
+          }
+          slots.push(tmp)
+        }
         //日
         tmp = {
           values: [],
@@ -184,6 +204,15 @@
           })
         slots.push(tmp)
         slotsMeaning.push('h')
+
+        //区分符 :
+        if(this.showDivider){
+          tmp = {
+            divider: true,
+            content: ':'
+          }
+          slots.push(tmp)
+        }
         //分钟
         tmp = {
           values: [],
@@ -307,6 +336,53 @@
 
       _getMonths (year){
         year = parseInt(year, 10)
+
+        var i = 1, total = 12,
+          months = [], unit = this.timeUnits.M;
+
+        if(this.minDate.getFullYear() === year){
+          i = this.minDate.getMonth()+1
+        }else if(this.maxDate.getFullYear() === year ){
+          total = this.maxDate.getMonth()+1
+        }
+
+        for(i; i <= total; i++){
+          months.push({
+            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            value: i
+          })
+        }
+        return months
+      },
+
+      _getHours (year, month, day){
+        year = parseInt(year, 10)
+        month = parseInt(month, 10)
+        day = parseInt(day, 10)
+
+        var i = 1, total = 12,
+          months = [], unit = this.timeUnits.M;
+
+        if(this.minDate.getFullYear() === year){
+          i = this.minDate.getMonth()+1
+        }else if(this.maxDate.getFullYear() === year ){
+          total = this.maxDate.getMonth()+1
+        }
+
+        for(i; i <= total; i++){
+          months.push({
+            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            value: i
+          })
+        }
+        return months
+      },
+
+      _getMinutes (year, month, day, hour){
+        year = parseInt(year, 10)
+        month = parseInt(month, 10)
+        day = parseInt(day, 10)
+        hour = parseInt(hour, 10)
 
         var i = 1, total = 12,
           months = [], unit = this.timeUnits.M;

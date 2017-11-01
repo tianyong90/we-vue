@@ -28,7 +28,7 @@
       <div class="btn" ref="btn10" @click="click10">右下角的上右</div>
       <div class="btn" ref="btn11" @click="click11">下中间的下</div>
       <div style="height:20px;"></div>
-      <wv-cell title="位置定位示意图"></wv-cell>
+      <wv-cell title="位置定位示意图(25种)"></wv-cell>
 
       <div class="refDom" ref="demoRefDom">
         <div class="corner top_left">
@@ -76,7 +76,7 @@
         <div class="corner center_center" @click="clickDomRefDemo('center','center','above','before')"></div>
       </div>
 
-      <wv-cell title="#定位说明(25种)"></wv-cell>
+      <wv-cell title="#定位说明"></wv-cell>
       <wv-cell title="top,bottom,left,right,center 设置定位点"></wv-cell>
       <wv-cell title="above,below,before,after 相对定位点偏移"></wv-cell>
       <wv-cell title="红色-> above after"></wv-cell>

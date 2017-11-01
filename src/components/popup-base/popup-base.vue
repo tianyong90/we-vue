@@ -3,8 +3,9 @@
     :routerId="routerId" 
     ref="base"
     :style="{ position: positionType }"
+    @touchmove="maskPreventScroll"
   >
-    <div class="wv-popup-mask" ref="mask" @click="turnOffMask" @touchmove="maskPreventScroll"></div>
+    <div class="wv-popup-mask" ref="mask" @click="turnOffMask" ></div>
     <div class="wv-popup-slot" ref="slotContainer">
       <div ref="slot" @touchmove="_stopPropagation"></div>
     </div>
