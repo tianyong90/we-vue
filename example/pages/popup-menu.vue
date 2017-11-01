@@ -9,28 +9,28 @@
       <wv-cell title="jackInTheBox hinge" is-link @click="click12"></wv-cell>
     </wv-group>
 
-    <wv-group title="通过animation实现过度示例">
-      <wv-cell title="支持通过animation实现更多效果" is-link @click="click7"></wv-cell>
+    <wv-group title="通过自定义animation实现过度示例">
+      <wv-cell title="根据点击的位置定位" is-link @click="click6"></wv-cell>
+      <wv-cell title="支持通过animation实现更多小细节" is-link @click="click7"></wv-cell>
     </wv-group>
 
     <wv-group title="上下居中的菜单示例">
-      <wv-cell title="支持有事件上下文的动效" is-link @click="click5"></wv-cell>
-      <wv-cell title="支持有事件上下文的动效absolute" is-link @click="click15"></wv-cell>
+      <wv-cell title="磁贴按压效果" is-link @click="click5"></wv-cell>
     </wv-group>
 
-    <wv-group title="微信长按菜单示例">
-      <wv-cell title="根据点击的位置定位" is-link @click="click6"></wv-cell>
+    <wv-group title="popover">
+      <div class="btn" ref="btn16" @click="click16">按钮</div>
     </wv-group>
 
     <wv-group title="支持相对于dom定位">
-      <div class="btn" ref="btn8" @click="click8">按钮</div>
-      <div class="btn" ref="btn9" @click="click9">按钮</div>
-      <div class="btn" ref="btn10" @click="click10">按钮</div>
-      <div class="btn" ref="btn11" @click="click11">按钮</div>
-      <div class="btn" ref="btn13" @click="click13">absolute定位</div>
-      <div class="btn" ref="btn16" @click="click16">popover</div>
-      <div class="btn" ref="btn17" @click="click17">popover(absolute)</div>
-      <div class="btn"></div>
+      <div class="btn" ref="btn8" @click="click8">左上角的下右</div>
+      <div class="btn" ref="btn9" @click="click9">右上角的下右</div>
+      <div class="btn" ref="btn10" @click="click10">右下角的上右</div>
+      <div class="btn" ref="btn11" @click="click11">下中间的下</div>
+    </wv-group>
+    
+    <wv-group title="absolute的定位模式">
+      <wv-cell title="不会锁定滚动" is-link @click="click15"></wv-cell>
     </wv-group>
   </div>
 </template>
@@ -68,14 +68,12 @@
         ],
 
         onOpen: function(){
-          this.$refs.page.style.filter = 'blur(0.5px)';
-          this.$refs.page.style.transition = 'all 300ms ease 0ms';
+          this.$refs.page.style.filter = 'blur(5px)';
         }.bind(this),
 
         onClose: function(){
           this.$refs.page.style.filter = null;
           once(this.$refs.page, 'transitionend', function(){
-            this.$refs.page.style.transition = null;
           }.bind(this))
         }.bind(this)
       })
@@ -288,8 +286,8 @@
 
       this.popupOver = new this.$popupOver({
         refDom: this.$refs.btn16,
-        refCorner: 'center right',
-        relativeToCorner: 'above after',
+        refCorner: 'bottom right',
+        relativeToCorner: 'below before',
         items: [
           {
             name: '扫描',
@@ -381,7 +379,8 @@
       },
       click13 (e) {
         this.pressMenu_centerRight_aboveAfter.open(e, {
-          positionType: 'absolute'
+          positionType: 'absolute',
+          refDom: this.$refs.btn13
         })
       },
 
@@ -421,18 +420,18 @@
   }
 
   .btn {
-    width: 180px;
+    width: 120px;
     height: 38px;
     background: #009688;
     color: #fff;
     border-radius: 3px;
     font-size: 17px;
-    margin: 30px auto 0 auto;
+    margin: 20px auto 0 auto;
     text-align: center;
     line-height: 38px;
   }
   .btn:last-child {
-    margin-bottom: 100px;
+    margin-bottom: 20px;
   }
 </style>
 

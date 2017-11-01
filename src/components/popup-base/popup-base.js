@@ -296,7 +296,6 @@ let popUpBase = {
       if(relativeToCorner[1] === 'before' && refCorner[1] !== 'center')
         fromLeft -= d_width;
 
-
       $slot.style.position = 'absolute';
       $slot.style.left = fromLeft + 'px';
       $slot.style.top = fromTop + 'px';
