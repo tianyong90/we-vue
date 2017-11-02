@@ -60,5 +60,6 @@
   "header": "./src/components/header/index.js",
   "top-tips": "./src/components/top-tips/index.js",
   "infinite-scroll": "./src/components/infinite-scroll/index.js",
-  "number-spinner": "./src/components/number-spinner/index.js"
+  "number-spinner": "./src/components/number-spinner/index.js",
+  "tabs": "./src/components/tabs/index.js"
 }

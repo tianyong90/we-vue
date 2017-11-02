@@ -60,6 +60,7 @@ import Header from './components/header/index'
 import TopTips from './components/top-tips/index'
 import InfiniteScroll from './components/infinite-scroll/index'
 import NumberSpinner from './components/number-spinner/index'
+import Tabs from './components/tabs/index'
 import 'weui/dist/style/weui.min.css'
 import './style/animate.min.css'
 import './style/animated-preset.css'
@@ -114,6 +115,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Header.name, Header)
   Vue.component(TopTips.name, TopTips)
   Vue.component(NumberSpinner.name, NumberSpinner)
+  Vue.component(Tabs.name, Tabs)
   Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
@@ -206,5 +208,6 @@ export default {
   Header,
   TopTips,
   InfiniteScroll,
-  NumberSpinner
+  NumberSpinner,
+  Tabs
 }
