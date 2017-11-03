@@ -57,7 +57,7 @@
 
     mounted () {
       if (this.autofocus) {
-        console.log('fuck')
+        console.log('fuck') //666
         this.$refs.searchInput.focus()
         this.isActive = true
       }

@@ -49,4 +49,9 @@
     color: #222;
     text-align: center;
   }
+
+  .weui-cell,
+  .weui-cells{
+    z-index: 0;
+  }
 </style>

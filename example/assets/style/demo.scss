@@ -2,6 +2,7 @@ html,
 body {
   background-color: #f8f8f8;
   user-select: none;
+  position: relative;
 }
 
 a,
@@ -12,6 +13,8 @@ img {
 .page {
   width: 100%;
   min-height: 100vh;
+  position: relative;
+  z-index: 0;
 }
 
 .page-with-padding {

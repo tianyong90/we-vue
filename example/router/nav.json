@@ -49,6 +49,47 @@
         "name": "Swipe",
         "description": "轮播",
         "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/swipeplus",
+        "name": "SwipePlus",
+        "description": "滑动页面切换",
+        "icon": "widget-slider-scroll"
+      }
+    ]
+  },
+  {
+    "groupTitle": "弹层(支持返回键)",
+    "navItems": [
+      {
+        "path": "/popup-menu",
+        "name": "popUpMenu",
+        "description": "popUpMenu",
+        "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-img-viewer",
+        "name": "PopUpImgViewer",
+        "description": "PopUpImgViewer",
+        "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-calendar",
+        "name": "PopUpCalendar",
+        "description": "PopUpCalendar",
+        "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-dialog",
+        "name": "PopUpDialog(不兼容老版",
+        "description": "PopUpDialogpUp",
+        "icon": "widget-slider-scroll"
+      },
+      {
+        "path": "/popup-picker",
+        "name": "popUpPicker(不兼容老版",
+        "description": "popUp",
+        "icon": "widget-slider-scroll"
       }
     ]
   },
@@ -155,6 +196,12 @@
         "name": "InfiniteScroll",
         "description": "无限滚动加载",
         "icon": "scrollvertical"
+      },
+      {
+        "path": "/pull-down-refresh",
+        "name": "PullDownRefresh",
+        "description": "下拉刷新",
+        "icon": "widget-slider-scroll"
       }
     ]
   },
@@ -242,6 +289,17 @@
         "name": "Popup",
         "description": "弹出层",
         "icon": "popup"
+      }
+    ]
+  },
+  {
+    "groupTitle": "交互效果",
+    "navItems": [
+      {
+        "path": "/android-overflow-effect",
+        "name": "AndroidOverflowEffect",
+        "description": "安卓列表溢出效果",
+        "icon": "widget-slider-scroll"
       }
     ]
   }

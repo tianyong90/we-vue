@@ -1,7 +1,7 @@
 <template>
   <div class="weui-cell">
     <div class="weui-cell__bd">
-      <textarea @change="$emit('change', currentValue)" class="weui-textarea" ref="rextarea" :placeholder="placeholder"
+      <textarea class="weui-textarea" ref="rextarea" :placeholder="placeholder"
                 :rows="rows" :disabled="disabled" :readonly="readonly" v-model="currentValue"></textarea>
       <div class="weui-textarea-counter" v-if="showCounter"><span>{{ length }}</span>/{{ maxLength }}</div>
     </div>

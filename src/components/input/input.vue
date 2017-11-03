@@ -46,6 +46,22 @@
         type: Number,
         default: 105
       },
+      spellcheck: {
+        type: Boolean,
+        default: false
+      },
+      autocapitalize: {
+        type: Boolean,
+        default: false
+      },
+      autocomplete: {
+        type: Boolean,
+        default: false
+      },
+      autocorrect: {
+        type: Boolean,
+        default: false
+      },
       placeholder: String,
       value: String,
       name: String,

@@ -9,6 +9,8 @@ var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}/index\''
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})'
 var MAIN_TEMPLATE = `{{include}}
 import 'weui/dist/style/weui.min.css'
+import './style/animate.min.css'
+import './style/animated-preset.css'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {
@@ -22,9 +24,20 @@ const install = function (Vue, config = {}) {
     ...config.lazyload
   })
 
-  Vue.$dialog = Vue.prototype.$dialog = Dialog
-  Vue.$toast = Vue.prototype.$toast = Toast
-  Vue.$indicator = Vue.prototype.$indicator = Indicator
+  Vue.prototype.$dialog = Dialog
+  Vue.prototype.$popup = PopupBase
+  Vue.prototype.$bottomMenu = PopupBottomMenu
+  Vue.prototype.$centerMenu = PopupCenterMenu
+  Vue.prototype.$pressMenu = PopupPressMenu
+  Vue.prototype.$popUpDialog = PopupDialog
+  Vue.prototype.$popUpDialogCustom = PopupDialogCustom
+  Vue.prototype.$popupImgViewer = PopupImgViewer
+  Vue.prototype.$picker = PopupPicker
+  Vue.prototype.$calendar = PopupCalendar
+  Vue.prototype.$popupOver = PopupOver
+  Vue.prototype.$datetimePicker = PopupDatetimePicker
+  Vue.prototype.$toast = Toast
+  Vue.prototype.$indicator = Indicator
 }
 
 // auto install
@@ -60,6 +73,17 @@ ComponentNames.forEach(name => {
 
     // services
     'Dialog',
+    'PopupBase',
+    'PopupBottomMenu',
+    'PopupCenterMenu',
+    'PopupPressMenu',
+    'PopupDialog',
+    'PopupDialogCustom',
+    'PopupImgViewer',
+    'PopupPicker',
+    'PopupCalendar',
+    'PopupOver',
+    'PopupDatetimePicker',
     'Toast',
     'Indicator'
   ].indexOf(componentName) === -1) {

@@ -1,3 +1,4 @@
+import AndroidOverflowEffect from './components/android-overflow-effect/index'
 import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
@@ -13,6 +14,7 @@ import NavbarItem from './components/navbar-item/index'
 import Tabbar from './components/tabbar/index'
 import TabbarItem from './components/tabbar-item/index'
 import Search from './components/search/index'
+import SearchAnimated from './components/search-animated/index'
 import Checklist from './components/checklist/index'
 import Radio from './components/radio/index'
 import Loadmore from './components/loadmore/index'
@@ -29,9 +31,25 @@ import Flex from './components/flex/index'
 import FlexItem from './components/flex-item/index'
 import Icon from './components/icon/index'
 import Swipe from './components/swipe/index'
+import Swipeplus from './components/swipeplus/index'
 import SwipeItem from './components/swipe-item/index'
+import SwipeIndicator from './components/swipe-indicator/index'
 import Popup from './components/popup/index'
+import PopupBase from './components/popup-base/index'
+import PopupBottomMenu from './components/popup-bottom-menu/index'
+import PopupCenterMenu from './components/popup-center-menu/index'
+import PopupPressMenu from './components/popup-press-menu/index'
+import PopupDialog from './components/popup-dialog/index'
+import PopupDialogCustom from './components/popup-dialog-custom/index'
+import PopupImgViewer from './components/popup-img-viewer/index'
+import PopupPicker from './components/popup-picker/index'
+import PickerView from './components/picker-view/index'
+import PopupCalendar from './components/popup-calendar/index'
+import PopupOver from './components/popup-over/index'
+import PopupDatetimePicker from './components/popup-datetime-picker/index'
 import Panel from './components/panel/index'
+import PullDownRefresh from './components/pull-down-refresh/index'
+import GestureTilePress from './components/gesture-tile-press/index'
 import MediaBox from './components/media-box/index'
 import Picker from './components/picker/index'
 import DatetimePicker from './components/datetime-picker/index'
@@ -43,11 +61,14 @@ import TopTips from './components/top-tips/index'
 import InfiniteScroll from './components/infinite-scroll/index'
 import NumberSpinner from './components/number-spinner/index'
 import 'weui/dist/style/weui.min.css'
+import './style/animate.min.css'
+import './style/animated-preset.css'
 
 const version = '1.4.18'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
+  Vue.component(AndroidOverflowEffect.name, AndroidOverflowEffect)
   Vue.component(Button.name, Button)
   Vue.component(Group.name, Group)
   Vue.component(Cell.name, Cell)
@@ -63,6 +84,7 @@ const install = function (Vue, config = {}) {
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(TabbarItem.name, TabbarItem)
   Vue.component(Search.name, Search)
+  Vue.component(SearchAnimated.name, SearchAnimated)
   Vue.component(Checklist.name, Checklist)
   Vue.component(Radio.name, Radio)
   Vue.component(Loadmore.name, Loadmore)
@@ -76,9 +98,14 @@ const install = function (Vue, config = {}) {
   Vue.component(FlexItem.name, FlexItem)
   Vue.component(Icon.name, Icon)
   Vue.component(Swipe.name, Swipe)
+  Vue.component(Swipeplus.name, Swipeplus)
   Vue.component(SwipeItem.name, SwipeItem)
+  Vue.component(SwipeIndicator.name, SwipeIndicator)
   Vue.component(Popup.name, Popup)
+  Vue.component(PickerView.name, PickerView)
   Vue.component(Panel.name, Panel)
+  Vue.component(PullDownRefresh.name, PullDownRefresh)
+  Vue.component(GestureTilePress.name, GestureTilePress)
   Vue.component(MediaBox.name, MediaBox)
   Vue.component(Picker.name, Picker)
   Vue.component(DatetimePicker.name, DatetimePicker)
@@ -94,9 +121,20 @@ const install = function (Vue, config = {}) {
     ...config.lazyload
   })
 
-  Vue.$dialog = Vue.prototype.$dialog = Dialog
-  Vue.$toast = Vue.prototype.$toast = Toast
-  Vue.$indicator = Vue.prototype.$indicator = Indicator
+  Vue.prototype.$dialog = Dialog
+  Vue.prototype.$popup = PopupBase
+  Vue.prototype.$bottomMenu = PopupBottomMenu
+  Vue.prototype.$centerMenu = PopupCenterMenu
+  Vue.prototype.$pressMenu = PopupPressMenu
+  Vue.prototype.$popUpDialog = PopupDialog
+  Vue.prototype.$popUpDialogCustom = PopupDialogCustom
+  Vue.prototype.$popupImgViewer = PopupImgViewer
+  Vue.prototype.$picker = PopupPicker
+  Vue.prototype.$calendar = PopupCalendar
+  Vue.prototype.$popupOver = PopupOver
+  Vue.prototype.$datetimePicker = PopupDatetimePicker
+  Vue.prototype.$toast = Toast
+  Vue.prototype.$indicator = Indicator
 }
 
 // auto install
@@ -107,6 +145,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
+  AndroidOverflowEffect,
   Button,
   Group,
   Cell,
@@ -122,6 +161,7 @@ export default {
   Tabbar,
   TabbarItem,
   Search,
+  SearchAnimated,
   Checklist,
   Radio,
   Loadmore,
@@ -138,9 +178,25 @@ export default {
   FlexItem,
   Icon,
   Swipe,
+  Swipeplus,
   SwipeItem,
+  SwipeIndicator,
   Popup,
+  PopupBase,
+  PopupBottomMenu,
+  PopupCenterMenu,
+  PopupPressMenu,
+  PopupDialog,
+  PopupDialogCustom,
+  PopupImgViewer,
+  PopupPicker,
+  PickerView,
+  PopupCalendar,
+  PopupOver,
+  PopupDatetimePicker,
   Panel,
+  PullDownRefresh,
+  GestureTilePress,
   MediaBox,
   Picker,
   DatetimePicker,
