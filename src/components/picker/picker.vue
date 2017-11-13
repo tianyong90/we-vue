@@ -112,11 +112,13 @@
         return null
       },
 
-      setSlotValue (index, value) {
+      setSlotValue (index, value, taskQueue) {
         this.$nextTick(() => {
           let slot = this.getSlot(index)
           if (slot) {
             slot.currentValue = value
+            if(taskQueue && taskQueue.length > 0)
+              slot.$nextTick(taskQueue.shift())
           }
         })
       },
@@ -132,8 +134,15 @@
       setSlotValues (index, values) {
         this.$nextTick(() => {
           let slot = this.getSlot(index)
+          var oldVal
           if (slot) {
+            oldVal = slot.currentValue
             slot.mutatingValues = values
+            slot.$nextTick(()=>{
+              if(oldVal !== undefined && oldVal !== null)
+                slot.doOnValueChange(oldVal)
+              oldVal = null
+            })
           }
         })
       },
@@ -148,9 +157,14 @@
           throw new Error('values length is not equal slot count.')
         }
 
+        var taskQueue = []
         values.forEach((value, index) => {
-          this.setSlotValue(index, value)
+          if(index !== 0)
+            taskQueue.push(()=>{
+              this.setSlotValue(index, value, taskQueue)
+            })
         })
+        this.setSlotValue(0, values[0], taskQueue)
       },
 
       cancel () {
