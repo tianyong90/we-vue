@@ -44,7 +44,7 @@ import InfiniteScroll from './components/infinite-scroll/index'
 import NumberSpinner from './components/number-spinner/index'
 import 'weui/dist/style/weui.min.css'
 
-const version = '1.4.18'
+const version = '1.5.0'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
