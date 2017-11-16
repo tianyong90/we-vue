@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
-  "style": "lib/style.min.css",
+  "style": "lib/style.css",
   "files": [
     "lib",
     "src"
