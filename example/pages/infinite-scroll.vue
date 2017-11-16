@@ -30,7 +30,9 @@
           for (let i = 1; i <= 10; i++) {
             this.list.push(last + i)
           }
-          this.loading = false
+          this.$nextTick(() => {
+            this.loading = false
+          })
         }, 2000)
       }
     },
