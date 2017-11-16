@@ -1,3 +1,18 @@
+## v1.5.0 (2017-11-16)
+
+- picker 组件优化，增加滚动效果，并可点击选择 [#18](https://github.com/tianyong90/we-vue/pull/18)
+
+### 其它调整
+
+- 放弃 cooking 构建工具，回归 vue-cli，优化开发体验
+- 不再构建 commonjs（仅构建 umd）
+- 部分加入单元测试（后期将进一步覆盖）
+- 源码格式规范化
+
+### 非兼容性更改
+
+- lib 目录下不再有 we-vue.common.js 及 style.min.js， 若单独手动引用，使用 `lin/index.js` 和 `lib/style.css`
+
 ## v1.4.18 (2017-10-31)
 
 ### fix
