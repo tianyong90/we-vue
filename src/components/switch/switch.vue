@@ -1,12 +1,14 @@
 <template>
   <wv-cell :title="title" v-if="isInCell">
-    <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick" slot="ft">
+    <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick"
+         slot="ft">
       <div class="background"></div>
       <div class="thumb" @touchstart="onTouchstart" @touchmove="onTouchmove" @touchend="onTouchend" ref="thumb"></div>
     </div>
   </wv-cell>
 
-  <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick" v-else>
+  <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick"
+       v-else>
     <div class="background"></div>
     <div class="thumb" @touchstart="onTouchstart" @touchmove="onTouchmove" @touchend="onTouchend" ref="thumb"></div>
   </div>
@@ -15,6 +17,7 @@
 <script>
   import Cell from '../cell/index'
   import Transform from 'css3transform'
+
   const THUMB_STROKE = 20 // 开关的行程
 
   export default {
@@ -34,7 +37,7 @@
       value: Boolean
     },
 
-    data() {
+    data () {
       return {
         currentValue: this.value,
         dragState: {},
@@ -42,7 +45,7 @@
       }
     },
 
-    mounted() {
+    mounted () {
       this.isDragging = false
       const thumb = this.$refs.thumb
       Transform(thumb, true)
@@ -52,14 +55,14 @@
     },
 
     methods: {
-      onClick(event) {
+      onClick (event) {
         event.preventDefault()
         if (this.disabled) return
 
         this.currentValue = !this.currentValue
       },
 
-      onTouchstart(event) {
+      onTouchstart (event) {
         event.preventDefault()
         if (this.disabled || this.isDragging) return
 
@@ -73,7 +76,7 @@
         thumb.style.transition = ''
       },
 
-      onTouchmove(event) {
+      onTouchmove (event) {
         event.preventDefault()
         if (this.disabled || this.isDragging) return
 
@@ -94,7 +97,7 @@
         }
       },
 
-      onTouchend(event) {
+      onTouchend (event) {
         event.preventDefault()
         if (this.disabled || this.isDragging) return
 
@@ -129,11 +132,11 @@
     },
 
     watch: {
-      value(val) {
+      value (val) {
         this.currentValue = val
       },
 
-      currentValue(val) {
+      currentValue (val) {
         this.$emit('input', val)
         this.$emit('change', val)
 

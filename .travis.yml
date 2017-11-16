@@ -28,6 +28,7 @@ before_install:
 install:
 - npm install -no-optional
 script:
+- npm run test
 - npm run build:demo
 after_success:
 - rsync -vzrtopg --progress -e ssh --delete ./dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org

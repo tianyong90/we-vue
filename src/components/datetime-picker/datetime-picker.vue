@@ -1,5 +1,6 @@
 <template>
-  <wv-picker v-model="visible" :slots="dateSlots" @change="onChange" @confirm="onConfirm" @cnncel="onCancel" ref="picker" :confirm-text="confirmText" :cancel-text="cancelText"></wv-picker>
+  <wv-picker v-model="visible" :slots="dateSlots" @change="onChange" @confirm="onConfirm" @cnncel="onCancel"
+             ref="picker" :confirm-text="confirmText" :cancel-text="cancelText"></wv-picker>
 </template>
 
 <script>
@@ -97,7 +98,7 @@
 
     computed: {
       rims () {
-        if (!this.currentValue) return { year: [], month: [], date: [], hour: [], min: [] }
+        if (!this.currentValue) return {year: [], month: [], date: [], hour: [], min: []}
         let result
         if (this.type === 'time') {
           result = {
@@ -238,14 +239,14 @@
         this.handleExceededValue()
       },
 
-      handleExceededValue() {
+      handleExceededValue () {
         let values = []
         if (this.type === 'time') {
           const currentValue = this.currentValue.split(':')
           values = [
             this.hourFormat.replace('{value}', currentValue[0]),
             this.minuteFormat.replace('{value}', currentValue[1])
-          ];
+          ]
         } else {
           values = [
             this.yearFormat.replace('{value}', this.getYear(this.currentValue)),
@@ -261,16 +262,16 @@
         }
         this.dateSlots.filter(child => child.values !== undefined)
           .map(slot => slot.values).forEach((slotValues, index) => {
-          if (slotValues.indexOf(values[index]) === -1) {
-            values[index] = slotValues[0]
-          }
-        })
+            if (slotValues.indexOf(values[index]) === -1) {
+              values[index] = slotValues[0]
+            }
+          })
         this.$nextTick(() => {
           this.setSlotsByValues(values)
         })
       },
 
-      setSlotsByValues(values) {
+      setSlotsByValues (values) {
         const setSlotValue = this.$refs.picker.setSlotValue
         if (this.type === 'time') {
           setSlotValue(0, values[0])
@@ -363,7 +364,7 @@
         if (this.type.indexOf('date') > -1) {
           this.currentValue = this.startDate
         } else {
-          this.currentValue = `${ ('0' + this.startHour).slice(-2) }:00`
+          this.currentValue = `${('0' + this.startHour).slice(-2)}:00`
         }
       }
       this.generateSlots()

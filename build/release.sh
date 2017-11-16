@@ -9,7 +9,7 @@ then
   echo "Releasing $VERSION ..."
 
   # build
-  VERSION=$VERSION npm run dist
+  VERSION=$VERSION npm run build:release
 
   # commit
   git add -A

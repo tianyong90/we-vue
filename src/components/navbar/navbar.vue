@@ -82,7 +82,6 @@
         this.$children.forEach((child, index) => {
           if (child.id === this.value) {
             this.currentIndex = index
-            return
           }
         })
       }
