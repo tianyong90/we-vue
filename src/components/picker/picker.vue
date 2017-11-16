@@ -7,7 +7,9 @@
         <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
       </div>
       <div class="weui-picker__bd">
-        <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey" :divider="slot.divider" :content="slot.content" v-model="values[slot.valueIndex]"></wv-picker-slot>
+        <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey"
+                        :divider="slot.divider" :content="slot.content"
+                        v-model="values[slot.valueIndex]"></wv-picker-slot>
       </div>
     </div>
   </div>
@@ -117,8 +119,9 @@
           let slot = this.getSlot(index)
           if (slot) {
             slot.currentValue = value
-            if(taskQueue && taskQueue.length > 0)
+            if (taskQueue && taskQueue.length > 0) {
               slot.$nextTick(taskQueue.shift())
+            }
           }
         })
       },
@@ -138,9 +141,10 @@
           if (slot) {
             oldVal = slot.currentValue
             slot.mutatingValues = values
-            slot.$nextTick(()=>{
-              if(oldVal !== undefined && oldVal !== null)
+            slot.$nextTick(() => {
+              if (oldVal !== undefined && oldVal !== null) {
                 slot.doOnValueChange(oldVal)
+              }
               oldVal = null
             })
           }
@@ -159,10 +163,11 @@
 
         var taskQueue = []
         values.forEach((value, index) => {
-          if(index !== 0)
-            taskQueue.push(()=>{
+          if (index !== 0) {
+            taskQueue.push(() => {
               this.setSlotValue(index, value, taskQueue)
             })
+          }
         })
         this.setSlotValue(0, values[0], taskQueue)
       },
