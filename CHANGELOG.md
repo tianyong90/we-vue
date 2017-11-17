@@ -1,3 +1,9 @@
+## v1.5.1 (2017-11-17)
+
+### fix
+
+- 紧急修正 v1.5.0 中 Toast, Indicator, TopTips 组件失效问题
+
 ## v1.5.0 (2017-11-16)
 
 - picker 组件优化，增加滚动效果，并可点击选择 [#18](https://github.com/tianyong90/we-vue/pull/18)
