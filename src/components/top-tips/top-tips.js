@@ -1,6 +1,7 @@
 import Vue from 'vue'
+import TopTipsComponent from './top-tips.vue'
 
-const TipsConstructor = Vue.extend(require('./top-tips.vue'))
+const TipsConstructor = Vue.extend(TopTipsComponent)
 let tipstPool = []
 
 let getAnInstance = () => {

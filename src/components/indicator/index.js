@@ -1,6 +1,7 @@
 import Vue from 'vue'
+import IndicatorComponent from './indicator.vue'
 
-const Indicator = Vue.extend(require('./indicator.vue'))
+const Indicator = Vue.extend(IndicatorComponent)
 let instance
 
 export default {
