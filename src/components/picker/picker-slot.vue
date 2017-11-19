@@ -31,9 +31,7 @@
     props: {
       values: {
         type: Array,
-        default () {
-          return []
-        }
+        default: () => []
       },
       value: {},
       valueKey: String,

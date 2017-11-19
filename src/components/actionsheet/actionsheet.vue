@@ -37,7 +37,7 @@
       title: String,
       actions: {
         type: Array,
-        default: []
+        default: () => []
       },
       cancelText: {
         type: String,
@@ -68,12 +68,6 @@
           item.method()
         }
         this.currentValue = false
-      }
-    },
-
-    mounted () {
-      if (this.value) {
-        this.currentValue = true
       }
     }
   }
