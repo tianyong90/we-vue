@@ -21,7 +21,7 @@
       },
 
       style () {
-        var ret = {}
+        let ret = {}
 
         if (this.gutter) {
           ret.paddingLeft = this.gutter / 2 + 'px'
