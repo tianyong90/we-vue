@@ -65,7 +65,7 @@
       pattern: String,
       validateMode: {
         type: Object,
-        defualt: function () {
+        defualt: () => {
           return {
             onFocus: true,
             onBlur: true,
