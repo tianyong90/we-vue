@@ -32,7 +32,7 @@
         value2: null,
         value3: null,
         value4: null,
-        value5: new Date(),  // 设置初始值
+        value5: new Date(), // 设置初始值
         value6: null
       }
     },
