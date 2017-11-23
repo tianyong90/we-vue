@@ -4,6 +4,8 @@
 
 <script>
   export default {
+    name: "wv-top-tips",
+
     props: {
       visible: {
         type: Boolean,
