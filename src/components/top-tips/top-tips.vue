@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: "wv-top-tips",
+    name: 'wv-top-tips',
 
     props: {
       visible: {

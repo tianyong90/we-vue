@@ -6,13 +6,11 @@ import './assets/iconfont/iconfont.css'
 import store from './store/index.js'
 import router from './router'
 import { mapState } from 'vuex'
-import { sync } from 'vuex-router-sync'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
 
 Vue.use(WeVue)
-sync(store, router)
 
 router.beforeEach((to, from, next) => {
   store.commit('UPDATE_LOADING', true)
