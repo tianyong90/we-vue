@@ -41,7 +41,9 @@ inquirer.prompt({
               },
               {
                 title: 'Git commit',
-                task: () => execa.shell(`git commit -m \"[build] ${answer.version}\"`)
+                task: (ctx, task) => execa.shell(`git commit -m \"[build] ${answer.version}\"`).catch(err => {
+                  task.skip('nothing to commit.')
+                })
               }
             ])
           }
