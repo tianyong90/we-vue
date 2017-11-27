@@ -69,7 +69,7 @@ inquirer.prompt({
         },
         {
           title: 'npm publish',
-          task: () => execa.shell('num publish')
+          task: () => execa.shell('npm publish')
         }
       ])
 
