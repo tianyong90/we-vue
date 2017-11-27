@@ -65,7 +65,7 @@
       pattern: String,
       validateMode: {
         type: Object,
-        defualt: () => {
+        default: () => {
           return {
             onFocus: true,
             onBlur: true,
