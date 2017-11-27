@@ -44,7 +44,11 @@
     },
 
     mounted () {
-      this.currentValue = this.value
+      if (this.maxLength && this.value.length > this.maxLength) {
+        this.currentValue = this.value.slice(0, this.maxLength)
+      } else {
+        this.currentValue = this.value
+      }
     },
 
     watch: {
@@ -54,7 +58,7 @@
 
       value (val) {
         // 有最大字数限制时对超出限制部分进行截取
-        if (this.maxLength && this.value.length > this.maxLength) {
+        if (this.maxLength && val.length > this.maxLength) {
           val = val.slice(0, this.maxLength)
         }
 

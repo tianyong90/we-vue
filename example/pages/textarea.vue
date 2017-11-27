@@ -5,7 +5,7 @@
     </wv-group>
 
     <wv-group>
-      <wv-textarea placeholder="请输入文本" :rows="3" v-model="content2" :max-length="10"></wv-textarea>
+      <wv-textarea placeholder="请输入文本" :rows="3" v-model="content2" :max-length="5"></wv-textarea>
     </wv-group>
 
     <wv-group title="标题">
@@ -19,7 +19,7 @@
     data () {
       return {
         content1: '',
-        content2: null
+        content2: 'hello'
       }
     }
   }
