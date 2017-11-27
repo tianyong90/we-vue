@@ -1,6 +1,6 @@
 <template>
   <div class="weui-cell weui-cell_swiped">
-    <div class="weui-cell__bd" ref="cellBd" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+    <div class="weui-cell__bd" ref="cellBd">
       <wv-cell :title="title" :value="value" :is-link="isLink" :to="to">
         <template slot="icon">
           <slot name="icon"></slot>
@@ -21,13 +21,14 @@
 
 <script>
   import Cell from '../cell/index'
-  import Transform from 'css3transform'
+  import draggable from '../../utils/draggable'
+  import { getTranslateX, setTranslateX } from '../../utils/transform'
 
   export default {
     name: 'wv-cell-swipe',
 
     components: {
-      Cell
+      'wv-cell': Cell
     },
 
     props: {
@@ -48,97 +49,65 @@
     },
 
     mounted () {
-      this.isDragging = false
       const cellBd = this.$refs.cellBd
-      Transform(cellBd, true)
-    },
 
-    methods: {
-      touchStart (event) {
-        event.preventDefault()
+      setTranslateX(cellBd, 0)
 
-        if (this.isDragging) return
-
-        const cellBd = this.$refs.cellBd
-
-        if (event.type === 'touchstart') {
-          this.dragState.startPositionX = event.changedTouches[0].clientX
-        } else {
+      draggable(cellBd, {
+        start: (event) => {
           this.dragState.startPositionX = event.clientX
-        }
+          this.dragState.startTranslateX = getTranslateX(cellBd)
+          this.dragState.startTimestamp = new Date()
 
-        this.dragState.startTranslateX = cellBd.translateX
-        this.dragState.startTimestamp = new Date()
+          cellBd.style.transition = ''
+        },
+        drag: (event) => {
+          const deltaX = event.clientX - this.dragState.startPositionX
 
-        cellBd.style.transition = ''
-      },
+          const btnsWidth = this.$refs.rightBtns.clientWidth
 
-      touchMove (event) {
-        event.preventDefault()
+          let targetTranslateX
+          if (deltaX < 0) {
+            targetTranslateX = Math.abs(this.dragState.startTranslateX + deltaX) < btnsWidth ? this.dragState.startTranslateX + deltaX : -1 * btnsWidth
+          } else {
+            targetTranslateX = this.dragState.startTranslateX + deltaX < 0 ? this.dragState.startTranslateX + deltaX : 0
+          }
 
-        this.isDragging = true
+          setTranslateX(cellBd, targetTranslateX)
+        },
+        end: (event) => {
+          const btnsWidth = this.$refs.rightBtns.clientWidth
 
-        let deltaX
-        if (event.type === 'touchmove') {
-          deltaX = event.changedTouches[0].clientX - this.dragState.startPositionX
-        } else {
-          deltaX = event.clientX - this.dragState.startPositionX
-        }
-
-        const cellBd = this.$refs.cellBd
-        const btnsWidth = this.$refs.rightBtns.clientWidth
-
-        let targetTranslateX
-        if (deltaX < 0) {
-          targetTranslateX = Math.abs(this.dragState.startTranslateX + deltaX) < btnsWidth ? this.dragState.startTranslateX + deltaX : -1 * btnsWidth
-        } else {
-          targetTranslateX = this.dragState.startTranslateX + deltaX < 0 ? this.dragState.startTranslateX + deltaX : 0
-        }
-        cellBd.translateX = targetTranslateX
-      },
-
-      touchEnd (event) {
-        event.preventDefault()
-
-        this.isDragging = false
-
-        const cellBd = this.$refs.cellBd
-        const btnsWidth = this.$refs.rightBtns.clientWidth
-
-        if (event.type === 'touchend') {
-          this.dragState.endPositionX = event.changedTouches[0].clientX
-        } else {
           this.dragState.endPositionX = event.clientX
-        }
-        this.dragState.endTranslateX = cellBd.translateX
-        this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
+          this.dragState.endTranslateX = getTranslateX(cellBd)
+          this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
+          this.dragState.endTimestamp = new Date()
 
-        this.dragState.endTimestamp = new Date()
+          const touchTime = this.dragState.endTimestamp - this.dragState.startTimestamp
 
-        const touchTime = this.dragState.endTimestamp - this.dragState.startTimestamp
-
-        // 500ms 内当作点击处理
-        if (touchTime <= 500 && parseInt(this.dragState.totalDeltaX) === 0) {
-          this.$children[0].$emit('CLICK_IN_CELLSWIPE', event)
-        }
-
-        if (this.dragState.startTranslateX === 0 && this.dragState.totalDeltaX < 0) {
-          if (Math.abs(this.dragState.totalDeltaX) >= 30) {
-            cellBd.translateX = -btnsWidth
-          } else {
-            cellBd.translateX = 0
+          // 500ms 内当作点击处理
+          if (touchTime <= 500 && parseInt(this.dragState.totalDeltaX) === 0) {
+            this.$children[0].$emit('CLICK_IN_CELLSWIPE', event)
           }
-          cellBd.style.transition = 'all 200ms ease'
-        } else if (this.dragState.startTranslateX === -btnsWidth && this.dragState.totalDeltaX > 0) {
-          if (Math.abs(this.dragState.totalDeltaX) >= 30) {
-            cellBd.translateX = 0
-          } else {
-            cellBd.translateX = -btnsWidth
+
+          if (this.dragState.startTranslateX === 0 && this.dragState.totalDeltaX < 0) {
+            if (Math.abs(this.dragState.totalDeltaX) >= 30) {
+              setTranslateX(cellBd, -btnsWidth)
+            } else {
+              setTranslateX(cellBd, 0)
+            }
+            cellBd.style.transition = 'all 200ms ease'
+          } else if (this.dragState.startTranslateX === -btnsWidth && this.dragState.totalDeltaX > 0) {
+            if (Math.abs(this.dragState.totalDeltaX) >= 30) {
+              setTranslateX(cellBd, 0)
+            } else {
+              setTranslateX(cellBd, -btnsWidth)
+            }
+            cellBd.style.transition = 'all 200ms ease'
           }
-          cellBd.style.transition = 'all 200ms ease'
+          this.dragState = {}
         }
-        this.dragState = {}
-      }
+      })
     }
   }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <a :class="'weui-swiped-btn weui-swiped-btn_' + type"><slot></slot></a>
+  <div :class="'weui-swiped-btn weui-swiped-btn_' + type"><slot></slot></div>
 </template>
 
 <script>

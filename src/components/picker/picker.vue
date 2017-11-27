@@ -7,7 +7,7 @@
         <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
       </div>
       <div class="weui-picker__bd">
-        <wv-picker-slot v-for="(slot, key, index) in slots" :key="key" :values="slot.values || []" :valueKey="valueKey"
+        <wv-picker-slot v-for="(slot, index) in slots" :key="index" :values="slot.values || []" :valueKey="valueKey"
                         :divider="slot.divider" :content="slot.content"
                         v-model="values[slot.valueIndex]"></wv-picker-slot>
       </div>
@@ -137,9 +137,8 @@
       setSlotValues (index, values) {
         this.$nextTick(() => {
           let slot = this.getSlot(index)
-          var oldVal
           if (slot) {
-            oldVal = slot.currentValue
+            let oldVal = slot.currentValue
             slot.mutatingValues = values
             slot.$nextTick(() => {
               if (oldVal !== undefined && oldVal !== null) {
@@ -161,7 +160,7 @@
           throw new Error('values length is not equal slot count.')
         }
 
-        var taskQueue = []
+        let taskQueue = []
         values.forEach((value, index) => {
           if (index !== 0) {
             taskQueue.push(() => {
