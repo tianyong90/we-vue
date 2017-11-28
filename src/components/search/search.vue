@@ -4,7 +4,7 @@
       <div class="weui-search-bar__form">
         <div class="weui-search-bar__box">
           <i class="weui-icon-search"></i>
-          <input class="weui-search-bar__input" :placeholder="placeholder" v-model="currentValue" ref="searchInput">
+          <input class="weui-search-bar__input" :placeholder="placeholder" :autofocus="autofocus" v-model="currentValue" ref="searchInput">
           <a class="weui-icon-clear" @click="searchClear"></a>
         </div>
         <label class="weui-search-bar__label" @click="textClick" v-show="!isActive">
@@ -57,7 +57,6 @@
 
     mounted () {
       if (this.autofocus) {
-        this.$refs.searchInput.focus()
         this.isActive = true
       }
     },

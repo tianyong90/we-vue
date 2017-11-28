@@ -52,7 +52,7 @@
           backgroundColor: this.backgroundColor
         }
         if (this.fixed) {
-          ret.top = '0'
+          ret.top = 0
           ret.left = 0
           ret.right = 0
         }

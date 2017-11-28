@@ -28,7 +28,10 @@
       },
       disabled: Boolean,
       readonly: Boolean,
-      value: String
+      value: {
+        type: String,
+        default: ''
+      }
     },
 
     data () {

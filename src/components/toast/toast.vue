@@ -1,9 +1,7 @@
 <template>
-  <div v-if="visible">
-    <div class="weui-toast" :class="{ 'weui-toast_text': type === 'text' }" :style="style" ref="toast">
-      <wv-icon :type="icon" class="weui-icon_toast" v-if="type !== 'text'"></wv-icon>
-      <p class="weui-toast__content" v-text="message"></p>
-    </div>
+  <div class="weui-toast" :class="{ 'weui-toast_text': type === 'text' }" :style="style" ref="toast" v-if="visible">
+    <wv-icon :type="icon" class="weui-icon_toast" v-if="type !== 'text'"></wv-icon>
+    <p class="weui-toast__content" v-text="message"></p>
   </div>
 </template>
 
@@ -11,6 +9,8 @@
   import WvIcon from '../icon/index'
 
   export default {
+    name: 'wv-toast',
+
     components: {
       WvIcon
     },

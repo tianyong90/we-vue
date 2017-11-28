@@ -9,6 +9,8 @@
   import WvSpinner from '../spinner/index'
 
   export default {
+    name: 'wv-indicator',
+
     components: {
       WvSpinner
     },
