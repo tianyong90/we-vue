@@ -47,7 +47,7 @@
     },
 
     mounted () {
-      if (this.maxLength && this.value.length > this.maxLength) {
+      if (this.maxLength && this.length > this.maxLength) {
         this.currentValue = this.value.slice(0, this.maxLength)
       } else {
         this.currentValue = this.value
