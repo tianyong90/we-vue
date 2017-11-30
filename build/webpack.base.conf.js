@@ -10,22 +10,11 @@ function resolve (dir) {
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    example: './example/main.js'
-  },
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
-  },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      'example': resolve('example'),
+      '@': resolve('src')
     }
   },
   module: {
@@ -34,7 +23,7 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('example'), resolve('test')],
+        include: [resolve('src'), resolve('example'), resolve('docs-site'), resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter'),
           emitWarning: !config.dev.showEslintErrorsInOverlay
@@ -48,7 +37,16 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('example'), resolve('test')]
+        include: [resolve('src'), resolve('example'), resolve('docs-site'), resolve('test')]
+      },
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader',
+        options: {
+          preset: 'default',
+          breaks: true,
+          preventExtract: true
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

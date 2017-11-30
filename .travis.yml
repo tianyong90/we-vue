@@ -4,6 +4,7 @@ node_js:
 - '8'
 cache:
   apt: true
+  yarn: true
   directories:
   - node_modules
 env:
@@ -26,9 +27,11 @@ before_install:
 - git config --global user.name "tianyong90"
 - git config --global user.email 412039588@qq.com
 install:
-- npm install -no-optional
+- yarn install
 script:
 - npm run test
 - npm run build:demo
+- npm run build:docs
 after_success:
 - rsync -vzrtopg --progress -e ssh --delete ./dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
+- rsync -vzrtopg --progress -e ssh --delete ./docs-dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org

@@ -8,8 +8,6 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-delete baseWebpackConfig.entry
-
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')

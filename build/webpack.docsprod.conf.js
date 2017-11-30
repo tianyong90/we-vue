@@ -16,7 +16,7 @@ const env = process.env.NODE_ENV === 'testing'
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    example: './example/main.js'
+    docs: './docs-site/main.js'
   },
   module: {
     rules: utils.styleLoaders({
@@ -26,9 +26,9 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
-    path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    path: path.resolve(__dirname, '../docs-dist'),
+    filename: 'static/js/[name].[chunkhash].js',
+    chunkFilename: 'static/js/[id].[chunkhash].js'
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -57,10 +57,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: process.env.NODE_ENV === 'testing'
-        ? 'index.html'
-        : config.build.index,
-      template: 'example/index.html',
+      filename: 'index.html',
+      template: 'docs-site/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -97,8 +95,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../example/static'),
-        to: path.resolve(__dirname, '../dist/static'),
+        from: path.resolve(__dirname, '../docs-site/static'),
+        to: path.resolve(__dirname, '../docs-dist/static'),
         ignore: ['.*']
       }
     ])

@@ -1,0 +1,122 @@
+@import "~normalize.css";
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Source Code Pro/Source-Code-Pro.eot");
+  src: local('fonts/Source Code Pro'), local('SourceCodePro-Regular'), url("fonts/Source Code Pro/Source-Code-Pro.ttf") format('truetype'), url("fonts/Source Code Pro/Source-Code-Pro.woff") format('woff'), url("fonts/Source Code Pro/Source-Code-Pro.svg#SourceCodePro") format('svg'), url("fonts/Source Code Pro/Source-Code-Pro.eot?#iefix") format('embedded-opentype'), url("fonts/Source Code Pro/Source-Code-Pro.woff2") format('woff2');
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ddd;
+}
+
+pre {
+  display: block;
+  padding: 1em;
+  overflow-y: hidden;
+  font-size: 1.2em;
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+code {
+  font-family: Monaco, "Source Code Pro", Menlo, Consolas, monospace !important;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+
+  thead {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+
+    tr {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      font-weight: inherit;
+      font-style: inherit;
+      font-family: inherit;
+      font-size: 100%;
+      display: table-row;
+      vertical-align: inherit;
+      border-color: inherit;
+    }
+
+    th {
+      text-align: center;
+      padding: .5em 0;
+      font-weight: bold;
+      background-color: #d3d3d3;
+      vertical-align: middle;
+    }
+  }
+
+  td {
+    padding: .5em;
+  }
+}
+
+tr:nth-child(2n) {
+  background-color: #eee;
+}
+
+.doc-content {
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #444;
+  }
+
+  p {
+    line-height: 1.65;
+  }
+
+  ul {
+    li {
+      line-height: 1.65;
+    }
+  }
+
+  ol {
+    li {
+      line-height: 1.65;
+    }
+  }
+}
+
+/*过渡效果*/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .2s
+}
+
+.fade-enter,
+.fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
+  opacity: 0
+}

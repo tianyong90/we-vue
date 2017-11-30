@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -10,10 +11,10 @@ const portfinder = require('portfinder')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   entry: {
-    example: './example/main.js'
+    docs: './docs-site/main.js'
   },
   output: {
-    path: config.build.assetsRoot,
+    path: path.resolve(__dirname, '../docs-dist'),
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
@@ -24,7 +25,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
-
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
@@ -55,7 +55,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'example/index.html',
+      template: 'docs-site/index.html',
       inject: true
     }),
   ]
