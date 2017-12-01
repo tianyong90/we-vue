@@ -27,6 +27,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: path.resolve(__dirname, '../docs-dist'),
+    publicPath: '/',
     filename: path.posix.join('static', 'js/[name].[chunkhash].js'),
     chunkFilename: path.posix.join('static', 'js/[name].[chunkhash].js')
   },
