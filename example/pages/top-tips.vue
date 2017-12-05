@@ -1,6 +1,6 @@
 <template>
   <div class="page page-with-padding">
-    <wv-button type="primary" @click="showTips">显示提示 (5S)</wv-button>
+    <wv-button type="primary" @click="showTips">显示提示 (2S)</wv-button>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
       showTips () {
         TopTips({
           message: '提示信息',
-          duration: 5000
+          duration: 2000
         })
       }
     }

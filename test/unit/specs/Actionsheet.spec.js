@@ -16,7 +16,7 @@ describe('actionsheet', () => {
     expect(wrapper.name()).toBe('wv-actionsheet')
 
     // default type == 'ios', check mask element class
-    expect(wrapper.contains('.weui-mask_transparent')).toBeTruthy()
+    expect(wrapper.contains('.weui-mask')).toBeTruthy()
 
     wrapper.setProps({
       type: 'android'

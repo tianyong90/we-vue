@@ -1,6 +1,6 @@
-import { shallow, createLocalVue } from 'vue-test-utils'
-import VueRouter from 'vue-router'
+import { shallow } from 'vue-test-utils'
 import MediaBox from '@/components/media-box'
+import sinon from 'sinon'
 
 describe('media-box', () => {
   let wrapper
@@ -17,41 +17,17 @@ describe('media-box', () => {
     expect(wrapper.hasClass('weui-media-box')).toBeTruthy()
   })
 
-  it('to', () => {
+  it('handle click', () => {
+    const routerLinkSpy = sinon.spy()
     wrapper = shallow(MediaBox, {
-      propsData: {
-        to: '/test'
+      propsData: {},
+      methods: {
+        routerLink: routerLinkSpy
       }
     })
 
-    expect(wrapper.vm.href).toBe('/test')
-  })
-
-  it('use with vue-router', () => {
-    const localVue = createLocalVue()
-    localVue.use(VueRouter)
-
-    const routes = [
-      { path: '/test', component: MediaBox }
-    ]
-
-    const router = new VueRouter({
-      routes
-    })
-
-    wrapper = shallow(MediaBox, {
-      propsData: {
-        to: '/test'
-      },
-      localVue,
-      router
-    })
-
-    wrapper.vm.$nextTick(() => {
-      // TODO: test click
-      wrapper.trigger('click')
-
-      expect(wrapper.vm.added).toBeTruthy()
-    })
+    wrapper.trigger('click')
+    expect(wrapper.emitted().click).toBeTruthy()
+    expect(routerLinkSpy.called).toBeTruthy()
   })
 })

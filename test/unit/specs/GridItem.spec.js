@@ -1,6 +1,7 @@
 import { shallow, createLocalVue } from 'vue-test-utils'
 import GridItem from '@/components/grid-item'
 import VueRouter from 'vue-router'
+import sinon from 'sinon'
 
 describe('grid-item', () => {
   let wrapper
@@ -17,41 +18,17 @@ describe('grid-item', () => {
     expect(wrapper.hasClass('weui-grid')).toBeTruthy()
   })
 
-  it('to', () => {
+  it('handle click', () => {
+    const routerLinkSpy = sinon.spy()
     wrapper = shallow(GridItem, {
-      propsData: {
-        to: '/test'
+      propsData: {},
+      methods: {
+        routerLink: routerLinkSpy
       }
     })
 
-    expect(wrapper.vm.href).toBe('/test')
-  })
-
-  it('use with vue-router', () => {
-    const localVue = createLocalVue()
-    localVue.use(VueRouter)
-
-    const routes = [
-      { path: '/test', component: GridItem }
-    ]
-
-    const router = new VueRouter({
-      routes
-    })
-
-    wrapper = shallow(GridItem, {
-      propsData: {
-        to: '/test'
-      },
-      localVue,
-      router
-    })
-
-    wrapper.vm.$nextTick(() => {
-      // TODO: test click
-      wrapper.trigger('click')
-
-      expect(wrapper.vm.added).toBeTruthy()
-    })
+    wrapper.trigger('click')
+    expect(wrapper.emitted().click).toBeTruthy()
+    expect(routerLinkSpy.called).toBeTruthy()
   })
 })

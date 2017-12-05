@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow, createLocalVue } from 'vue-test-utils'
 import IndicatorApi from '@/components/indicator'
 import Indicator from '@/components/indicator/indicator.vue'
 
@@ -8,15 +8,37 @@ describe('test indicator api', () => {
   })
 
   it('open and close a indicator', () => {
+    const localVue = createLocalVue()
     IndicatorApi.open()
 
     expect(document.querySelector('.weui-toast')).toBeTruthy()
 
     IndicatorApi.close()
 
-    setTimeout(() => {
+    localVue.nextTick(() => {
       expect(document.querySelector('.weui-toast')).toBeFalsy()
-    }, 200)
+    })
+  })
+
+  it('indicator should be singletom', () => {
+    const localVue = createLocalVue()
+    IndicatorApi.open()
+
+    localVue.nextTick(() => {
+      // try to open another indicator
+      IndicatorApi.open()
+
+      expect(document.querySelectorAll('.weui-toast').length).toBe(1)
+    })
+  })
+
+  it('open with a string paramter', () => {
+    const localVue = createLocalVue()
+    IndicatorApi.open('test')
+
+    localVue.nextTick(() => {
+      expect(document.querySelector('.weui-toast__content').textContent).toBe('test')
+    })
   })
 })
 

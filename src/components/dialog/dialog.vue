@@ -1,17 +1,19 @@
 <template>
-  <div v-show="this.value">
-    <div class="weui-mask"></div>
-    <div class="weui-dialog" :class="{ 'weui-skin_android': skin === 'android' }">
-      <div class="weui-dialog__hd" v-if="title"><strong class="weui-dialog__title" v-html="title"></strong></div>
-      <div class="weui-dialog__bd" v-html="message"></div>
-      <div class="weui-dialog__ft">
-        <a class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn"
-           @click="handleAction('cancel')" v-text="cancelText"></a>
-        <a class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn"
-           @click="handleAction('confirm')" v-text="confirmText"></a>
+  <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+    <div v-show="this.value">
+      <div class="weui-mask"></div>
+      <div class="weui-dialog" :class="{ 'weui-skin_android': skin === 'android' }">
+        <div class="weui-dialog__hd" v-if="title"><strong class="weui-dialog__title" v-html="title"></strong></div>
+        <div class="weui-dialog__bd" v-html="message"></div>
+        <div class="weui-dialog__ft">
+          <a class="weui-dialog__btn weui-dialog__btn_default" v-if="showCancelBtn"
+             @click="handleAction('cancel')" v-text="cancelText"></a>
+          <a class="weui-dialog__btn weui-dialog__btn_primary" v-if="showConfirmBtn"
+             @click="handleAction('confirm')" v-text="confirmText"></a>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 <template>
   <div class="wv-number-spinner">
-    <button class="spinner-btn btn-decrease" :class="{ 'btn-disabled': btnDecreaseDisabled}" :disabled="disabled" @click="decrease">-</button>
+    <button class="spinner-btn btn-decrease" :class="{ 'btn-disabled': btnDecreaseDisabled}" :disabled="btnDecreaseDisabled" @click="decrease">-</button>
     <input type="number" v-model.number="currentValue" :disabled="disabled" :readonly="!fillable" @blur="onBlur" :style="inputStyle"/>
-    <button class="spinner-btn btn-increase" :class="{ 'btn-disabled': btnIncreaseDisabled}"  :disabled="disabled" @click="increase">+</button>
+    <button class="spinner-btn btn-increase" :class="{ 'btn-disabled': btnIncreaseDisabled}"  :disabled="btnIncreaseDisabled" @click="increase">+</button>
   </div>
 </template>
 
@@ -40,10 +40,11 @@
         default: 'center'
       },
       value: {
-        validator (val) {
+        type: [Number, String],
+        default: 0,
+        validator: function (val) {
           return typeof val === 'number' || val === ''
-        },
-        default: 0
+        }
       }
     },
 

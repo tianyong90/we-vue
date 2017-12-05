@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" class="weui-media-box" :class="'weui-media-box_' + type" v-if="type === 'appmsg'">
+  <div class="weui-media-box" :class="'weui-media-box_' + type" v-if="type === 'appmsg'" @click="onClick">
     <div class="weui-media-box__hd" v-if="type !== 'text'">
       <img class="weui-media-box__thumb" :src="thumb" alt="">
     </div>
@@ -7,8 +7,8 @@
       <h4 class="weui-media-box__title" v-text="title"></h4>
       <p class="weui-media-box__desc" v-text="description"></p>
     </div>
-  </a>
-  <div class="weui-media-box" :class="'weui-media-box_' + type" v-else>
+  </div>
+  <div class="weui-media-box" :class="'weui-media-box_' + type" v-else @click="onClick">
     <h4 class="weui-media-box__title" v-text="title"></h4>
     <p class="weui-media-box__desc" v-text="description"></p>
     <slot name="box_ft"></slot>
@@ -16,8 +16,12 @@
 </template>
 
 <script>
+  import RouterLink from '../../mixins/router-link'
+
   export default {
     name: 'wv-media-box',
+
+    mixins: [RouterLink],
 
     props: {
       type: {
@@ -26,30 +30,13 @@
       },
       thumb: String,
       title: String,
-      description: String,
-      to: String
-    },
-
-    computed: {
-      href () {
-        if (this.to && !this.added && this.$router) {
-          const resolved = this.$router.match(this.to)
-          if (!resolved.matched.length) return this.to
-
-          this.$nextTick(() => {
-            this.added = true
-            this.$el.addEventListener('click', this.handleClick)
-          })
-          return resolved.path
-        }
-        return this.to
-      }
+      description: String
     },
 
     methods: {
-      handleClick ($event) {
-        $event.preventDefault()
-        this.$router.push(this.href)
+      onClick () {
+        this.$emit('click')
+        this.routerLink()
       }
     }
   }

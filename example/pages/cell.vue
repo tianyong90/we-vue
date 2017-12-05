@@ -15,20 +15,20 @@
     </wv-group>
 
     <wv-group title="带跳转的列表项">
-      <wv-cell title="标题文字" is-link to="/"></wv-cell>
-      <wv-cell title="标题文字" is-link to="/"></wv-cell>
+      <wv-cell title="vue-router 链接" is-link to="/"></wv-cell>
+      <wv-cell title="url 链接" is-link url="http://demo.wevue.org"></wv-cell>
     </wv-group>
 
     <wv-group title="带说明、跳转的列表项">
-      <wv-cell title="标题文字" value="说明文字" is-link to="/"></wv-cell>
-      <wv-cell title="标题文字" value="说明文字" is-link to="/"></wv-cell>
+      <wv-cell title="vue-router 链接" value="to='/'" is-link to="/"></wv-cell>
+      <wv-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org"></wv-cell>
     </wv-group>
 
     <wv-group title="带图标、说明、跳转的列表项">
-      <wv-cell title="标题文字" value="说明文字" is-link to="/">
+      <wv-cell title="vue-router 链接" value="to='/'" is-link to="/"></wv-cell>
         <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
       </wv-cell>
-      <wv-cell title="标题文字" value="说明文字" is-link to="/">
+      <wv-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org"></wv-cell>
         <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
       </wv-cell>
     </wv-group>

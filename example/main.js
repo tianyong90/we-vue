@@ -44,6 +44,12 @@ new Vue({
     })
   },
 
+  methods: {
+    message (msg) {
+      WeVue.Toast(msg)
+    }
+  },
+
   watch: {
     '$route' (to, from) {
       this.transitionName = from.name === 'index' ? 'slide-left' : 'slide-right'

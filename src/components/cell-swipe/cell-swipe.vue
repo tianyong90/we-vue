@@ -1,7 +1,7 @@
 <template>
   <div class="weui-cell weui-cell_swiped">
     <div class="weui-cell__bd" ref="cellBd">
-      <wv-cell :title="title" :value="value" :is-link="isLink" :to="to">
+      <wv-cell :title="title" :value="value" :is-link="isLink" :to="to" :url="url" ref="cell">
         <template slot="icon">
           <slot name="icon"></slot>
         </template>
@@ -23,13 +23,16 @@
   import Cell from '../cell/index'
   import draggable from '../../utils/draggable'
   import { getTranslateX, setTranslateX } from '../../utils/transform'
+  import RouterLink from '../../mixins/router-link'
 
   export default {
     name: 'wv-cell-swipe',
 
     components: {
-      'wv-cell': Cell
+      [Cell.name]: Cell
     },
+
+    mixins: [RouterLink],
 
     props: {
       title: {
@@ -38,8 +41,7 @@
       value: {
         type: [String, Number]
       },
-      isLink: Boolean,
-      to: String
+      isLink: Boolean
     },
 
     data () {
@@ -57,7 +59,7 @@
         start: (event) => {
           this.dragState.startPositionX = event.clientX
           this.dragState.startTranslateX = getTranslateX(cellBd)
-          this.dragState.startTimestamp = new Date()
+          this.dragState.startTime = new Date()
 
           cellBd.style.transition = ''
         },
@@ -81,13 +83,13 @@
           this.dragState.endPositionX = event.clientX
           this.dragState.endTranslateX = getTranslateX(cellBd)
           this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
-          this.dragState.endTimestamp = new Date()
+          this.dragState.endTime = new Date()
 
-          const touchTime = this.dragState.endTimestamp - this.dragState.startTimestamp
+          const touchTime = this.dragState.endTime - this.dragState.startTime
 
           // 500ms 内当作点击处理
           if (touchTime <= 500 && parseInt(this.dragState.totalDeltaX) === 0) {
-            this.$children[0].$emit('CLICK_IN_CELLSWIPE', event)
+            this.$refs.cell.$emit('CLICK_IN_CELLSWIPE')
           }
 
           if (this.dragState.startTranslateX === 0 && this.dragState.totalDeltaX < 0) {

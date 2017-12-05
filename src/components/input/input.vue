@@ -85,26 +85,17 @@
     },
 
     methods: {
-      doCloseActive () {
-        this.active = false
-      },
-
       handleInput (event) {
-        this.currentValue = event.target.value
-
         // 当有最大长度属性时，限制过长的输入
         if (this.maxlength && event.target.value.length >= this.maxlength) {
           this.currentValue = event.target.value.substr(0, this.maxlength)
+        } else {
+          this.currentValue = event.target.value
         }
 
         if (typeof this.validateMode === 'undefined' || this.validateMode.onInput !== false) {
           this.validate()
         }
-      },
-
-      handleClear () {
-        if (this.disabled || this.readonly) return
-        this.currentValue = ''
       },
 
       focus () {
@@ -120,6 +111,8 @@
       },
 
       onBlur () {
+        this.active = false
+
         if (typeof this.validateMode === 'undefined' || this.validateMode.onBlur !== false) {
           this.validate()
         }

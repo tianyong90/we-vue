@@ -17,7 +17,7 @@
 
     <slot>
       <div class="weui-cells searchbar-result" v-show="show || currentValue">
-        <wv-cell v-for="(item, key, index) in result" :key="key" :title="item"></wv-cell>
+        <wv-cell v-for="(item, key) in result" :key="key" :title="item"></wv-cell>
       </div>
     </slot>
   </div>
@@ -62,7 +62,7 @@
     },
 
     methods: {
-      textClick (e) {
+      textClick () {
         // focus the input
         this.$refs.searchInput.focus()
         this.isActive = true

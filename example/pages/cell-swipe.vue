@@ -27,7 +27,7 @@
     </wv-group>
 
     <wv-group title="可跳转">
-      <wv-cell-swipe title="标题文字" is-link to="/">
+      <wv-cell-swipe title="标题文字" is-link url="/">
         <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</wv-cell-swipe-button>
         <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</wv-cell-swipe-button>
       </wv-cell-swipe>

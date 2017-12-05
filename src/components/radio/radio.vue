@@ -2,7 +2,7 @@
   <div>
     <div v-if="title" class="weui-cells__title" v-html="title"></div>
     <div class="weui-cells weui-cells_radio">
-      <label v-for="(option, index) in options" :key="option.label || option" class="weui-cell weui-check__label"
+      <label v-for="option in options" :key="option.label || option" class="weui-cell weui-check__label"
              :class="{ 'weui-check__label-disabled': option.disabled }">
         <div class="weui-cell__bd">
           <p v-text="option.label || option"></p>

@@ -43,7 +43,7 @@ let TopTips = (options = {}) => {
   instance.message = typeof options === 'string' ? options : options.message
 
   document.body.appendChild(instance.$el)
-  Vue.nextTick(function () {
+  Vue.nextTick(() => {
     instance.visible = true
     instance.$el.removeEventListener('transitionend', removeDom)
     instance.timer = setTimeout(function () {

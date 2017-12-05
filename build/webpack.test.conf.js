@@ -8,6 +8,11 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const progressBarPlugin = require('progress-bar-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
+  output: {
+    // 在源码表中使用绝对路径 (对于在 IDE 中调试时很重要)
+    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+  },
   // use inline sourcemap for karma-sourcemap-loader
   module: {
     rules: utils.styleLoaders()

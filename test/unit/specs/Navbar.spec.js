@@ -1,6 +1,6 @@
 import { shallow } from 'vue-test-utils'
 import Navbar from '@/components/navbar'
-import NavbarComponent from '../components/navbar.vue'
+import sinon from 'sinon'
 
 describe('navbar', () => {
   let wrapper
@@ -40,49 +40,17 @@ describe('navbar', () => {
     expect(wrapper.contains('.wv-navbar-underline')).toBeTruthy()
   })
 
-  it('render with items', () => {
+  it('watch value', () => {
     wrapper = shallow(Navbar, {
-      propsData: {
-        animate: true
-      }
-    })
-
-    expect(wrapper.contains('.wv-navbar-underline')).toBeTruthy()
-  })
-})
-
-describe('navbar with items', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
-  it('create', () => {
-    wrapper = shallow(NavbarComponent, {
       propsData: {}
     })
 
-    // expect(wrapper.vm.$children.length).toBe(3)
-    // expect(wrapper.hasClass('wv-navbar')).toBeTruthy()
-  })
+    const updateCurrentIndexSpy = sinon.spy(wrapper.vm, 'updateCurrentIndex')
 
-  // it('render with animate', () => {
-  //   wrapper = shallow(Navbar, {
-  //     propsData: {
-  //       animate: true
-  //     }
-  //   })
-  //
-  //   expect(wrapper.contains('.wv-navbar-underline')).toBeTruthy()
-  // })
-  //
-  // it('render with items', () => {
-  //   wrapper = shallow(Navbar, {
-  //     propsData: {
-  //       animate: true
-  //     }
-  //   })
-  //
-  //   expect(wrapper.contains('.wv-navbar-underline')).toBeTruthy()
-  // })
+    wrapper.setProps({
+      value: '1'
+    })
+    expect(wrapper.emitted().change).toBeTruthy()
+    expect(updateCurrentIndexSpy.called).toBeTruthy()
+  })
 })
