@@ -20,7 +20,7 @@ addons:
 branches:
   only:
   - master
-  - develop
+  - docs
 before_install:
 - openssl aes-256-cbc -K $encrypted_3aaea0c0a249_key -iv $encrypted_3aaea0c0a249_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
@@ -34,10 +34,6 @@ script:
 - npm run test
 - npm run build:demo
 - npm run build:docs
-deploy:
-  provider: script
-  script:
-    - rsync -vzrtopg --progress -e ssh --delete ./dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
-    - rsync -vzrtopg --progress -e ssh --delete ./docs-dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
-  on:
-    branch: master
+after_success:
+  - rsync -vzrtopg --progress -e ssh --delete ./dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
+  - rsync -vzrtopg --progress -e ssh --delete ./docs-dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
