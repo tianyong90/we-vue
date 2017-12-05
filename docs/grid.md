@@ -21,21 +21,29 @@ Vue.component(GridItem.name, GridItem)
     <img :src="thumbSmall" slot="icon">
     <span slot="label">GridItem</span>
   </wv-grid-item>
-  <wv-grid-item to="/">
+  <wv-grid-item url="/">
     <img :src="thumbSmall" slot="icon">
     <span slot="label">GridItem</span>
   </wv-grid-item>
-  <wv-grid-item to="/">
+  <wv-grid-item>
     <img :src="thumbSmall" slot="icon">
     <span slot="label">GridItem</span>
   </wv-grid-item>
   <wv-grid-item to="/">
     <span>自定义内容</span>
   </wv-grid-item>
-  <wv-grid-item to="/">
-    <span>自定义内容</span>
-  </wv-grid-item>
+  <wv-grid-item @click="onClick">
+      <span>处理点击事件</span>
+    </wv-grid-item>
 </wv-grid>
+
+<script>
+methods: {
+  onClick () {
+    console.log('click')
+  }
+}
+</script>
 ```
 
 ## API
@@ -44,7 +52,10 @@ Vue.component(GridItem.name, GridItem)
 
 |     参数     |   类型    |   说明    |         可选值          |   默认值   |
 | :--------: | :-----: | :-----: | :------------------: | :-----: |
-|    to    | String  |   点击后跳转目标地址    |  |  |
+|    to    | String 或 Object  |   vue-router 跳转目标    |  |  |
+|    url    | String  |   url 跳转目标    |  |  |
+
+> 从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
 
 ## Slots
 

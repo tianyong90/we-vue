@@ -79,7 +79,8 @@ Vue.component(MediaBox.name, MediaBox)
 | thumb  | String  |  图标图片地址   |      |        |
 | title  | String  |  标题   |      |        |
 | description  | String  |  描述   |      |        |
-| to  | String  |  跳转地址   |      |        |
+| to  | String 或 Object  |  vue-router 跳转地址   |      |        |
+| url  | String  |  url 跳转地址   |      |        |
 
 ## Slots
 

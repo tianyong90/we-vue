@@ -71,8 +71,11 @@ Vue.component(Cell.name, Cell)
 | :----: | :-----: | :----: | :--: | :---: |
 | title  | String  |  标题，即左侧label   |      |       |
 | value  | String  |  内容，即左侧文字   |      |       |
-| to  | String  |  跳转目标，与 is-link 配合使用   |      |       |
+| to  | String 或 Object  |  vue-router 跳转的目标地址，与 is-link 配合使用   |      |       |
+| url  | String  |  跳转 url，与 is-link 配合使用   |      |       |
 | is-link | Boolean | 是否为链接 |      | false |
+
+> 从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
 
 ## Slots
 
