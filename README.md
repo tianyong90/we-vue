@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <a href="https://www.npmjs.com/package/we-vue"><img src="https://img.shields.io/npm/v/we-vue.svg?maxAge=3600" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/we-vue"><img src="https://img.shields.io/npm/v/we-vue.svg" alt="npm"></a>
   <a href="https://npmjs.org/package/we-vue"><img src="https://img.shields.io/npm/dt/we-vue.svg" alt="downloads"></a>
   <a href="https://travis-ci.org/tianyong90/we-vue"><img src="https://travis-ci.org/tianyong90/we-vue.svg?branch=master" alt="travisci"></a>
 </div>
@@ -27,32 +27,32 @@ we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库�
 npm
 
 ```shell
-npm install we-vue -S
+$ npm install we-vue -S
 ```
 
 yarn
 
 ```shell
-yarn add we-vue -S
+$ yarn add we-vue -S
 ```
 
 ## 开发
 
 1. 克隆代码
 
-``` bash
+```shell
 git clone https://github.com/tianyong90/we-vue.git
 ```
 
 2. 安装依赖
 
-``` bash
+```shell
 cd we-vue && npm install
 ```
 
 3. 运行本地服务并开发
 
-``` bash
+```shell
 npm run dev
 ```
 
