@@ -10,6 +10,7 @@
 </template>
 
 <script>
+  import draggable from '../../utils/draggable'
   import { once, addClass, removeClass } from '../../utils/dom.js'
 
   export default {
@@ -84,32 +85,28 @@
 
       this.reInitPages()
 
-      let element = this.$el
+      draggable(this.$el, {
+        start: (event) => {
+          if (this.prevent) {
+            event.preventDefault()
+          }
+          if (this.animating) return
+          this.userScrolling = false
+          this.onTouchStart(event)
+        },
 
-      element.addEventListener('touchstart', (event) => {
-        if (this.prevent) {
-          event.preventDefault()
+        drag: (event) => {
+          console.log(event)
+          this.onTouchMove(event)
+        },
+
+        end: (event) => {
+          if (this.userScrolling) {
+            this.dragState = {}
+            return
+          }
+          this.onTouchEnd(event)
         }
-        if (this.animating) return
-        this.dragging = true
-        this.userScrolling = false
-        this.onTouchStart(event)
-      })
-
-      element.addEventListener('touchmove', (event) => {
-        if (!this.dragging) return
-        this.onTouchMove(event)
-      })
-
-      element.addEventListener('touchend', (event) => {
-        if (this.userScrolling) {
-          this.dragging = false
-          this.dragState = {}
-          return
-        }
-        if (!this.dragging) return
-        this.onTouchEnd(event)
-        this.dragging = false
       })
     },
 

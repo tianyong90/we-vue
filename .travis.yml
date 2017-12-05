@@ -10,6 +10,7 @@ cache:
 env:
 - CXX=g++-4.8
 addons:
+  chrome: stable
   apt:
     sources:
     - ubuntu-toolchain-r-test
@@ -19,6 +20,7 @@ addons:
 branches:
   only:
   - master
+  - develop
 before_install:
 - openssl aes-256-cbc -K $encrypted_3aaea0c0a249_key -iv $encrypted_3aaea0c0a249_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
