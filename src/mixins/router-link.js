@@ -11,8 +11,6 @@ export default {
   methods: {
     routerLink () {
       const { to, url, $router, replace } = this
-      console.log(to)
-      console.log(url)
       if (to && $router) {
         $router[replace ? 'replace' : 'push'](to)
       } else if (url) {
