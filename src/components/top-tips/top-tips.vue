@@ -7,10 +7,7 @@
     name: 'wv-top-tips',
 
     props: {
-      visible: {
-        type: Boolean,
-        default: true
-      },
+      visible: Boolean,
       message: String
     }
   }

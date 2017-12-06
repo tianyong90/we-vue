@@ -10,7 +10,7 @@
   export default {
     methods: {
       showTips () {
-        TopTips({
+        TopTips.open({
           message: '提示信息',
           duration: 2000
         })

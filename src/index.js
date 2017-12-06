@@ -85,7 +85,6 @@ const install = function (Vue, config = {}) {
   Vue.component(Preview.name, Preview)
   Vue.component(Footer.name, Footer)
   Vue.component(Header.name, Header)
-  Vue.component(TopTips.name, TopTips)
   Vue.component(NumberSpinner.name, NumberSpinner)
   Vue.use(InfiniteScroll)
   Vue.use(Lazyload, {
@@ -97,6 +96,7 @@ const install = function (Vue, config = {}) {
   Vue.$dialog = Vue.prototype.$dialog = Dialog
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$indicator = Vue.prototype.$indicator = Indicator
+  Vue.$toptips = Vue.prototype.$toptips = TopTips
 }
 
 // auto install

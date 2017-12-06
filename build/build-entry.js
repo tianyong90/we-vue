@@ -25,6 +25,7 @@ const install = function (Vue, config = {}) {
   Vue.$dialog = Vue.prototype.$dialog = Dialog
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$indicator = Vue.prototype.$indicator = Indicator
+  Vue.$toptips = Vue.prototype.$toptips = TopTips
 }
 
 // auto install
@@ -61,7 +62,8 @@ ComponentNames.forEach(name => {
     // services
     'Dialog',
     'Toast',
-    'Indicator'
+    'Indicator',
+    'TopTips'
   ].indexOf(componentName) === -1) {
     installTemplate.push(render(ISNTALL_COMPONENT_TEMPLATE, {
       name: componentName,
