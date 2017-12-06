@@ -1,8 +1,50 @@
 import { shallow, createLocalVue } from 'vue-test-utils'
-import TopTips from '@/components/top-tips/top-tips.vue'
 import TopTipsApi from '@/components/top-tips'
+import TopTips from '@/components/top-tips/top-tips.vue'
 
-describe('top-tips component', () => {
+describe('test top-tips api', () => {
+  afterEach(() => {
+    TopTipsApi.close()
+  })
+
+  it('open and close a top-tips', () => {
+    const localVue = createLocalVue()
+    TopTipsApi.open()
+
+    localVue.nextTick(() => {
+      expect(document.querySelector('.weui-toptips')).toBeTruthy()
+    })
+
+    TopTipsApi.close()
+
+    localVue.nextTick(() => {
+      expect(document.querySelector('.weui-toptips')).toBeFalsy()
+    })
+  })
+
+  it('top-tips should be singletom', () => {
+    const localVue = createLocalVue()
+    TopTipsApi.open()
+
+    localVue.nextTick(() => {
+      // try to open another top-tips
+      TopTipsApi.open()
+
+      expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
+    })
+  })
+
+  it('open with a string paramter', () => {
+    const localVue = createLocalVue()
+    TopTipsApi.open('test')
+
+    localVue.nextTick(() => {
+      expect(document.querySelector('.weui-toptips').textContent).toBe('test')
+    })
+  })
+})
+
+describe('top-tips', () => {
   let wrapper
   afterEach(() => {
     wrapper && wrapper.destroy()
@@ -15,29 +57,5 @@ describe('top-tips component', () => {
 
     expect(wrapper.name()).toBe('wv-top-tips')
     expect(wrapper.hasClass('weui-toptips')).toBeTruthy()
-  })
-
-  it('render with message', () => {
-    wrapper = shallow(TopTips, {
-      propsData: {
-        message: 'test-message'
-      }
-    })
-
-    expect(wrapper.text()).toBe('test-message')
-  })
-})
-
-describe('top-tips api', () => {
-  it('open top-tips', () => {
-    const localVue = createLocalVue()
-    TopTipsApi({
-      duration: 2000,
-      messge: 'test-message'
-    })
-
-    localVue.nextTick(() => {
-      expect(document.querySelector('.weui-toptips')).toBeTruthy()
-    })
   })
 })
