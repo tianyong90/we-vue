@@ -2,7 +2,7 @@ import { shallow } from 'vue-test-utils'
 import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
 
-describe('test toast api', () => {
+describe('toast api', () => {
   afterEach(() => {
     // ToastApi.close()
   })
