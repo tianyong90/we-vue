@@ -1,6 +1,6 @@
-import { getTranslateX, getTranslateY } from '../../../src/utils/transform'
+import { getTranslateX, getTranslateY, setTranslateX, setTranslateY } from '@/utils/transform'
 
-describe('test top-tips api', () => {
+describe('utils/transform', () => {
   let el
 
   beforeEach(() => {
@@ -34,12 +34,36 @@ describe('test top-tips api', () => {
     // get a random integer as the translateY
     let translateY = Number.parseInt(Math.random() * 100)
 
-    el.style.transform = `translate3d(${translateY}px, 0, 0)`
+    el.style.transform = `translate3d(0, ${translateY}px, 0)`
     expect(getTranslateY(el)).toBe(translateY)
 
     // assign a negtive value
     translateY = -translateY
-    el.style.transform = `translate3d(${translateY}px, 0, 0)`
+    el.style.transform = `translate3d(0, ${translateY}px, 0)`
     expect(getTranslateY(el)).toBe(translateY)
+  })
+
+  it('function setTranslateX', () => {
+    // get a random integer as the translateY
+    let translateX = Number.parseInt(Math.random() * 100)
+
+    setTranslateX(el, translateX)
+
+    const transformValue = `translate3d(${translateX}px, 0px, 0px)`
+
+    expect(el.style.transform).toBe(transformValue)
+    expect(el.style.webkitTransform).toBe(transformValue)
+  })
+
+  it('function setTranslateY', () => {
+    // get a random integer as the translateY
+    let translateY = Number.parseInt(Math.random() * 100)
+
+    setTranslateY(el, translateY)
+
+    const transformValue = `translate3d(0px, ${translateY}px, 0px)`
+
+    expect(el.style.transform).toBe(transformValue)
+    expect(el.style.webkitTransform).toBe(transformValue)
   })
 })
