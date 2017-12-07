@@ -43,10 +43,9 @@
 
     computed: {
       progress () {
-        const value = this.value
-        if (typeof value === 'undefined' || value === null) return 0
+        if (typeof this.value === 'undefined' || this.value === null) return 0
 
-        return Math.floor((value - this.min) / (this.max - this.min) * 100)
+        return Math.floor((this.value - this.min) / (this.max - this.min) * 100)
       }
     },
 
