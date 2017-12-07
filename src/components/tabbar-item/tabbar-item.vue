@@ -1,41 +1,28 @@
 <template>
-  <a class="weui-tabbar__item" :class="{ 'weui-bar__item_on': isOn }" :href="href">
+  <div class="weui-tabbar__item" :class="{ 'weui-bar__item_on': isOn }" @click="onClick">
     <slot name="icon"></slot>
     <p class="weui-tabbar__label">
       <slot></slot>
     </p>
-  </a>
+  </div>
 </template>
 
 <script>
+  import RouterLink from '../../mixins/router-link'
+
   export default {
     name: 'wv-tabbar-item',
 
+    mixins: [RouterLink],
+
     props: {
-      to: String,
       isOn: Boolean
     },
 
-    computed: {
-      href () {
-        if (this.to && !this.added && this.$router) {
-          const resolved = this.$router.match(this.to)
-          if (!resolved.matched.length) return this.to
-
-          this.$nextTick(() => {
-            this.added = true
-            this.$el.addEventListener('click', this.handleClick)
-          })
-          return resolved.path
-        }
-        return this.to
-      }
-    },
-
     methods: {
-      handleClick ($event) {
-        $event.preventDefault()
-        this.$router.push(this.href)
+      onClick () {
+        this.$emit('click')
+        this.routerLink()
       }
     }
   }
