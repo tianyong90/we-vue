@@ -1,5 +1,6 @@
 import { shallow } from 'vue-test-utils'
 import TabbarItem from '@/components/tabbar-item'
+import sinon from 'sinon'
 
 describe('tabbar-item', () => {
   let wrapper
@@ -8,11 +9,47 @@ describe('tabbar-item', () => {
   })
 
   it('create', () => {
-    let wrapper = shallow(TabbarItem, {
+    wrapper = shallow(TabbarItem, {
+      propsData: {}
     })
 
     expect(wrapper.name()).toBe('wv-tabbar-item')
+    expect(wrapper.hasClass('weui-tabbar__item')).toBeTruthy()
   })
 
-  // TODO:
+  it('text', () => {
+    wrapper = shallow(TabbarItem, {
+      slots: {
+        default: 'test'
+      }
+    })
+
+    expect(wrapper.contains('.weui-tabbar__label')).toBeTruthy()
+    // TODO:
+    // expect(wrapper.find('p.weui-tabbar__label').text()).toBe('test')
+  })
+
+  it('isOn', () => {
+    wrapper = shallow(TabbarItem, {
+      propsData: {
+        isOn: true
+      }
+    })
+
+    expect(wrapper.hasClass('weui-bar__item_on')).toBeTruthy()
+  })
+
+  it('handle click', () => {
+    const routerLinkSpy = sinon.spy()
+    wrapper = shallow(TabbarItem, {
+      propsData: {},
+      methods: {
+        routerLink: routerLinkSpy
+      }
+    })
+
+    wrapper.trigger('click')
+    expect(wrapper.emitted().click).toBeTruthy()
+    expect(routerLinkSpy.called).toBeTruthy()
+  })
 })

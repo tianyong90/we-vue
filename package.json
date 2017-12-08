@@ -32,12 +32,12 @@
     "build:entry": "node build/build-entry.js",
     "build:release": "npm run build:entry && npm run build:component && npm run build",
     "dev": "npm run build:entry && webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "dev-docs": "webpack-dev-server --inline --progress --config build/webpack.docsdev.conf.js",
+    "dev:docs": "webpack-dev-server --inline --progress --config build/webpack.docsdev.conf.js",
     "lint": "eslint --ext .js,.vue src example test/unit/specs",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "test:watch": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
-    "test:coverage": "node_modules/.bin/opener.cmd test/unit/coverage/lcov-report/index.html",
+    "coverage": "node_modules/.bin/opener.cmd test/unit/coverage/lcov-report/index.html",
     "pub": "node build/release.js"
   },
   "dependencies": {

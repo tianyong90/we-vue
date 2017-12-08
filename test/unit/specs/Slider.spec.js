@@ -1,6 +1,6 @@
 import { shallow } from 'vue-test-utils'
 import Slider from '@/components/slider'
-import { triggerTouch, dragHelper } from '../utils'
+import { triggerTouch } from '../utils'
 import faker from 'faker'
 
 describe('slider', () => {
@@ -49,13 +49,15 @@ describe('slider', () => {
   // TODO:
   it('drag the thumb', () => {
     wrapper = shallow(Slider, {
-      propsData: {}
+      propsData: {
+        value: 0
+      }
     })
 
     triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
     triggerTouch(wrapper.find({ref: 'thumb'}), 'touchend', 0, 0)
-    dragHelper(wrapper.find({ref: 'thumb'}), 'touchend', 10)
-    //
+    // dragHelper(wrapper.find({ref: 'thumb'}), 'touchend', 10)
+
     // wrapper.vm.$refs.thumb.trigger('touchstart')
     // wrapper.find({ref: 'thumb'}).trigger('touchmove')
 

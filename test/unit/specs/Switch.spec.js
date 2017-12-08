@@ -1,6 +1,7 @@
 import { mount } from 'vue-test-utils'
 import Switch from '@/components/switch'
 import { getTranslateX } from '@/utils/transform'
+import { triggerTouch } from '../utils'
 
 const THUMB_STROKE = 20
 
@@ -64,6 +65,18 @@ describe('switch', () => {
     wrapper.find('.wv-switch').trigger('click')
 
     expect(wrapper.vm.currentValue).toBe(true)
+  })
+
+  // TODO:
+  it('drag', () => {
+    wrapper = mount(Switch, {
+      propsData: {
+        value: true
+      }
+    })
+
+    triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
+    // expect(wrapper.vm.currentValue).toBe(false)
   })
 
   it('watch currentValue', () => {

@@ -52,28 +52,30 @@ describe('textarea', () => {
     expect(replaceSpy.calledWith('test')).toBeTruthy()
   })
 
-  // TODO：
   it('routerLink method without $router', () => {
-    // const locationReplaceStub = sinon.stub(window.location, 'replace')
-    //
-    // wrapper = shallow(EmptyComponent, {
-    //   propsData: {
-    //     url: 'test'
-    //   },
-    //   mixins: [RouterLink]
-    // })
-    //
-    // wrapper.vm.routerLink()
-    //
-    // // expect(window.location.pathname).toBe('test')
-    //
-    // // replace = true
-    // wrapper.setProps({
-    //   replace: true
-    // })
-    //
-    // wrapper.vm.routerLink()
-    //
-    // expect(locationReplaceStub.called).toBeTruthy()
+    wrapper = shallow(EmptyComponent, {
+      propsData: {
+        url: '#test',
+        replace: false
+      },
+      mixins: [RouterLink]
+    })
+
+    wrapper.vm.routerLink()
+
+    expect(window.location.hash).toBe('#test')
+    window.location.hash = ''
+
+    // replace = true
+    wrapper.setProps({
+      replace: true
+    })
+
+    const length = window.history.length
+    wrapper.vm.routerLink()
+
+    expect(window.location.hash).toBe('#test')
+    expect(window.history.length).toBe(length)
+    window.location.hash = ''
   })
 })

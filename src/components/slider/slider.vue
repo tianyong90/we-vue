@@ -83,7 +83,7 @@
 
           this.$emit('input', Math.round(this.min + newProgress * (this.max - this.min)))
         },
-        end: (e) => {
+        end: () => {
           if (this.disabled) return
           this.$emit('change', this.value)
           startPositionX = 0
