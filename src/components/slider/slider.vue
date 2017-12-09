@@ -3,7 +3,14 @@
     <div class="weui-slider">
       <div class="weui-slider__inner" ref="runWay">
         <div :style="{width: progress + '%'}" class="weui-slider__track"></div>
-        <div :style="{left: progress + '%'}" class="weui-slider__handler" ref="thumb"></div>
+        <div :style="{left: progress + '%'}"
+             class="weui-slider__handler"
+             ref="thumb"
+             @touchstart="onTouchstart"
+             @touchmove="onTouchmove"
+             @touchend="onTouchend"
+             @touchcancel="onTouchend"
+        ></div>
       </div>
     </div>
     <div class="weui-slider-box__value" v-if="showValueBox">
@@ -13,7 +20,7 @@
 </template>
 
 <script>
-  import draggable from '../../utils/draggable'
+  import { getTouch } from '../../utils/touches'
 
   export default {
     name: 'wv-slider',
@@ -41,6 +48,12 @@
       disabled: Boolean
     },
 
+    data () {
+      return {
+        startPositionX: 0
+      }
+    },
+
     computed: {
       progress () {
         if (typeof this.value === 'undefined' || this.value === null) return 0
@@ -49,46 +62,44 @@
       }
     },
 
-    mounted () {
-      const thumb = this.$refs.thumb
-      const runWay = this.$refs.runWay
-
-      const getStartPositionX = () => {
-        const runWayBox = runWay.getBoundingClientRect()
-        const thumbBox = thumb.getBoundingClientRect()
+    methods: {
+      getStartPositionX () {
+        const runWayBox = this.$refs.runWay.getBoundingClientRect()
+        const thumbBox = this.$refs.thumb.getBoundingClientRect()
 
         return thumbBox.left - runWayBox.left
-      }
+      },
 
-      let startPositionX = 0
-      draggable(thumb, {
-        start: () => {
-          if (this.disabled) return
-          startPositionX = getStartPositionX()
-        },
-        drag: (event) => {
-          if (this.disabled) return
-          const runWayBox = runWay.getBoundingClientRect()
-          const deltaX = event.pageX - runWayBox.left - startPositionX
-          const stepCount = Math.ceil((this.max - this.min) / this.step)
-          const newPositionX = (startPositionX + deltaX) - (startPositionX + deltaX) % (runWayBox.width / stepCount)
+      onTouchstart () {
+        if (this.disabled) return
+        this.startPositionX = this.getStartPositionX()
+      },
 
-          let newProgress = newPositionX / runWayBox.width
+      onTouchmove (event) {
+        if (this.disabled) return
 
-          if (newProgress < 0) {
-            newProgress = 0
-          } else if (newProgress > 1) {
-            newProgress = 1
-          }
+        const touch = getTouch(event)
+        const runWayBox = this.$refs.runWay.getBoundingClientRect()
+        const deltaX = touch.pageX - runWayBox.left - this.startPositionX
+        const stepCount = Math.ceil((this.max - this.min) / this.step)
+        const newPositionX = (this.startPositionX + deltaX) - (this.startPositionX + deltaX) % (runWayBox.width / stepCount)
 
-          this.$emit('input', Math.round(this.min + newProgress * (this.max - this.min)))
-        },
-        end: () => {
-          if (this.disabled) return
-          this.$emit('change', this.value)
-          startPositionX = 0
+        let newProgress = newPositionX / runWayBox.width
+
+        if (newProgress < 0) {
+          newProgress = 0
+        } else if (newProgress > 1) {
+          newProgress = 1
         }
-      })
+
+        this.$emit('input', Math.round(this.min + newProgress * (this.max - this.min)))
+      },
+
+      onTouchend () {
+        if (this.disabled) return
+        this.$emit('change', this.value)
+        this.startPositionX = 0
+      }
     }
   }
 </script>

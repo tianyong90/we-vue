@@ -2449,8 +2449,8 @@ eslint-scope@^3.7.1:
     estraverse "^4.1.1"
 
 eslint@^4.12.1:
-  version "4.12.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.12.1.tgz#5ec1973822b4a066b353770c3c6d69a2a188e880"
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.13.0.tgz#1991aa359586af83877bde59de9d41f53e20826d"
   dependencies:
     ajv "^5.3.0"
     babel-code-frame "^6.22.0"
@@ -6979,9 +6979,9 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue-test-utils@^1.0.0-beta.6:
-  version "1.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/vue-test-utils/-/vue-test-utils-1.0.0-beta.6.tgz#65c13dd79ac45a7c4a1709e162bf86fb6a986db0"
+vue-test-utils@^1.0.0-beta.7:
+  version "1.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/vue-test-utils/-/vue-test-utils-1.0.0-beta.7.tgz#d53a07b3a9aaa93b58ddec496e0796f19ee5cfd8"
   dependencies:
     lodash "^4.17.4"
 

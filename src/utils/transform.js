@@ -14,8 +14,8 @@ const setTransform = function (el, transformVal) {
   el.style.webkitTransform = transformVal
 }
 
-const getTranslate3d = function (target) {
-  const transform = getTransform(target)
+const getTranslate3d = function (el) {
+  const transform = getTransform(el)
 
   const matchObj = /translate3d\((-?[\d.]+)px,\s*(-?[\d.]+)px,\s*(-?[\d.]+)px\)/.exec(transform)
 
@@ -26,38 +26,38 @@ const getTranslate3d = function (target) {
 
 /**
  * 获取 translate
- * @param target
+ * @param el
  * @returns {*}
  */
-const getTranslateX = function (target) {
-  return getTranslate3d(target)[0]
+const getTranslateX = function (el) {
+  return getTranslate3d(el)[0]
 }
 
 /**
  * 设置 translateX
- * @param target
+ * @param el
  * @param value
  */
-const setTranslateX = function (target, value) {
-  setTransform(target, `translate3d(${value}px, 0, 0)`)
+const setTranslateX = function (el, value) {
+  setTransform(el, `translate3d(${value}px, 0, 0)`)
 }
 
 /**
  * 设置 translateX
- * @param target
+ * @param el
  * @returns {number}
  */
-const getTranslateY = function (target) {
-  return getTranslate3d(target)[1]
+const getTranslateY = function (el) {
+  return getTranslate3d(el)[1]
 }
 
 /**
  * 设置 translateY
- * @param target
+ * @param el
  * @param value
  */
-const setTranslateY = function (target, value) {
-  setTransform(target, `translate3d(0, ${value}px, 0)`)
+const setTranslateY = function (el, value) {
+  setTransform(el, `translate3d(0, ${value}px, 0)`)
 }
 
 export {

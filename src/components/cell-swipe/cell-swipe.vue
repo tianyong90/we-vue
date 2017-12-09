@@ -1,6 +1,12 @@
 <template>
   <div class="weui-cell weui-cell_swiped">
-    <div class="weui-cell__bd" ref="cellBd">
+    <div class="weui-cell__bd"
+         ref="cellBd"
+         @touchstart="onTouchstart"
+         @touchmove="onTouchmove"
+         @touchend="onTouchend"
+         @touchcancel="onTouchend"
+    >
       <wv-cell :title="title" :value="value" :is-link="isLink" :to="to" :url="url" ref="cell">
         <template slot="icon">
           <slot name="icon"></slot>
@@ -21,9 +27,9 @@
 
 <script>
   import Cell from '../cell/index'
-  import draggable from '../../utils/draggable'
   import { getTranslateX, setTranslateX } from '../../utils/transform'
   import RouterLink from '../../mixins/router-link'
+  import { getTouch } from '../../utils/touches'
 
   export default {
     name: 'wv-cell-swipe',
@@ -51,65 +57,67 @@
     },
 
     mounted () {
-      const cellBd = this.$refs.cellBd
+      setTranslateX(this.$refs.cellBd, 0)
+    },
 
-      setTranslateX(cellBd, 0)
+    methods: {
+      onTouchstart (event) {
+        const touch = getTouch(event)
+        this.dragState.startPositionX = touch.clientX
+        this.dragState.startTranslateX = getTranslateX(this.$refs.cellBd)
+        this.dragState.startTime = new Date()
 
-      draggable(cellBd, {
-        start: (event) => {
-          this.dragState.startPositionX = event.clientX
-          this.dragState.startTranslateX = getTranslateX(cellBd)
-          this.dragState.startTime = new Date()
+        this.$refs.cellBd.style.transition = ''
+      },
 
-          cellBd.style.transition = ''
-        },
-        drag: (event) => {
-          const deltaX = event.clientX - this.dragState.startPositionX
+      onTouchmove (event) {
+        const touch = getTouch(event)
+        const deltaX = touch.clientX - this.dragState.startPositionX
 
-          const btnsWidth = this.$refs.rightBtns.clientWidth
+        const btnsWidth = this.$refs.rightBtns.clientWidth
 
-          let targetTranslateX
-          if (deltaX < 0) {
-            targetTranslateX = Math.abs(this.dragState.startTranslateX + deltaX) < btnsWidth ? this.dragState.startTranslateX + deltaX : -1 * btnsWidth
-          } else {
-            targetTranslateX = this.dragState.startTranslateX + deltaX < 0 ? this.dragState.startTranslateX + deltaX : 0
-          }
-
-          setTranslateX(cellBd, targetTranslateX)
-        },
-        end: (event) => {
-          const btnsWidth = this.$refs.rightBtns.clientWidth
-
-          this.dragState.endPositionX = event.clientX
-          this.dragState.endTranslateX = getTranslateX(cellBd)
-          this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
-          this.dragState.endTime = new Date()
-
-          const touchTime = this.dragState.endTime - this.dragState.startTime
-
-          // 500ms 内当作点击处理
-          if (touchTime <= 500 && parseInt(this.dragState.totalDeltaX) === 0) {
-            this.$refs.cell.$emit('CLICK_IN_CELLSWIPE')
-          }
-
-          if (this.dragState.startTranslateX === 0 && this.dragState.totalDeltaX < 0) {
-            if (Math.abs(this.dragState.totalDeltaX) >= 30) {
-              setTranslateX(cellBd, -btnsWidth)
-            } else {
-              setTranslateX(cellBd, 0)
-            }
-            cellBd.style.transition = 'all 200ms ease'
-          } else if (this.dragState.startTranslateX === -btnsWidth && this.dragState.totalDeltaX > 0) {
-            if (Math.abs(this.dragState.totalDeltaX) >= 30) {
-              setTranslateX(cellBd, 0)
-            } else {
-              setTranslateX(cellBd, -btnsWidth)
-            }
-            cellBd.style.transition = 'all 200ms ease'
-          }
-          this.dragState = {}
+        let targetTranslateX
+        if (deltaX < 0) {
+          targetTranslateX = Math.abs(this.dragState.startTranslateX + deltaX) < btnsWidth ? this.dragState.startTranslateX + deltaX : -1 * btnsWidth
+        } else {
+          targetTranslateX = this.dragState.startTranslateX + deltaX < 0 ? this.dragState.startTranslateX + deltaX : 0
         }
-      })
+
+        setTranslateX(this.$refs.cellBd, targetTranslateX)
+      },
+      onTouchend (event) {
+        const touch = getTouch(event)
+        const btnsWidth = this.$refs.rightBtns.clientWidth
+
+        this.dragState.endPositionX = touch.clientX
+        this.dragState.endTranslateX = getTranslateX(this.$refs.cellBd)
+        this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
+        this.dragState.endTime = new Date()
+
+        const touchTime = this.dragState.endTime - this.dragState.startTime
+
+        // 500ms 内当作点击处理
+        if (touchTime <= 500 && parseInt(this.dragState.totalDeltaX) === 0) {
+          this.$refs.cell.$emit('CLICK_IN_CELLSWIPE')
+        }
+
+        if (this.dragState.startTranslateX === 0 && this.dragState.totalDeltaX < 0) {
+          if (Math.abs(this.dragState.totalDeltaX) >= 30) {
+            setTranslateX(this.$refs.cellBd, -btnsWidth)
+          } else {
+            setTranslateX(this.$refs.cellBd, 0)
+          }
+          this.$refs.cellBd.style.transition = 'all 200ms ease'
+        } else if (this.dragState.startTranslateX === -btnsWidth && this.dragState.totalDeltaX > 0) {
+          if (Math.abs(this.dragState.totalDeltaX) >= 30) {
+            setTranslateX(this.$refs.cellBd, 0)
+          } else {
+            setTranslateX(this.$refs.cellBd, -btnsWidth)
+          }
+          this.$refs.cellBd.style.transition = 'all 200ms ease'
+        }
+        this.dragState = {}
+      }
     }
   }
 </script>

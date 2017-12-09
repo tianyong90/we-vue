@@ -54,8 +54,12 @@ describe('slider', () => {
       }
     })
 
-    triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
-    triggerTouch(wrapper.find({ref: 'thumb'}), 'touchend', 0, 0)
+    wrapper.find({ref: 'thumb'}).trigger('touchstart')
+    // // wrapper.find({ref: 'thumb'}).trigger('mousedown')
+    //
+    // triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
+    // triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
+    // triggerTouch(wrapper.find({ref: 'thumb'}), 'touchend', 0, 0)
     // dragHelper(wrapper.find({ref: 'thumb'}), 'touchend', 10)
 
     // wrapper.vm.$refs.thumb.trigger('touchstart')

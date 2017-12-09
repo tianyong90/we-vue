@@ -3,21 +3,33 @@
     <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick"
          slot="ft">
       <div class="background"></div>
-      <div class="thumb" ref="thumb"></div>
+      <div class="thumb"
+           ref="thumb"
+           @touchstart="onTouchstart"
+           @touchmove="onTouchmove"
+           @touchend="onTouchend"
+           @touchcancel="onTouchend"
+      ></div>
     </div>
   </wv-cell>
 
   <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick"
        v-else>
     <div class="background"></div>
-    <div class="thumb" ref="thumb"></div>
+    <div class="thumb"
+         ref="thumb"
+         @touchstart="onTouchstart"
+         @touchmove="onTouchmove"
+         @touchend="onTouchend"
+         @touchcancel="onTouchend"
+    ></div>
   </div>
 </template>
 
 <script>
   import Cell from '../cell/index'
-  import draggable from '../../utils/draggable'
   import { getTranslateX, setTranslateX } from '../../utils/transform'
+  import { getTouch } from '../../utils/touches'
 
   const THUMB_STROKE = 20 // 开关的行程
 
@@ -53,63 +65,6 @@
       } else {
         setTranslateX(thumb, 0)
       }
-
-      draggable(thumb, {
-        start: (event) => {
-          if (this.disabled) return
-
-          let dragState = this.dragState
-          dragState.startTimestamp = new Date()
-          dragState.startPositionX = event.clientX
-          dragState.startTranslateX = getTranslateX(thumb)
-
-          thumb.style.transition = null
-        },
-        drag: (event) => {
-          if (this.disabled) return
-
-          let deltaX = event.clientX - this.dragState.startPositionX
-
-          const targetTranslateX = this.dragState.startTranslateX + deltaX
-
-          if (targetTranslateX >= 0 && targetTranslateX <= THUMB_STROKE) {
-            setTranslateX(thumb, targetTranslateX)
-          } else if (targetTranslateX < 0) {
-            setTranslateX(thumb, 0)
-          } else if (targetTranslateX > THUMB_STROKE) {
-            setTranslateX(thumb, THUMB_STROKE)
-          }
-        },
-        end: (event) => {
-          if (this.disabled) return
-
-          // 拖动操作的时长
-          const touchDuration = (new Date()) - this.dragState.startTimestamp
-
-          if (touchDuration < 500) {
-            // 500ms 以内当作点击
-            this.currentValue = !this.currentValue
-            return
-          }
-
-          let deltaX = event.clientX - this.dragState.startPositionX
-
-          thumb.style.transition = '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
-          if (this.currentValue) {
-            if (deltaX < THUMB_STROKE / -2) {
-              this.currentValue = false
-            } else {
-              setTranslateX(thumb, THUMB_STROKE)
-            }
-          } else {
-            if (deltaX > THUMB_STROKE / 2) {
-              this.currentValue = true
-            } else {
-              setTranslateX(thumb, 0)
-            }
-          }
-        }
-      })
     },
 
     methods: {
@@ -118,6 +73,58 @@
         if (this.disabled) return
 
         this.currentValue = !this.currentValue
+      },
+
+      onTouchstart (event) {
+        if (this.disabled) return
+
+        const touch = getTouch(event)
+        let dragState = this.dragState
+        dragState.startTimestamp = new Date()
+        dragState.startPositionX = touch.clientX
+        dragState.startTranslateX = getTranslateX(this.$refs.thumb)
+
+        this.$refs.thumb.style.transition = null
+      },
+
+      onTouchmove (event) {
+        if (this.disabled) return
+
+        const touch = getTouch(event)
+        let deltaX = touch.clientX - this.dragState.startPositionX
+
+        const targetTranslateX = this.dragState.startTranslateX + deltaX
+
+        if (targetTranslateX >= 0 && targetTranslateX <= THUMB_STROKE) {
+          setTranslateX(this.$refs.thumb, targetTranslateX)
+        } else if (targetTranslateX < 0) {
+          setTranslateX(this.$refs.thumb, 0)
+        } else if (targetTranslateX > THUMB_STROKE) {
+          setTranslateX(this.$refs.thumb, THUMB_STROKE)
+        }
+      },
+
+      onTouchend (event) {
+        if (this.disabled) return
+
+        const touch = getTouch(event)
+
+        let deltaX = touch.clientX - this.dragState.startPositionX
+
+        this.$refs.thumb.style.transition = '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
+        if (this.currentValue) {
+          if (deltaX < THUMB_STROKE / -2) {
+            this.currentValue = false
+          } else {
+            setTranslateX(this.$refs.thumb, THUMB_STROKE)
+          }
+        } else {
+          if (deltaX > THUMB_STROKE / 2) {
+            this.currentValue = true
+          } else {
+            setTranslateX(this.$refs.thumb, 0)
+          }
+        }
       }
     },
 
