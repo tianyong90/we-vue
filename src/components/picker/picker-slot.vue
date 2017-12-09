@@ -21,7 +21,6 @@
 
 <script>
   import { getTranslateY, setTranslateY } from '../../utils/transform'
-  import emitter from '../../mixins/emitter'
   import { getTouch } from '../../utils/touches'
 
   // 每个选项高度
@@ -31,8 +30,6 @@
 
   export default {
     name: 'wv-picker-slot',
-
-    mixins: [emitter],
 
     props: {
       values: {
@@ -258,7 +255,7 @@
       currentValue (val) {
         this.doOnValueChange()
         this.$emit('input', val)
-        this.dispatch('wv-picker', 'slotValueChange', this)
+        this.$parent.$emit('slotValueChange', this)
       }
     }
   }
