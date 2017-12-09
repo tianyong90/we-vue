@@ -65,7 +65,6 @@
         const touch = getTouch(event)
         this.dragState.startPositionX = touch.clientX
         this.dragState.startTranslateX = getTranslateX(this.$refs.cellBd)
-        this.dragState.startTime = new Date()
 
         this.$refs.cellBd.style.transition = ''
       },
@@ -92,14 +91,6 @@
         this.dragState.endPositionX = touch.clientX
         this.dragState.endTranslateX = getTranslateX(this.$refs.cellBd)
         this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
-        this.dragState.endTime = new Date()
-
-        const touchTime = this.dragState.endTime - this.dragState.startTime
-
-        // 500ms 内当作点击处理
-        if (touchTime <= 500 && parseInt(this.dragState.totalDeltaX) === 0) {
-          this.$refs.cell.$emit('CLICK_IN_CELLSWIPE')
-        }
 
         if (this.dragState.startTranslateX === 0 && this.dragState.totalDeltaX < 0) {
           if (Math.abs(this.dragState.totalDeltaX) >= 30) {

@@ -1,7 +1,7 @@
 import { mount } from 'vue-test-utils'
 import Switch from '@/components/switch'
 import { getTranslateX } from '@/utils/transform'
-import { triggerTouch } from '../utils'
+import { dragHelper } from '../utils'
 
 const THUMB_STROKE = 20
 
@@ -75,7 +75,7 @@ describe('switch', () => {
       }
     })
 
-    triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
+    dragHelper(wrapper.find({ref: 'thumb'}), 10, 10)
     // expect(wrapper.vm.currentValue).toBe(false)
   })
 

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { once, addClass, removeClass } from '../../utils/dom.js'
+  import { once, addClass, removeClass } from '../../utils/dom'
 
   export default {
     name: 'wv-swipe',

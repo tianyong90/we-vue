@@ -1,6 +1,6 @@
 import { shallow } from 'vue-test-utils'
 import Slider from '@/components/slider'
-import { triggerTouch } from '../utils'
+import { dragHelper } from '../utils'
 import faker from 'faker'
 
 describe('slider', () => {
@@ -54,16 +54,7 @@ describe('slider', () => {
       }
     })
 
-    wrapper.find({ref: 'thumb'}).trigger('touchstart')
-    // // wrapper.find({ref: 'thumb'}).trigger('mousedown')
-    //
-    // triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
-    // triggerTouch(wrapper.find({ref: 'thumb'}), 'touchstart', 0, 0)
-    // triggerTouch(wrapper.find({ref: 'thumb'}), 'touchend', 0, 0)
-    // dragHelper(wrapper.find({ref: 'thumb'}), 'touchend', 10)
-
-    // wrapper.vm.$refs.thumb.trigger('touchstart')
-    // wrapper.find({ref: 'thumb'}).trigger('touchmove')
+    dragHelper(wrapper.find({ref: 'thumb'}), 10, 10)
 
     // expect(wrapper.contains('.weui-slider-box__value')).toBeFalsy()
   })

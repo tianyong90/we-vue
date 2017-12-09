@@ -30,11 +30,6 @@
       isLink: Boolean
     },
 
-    mounted () {
-      // 处理在 cell-swipe 中的点击事件
-      this.$on('CLICK_IN_CELLSWIPE', this.onClick)
-    },
-
     methods: {
       onClick () {
         this.$emit('click')
