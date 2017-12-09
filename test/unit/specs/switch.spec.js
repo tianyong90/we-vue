@@ -67,16 +67,46 @@ describe('switch', () => {
     expect(wrapper.vm.currentValue).toBe(true)
   })
 
-  // TODO:
-  it('drag', () => {
+  it('drag the thumb', () => {
     wrapper = mount(Switch, {
       propsData: {
-        value: true
+        value: false,
+        disabled: true
       }
     })
 
-    dragHelper(wrapper.find({ref: 'thumb'}), 10, 10)
-    // expect(wrapper.vm.currentValue).toBe(false)
+    // the switch can not drag when it's disabled
+    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE, 0)
+    expect(wrapper.vm.currentValue).toBe(false)
+
+    // enable the switch
+    wrapper.setProps({
+      disabled: false
+    })
+
+    // drag to right (distance <= THUMB_STROKE / 2), the value should not change
+    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE / 2, 0)
+    expect(wrapper.vm.currentValue).toBe(false)
+
+    // drag to right (distance >= THUMB_STROKE / 2), the value should change
+    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE / 2 + 5, 0)
+    expect(wrapper.vm.currentValue).toBe(true)
+
+    // drag to left (distance <= THUMB_STROKE / 2), the value should not change
+    dragHelper(wrapper.find({ref: 'thumb'}), -(THUMB_STROKE / 2), 0)
+    expect(wrapper.vm.currentValue).toBe(true)
+
+    // drag to left (distance >= THUMB_STROKE / 2), the value should change
+    dragHelper(wrapper.find({ref: 'thumb'}), -(THUMB_STROKE / 2 + 5), 0)
+    expect(wrapper.vm.currentValue).toBe(false)
+
+    // drag to right with a distance bigger than THUMB_STROKE
+    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE + 5, 0)
+    expect(wrapper.vm.currentValue).toBe(true)
+
+    // drag to left with a distance bigger than THUMB_STROKE
+    dragHelper(wrapper.find({ref: 'thumb'}), -(THUMB_STROKE + 5), 0)
+    expect(wrapper.vm.currentValue).toBe(false)
   })
 
   it('watch currentValue', () => {

@@ -7,9 +7,14 @@
         <a class="weui-picker__action" @click="confirm" v-text="confirmText"></a>
       </div>
       <div class="weui-picker__bd">
-        <wv-picker-slot v-for="(slot, index) in slots" :key="index" :values="slot.values || []" :valueKey="valueKey"
-                        :divider="slot.divider" :content="slot.content"
-                        v-model="values[slot.valueIndex]"></wv-picker-slot>
+        <wv-picker-slot v-for="(slot, index) in slots"
+                        :key="index"
+                        :values="slot.values || []"
+                        :valueKey="valueKey"
+                        :divider="slot.divider"
+                        :content="slot.content"
+                        v-model="values[slot.valueIndex]"
+        ></wv-picker-slot>
       </div>
     </div>
   </div>
