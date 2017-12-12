@@ -1,7 +1,11 @@
 <template>
   <div class="page page-with-padding">
-    <wv-slider :value="50" :min="10" :max="100" disabled :show-value-box="false"></wv-slider>
-    <wv-slider v-model="percent" :min="10" :max="80"></wv-slider>
+    <div class="tips">禁用</div>
+    <wv-slider v-model="percent1" disabled></wv-slider>
+    <div class="tips">自定义最大最小值</div>
+    <wv-slider v-model="percent2" :min="10" :max="80" :step="10"></wv-slider>
+    <div class="tips">禁用点击操作</div>
+    <wv-slider v-model="percent3" :enable-click="false"></wv-slider>
   </div>
 </template>
 
@@ -9,7 +13,9 @@
   export default {
     data () {
       return {
-        percent: 55
+        percent1: 20,
+        percent2: 55,
+        percent3: 10
       }
     }
   }
@@ -19,5 +25,12 @@
   .page {
     padding-top: 5em;
     background-color: white;
+
+    .tips {
+      margin-top: 2em;
+      font-size: 14px;
+      color: #666;
+      margin-left: 1em;
+    }
   }
 </style>

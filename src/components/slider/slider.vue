@@ -1,19 +1,17 @@
 <template>
   <div class="weui-slider-box">
     <div class="weui-slider">
-      <div class="weui-slider__inner" ref="runWay">
-        <div :style="{width: progress + '%'}" class="weui-slider__track"></div>
-        <div :style="{left: progress + '%'}"
+      <div class="weui-slider__inner" ref="inner" @click.prevent="onClick">
+        <div :style="{width: percent + '%'}" class="weui-slider__track"></div>
+        <div :style="{left: percent + '%'}"
              class="weui-slider__handler"
-             ref="thumb"
+             ref="handler"
              @touchstart="onTouchstart"
              @touchmove="onTouchmove"
-             @touchend="onTouchend"
-             @touchcancel="onTouchend"
         ></div>
       </div>
     </div>
-    <div class="weui-slider-box__value" v-if="showValueBox">
+    <div class="weui-slider-box__value" v-if="showValue">
       <slot name="value-box">{{ value }}</slot>
     </div>
   </div>
@@ -28,7 +26,10 @@
     props: {
       min: {
         type: Number,
-        default: 0
+        default: 0,
+        validator: value => {
+          return value >= 0
+        }
       },
       max: {
         type: Number,
@@ -36,12 +37,19 @@
       },
       step: {
         type: Number,
-        default: 1
+        default: 1,
+        validator: value => {
+          return value > 0
+        }
       },
       value: {
         type: Number
       },
-      showValueBox: {
+      showValue: {
+        type: Boolean,
+        default: true
+      },
+      enableClick: {
         type: Boolean,
         default: true
       },
@@ -50,55 +58,73 @@
 
     data () {
       return {
-        startPositionX: 0
+        handlerStartPos: 0,
+        sliderLeft: 0,
+        sliderLength: 0
       }
     },
 
     computed: {
-      progress () {
+      percent () {
         if (typeof this.value === 'undefined' || this.value === null) return 0
 
         return Math.floor((this.value - this.min) / (this.max - this.min) * 100)
+      },
+
+      stepWidth () {
+        return this.sliderLength * this.step / (this.max - this.min)
       }
     },
 
-    methods: {
-      getStartPositionX () {
-        const runWayBox = this.$refs.runWay.getBoundingClientRect()
-        const thumbBox = this.$refs.thumb.getBoundingClientRect()
+    created () {
+      if (this.min >= this.max) {
+        throw new Error('property:max must be bigger than property:min')
+      }
+    },
 
-        return thumbBox.left - runWayBox.left
+    mounted () {
+      this.sliderLeft = this.$refs.inner.offsetLeft
+      this.sliderLength = this.$refs.inner.getBoundingClientRect().width
+    },
+
+    methods: {
+      getHandlerStartPos () {
+        const innerRect = this.$refs.inner.getBoundingClientRect()
+        const handlerRect = this.$refs.handler.getBoundingClientRect()
+
+        return handlerRect.left - innerRect.left
+      },
+
+      onClick (evt) {
+        if (this.disabled || !this.enableClick) return
+
+        // 距初始值的目标步数
+        const steps = Math.round((evt.pageX - this.sliderLeft) / this.stepWidth)
+
+        const value = this.min + this.step * steps
+
+        this.$emit('input', value)
+        this.$emit('change', value)
       },
 
       onTouchstart () {
         if (this.disabled) return
-        this.startPositionX = this.getStartPositionX()
+        this.handlerStartPos = this.getHandlerStartPos()
       },
 
-      onTouchmove (event) {
+      onTouchmove (evt) {
         if (this.disabled) return
 
-        const touch = getTouch(event)
-        const runWayBox = this.$refs.runWay.getBoundingClientRect()
-        const deltaX = touch.pageX - runWayBox.left - this.startPositionX
-        const stepCount = Math.ceil((this.max - this.min) / this.step)
-        const newPositionX = (this.startPositionX + deltaX) - (this.startPositionX + deltaX) % (runWayBox.width / stepCount)
+        const touch = getTouch(evt)
 
-        let newProgress = newPositionX / runWayBox.width
+        // 距初始值的目标步数
+        const steps = Math.round((touch.pageX - this.sliderLeft) / this.stepWidth)
 
-        if (newProgress < 0) {
-          newProgress = 0
-        } else if (newProgress > 1) {
-          newProgress = 1
-        }
+        let value = this.min + this.step * steps
+        value = value < this.min ? this.min : value > this.max ? this.max : value
 
-        this.$emit('input', Math.round(this.min + newProgress * (this.max - this.min)))
-      },
-
-      onTouchend () {
-        if (this.disabled) return
-        this.$emit('change', this.value)
-        this.startPositionX = 0
+        this.$emit('input', value)
+        this.$emit('change', value)
       }
     }
   }
