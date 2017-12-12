@@ -1,29 +1,30 @@
 <template>
-  <div class="wv-popup" v-show="currentValue">
-    <div class="weui-mask weui-animate-fade-in" :style="{ backgroundColor: maskBackgroundColor }"
-         @click="maskClick"></div>
-    <div class="wv-popup-body weui-animate-slide-up" :style="style">
-      <slot></slot>
+  <transition :name="currentTransition">
+    <div class="wv-popup" v-show="value">
+      <div class="weui-mask weui-animate-fade-in" :style="{ backgroundColor: maskBackgroundColor }"
+           @click="maskClick"></div>
+      <div class="wv-popup-body weui-animate-slide-up" :style="style">
+        <slot></slot>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
+  import PopupMixin from '../../mixins/popup'
+
   export default {
     name: 'wv-popup',
 
+    mixins: [PopupMixin],
+
     props: {
-      value: Boolean,
       height: {
         type: [String, Number],
         default: 'auto',
         validator: function (val) {
           return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
         }
-      },
-      hideOnMask: {
-        type: Boolean,
-        default: true
       },
       maskBackgroundColor: {
         type: String,
@@ -32,12 +33,17 @@
       backgroundColor: {
         type: String,
         default: '#fff'
+      },
+      lockOnScroll: {
+        type: Boolean,
+        default: false
       }
     },
 
     data () {
       return {
-        currentValue: this.value
+        currentValue: false,
+        currentTransition: 'fade'
       }
     },
 
@@ -55,26 +61,16 @@
       }
     },
 
+    mounted () {
+      if (this.value) {
+        this.open()
+      }
+    },
+
     methods: {
       maskClick (e) {
         if (!this.hideOnMask) return
         this.currentValue = false
-      }
-    },
-
-    watch: {
-      value (val) {
-        this.currentValue = val
-      },
-
-      currentValue (val) {
-        this.$emit('input', val)
-
-        if (val) {
-          this.$emit('show')
-        } else {
-          this.$emit('hide')
-        }
       }
     }
   }
