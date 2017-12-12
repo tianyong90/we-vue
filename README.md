@@ -1,12 +1,13 @@
-<div align="center">
+<p align="center">
   <img width="120" height="120" src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/logo.png">
-</div>
+</p>
 
-<div align="center">
+<p align="center">
   <a href="https://www.npmjs.com/package/we-vue"><img src="https://img.shields.io/npm/v/we-vue.svg" alt="npm"></a>
   <a href="https://npmjs.org/package/we-vue"><img src="https://img.shields.io/npm/dt/we-vue.svg" alt="downloads"></a>
   <a href="https://travis-ci.org/tianyong90/we-vue"><img src="https://travis-ci.org/tianyong90/we-vue.svg?branch=master" alt="travisci"></a>
-</div>
+  <a href="https://github.com/standard/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"></a>
+</p>
 
 
 we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库，封装了一系列组件，非常适于微信公众号等移动端开发。
@@ -41,19 +42,19 @@ $ yarn add we-vue -S
 1. 克隆代码
 
 ```shell
-git clone https://github.com/tianyong90/we-vue.git
+$ git clone https://github.com/tianyong90/we-vue.git
 ```
 
 2. 安装依赖
 
 ```shell
-cd we-vue && npm install
+$ cd we-vue && npm install
 ```
 
 3. 运行本地服务并开发
 
 ```shell
-npm run dev
+$ npm run dev
 ```
 
 ## 参与贡献

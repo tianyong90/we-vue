@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-swipe-item">
+  <div class="wv-swipe-item" :style="style">
     <slot></slot>
   </div>
 </template>
@@ -8,15 +8,34 @@
   export default {
     name: 'wv-swipe-item',
 
-    mounted () {
-      this.$parent && this.$parent.swipeItemCreated(this)
+    data () {
+      return {
+        offset: 0
+      }
+    },
+
+    computed: {
+      style () {
+        return {
+          width: this.$parent.width + 'px',
+          transform: `translate3d(${this.offset}px, 0, 0)`
+        }
+      }
+    },
+
+    beforeCreate () {
+      this.$parent && this.$parent.swipes.push(this)
     },
 
     destroyed () {
-      this.$parent && this.$parent.swipeItemDestroyed(this)
+      this.$parent && this.$parent.swipes.splice(this.$parent.swipes.indexOf(this), 1)
     }
   }
 </script>
 
 <style scoped lang="scss">
+  .wv-swipe-item {
+    float: left;
+    height: 100%;
+  }
 </style>
