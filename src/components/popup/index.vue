@@ -1,18 +1,13 @@
 <template>
-  <transition :name="currentTransition">
-    <div class="wv-popup" v-show="value">
-      <div class="weui-mask weui-animate-fade-in" :style="{ backgroundColor: maskBackgroundColor }"
-           @click="maskClick"></div>
-      <div class="wv-popup-body weui-animate-slide-up" :style="style">
-        <slot></slot>
-      </div>
+  <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+    <div class="wv-popup" v-show="value" :style="style">
+      <slot></slot>
     </div>
   </transition>
 </template>
 
 <script>
   import PopupMixin from '../../mixins/popup'
-
   import { create } from '../../utils'
 
   export default create({
@@ -28,24 +23,31 @@
           return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
         }
       },
+      position: {
+        default: 'bottom'
+      },
+      transition: String,
+      overlay: {
+        default: true
+      },
+      lockOnScroll: {
+        default: true
+      },
+      closeOnClickOverlay: {
+        default: true
+      },
       maskBackgroundColor: {
         type: String,
         default: ''
       },
-      backgroundColor: {
-        type: String,
-        default: '#fff'
-      },
-      lockOnScroll: {
-        type: Boolean,
-        default: false
+      overlayClass: {
+        default: 'weui-mask'
       }
     },
 
     data () {
       return {
-        currentValue: false,
-        currentTransition: 'fade'
+        currentValue: false
       }
     },
 
@@ -67,27 +69,31 @@
       if (this.value) {
         this.open()
       }
-    },
-
-    methods: {
-      maskClick (e) {
-        if (!this.hideOnMask) return
-        this.currentValue = false
-      }
     }
   })
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-body {
-    display: block;
-    background-color: #fff;
-    position: fixed;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    z-index: 5000;
-    transform: translateY(100%);
-    transition: transform .3s;
+  .wv {
+    &-modal {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    &-overflow-hidden {
+      overflow: hidden !important;
+    }
+
+    &-popup {
+      position: fixed;
+      background-color: white;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
   }
 </style>

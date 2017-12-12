@@ -20,6 +20,9 @@
   - cancelText => cancelButtonText
   - confirmText => confirmButtonText
 
+- cell-swipe 优化
+  - 组件外部点击时自动复位
+
 
 ## v1.6.0 (2017-12-5)
 

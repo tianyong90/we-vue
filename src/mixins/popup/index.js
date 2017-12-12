@@ -100,7 +100,7 @@ export default {
         })
 
         if (this.lockOnScroll) {
-          document.body.classList.add('van-overflow-hidden')
+          document.body.classList.add('wv-overflow-hidden')
         }
       }
 
@@ -121,7 +121,7 @@ export default {
       this.$emit('input', false)
 
       if (this.lockOnScroll) {
-        document.body.classList.remove('van-overflow-hidden')
+        document.body.classList.remove('wv-overflow-hidden')
       }
 
       this.opened = false
@@ -142,7 +142,7 @@ export default {
     context.instances[this._popupId] = null
     manager.closeModal(this._popupId)
     if (this.lockOnScroll) {
-      document.body.classList.remove('van-overflow-hidden')
+      document.body.classList.remove('wv-overflow-hidden')
     }
   }
 }

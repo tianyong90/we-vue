@@ -87,10 +87,22 @@ const components = [
   Textarea
 ]
 
-const install = Vue => {
+const install = (Vue, config = {}) => {
   components.forEach(Component => {
     Vue.use(Component)
   })
+
+  Vue.use(InfiniteScroll)
+  Vue.use(Lazyload, {
+    loading: require('./assets/loading-spin.svg'),
+    attempt: 3,
+    ...config.lazyload
+  })
+
+  Vue.$dialog = Vue.prototype.$dialog = Dialog
+  Vue.$toast = Vue.prototype.$toast = Toast
+  Vue.$indicator = Vue.prototype.$indicator = Indicator
+  Vue.$toptips = Vue.prototype.$toptips = TopTips
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-cell weui-cell_swiped">
+  <div class="weui-cell weui-cell_swiped" v-clickoutside:touchstart="onClick">
     <div class="weui-cell__bd"
          ref="cellBd"
          @touchstart="onTouchstart"
@@ -27,6 +27,7 @@
 
 <script>
   import { create } from '../../utils'
+  import Clickoutside from '../../utils/clickoutside'
   import Cell from '../cell/index'
   import { getTranslateX, setTranslateX } from '../../utils/transform'
   import RouterLink from '../../mixins/router-link'
@@ -40,6 +41,10 @@
     },
 
     mixins: [RouterLink],
+
+    directives: {
+      Clickoutside
+    },
 
     props: {
       title: {
@@ -85,6 +90,7 @@
 
         setTranslateX(this.$refs.cellBd, targetTranslateX)
       },
+
       onTouchend (event) {
         const touch = getTouch(event)
         const btnsWidth = this.$refs.rightBtns.clientWidth
@@ -109,6 +115,10 @@
           this.$refs.cellBd.style.transition = 'all 200ms ease'
         }
         this.dragState = {}
+      },
+
+      onClick (position = 'outside') {
+        console.log(position)
       }
     }
   })
