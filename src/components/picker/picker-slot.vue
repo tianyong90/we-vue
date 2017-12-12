@@ -22,13 +22,14 @@
 <script>
   import { getTranslateY, setTranslateY } from '../../utils/transform'
   import { getTouch } from '../../utils/touches'
+  import { create } from '../../utils'
 
   // 每个选项高度
   const ITEM_HEIGHT = 34
   // 可见选项个数
   const VISIBLE_ITEM_COUNT = 7
 
-  export default {
+  export default create({
     name: 'wv-picker-slot',
 
     props: {
@@ -258,7 +259,7 @@
         this.$parent.$emit('slotValueChange', this)
       }
     }
-  }
+  })
 </script>
 
 <style scoped lang="scss">

@@ -8,7 +8,9 @@
 <script>
   import WvSpinner from '../spinner/index'
 
-  export default {
+  import { create } from '../../utils'
+
+  export default create({
     name: 'wv-indicator',
 
     components: {
@@ -27,7 +29,7 @@
         visible: false
       }
     }
-  }
+  })
 </script>
 
 <style scoped lang="scss">

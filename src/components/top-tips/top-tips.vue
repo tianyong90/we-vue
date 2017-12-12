@@ -3,14 +3,16 @@
 </template>
 
 <script>
-  export default {
+  import { create } from '../../utils'
+
+  export default create({
     name: 'wv-top-tips',
 
     props: {
       visible: Boolean,
       message: String
     }
-  }
+  })
 </script>
 
 <style scoped lang="scss">

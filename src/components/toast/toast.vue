@@ -7,8 +7,9 @@
 
 <script>
   import WvIcon from '../icon/index'
+  import { create } from '../../utils'
 
-  export default {
+  export default create({
     name: 'wv-toast',
 
     components: {
@@ -47,7 +48,7 @@
         return {}
       }
     }
-  }
+  })
 </script>
 
 <style scoped lang="scss">

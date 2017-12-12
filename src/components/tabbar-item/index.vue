@@ -1,18 +1,24 @@
 <template>
-  <div class="weui-footer__link" @click="onClick">{{ text }}</div>
+  <div class="weui-tabbar__item" :class="{ 'weui-bar__item_on': isOn }" @click="onClick">
+    <slot name="icon"></slot>
+    <p class="weui-tabbar__label">
+      <slot></slot>
+    </p>
+  </div>
 </template>
 
 <script>
   import RouterLink from '../../mixins/router-link'
+
   import { create } from '../../utils'
 
   export default create({
-    name: 'wv-footer-link',
+    name: 'wv-tabbar-item',
 
     mixins: [RouterLink],
 
     props: {
-      text: String
+      isOn: Boolean
     },
 
     methods: {
@@ -23,3 +29,6 @@
     }
   })
 </script>
+
+<style scoped lang="scss">
+</style>
