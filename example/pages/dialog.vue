@@ -9,22 +9,16 @@
 
 <script>
   import Dialog from '../../src/components/dialog'
-  import Toast from '../../src/components/toast'
 
   export default {
     methods: {
-      doSomething () {
-        Toast('confirm btn clicked.')
-      },
-
       showDialog (skin, title) {
-        Dialog({
+        Dialog.confirm({
           title: title,
           message: '欢迎使用 we-vue!',
           skin,
           showCancelBtn: true
-        },
-        this.doSomething)
+        })
       }
     }
   }

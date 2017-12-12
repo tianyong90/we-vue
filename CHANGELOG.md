@@ -1,3 +1,26 @@
+## v1.7.0
+
+
+- 重构 swipe 组件
+  - speed => duration
+  - auto => autoplay
+  - defaultIndex => initialSwipe
+  - 取消 condinuous 属性
+  - 取消 noDragWhenSingle 属性
+  
+- 优化 slider 组件
+  - 新增 enableClick 组件，支持点击操作（默认开启）
+  - 优化属性值校验
+  - 优化 slider 值计算逻辑，简化代码
+  
+- 重构 dialog 组件
+  - 组件返回 Promise 对象
+  - shouCancelBtn => showCancelButton
+  - shouConfirmBtn => showConfirmButton
+  - cancelText => cancelButtonText
+  - confirmText => confirmButtonText
+
+
 ## v1.6.0 (2017-12-5)
 
 ### 优化
