@@ -4,7 +4,7 @@ import Toast from '@/components/toast/toast.vue'
 
 describe('toast api', () => {
   afterEach(() => {
-    // ToastApi.close()
+    ToastApi.close()
   })
 
   it('open a toast', () => {

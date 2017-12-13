@@ -53,36 +53,4 @@ describe('popup', () => {
 
     expect(wrapper.vm.currentValue).toBeTruthy()
   })
-
-  it('watch currentValue', () => {
-    wrapper = shallow(Popup, {
-      propsData: {}
-    })
-
-    wrapper.setData({
-      currentValue: true
-    })
-
-    expect(wrapper.emitted().input).toBeTruthy()
-    expect(wrapper.emitted().show).toBeTruthy()
-
-    wrapper.setData({
-      currentValue: false
-    })
-
-    expect(wrapper.emitted().input).toBeTruthy()
-    expect(wrapper.emitted().hide).toBeTruthy()
-  })
-
-  it('watch value', () => {
-    wrapper = shallow(Popup, {
-      propsData: {}
-    })
-
-    wrapper.setProps({
-      value: 'new-value'
-    })
-
-    expect(wrapper.vm.currentValue).toBe('new-value')
-  })
 })

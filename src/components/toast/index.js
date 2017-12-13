@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import ToastComponent from './toast.vue'
 
+// TODO: 优化
 const ToastConstructor = Vue.extend(ToastComponent)
 let toastPool = []
 

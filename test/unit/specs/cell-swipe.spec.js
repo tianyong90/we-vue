@@ -19,7 +19,7 @@ describe('cell-swipe', () => {
     expect(wrapper.hasClass('weui-cell')).toBeTruthy()
   })
 
-  it('drag the thumb', () => {
+  it('drag the handler', () => {
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
@@ -27,29 +27,29 @@ describe('cell-swipe', () => {
       }
     })
 
-    const btnsWidth = wrapper.vm.$refs.rightBtns.clientWidth
+    const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
 
-    // drag to left (distance = 30px)
-    dragHelper(wrapper.find({ref: 'cellBd'}), -30, 0)
-
-    expect(getTranslateX(wrapper.vm.$refs.cellBd)).toBe(-btnsWidth)
-
-    // drag to right (distance = 30px)
-    dragHelper(wrapper.find({ref: 'cellBd'}), 30, 0)
-
-    expect(getTranslateX(wrapper.vm.$refs.cellBd)).toBe(0)
-
-    // drag to left (distance < 30px)
+    // drag to left (distance = 20px)
     dragHelper(wrapper.find({ref: 'cellBd'}), -20, 0)
 
     expect(getTranslateX(wrapper.vm.$refs.cellBd)).toBe(0)
 
-    // drag to right (distance = 30px)
-    dragHelper(wrapper.find({ref: 'cellBd'}), -btnsWidth, 0)
-
-    // drag to right (distance < 30px)
+    // drag to right (distance = 20px)
     dragHelper(wrapper.find({ref: 'cellBd'}), 20, 0)
 
-    expect(getTranslateX(wrapper.vm.$refs.cellBd)).toBe(-btnsWidth)
+    expect(getTranslateX(wrapper.vm.$refs.cellBd)).toBe(0)
+
+    // drag to left (distance < 20px)
+    dragHelper(wrapper.find({ref: 'cellBd'}), -10, 0)
+
+    expect(getTranslateX(wrapper.vm.$refs.cellBd)).toBe(0)
+
+    // drag to right (distance = 20px)
+    dragHelper(wrapper.find({ref: 'cellBd'}), -rightWidth, 0)
+
+    // drag to right (distance < 20px)
+    dragHelper(wrapper.find({ref: 'cellBd'}), 10, 0)
+
+    expect(getTranslateX(wrapper.vm.$refs.cellBd)).toBe(0)
   })
 })
