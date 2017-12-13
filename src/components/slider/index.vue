@@ -18,9 +18,7 @@
 </template>
 
 <script>
-  import { getTouch } from '../../utils/touches'
-
-  import { create } from '../../utils'
+  import { create, getTouch } from '../../utils'
 
   export default create({
     name: 'wv-slider',

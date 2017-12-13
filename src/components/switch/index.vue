@@ -33,8 +33,7 @@
 <script>
   import Cell from '../cell/index'
   import { getTranslateX, setTranslateX } from '../../utils/transform'
-  import { getTouch } from '../../utils/touches'
-  import { create } from '../../utils'
+  import { create, getTouch } from '../../utils'
 
   const THUMB_STROKE = 20 // 开关的行程
 

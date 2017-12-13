@@ -1,13 +1,19 @@
 <template>
-  <div class="weui-cell weui-cell_swiped" v-clickoutside:touchstart="onClick">
+  <div class="weui-cell weui-cell_swiped">
     <div class="weui-cell__bd"
          ref="cellBd"
          @touchstart="onTouchstart"
          @touchmove="onTouchmove"
          @touchend="onTouchend"
          @touchcancel="onTouchend"
+         :style="style"
     >
-      <wv-cell :title="title" :value="value" :is-link="isLink" :to="to" :url="url" ref="cell">
+      <wv-cell :title="title"
+               :value="value"
+               :is-link="isLink"
+               :to="to"
+               :url="url"
+               ref="cell">
         <template slot="icon">
           <slot name="icon" />
         </template>
@@ -26,12 +32,9 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
-  import Clickoutside from '../../utils/clickoutside'
+  import { create, getTouch } from '../../utils'
   import Cell from '../cell/index'
-  import { getTranslateX, setTranslateX } from '../../utils/transform'
   import RouterLink from '../../mixins/router-link'
-  import { getTouch } from '../../utils/touches'
 
   export default create({
     name: 'wv-cell-swipe',
@@ -42,83 +45,66 @@
 
     mixins: [RouterLink],
 
-    directives: {
-      Clickoutside
-    },
-
     props: {
-      title: {
-        type: [String, Number]
-      },
-      value: {
-        type: [String, Number]
-      },
+      title: [String, Number],
+      value: [String, Number],
       isLink: Boolean
     },
 
     data () {
       return {
-        dragState: {}
+        startPosX: 0,
+        rightWidth: 0,
+        offset: 0,
+        startOffset: 0,
+        deltaX: 0,
+        transition: ''
+      }
+    },
+
+    computed: {
+      style () {
+        return {
+          transition: this.transition,
+          transform: `translate3d(${this.offset}px, 0px, 0px)`
+        }
       }
     },
 
     mounted () {
-      setTranslateX(this.$refs.cellBd, 0)
+      this.rightWidth = this.$refs.rightBtns.clientWidth
     },
 
     methods: {
       onTouchstart (event) {
         const touch = getTouch(event)
-        this.dragState.startPositionX = touch.clientX
-        this.dragState.startTranslateX = getTranslateX(this.$refs.cellBd)
+        this.startPosX = touch.clientX
 
-        this.$refs.cellBd.style.transition = ''
+        this.startOffset = this.offset
+        this.transition = ''
       },
 
       onTouchmove (event) {
         const touch = getTouch(event)
-        const deltaX = touch.clientX - this.dragState.startPositionX
+        this.deltaX = touch.clientX - this.startPosX
 
-        const btnsWidth = this.$refs.rightBtns.clientWidth
+        const targetOffset = this.startOffset + this.deltaX
 
-        let targetTranslateX
-        if (deltaX < 0) {
-          targetTranslateX = Math.abs(this.dragState.startTranslateX + deltaX) < btnsWidth ? this.dragState.startTranslateX + deltaX : -1 * btnsWidth
+        this.offset = targetOffset > 0 ? 0 : targetOffset < -this.rightWidth ? -this.rightWidth : targetOffset
+      },
+
+      onTouchend () {
+        this.transition = 'all 200ms ease'
+
+        if (Math.abs(this.deltaX) < 20) {
+          this.offset = this.startOffset
         } else {
-          targetTranslateX = this.dragState.startTranslateX + deltaX < 0 ? this.dragState.startTranslateX + deltaX : 0
-        }
-
-        setTranslateX(this.$refs.cellBd, targetTranslateX)
-      },
-
-      onTouchend (event) {
-        const touch = getTouch(event)
-        const btnsWidth = this.$refs.rightBtns.clientWidth
-
-        this.dragState.endPositionX = touch.clientX
-        this.dragState.endTranslateX = getTranslateX(this.$refs.cellBd)
-        this.dragState.totalDeltaX = this.dragState.endPositionX - this.dragState.startPositionX
-
-        if (this.dragState.startTranslateX === 0 && this.dragState.totalDeltaX < 0) {
-          if (Math.abs(this.dragState.totalDeltaX) >= 30) {
-            setTranslateX(this.$refs.cellBd, -btnsWidth)
-          } else {
-            setTranslateX(this.$refs.cellBd, 0)
+          if (this.startOffset < 0 && this.deltaX > 0) {
+            this.offset = 0
+          } else if (this.startOffset === 0 && this.deltaX < 0) {
+            this.offset = -this.rightWidth
           }
-          this.$refs.cellBd.style.transition = 'all 200ms ease'
-        } else if (this.dragState.startTranslateX === -btnsWidth && this.dragState.totalDeltaX > 0) {
-          if (Math.abs(this.dragState.totalDeltaX) >= 30) {
-            setTranslateX(this.$refs.cellBd, 0)
-          } else {
-            setTranslateX(this.$refs.cellBd, -btnsWidth)
-          }
-          this.$refs.cellBd.style.transition = 'all 200ms ease'
         }
-        this.dragState = {}
-      },
-
-      onClick (position = 'outside') {
-        console.log(position)
       }
     }
   })

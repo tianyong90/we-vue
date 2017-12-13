@@ -21,8 +21,7 @@
 
 <script>
   import { getTranslateY, setTranslateY } from '../../utils/transform'
-  import { getTouch } from '../../utils/touches'
-  import { create } from '../../utils'
+  import { create, getTouch } from '../../utils'
 
   // 每个选项高度
   const ITEM_HEIGHT = 34
