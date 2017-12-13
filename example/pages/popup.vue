@@ -4,9 +4,9 @@
     <wv-button type="default" @click="popupVisible2 = true">指定高度为 300px</wv-button>
     <wv-button type="default" @click="popupVisible3 = true">指定高度 100%</wv-button>
     <wv-button type="default" @click="popupVisible4 = true">点击遮罩层不关闭</wv-button>
-    <wv-button type="default" @click="popupVisible5 = true">自定义遮罩背景色</wv-button>
+    <wv-button type="default" @click="popupVisible5 = true">自定义遮罩样式</wv-button>
 
-    <wv-popup v-model="popupVisible1" @open="onShow" @close="onHide">
+    <wv-popup v-model="popupVisible1">
       <wv-group>
         <wv-switch title="关闭" v-model="popupVisible1"></wv-switch>
         <wv-cell title="title" value="value" is-link></wv-cell>
@@ -30,7 +30,11 @@
       </wv-group>
     </wv-popup>
 
-    <wv-popup v-model="popupVisible4" :close-on-click-overlay="false" @open="onShow" @close="onHide">
+    <wv-popup v-model="popupVisible4"
+              :close-on-click-overlay="false"
+              @open="onShow"
+              @close="onHide"
+    >
       <wv-group>
         <wv-switch title="关闭" v-model="popupVisible4"></wv-switch>
         <wv-cell title="title" value="value" is-link></wv-cell>
@@ -38,7 +42,9 @@
       </wv-group>
     </wv-popup>
 
-    <wv-popup v-model="popupVisible5" overlay-style="background-color: rgba(0, 255, 255, 0.5)" @open="onShow" @close="onHide">
+    <wv-popup v-model="popupVisible5"
+              :overlay-style="{ backgroundColor: 'rgba(0, 255, 255, 0.5)' }"
+    >
       <wv-group>
         <wv-switch title="关闭" v-model="popupVisible5"></wv-switch>
         <wv-cell title="title" value="value" is-link></wv-cell>

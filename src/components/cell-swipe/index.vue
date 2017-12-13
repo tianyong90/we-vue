@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-cell weui-cell_swiped">
+  <div class="weui-cell weui-cell_swiped" v-clickoutside:touchstart="onClickoutside">
     <div class="weui-cell__bd"
          ref="cellBd"
          @touchstart="onTouchstart"
@@ -35,12 +35,17 @@
   import { create, getTouch } from '../../utils'
   import Cell from '../cell/index'
   import RouterLink from '../../mixins/router-link'
+  import Clickoutside from '../../utils/clickoutside'
 
   export default create({
     name: 'wv-cell-swipe',
 
     components: {
       [Cell.name]: Cell
+    },
+
+    directives: {
+      Clickoutside
     },
 
     mixins: [RouterLink],
@@ -105,6 +110,10 @@
             this.offset = -this.rightWidth
           }
         }
+      },
+
+      onClickoutside () {
+        this.offset = 0
       }
     }
   })
