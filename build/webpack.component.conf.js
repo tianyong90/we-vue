@@ -7,13 +7,14 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const componentsEntry = require('./bin/components-helpers').getComponentsEntry()
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
 
 const webpackConfig = merge(baseWebpackConfig, {
-  entry: require('../components.json'),
+  entry: componentsEntry,
   module: {
     rules: utils.styleLoaders({
       sourceMap: false,
