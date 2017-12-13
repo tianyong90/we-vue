@@ -10,13 +10,13 @@
       @touchcancel="onTouchend"
       @transitionend="$emit('change', activeIndicator)"
     >
-      <slot></slot>
+      <slot />
     </div>
     <div v-else class="wv-swipe__wrapper" :style="wrapperStyle">
-      <slot></slot>
+      <slot />
     </div>
     <div class="wv-swipe__indicators" v-if="showIndicators && count > 1">
-      <i v-for="index in count" :class="{ 'wv-swipe__indicator--active': index - 1 === activeIndicator }"/>
+      <i v-for="index in count" :class="{ 'wv-swipe__indicator--active': index - 1 === activeIndicator }" />
     </div>
   </div>
 </template>

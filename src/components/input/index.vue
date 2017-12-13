@@ -1,7 +1,10 @@
 <template>
   <div class="weui-cell" :class="{ 'weui-cell_warn': !valid }">
     <div class="weui-cell__hd">
-      <label class="weui-label" v-html="label" v-if="label" :style="{ width: labelWidth + 'px' }"></label>
+      <label class="weui-label"
+             v-html="label"
+             v-if="label"
+             :style="{ width: labelWidth + 'px' }" />
     </div>
     <div class="weui-cell__bd">
       <input
@@ -20,8 +23,8 @@
         @input="handleInput">
     </div>
     <div class="weui-cell__ft">
-      <wv-icon type="warn" v-if="!valid"></wv-icon>
-      <slot name="ft"></slot>
+      <wv-icon type="warn" v-if="!valid" />
+      <slot name="ft" />
     </div>
   </div>
 </template>

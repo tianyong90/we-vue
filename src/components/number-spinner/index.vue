@@ -11,7 +11,7 @@
            :disabled="disabled"
            :readonly="!fillable"
            @blur="onBlur"
-           :style="inputStyle"/>
+           :style="inputStyle" />
     <button class="spinner-btn btn-increase"
             :class="{ 'btn-disabled': btnIncreaseDisabled}"
             :disabled="btnIncreaseDisabled"

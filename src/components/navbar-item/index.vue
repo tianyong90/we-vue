@@ -3,7 +3,7 @@
        @click="onClick"
        :class="{ 'wv-navbar__item_on': !$parent.animate && $parent.value === id, disabled: disabled }"
        :style="style">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

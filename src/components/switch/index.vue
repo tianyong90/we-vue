@@ -1,28 +1,32 @@
 <template>
   <wv-cell :title="title" v-if="isInCell">
-    <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick"
+    <div class="wv-switch"
+         :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }"
+         @click="onClick"
          slot="ft">
-      <div class="background"></div>
+      <div class="background" />
       <div class="thumb"
            ref="thumb"
            @touchstart="onTouchstart"
            @touchmove="onTouchmove"
            @touchend="onTouchend"
            @touchcancel="onTouchend"
-      ></div>
+       />
     </div>
   </wv-cell>
 
-  <div class="wv-switch" :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }" @click="onClick"
+  <div class="wv-switch"
+       :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }"
+       @click="onClick"
        v-else>
-    <div class="background"></div>
+    <div class="background" />
     <div class="thumb"
          ref="thumb"
          @touchstart="onTouchstart"
          @touchmove="onTouchmove"
          @touchend="onTouchend"
          @touchcancel="onTouchend"
-    ></div>
+     />
   </div>
 </template>
 

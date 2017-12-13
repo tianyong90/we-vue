@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-toptips weui-toptips_warn" v-if="visible" v-html="message"></div>
+  <div class="weui-toptips weui-toptips_warn" v-if="visible" v-html="message" />
 </template>
 
 <script>

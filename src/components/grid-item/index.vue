@@ -1,10 +1,10 @@
 <template>
   <div class="weui-grid" @click="onClick">
     <div class="weui-grid__icon" v-if="$slots.icon">
-      <slot name="icon"></slot>
+      <slot name="icon" />
     </div>
     <p class="weui-grid__label" v-if="$slots.label">
-      <slot name="label"></slot>
+      <slot name="label" />
     </p>
     <slot>
     </slot>

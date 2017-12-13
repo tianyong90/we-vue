@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-footer__link" @click="onClick">{{ text }}</div>
+  <div class="weui-footer__link" @click="onClick" v-text="text" />
 </template>
 
 <script>

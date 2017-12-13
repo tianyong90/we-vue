@@ -6,8 +6,8 @@
        @touchend="onTouchend"
        @touchcancel="onTouchend"
   >
-    <div class="weui-picker__mask"></div>
-    <div class="weui-picker__indicator" ref="indicator"></div>
+    <div class="weui-picker__mask" />
+    <div class="weui-picker__indicator" ref="indicator" />
     <div class="weui-picker__content" ref="listWrapper">
       <div class="weui-picker__item"
            :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }"
@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="wv-picker-slot-divider" v-else v-html="content"></div>
+  <div class="wv-picker-slot-divider" v-else v-html="content" />
 </template>
 
 <script>

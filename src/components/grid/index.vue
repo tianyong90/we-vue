@@ -1,6 +1,6 @@
 <template>
   <div class="weui-grids">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

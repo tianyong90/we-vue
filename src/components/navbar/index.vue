@@ -1,7 +1,7 @@
 <template>
   <div class="wv-navbar" :style="style">
-    <slot></slot>
-    <div class="wv-navbar-underline" v-if="animate" :style="lineStyle"></div>
+    <slot />
+    <div class="wv-navbar-underline" v-if="animate" :style="lineStyle" />
   </div>
 </template>
 

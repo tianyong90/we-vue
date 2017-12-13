@@ -1,6 +1,6 @@
 <template>
   <div class="weui-tabbar" :style="{ position: fixed ? 'fixed' : 'absolute' }">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

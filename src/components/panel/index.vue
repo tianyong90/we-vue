@@ -1,11 +1,11 @@
 <template>
   <div class="weui-panel weui-panel_access">
-    <div class="weui-panel__hd" v-if="title" v-html="title"></div>
+    <div class="weui-panel__hd" v-if="title" v-html="title" />
     <div class="weui-panel__bd">
-      <slot></slot>
+      <slot />
     </div>
     <div class="weui-panel__ft">
-      <slot name="ft"></slot>
+      <slot name="ft" />
     </div>
   </div>
 </template>

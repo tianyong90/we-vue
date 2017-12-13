@@ -1,6 +1,6 @@
 <template>
   <div class="weui-flex__item" :style="style">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

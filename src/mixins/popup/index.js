@@ -84,6 +84,7 @@ export default {
       }
 
       this.$emit('input', true)
+      this.$emit('open')
 
       // 如果属性中传入了`zIndex`，则覆盖`context`中对应的`zIndex`
       if (this.zIndex !== undefined) {
@@ -119,6 +120,7 @@ export default {
       }
 
       this.$emit('input', false)
+      this.$emit('close')
 
       if (this.lockOnScroll) {
         document.body.classList.remove('wv-overflow-hidden')

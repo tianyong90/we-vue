@@ -1,8 +1,8 @@
 <template>
-  <transition name="van-fade">
+  <transition name="wv-fade">
     <div
       v-show="visible"
-      class="van-modal"
+      class="wv-modal"
       :class="className"
       :style="style"
       @touchmove.prevent.stop
@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    name: 'van-modal',
+    name: 'wv-modal',
 
     props: {
       visible: Boolean,

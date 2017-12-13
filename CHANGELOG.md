@@ -22,6 +22,9 @@
 
 - cell-swipe 优化
   - 组件外部点击时自动复位
+  
+- poopup 重构
+  - 事件名调整 show => open, hide => close
 
 
 ## v1.6.0 (2017-12-5)

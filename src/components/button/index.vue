@@ -4,8 +4,8 @@
     :class="classObject"
     @click="handleClick"
     :disabled="disabled">
-    <i class="weui-loading" v-if="isLoading"></i>
-    <slot></slot>
+    <i class="weui-loading" v-if="isLoading" />
+    <slot />
   </button>
 </template>
 

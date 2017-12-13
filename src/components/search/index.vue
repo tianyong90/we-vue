@@ -3,17 +3,23 @@
     <div class="weui-search-bar">
       <div class="weui-search-bar__form">
         <div class="weui-search-bar__box">
-          <i class="weui-icon-search"></i>
-          <input class="weui-search-bar__input" :placeholder="placeholder" :autofocus="autofocus" v-model="currentValue"
+          <i class="weui-icon-search" />
+          <input class="weui-search-bar__input"
+                 :placeholder="placeholder"
+                 :autofocus="autofocus"
+                 v-model="currentValue"
                  ref="searchInput">
-          <a class="weui-icon-clear" @click="searchClear"></a>
+          <div class="weui-icon-clear" @click="searchClear" />
         </div>
         <label class="weui-search-bar__label" @click="textClick" v-show="!isActive">
-          <i class="weui-icon-search"></i>
-          <span v-text="placeholder"></span>
+          <i class="weui-icon-search" />
+          <span v-text="placeholder" />
         </label>
       </div>
-      <a class="weui-search-bar__cancel-btn" @click="searchCancel" v-show="isActive" v-text="cancelText"></a>
+      <div class="weui-search-bar__cancel-btn"
+           @click="searchCancel"
+           v-show="isActive"
+           v-text="cancelText" />
     </div>
 
     <slot>

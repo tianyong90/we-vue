@@ -2,13 +2,13 @@
   <div class="weui-slider-box">
     <div class="weui-slider">
       <div class="weui-slider__inner" ref="inner" @click.prevent="onClick">
-        <div :style="{width: percent + '%'}" class="weui-slider__track"></div>
+        <div :style="{width: percent + '%'}" class="weui-slider__track" />
         <div :style="{left: percent + '%'}"
              class="weui-slider__handler"
              ref="handler"
              @touchstart="onTouchstart"
              @touchmove="onTouchmove"
-        ></div>
+         />
       </div>
     </div>
     <div class="weui-slider-box__value" v-if="showValue">

@@ -1,8 +1,8 @@
 <template>
   <div class="weui-tabbar__item" :class="{ 'weui-bar__item_on': isOn }" @click="onClick">
-    <slot name="icon"></slot>
+    <slot name="icon" />
     <p class="weui-tabbar__label">
-      <slot></slot>
+      <slot />
     </p>
   </div>
 </template>

@@ -1,7 +1,10 @@
 <template>
   <div class="weui-toast" v-show="visible">
-    <wv-spinner class="weui-icon_toast" v-if="spinnerType !=='none'" :type="spinnerType" :size="25"></wv-spinner>
-    <p class="weui-toast__content" v-text="text"></p>
+    <wv-spinner class="weui-icon_toast"
+                v-if="spinnerType !=='none'"
+                :type="spinnerType"
+                :size="25" />
+    <p class="weui-toast__content" v-text="text" />
   </div>
 </template>
 

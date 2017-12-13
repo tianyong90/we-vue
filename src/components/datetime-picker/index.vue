@@ -1,6 +1,12 @@
 <template>
-  <wv-picker v-model="visible" :slots="dateSlots" @change="onChange" @confirm="onConfirm" @cnncel="onCancel"
-             ref="picker" :confirm-text="confirmText" :cancel-text="cancelText"></wv-picker>
+  <wv-picker v-model="visible"
+             :slots="dateSlots"
+             @change="onChange"
+             @confirm="onConfirm"
+             @cnncel="onCancel"
+             ref="picker"
+             :confirm-text="confirmText"
+             :cancel-text="cancelText" />
 </template>
 
 <script>

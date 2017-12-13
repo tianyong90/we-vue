@@ -1,6 +1,6 @@
 <template>
   <div class="wv-swipe-item" :style="style">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

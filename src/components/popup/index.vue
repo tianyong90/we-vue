@@ -1,7 +1,7 @@
 <template>
-  <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+  <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
     <div class="wv-popup" v-show="value" :style="style">
-      <slot></slot>
+      <slot />
     </div>
   </transition>
 </template>
@@ -23,10 +23,6 @@
           return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
         }
       },
-      position: {
-        default: 'bottom'
-      },
-      transition: String,
       overlay: {
         default: true
       },
@@ -35,10 +31,6 @@
       },
       closeOnClickOverlay: {
         default: true
-      },
-      maskBackgroundColor: {
-        type: String,
-        default: ''
       },
       overlayClass: {
         default: 'weui-mask'
@@ -53,7 +45,7 @@
 
     computed: {
       style () {
-        let ret = {backgroundColor: this.backgroundColor}
+        let ret = {}
 
         if (/^\d+$/.test(this.height)) {
           ret.height = parseInt(this.height) + 'px'

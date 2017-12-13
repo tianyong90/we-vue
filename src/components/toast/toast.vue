@@ -1,7 +1,11 @@
 <template>
-  <div class="weui-toast" :class="{ 'weui-toast_text': type === 'text' }" :style="style" ref="toast" v-if="visible">
-    <wv-icon :type="icon" class="weui-icon_toast" v-if="type !== 'text'"></wv-icon>
-    <p class="weui-toast__content" v-text="message"></p>
+  <div class="weui-toast"
+       :class="{ 'weui-toast_text': type === 'text' }"
+       :style="style"
+       ref="toast"
+       v-if="visible">
+    <wv-icon :type="icon" class="weui-icon_toast" v-if="type !== 'text'" />
+    <p class="weui-toast__content" v-text="message" />
   </div>
 </template>
 

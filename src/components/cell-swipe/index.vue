@@ -9,18 +9,18 @@
     >
       <wv-cell :title="title" :value="value" :is-link="isLink" :to="to" :url="url" ref="cell">
         <template slot="icon">
-          <slot name="icon"></slot>
+          <slot name="icon" />
         </template>
         <template slot="bd" v-if="!title">
-          <slot name="bd"></slot>
+          <slot name="bd" />
         </template>
         <template slot="ft" v-if="typeof value === 'undefined'">
-          <slot name="ft"></slot>
+          <slot name="ft" />
         </template>
       </wv-cell>
     </div>
     <div class="weui-cell__ft" ref="rightBtns">
-      <slot name="right"></slot>
+      <slot name="right" />
     </div>
   </div>
 </template>

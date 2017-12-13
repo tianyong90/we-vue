@@ -1,6 +1,6 @@
 <template>
   <div :class="'weui-swiped-btn weui-swiped-btn_' + type">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

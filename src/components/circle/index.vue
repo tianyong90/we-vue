@@ -1,12 +1,16 @@
 <template>
   <div class="wv-circle" :style="style">
     <svg :width="diameter" :height="diameter" :viewBox="'0 0 ' + diameter + ' ' + diameter">
-      <path :d="pathString" :stroke="trailColor" :stroke-width="lineWidth" fill="none"/>
-      <path :d="pathString" stroke-linecap="round" :stroke="strokeColor" :stroke-width="lineWidth" :style="pathStyle"
-            :fill="fillColor"/>
+      <path :d="pathString" :stroke="trailColor" :stroke-width="lineWidth" fill="none" />
+      <path :d="pathString"
+            stroke-linecap="round"
+            :stroke="strokeColor"
+            :stroke-width="lineWidth"
+            :style="pathStyle"
+            :fill="fillColor" />
     </svg>
     <div class="wv-circle-content">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
