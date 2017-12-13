@@ -43,7 +43,6 @@ const Dialog = options => {
       initInstance()
     }
 
-    console.log(options)
     Object.assign(instance, {
       resolve,
       reject,

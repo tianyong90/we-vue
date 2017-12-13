@@ -18,8 +18,6 @@ export default {
       }
     }
 
-    console.log(binding.arg)
-
     el[context] = {
       handler,
       callback: binding.value,
