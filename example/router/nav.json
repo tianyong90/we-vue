@@ -121,12 +121,6 @@
         "icon": "9"
       },
       {
-        "path": "/indicator",
-        "name": "Indicator",
-        "description": "加载指示",
-        "icon": "refreshindicatordark2x"
-      },
-      {
         "path": "/toast",
         "name": "Toast",
         "description": "弹出式提示",

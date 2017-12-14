@@ -1,17 +1,21 @@
 <template>
-  <div class="weui-toast"
-       :class="{ 'weui-toast_text': type === 'text' }"
-       :style="style"
-       ref="toast"
-       v-if="visible">
-    <wv-icon :type="icon" class="weui-icon_toast" v-if="type !== 'text'" />
-    <p class="weui-toast__content" v-text="message" />
-  </div>
+  <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+    <div v-show="value">
+      <div class="weui-toast"
+           :class="{ 'weui-toast_text': type === 'text' }"
+           :style="style"
+           ref="toast">
+        <wv-icon :type="icon" class="weui-icon_toast" v-if="type !== 'text'" />
+        <p class="weui-toast__content" v-text="message" />
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>
   import WvIcon from '../icon/index'
   import { create } from '../../utils'
+  import PopupMixin from '../../mixins/popup'
 
   export default create({
     name: 'wv-toast',
@@ -20,8 +24,10 @@
       WvIcon
     },
 
+    mixins: [PopupMixin],
+
     props: {
-      visible: {
+      overlay: {
         default: true
       },
       icon: {
@@ -35,6 +41,9 @@
       message: {
         type: String,
         default: ''
+      },
+      overlayClass: {
+        default: 'weui-mask_transparent'
       }
     },
 

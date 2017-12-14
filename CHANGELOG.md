@@ -25,6 +25,8 @@
   
 - poopup 重构
   - 事件名调整 show => open, hide => close
+  
+- 删除 Indicator 组件，其功能整合到 Toast 组件中，使用 Toast.loading() 方法
 
 
 ## v1.6.0 (2017-12-5)

@@ -18,7 +18,6 @@ import GridItem from './components/grid-item'
 import Group from './components/group'
 import Header from './components/header'
 import Icon from './components/icon'
-import Indicator from './components/indicator'
 import InfiniteScroll from './components/infinite-scroll'
 import Input from './components/input'
 import Lazyload from './components/lazyload'
@@ -101,7 +100,6 @@ const install = (Vue, config = {}) => {
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog
   Vue.$toast = Vue.prototype.$toast = Toast
-  Vue.$indicator = Vue.prototype.$indicator = Indicator
   Vue.$toptips = Vue.prototype.$toptips = TopTips
 }
 
@@ -130,7 +128,6 @@ export {
   Group,
   Header,
   Icon,
-  Indicator,
   InfiniteScroll,
   Input,
   Lazyload,

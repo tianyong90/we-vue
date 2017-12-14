@@ -1,60 +1,88 @@
 import Vue from 'vue'
 import ToastComponent from './toast.vue'
 
-// TODO: 优化
-const ToastConstructor = Vue.extend(ToastComponent)
-let toastPool = []
+let instance
+const defaultOptions = {
+  value: true,
+  duration: 3000,
+  icon: 'success-no-circle',
+  type: 'success'
+}
 
-let getAnInstance = () => {
-  if (toastPool.length > 0) {
-    let instance = toastPool[0]
-    toastPool.splice(0, 1)
-    return instance
-  }
-  return new ToastConstructor({
+const initInstance = () => {
+  const ToastConstructor = Vue.extend(ToastComponent)
+
+  instance = new ToastConstructor({
     el: document.createElement('div')
   })
-}
 
-let returnAnInstance = instance => {
-  if (instance) {
-    toastPool.push(instance)
-  }
-}
-
-let removeDom = event => {
-  if (event.target.parentNode) {
-    event.target.parentNode.removeChild(event.target)
-  }
-}
-
-ToastConstructor.prototype.close = function () {
-  this.visible = false
-  this.$el.addEventListener('transitionend', removeDom)
-  this.closed = true
-  returnAnInstance(this)
-}
-
-let Toast = (options = {}) => {
-  let duration = options.duration || 3000
-
-  let instance = getAnInstance()
-  instance.closed = false
-  clearTimeout(instance.timer)
-  instance.message = typeof options === 'string' ? options : options.message
-  instance.icon = options.icon || 'success-no-circle'
-  instance.type = options.type
+  instance.$on('input', value => {
+    instance.value = value
+  })
 
   document.body.appendChild(instance.$el)
-  Vue.nextTick(function () {
-    instance.visible = true
-    instance.$el.removeEventListener('transitionend', removeDom)
-    instance.timer = setTimeout(function () {
-      if (instance.closed) return
-      instance.close()
-    }, duration)
-  })
-  return instance
 }
 
+const Toast = options => {
+  if (typeof options === 'string') {
+    options = { message: options }
+  }
+
+  options = { ...defaultOptions, ...options }
+
+  return new Promise((resolve, reject) => {
+    if (!instance) {
+      initInstance()
+    }
+
+    clearTimeout(instance.timer)
+
+    Object.assign(instance, {
+      resolve,
+      reject,
+      ...options
+    })
+
+    Vue.nextTick(function () {
+      if (options.duration > 0) {
+        instance.timer = setTimeout(() => {
+          instance.value = false
+          resolve()
+        }, options.duration)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
+Toast.text = options => Toast({
+  ...defaultOptions,
+  ...options
+})
+
+Toast.success = options => Toast({
+  ...defaultOptions,
+  ...options
+})
+
+Toast.fail = options => Toast({
+  ...defaultOptions,
+  ...options
+})
+
+Toast.loading = options => Toast({
+  ...defaultOptions,
+  ...options
+})
+
+Toast.close = () => {
+  instance.value = false
+}
+
+Vue.prototype.$toast = Toast
+
 export default Toast
+export {
+  ToastComponent as Toast
+}

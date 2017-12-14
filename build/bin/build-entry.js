@@ -11,7 +11,6 @@ function buildWevueEntry () {
     'InfiniteScroll',
     'Dialog',
     'Toast',
-    'Indicator',
     'TopTips'
   ]
 
@@ -42,7 +41,6 @@ const install = (Vue, config = {}) => {
 
   Vue.$dialog = Vue.prototype.$dialog = Dialog
   Vue.$toast = Vue.prototype.$toast = Toast
-  Vue.$indicator = Vue.prototype.$indicator = Indicator
   Vue.$toptips = Vue.prototype.$toptips = TopTips
 }
 
