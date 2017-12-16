@@ -11,7 +11,7 @@
   export default {
     methods: {
       openTips () {
-        TopTips.open({
+        TopTips({
           message: '提示信息',
           duration: 5000
         })

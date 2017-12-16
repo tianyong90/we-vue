@@ -61,7 +61,7 @@
 
     computed: {
       values () {
-        let slots = this.slots || []
+        const slots = this.slots || []
         let values = []
         slots.forEach(function (slot) {
           if (!slot.divider) values.push(slot.value)

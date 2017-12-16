@@ -8,5 +8,5 @@ describe('install', () => {
 
   expect(typeof localVue.$dialog).toBe('function')
   expect(typeof localVue.$toast).toBe('function')
-  expect(typeof localVue.$toptips).toBe('object')
+  expect(typeof localVue.$toptips).toBe('function')
 })

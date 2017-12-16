@@ -7,10 +7,11 @@ describe('test top-tips api', () => {
     TopTipsApi.close()
   })
 
-  // TODO
-  it('open and close a top-tips', () => {
+  it('open a top-tips', () => {
     const localVue = createLocalVue()
-    TopTipsApi.open()
+    TopTipsApi({
+      message: 'test'
+    })
 
     localVue.nextTick(() => {
       expect(document.querySelector('.weui-toptips')).toBeTruthy()
@@ -25,23 +26,13 @@ describe('test top-tips api', () => {
 
   it('top-tips should be singletom', () => {
     const localVue = createLocalVue()
-    TopTipsApi.open()
+    TopTipsApi({})
 
     localVue.nextTick(() => {
       // try to open another top-tips
-      TopTipsApi.open()
+      TopTipsApi({})
 
       expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
-    })
-  })
-
-  // TODO
-  it('open with a string paramter', () => {
-    const localVue = createLocalVue()
-    TopTipsApi.open('test')
-
-    localVue.nextTick(() => {
-      expect(document.querySelector('.weui-toptips').textContent).toBe('test')
     })
   })
 })

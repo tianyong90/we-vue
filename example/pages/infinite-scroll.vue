@@ -1,7 +1,11 @@
 <template>
   <div class="page">
     <div class="page-infinite-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
-      <wv-group title="无限滚动加载" ref="abc" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
+      <wv-group title="无限滚动加载"
+                v-infinite-scroll="loadMore"
+                infinite-scroll-disabled="loading"
+                infinite-scroll-distance="50"
+      >
         <wv-cell title="条目" v-for="item in list" :key="item" :value="item"></wv-cell>
       </wv-group>
       <p v-show="loading" class="loading-tips">

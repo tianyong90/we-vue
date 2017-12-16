@@ -8,54 +8,73 @@ describe('test dialog api', () => {
     DialogApi.close()
   })
 
-  it('open a dialog', () => {
-    const callback = sinon.spy()
+  it('create a dialog', () => {
+    const callbackSpy = sinon.spy()
 
     DialogApi({
       title: 'title',
-      message: '欢迎使用 we-vue!',
+      message: 'test message',
       skin: 'ios',
       showCancelBtn: true
-    }, callback)
+    }, callbackSpy)
 
     setTimeout(() => {
       expect(document.querySelector('.weui-dialog')).toBeTruthy()
-      document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
-
-      expect(callback.called).toBeTruthy()
-    }, 200)
+    }, 300)
   })
 
-  it('open a alert dialog', () => {
-    DialogApi.alert({
-      title: 'title',
-      message: '欢迎使用 we-vue!',
-      skin: 'ios',
-      showCancelBtn: true
+  it('create an alert dialog', (done) => {
+    DialogApi.alert({}).then(action => {
+      expect(action).toBe('confirm')
+      done()
     })
 
     setTimeout(() => {
       expect(document.querySelector('.weui-dialog')).toBeTruthy()
       document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
-    }, 200)
+    }, 300)
   })
 
-  it('open a confirm dialog', () => {
+  it('open a confirm dialog, and confirm it', (done) => {
+    DialogApi.confirm({}).then(action => {
+      expect(action).toBe('confirm')
+      done()
+    })
+
+    setTimeout(() => {
+      expect(document.querySelector('.weui-dialog')).toBeTruthy()
+      document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
+    }, 300)
+  })
+
+  it('open a confirm dialog, and cancle it', (done) => {
+    DialogApi.confirm({}).catch(action => {
+      expect(action).toBe('cancel')
+      done()
+    })
+
+    setTimeout(() => {
+      expect(document.querySelector('.weui-dialog')).toBeTruthy()
+      document.querySelector('.weui-dialog__ft>.weui-dialog__btn_default').click()
+    }, 300)
+  })
+
+  it('open a confirm dialog with callback', (done) => {
     DialogApi.confirm({
-      title: 'title',
-      message: '欢迎使用 we-vue!',
-      skin: 'ios',
-      showCancelBtn: true
+      callback: action => {
+        expect(action).toBe('confirm')
+        done()
+      }
     })
 
     setTimeout(() => {
       expect(document.querySelector('.weui-dialog')).toBeTruthy()
       document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
-    }, 200)
+    }, 300)
   })
 })
 
-describe('dialog', () => {
+describe('dialog component', () => {
   let wrapper
   afterEach(() => {
     wrapper && wrapper.destroy()
