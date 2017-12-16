@@ -17,7 +17,7 @@ const PopupManager = {
         el: document.createElement('div')
       })
       modal.$on('click', () => {
-        PopupManager.handleOverlayClick()
+        PopupManager.handleMaskClick()
       })
 
       context.modal = modal
@@ -26,12 +26,12 @@ const PopupManager = {
     return modal
   },
 
-  // close popup when click modal && closeOnClickOverlay is true
-  handleOverlayClick () {
+  // close popup when click modal && closeOnClickMask is true
+  handleMaskClick () {
     const {top} = context
     if (top) {
       const instance = context.instances[top.id]
-      if (instance && instance.closeOnClickOverlay) {
+      if (instance && instance.closeOnClickMask) {
         instance.close()
       }
     }

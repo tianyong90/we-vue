@@ -5,14 +5,14 @@ export default {
   props: {
     // whether to show popup
     value: Boolean,
-    // whether to show overlay
-    overlay: Boolean,
-    // overlay custom style
-    overlayStyle: Object,
-    // overlay custom class name
-    overlayClass: String,
-    // whether to close popup when click overlay
-    closeOnClickOverlay: Boolean,
+    // whether to show mask
+    mask: Boolean,
+    // mask custom style
+    maskStyle: Object,
+    // mask custom class name
+    maskClass: String,
+    // whether to close popup when click mask
+    closeOnClickMask: Boolean,
     // z-index
     zIndex: [String, Number],
     // prevent touchmove scroll
@@ -91,13 +91,13 @@ export default {
         context.zIndex = this.zIndex
       }
 
-      if (this.overlay) {
+      if (this.mask) {
         manager.openModal({
           id: this._popupId,
           zIndex: context.plusKeyByOne('zIndex'),
           dom: this.$el,
-          className: this.overlayClass,
-          customStyle: this.overlayStyle
+          className: this.maskClass,
+          customStyle: this.maskStyle
         })
 
         if (this.lockOnScroll) {

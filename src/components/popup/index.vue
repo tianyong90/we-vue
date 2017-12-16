@@ -23,16 +23,16 @@
           return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
         }
       },
-      overlay: {
+      mask: {
         default: true
       },
       lockOnScroll: {
         default: true
       },
-      closeOnClickOverlay: {
+      closeOnClickMask: {
         default: true
       },
-      overlayClass: {
+      maskClass: {
         default: 'weui-mask'
       }
     },

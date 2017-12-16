@@ -27,7 +27,7 @@
     mixins: [PopupMixin],
 
     props: {
-      overlay: {
+      mask: {
         default: true
       },
       icon: {
@@ -45,7 +45,7 @@
         type: String,
         default: ''
       },
-      overlayClass: {
+      maskClass: {
         default: 'weui-mask_transparent'
       }
     },
