@@ -13,7 +13,7 @@ describe('panel', () => {
     })
 
     expect(wrapper.name()).toBe('wv-panel')
-    expect(wrapper.hasClass('weui-panel')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-panel')
   })
 
   it('render with title', () => {

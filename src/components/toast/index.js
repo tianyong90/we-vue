@@ -4,7 +4,8 @@ import ToastComponent from './toast.vue'
 let instance
 const defaultOptions = {
   value: true,
-  duration: 3000,
+  duration: 2000,
+  overlay: true,
   icon: 'success-no-circle',
   type: 'success'
 }
@@ -23,58 +24,39 @@ const initInstance = () => {
   document.body.appendChild(instance.$el)
 }
 
-const Toast = options => {
+const Toast = (options = {}) => {
   if (typeof options === 'string') {
     options = { message: options }
   }
-
   options = { ...defaultOptions, ...options }
 
-  return new Promise((resolve, reject) => {
-    if (!instance) {
-      initInstance()
-    }
+  if (!instance) {
+    initInstance()
+  }
 
-    clearTimeout(instance.timer)
+  clearTimeout(instance.timer)
 
-    Object.assign(instance, {
-      resolve,
-      reject,
-      ...options
-    })
+  Object.assign(instance, options)
 
-    Vue.nextTick(function () {
-      if (options.duration > 0) {
-        instance.timer = setTimeout(() => {
-          instance.value = false
-          resolve()
-        }, options.duration)
-      } else {
-        resolve()
-      }
-    })
-  })
+  if (options.duration > 0) {
+    instance.timer = setTimeout(() => {
+      instance.value = false
+    }, options.duration)
+  }
+
+  return instance
 }
 
-Toast.text = options => Toast({
-  ...defaultOptions,
+const createMethod = type => (options = {}) => Toast({
+  type,
+  message: typeof options === 'object' ? options.message : options,
   ...options
 })
 
-Toast.success = options => Toast({
-  ...defaultOptions,
-  ...options
-})
-
-Toast.fail = options => Toast({
-  ...defaultOptions,
-  ...options
-})
-
-Toast.loading = options => Toast({
-  ...defaultOptions,
-  ...options
-})
+Toast.text = createMethod('text')
+Toast.success = createMethod('success')
+Toast.fail = createMethod('fail')
+Toast.loading = createMethod('loading')
 
 Toast.close = () => {
   instance.value = false

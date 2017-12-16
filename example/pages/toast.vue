@@ -13,18 +13,13 @@
   export default {
     methods: {
       showSuccess () {
-        Toast('操作成功').then(() => {
-          console.log('closed')
-        })
+        Toast.success('操作成功')
       },
 
       showError () {
-        Toast({
+        Toast.fail({
           duration: 1000,
-          message: '操作失败',
-          icon: 'warn'
-        }).then(() => {
-          console.log('closed')
+          message: '操作失败'
         })
       },
 
@@ -32,16 +27,12 @@
         Toast({
           duration: 1000,
           message: 'hello',
-          type: 'text'
+          type: 'haha'
         })
       },
 
       showLoading () {
-        Toast.loading({
-          duration: 1000,
-          message: 'hello',
-          type: 'text'
-        })
+        Toast.loading('Loaidng')
       }
     }
   }

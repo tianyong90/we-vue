@@ -13,7 +13,7 @@ describe('badge', () => {
     })
 
     expect(wrapper.name()).toBe('wv-badge')
-    expect(wrapper.hasClass('weui-badge')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-badge')
   })
 
   it('is-dot', () => {
@@ -23,6 +23,6 @@ describe('badge', () => {
       }
     })
 
-    expect(wrapper.hasClass('weui-badge_dot')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-badge_dot')
   })
 })

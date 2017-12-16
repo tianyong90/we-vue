@@ -14,7 +14,7 @@ describe('cell', () => {
     })
 
     expect(wrapper.name()).toBe('wv-cell')
-    expect(wrapper.hasClass('weui-cell')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-cell')
   })
 
   it('is-link', () => {
@@ -24,7 +24,7 @@ describe('cell', () => {
       }
     })
 
-    expect(wrapper.hasClass('weui-cell_access')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-cell_access')
   })
 
   it('handle click', () => {

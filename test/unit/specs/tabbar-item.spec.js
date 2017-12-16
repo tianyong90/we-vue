@@ -14,7 +14,7 @@ describe('tabbar-item', () => {
     })
 
     expect(wrapper.name()).toBe('wv-tabbar-item')
-    expect(wrapper.hasClass('weui-tabbar__item')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-tabbar__item')
   })
 
   it('text', () => {
@@ -36,7 +36,7 @@ describe('tabbar-item', () => {
       }
     })
 
-    expect(wrapper.hasClass('weui-bar__item_on')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-bar__item_on')
   })
 
   it('handle click', () => {

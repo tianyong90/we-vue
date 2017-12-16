@@ -13,7 +13,7 @@ describe('circle', () => {
     })
 
     expect(wrapper.name()).toBe('wv-circle')
-    expect(wrapper.hasClass('wv-circle')).toBeTruthy()
+    expect(wrapper.classes()).toContain('wv-circle')
   })
 
   it('what value change', () => {

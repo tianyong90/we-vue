@@ -13,7 +13,7 @@ describe('textarea', () => {
     })
 
     expect(wrapper.name()).toBe('wv-textarea')
-    expect(wrapper.hasClass('weui-cell')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-cell')
   })
 
   it('show counter', () => {

@@ -14,7 +14,7 @@ describe('grid-item', () => {
     })
 
     expect(wrapper.name()).toBe('wv-grid-item')
-    expect(wrapper.hasClass('weui-grid')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-grid')
   })
 
   it('handle click', () => {

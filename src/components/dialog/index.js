@@ -51,10 +51,6 @@ const Dialog = options => {
   })
 }
 
-Dialog.setDefaults = defaults => {
-  Dialog.defaults = defaults
-}
-
 Dialog.alert = options => Dialog({
   ...defaultOptions,
   ...options

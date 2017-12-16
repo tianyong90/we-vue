@@ -13,7 +13,7 @@ describe('cell-swipe-button', () => {
     })
 
     expect(wrapper.name()).toBe('wv-cell-swipe-button')
-    expect(wrapper.hasClass('weui-swiped-btn')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-swiped-btn')
 
     // create with type
     wrapper = shallow(CellSwipeButtom, {
@@ -22,7 +22,7 @@ describe('cell-swipe-button', () => {
       }
     })
 
-    expect(wrapper.hasClass('weui-swiped-btn_test')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-swiped-btn_test')
 
     wrapper = shallow(CellSwipeButtom, {
       slots: {

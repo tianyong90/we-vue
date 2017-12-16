@@ -36,7 +36,10 @@
       },
       type: {
         type: String,
-        default: 'success'
+        default: 'success',
+        validator: (value) => {
+          return ['success', 'fail', 'loading', 'text', 'html'].indexOf(value) !== -1
+        }
       },
       message: {
         type: String,
@@ -45,6 +48,10 @@
       overlayClass: {
         default: 'weui-mask_transparent'
       }
+    },
+
+    mounted () {
+      console.log(this.type)
     },
 
     computed: {

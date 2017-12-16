@@ -22,7 +22,7 @@ describe('flex-item', () => {
     })
 
     expect(wrapper.name()).toBe('wv-flex-item')
-    expect(wrapper.hasClass('weui-flex__item')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-flex__item')
   })
 
   it('comput gutter', () => {

@@ -14,7 +14,7 @@ describe('navbar', () => {
     })
 
     expect(wrapper.name()).toBe('wv-navbar')
-    expect(wrapper.hasClass('wv-navbar')).toBeTruthy()
+    expect(wrapper.classes()).toContain('wv-navbar')
   })
 
   it('fixed navbar', () => {

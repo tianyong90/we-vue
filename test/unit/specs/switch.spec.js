@@ -27,7 +27,7 @@ describe('switch', () => {
       }
     })
 
-    expect(wrapper.hasClass('weui-cell')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-cell')
 
     wrapper = mount(Switch, {
       propsData: {
@@ -35,8 +35,8 @@ describe('switch', () => {
       }
     })
 
-    expect(wrapper.hasClass('weui-cell')).toBeFalsy()
-    expect(wrapper.hasClass('wv-switch')).toBeTruthy()
+    expect(wrapper.classes()).not.toContain('weui-cell')
+    expect(wrapper.classes()).toContain('wv-switch')
   })
 
   it('click', () => {

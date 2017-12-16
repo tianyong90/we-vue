@@ -13,7 +13,7 @@ describe('tabbar', () => {
     })
 
     expect(wrapper.name()).toBe('wv-tabbar')
-    expect(wrapper.hasClass('weui-tabbar')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-tabbar')
   })
 
   it('fixed tabbar', () => {

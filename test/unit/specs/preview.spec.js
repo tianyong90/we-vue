@@ -13,7 +13,7 @@ describe('preview', () => {
     })
 
     expect(wrapper.name()).toBe('wv-preview')
-    expect(wrapper.hasClass('weui-form-preview')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-form-preview')
   })
 
   it('render title and value', () => {

@@ -13,7 +13,7 @@ describe('loadmore', () => {
     })
 
     expect(wrapper.name()).toBe('wv-loadmore')
-    expect(wrapper.hasClass('weui-loadmore')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-loadmore')
   })
 
   it('text', () => {

@@ -92,7 +92,7 @@ describe('navbar-item', () => {
     })
 
     // should has disabled class
-    expect(wrapper.hasClass('disabled')).toBeTruthy()
+    expect(wrapper.classes()).toContain('disabled')
 
     const emitSpy = sinon.spy(wrapper.vm.$parent, '$emit')
 

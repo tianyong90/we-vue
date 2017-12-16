@@ -9,11 +9,13 @@ describe('popup', () => {
 
   it('create', () => {
     wrapper = shallow(Popup, {
-      propsData: {}
+      propsData: {
+        value: true
+      }
     })
 
     expect(wrapper.name()).toBe('wv-popup')
-    expect(wrapper.hasClass('wv-popup')).toBeTruthy()
+    expect(wrapper.classes()).toContain('wv-popup')
   })
 
   it('computed style', () => {
@@ -27,30 +29,5 @@ describe('popup', () => {
       backgroundColor: wrapper.vm.backgroundColor,
       height: '100px'
     })
-  })
-
-  it('click mask', () => {
-    // hideOnMask is true
-    wrapper = shallow(Popup, {
-      propsData: {
-        hideOnMask: true
-      }
-    })
-
-    wrapper.find('.weui-mask').trigger('click')
-
-    expect(wrapper.vm.currentValue).toBeFalsy()
-
-    // hideOnMask is false
-    wrapper = shallow(Popup, {
-      propsData: {
-        hideOnMask: false,
-        value: true
-      }
-    })
-
-    wrapper.find('.weui-mask').trigger('click')
-
-    expect(wrapper.vm.currentValue).toBeTruthy()
   })
 })

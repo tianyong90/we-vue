@@ -15,7 +15,7 @@ describe('button', () => {
     })
 
     expect(wrapper.name()).toBe('wv-button')
-    expect(wrapper.hasClass('weui-btn')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-btn')
   })
 
   it('is-loading', () => {
@@ -25,7 +25,7 @@ describe('button', () => {
       }
     })
 
-    expect(wrapper.hasClass('weui-btn_loading')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-btn_loading')
   })
 
   it('disabled', () => {
@@ -36,7 +36,7 @@ describe('button', () => {
     })
 
     const classDisabled = wrapper.vm.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
-    expect(wrapper.hasClass(classDisabled)).toBeTruthy()
+    expect(wrapper.classes()).toContain(classDisabled)
   })
 
   it('mini', () => {
@@ -45,7 +45,7 @@ describe('button', () => {
         mini: true
       }
     })
-    expect(wrapper.hasClass('weui-btn_mini')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-btn_mini')
   })
 
   it('plain', () => {
@@ -56,7 +56,7 @@ describe('button', () => {
       }
     })
     const classType = wrapper.vm.plain ? `weui-btn_plain-${wrapper.vm.type}` : `weui-btn_${wrapper.vm.type}`
-    expect(wrapper.hasClass(classType)).toBeTruthy()
+    expect(wrapper.classes()).toContain(classType)
   })
 
   it('click', () => {

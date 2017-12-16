@@ -13,6 +13,6 @@ describe('grid', () => {
     })
 
     expect(wrapper.name()).toBe('wv-grid')
-    expect(wrapper.hasClass('weui-grids')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-grids')
   })
 })

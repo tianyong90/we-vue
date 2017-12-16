@@ -24,8 +24,7 @@ describe('search', () => {
       }
     })
 
-    expect(wrapper.vm.$refs.searchInput.hasAttribute('autofocus')).toBeTruthy()
-    expect(wrapper.vm.$refs.searchInput.getAttribute('autofocus')).toBe('autofocus')
+    expect(wrapper.find({ ref: 'searchInput' }).attributes().autofocus).toBe('autofocus')
     expect(wrapper.vm.isActive).toBeTruthy()
 
     wrapper = shallow(Search, {
@@ -34,7 +33,7 @@ describe('search', () => {
       }
     })
 
-    expect(wrapper.vm.$refs.searchInput.hasAttribute('autofocus')).toBeFalsy()
+    expect(wrapper.find({ ref: 'searchInput' }).attributes()).not.toContain('autofocus')
     expect(wrapper.vm.isActive).toBeFalsy()
   })
 

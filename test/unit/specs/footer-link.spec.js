@@ -14,7 +14,7 @@ describe('footer-link', () => {
     })
 
     expect(wrapper.name()).toBe('wv-footer-link')
-    expect(wrapper.hasClass('weui-footer__link')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-footer__link')
   })
 
   it('text', () => {

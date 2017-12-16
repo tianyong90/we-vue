@@ -29,9 +29,9 @@ describe('icon', () => {
     })
 
     // large size icon should has class 'weui-icon_msg'
-    expect(wrapper.hasClass('weui-icon_msg')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-icon_msg')
 
     const iconClassType = `weui-icon-${wrapper.vm.type}`
-    expect(wrapper.hasClass(iconClassType)).toBeTruthy()
+    expect(wrapper.classes()).toContain(iconClassType)
   })
 })

@@ -7,31 +7,32 @@ describe('test top-tips api', () => {
     TopTipsApi.close()
   })
 
+  // TODO
   it('open and close a top-tips', () => {
-    // const localVue = createLocalVue()
-    // TopTipsApi.open()
-    //
-    // localVue.nextTick(() => {
-    //   expect(document.querySelector('.weui-toptips')).toBeTruthy()
-    // })
-    //
-    // TopTipsApi.close()
-    //
-    // localVue.nextTick(() => {
-    //   expect(document.querySelector('.weui-toptips')).toBeFalsy()
-    // })
+    const localVue = createLocalVue()
+    TopTipsApi.open()
+
+    localVue.nextTick(() => {
+      expect(document.querySelector('.weui-toptips')).toBeTruthy()
+    })
+
+    TopTipsApi.close()
+
+    localVue.nextTick(() => {
+      expect(document.querySelector('.weui-toptips')).toBeFalsy()
+    })
   })
 
   it('top-tips should be singletom', () => {
-    // const localVue = createLocalVue()
-    // TopTipsApi.open()
-    //
-    // localVue.nextTick(() => {
-    //   // try to open another top-tips
-    //   TopTipsApi.open()
-    //
-    //   expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
-    // })
+    const localVue = createLocalVue()
+    TopTipsApi.open()
+
+    localVue.nextTick(() => {
+      // try to open another top-tips
+      TopTipsApi.open()
+
+      expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
+    })
   })
 
   // TODO
@@ -45,7 +46,7 @@ describe('test top-tips api', () => {
   })
 })
 
-describe('top-tips', () => {
+describe('top-tips component', () => {
   let wrapper
   afterEach(() => {
     wrapper && wrapper.destroy()
@@ -53,11 +54,23 @@ describe('top-tips', () => {
 
   it('create', () => {
     wrapper = shallow(TopTips, {
-      propsData: {}
+      propsData: {
+        visible: true
+      }
     })
 
     expect(wrapper.name()).toBe('wv-top-tips')
-    // TODO:
-    // expect(wrapper.hasClass('weui-toptips')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-toptips')
+  })
+
+  it('render message correctlly', () => {
+    wrapper = shallow(TopTips, {
+      propsData: {
+        message: 'test',
+        visible: true
+      }
+    })
+
+    expect(wrapper.text()).toContain('test')
   })
 })

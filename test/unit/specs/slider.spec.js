@@ -15,18 +15,22 @@ describe('slider', () => {
     })
 
     expect(wrapper.name()).toBe('wv-slider')
-    expect(wrapper.hasClass('weui-slider-box')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-slider-box')
 
     // set the min be bigger than max
-    wrapper = shallow(Slider, {
-      propsData: {
-        min: 10,
-        max: 1
-      }
-    })
+    try {
+      wrapper = shallow(Slider, {
+        propsData: {
+          min: 10,
+          max: 1
+        }
+      })
+    } catch (e) {
+      expect(e).toBeTruthy()
+    }
   })
 
-  it('compute progress', () => {
+  it('compute percent', () => {
     const fakeValue = faker.random.number({min: 0, max: 100})
     wrapper = shallow(Slider, {
       propsData: {
@@ -34,9 +38,9 @@ describe('slider', () => {
       }
     })
 
-    const correctProgress = Math.floor((wrapper.vm.value - wrapper.vm.min) / (wrapper.vm.max - wrapper.vm.min) * 100)
+    const correctPercent = Math.floor((wrapper.vm.value - wrapper.vm.min) / (wrapper.vm.max - wrapper.vm.min) * 100)
 
-    expect(wrapper.vm.progress).toBe(correctProgress)
+    expect(wrapper.vm.percent).toBe(correctPercent)
   })
 
   it('show-value', () => {
@@ -52,6 +56,23 @@ describe('slider', () => {
     })
 
     expect(wrapper.contains('.weui-slider-box__value')).toBeFalsy()
+  })
+
+  it('disabled', () => {
+    wrapper = shallow(Slider, {
+      propsData: {
+        value: 0,
+        disabled: true
+      }
+    })
+
+    // click the inner
+    wrapper.find({ ref: 'inner' }).trigger('click')
+
+    // drag handler
+    dragHelper(wrapper.find({ref: 'handler'}), 10, 10)
+
+    expect(wrapper.vm.value).toBe(0)
   })
 
   // TODO:
@@ -74,6 +95,8 @@ describe('slider', () => {
         value: 0
       }
     })
+
+    wrapper.find({ ref: 'inner' }).trigger('click')
 
     // expect(wrapper.contains('.weui-slider-box__value')).toBeFalsy()
   })

@@ -15,12 +15,12 @@ describe('spinner', () => {
     expect(wrapper.name()).toBe('wv-spinner')
 
     // default type
-    expect(wrapper.hasClass('weui-loading')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-loading')
 
     wrapper.setProps({
       type: 'snake'
     })
-    expect(wrapper.hasClass('wv-spinner')).toBeTruthy()
+    expect(wrapper.classes()).toContain('wv-spinner')
   })
 
   it('size', () => {

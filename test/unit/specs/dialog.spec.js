@@ -69,4 +69,28 @@ describe('dialog', () => {
     expect(wrapper.name()).toBe('wv-dialog')
     expect(wrapper.contains('.weui-dialog')).toBeTruthy()
   })
+
+  // TODO
+  it('click cancel button', () => {
+    wrapper = shallow(Dialog, {
+      propsData: {}
+    })
+
+    wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
+
+    // expect(wrapper.name()).toBe('wv-dialog')
+    // expect(wrapper.contains('.weui-dialog')).toBeTruthy()
+  })
+
+  // TODO
+  it('click confirm button', () => {
+    wrapper = shallow(Dialog, {
+      propsData: {}
+    })
+
+    wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')
+
+    // expect(wrapper.name()).toBe('wv-dialog')
+    // expect(wrapper.contains('.weui-dialog')).toBeTruthy()
+  })
 })

@@ -13,7 +13,7 @@ describe('footer', () => {
     })
 
     expect(wrapper.name()).toBe('wv-footer')
-    expect(wrapper.hasClass('weui-footer')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-footer')
   })
 
   it('text', () => {

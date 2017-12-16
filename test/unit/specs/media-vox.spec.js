@@ -14,7 +14,7 @@ describe('media-box', () => {
     })
 
     expect(wrapper.name()).toBe('wv-media-box')
-    expect(wrapper.hasClass('weui-media-box')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-media-box')
   })
 
   it('handle click', () => {

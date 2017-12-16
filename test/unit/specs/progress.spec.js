@@ -13,7 +13,7 @@ describe('progress', () => {
     })
 
     expect(wrapper.name()).toBe('wv-progress')
-    expect(wrapper.hasClass('weui-progress')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-progress')
   })
 
   it('render with percent', () => {

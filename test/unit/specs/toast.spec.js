@@ -28,7 +28,7 @@ describe('toast', () => {
     })
 
     expect(wrapper.name()).toBe('wv-toast')
-    expect(wrapper.hasClass('weui-toast')).toBeTruthy()
+    expect(wrapper.find('.weui-toast').classes()).toContain('weui-toast')
   })
 
   it('text toast', () => {
@@ -40,6 +40,6 @@ describe('toast', () => {
     })
 
     expect(wrapper.contains('.weui-icon_toast')).toBeFalsy()
-    expect(wrapper.hasStyle('width', '7em')).toBeTruthy()
+    expect(wrapper.find('.weui-toast').hasStyle('width', '7em')).toBeTruthy()
   })
 })

@@ -14,9 +14,9 @@ describe('textarea', () => {
       mixins: [RouterLink]
     })
 
-    expect(wrapper.hasProp('to', undefined)).toBeTruthy()
-    expect(wrapper.hasProp('url', undefined)).toBeTruthy()
-    expect(wrapper.hasProp('replace', false)).toBeTruthy()
+    expect(wrapper.props().to).toBe(undefined)
+    expect(wrapper.props().url).toBe(undefined)
+    expect(wrapper.props().replace).toBe(false)
   })
 
   it('routerLink method with $router', () => {

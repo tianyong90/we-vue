@@ -14,7 +14,7 @@ describe('flex', () => {
     })
 
     expect(wrapper.name()).toBe('wv-flex')
-    expect(wrapper.hasClass('weui-flex')).toBeTruthy()
+    expect(wrapper.classes()).toContain('weui-flex')
   })
 
   it('style should be computed correctly', () => {
