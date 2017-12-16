@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+  import { create, getTouch } from '../../utils'
 
   export default create({
     name: 'wv-swipe',
@@ -124,12 +124,13 @@
 
       onTouchstart (event) {
         clearTimeout(this.timer)
+        const touch = getTouch(event)
 
         this.deltaX = 0
         this.direction = ''
         this.currentDuration = 0
-        this.startX = event.touches[0].clientX
-        this.startY = event.touches[0].clientY
+        this.startX = touch.clientX
+        this.startY = touch.clientY
 
         if (this.active <= -1) {
           this.move(this.count)
@@ -143,11 +144,13 @@
         if (this.prevent) {
           event.preventDefault()
         }
-        this.direction = this.direction || this.getDirection(event.touches[0])
+        const touch = getTouch(event)
+
+        this.direction = this.direction || this.getDirection(touch)
 
         if (this.direction === 'horizontal') {
           event.preventDefault()
-          this.deltaX = event.touches[0].clientX - this.startX
+          this.deltaX = touch.clientX - this.startX
           this.move(0, this.range(this.deltaX, [-this.width, this.width]))
         }
       },

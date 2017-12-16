@@ -1,14 +1,16 @@
 <template>
   <div class="page">
+    <h1>{{ ticket }}</h1>
+
     <wv-group title="选择器示例">
       <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true"></wv-cell>
       <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true"></wv-cell>
       <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true"></wv-cell>
     </wv-group>
 
-    <wv-picker v-model="ticketPickerShow" :slots="ticketSlots" @confirm="confirmTicket"></wv-picker>
-    <wv-picker v-model="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime"></wv-picker>
-    <wv-picker v-model="addressPickerShow" ref="addressPicker" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
+    <wv-picker :visible.sync="ticketPickerShow" :slots="ticketSlots" v-model="ticket" @confirm="confirmTicket"></wv-picker>
+    <wv-picker :visible.sync="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime"></wv-picker>
+    <wv-picker :visible.sync="addressPickerShow" ref="addressPicker" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
   </div>
 </template>
 
@@ -63,7 +65,7 @@
         ticketPickerShow: false,
         dayPickerShow: false,
         addressPickerShow: false,
-        ticket: '',
+        ticket: ['汽车票'],
         dayAndTime: '',
         address: '',
         ticketSlots: [

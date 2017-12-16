@@ -1,26 +1,29 @@
 <template>
-  <div v-show="currentValue">
-    <div class="weui-mask weui-animate-fade-in" />
-    <div class="weui-picker weui-animate-slide-up">
-      <div class="weui-picker__hd">
-        <div class="weui-picker__action"
-             @click="cancel"
-             v-text="cancelText" />
-        <div class="weui-picker__action"
-             @click="confirm"
-             v-text="confirmText" />
+  <div v-show="visible">
+    <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+      <div class="weui-mask" />
+    </transition>
+    <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
+      <div class="weui-picker weui-animate-slide-up">
+        <div class="weui-picker__hd">
+          <div class="weui-picker__action"
+               @click="onCancel"
+               v-text="cancelText" />
+          <div class="weui-picker__action"
+               @click="onConfirm"
+               v-text="confirmText" />
+        </div>
+        <div class="weui-picker__bd">
+          <wv-picker-slot v-for="(slot, index) in slots"
+                          :key="index"
+                          :values="slot.values || []"
+                          :valueKey="valueKey"
+                          :divider="slot.divider"
+                          :content="slot.content"
+                          v-model="values[slot.valueIndex]" />
+        </div>
       </div>
-      <div class="weui-picker__bd">
-        <wv-picker-slot v-for="(slot, index) in slots"
-                        :key="index"
-                        :values="slot.values || []"
-                        :valueKey="valueKey"
-                        :divider="slot.divider"
-                        :content="slot.content"
-                        v-model="values[slot.valueIndex]"
-        ></wv-picker-slot>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -50,7 +53,11 @@
         required: true
       },
       valueKey: String,
-      value: Boolean
+      value: {
+        type: Array,
+        default: () => []
+      },
+      visible: Boolean
     },
 
     data () {
@@ -96,38 +103,25 @@
     methods: {
       slotValueChange () {
         this.$emit('change', this, this.values)
+        this.currentValue = this.values
       },
 
       getSlot (slotIndex) {
-        let slots = this.slots || []
-        let count = 0
-        let target
-
         let children = this.$children
-        children = children.filter(child => child.$options.name === 'wv-picker-slot')
-
-        slots.forEach(function (slot, index) {
-          if (!slot.divider) {
-            if (slotIndex === count) {
-              target = children[index]
-            }
-            count++
-          }
+        return children.find((child, index) => {
+          return (child.$options.name === 'wv-picker-slot' && !child.divider && index === slotIndex)
         })
-        return target
       },
 
-      getSlotValue (index) {
-        let slot = this.getSlot(index)
-        if (slot) {
-          return slot.value
-        }
-        return null
+      getSlotValue (slotIndex) {
+        const slot = this.getSlot(slotIndex)
+
+        return slot ? slot.value : null
       },
 
-      setSlotValue (index, value, taskQueue) {
+      setSlotValue (slotIndex, value, taskQueue) {
         this.$nextTick(() => {
-          let slot = this.getSlot(index)
+          let slot = this.getSlot(slotIndex)
           if (slot) {
             slot.currentValue = value
             if (taskQueue && taskQueue.length > 0) {
@@ -137,12 +131,10 @@
         })
       },
 
-      getSlotValues (index) {
-        let slot = this.getSlot(index)
-        if (slot) {
-          return slot.mutatingValues
-        }
-        return null
+      getSlotValues (slotIndex) {
+        const slot = this.getSlot(slotIndex)
+
+        return slot ? slot.mutatingValues : null
       },
 
       setSlotValues (index, values) {
@@ -182,14 +174,14 @@
         this.setSlotValue(0, values[0], taskQueue)
       },
 
-      cancel () {
+      onCancel () {
         this.$emit('cancel', this)
-        this.currentValue = false
+        this.$emit('update:visible', false)
       },
 
-      confirm () {
+      onConfirm () {
         this.$emit('confirm', this)
-        this.currentValue = false
+        this.$emit('update:visible', false)
       }
     },
 
