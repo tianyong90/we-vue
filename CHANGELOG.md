@@ -1,4 +1,4 @@
-## v1.7.0
+## v2.0.0 (WIP)
 
 
 - 重构 swipe 组件
@@ -25,9 +25,12 @@
   
 - poopup 重构
   - 事件名调整 show => open, hide => close
+  - 使用 :visible.sync="visible" 形式控制 popup 是否显示
   
 - 删除 Indicator 组件，其功能整合到 Toast 组件中，使用 Toast.loading() 方法
 
+- picker
+  - 使用 :visible.sync="visible" 形式控制 picker 是否显示
 
 ## v1.6.0 (2017-12-5)
 

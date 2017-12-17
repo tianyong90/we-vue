@@ -1,6 +1,6 @@
 <template>
   <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
-    <div class="wv-popup" v-show="value" :style="style">
+    <div class="wv-popup" v-show="visible" :style="style">
       <slot />
     </div>
   </transition>
@@ -37,12 +37,6 @@
       }
     },
 
-    data () {
-      return {
-        currentValue: false
-      }
-    },
-
     computed: {
       style () {
         let ret = {}
@@ -58,7 +52,7 @@
     },
 
     mounted () {
-      if (this.value) {
+      if (this.visible) {
         this.open()
       }
     }

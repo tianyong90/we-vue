@@ -3,7 +3,7 @@ import ToastComponent from './toast.vue'
 
 let instance
 const defaultOptions = {
-  value: true,
+  visible: true,
   duration: 2000,
   mask: true,
   icon: 'success-no-circle',
@@ -17,10 +17,6 @@ const initInstance = () => {
     el: document.createElement('div')
   })
 
-  instance.$on('input', value => {
-    instance.value = value
-  })
-
   document.body.appendChild(instance.$el)
 }
 
@@ -30,17 +26,19 @@ const Toast = (options = {}) => {
   }
   options = { ...defaultOptions, ...options }
 
+  console.log(options)
+
   if (!instance) {
     initInstance()
   }
 
   clearTimeout(instance.timer)
 
-  Object.assign(instance, options)
+  Object.assign(instance, {...options})
 
   if (options.duration > 0) {
     instance.timer = setTimeout(() => {
-      instance.value = false
+      instance.visible = false
     }, options.duration)
   }
 
@@ -59,7 +57,7 @@ Toast.fail = createMethod('fail')
 Toast.loading = createMethod('loading')
 
 Toast.close = () => {
-  instance.value = false
+  instance.visible = false
 }
 
 Vue.prototype.$toast = Toast

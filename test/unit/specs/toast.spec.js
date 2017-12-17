@@ -1,17 +1,80 @@
 import { shallow } from 'vue-test-utils'
 import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
+import sinon from 'sinon'
 
 describe('toast api', () => {
-  afterEach(() => {
-    ToastApi.close()
+  let clock
+
+  beforeEach(() => {
+    clock = sinon.useFakeTimers()
   })
 
-  it('open a toast', () => {
+  afterEach(() => {
+    ToastApi.close()
+    clock.restore()
+  })
+
+  it('create a toast', () => {
     ToastApi({})
 
     setTimeout(() => {
       expect(document.querySelector('.weui-toast')).toBeTruthy()
+    }, 200)
+  })
+
+  it('create a toast using string parameter', () => {
+    ToastApi('test')
+
+    setTimeout(() => {
+      expect(document.querySelector('.weui-toast')).toBeTruthy()
+      expect(document.querySelector('.weui-toast__content').textContent).toBe('test')
+    }, 200)
+  })
+
+  it('create a toast with duration', () => {
+    let instance = ToastApi({
+      duration: 2000
+    })
+
+    clock.tick(2001)
+
+    expect(instance.visible).toBe(false)
+  })
+
+  it('create a text toast', () => {
+    let instance = ToastApi.text('test')
+
+    setTimeout(() => {
+      expect(document.querySelector('.weui-toast')).toBeTruthy()
+      expect(instance.type).toBe('text')
+    }, 200)
+  })
+
+  it('create a success toast', () => {
+    let instance = ToastApi.success('test')
+
+    setTimeout(() => {
+      expect(document.querySelector('.weui-toast')).toBeTruthy()
+      expect(instance.type).toBe('success')
+    }, 200)
+  })
+
+  it('create a fail toast', () => {
+    let instance = ToastApi.fail('test')
+
+    setTimeout(() => {
+      expect(document.querySelector('.weui-toast')).toBeTruthy()
+      expect(instance.type).toBe('fail')
+    }, 200)
+  })
+
+  it('create a loading toast', () => {
+    let instance = ToastApi.loading('test')
+
+    setTimeout(() => {
+      expect(document.querySelector('.weui-toast')).toBeTruthy()
+      expect(instance.type).toBe('loading')
     }, 200)
   })
 })

@@ -4,7 +4,7 @@ import context from './popup-context'
 export default {
   props: {
     // whether to show popup
-    value: Boolean,
+    visible: Boolean,
     // whether to show mask
     mask: Boolean,
     // mask custom style
@@ -25,7 +25,7 @@ export default {
   },
 
   watch: {
-    value (val) {
+    visible (val) {
       this[val ? 'open' : 'close']()
     }
   },
@@ -83,7 +83,7 @@ export default {
         return
       }
 
-      this.$emit('input', true)
+      this.$emit('update:visible', true)
       this.$emit('open')
 
       // 如果属性中传入了`zIndex`，则覆盖`context`中对应的`zIndex`
@@ -119,7 +119,7 @@ export default {
         return
       }
 
-      this.$emit('input', false)
+      this.$emit('update:visible', false)
       this.$emit('close')
 
       if (this.lockOnScroll) {

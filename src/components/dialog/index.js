@@ -7,7 +7,7 @@ let CONFIRM_TEXT = '确定'
 let CANCEL_TEXT = '取消'
 
 let defaultOptions = {
-  value: true,
+  visible: true,
   title: '提示',
   message: '',
   type: '',
@@ -63,7 +63,7 @@ Dialog.confirm = options => Dialog({
 })
 
 Dialog.close = () => {
-  instance.value = false
+  instance.visible = false
 }
 
 Vue.prototype.$dialog = Dialog

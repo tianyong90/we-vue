@@ -1,6 +1,6 @@
 <template>
   <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
-    <div v-show="value">
+    <div v-show="visible">
       <div class="weui-toast"
            :class="{ 'weui-toast_text': type === 'text' }"
            :style="style"
@@ -50,18 +50,13 @@
       }
     },
 
-    mounted () {
-      console.log(this.type)
-    },
-
     computed: {
       style () {
         if (this.type === 'text') {
-          const messageLength = this.message.length + 2
-
           return {
-            width: messageLength + 'em',
-            marginLeft: '-' + (messageLength / 2) + 'em'
+            width: this.message.length + 'em',
+            paddingLeft: '1em',
+            paddingRight: '1em'
           }
         }
 

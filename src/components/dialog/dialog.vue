@@ -1,6 +1,6 @@
 <template>
   <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
-    <div v-show="value">
+    <div v-show="visible">
       <div class="weui-mask" />
       <div class="weui-dialog" :class="{ 'weui-skin_android': skin === 'android' }">
         <div class="weui-dialog__hd" v-if="title">
@@ -62,7 +62,7 @@
 
     methods: {
       handleAction (action) {
-        this.$emit('input', false)
+        this.$emit('update:visible', false)
         this.$emit(action)
         this.callback && this.callback(action)
       }

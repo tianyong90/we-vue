@@ -1,10 +1,10 @@
 <template>
   <div class="weui-picker__group"
        v-if="!divider"
-       @touchstart="onTouchstart"
-       @touchmove="onTouchmove"
-       @touchend="onTouchend"
-       @touchcancel="onTouchend"
+       @touchstart.prevent="onTouchstart"
+       @touchmove.prevent="onTouchmove"
+       @touchend.prevent="onTouchend"
+       @touchcancel.prevent="onTouchend"
   >
     <div class="weui-picker__mask" />
     <div class="weui-picker__indicator" ref="indicator" />
@@ -72,7 +72,6 @@
       valueIndex () {
         const valueKey = this.valueKey
         if (this.currentValue instanceof Object) {
-          // 写个顺序查找好了
           return this.mutatingValues.findIndex((val) => {
             return this.currentValue[valueKey] === val[valueKey]
           })
@@ -83,7 +82,6 @@
     },
 
     mounted () {
-      this.ready = true
       this.currentValue = this.value
       this.$emit('input', this.currentValue)
 
@@ -93,7 +91,7 @@
     },
 
     methods: {
-      value2translate () {
+      valueToTranslate () {
         const valueIndex = this.valueIndex
         const offset = Math.floor(VISIBLE_ITEM_COUNT / 2)
 
@@ -102,7 +100,7 @@
         }
       },
 
-      translate2value (translate) {
+      translateToValue (translate) {
         translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT
         const index = -(translate - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
 
@@ -115,7 +113,7 @@
 
         if (this.divider) return
 
-        setTranslateY(wrapper, this.value2translate(value))
+        setTranslateY(wrapper, this.valueToTranslate(value))
       },
 
       nearby (val, values) {
@@ -155,7 +153,6 @@
       },
 
       onTouchstart (event) {
-        event.preventDefault()
         let dragState = this.dragState
 
         const touch = getTouch(event)
@@ -170,8 +167,6 @@
       },
 
       onTouchmove (event) {
-        event.preventDefault()
-
         const touch = getTouch(event)
 
         let dragState = this.dragState
@@ -188,7 +183,6 @@
       },
 
       onTouchend (event) {
-        event.preventDefault()
         let dragState = this.dragState
 
         const touch = getTouch(event)
@@ -213,7 +207,7 @@
           translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
 
           setTranslateY(wrapper, translate)
-          this.currentValue = this.translate2value(translate)
+          this.currentValue = this.translateToValue(translate)
           this.dragState = {}
           return
         }
@@ -234,7 +228,7 @@
           translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
 
           setTranslateY(wrapper, translate)
-          this.currentValue = this.translate2value(translate)
+          this.currentValue = this.translateToValue(translate)
         })
 
         this.dragState = {}

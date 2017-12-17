@@ -24,10 +24,9 @@
       },
 
       showText () {
-        Toast({
+        Toast.text({
           duration: 1000,
-          message: 'hello',
-          type: 'haha'
+          message: 'hello'
         })
       },
 

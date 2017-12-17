@@ -40,6 +40,7 @@
     },
 
     props: {
+      visible: Boolean,
       confirmText: {
         type: String,
         default: '确定'
@@ -56,8 +57,7 @@
       value: {
         type: Array,
         default: () => []
-      },
-      visible: Boolean
+      }
     },
 
     data () {
