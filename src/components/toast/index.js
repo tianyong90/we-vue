@@ -43,11 +43,17 @@ const Toast = (options = {}) => {
   return instance
 }
 
-const createMethod = type => (options = {}) => Toast({
-  type,
-  message: typeof options === 'object' ? options.message : options,
-  ...options
-})
+const createMethod = type => (options = {}) => {
+  if (type === 'fail') {
+    options.icon = 'warn'
+  }
+
+  return Toast({
+    type,
+    message: typeof options === 'object' ? options.message : options,
+    ...options
+  })
+}
 
 Toast.text = createMethod('text')
 Toast.success = createMethod('success')

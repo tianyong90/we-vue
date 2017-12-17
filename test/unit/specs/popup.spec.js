@@ -9,13 +9,23 @@ describe('popup', () => {
 
   it('create', () => {
     wrapper = shallow(Popup, {
+      propsData: {}
+    })
+
+    expect(wrapper.name()).toBe('wv-popup')
+    expect(wrapper.classes()).toContain('wv-popup')
+  })
+
+  it('create a popup that is visible', () => {
+    wrapper = shallow(Popup, {
       propsData: {
-        value: true
+        visible: true
       }
     })
 
     expect(wrapper.name()).toBe('wv-popup')
     expect(wrapper.classes()).toContain('wv-popup')
+    expect(wrapper.hasStyle('display', 'block')).toBeTruthy()
   })
 
   it('computed style', () => {

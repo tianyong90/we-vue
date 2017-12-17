@@ -1,7 +1,8 @@
 import { mount } from 'vue-test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
-import { dragHelper } from '../utils'
+import SwipeComponent from '../components/swipe'
+// import { dragHelper } from '../utils'
 
 describe('swipe', () => {
   let wrapper
@@ -43,27 +44,20 @@ describe('swipe', () => {
       }
     })
 
-    expect(wrapper.findAll(SwipeItem).length).toBe(3)
+    expect(wrapper.vm.count).toBe(3)
   })
 
   // TODO
   it('swipe left and right', () => {
-    // wrapper = mount(Swipe, {
-    //   attachToDocument: true,
-    //   propsData: {
-    //     height: 100
-    //   },
-    //   slots: {
-    //     default: [SwipeItem, SwipeItem, SwipeItem]
-    //   }
-    // })
-    //
+    wrapper = mount(SwipeComponent, {})
+    wrapper.find('.wv-swipe__wrapper').trigger('touchstart')
+
     // setTimeout(() => {
     //   wrapper.find('.wv-swipe__wrapper').trigger('touchstart')
     //   dragHelper(wrapper.find('.wv-swipe__wrapper'), 100, 0)
     // }, 1000)
-
-    // swipe to right
+    //
+    // // swipe to right
     // dragHelper(wrapper, 100, 0)
     // dragHelper(wrapper.find('.wv-swipe__wrapper'), 100, 0)
   })

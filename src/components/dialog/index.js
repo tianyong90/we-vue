@@ -30,10 +30,6 @@ const initInstance = () => {
     el: document.createElement('div')
   })
 
-  instance.$on('input', value => {
-    instance.value = value
-  })
-
   document.body.appendChild(instance.$el)
 }
 

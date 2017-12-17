@@ -5,7 +5,15 @@
            :class="{ 'weui-toast_text': type === 'text' }"
            :style="style"
            ref="toast">
-        <wv-icon :type="icon" class="weui-icon_toast" v-if="type !== 'text'" />
+        <wv-icon :type="icon"
+                 class="weui-icon_toast"
+                 v-if="type !== 'text' && type !== 'loading'"
+        />
+        <wv-spinner class="weui-icon_toast"
+                    v-if="type === 'loading' && spinnerType !=='none'"
+                    :type="spinnerType"
+                    :size="25"
+        />
         <p class="weui-toast__content" v-text="message" />
       </div>
     </div>
@@ -14,6 +22,7 @@
 
 <script>
   import WvIcon from '../icon/index'
+  import WvSpinner from '../spinner/index'
   import { create } from '../../utils'
   import PopupMixin from '../../mixins/popup'
 
@@ -21,7 +30,8 @@
     name: 'wv-toast',
 
     components: {
-      WvIcon
+      WvIcon,
+      WvSpinner
     },
 
     mixins: [PopupMixin],
@@ -40,6 +50,10 @@
         validator: (value) => {
           return ['success', 'fail', 'loading', 'text', 'html'].indexOf(value) !== -1
         }
+      },
+      spinnerType: {
+        type: String,
+        default: 'default'
       },
       message: {
         type: String,

@@ -2,10 +2,10 @@ import Vue from 'vue'
 
 const ctx = '@@InfiniteScroll'
 
-let throttle = function (fn, delay) {
+const throttle = (fn, delay) => {
   let now, lastExec, timer, context, args
 
-  let execute = function () {
+  const execute = () => {
     fn.apply(context, args)
     lastExec = now
   }
@@ -36,7 +36,7 @@ let throttle = function (fn, delay) {
   }
 }
 
-let getScrollTop = function (element) {
+const getScrollTop = (element) => {
   if (element === window) {
     return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop)
   }
@@ -44,9 +44,9 @@ let getScrollTop = function (element) {
   return element.scrollTop
 }
 
-let getComputedStyle = Vue.prototype.$isServer ? {} : document.defaultView.getComputedStyle
+const getComputedStyle = Vue.prototype.$isServer ? {} : document.defaultView.getComputedStyle
 
-let getScrollEventTarget = function (element) {
+const getScrollEventTarget = (element) => {
   let currentNode = element
   // bugfix, see http://w3help.org/zh-cn/causes/SD9013 and http://stackoverflow.com/questions/17016740/onscroll-function-is-not-working-for-chrome
   while (currentNode && currentNode.tagName !== 'HTML' && currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
@@ -59,7 +59,7 @@ let getScrollEventTarget = function (element) {
   return window
 }
 
-let getVisibleHeight = function (element) {
+const getVisibleHeight = element => {
   if (element === window) {
     return document.documentElement.clientHeight
   }
@@ -67,14 +67,14 @@ let getVisibleHeight = function (element) {
   return element.clientHeight
 }
 
-let getElementTop = function (element) {
+const getElementTop = element => {
   if (element === window) {
     return getScrollTop(window)
   }
   return element.getBoundingClientRect().top + getScrollTop(window)
 }
 
-let isAttached = function (element) {
+const isAttached = element => {
   let currentNode = element.parentNode
   while (currentNode) {
     if (currentNode.tagName === 'HTML') {
@@ -88,7 +88,7 @@ let isAttached = function (element) {
   return false
 }
 
-let doBind = function () {
+const doBind = () => {
   if (this.binded) return
   this.binded = true
 
@@ -134,7 +134,7 @@ let doBind = function () {
     doCheck.call(directive)
   }
 
-  let eventName = element.getAttribute('infinite-scroll-listen-for-event')
+  const eventName = element.getAttribute('infinite-scroll-listen-for-event')
   if (eventName) {
     directive.vm.$on(eventName, function () {
       doCheck.call(directive)
@@ -142,14 +142,14 @@ let doBind = function () {
   }
 }
 
-let doCheck = function (force) {
+const doCheck = (force) => {
   let scrollEventTarget = this.scrollEventTarget
-  let element = this.el
-  let distance = this.distance
+  const element = this.el
+  const distance = this.distance
 
-  if (force !== true && this.disabled) return //eslint-disable-line
-  let viewportScrollTop = getScrollTop(scrollEventTarget)
-  let viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget)
+  if (force !== true && this.disabled) return
+  const viewportScrollTop = getScrollTop(scrollEventTarget)
+  const viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget)
 
   let shouldTrigger = false
 
@@ -183,7 +183,7 @@ export default {
         el[ctx].bindTryCount = 0
 
         let tryBind = function () {
-          if (el[ctx].bindTryCount > 10) return //eslint-disable-line
+          if (el[ctx].bindTryCount > 10) return
           el[ctx].bindTryCount++
           if (isAttached(el)) {
             doBind.call(el[ctx], args)

@@ -62,7 +62,7 @@
 
     methods: {
       handleAction (action) {
-        this.$emit('update:visible', false)
+        this.visible = false
         this.$emit(action)
         this.callback && this.callback(action)
       }

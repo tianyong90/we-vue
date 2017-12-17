@@ -10,20 +10,12 @@
   import InfiniteScroll from '@/components/infinite-scroll'
 
   export default {
-    name: 'infinite-scroll-component',
-
     directives: {
       InfiniteScroll
     },
 
     props: {
       list: Array,
-      loadMore: {
-        type: 'function',
-        default () {
-          return function () {}
-        }
-      },
       disabled: Boolean,
       distance: Number
     },
@@ -31,7 +23,9 @@
     methods: {
       triggerLoadMore () {
         this.loadMore()
-      }
+      },
+
+      loadMore () {}
     }
   }
 </script>

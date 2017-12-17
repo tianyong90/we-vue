@@ -1,7 +1,7 @@
-// import { mount } from 'vue-test-utils'
-// import InfiniteScrollComponent from '../components/infinite-scroll-component'
-// // import { dragHelper } from '../utils'
-// import sinon from 'sinon'
+import { mount } from 'vue-test-utils'
+import InfiniteScrollComponent from '../components/infinite-scroll-component'
+import { dragHelper } from '../utils'
+import sinon from 'sinon'
 
 describe('infinite-scroll', () => {
   let wrapper
@@ -10,16 +10,18 @@ describe('infinite-scroll', () => {
   })
 
   it('create', () => {
-    // const loadMoreSpy = sinon.spy()
-    // wrapper = mount(InfiniteScrollComponent, {
-    //   attachToDocument: true,
-    //   propsData: {
-    //     disabled: false,
-    //     list: [],
-    //     loadMore: loadMoreSpy
-    //   }
-    // })
+    const loadMoreSpy = sinon.spy()
+    wrapper = mount(InfiniteScrollComponent, {
+      attachToDocument: true,
+      propsData: {
+        disabled: false,
+        list: [],
+        loadMore: loadMoreSpy
+      }
+    })
 
-    // expect(loadMoreSpy.called).toBeTruthy()
+    dragHelper(wrapper, 0, -100)
+
+    expect(loadMoreSpy.called).toBeTruthy()
   })
 })
