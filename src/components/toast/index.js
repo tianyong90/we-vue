@@ -26,8 +26,6 @@ const Toast = (options = {}) => {
   }
   options = { ...defaultOptions, ...options }
 
-  console.log(options)
-
   if (!instance) {
     initInstance()
   }

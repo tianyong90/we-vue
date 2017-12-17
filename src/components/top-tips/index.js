@@ -1,38 +1,48 @@
 import Vue from 'vue'
 import TopTipsComponent from './top-tips.vue'
 
-const TopTipsConstructor = Vue.extend(TopTipsComponent)
 let instance
 
+const defaultOptions = {
+  visible: true,
+  duration: 3000
+}
+
+const initInstance = () => {
+  const TopTipsConstructor = Vue.extend(TopTipsComponent)
+
+  instance = new TopTipsConstructor({
+    el: document.createElement('div')
+  })
+
+  document.body.appendChild(instance.$el)
+}
+
 const TopTips = (options = {}) => {
-  if (!instance) {
-    instance = new TopTipsConstructor({
-      el: document.createElement('div')
-    })
+  if (typeof options === 'string') {
+    options = { message: options }
   }
-  if (instance.visible) return
+  options = { ...defaultOptions, ...options }
+
+  if (!instance) {
+    initInstance()
+  }
+
   clearTimeout(instance.timer)
 
-  const duration = options.duration || 3000
-  instance.message = typeof options === 'string' ? options : options.message || ''
-  document.body.appendChild(instance.$el)
+  Object.assign(instance, {...options})
 
-  Vue.nextTick(() => {
-    instance.visible = true
-    instance.timer = setTimeout(function () {
+  if (options.duration > 0) {
+    instance.timer = setTimeout(() => {
       instance.visible = false
-      instance.$el.remove()
-    }, duration)
-  })
+    }, options.duration)
+  }
+
+  return instance
 }
 
 TopTips.close = () => {
-  if (instance) {
-    Vue.nextTick(() => {
-      instance.visible = false
-      instance.$el.remove()
-    })
-  }
+  instance.visible = false
 }
 
 Vue.prototype.$toptips = TopTips

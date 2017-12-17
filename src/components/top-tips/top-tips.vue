@@ -1,15 +1,19 @@
 <template>
-  <div class="weui-toptips weui-toptips_warn" v-if="visible" v-html="message" />
+  <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+    <div class="weui-toptips weui-toptips_warn" v-show="visible" v-html="message" />
+  </transition>
 </template>
 
 <script>
   import { create } from '../../utils'
+  import PopupMixin from '../../mixins/popup'
 
   export default create({
     name: 'wv-top-tips',
 
+    mixins: [PopupMixin],
+
     props: {
-      visible: Boolean,
       message: String
     }
   })

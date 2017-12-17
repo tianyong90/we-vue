@@ -1,27 +1,48 @@
 import { shallow, createLocalVue } from 'vue-test-utils'
 import TopTipsApi from '@/components/top-tips'
 import TopTips from '@/components/top-tips/top-tips.vue'
+import sinon from 'sinon'
 
 describe('test top-tips api', () => {
+  let clock
+
+  beforeEach(() => {
+    clock = sinon.useFakeTimers()
+  })
+
   afterEach(() => {
     TopTipsApi.close()
+    clock.reset()
   })
 
   it('open a top-tips and then close it', () => {
-    const localVue = createLocalVue()
-    TopTipsApi({
-      message: 'test'
+    const instance = TopTipsApi({
+      message: 'test',
+      duration: 3000
     })
 
-    localVue.nextTick(() => {
-      expect(document.querySelector('.weui-toptips')).toBeTruthy()
+    clock.tick(1000)
+
+    TopTipsApi.close()
+
+    expect(instance.visible).toBe(false)
+  })
+
+  it('open a top-tips with string parameter', () => {
+    TopTipsApi('test')
+
+    expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
+    expect(document.querySelector('.weui-toptips').textContent).toBe('test')
+  })
+
+  it('create a toast with duration', () => {
+    let instance = TopTipsApi({
+      duration: 2000
     })
 
-    // TopTipsApi.close()
-    //
-    // localVue.nextTick(() => {
-    //   expect(document.querySelector('.weui-toptips')).toBeFalsy()
-    // })
+    clock.tick(2001)
+
+    expect(instance.visible).toBe(false)
   })
 
   it('top-tips should be singletom', () => {
