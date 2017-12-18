@@ -1,10 +1,10 @@
 <template>
-  <div v-show="visible">
+  <div>
     <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
-      <div class="weui-mask" />
+      <div class="weui-mask" v-show="visible" />
     </transition>
     <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
-      <div class="weui-picker weui-animate-slide-up">
+      <div class="weui-picker" v-show="visible">
         <div class="weui-picker__hd">
           <div class="weui-picker__action"
                @click="onCancel"
@@ -68,30 +68,19 @@
 
     computed: {
       values () {
-        const slots = this.slots || []
-        let values = []
-        slots.forEach(function (slot) {
-          if (!slot.divider) values.push(slot.value)
-        })
-        return values
+        return this.slots.filter(slot => !slot.divider).map(slot => slot.value)
       },
 
       slotCount () {
-        let slots = this.slots || []
-        let count = 0
-        slots.forEach((slot) => {
-          if (!slot.divider) count++
-        })
-        return count
+        return this.slots.filter(slot => !slot.divider).length
       }
     },
 
     created () {
       this.$on('slotValueChange', this.slotValueChange)
-      let slots = this.slots || []
       let values = this.values
       let valueIndexCount = 0
-      slots.forEach(slot => {
+      this.slots.forEach(slot => {
         if (!slot.divider) {
           slot.valueIndex = valueIndexCount++
           values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0]
@@ -198,4 +187,7 @@
 </script>
 
 <style scoped lang="scss">
+  .weui-picker {
+    transform: none;
+  }
 </style>

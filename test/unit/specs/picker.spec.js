@@ -50,22 +50,6 @@ describe('picker', () => {
     expect(wrapper.vm.values).toEqual([1, 1])
   })
 
-  it('drag picker to change the value', () => {
-    wrapper = mount(Picker, {
-      propsData: {
-        slots: [{
-          values: [1, 2, 3],
-          defaultIndex: 0
-        }]
-      }
-    })
-
-    dragHelper(wrapper.findAll(PickerSlot).at(0), 10, 0)
-
-    expect(wrapper.name()).toBe('wv-picker')
-    // expect(wrapper.contains('.wv-picker')).toBeTruthy()
-  })
-
   it('setSlotValues method', () => {
     wrapper = mount(Picker, {
       propsData: {
@@ -128,6 +112,38 @@ describe('picker', () => {
     expect(wrapper.vm.setSlotValue(0)).toEqual(1)
   })
 
+  it('setValues method', () => {
+    const slotValues = [1, 2, 3]
+
+    wrapper = mount(Picker, {
+      propsData: {
+        slots: [{
+          values: slotValues,
+          default: 0
+        }]
+      }
+    })
+
+    wrapper.vm.setValues([2])
+
+    expect(wrapper.vm.setSlotValue(0)).toEqual(1)
+  })
+
+  it('getValues method', () => {
+    const slotValues = [1, 2, 3]
+
+    wrapper = mount(Picker, {
+      propsData: {
+        slots: [{
+          values: slotValues,
+          default: 0
+        }]
+      }
+    })
+
+    expect(wrapper.vm.getValues()).toEqual(1)
+  })
+
   it('click cancel button', () => {
     wrapper = mount(Picker, {
       propsData: {
@@ -150,5 +166,39 @@ describe('picker', () => {
     wrapper.findAll('.weui-picker__action').at(1).trigger('click')
     expect(wrapper.vm.visible).toBe(false)
     expect(wrapper.emitted().confirm).toBeTruthy()
+  })
+
+  it('drag to change the value', () => {
+    const slotValues = [1, 2, 3]
+
+    wrapper = mount(Picker, {
+      propsData: {
+        slots: [{
+          values: slotValues,
+          default: 0
+        }]
+      }
+    })
+
+    dragHelper(wrapper.find(PickerSlot), 100, 0)
+
+    expect(wrapper.vm.getValues()).toEqual(1)
+  })
+
+  it('drag to change the value', () => {
+    const slotValues = [1, 2, 3]
+
+    wrapper = mount(Picker, {
+      propsData: {
+        slots: [{
+          values: slotValues,
+          default: 0
+        }]
+      }
+    })
+
+    dragHelper(wrapper.find(PickerSlot), 100, 0)
+
+    expect(wrapper.vm.getValues()).toEqual(1)
   })
 })

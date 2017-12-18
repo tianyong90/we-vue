@@ -1,6 +1,5 @@
 import { mount } from 'vue-test-utils'
 import Switch from '@/components/switch'
-import { getTranslateX } from '@/utils/transform'
 import { dragHelper } from '../utils'
 
 const THUMB_STROKE = 20
@@ -76,7 +75,7 @@ describe('switch', () => {
     })
 
     // the switch can not drag when it's disabled
-    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE, 0)
+    dragHelper(wrapper.find('.thumb'), THUMB_STROKE, 0)
     expect(wrapper.vm.currentValue).toBe(false)
 
     // enable the switch
@@ -85,27 +84,27 @@ describe('switch', () => {
     })
 
     // drag to right (distance <= THUMB_STROKE / 2), the value should not change
-    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE / 2, 0)
+    dragHelper(wrapper.find('.thumb'), THUMB_STROKE / 2, 0)
     expect(wrapper.vm.currentValue).toBe(false)
 
     // drag to right (distance >= THUMB_STROKE / 2), the value should change
-    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE / 2 + 5, 0)
+    dragHelper(wrapper.find('.thumb'), THUMB_STROKE / 2 + 5, 0)
     expect(wrapper.vm.currentValue).toBe(true)
 
     // drag to left (distance <= THUMB_STROKE / 2), the value should not change
-    dragHelper(wrapper.find({ref: 'thumb'}), -(THUMB_STROKE / 2), 0)
+    dragHelper(wrapper.find('.thumb'), -(THUMB_STROKE / 2), 0)
     expect(wrapper.vm.currentValue).toBe(true)
 
     // drag to left (distance >= THUMB_STROKE / 2), the value should change
-    dragHelper(wrapper.find({ref: 'thumb'}), -(THUMB_STROKE / 2 + 5), 0)
+    dragHelper(wrapper.find('.thumb'), -(THUMB_STROKE / 2 + 5), 0)
     expect(wrapper.vm.currentValue).toBe(false)
 
     // drag to right with a distance bigger than THUMB_STROKE
-    dragHelper(wrapper.find({ref: 'thumb'}), THUMB_STROKE + 5, 0)
+    dragHelper(wrapper.find('.thumb'), THUMB_STROKE + 5, 0)
     expect(wrapper.vm.currentValue).toBe(true)
 
     // drag to left with a distance bigger than THUMB_STROKE
-    dragHelper(wrapper.find({ref: 'thumb'}), -(THUMB_STROKE + 5), 0)
+    dragHelper(wrapper.find('.thumb'), -(THUMB_STROKE + 5), 0)
     expect(wrapper.vm.currentValue).toBe(false)
   })
 
@@ -123,12 +122,12 @@ describe('switch', () => {
 
     expect(wrapper.emitted().input).toBeTruthy()
     expect(wrapper.emitted().change).toBeTruthy()
-    expect(getTranslateX(wrapper.vm.$refs.thumb)).toBe(THUMB_STROKE)
+    expect(wrapper.vm.offset).toBe(THUMB_STROKE)
 
     wrapper.setData({
       currentValue: false
     })
-    expect(getTranslateX(wrapper.vm.$refs.thumb)).toBe(0)
+    expect(wrapper.vm.offset).toBe(0)
   })
 
   it('watch value', () => {

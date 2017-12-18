@@ -8,7 +8,7 @@
   >
     <div class="weui-picker__mask" />
     <div class="weui-picker__indicator" ref="indicator" />
-    <div class="weui-picker__content" ref="listWrapper">
+    <div class="weui-picker__content" :style="wrapperStyle">
       <div class="weui-picker__item"
            :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }"
            v-for="(item, index) in mutatingValues"
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-  import { getTranslateY, setTranslateY } from '../../utils/transform'
   import { create, getTouch } from '../../utils'
 
   // 每个选项高度
@@ -56,7 +55,12 @@
     data () {
       return {
         currentValue: this.value,
-        mutatingValues: this.values
+        mutatingValues: this.values,
+        startY: 0,
+        offset: 0,
+        startOffset: 0,
+        currentIndex: this.defaultIndex,
+        transition: ''
       }
     },
 
@@ -77,6 +81,13 @@
           })
         } else {
           return this.mutatingValues.indexOf(this.currentValue)
+        }
+      },
+
+      wrapperStyle () {
+        return {
+          transition: this.transition,
+          transform: `translate3d(0, ${this.offset}px, 0)`
         }
       }
     },
@@ -109,11 +120,10 @@
 
       doOnValueChange () {
         const value = this.currentValue
-        const wrapper = this.$refs.listWrapper
 
         if (this.divider) return
 
-        setTranslateY(wrapper, this.valueToTranslate(value))
+        this.offset = this.valueToTranslate(value)
       },
 
       nearby (val, values) {
@@ -157,13 +167,11 @@
 
         const touch = getTouch(event)
 
-        const wrapper = this.$refs.listWrapper
-
         dragState.startTime = new Date()
         dragState.startPositionY = touch.clientY
-        dragState.startTranslateY = getTranslateY(wrapper)
+        this.startOffset = this.offset
 
-        wrapper.style.transition = ''
+        this.transition = ''
       },
 
       onTouchmove (event) {
@@ -172,12 +180,9 @@
         let dragState = this.dragState
         const distance = touch.clientY - dragState.startPositionY
 
-        const wrapper = this.$refs.listWrapper
-
-        setTranslateY(wrapper, dragState.startTranslateY + distance)
+        this.offset = this.startOffset + distance
 
         dragState.currentPosifionY = touch.clientY
-        dragState.currentTranslateY = getTranslateY(wrapper)
         dragState.velocityTranslate = dragState.currentTranslateY - dragState.prevTranslateY // 拖动的瞬时速度
         dragState.prevTranslateY = dragState.currentTranslateY
       },
@@ -187,26 +192,23 @@
 
         const touch = getTouch(event)
 
-        const wrapper = this.$refs.listWrapper
         const indicator = this.$refs.indicator
 
         let momentumRatio = 7 // 惯量
-        let currentTranslateY = getTranslateY(wrapper)
-        let distance = Math.abs(dragState.startTranslateY - currentTranslateY)
+        let distance = Math.abs(this.offset - this.startOffset)
 
-        wrapper.style.transition = 'all 200ms ease'
+        this.transition = 'all 200ms ease'
 
         if (distance < 10) {
           // 距离小于 10 时视为点击
-          let rect = indicator.getBoundingClientRect()
-          let offset = Math.floor((touch.clientY - rect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
+          const rect = indicator.getBoundingClientRect()
+          const clickOffset = Math.floor((touch.clientY - rect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
 
-          let translate = currentTranslateY - offset
+          const translate = this.offset - clickOffset
 
           // 不要超过最大最小流动范围
-          translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
+          this.offset = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
 
-          setTranslateY(wrapper, translate)
           this.currentValue = this.translateToValue(translate)
           this.dragState = {}
           return
@@ -215,10 +217,10 @@
         let endTranslate
         if (typeof dragState.velocityTranslate === 'number' && Math.abs(dragState.velocityTranslate) > 5) {
           // 最终出手时的速度大于 5 时进行惯性滑动
-          endTranslate = currentTranslateY + dragState.velocityTranslate * momentumRatio
+          endTranslate = this.offset + dragState.velocityTranslate * momentumRatio
         } else {
           // 出手时速率较小，不进行惯性滑动
-          endTranslate = currentTranslateY
+          endTranslate = this.offset
         }
 
         this.$nextTick(() => {
@@ -227,7 +229,7 @@
           // 不要超过最大最小流动范围
           translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
 
-          setTranslateY(wrapper, translate)
+          this.offset = translate
           this.currentValue = this.translateToValue(translate)
         })
 

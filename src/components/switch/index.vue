@@ -6,7 +6,7 @@
          slot="ft">
       <div class="background" />
       <div class="thumb"
-           ref="thumb"
+           :style="thumbStyle"
            @touchstart="onTouchstart"
            @touchmove="onTouchmove"
            @touchend="onTouchend"
@@ -21,7 +21,7 @@
        v-else>
     <div class="background" />
     <div class="thumb"
-         ref="thumb"
+         :style="thumbStyle"
          @touchstart="onTouchstart"
          @touchmove="onTouchmove"
          @touchend="onTouchend"
@@ -32,7 +32,6 @@
 
 <script>
   import Cell from '../cell/index'
-  import { getTranslateX, setTranslateX } from '../../utils/transform'
   import { create, getTouch } from '../../utils'
 
   const THUMB_STROKE = 20 // 开关的行程
@@ -57,18 +56,24 @@
     data () {
       return {
         currentValue: this.value,
-        dragState: {}
+        startX: 0,
+        offset: 0,
+        startOffset: 0,
+        transition: ''
+      }
+    },
+
+    computed: {
+      thumbStyle () {
+        return {
+          transition: this.transition,
+          transform: `translate3d(${this.offset}px, 0, 0)`
+        }
       }
     },
 
     mounted () {
-      const thumb = this.$refs.thumb
-
-      if (this.currentValue) {
-        setTranslateX(thumb, THUMB_STROKE)
-      } else {
-        setTranslateX(thumb, 0)
-      }
+      this.offset = this.currentValue ? THUMB_STROKE : 0
     },
 
     methods: {
@@ -83,28 +88,26 @@
         if (this.disabled) return
 
         const touch = getTouch(event)
-        let dragState = this.dragState
-        dragState.startTimestamp = new Date()
-        dragState.startPositionX = touch.clientX
-        dragState.startTranslateX = getTranslateX(this.$refs.thumb)
 
-        this.$refs.thumb.style.transition = null
+        this.startX = touch.clientX
+        this.startOffset = this.offset
+        this.transition = ''
       },
 
       onTouchmove (event) {
         if (this.disabled) return
 
         const touch = getTouch(event)
-        let deltaX = touch.clientX - this.dragState.startPositionX
+        const deltaX = touch.clientX - this.startX
 
-        const targetTranslateX = this.dragState.startTranslateX + deltaX
+        const targetOffset = this.startOffset + deltaX
 
-        if (targetTranslateX >= 0 && targetTranslateX <= THUMB_STROKE) {
-          setTranslateX(this.$refs.thumb, targetTranslateX)
-        } else if (targetTranslateX < 0) {
-          setTranslateX(this.$refs.thumb, 0)
-        } else if (targetTranslateX > THUMB_STROKE) {
-          setTranslateX(this.$refs.thumb, THUMB_STROKE)
+        if (targetOffset >= 0 && targetOffset <= THUMB_STROKE) {
+          this.offset = targetOffset
+        } else if (targetOffset < 0) {
+          this.offset = 0
+        } else if (targetOffset > THUMB_STROKE) {
+          this.offset = THUMB_STROKE
         }
       },
 
@@ -113,20 +116,20 @@
 
         const touch = getTouch(event)
 
-        let deltaX = touch.clientX - this.dragState.startPositionX
+        let deltaX = touch.clientX - this.startX
 
-        this.$refs.thumb.style.transition = '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
+        this.transition = '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
         if (this.currentValue) {
           if (deltaX < THUMB_STROKE / -2) {
             this.currentValue = false
           } else {
-            setTranslateX(this.$refs.thumb, THUMB_STROKE)
+            this.offset = THUMB_STROKE
           }
         } else {
           if (deltaX > THUMB_STROKE / 2) {
             this.currentValue = true
           } else {
-            setTranslateX(this.$refs.thumb, 0)
+            this.offset = 0
           }
         }
       }
@@ -141,12 +144,7 @@
         this.$emit('input', val)
         this.$emit('change', val)
 
-        const thumb = this.$refs.thumb
-        if (val) {
-          setTranslateX(thumb, THUMB_STROKE)
-        } else {
-          setTranslateX(thumb, 0)
-        }
+        this.offset = val ? THUMB_STROKE : 0
       }
     }
   })
