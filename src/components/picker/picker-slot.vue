@@ -48,17 +48,16 @@
       content: {}
     },
 
-    created () {
-      this.dragState = {}
-    },
-
     data () {
       return {
         currentValue: this.value,
         mutatingValues: this.values,
+        startTime: null,
         startY: 0,
-        offset: 0,
         startOffset: 0,
+        offset: 0,
+        prevY: 0,
+        velocity: 0, // 滑动的速度
         currentIndex: this.defaultIndex,
         transition: ''
       }
@@ -163,13 +162,12 @@
       },
 
       onTouchstart (event) {
-        let dragState = this.dragState
-
         const touch = getTouch(event)
 
-        dragState.startTime = new Date()
-        dragState.startPositionY = touch.clientY
+        this.startTime = new Date()
         this.startOffset = this.offset
+        this.startY = touch.clientY
+        this.prevY = touch.clientY
 
         this.transition = ''
       },
@@ -177,19 +175,18 @@
       onTouchmove (event) {
         const touch = getTouch(event)
 
-        let dragState = this.dragState
-        const distance = touch.clientY - dragState.startPositionY
+        const distance = touch.clientY - this.startY
 
         this.offset = this.startOffset + distance
 
-        dragState.currentPosifionY = touch.clientY
-        dragState.velocityTranslate = dragState.currentTranslateY - dragState.prevTranslateY // 拖动的瞬时速度
-        dragState.prevTranslateY = dragState.currentTranslateY
+        console.log('prevy = ' + this.prevY)
+
+        this.velocity = touch.clientY - this.prevY
+        this.prevY = this.offset
+        console.log(this.velocity)
       },
 
       onTouchend (event) {
-        let dragState = this.dragState
-
         const touch = getTouch(event)
 
         const indicator = this.$refs.indicator
@@ -201,30 +198,31 @@
 
         if (distance < 10) {
           // 距离小于 10 时视为点击
-          const rect = indicator.getBoundingClientRect()
-          const clickOffset = Math.floor((touch.clientY - rect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
+          const indicatorRect = indicator.getBoundingClientRect()
+          const clickOffset = Math.floor((touch.clientY - indicatorRect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
 
-          const translate = this.offset - clickOffset
+          const targetOffset = this.offset - clickOffset
 
           // 不要超过最大最小流动范围
-          this.offset = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
+          this.offset = Math.max(Math.min(targetOffset, this.maxTranslateY), this.minTranslateY)
 
-          this.currentValue = this.translateToValue(translate)
-          this.dragState = {}
+          this.currentValue = this.translateToValue(this.offset)
           return
         }
 
-        let endTranslate
-        if (typeof dragState.velocityTranslate === 'number' && Math.abs(dragState.velocityTranslate) > 5) {
+        let endOffset
+        if (typeof this.velocityOffset === 'number' && Math.abs(this.velocityOffset) > 5) {
           // 最终出手时的速度大于 5 时进行惯性滑动
-          endTranslate = this.offset + dragState.velocityTranslate * momentumRatio
+          endOffset = this.offset + this.velocityOffset * momentumRatio
+          console.log(this.velocityOffset)
         } else {
           // 出手时速率较小，不进行惯性滑动
-          endTranslate = this.offset
+          endOffset = this.offset
+          console.log(2)
         }
 
         this.$nextTick(() => {
-          let translate = Math.round(endTranslate / ITEM_HEIGHT) * ITEM_HEIGHT
+          let translate = Math.round(endOffset / ITEM_HEIGHT) * ITEM_HEIGHT
 
           // 不要超过最大最小流动范围
           translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
@@ -232,8 +230,6 @@
           this.offset = translate
           this.currentValue = this.translateToValue(translate)
         })
-
-        this.dragState = {}
       }
     },
 
