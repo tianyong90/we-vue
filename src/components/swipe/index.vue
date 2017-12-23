@@ -1,22 +1,18 @@
 <template>
-  <div class="wv-swipe">
+  <div class="wv-swipe"
+       @touchstart="onTouchstart"
+       @touchmove="onTouchmove"
+       @touchend="onTouchend"
+       @touchcancel="onTouchend">
     <div
-      v-if="count > 1"
       :style="wrapperStyle"
       class="wv-swipe__wrapper"
-      @touchstart="onTouchstart"
-      @touchmove="onTouchmove"
-      @touchend="onTouchend"
-      @touchcancel="onTouchend"
       @transitionend="$emit('change', activeIndicator)"
     >
-      <slot />
-    </div>
-    <div v-else class="wv-swipe__wrapper" :style="wrapperStyle">
-      <slot />
+      <slot/>
     </div>
     <div class="wv-swipe__indicators" v-if="showIndicators && count > 1">
-      <i v-for="index in count" :class="{ 'wv-swipe__indicator--active': index - 1 === activeIndicator }" />
+      <i v-for="index in count" :class="{ 'wv-swipe__indicator--active': index - 1 === activeIndicator }"/>
     </div>
   </div>
 </template>
@@ -30,7 +26,7 @@
     props: {
       height: Number,
       autoplay: Number,
-      initialSwipe: {
+      defaultIndex: {
         type: Number,
         default: 0
       },
@@ -42,11 +38,11 @@
         type: Number,
         default: 500
       },
-      continuous: {
+      prevent: Boolean,
+      noDragWhenSingle: {
         type: Boolean,
         default: true
-      },
-      prevent: Boolean
+      }
     },
 
     data () {
@@ -76,7 +72,7 @@
         this.initialize()
       },
 
-      initialSwipe () {
+      defaultIndex () {
         this.initialize()
       }
     },
@@ -87,14 +83,11 @@
       },
 
       wrapperStyle () {
-        let ret = {}
-        if (this.count === 1) {
-          ret.width = this.count * this.width + 'px'
-        } else if (this.count > 1) {
-          ret.paddingLeft = this.width + 'px'
-          ret.width = (this.count + 2) * this.width + 'px'
-          ret.transitionDuration = `${this.currentDuration}ms`
-          ret.transform = `translate3d(${this.offset}px, 0, 0)`
+        let ret = {
+          paddingLeft: this.count > 1 ? this.width + 'px' : 0,
+          width: this.count > 1 ? (this.count + 2) * this.width + 'px' : '100%',
+          transitionDuration: `${this.currentDuration}ms`,
+          transform: `translate3d(${this.offset}px, 0, 0)`
         }
 
         if (this.height) {
@@ -113,7 +106,7 @@
       initialize () {
         clearTimeout(this.timer)
         this.width = this.$el.getBoundingClientRect().width
-        this.active = this.initialSwipe
+        this.active = this.defaultIndex
         this.currentDuration = 0
         this.offset = this.count > 1 ? -this.width * (this.active + 1) : 0
         this.swipes.forEach(swipe => {
@@ -123,6 +116,10 @@
       },
 
       onTouchstart (event) {
+        if (this.count === 1 && this.noDragWhenSingle) {
+          return
+        }
+
         clearTimeout(this.timer)
         const touch = getTouch(event)
 
@@ -144,23 +141,34 @@
         if (this.prevent) {
           event.preventDefault()
         }
+
         const touch = getTouch(event)
 
-        this.direction = this.direction || this.getDirection(touch)
+        this.deltaX = touch.clientX - this.startX
+        const deltaY = touch.clientY - this.startY
 
-        if (this.direction === 'horizontal') {
-          event.preventDefault()
-          this.deltaX = touch.clientX - this.startX
+        if (this.count === 1) {
+          if (this.noDragWhenSingle) return
+
+          this.offset = this.range(this.deltaX, [-20, 20])
+        } else if (this.count > 1 && Math.abs(this.deltaX) > Math.abs(deltaY)) {
           this.move(0, this.range(this.deltaX, [-this.width, this.width]))
         }
       },
 
       onTouchend () {
-        if (this.deltaX) {
-          this.move(Math.abs(this.deltaX) > 50 ? (this.deltaX > 0 ? -1 : 1) : 0)
+        if (this.count === 1) {
+          if (this.noDragWhenSingle) return
+
+          this.offset = 0
           this.currentDuration = this.duration
+        } else {
+          if (this.deltaX) {
+            this.move(Math.abs(this.deltaX) > 50 ? (this.deltaX > 0 ? -1 : 1) : 0)
+            this.currentDuration = this.duration
+          }
+          this.autoPlay()
         }
-        this.autoPlay()
       },
 
       move (move = 0, offset = 0) {
@@ -201,12 +209,6 @@
             }, 30)
           }, autoplay)
         }
-      },
-
-      getDirection (touch) {
-        const distanceX = Math.abs(touch.clientX - this.startX)
-        const distanceY = Math.abs(touch.clientY - this.startY)
-        return distanceX > distanceY ? 'horizontal' : distanceX < distanceY ? 'vertical' : ''
       },
 
       range (num, arr) {

@@ -17,7 +17,7 @@
     },
 
     computed: {
-      classObject: function () {
+      classObject () {
         let classType = `weui-icon-${this.type}`
 
         return {

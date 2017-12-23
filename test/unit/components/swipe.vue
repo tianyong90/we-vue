@@ -1,8 +1,8 @@
 <template>
   <wv-swipe :height="130">
-    <swipe-teim></swipe-teim>
-    <swipe-teim></swipe-teim>
-    <swipe-teim></swipe-teim>
+    <swipe-teim>1</swipe-teim>
+    <swipe-teim>2</swipe-teim>
+    <swipe-teim>3</swipe-teim>
   </wv-swipe>
 </template>
 

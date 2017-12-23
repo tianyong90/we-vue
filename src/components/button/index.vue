@@ -33,7 +33,7 @@
     },
 
     computed: {
-      classObject: function () {
+      classObject () {
         let ret = {}
 
         let classType = this.plain ? `weui-btn_plain-${this.type}` : `weui-btn_${this.type}`

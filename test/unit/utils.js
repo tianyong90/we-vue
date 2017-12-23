@@ -23,6 +23,7 @@ export function triggerTouch (wrapper, eventName, x, y) {
   el.dispatchEvent(event)
 }
 
+// drag an element to a point and release, or meant swipe
 export function dragHelper (el, x, y) {
   triggerTouch(el, 'touchstart', 0, 0)
   triggerTouch(el, 'touchmove', x / 4, y / 4)
@@ -30,4 +31,13 @@ export function dragHelper (el, x, y) {
   triggerTouch(el, 'touchmove', x / 2, y / 2)
   triggerTouch(el, 'touchmove', x, y)
   triggerTouch(el, 'touchend', x, y)
+}
+
+// drag an emelent to a point but DO NOT release
+export function dragAndHoldHelper (el, x, y) {
+  triggerTouch(el, 'touchstart', 0, 0)
+  triggerTouch(el, 'touchmove', x / 4, y / 4)
+  triggerTouch(el, 'touchmove', x / 3, y / 3)
+  triggerTouch(el, 'touchmove', x / 2, y / 2)
+  triggerTouch(el, 'touchmove', x, y)
 }

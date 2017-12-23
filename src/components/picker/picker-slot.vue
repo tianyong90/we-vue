@@ -1,19 +1,20 @@
 <template>
   <div class="weui-picker__group"
        v-if="!divider"
-       @touchstart.prevent="onTouchstart"
+       @touchstart="onTouchstart"
        @touchmove.prevent="onTouchmove"
-       @touchend.prevent="onTouchend"
-       @touchcancel.prevent="onTouchend"
+       @touchend="onTouchend"
+       @touchcancel="onTouchend"
   >
     <div class="weui-picker__mask" />
     <div class="weui-picker__indicator" ref="indicator" />
     <div class="weui-picker__content" :style="wrapperStyle">
       <div class="weui-picker__item"
-           :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }"
-           v-for="(item, index) in mutatingValues"
-           :key="index">{{ typeof item === 'object' && item[valueKey] ? item[valueKey] : item }}
-      </div>
+           :class="{ 'weui-picker__item_disabled': isDisabled(item) }"
+           v-for="(item, index) in values"
+           :key="index"
+           v-text="getItemText(item)"
+      />
     </div>
   </div>
   <div class="wv-picker-slot-divider" v-else v-html="content" />
@@ -51,21 +52,20 @@
     data () {
       return {
         currentValue: this.value,
-        mutatingValues: this.values,
         startTime: null,
         startY: 0,
         startOffset: 0,
         offset: 0,
         prevY: 0,
+        prevTime: null,
         velocity: 0, // 滑动的速度
-        currentIndex: this.defaultIndex,
         transition: ''
       }
     },
 
     computed: {
       minTranslateY () {
-        return ITEM_HEIGHT * (Math.ceil(VISIBLE_ITEM_COUNT / 2) - this.mutatingValues.length)
+        return ITEM_HEIGHT * (Math.ceil(VISIBLE_ITEM_COUNT / 2) - this.values.length)
       },
 
       maxTranslateY () {
@@ -75,11 +75,11 @@
       valueIndex () {
         const valueKey = this.valueKey
         if (this.currentValue instanceof Object) {
-          return this.mutatingValues.findIndex((val) => {
+          return this.values.findIndex((val) => {
             return this.currentValue[valueKey] === val[valueKey]
           })
         } else {
-          return this.mutatingValues.indexOf(this.currentValue)
+          return this.values.indexOf(this.currentValue)
         }
       },
 
@@ -94,35 +94,35 @@
     mounted () {
       this.currentValue = this.value
       this.$emit('input', this.currentValue)
-
-      if (this.divider) return
-
-      this.doOnValueChange()
     },
 
     methods: {
-      valueToTranslate () {
-        const valueIndex = this.valueIndex
-        const offset = Math.floor(VISIBLE_ITEM_COUNT / 2)
-
-        if (valueIndex !== -1) {
-          return (valueIndex - offset) * -ITEM_HEIGHT
+      getItemText (item) {
+        if (typeof item === 'string') {
+          return item
+        } else {
+          return item[this.valueKey]
         }
       },
 
-      translateToValue (translate) {
-        translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT
-        const index = -(translate - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
-
-        return this.mutatingValues[index]
+      isDisabled (item) {
+        return typeof item === 'object' && item.disabled
       },
 
-      doOnValueChange () {
-        const value = this.currentValue
+      valueToOffset () {
+        const valueIndex = this.valueIndex
+        const itemOffset = Math.floor(VISIBLE_ITEM_COUNT / 2)
 
-        if (this.divider) return
+        if (valueIndex !== -1) {
+          return (valueIndex - itemOffset) * -ITEM_HEIGHT
+        }
+      },
 
-        this.offset = this.valueToTranslate(value)
+      offsetToValue (offset) {
+        offset = Math.round(offset / ITEM_HEIGHT) * ITEM_HEIGHT
+        const index = -(offset - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
+
+        return this.values[index]
       },
 
       nearby (val, values) {
@@ -168,22 +168,24 @@
         this.startOffset = this.offset
         this.startY = touch.clientY
         this.prevY = touch.clientY
-
+        this.prevTime = new Date()
         this.transition = ''
       },
 
       onTouchmove (event) {
         const touch = getTouch(event)
 
-        const distance = touch.clientY - this.startY
+        const currentTime = +new Date()
+        const currentY = touch.clientY
+
+        const distance = currentY - this.startY
 
         this.offset = this.startOffset + distance
 
-        console.log('prevy = ' + this.prevY)
-
-        this.velocity = touch.clientY - this.prevY
-        this.prevY = this.offset
-        console.log(this.velocity)
+        // 计算速度
+        this.velocity = (touch.clientY - this.prevY) / (currentTime - this.prevTime)
+        this.prevY = currentY
+        this.prevTime = currentTime
       },
 
       onTouchend (event) {
@@ -191,10 +193,9 @@
 
         const indicator = this.$refs.indicator
 
-        let momentumRatio = 7 // 惯量
         let distance = Math.abs(this.offset - this.startOffset)
 
-        this.transition = 'all 200ms ease'
+        this.transition = 'all 150ms ease'
 
         if (distance < 10) {
           // 距离小于 10 时视为点击
@@ -206,48 +207,41 @@
           // 不要超过最大最小流动范围
           this.offset = Math.max(Math.min(targetOffset, this.maxTranslateY), this.minTranslateY)
 
-          this.currentValue = this.translateToValue(this.offset)
+          this.currentValue = this.offsetToValue(this.offset)
           return
         }
 
-        let endOffset
-        if (typeof this.velocityOffset === 'number' && Math.abs(this.velocityOffset) > 5) {
-          // 最终出手时的速度大于 5 时进行惯性滑动
-          endOffset = this.offset + this.velocityOffset * momentumRatio
-          console.log(this.velocityOffset)
-        } else {
-          // 出手时速率较小，不进行惯性滑动
-          endOffset = this.offset
-          console.log(2)
-        }
+        let endOffset = this.offset + this.velocity * 150
 
         this.$nextTick(() => {
-          let translate = Math.round(endOffset / ITEM_HEIGHT) * ITEM_HEIGHT
+          endOffset = Math.round(endOffset / ITEM_HEIGHT) * ITEM_HEIGHT
 
           // 不要超过最大最小流动范围
-          translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
+          this.offset = Math.max(Math.min(endOffset, this.maxTranslateY), this.minTranslateY)
 
-          this.offset = translate
-          this.currentValue = this.translateToValue(translate)
+          this.currentValue = this.offsetToValue(this.offset)
         })
       }
     },
 
     watch: {
       values (val) {
-        this.mutatingValues = val
-      },
-
-      mutatingValues (val) {
         if (this.valueIndex === -1) {
           this.currentValue = this.nearby(this.currentValue, val)
         }
       },
 
-      currentValue (val) {
-        this.doOnValueChange()
-        this.$emit('input', val)
-        this.$parent.$emit('slotValueChange', this)
+      currentValue (val, oldVal) {
+        this.$emit('change', val, oldVal)
+        if (this.divider) return
+
+        this.offset = this.valueToOffset(val)
+      },
+
+      defaultIndex (val) {
+        if ((this.values[val] !== undefined) && (this.values.length >= val + 1)) {
+          this.currentValue = this.values
+        }
       }
     }
   })

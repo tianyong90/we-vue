@@ -19,7 +19,7 @@
       height: {
         type: [String, Number],
         default: 'auto',
-        validator: function (val) {
+        validator: (val) => {
           return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
         }
       },

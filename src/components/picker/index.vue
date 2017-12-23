@@ -20,7 +20,9 @@
                           :valueKey="valueKey"
                           :divider="slot.divider"
                           :content="slot.content"
-                          v-model="values[slot.valueIndex]" />
+                          :default-index="slot.defaultIndex"
+                          v-model="values[slot.valueIndex]"
+                          @change="slotValueChange" />
         </div>
       </div>
     </transition>
@@ -40,7 +42,11 @@
     },
 
     props: {
-      visible: Boolean,
+      // visible: Boolean,
+      visible: {
+        type: Boolean,
+        default: true
+      },
       confirmText: {
         type: String,
         default: '确定'
@@ -53,22 +59,15 @@
         type: Array,
         required: true
       },
-      valueKey: String,
-      value: {
-        type: Array,
-        default: () => []
-      }
-    },
-
-    data () {
-      return {
-        currentValue: this.value
-      }
+      valueKey: String
     },
 
     computed: {
-      values () {
-        return this.slots.filter(slot => !slot.divider).map(slot => slot.value)
+      values: {
+        get () {
+          console.log(this.slots.filter(slot => !slot.divider))
+          return this.slots.filter(slot => !slot.divider).map(slot => slot.value)
+        }
       },
 
       slotCount () {
@@ -77,22 +76,12 @@
     },
 
     created () {
-      this.$on('slotValueChange', this.slotValueChange)
-      let values = this.values
-      let valueIndexCount = 0
-      this.slots.forEach(slot => {
-        if (!slot.divider) {
-          slot.valueIndex = valueIndexCount++
-          values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0]
-          this.slotValueChange()
-        }
-      })
+      this.slotValueChange()
     },
 
     methods: {
       slotValueChange () {
         this.$emit('change', this, this.values)
-        this.currentValue = this.values
       },
 
       getSlot (slotIndex) {
@@ -109,15 +98,13 @@
       },
 
       setSlotValue (slotIndex, value, taskQueue) {
-        this.$nextTick(() => {
-          let slot = this.getSlot(slotIndex)
-          if (slot) {
-            slot.currentValue = value
-            if (taskQueue && taskQueue.length > 0) {
-              slot.$nextTick(taskQueue.shift())
-            }
+        let slot = this.getSlot(slotIndex)
+        if (slot) {
+          slot.currentValue = value
+          if (taskQueue && taskQueue.length > 0) {
+            slot.$nextTick(taskQueue.shift())
           }
-        })
+        }
       },
 
       getSlotValues (slotIndex) {
@@ -171,16 +158,6 @@
       onConfirm () {
         this.$emit('confirm', this)
         this.$emit('update:visible', false)
-      }
-    },
-
-    watch: {
-      value (val) {
-        this.currentValue = val
-      },
-
-      currentValue (val) {
-        this.$emit('input', val)
       }
     }
   })

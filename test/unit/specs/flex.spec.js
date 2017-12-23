@@ -37,21 +37,3 @@ describe('flex', () => {
     })
   })
 })
-//
-// describe('Flex with item', () => {
-//   let wrapper
-//   afterEach(() => {
-//     wrapper && wrapper.destroy()
-//   })
-//
-//   it('create', () => {
-//     wrapper = mount(FlexCompponent, {
-//       propsData: {
-//         gutter: 10
-//       }
-//     })
-//
-//     expect(wrapper.vm.$children.length).toBe(1)
-//     expect(wrapper.vm.$children[0].gutter).toBe(10)
-//   })
-// })

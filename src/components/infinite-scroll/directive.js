@@ -10,7 +10,7 @@ const throttle = (fn, delay) => {
     lastExec = now
   }
 
-  return function () {
+  return () => {
     context = this
     args = arguments
 
@@ -103,7 +103,7 @@ const doBind = () => {
   let disabled = false
 
   if (disabledExpr) {
-    this.vm.$watch(disabledExpr, function (value) {
+    this.vm.$watch(disabledExpr, (value) => {
       directive.disabled = value
       if (!value && directive.immediateCheck) {
         doCheck.call(directive)
@@ -136,7 +136,7 @@ const doBind = () => {
 
   const eventName = element.getAttribute('infinite-scroll-listen-for-event')
   if (eventName) {
-    directive.vm.$on(eventName, function () {
+    directive.vm.$on(eventName, () => {
       doCheck.call(directive)
     })
   }
@@ -174,15 +174,15 @@ export default {
       expression: binding.value
     }
     const args = arguments
-    let cb = function () {
-      el[ctx].vm.$nextTick(function () {
+    let cb = () => {
+      el[ctx].vm.$nextTick(() => {
         if (isAttached(el)) {
           doBind.call(el[ctx], args)
         }
 
         el[ctx].bindTryCount = 0
 
-        let tryBind = function () {
+        let tryBind = () => {
           if (el[ctx].bindTryCount > 10) return
           el[ctx].bindTryCount++
           if (isAttached(el)) {

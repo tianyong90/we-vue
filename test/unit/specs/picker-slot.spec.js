@@ -14,7 +14,7 @@ describe('picker-slot', () => {
       propsData: {}
     })
 
-    expect(wrapper.name()).toBe('wv-picker')
+    expect(wrapper.name()).toBe('wv-picker-slot')
   })
 
   it('create using object-array values', () => {
@@ -38,6 +38,8 @@ describe('picker-slot', () => {
         value: 'value1'
       }
     })
+
+    // expect(wrapper.)
   })
 
   it('render a divider slot', () => {

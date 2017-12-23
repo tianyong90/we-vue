@@ -59,7 +59,7 @@
       value: {
         type: [Number, String],
         default: 0,
-        validator: function (val) {
+        validator: (val) => {
           return typeof val === 'number' || val === ''
         }
       }

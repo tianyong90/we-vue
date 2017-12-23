@@ -1,8 +1,11 @@
 <template>
-  <div v-infinite-scroll="loadMore"
-       :infinite-scroll-disabled="disabled"
-       :infinite-scroll-distance="distance">
-    <div class="item" v-for="item in list">{{ item.id }}</div>
+  <div style="width: 100%; height: 300px;" @touchstart="onTouchstart">
+    <div v-infinite-scroll="loadMore"
+         :infinite-scroll-disabled="disabled"
+         :infinite-scroll-distance="distance"
+    >
+      <div class="item" v-for="item in list">{{ item.id }}</div>
+    </div>
   </div>
 </template>
 
@@ -23,6 +26,9 @@
     methods: {
       triggerLoadMore () {
         this.loadMore()
+      },
+
+      onTouchstart () {
       },
 
       loadMore () {}

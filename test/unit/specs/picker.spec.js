@@ -29,7 +29,7 @@ describe('picker', () => {
       }
     })
 
-    expect(wrapper.name()).toBe('wv-picker')
+    expect(wrapper.vm.count).toEqual(1)
     expect(wrapper.vm.values).toEqual([1])
   })
 
@@ -109,7 +109,9 @@ describe('picker', () => {
       }
     })
 
-    expect(wrapper.vm.setSlotValue(0)).toEqual(1)
+    wrapper.vm.setSlotValue(0, 1)
+
+    expect(wrapper.vm.value).toEqual(1)
   })
 
   it('setValues method', () => {
