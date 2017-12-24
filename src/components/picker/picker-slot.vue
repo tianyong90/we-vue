@@ -10,10 +10,10 @@
     <div class="weui-picker__indicator" ref="indicator" />
     <div class="weui-picker__content" :style="wrapperStyle">
       <div class="weui-picker__item"
-           :class="{ 'weui-picker__item_disabled': isDisabled(item) }"
-           v-for="(item, index) in values"
+           :class="{ 'weui-picker__item_disabled': isDisabled(option) }"
+           v-for="(option, index) in options"
            :key="index"
-           v-text="getItemText(item)"
+           v-text="getOptionText(option)"
       />
     </div>
   </div>
@@ -22,6 +22,7 @@
 
 <script>
   import { create, getTouch } from '../../utils'
+  const range = (num, min, max) => Math.min(Math.max(num, min), max)
 
   // 每个选项高度
   const ITEM_HEIGHT = 34
@@ -32,7 +33,7 @@
     name: 'wv-picker-slot',
 
     props: {
-      values: {
+      options: {
         type: Array,
         default: () => []
       },
@@ -51,7 +52,6 @@
 
     data () {
       return {
-        currentValue: this.value,
         startTime: null,
         startY: 0,
         startOffset: 0,
@@ -59,28 +59,18 @@
         prevY: 0,
         prevTime: null,
         velocity: 0, // 滑动的速度
-        transition: ''
+        transition: '',
+        currentIndex: this.defaultIndex
       }
     },
 
     computed: {
       minTranslateY () {
-        return ITEM_HEIGHT * (Math.ceil(VISIBLE_ITEM_COUNT / 2) - this.values.length)
+        return ITEM_HEIGHT * (Math.ceil(VISIBLE_ITEM_COUNT / 2) - this.options.length)
       },
 
       maxTranslateY () {
         return ITEM_HEIGHT * Math.floor(VISIBLE_ITEM_COUNT / 2)
-      },
-
-      valueIndex () {
-        const valueKey = this.valueKey
-        if (this.currentValue instanceof Object) {
-          return this.values.findIndex((val) => {
-            return this.currentValue[valueKey] === val[valueKey]
-          })
-        } else {
-          return this.values.indexOf(this.currentValue)
-        }
       },
 
       wrapperStyle () {
@@ -88,16 +78,31 @@
           transition: this.transition,
           transform: `translate3d(0, ${this.offset}px, 0)`
         }
+      },
+
+      count () {
+        return this.options.length
+      },
+
+      currentValue () {
+        return this.options[this.currentIndex]
       }
     },
 
+    created () {
+      this.$parent && this.$parent.children.push(this)
+    },
+
     mounted () {
-      this.currentValue = this.value
-      this.$emit('input', this.currentValue)
+      this.setIndex(this.currentIndex)
+    },
+
+    destroyed () {
+      this.$parent && this.$parent.children.splice(this.$parent.children.indexOf(this), 1)
     },
 
     methods: {
-      getItemText (item) {
+      getOptionText (item) {
         if (typeof item === 'string') {
           return item
         } else {
@@ -109,56 +114,14 @@
         return typeof item === 'object' && item.disabled
       },
 
-      valueToOffset () {
-        const valueIndex = this.valueIndex
-        const itemOffset = Math.floor(VISIBLE_ITEM_COUNT / 2)
-
-        if (valueIndex !== -1) {
-          return (valueIndex - itemOffset) * -ITEM_HEIGHT
-        }
+      indexToOffset (index) {
+        const baseOffset = Math.floor(VISIBLE_ITEM_COUNT / 2)
+        return (index - baseOffset) * -ITEM_HEIGHT
       },
 
-      offsetToValue (offset) {
+      offsetToIndex (offset) {
         offset = Math.round(offset / ITEM_HEIGHT) * ITEM_HEIGHT
-        const index = -(offset - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
-
-        return this.values[index]
-      },
-
-      nearby (val, values) {
-        let minOffset, minIndex, offset
-
-        if (Array.isArray(values) === false) {
-          return undefined
-        }
-
-        minIndex = 0
-        if (typeof val === 'number') {
-          minOffset = Math.abs(values[0] - val)
-
-          values.forEach((value, i) => {
-            offset = Math.abs(value - val)
-            if (offset < minOffset) {
-              minIndex = i
-              minOffset = offset
-            }
-          })
-          return values[minIndex]
-        } else if (val instanceof Object) {
-          if (typeof val.value === 'number') {
-            minOffset = Math.abs(values[0].value - val.value)
-
-            values.forEach((value, i) => {
-              offset = Math.abs(value.value - val.value)
-              if (offset < minOffset) {
-                minIndex = i
-                minOffset = offset
-              }
-            })
-            return values[minIndex]
-          }
-        }
-        return values[0]
+        return -(offset - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
       },
 
       onTouchstart (event) {
@@ -205,9 +168,9 @@
           const targetOffset = this.offset - clickOffset
 
           // 不要超过最大最小流动范围
-          this.offset = Math.max(Math.min(targetOffset, this.maxTranslateY), this.minTranslateY)
+          this.offset = range(targetOffset, this.minTranslateY, this.maxTranslateY)
 
-          this.currentValue = this.offsetToValue(this.offset)
+          this.currentIndex = this.offsetToIndex(this.offset)
           return
         }
 
@@ -217,31 +180,51 @@
           endOffset = Math.round(endOffset / ITEM_HEIGHT) * ITEM_HEIGHT
 
           // 不要超过最大最小流动范围
-          this.offset = Math.max(Math.min(endOffset, this.maxTranslateY), this.minTranslateY)
+          this.offset = range(endOffset, this.minTranslateY, this.maxTranslateY)
 
-          this.currentValue = this.offsetToValue(this.offset)
+          this.currentIndex = this.offsetToIndex(this.offset)
         })
+      },
+
+      adjustIndex (index) {
+        index = range(index, 0, this.count)
+        for (let i = index; i < this.count; i++) {
+          if (!this.isDisabled(this.options[i])) return i
+        }
+        for (let i = index - 1; i >= 0; i--) {
+          if (!this.isDisabled(this.options[i])) return i
+        }
+      },
+
+      setIndex (index) {
+        index = this.adjustIndex(index)
+        this.offset = this.indexToOffset(index)
+        this.currentIndex = index
+      },
+
+      setValue (value) {
+        const {options} = this
+        const index = options.findIndex(option => {
+          return this.getOptionText(option) === value
+        })
+        this.setIndex(index)
       }
     },
 
     watch: {
-      values (val) {
-        if (this.valueIndex === -1) {
-          this.currentValue = this.nearby(this.currentValue, val)
+      defaultIndex (index) {
+        this.setIndex(index)
+      },
+
+      options (val, oldValue) {
+        if (JSON.stringify(val) !== JSON.stringify(oldValue)) {
+          this.setIndex(this.defaultIndex)
         }
       },
 
-      currentValue (val, oldVal) {
-        this.$emit('change', val, oldVal)
+      currentIndex (index) {
         if (this.divider) return
-
-        this.offset = this.valueToOffset(val)
-      },
-
-      defaultIndex (val) {
-        if ((this.values[val] !== undefined) && (this.values.length >= val + 1)) {
-          this.currentValue = this.values
-        }
+        this.$emit('change', index)
       }
     }
   })

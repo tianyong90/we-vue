@@ -1,6 +1,7 @@
 <template>
   <div style="width: 100%; height: 300px;" @touchstart="onTouchstart">
-    <div v-infinite-scroll="loadMore"
+    <div class="list"
+         v-infinite-scroll="loadMore"
          :infinite-scroll-disabled="disabled"
          :infinite-scroll-distance="distance"
     >
@@ -24,13 +25,6 @@
     },
 
     methods: {
-      triggerLoadMore () {
-        this.loadMore()
-      },
-
-      onTouchstart () {
-      },
-
       loadMore () {}
     }
   }

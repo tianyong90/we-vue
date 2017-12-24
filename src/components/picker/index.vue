@@ -16,12 +16,11 @@
         <div class="weui-picker__bd">
           <wv-picker-slot v-for="(slot, index) in slots"
                           :key="index"
-                          :values="slot.values || []"
+                          :options="slot.values || []"
                           :valueKey="valueKey"
                           :divider="slot.divider"
                           :content="slot.content"
                           :default-index="slot.defaultIndex"
-                          v-model="values[slot.valueIndex]"
                           @change="slotValueChange" />
         </div>
       </div>
@@ -42,11 +41,7 @@
     },
 
     props: {
-      // visible: Boolean,
-      visible: {
-        type: Boolean,
-        default: true
-      },
+      visible: Boolean,
       confirmText: {
         type: String,
         default: '确定'
@@ -59,29 +54,35 @@
         type: Array,
         required: true
       },
-      valueKey: String
+      valueKey: String,
+      value: []
+    },
+
+    data () {
+      return {
+        children: [],
+        currentSlots: [],
+        currentValue: []
+      }
     },
 
     computed: {
-      values: {
-        get () {
-          console.log(this.slots.filter(slot => !slot.divider))
-          return this.slots.filter(slot => !slot.divider).map(slot => slot.value)
-        }
-      },
-
       slotCount () {
         return this.slots.filter(slot => !slot.divider).length
       }
     },
 
     created () {
-      this.slotValueChange()
+      this.initialize()
     },
 
     methods: {
+      initialize () {
+        this.currentSlots = this.slots
+      },
+
       slotValueChange () {
-        this.$emit('change', this, this.values)
+        this.$emit('change', this, this.getValues())
       },
 
       getSlot (slotIndex) {
@@ -92,62 +93,47 @@
       },
 
       getSlotValue (slotIndex) {
-        const slot = this.getSlot(slotIndex)
-
-        return slot ? slot.value : null
+        return (this.getSlot(slotIndex) || {}).currentValue
       },
 
-      setSlotValue (slotIndex, value, taskQueue) {
-        let slot = this.getSlot(slotIndex)
-        if (slot) {
-          slot.currentValue = value
-          if (taskQueue && taskQueue.length > 0) {
-            slot.$nextTick(taskQueue.shift())
-          }
-        }
+      setSlotValue (slotIndex, value) {
+        const slot = this.getSlot(slotIndex)
+        slot && slot.setValue(value)
       },
 
       getSlotValues (slotIndex) {
-        const slot = this.getSlot(slotIndex)
-
-        return slot ? slot.mutatingValues : null
+        return (this.currentSlots[slotIndex] || {}).values
       },
 
-      setSlotValues (index, values) {
-        this.$nextTick(() => {
-          let slot = this.getSlot(index)
-          if (slot) {
-            let oldVal = slot.currentValue
-            slot.mutatingValues = values
-            slot.$nextTick(() => {
-              if (oldVal !== undefined && oldVal !== null) {
-                slot.doOnValueChange(oldVal)
-              }
-              oldVal = null
-            })
-          }
-        })
+      setSlotValues (slotIndex, values) {
+        const slot = this.currentSlots[slotIndex]
+        if (slot) {
+          slot.values = values
+        }
       },
 
       getValues () {
-        return this.values
+        return this.$children.filter(slot => !slot.divider).map(slot => slot.currentValue)
       },
 
       setValues (values) {
-        values = values || []
         if (this.slotCount !== values.length) {
           throw new Error('values length is not equal slot count.')
         }
 
-        let taskQueue = []
         values.forEach((value, index) => {
-          if (index !== 0) {
-            taskQueue.push(() => {
-              this.setSlotValue(index, value, taskQueue)
-            })
-          }
+          this.setSlotValue(index, value)
         })
-        this.setSlotValue(0, values[0], taskQueue)
+      },
+
+      getIndexes () {
+        return this.children.map(child => child.currentIndex)
+      },
+
+      setIndexes (indexes) {
+        indexes.forEach((optionIndex, slotIndex) => {
+          this.setSlotIndex(slotIndex, optionIndex)
+        })
       },
 
       onCancel () {

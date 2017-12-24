@@ -2,15 +2,15 @@ import Vue from 'vue'
 
 const ctx = '@@InfiniteScroll'
 
-const throttle = (fn, delay) => {
+let throttle = function (fn, delay) {
   let now, lastExec, timer, context, args
 
-  const execute = () => {
+  let execute = function () {
     fn.apply(context, args)
     lastExec = now
   }
 
-  return () => {
+  return function () {
     context = this
     args = arguments
 
@@ -36,7 +36,7 @@ const throttle = (fn, delay) => {
   }
 }
 
-const getScrollTop = (element) => {
+let getScrollTop = function (element) {
   if (element === window) {
     return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop)
   }
@@ -44,9 +44,9 @@ const getScrollTop = (element) => {
   return element.scrollTop
 }
 
-const getComputedStyle = Vue.prototype.$isServer ? {} : document.defaultView.getComputedStyle
+let getComputedStyle = Vue.prototype.$isServer ? {} : document.defaultView.getComputedStyle
 
-const getScrollEventTarget = (element) => {
+let getScrollEventTarget = function (element) {
   let currentNode = element
   // bugfix, see http://w3help.org/zh-cn/causes/SD9013 and http://stackoverflow.com/questions/17016740/onscroll-function-is-not-working-for-chrome
   while (currentNode && currentNode.tagName !== 'HTML' && currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
@@ -59,7 +59,7 @@ const getScrollEventTarget = (element) => {
   return window
 }
 
-const getVisibleHeight = element => {
+let getVisibleHeight = function (element) {
   if (element === window) {
     return document.documentElement.clientHeight
   }
@@ -67,14 +67,14 @@ const getVisibleHeight = element => {
   return element.clientHeight
 }
 
-const getElementTop = element => {
+let getElementTop = function (element) {
   if (element === window) {
     return getScrollTop(window)
   }
   return element.getBoundingClientRect().top + getScrollTop(window)
 }
 
-const isAttached = element => {
+let isAttached = function (element) {
   let currentNode = element.parentNode
   while (currentNode) {
     if (currentNode.tagName === 'HTML') {
@@ -88,7 +88,7 @@ const isAttached = element => {
   return false
 }
 
-const doBind = () => {
+let doBind = function () {
   if (this.binded) return
   this.binded = true
 
@@ -103,7 +103,7 @@ const doBind = () => {
   let disabled = false
 
   if (disabledExpr) {
-    this.vm.$watch(disabledExpr, (value) => {
+    this.vm.$watch(disabledExpr, function (value) {
       directive.disabled = value
       if (!value && directive.immediateCheck) {
         doCheck.call(directive)
@@ -134,22 +134,22 @@ const doBind = () => {
     doCheck.call(directive)
   }
 
-  const eventName = element.getAttribute('infinite-scroll-listen-for-event')
+  let eventName = element.getAttribute('infinite-scroll-listen-for-event')
   if (eventName) {
-    directive.vm.$on(eventName, () => {
+    directive.vm.$on(eventName, function () {
       doCheck.call(directive)
     })
   }
 }
 
-const doCheck = (force) => {
+let doCheck = function (force) {
   let scrollEventTarget = this.scrollEventTarget
-  const element = this.el
-  const distance = this.distance
+  let element = this.el
+  let distance = this.distance
 
-  if (force !== true && this.disabled) return
-  const viewportScrollTop = getScrollTop(scrollEventTarget)
-  const viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget)
+  if (force !== true && this.disabled) return //eslint-disable-line
+  let viewportScrollTop = getScrollTop(scrollEventTarget)
+  let viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget)
 
   let shouldTrigger = false
 
@@ -174,16 +174,16 @@ export default {
       expression: binding.value
     }
     const args = arguments
-    let cb = () => {
-      el[ctx].vm.$nextTick(() => {
+    let cb = function () {
+      el[ctx].vm.$nextTick(function () {
         if (isAttached(el)) {
           doBind.call(el[ctx], args)
         }
 
         el[ctx].bindTryCount = 0
 
-        let tryBind = () => {
-          if (el[ctx].bindTryCount > 10) return
+        let tryBind = function () {
+          if (el[ctx].bindTryCount > 10) return //eslint-disable-line
           el[ctx].bindTryCount++
           if (isAttached(el)) {
             doBind.call(el[ctx], args)

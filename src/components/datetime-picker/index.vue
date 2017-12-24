@@ -1,5 +1,5 @@
 <template>
-  <wv-picker v-model="visible"
+  <wv-picker :visible.sync="visible"
              :slots="dateSlots"
              @change="onChange"
              @confirm="onConfirm"

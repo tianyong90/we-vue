@@ -6,6 +6,7 @@ const install = (Vue) => {
   Vue.directive('InfiniteScroll', InfiniteScroll)
 }
 
+/* istanbul ignore next */
 if (!Vue.prototype.$isServer && window.Vue) {
   window.infiniteScroll = InfiniteScroll
   Vue.use(install)

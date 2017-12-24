@@ -1,18 +1,16 @@
 <template>
   <div class="page">
-    <h1>{{ person }}</h1>
-
     <wv-group title="选择器示例">
-      <wv-cell title="单列选择" is-link :value="person.name" @click.native="peoplePickerShow = true"></wv-cell>
+      <wv-cell title="单列选择(对象数组)" is-link :value="person.name" @click.native="peoplePickerShow = true"></wv-cell>
       <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true"></wv-cell>
       <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true"></wv-cell>
       <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true"></wv-cell>
     </wv-group>
 
-    <wv-picker :visible.sync="peoplePickerShow" :slots="peopleSlots" value-key="name" @confirm="confirmTicket"></wv-picker>
-    <!--<wv-picker :visible.sync="ticketPickerShow" :slots="ticketSlots" @confirm="confirmTicket"></wv-picker>-->
-    <!--<wv-picker :visible.sync="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime"></wv-picker>-->
-    <!--<wv-picker :visible.sync="addressPickerShow" ref="addressPicker" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>-->
+    <wv-picker :visible.sync="peoplePickerShow" :slots="peopleSlots" value-key="name" @confirm="confirmPerson"></wv-picker>
+    <wv-picker :visible.sync="ticketPickerShow" :slots="ticketSlots" @confirm="confirmTicket"></wv-picker>
+    <wv-picker :visible.sync="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime"></wv-picker>
+    <wv-picker :visible.sync="addressPickerShow" ref="addressPicker" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
   </div>
 </template>
 
@@ -64,7 +62,7 @@
       return {
         ticketValue: [],
         dayValue: [],
-        peoplePickerShow: true,
+        peoplePickerShow: false,
         ticketPickerShow: false,
         dayPickerShow: false,
         addressPickerShow: false,
@@ -137,14 +135,18 @@
     },
 
     mounted () {
-      // this.$nextTick(() => {
-      //   this.$refs.addressPicker.setValues(['湖北省', '宜昌市', '长阳土家族自治县'])
-      // })
+      this.$nextTick(() => {
+        this.$refs.addressPicker.setValues(['湖北省', '宜昌市', '长阳土家族自治县'])
+      })
     },
 
     methods: {
       onChange (picker, value) {
         console.log(value)
+      },
+
+      confirmPerson (picker) {
+        this.person = picker.getValues()[0]
       },
 
       confirmTicket (picker) {
@@ -156,6 +158,7 @@
       },
 
       onAddressChange (picker, value) {
+        console.log(value)
         picker.setSlotValues(1, getCities(value[0]))
         picker.setSlotValues(2, getAreas(value[0], value[1]))
       },
