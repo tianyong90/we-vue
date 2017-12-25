@@ -4,7 +4,7 @@ const PopupContext = {
   instances: {},
   stack: [],
 
-  plusKeyByOne (key) {
+  plusKey (key) {
     return this[key]++
   },
 

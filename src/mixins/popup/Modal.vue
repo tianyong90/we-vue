@@ -1,12 +1,11 @@
 <template>
   <transition name="wv-fade">
-    <div
-      v-show="visible"
-      class="wv-modal"
-      :class="className"
-      :style="style"
-      @touchmove.prevent.stop
-      @click="$emit('click', $event)"
+    <div v-show="visible"
+         class="wv-modal"
+         :class="className"
+         :style="style"
+         @touchmove.prevent.stop
+         @click="$emit('click', $event)"
     />
   </transition>
 </template>
