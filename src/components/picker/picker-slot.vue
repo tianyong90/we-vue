@@ -6,8 +6,8 @@
        @touchend="onTouchend"
        @touchcancel="onTouchend"
   >
-    <div class="weui-picker__mask" />
-    <div class="weui-picker__indicator" ref="indicator" />
+    <div class="weui-picker__mask" :style="pickerMaskStyle"/>
+    <div class="weui-picker__indicator" ref="indicator" :style="pickerIndicatorStyle" />
     <div class="weui-picker__content" :style="wrapperStyle">
       <div class="weui-picker__item"
            :class="{ 'weui-picker__item_disabled': isDisabled(option) }"
@@ -24,10 +24,8 @@
   import { create, getTouch } from '../../utils'
   const range = (num, min, max) => Math.min(Math.max(num, min), max)
 
-  // 每个选项高度
+  // height of th option item
   const ITEM_HEIGHT = 34
-  // 可见选项个数
-  const VISIBLE_ITEM_COUNT = 7
 
   export default create({
     name: 'wv-picker-slot',
@@ -39,6 +37,13 @@
       },
       value: {},
       valueKey: String,
+      visibleItemCount: {
+        type: Number,
+        default: 7,
+        validator: (value) => {
+          return [3, 5, 7].indexOf(value) > -1
+        }
+      },
       defaultIndex: {
         type: Number,
         default: 0
@@ -58,7 +63,7 @@
         offset: 0,
         prevY: 0,
         prevTime: null,
-        velocity: 0, // 滑动的速度
+        velocity: 0, // moving velocity
         transition: '',
         currentIndex: this.defaultIndex
       }
@@ -66,17 +71,29 @@
 
     computed: {
       minTranslateY () {
-        return ITEM_HEIGHT * (Math.ceil(VISIBLE_ITEM_COUNT / 2) - this.options.length)
+        return ITEM_HEIGHT * (Math.ceil(this.visibleItemCount / 2) - this.options.length)
       },
 
       maxTranslateY () {
-        return ITEM_HEIGHT * Math.floor(VISIBLE_ITEM_COUNT / 2)
+        return ITEM_HEIGHT * Math.floor(this.visibleItemCount / 2)
       },
 
       wrapperStyle () {
         return {
           transition: this.transition,
           transform: `translate3d(0, ${this.offset}px, 0)`
+        }
+      },
+
+      pickerIndicatorStyle () {
+        return {
+          top: Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT + 'px'
+        }
+      },
+
+      pickerMaskStyle () {
+        return {
+          backgroundSize: '100% 68px'
         }
       },
 
@@ -115,13 +132,13 @@
       },
 
       indexToOffset (index) {
-        const baseOffset = Math.floor(VISIBLE_ITEM_COUNT / 2)
+        const baseOffset = Math.floor(this.visibleItemCount / 2)
         return (index - baseOffset) * -ITEM_HEIGHT
       },
 
       offsetToIndex (offset) {
         offset = Math.round(offset / ITEM_HEIGHT) * ITEM_HEIGHT
-        return -(offset - Math.floor(VISIBLE_ITEM_COUNT / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
+        return -(offset - Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
       },
 
       onTouchstart (event) {
@@ -145,7 +162,7 @@
 
         this.offset = this.startOffset + distance
 
-        // 计算速度
+        // compute velocity
         this.velocity = (touch.clientY - this.prevY) / (currentTime - this.prevTime)
         this.prevY = currentY
         this.prevTime = currentTime
@@ -156,18 +173,18 @@
 
         const indicator = this.$refs.indicator
 
-        let distance = Math.abs(this.offset - this.startOffset)
+        const distance = Math.abs(this.offset - this.startOffset)
 
         this.transition = 'all 150ms ease'
 
         if (distance < 10) {
-          // 距离小于 10 时视为点击
+          // treat the event as 'click' when the moving distance is shorter than 10px
           const indicatorRect = indicator.getBoundingClientRect()
           const clickOffset = Math.floor((touch.clientY - indicatorRect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
 
           const targetOffset = this.offset - clickOffset
 
-          // 不要超过最大最小流动范围
+          // offset should be within the range
           this.offset = range(targetOffset, this.minTranslateY, this.maxTranslateY)
 
           this.currentIndex = this.offsetToIndex(this.offset)
@@ -179,7 +196,7 @@
         this.$nextTick(() => {
           endOffset = Math.round(endOffset / ITEM_HEIGHT) * ITEM_HEIGHT
 
-          // 不要超过最大最小流动范围
+          // offset should be within the range
           this.offset = range(endOffset, this.minTranslateY, this.maxTranslateY)
 
           this.currentIndex = this.offsetToIndex(this.offset)
@@ -231,24 +248,6 @@
 </script>
 
 <style scoped lang="scss">
-  .weui-picker__group {
-    z-index: 0;
-    overflow: hidden;
-  }
-
-  .weui-picker__mask {
-    z-index: 2;
-    height: 238px;
-  }
-
-  .weui-picker__indicator {
-    z-index: 3;
-  }
-
-  .weui-picker__content {
-    z-index: 1;
-  }
-
   .wv-picker-slot-divider {
     transform: translateY(106px);
   }

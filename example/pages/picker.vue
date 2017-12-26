@@ -1,16 +1,20 @@
 <template>
   <div class="page">
+    <h3>{{ addressRes }}</h3>
+
     <wv-group title="选择器示例">
-      <wv-cell title="单列选择(对象数组)" is-link :value="person.name" @click.native="peoplePickerShow = true"></wv-cell>
-      <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true"></wv-cell>
-      <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true"></wv-cell>
-      <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true"></wv-cell>
+      <wv-cell title="单列选择(对象数组)" is-link :value="person.name" @click.native="peoplePickerShow = true" />
+      <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true" />
+      <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true" />
+      <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true" />
     </wv-group>
 
-    <wv-picker :visible.sync="peoplePickerShow" :slots="peopleSlots" value-key="name" @confirm="confirmPerson"></wv-picker>
-    <wv-picker :visible.sync="ticketPickerShow" :slots="ticketSlots" @confirm="confirmTicket"></wv-picker>
-    <wv-picker :visible.sync="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime"></wv-picker>
-    <wv-picker :visible.sync="addressPickerShow" ref="addressPicker" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
+    <h1>{{ res }}</h1>
+
+    <wv-picker :visible.sync="peoplePickerShow" :slots="peopleSlots" value-key="name" @confirm="confirmPerson" />
+    <wv-picker :visible.sync="ticketPickerShow" v-model="res" :slots="ticketSlots" @confirm="confirmTicket" />
+    <wv-picker :visible.sync="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime" />
+    <wv-picker :visible.sync="addressPickerShow" v-model="addressRes" ref="addressPicker" :slots="addressSlots" :visible-item-count="5" @change="onAddressChange" @confirm="confirmAddress" />
   </div>
 </template>
 
@@ -60,6 +64,8 @@
   export default {
     data () {
       return {
+        res: ['火车票'],
+        addressRes: [],
         ticketValue: [],
         dayValue: [],
         peoplePickerShow: false,
@@ -108,7 +114,9 @@
               '星期二',
               '星期三',
               '星期四',
-              '星期五'
+              '星期五',
+              '星期六',
+              '星期日'
             ],
             defaultIndex: 0
           },

@@ -13,7 +13,7 @@
                @click="onConfirm"
                v-text="confirmText" />
         </div>
-        <div class="weui-picker__bd">
+        <div class="weui-picker__bd" :style="pickerBodyStyle">
           <wv-picker-slot v-for="(slot, index) in slots"
                           :key="index"
                           :options="slot.values || []"
@@ -21,6 +21,7 @@
                           :divider="slot.divider"
                           :content="slot.content"
                           :default-index="slot.defaultIndex"
+                          :visible-item-count="visibleItemCount"
                           @change="slotValueChange" />
         </div>
       </div>
@@ -30,8 +31,10 @@
 
 <script>
   import WvPickerSlot from './picker-slot.vue'
-
   import { create } from '../../utils'
+
+  // height of th option item
+  const ITEM_HEIGHT = 34
 
   export default create({
     name: 'wv-picker',
@@ -55,20 +58,36 @@
         required: true
       },
       valueKey: String,
-      value: []
+      visibleItemCount: {
+        type: Number,
+        default: 7,
+        validator: (value) => {
+          return [3, 5, 7].indexOf(value) > -1
+        }
+      },
+      value: {
+        type: Array,
+        default: () => []
+      }
     },
 
     data () {
       return {
         children: [],
         currentSlots: [],
-        currentValue: []
+        currentValue: this.value
       }
     },
 
     computed: {
       slotCount () {
         return this.slots.filter(slot => !slot.divider).length
+      },
+
+      pickerBodyStyle () {
+        return {
+          height: this.visibleItemCount * ITEM_HEIGHT + 'px'
+        }
       }
     },
 
@@ -82,6 +101,7 @@
       },
 
       slotValueChange () {
+        this.currentValue = this.getValues()
         this.$emit('change', this, this.getValues())
       },
 
@@ -126,6 +146,15 @@
         })
       },
 
+      getSlotIndex (slotIndex) {
+        return (this.getSlot(slotIndex) || {}).currentIndex
+      },
+
+      setSlotIndex (slotIndex, index) {
+        const slot = this.getSlot(slotIndex)
+        slot && slot.setIndex(index)
+      },
+
       getIndexes () {
         return this.children.map(child => child.currentIndex)
       },
@@ -144,6 +173,17 @@
       onConfirm () {
         this.$emit('confirm', this)
         this.$emit('update:visible', false)
+      }
+    },
+
+    watch: {
+      value (val) {
+        this.setValues(val)
+        this.currentValue = val
+      },
+
+      currentValue (val) {
+        this.$emit('input', val)
       }
     }
   })
