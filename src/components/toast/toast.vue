@@ -1,83 +1,86 @@
 <template>
   <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
     <div v-show="visible">
-      <div class="weui-toast"
-           :class="{ 'weui-toast_text': type === 'text' }"
-           :style="style"
-           ref="toast">
-        <wv-icon :type="icon"
-                 class="weui-icon_toast"
-                 v-if="type !== 'text' && type !== 'loading'"
+      <div
+        class="weui-toast"
+        :class="{ 'weui-toast_text': type === 'text' }"
+        :style="style"
+        ref="toast">
+        <wv-icon
+          :type="icon"
+          class="weui-icon_toast"
+          v-if="type !== 'text' && type !== 'loading'"
         />
-        <wv-spinner class="weui-icon_toast"
-                    v-if="type === 'loading' && spinnerType !=='none'"
-                    :type="spinnerType"
-                    :size="25"
+        <wv-spinner
+          class="weui-icon_toast"
+          v-if="type === 'loading' && spinnerType !=='none'"
+          :type="spinnerType"
+          :size="25"
         />
-        <p class="weui-toast__content" v-text="message" />
+        <p class="weui-toast__content" v-text="message"/>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
-  import WvIcon from '../icon/index'
-  import WvSpinner from '../spinner/index'
-  import { create } from '../../utils'
-  import PopupMixin from '../../mixins/popup'
+import WvIcon from '../icon/index'
+import WvSpinner from '../spinner/index'
+import { create } from '../../utils'
+import PopupMixin from '../../mixins/popup'
 
-  export default create({
-    name: 'wv-toast',
+export default create({
+  name: 'wv-toast',
 
-    components: {
-      WvIcon,
-      WvSpinner
+  components: {
+    WvIcon,
+    WvSpinner
+  },
+
+  mixins: [PopupMixin],
+
+  props: {
+    mask: {
+      default: true
     },
-
-    mixins: [PopupMixin],
-
-    props: {
-      mask: {
-        default: true
-      },
-      icon: {
-        type: String,
-        default: 'success-no-circle'
-      },
-      type: {
-        type: String,
-        default: 'success',
-        validator: (value) => {
-          return ['success', 'fail', 'loading', 'text', 'html'].indexOf(value) !== -1
-        }
-      },
-      spinnerType: {
-        type: String,
-        default: 'default'
-      },
-      message: {
-        type: String,
-        default: ''
-      },
-      maskClass: {
-        default: 'weui-mask_transparent'
+    icon: {
+      type: String,
+      default: 'success-no-circle'
+    },
+    type: {
+      type: String,
+      default: 'success',
+      validator: (value) => {
+        return ['success', 'fail', 'loading', 'text', 'html'].indexOf(value) !== -1
       }
     },
-
-    computed: {
-      style () {
-        if (this.type === 'text') {
-          return {
-            width: this.message.length + 'em',
-            paddingLeft: '1em',
-            paddingRight: '1em'
-          }
-        }
-
-        return {}
-      }
+    spinnerType: {
+      type: String,
+      default: 'default'
+    },
+    message: {
+      type: String,
+      default: ''
+    },
+    maskClass: {
+      default: 'weui-mask_transparent'
     }
-  })
+  },
+
+  computed: {
+    style () {
+      if (this.type === 'text') {
+        return {
+          width: this.message.length + 'em',
+          paddingLeft: '1em',
+          paddingRight: '1em'
+        }
+      }
+
+      return {}
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

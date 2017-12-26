@@ -1,15 +1,15 @@
 <template>
   <div class="page">
     <wv-swipe class="demo-swipe" :height="130" :autoplay="4000">
-      <wv-swipe-item style="background-color: #f44336"></wv-swipe-item>
-      <wv-swipe-item style="background-color: #ffc107"></wv-swipe-item>
-      <wv-swipe-item style="background-color: #03a9f4"></wv-swipe-item>
+      <wv-swipe-item style="background-color: #f44336"/>
+      <wv-swipe-item style="background-color: #ffc107"/>
+      <wv-swipe-item style="background-color: #03a9f4"/>
     </wv-swipe>
 
     <wv-swipe class="demo-swipe" :height="80">
-      <wv-swipe-item style="background-color: #f44336"></wv-swipe-item>
-      <wv-swipe-item style="background-color: #ffc107"></wv-swipe-item>
-      <wv-swipe-item style="background-color: #03a9f4"></wv-swipe-item>
+      <wv-swipe-item style="background-color: #f44336"/>
+      <wv-swipe-item style="background-color: #ffc107"/>
+      <wv-swipe-item style="background-color: #03a9f4"/>
     </wv-swipe>
 
     <wv-swipe class="demo-swipe" :height="130" :show-indicators="false">

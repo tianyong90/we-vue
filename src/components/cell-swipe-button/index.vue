@@ -5,18 +5,18 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-cell-swipe-button',
+export default create({
+  name: 'wv-cell-swipe-button',
 
-    props: {
-      type: {
-        type: String,
-        default: 'default'
-      }
+  props: {
+    type: {
+      type: String,
+      default: 'default'
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

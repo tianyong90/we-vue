@@ -7,56 +7,56 @@
 </template>
 
 <script>
-  import PopupMixin from '../../mixins/popup'
-  import { create } from '../../utils'
+import PopupMixin from '../../mixins/popup'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-popup',
+export default create({
+  name: 'wv-popup',
 
-    mixins: [PopupMixin],
+  mixins: [PopupMixin],
 
-    props: {
-      height: {
-        type: [String, Number],
-        default: 'auto',
-        validator: (val) => {
-          return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
-        }
-      },
-      mask: {
-        default: true
-      },
-      lockOnScroll: {
-        default: true
-      },
-      closeOnClickMask: {
-        default: true
-      },
-      maskClass: {
-        default: 'weui-mask'
+  props: {
+    height: {
+      type: [String, Number],
+      default: 'auto',
+      validator: (val) => {
+        return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
       }
     },
-
-    computed: {
-      style () {
-        let ret = {}
-
-        if (/^\d+$/.test(this.height)) {
-          ret.height = parseInt(this.height) + 'px'
-        } else {
-          ret.height = this.height
-        }
-
-        return ret
-      }
+    mask: {
+      default: true
     },
-
-    mounted () {
-      if (this.visible) {
-        this.open()
-      }
+    lockOnScroll: {
+      default: true
+    },
+    closeOnClickMask: {
+      default: true
+    },
+    maskClass: {
+      default: 'weui-mask'
     }
-  })
+  },
+
+  computed: {
+    style () {
+      let ret = {}
+
+      if (/^\d+$/.test(this.height)) {
+        ret.height = parseInt(this.height) + 'px'
+      } else {
+        ret.height = this.height
+      }
+
+      return ret
+    }
+  },
+
+  mounted () {
+    if (this.visible) {
+      this.open()
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

@@ -1,34 +1,35 @@
 <template>
   <div class="weui-footer">
     <p class="weui-footer__links" v-if="links.length > 0">
-      <FooterLink v-for="item in links"
-                  :key="item.text"
-                  :text="item.text"
-                  :to="item.link" />
+      <FooterLink
+        v-for="item in links"
+        :key="item.text"
+        :text="item.text"
+        :to="item.link"/>
     </p>
-    <p class="weui-footer__text" v-html="text" />
+    <p class="weui-footer__text" v-html="text"/>
   </div>
 </template>
 
 <script>
-  import FooterLink from './footer-link.vue'
-  import { create } from '../../utils'
+import FooterLink from './footer-link.vue'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-footer',
+export default create({
+  name: 'wv-footer',
 
-    components: {
-      FooterLink
-    },
+  components: {
+    FooterLink
+  },
 
-    props: {
-      text: String,
-      links: {
-        type: Array,
-        default: () => []
-      }
+  props: {
+    text: String,
+    links: {
+      type: Array,
+      default: () => []
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

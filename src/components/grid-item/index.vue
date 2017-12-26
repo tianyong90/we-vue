@@ -6,27 +6,26 @@
     <p class="weui-grid__label" v-if="$slots.label">
       <slot name="label" />
     </p>
-    <slot>
-    </slot>
+    <slot/>
   </div>
 </template>
 
 <script>
-  import RouterLink from '../../mixins/router-link'
-  import { create } from '../../utils'
+import RouterLink from '../../mixins/router-link'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-grid-item',
+export default create({
+  name: 'wv-grid-item',
 
-    mixins: [RouterLink],
+  mixins: [RouterLink],
 
-    methods: {
-      onClick () {
-        this.$emit('click')
-        this.routerLink()
-      }
+  methods: {
+    onClick () {
+      this.$emit('click')
+      this.routerLink()
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

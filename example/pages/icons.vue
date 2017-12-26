@@ -2,36 +2,36 @@
   <div class="page page-with-padding">
     <ul class="icon-list-big">
       <li v-for="type in iconTypes" :key="type">
-        <wv-icon class="demo-icon-large" :type="type" :large="true"></wv-icon>
-        <label class="label" v-text="type"></label>
+        <wv-icon class="demo-icon-large" :type="type" :large="true"/>
+        <label class="label" v-text="type"/>
       </li>
     </ul>
 
     <div class="icon-list-small">
-      <wv-icon :type="type" v-for="type in iconTypes" :key="type"></wv-icon>
+      <wv-icon :type="type" v-for="type in iconTypes" :key="type"/>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        iconTypes: [
-          'success',
-          'info',
-          'warn',
-          'waiting',
-          'success-no-circle',
-          'circle',
-          'info-circle',
-          'download',
-          'cancel',
-          'search'
-        ]
-      }
+export default {
+  data () {
+    return {
+      iconTypes: [
+        'success',
+        'info',
+        'warn',
+        'waiting',
+        'success-no-circle',
+        'circle',
+        'info-circle',
+        'download',
+        'cancel',
+        'search'
+      ]
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

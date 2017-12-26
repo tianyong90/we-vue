@@ -1,44 +1,45 @@
 <template>
-  <div class="wv-navbar__item"
-       @click="onClick"
-       :class="{ 'wv-navbar__item_on': !$parent.animate && $parent.value === id, disabled: disabled }"
-       :style="style">
-    <slot />
+  <div
+    class="wv-navbar__item"
+    @click="onClick"
+    :class="{ 'wv-navbar__item_on': !$parent.animate && $parent.value === id, disabled: disabled }"
+    :style="style">
+    <slot/>
   </div>
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-navbar-item',
+export default create({
+  name: 'wv-navbar-item',
 
-    props: {
-      id: String,
-      disabled: Boolean
+  props: {
+    id: String,
+    disabled: Boolean
+  },
+
+  computed: {
+    isSelected () {
+      return this.id === this.$parent.value
     },
 
-    computed: {
-      isSelected () {
-        return this.id === this.$parent.value
-      },
-
-      style () {
-        return {
-          borderWidth: this.$parent.lineWidth + 'px',
-          borderColor: this.$parent.activeColor,
-          color: this.isSelected ? this.$parent.activeColor : this.$parent.color
-        }
-      }
-    },
-
-    methods: {
-      onClick () {
-        if (this.disabled) return
-        this.$parent.$emit('input', this.id)
+    style () {
+      return {
+        borderWidth: this.$parent.lineWidth + 'px',
+        borderColor: this.$parent.activeColor,
+        color: this.isSelected ? this.$parent.activeColor : this.$parent.color
       }
     }
-  })
+  },
+
+  methods: {
+    onClick () {
+      if (this.disabled) return
+      this.$parent.$emit('input', this.id)
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

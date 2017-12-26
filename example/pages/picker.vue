@@ -11,181 +11,203 @@
 
     <h1>{{ res }}</h1>
 
-    <wv-picker :visible.sync="peoplePickerShow" :slots="peopleSlots" value-key="name" @confirm="confirmPerson" />
-    <wv-picker :visible.sync="ticketPickerShow" v-model="res" :slots="ticketSlots" @confirm="confirmTicket" />
-    <wv-picker :visible.sync="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime" />
-    <wv-picker :visible.sync="addressPickerShow" v-model="addressRes" ref="addressPicker" :slots="addressSlots" :visible-item-count="5" @change="onAddressChange" @confirm="confirmAddress" />
+    <wv-picker
+      :visible.sync="peoplePickerShow"
+      :slots="peopleSlots"
+      value-key="name"
+      @confirm="confirmPerson"
+    />
+    <wv-picker
+      :visible.sync="ticketPickerShow"
+      v-model="res"
+      :slots="ticketSlots"
+      @confirm="confirmTicket"
+    />
+    <wv-picker
+      :visible.sync="dayPickerShow"
+      :slots="daySlots"
+      @confirm="confirmDayTime"
+    />
+    <wv-picker
+      :visible.sync="addressPickerShow"
+      v-model="addressRes"
+      ref="addressPicker"
+      :slots="addressSlots"
+      :visible-item-count="5"
+      @change="onAddressChange"
+      @confirm="confirmAddress"
+    />
   </div>
 </template>
 
 <script>
-  import chinaAreaData from 'china-area-data'
+import chinaAreaData from 'china-area-data'
 
-  let provinces = Object.values(chinaAreaData[86])
+let provinces = Object.values(chinaAreaData[86])
 
-  // 获取某一省下的市
-  function getCities (province) {
-    let provinceCode
-    for (let i in chinaAreaData[86]) {
-      if (province === chinaAreaData[86][i]) {
-        provinceCode = i
-        break
-      }
-    }
-
-    return Object.values(chinaAreaData[provinceCode])
-  }
-
-  // 获取某一市下的区/县
-  function getAreas (province, city) {
-    let provinceCode, cityCode
-    for (let i in chinaAreaData[86]) {
-      if (province === chinaAreaData[86][i]) {
-        provinceCode = i
-        break
-      }
-    }
-
-    for (let i in chinaAreaData[provinceCode]) {
-      if (city === chinaAreaData[provinceCode][i]) {
-        cityCode = i
-        break
-      }
-    }
-
-    if (chinaAreaData[cityCode]) {
-      return Object.values(chinaAreaData[cityCode])
-    } else {
-      // 只有两级的情况
-      return []
+// 获取某一省下的市
+function getCities (province) {
+  let provinceCode
+  for (let i in chinaAreaData[86]) {
+    if (province === chinaAreaData[86][i]) {
+      provinceCode = i
+      break
     }
   }
 
-  export default {
-    data () {
-      return {
-        res: ['火车票'],
-        addressRes: [],
-        ticketValue: [],
-        dayValue: [],
-        peoplePickerShow: false,
-        ticketPickerShow: false,
-        dayPickerShow: false,
-        addressPickerShow: false,
-        ticket: ['汽车票'],
-        dayAndTime: '',
-        address: '',
-        person: [{name: 'a', age: 1}],
-        peopleSlots: [
-          {
-            values: [
-              {
-                name: 'a',
-                age: 1
-              },
-              {
-                name: 'b',
-                age: 1
-              },
-              {
-                name: 'c',
-                age: 1
-              }
-            ],
-            defaultIndex: 0
-          }
-        ],
-        ticketSlots: [
-          {
-            values: [
-              '汽车票',
-              '飞机票',
-              '火车票',
-              '轮船票',
-              '其它'
-            ],
-            defaultIndex: 2
-          }
-        ],
-        daySlots: [
-          {
-            values: [
-              '星期一',
-              '星期二',
-              '星期三',
-              '星期四',
-              '星期五',
-              '星期六',
-              '星期日'
-            ],
-            defaultIndex: 0
-          },
-          {
-            values: [
-              '上午',
-              '下午'
-            ],
-            defaultIndex: 0
-          }
-        ],
-        addressSlots: [
-          {
-            values: provinces
-          },
-          {
-            values: []
-          },
-          {
-            values: []
-          }
-        ]
-      }
-    },
+  return Object.values(chinaAreaData[provinceCode])
+}
 
-    mounted () {
-      this.$nextTick(() => {
-        this.$refs.addressPicker.setValues(['湖北省', '宜昌市', '长阳土家族自治县'])
-      })
-    },
+// 获取某一市下的区/县
+function getAreas (province, city) {
+  let provinceCode, cityCode
+  for (let i in chinaAreaData[86]) {
+    if (province === chinaAreaData[86][i]) {
+      provinceCode = i
+      break
+    }
+  }
 
-    methods: {
-      onChange (picker, value) {
-        console.log(value)
-      },
+  for (let i in chinaAreaData[provinceCode]) {
+    if (city === chinaAreaData[provinceCode][i]) {
+      cityCode = i
+      break
+    }
+  }
 
-      confirmPerson (picker) {
-        this.person = picker.getValues()[0]
-      },
+  if (chinaAreaData[cityCode]) {
+    return Object.values(chinaAreaData[cityCode])
+  } else {
+    // 只有两级的情况
+    return []
+  }
+}
 
-      confirmTicket (picker) {
-        this.ticket = picker.getValues()
-      },
-
-      confirmDayTime (picker) {
-        this.dayAndTime = picker.getValues()
-      },
-
-      onAddressChange (picker, value) {
-        console.log(value)
-        picker.setSlotValues(1, getCities(value[0]))
-        picker.setSlotValues(2, getAreas(value[0], value[1]))
-      },
-
-      confirmAddress (picker) {
-        this.address = picker.getValues()
-      }
-    },
-
-    filters: {
-      pickerValueFilter (val) {
-        if (Array.isArray(val)) {
-          return val.toString()
-        } else {
-          return '请选择'
+export default {
+  data () {
+    return {
+      res: ['火车票'],
+      addressRes: [],
+      ticketValue: [],
+      dayValue: [],
+      peoplePickerShow: false,
+      ticketPickerShow: false,
+      dayPickerShow: false,
+      addressPickerShow: false,
+      ticket: ['汽车票'],
+      dayAndTime: '',
+      address: '',
+      person: [{name: 'a', age: 1}],
+      peopleSlots: [
+        {
+          values: [
+            {
+              name: 'a',
+              age: 1
+            },
+            {
+              name: 'b',
+              age: 1
+            },
+            {
+              name: 'c',
+              age: 1
+            }
+          ],
+          defaultIndex: 0
         }
+      ],
+      ticketSlots: [
+        {
+          values: [
+            '汽车票',
+            '飞机票',
+            '火车票',
+            '轮船票',
+            '其它'
+          ],
+          defaultIndex: 2
+        }
+      ],
+      daySlots: [
+        {
+          values: [
+            '星期一',
+            '星期二',
+            '星期三',
+            '星期四',
+            '星期五',
+            '星期六',
+            '星期日'
+          ],
+          defaultIndex: 0
+        },
+        {
+          values: [
+            '上午',
+            '下午'
+          ],
+          defaultIndex: 0
+        }
+      ],
+      addressSlots: [
+        {
+          values: provinces
+        },
+        {
+          values: []
+        },
+        {
+          values: []
+        }
+      ]
+    }
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      this.$refs.addressPicker.setValues(['湖北省', '宜昌市', '长阳土家族自治县'])
+    })
+  },
+
+  methods: {
+    onChange (picker, value) {
+      console.log(value)
+    },
+
+    confirmPerson (picker) {
+      this.person = picker.getValues()[0]
+    },
+
+    confirmTicket (picker) {
+      this.ticket = picker.getValues()
+    },
+
+    confirmDayTime (picker) {
+      this.dayAndTime = picker.getValues()
+    },
+
+    onAddressChange (picker, value) {
+      console.log(value)
+      picker.setSlotValues(1, getCities(value[0]))
+      picker.setSlotValues(2, getAreas(value[0], value[1]))
+    },
+
+    confirmAddress (picker) {
+      this.address = picker.getValues()
+    }
+  },
+
+  filters: {
+    pickerValueFilter (val) {
+      if (Array.isArray(val)) {
+        return val.toString()
+      } else {
+        return '请选择'
       }
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

@@ -10,44 +10,44 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-button',
+export default create({
+  name: 'wv-button',
 
-    props: {
-      type: {
-        type: String,
-        default: 'default'
-      },
-      isLoading: Boolean,
-      disabled: Boolean,
-      mini: Boolean,
-      plain: Boolean
+  props: {
+    type: {
+      type: String,
+      default: 'default'
     },
+    isLoading: Boolean,
+    disabled: Boolean,
+    mini: Boolean,
+    plain: Boolean
+  },
 
-    methods: {
-      handleClick (event) {
-        this.$emit('click', event)
-      }
-    },
-
-    computed: {
-      classObject () {
-        let ret = {}
-
-        let classType = this.plain ? `weui-btn_plain-${this.type}` : `weui-btn_${this.type}`
-        let classDisabled = this.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
-
-        ret[classType] = true
-        ret[classDisabled] = this.disabled
-        ret['weui-btn_loading'] = this.isLoading
-        ret['weui-btn_mini'] = this.mini
-
-        return ret
-      }
+  methods: {
+    handleClick (event) {
+      this.$emit('click', event)
     }
-  })
+  },
+
+  computed: {
+    classObject () {
+      let ret = {}
+
+      let classType = this.plain ? `weui-btn_plain-${this.type}` : `weui-btn_${this.type}`
+      let classDisabled = this.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
+
+      ret[classType] = true
+      ret[classDisabled] = this.disabled
+      ret['weui-btn_loading'] = this.isLoading
+      ret['weui-btn_mini'] = this.mini
+
+      return ret
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

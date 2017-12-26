@@ -8,26 +8,26 @@
 </template>
 
 <script>
-  import RouterLink from '../../mixins/router-link'
+import RouterLink from '../../mixins/router-link'
 
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-tabbar-item',
+export default create({
+  name: 'wv-tabbar-item',
 
-    mixins: [RouterLink],
+  mixins: [RouterLink],
 
-    props: {
-      isOn: Boolean
-    },
+  props: {
+    isOn: Boolean
+  },
 
-    methods: {
-      onClick () {
-        this.$emit('click')
-        this.routerLink()
-      }
+  methods: {
+    onClick () {
+      this.$emit('click')
+      this.routerLink()
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

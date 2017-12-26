@@ -5,15 +5,15 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-tabbar',
+export default create({
+  name: 'wv-tabbar',
 
-    props: {
-      fixed: Boolean
-    }
-  })
+  props: {
+    fixed: Boolean
+  }
+})
 </script>
 
 <style scoped lang="scss">

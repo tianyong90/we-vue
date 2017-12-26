@@ -8,31 +8,31 @@
 </template>
 
 <script>
-  import Toast from '../../src/components/toast'
+import Toast from '../../src/components/toast'
 
-  export default {
-    methods: {
-      showSuccess () {
-        Toast.success('操作成功')
-      },
+export default {
+  methods: {
+    showSuccess () {
+      Toast.success('操作成功')
+    },
 
-      showError () {
-        Toast.fail({
-          duration: 1000,
-          message: '操作失败'
-        })
-      },
+    showError () {
+      Toast.fail({
+        duration: 1000,
+        message: '操作失败'
+      })
+    },
 
-      showText () {
-        Toast.text({
-          duration: 1000,
-          message: 'hello'
-        })
-      },
+    showText () {
+      Toast.text({
+        duration: 1000,
+        message: 'hello'
+      })
+    },
 
-      showLoading () {
-        Toast.loading('Loaidng')
-      }
+    showLoading () {
+      Toast.loading('Loaidng')
     }
   }
+}
 </script>

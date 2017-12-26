@@ -5,57 +5,57 @@
       <wv-button type="default" @click="showActionsheet('android')">Android ActionSheet</wv-button>
     </div>
 
-    <wv-actionsheet :type="type" title="<h3 style='color: red;'>一个大标题</h3><p>最多两行</p>" :actions="actions" cancel-text="取消" v-model="sheetVisible"></wv-actionsheet>
+    <wv-actionsheet :type="type" title="<h3 style='color: red;'>一个大标题</h3><p>最多两行</p>" :actions="actions" cancel-text="取消" v-model="sheetVisible"/>
   </div>
 </template>
 
-<script>
-  export default {
-    data () {
-      return {
-        type: 'ios',
-        sheetVisible: false,
-        actions: []
-      }
-    },
-
-    methods: {
-      showActionsheet (type) {
-        this.type = type
-        this.sheetVisible = true
-      },
-
-      menuClick (key) {
-        console.log(`menu ${key} clicked`)
-      }
-    },
-
-    mounted () {
-      this.actions = [
-        {
-          name: '示例菜单1',
-          key: 'menu1',
-          method: () => {
-            this.menuClick('menu1')
-          }
-        },
-        {
-          name: '示例菜单2',
-          key: 'menu2',
-          method: () => {
-            this.menuClick('menu2')
-          }
-        },
-        {
-          name: '示例菜单3',
-          key: 'menu3',
-          method: () => {
-            this.menuClick('menu3')
-          }
-        }
-      ]
+<script type="text/javascript">
+export default {
+  data () {
+    return {
+      type: 'ios',
+      sheetVisible: false,
+      actions: []
     }
+  },
+
+  methods: {
+    showActionsheet (type) {
+      this.type = type
+      this.sheetVisible = true
+    },
+
+    menuClick (key) {
+      console.log(`menu ${key} clicked`)
+    }
+  },
+
+  mounted () {
+    this.actions = [
+      {
+        name: '示例菜单1',
+        key: 'menu1',
+        method: () => {
+          this.menuClick('menu1')
+        }
+      },
+      {
+        name: '示例菜单2',
+        key: 'menu2',
+        method: () => {
+          this.menuClick('menu2')
+        }
+      },
+      {
+        name: '示例菜单3',
+        key: 'menu3',
+        method: () => {
+          this.menuClick('menu3')
+        }
+      }
+    ]
   }
+}
 </script>
 
 <style scoped lang="scss">

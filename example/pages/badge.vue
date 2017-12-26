@@ -3,7 +3,7 @@
     <wv-group title="新消息提示跟摘要信息后，统一在列表右侧">
       <wv-cell title="单行列表" is-link>
         <span slot="ft" style="vertical-align: middle; font-size: 17px;">详细信息</span>
-        <wv-badge :is-dot="true" slot="ft" style="margin-left: 5px; margin-right: 5px;"></wv-badge>
+        <wv-badge :is-dot="true" slot="ft" style="margin-left: 5px; margin-right: 5px;"/>
       </wv-cell>
     </wv-group>
 
@@ -35,13 +35,13 @@
 </template>
 
 <script>
-  import thumb from '../assets/images/wevue_placeholder.png'
+import thumb from '../assets/images/wevue_placeholder.png'
 
-  export default {
-    data () {
-      return {
-        thumb
-      }
+export default {
+  data () {
+    return {
+      thumb
     }
   }
+}
 </script>

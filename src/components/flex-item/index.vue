@@ -5,37 +5,37 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-flex-item',
+export default create({
+  name: 'wv-flex-item',
 
-    props: {
-      flex: {
-        type: [Number, String],
-        default: 1
-      }
+  props: {
+    flex: {
+      type: [Number, String],
+      default: 1
+    }
+  },
+
+  computed: {
+    gutter () {
+      return this.$parent.gutter
     },
 
-    computed: {
-      gutter () {
-        return this.$parent.gutter
-      },
+    style () {
+      let ret = {}
 
-      style () {
-        let ret = {}
-
-        if (this.gutter) {
-          ret.paddingLeft = this.gutter / 2 + 'px'
-          ret.paddingRight = ret.paddingLeft
-        }
-
-        ret.flex = this.flex
-
-        return ret
+      if (this.gutter) {
+        ret.paddingLeft = this.gutter / 2 + 'px'
+        ret.paddingRight = ret.paddingLeft
       }
+
+      ret.flex = this.flex
+
+      return ret
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

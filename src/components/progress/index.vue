@@ -10,28 +10,28 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-progress',
+export default create({
+  name: 'wv-progress',
 
-    props: {
-      percent: {
-        type: [Number, String]
-      },
-      showClear: {
-        type: Boolean,
-        default: true
-      }
+  props: {
+    percent: {
+      type: [Number, String]
     },
-
-    methods: {
-      onCancelClick (event) {
-        event.preventDefault()
-        this.$emit('cancel', this)
-      }
+    showClear: {
+      type: Boolean,
+      default: true
     }
-  })
+  },
+
+  methods: {
+    onCancelClick (event) {
+      event.preventDefault()
+      this.$emit('cancel', this)
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

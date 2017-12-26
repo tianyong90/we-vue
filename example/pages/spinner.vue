@@ -21,15 +21,15 @@
 </template>
 
 <script>
-  const SPINNER_TYPES = ['default', 'snake', 'double-snake', 'dot-circle', 'bar-circle']
+const SPINNER_TYPES = ['default', 'snake', 'double-snake', 'dot-circle', 'bar-circle']
 
-  export default {
-    data () {
-      return {
-        types: SPINNER_TYPES
-      }
+export default {
+  data () {
+    return {
+      types: SPINNER_TYPES
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

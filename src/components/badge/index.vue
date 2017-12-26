@@ -1,22 +1,24 @@
 <template>
-  <span class="weui-badge"
-        :class="{ 'weui-badge_dot': isDot }"
-        :style="{ 'background-color': color }">
-    <slot v-if="!isDot" />
+  <span
+    class="weui-badge"
+    :class="{ 'weui-badge_dot': isDot }"
+    :style="{ 'background-color': color }"
+  >
+    <slot v-if="!isDot"/>
   </span>
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-badge',
+export default create({
+  name: 'wv-badge',
 
-    props: {
-      color: String,
-      isDot: Boolean
-    }
-  })
+  props: {
+    color: String,
+    isDot: Boolean
+  }
+})
 </script>
 
 <style scoped lang="scss">

@@ -45,23 +45,23 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        navbar1_selected: 'navbar1_item2',
-        navbar2_selected: 'navbar2_item2',
-        navbar3_selected: 'navbar3_item2',
-        navbar4_selected: 'navbar4_item2',
-        navbar5_selected: 'navbar5_item2'
-      }
-    },
+export default {
+  data () {
+    return {
+      navbar1_selected: 'navbar1_item2',
+      navbar2_selected: 'navbar2_item2',
+      navbar3_selected: 'navbar3_item2',
+      navbar4_selected: 'navbar4_item2',
+      navbar5_selected: 'navbar5_item2'
+    }
+  },
 
-    methods: {
-      changed (e) {
-        console.log(e)
-      }
+  methods: {
+    changed (e) {
+      console.log(e)
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

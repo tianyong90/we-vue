@@ -6,50 +6,50 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-spinner',
+export default create({
+  name: 'wv-spinner',
 
-    props: {
-      type: {
-        type: String,
-        default: 'default'
-      },
-      size: {
-        type: Number,
-        default: 17
-      },
-      color: {
-        type: String,
-        default: '#aaa'
+  props: {
+    type: {
+      type: String,
+      default: 'default'
+    },
+    size: {
+      type: Number,
+      default: 17
+    },
+    color: {
+      type: String,
+      default: '#aaa'
+    }
+  },
+
+  computed: {
+    fontClassName () {
+      switch (this.type) {
+        case 'snake':
+          return 'icon-spinner-1'
+        case 'double-snake':
+          return 'icon-spinner9'
+        case 'bar-circle':
+          return 'icon-spinner2'
+        case 'dot-circle':
+          return 'icon-spinner1'
+        default:
+          return ''
       }
     },
 
-    computed: {
-      fontClassName () {
-        switch (this.type) {
-          case 'snake':
-            return 'icon-spinner-1'
-          case 'double-snake':
-            return 'icon-spinner9'
-          case 'bar-circle':
-            return 'icon-spinner2'
-          case 'dot-circle':
-            return 'icon-spinner1'
-          default:
-            return ''
-        }
-      },
-
-      style () {
-        return {
-          fontSize: this.size + 'px',
-          color: this.color
-        }
+    style () {
+      return {
+        fontSize: this.size + 'px',
+        color: this.color
       }
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

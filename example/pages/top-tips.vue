@@ -6,22 +6,22 @@
 </template>
 
 <script>
-  import TopTips from '../../src/components/top-tips'
+import TopTips from '../../src/components/top-tips'
 
-  export default {
-    methods: {
-      openTips () {
-        TopTips({
-          message: '提示信息',
-          duration: 5000
-        })
-      },
+export default {
+  methods: {
+    openTips () {
+      TopTips({
+        message: '提示信息',
+        duration: 5000
+      })
+    },
 
-      closeTips () {
-        TopTips.close()
-      }
+    closeTips () {
+      TopTips.close()
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

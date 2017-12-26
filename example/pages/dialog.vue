@@ -8,20 +8,20 @@
 </template>
 
 <script>
-  import Dialog from '../../src/components/dialog'
+import Dialog from '../../src/components/dialog'
 
-  export default {
-    methods: {
-      showDialog (skin, title) {
-        Dialog.confirm({
-          title: title,
-          message: '欢迎使用 we-vue!',
-          skin,
-          showCancelBtn: true
-        })
-      }
+export default {
+  methods: {
+    showDialog (skin, title) {
+      Dialog.confirm({
+        title: title,
+        message: '欢迎使用 we-vue!',
+        skin,
+        showCancelBtn: true
+      })
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

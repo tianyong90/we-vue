@@ -11,15 +11,15 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-panel',
+export default create({
+  name: 'wv-panel',
 
-    props: {
-      title: String
-    }
-  })
+  props: {
+    title: String
+  }
+})
 </script>
 
 <style scoped lang="scss">

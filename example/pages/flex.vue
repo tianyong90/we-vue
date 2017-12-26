@@ -2,7 +2,7 @@
   <div class="page page-with-padding">
     <wv-flex :gutter="10" class="demo-flex">
       <wv-flex-item>
-        <div class="placeholder"></div>
+        <div class="placeholder"/>
       </wv-flex-item>
     </wv-flex>
 
@@ -42,16 +42,16 @@
 </template>
 
 <script>
-  export default {
-    mounted () {
-    },
+export default {
+  mounted () {
+  },
 
-    data () {
-      return {}
-    },
+  data () {
+    return {}
+  },
 
-    methods: {}
-  }
+  methods: {}
+}
 </script>
 
 <style scoped lang="scss">

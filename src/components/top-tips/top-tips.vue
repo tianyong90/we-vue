@@ -5,18 +5,18 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
-  import PopupMixin from '../../mixins/popup'
+import { create } from '../../utils'
+import PopupMixin from '../../mixins/popup'
 
-  export default create({
-    name: 'wv-top-tips',
+export default create({
+  name: 'wv-top-tips',
 
-    mixins: [PopupMixin],
+  mixins: [PopupMixin],
 
-    props: {
-      message: String
-    }
-  })
+  props: {
+    message: String
+  }
+})
 </script>
 
 <style scoped lang="scss">

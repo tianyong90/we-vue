@@ -1,44 +1,45 @@
 <template>
   <div class="weui-form-preview">
     <div class="weui-form-preview__hd">
-      <label class="weui-form-preview__label" v-html="title" />
-      <em class="weui-form-preview__value" v-html="value" />
+      <label class="weui-form-preview__label" v-html="title"/>
+      <em class="weui-form-preview__value" v-html="value"/>
     </div>
     <div class="weui-form-preview__bd">
-      <div class="weui-form-preview__item" v-for="item, key, index) in dataItems" :key="key">
+      <div class="weui-form-preview__item" v-for="(item, key, index) in dataItems" :key="key">
         <label class="weui-form-preview__label">{{ item.label }}</label>
         <span class="weui-form-preview__value">{{ item.value }}</span>
       </div>
     </div>
     <div class="weui-form-preview__ft">
-      <div class="weui-form-preview__btn"
-           :class="item.type === 'primary' ? 'weui-form-preview__btn_primary' : 'weui-form-preview__btn_default'"
-           v-text="item.text"
-           @click="item.action"
-           v-for="item in buttons" />
+      <div
+        class="weui-form-preview__btn"
+        :class="item.type === 'primary' ? 'weui-form-preview__btn_primary' : 'weui-form-preview__btn_default'"
+        v-text="item.text"
+        @click="item.action"
+        v-for="item in buttons"/>
     </div>
   </div>
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-preview',
+export default create({
+  name: 'wv-preview',
 
-    props: {
-      title: String,
-      value: String,
-      dataItems: {
-        type: Array,
-        default: () => []
-      },
-      buttons: {
-        type: Array,
-        default: () => []
-      }
+  props: {
+    title: String,
+    value: String,
+    dataItems: {
+      type: Array,
+      default: () => []
+    },
+    buttons: {
+      type: Array,
+      default: () => []
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

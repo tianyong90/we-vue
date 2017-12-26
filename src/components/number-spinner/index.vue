@@ -1,130 +1,133 @@
 <template>
   <div class="wv-number-spinner">
-    <button class="spinner-btn btn-decrease"
-            :class="{ 'btn-disabled': btnDecreaseDisabled}"
-            :disabled="btnDecreaseDisabled"
-            @click="decrease"
+    <button
+      class="spinner-btn btn-decrease"
+      :class="{ 'btn-disabled': btnDecreaseDisabled}"
+      :disabled="btnDecreaseDisabled"
+      @click="decrease"
     >-
     </button>
-    <input type="number"
-           v-model.number="currentValue"
-           :disabled="disabled"
-           :readonly="!fillable"
-           @blur="onBlur"
-           :style="inputStyle" />
-    <button class="spinner-btn btn-increase"
-            :class="{ 'btn-disabled': btnIncreaseDisabled}"
-            :disabled="btnIncreaseDisabled"
-            @click="increase"
+    <input
+      type="number"
+      v-model.number="currentValue"
+      :disabled="disabled"
+      :readonly="!fillable"
+      @blur="onBlur"
+      :style="inputStyle">
+    <button
+      class="spinner-btn btn-increase"
+      :class="{ 'btn-disabled': btnIncreaseDisabled}"
+      :disabled="btnIncreaseDisabled"
+      @click="increase"
     >+
     </button>
   </div>
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-number-spinner',
+export default create({
+  name: 'wv-number-spinner',
 
-    props: {
-      min: {
-        type: Number,
-        default: 0
-      },
-      max: {
-        type: Number,
-        default: 100
-      },
-      step: {
-        type: Number,
-        default: 1
-      },
-      inputWidth: {
-        type: String,
-        default: '3em'
-      },
-      fillable: {
-        type: Boolean,
-        default: true
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      align: {
-        type: String,
-        default: 'center'
-      },
-      value: {
-        type: [Number, String],
-        default: 0,
-        validator: (val) => {
-          return typeof val === 'number' || val === ''
-        }
-      }
+  props: {
+    min: {
+      type: Number,
+      default: 0
     },
-
-    data () {
-      return {
-        currentValue: this.value
-      }
+    max: {
+      type: Number,
+      default: 100
     },
-
-    computed: {
-      btnDecreaseDisabled () {
-        return this.disabled || (this.currentValue === this.min)
-      },
-
-      btnIncreaseDisabled () {
-        return this.disabled || (this.currentValue === this.max)
-      },
-
-      inputStyle () {
-        return {
-          width: this.inputWidth,
-          textAlign: this.align
-        }
-      }
+    step: {
+      type: Number,
+      default: 1
     },
-
-    methods: {
-      onBlur () {
-        if (this.currentValue === '') {
-          this.currentValue = this.min
-        }
-      },
-
-      increase () {
-        this.currentValue += this.step
-      },
-
-      decrease () {
-        this.currentValue -= this.step
-      }
+    inputWidth: {
+      type: String,
+      default: '3em'
     },
-
-    watch: {
-      currentValue (val) {
-        this.$emit('input', val)
-        this.$emit('change', val)
-      },
-
-      value (val) {
-        if (typeof val === 'number') {
-          if (val <= this.min) {
-            this.currentValue = this.min
-          } else if (val >= this.max) {
-            this.currentValue = this.max
-          } else {
-            this.currentValue = val
-          }
-        } else if (val === '') {
-          this.currentValue = ''
-        }
+    fillable: {
+      type: Boolean,
+      default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    align: {
+      type: String,
+      default: 'center'
+    },
+    value: {
+      type: [Number, String],
+      default: 0,
+      validator: (val) => {
+        return typeof val === 'number' || val === ''
       }
     }
-  })
+  },
+
+  data () {
+    return {
+      currentValue: this.value
+    }
+  },
+
+  computed: {
+    btnDecreaseDisabled () {
+      return this.disabled || (this.currentValue === this.min)
+    },
+
+    btnIncreaseDisabled () {
+      return this.disabled || (this.currentValue === this.max)
+    },
+
+    inputStyle () {
+      return {
+        width: this.inputWidth,
+        textAlign: this.align
+      }
+    }
+  },
+
+  methods: {
+    onBlur () {
+      if (this.currentValue === '') {
+        this.currentValue = this.min
+      }
+    },
+
+    increase () {
+      this.currentValue += this.step
+    },
+
+    decrease () {
+      this.currentValue -= this.step
+    }
+  },
+
+  watch: {
+    currentValue (val) {
+      this.$emit('input', val)
+      this.$emit('change', val)
+    },
+
+    value (val) {
+      if (typeof val === 'number') {
+        if (val <= this.min) {
+          this.currentValue = this.min
+        } else if (val >= this.max) {
+          this.currentValue = this.max
+        } else {
+          this.currentValue = val
+        }
+      } else if (val === '') {
+        this.currentValue = ''
+      }
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

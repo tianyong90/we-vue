@@ -3,23 +3,23 @@
 </template>
 
 <script>
-  import RouterLink from '../../mixins/router-link'
-  import { create } from '../../utils'
+import RouterLink from '../../mixins/router-link'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-footer-link',
+export default create({
+  name: 'wv-footer-link',
 
-    mixins: [RouterLink],
+  mixins: [RouterLink],
 
-    props: {
-      text: String
-    },
+  props: {
+    text: String
+  },
 
-    methods: {
-      onClick () {
-        this.$emit('click')
-        this.routerLink()
-      }
+  methods: {
+    onClick () {
+      this.$emit('click')
+      this.routerLink()
     }
-  })
+  }
+})
 </script>

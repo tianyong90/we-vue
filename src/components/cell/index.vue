@@ -1,12 +1,16 @@
 <template>
-  <div class="weui-cell"
-       :class="{'weui-cell_access': isLink}"
-       @click="onClick">
+  <div
+    class="weui-cell"
+    :class="{'weui-cell_access': isLink}"
+    @click="onClick"
+  >
     <div class="weui-cell_hd">
-      <slot name="icon" />
+      <slot name="icon"/>
     </div>
     <div class="weui-cell__bd">
-      <slot name="bd"><p v-html="title" /></slot>
+      <slot name="bd">
+        <p v-html="title"/>
+      </slot>
     </div>
     <div class="weui-cell__ft">
       <slot name="ft">{{ value }}</slot>
@@ -15,31 +19,31 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
-  import RouterLink from '../../mixins/router-link'
+import { create } from '../../utils'
+import RouterLink from '../../mixins/router-link'
 
-  export default create({
-    name: 'wv-cell',
+export default create({
+  name: 'wv-cell',
 
-    mixins: [RouterLink],
+  mixins: [RouterLink],
 
-    props: {
-      title: {
-        type: [String, Number]
-      },
-      value: {
-        type: [String, Number]
-      },
-      isLink: Boolean
+  props: {
+    title: {
+      type: [String, Number]
     },
+    value: {
+      type: [String, Number]
+    },
+    isLink: Boolean
+  },
 
-    methods: {
-      onClick () {
-        this.$emit('click')
-        this.routerLink()
-      }
+  methods: {
+    onClick () {
+      this.$emit('click')
+      this.routerLink()
     }
-  })
+  }
+})
 </script>
 
 <style scoped lang="scss">

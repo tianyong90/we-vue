@@ -1,14 +1,16 @@
 <template>
   <div class="weui-cell">
     <div class="weui-cell__bd">
-      <textarea @change="$emit('change', currentValue)"
-                class="weui-textarea"
-                ref="rextarea"
-                :placeholder="placeholder"
-                :rows="rows"
-                :disabled="disabled"
-                :readonly="readonly"
-                v-model="currentValue" />
+      <textarea
+        @change="$emit('change', currentValue)"
+        class="weui-textarea"
+        ref="rextarea"
+        :placeholder="placeholder"
+        :rows="rows"
+        :disabled="disabled"
+        :readonly="readonly"
+        v-model="currentValue"
+      />
       <div class="weui-textarea-counter" v-if="showCounter">
         {{ length }}/{{ maxLength }}
       </div>
@@ -17,68 +19,68 @@
 </template>
 
 <script>
-  import { create } from '../../utils'
+import { create } from '../../utils'
 
-  export default create({
-    name: 'wv-textarea',
+export default create({
+  name: 'wv-textarea',
 
-    props: {
-      placeholder: String,
-      showCounter: {
-        type: Boolean,
-        default: true
-      },
-      rows: {
-        type: [Number, String],
-        default: 3
-      },
-      maxLength: {
-        type: [Number, String],
-        default: 100
-      },
-      disabled: Boolean,
-      readonly: Boolean,
-      value: {
-        type: String,
-        default: ''
-      }
+  props: {
+    placeholder: String,
+    showCounter: {
+      type: Boolean,
+      default: true
     },
-
-    data () {
-      return {
-        currentValue: this.value
-      }
+    rows: {
+      type: [Number, String],
+      default: 3
     },
-
-    computed: {
-      length () {
-        return this.currentValue ? this.currentValue.length : 0
-      }
+    maxLength: {
+      type: [Number, String],
+      default: 100
     },
-
-    mounted () {
-      if (this.maxLength && this.length > this.maxLength) {
-        this.currentValue = this.value.slice(0, this.maxLength)
-      } else {
-        this.currentValue = this.value
-      }
-    },
-
-    watch: {
-      currentValue (val) {
-        this.$emit('input', val)
-      },
-
-      value (val) {
-        // 有最大字数限制时对超出限制部分进行截取
-        if (this.maxLength && val.length > this.maxLength) {
-          val = val.slice(0, this.maxLength)
-        }
-
-        this.currentValue = val
-      }
+    disabled: Boolean,
+    readonly: Boolean,
+    value: {
+      type: String,
+      default: ''
     }
-  })
+  },
+
+  data () {
+    return {
+      currentValue: this.value
+    }
+  },
+
+  computed: {
+    length () {
+      return this.currentValue ? this.currentValue.length : 0
+    }
+  },
+
+  mounted () {
+    if (this.maxLength && this.length > this.maxLength) {
+      this.currentValue = this.value.slice(0, this.maxLength)
+    } else {
+      this.currentValue = this.value
+    }
+  },
+
+  watch: {
+    currentValue (val) {
+      this.$emit('input', val)
+    },
+
+    value (val) {
+      // 有最大字数限制时对超出限制部分进行截取
+      if (this.maxLength && val.length > this.maxLength) {
+        val = val.slice(0, this.maxLength)
+      }
+
+      this.currentValue = val
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

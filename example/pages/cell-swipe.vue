@@ -10,10 +10,10 @@
     <wv-group title="图标按钮">
       <wv-cell-swipe title="标题文字" value="hello">
         <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">
-          <i class="iconfont icon-rubish"></i>
+          <i class="iconfont icon-rubish"/>
         </wv-cell-swipe-button>
         <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">
-          <i class="iconfont icon-view"></i>
+          <i class="iconfont icon-view"/>
         </wv-cell-swipe-button>
       </wv-cell-swipe>
     </wv-group>
@@ -36,25 +36,25 @@
 </template>
 
 <script>
-  import imgIcon from '../assets/images/icon_tabbar.png'
+import imgIcon from '../assets/images/icon_tabbar.png'
 
-  export default {
-    data () {
-      return {
-        imgIcon
-      }
+export default {
+  data () {
+    return {
+      imgIcon
+    }
+  },
+
+  methods: {
+    deleteClicked () {
+      console.log('delete')
     },
 
-    methods: {
-      deleteClicked () {
-        console.log('delete')
-      },
-
-      readClicked () {
-        console.log('read')
-      }
+    readClicked () {
+      console.log('read')
     }
   }
+}
 </script>
 
 <style scoped lang="scss">
