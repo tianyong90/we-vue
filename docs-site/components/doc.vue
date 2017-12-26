@@ -21,7 +21,7 @@
     </div>
     <div class="demo-wrap" :style="{ top: demoWrapTop + 'px' }">
       <div class="mobile-top"></div>
-      <iframe id="iframe-demo" src="http://demo.wevue.org" frameborder="0"></iframe>
+      <iframe id="iframe-demo" src="//demo.wevue.org" frameborder="0"></iframe>
     </div>
   </div>
 </template>
