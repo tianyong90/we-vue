@@ -3,7 +3,7 @@ import PopupMixinComponent from '../components/popup-mixin-component'
 // import PopupMixin from '@/mixins/popup'
 import { dragHelper } from '../utils'
 
-describe('flex', () => {
+describe('mixins/popup', () => {
   let wrapper
   afterEach(() => {
     wrapper && wrapper.destroy()

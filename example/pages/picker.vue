@@ -9,8 +9,6 @@
       <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true" />
     </wv-group>
 
-    <h1>{{ res }}</h1>
-
     <wv-picker
       :visible.sync="peoplePickerShow"
       :slots="peopleSlots"

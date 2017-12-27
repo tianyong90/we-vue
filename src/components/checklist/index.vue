@@ -38,7 +38,10 @@ export default create({
       type: Array,
       required: true
     },
-    value: Array
+    value: {
+      type: Array,
+      default: () => []
+    }
   },
 
   data () {
