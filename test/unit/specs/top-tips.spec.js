@@ -29,10 +29,16 @@ describe('test top-tips api', () => {
   })
 
   it('open a top-tips with string parameter', () => {
-    TopTipsApi('test')
+    const localVue = createLocalVue()
+    let instance = TopTipsApi('test')
 
-    expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
-    expect(document.querySelector('.weui-toptips').textContent).toBe('test')
+    expect(instance.visible).toBe(true)
+
+    localVue.nextTick(() => {
+      expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
+      expect(document.querySelector('.weui-toptips').textContent).toBe('test')
+    })
+
   })
 
   it('create a toast with duration', () => {

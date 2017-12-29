@@ -87,7 +87,7 @@
     "karma-spec-reporter": "^0.0.32",
     "karma-webpack": "^2.0.2",
     "listr": "^0.13.0",
-    "mocha": "^4.0.1",
+    "mocha": "^4.1.0",
     "my-local-ip": "^1.0.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.7.2",

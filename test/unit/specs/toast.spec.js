@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow, createLocalVue } from 'vue-test-utils'
 import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
 import sinon from 'sinon'
@@ -16,11 +16,12 @@ describe('toast api', () => {
   })
 
   it('create a toast', () => {
+    const localVue = createLocalVue()
     ToastApi({})
 
-    setTimeout(() => {
+    localVue.nextTick(() => {
       expect(document.querySelector('.weui-toast')).toBeTruthy()
-    }, 200)
+    })
   })
 
   it('create a toast using string parameter', () => {
@@ -61,21 +62,23 @@ describe('toast api', () => {
   })
 
   it('create a fail toast', () => {
+    const localVue = createLocalVue()
     let instance = ToastApi.fail('test')
 
-    setTimeout(() => {
+    localVue.nextTick(() => {
       expect(document.querySelector('.weui-toast')).toBeTruthy()
       expect(instance.type).toBe('fail')
-    }, 200)
+    })
   })
 
   it('create a loading toast', () => {
+    const localVue = createLocalVue()
     let instance = ToastApi.loading('test')
 
-    setTimeout(() => {
+    localVue.nextTick(() => {
       expect(document.querySelector('.weui-toast')).toBeTruthy()
       expect(instance.type).toBe('loading')
-    }, 200)
+    })
   })
 })
 
@@ -95,6 +98,7 @@ describe('toast', () => {
   })
 
   it('text toast', () => {
+    const localVue = createLocalVue()
     wrapper = shallow(Toast, {
       propsData: {
         type: 'text',
@@ -102,7 +106,9 @@ describe('toast', () => {
       }
     })
 
-    expect(wrapper.contains('.weui-icon_toast')).toBeFalsy()
-    expect(wrapper.find('.weui-toast').hasStyle('width', '7em')).toBeTruthy()
+    localVue.nextTick(() => {
+      expect(wrapper.contains('.weui-icon_toast')).toBeFalsy()
+      expect(wrapper.find('.weui-toast').hasStyle('width', '7em')).toBeTruthy()
+    })
   })
 })

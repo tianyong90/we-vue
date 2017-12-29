@@ -35,7 +35,6 @@ describe('mixins/popup', () => {
 
     expect(wrapper.emitted('update:visible').length).toBe(1)
     expect(wrapper.emitted('update:visible')[0]).toEqual([true])
-    expect(wrapper.emitted('open')).toBeTruthy()
     expect(wrapper.vm.opened).toBe(true)
   })
 
@@ -61,7 +60,6 @@ describe('mixins/popup', () => {
     wrapper.vm.close()
 
     expect(wrapper.emitted('update:visible')[0]).toEqual([false])
-    expect(wrapper.emitted('close')).toBeTruthy()
     expect(wrapper.vm.opened).toBe(false)
   })
 
@@ -92,25 +90,21 @@ describe('mixins/popup', () => {
     wrapper.vm.close()
   })
 
-  // TODO: bugs?
   it('close popup via click mask', () => {
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
       propsData: {
         visible: true,
-        mask: false,
-        closeOnClickMask: true,
-        maskClass: 'fuck'
-      },
-      data: {
-        opened: true
+        mask: true,
+        closeOnClickMask: true
       }
     })
 
-    const body = document.body.outerHTML
+    wrapper.vm.open()
 
     // trigger click on the mask element
-    const wvModal = document.querySelector('.vm-modal')
+    const wvModal = document.querySelector('.wv-modal')
+    wvModal.click()
 
     expect(wrapper.vm.opened).toBe(false)
   })

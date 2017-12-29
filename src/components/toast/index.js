@@ -26,6 +26,10 @@ const Toast = (options = {}) => {
   }
   options = { ...defaultOptions, ...options }
 
+  if (options.type === 'fail') {
+    options.icon = 'warn'
+  }
+
   if (!instance) {
     initInstance()
   }
@@ -44,10 +48,6 @@ const Toast = (options = {}) => {
 }
 
 const createMethod = type => (options = {}) => {
-  if (type === 'fail') {
-    options.icon = 'warn'
-  }
-
   return Toast({
     type,
     message: typeof options === 'object' ? options.message : options,

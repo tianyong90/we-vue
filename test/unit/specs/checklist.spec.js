@@ -66,8 +66,22 @@ describe('checklist', () => {
     })
 
     expect(wrapper.vm.currentValue.length).toBe(2)
-    expect(wrapper.vm.currentValue[0]).toBe('value1')
-    expect(wrapper.vm.currentValue[1]).toBe('value2')
+    expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
+
+    // create a fresh wrapper
+    wrapper = shallow(Checklist, {
+      propsData: {
+        max: 1,
+        options: options
+      }
+    })
+
+    wrapper.setData({
+      currentValue: options
+    })
+
+    expect(wrapper.emitted().input.length).toBe(1)
+    expect(wrapper.emitted().input[0][0]).toEqual(['value1'])
   })
 
   it('watch currentValue', () => {
