@@ -1,6 +1,12 @@
 <template>
   <div>
-    <wv-checklist title="基本示例" :options="options" v-model="checkedItems"/>
+    <wv-checklist
+      title="基本示例"
+      :options="options"
+      v-model="checkedItems"
+      :max="1"
+      @change="onChange"
+    />
   </div>
 </template>
 
@@ -28,6 +34,12 @@ export default {
         }
       ],
       checkedItems: ['value1', 'value3']
+    }
+  },
+
+  methods: {
+    onChange (val) {
+      console.log(val)
     }
   }
 }

@@ -31,7 +31,12 @@ export default create({
   name: 'wv-checklist',
 
   props: {
-    max: Number,
+    max: {
+      type: Number,
+      validator: (val) => {
+        return val >= 0
+      }
+    },
     title: String,
     align: String,
     options: {
@@ -50,6 +55,14 @@ export default create({
     }
   },
 
+  created () {
+    if (this.max && this.value.length > this.max) {
+      this.currentValue = this.value.slice(0, this.max)
+    } else {
+      this.currentValue = this.value
+    }
+  },
+
   computed: {
     limit () {
       return this.max < this.currentValue.length
@@ -57,10 +70,16 @@ export default create({
   },
 
   watch: {
-    currentValue (val) {
-      if (this.limit) val.pop()
+    currentValue (val, oldValue) {
+      if (this.max && val.length > this.max) {
+        val = val.slice(0, this.max)
+      }
+
       this.$emit('input', val)
-      this.$emit('change', val)
+
+      if (JSON.stringify(val) !== JSON.stringify(oldValue)) {
+        this.$emit('change', val)
+      }
     },
 
     value (val) {

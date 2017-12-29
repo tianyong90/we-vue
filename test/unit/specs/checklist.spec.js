@@ -60,15 +60,14 @@ describe('checklist', () => {
     wrapper = shallow(Checklist, {
       propsData: {
         max: 2,
-        options: options
+        options: options,
+        value: options
       }
     })
 
-    wrapper.setData({
-      currentValue: options
-    })
-
     expect(wrapper.vm.currentValue.length).toBe(2)
+    expect(wrapper.vm.currentValue[0]).toBe('value1')
+    expect(wrapper.vm.currentValue[1]).toBe('value2')
   })
 
   it('watch currentValue', () => {
