@@ -69,7 +69,7 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "^4.0.0-beta.4",
+    "eslint-plugin-vue": "^4.0.0",
     "expect": "^22.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "faker": "^4.1.0",
