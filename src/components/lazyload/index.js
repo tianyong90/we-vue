@@ -1,3 +1,4 @@
+import Lazyload from 'vue-lazyload'
 import '../../style/empty.css'
 
-export { default } from './lazyload'
+export default Lazyload

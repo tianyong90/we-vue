@@ -98,7 +98,6 @@ describe('toast', () => {
   })
 
   it('text toast', () => {
-    const localVue = createLocalVue()
     wrapper = shallow(Toast, {
       propsData: {
         type: 'text',
@@ -106,7 +105,7 @@ describe('toast', () => {
       }
     })
 
-    localVue.nextTick(() => {
+    wrapper.vm.$nextTick(() => {
       expect(wrapper.contains('.weui-icon_toast')).toBeFalsy()
       expect(wrapper.find('.weui-toast').hasStyle('width', '7em')).toBeTruthy()
     })

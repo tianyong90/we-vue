@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from 'vue-test-utils'
 import InfiniteScrollComponent from '../components/infinite-scroll-component'
-import InfiniteScroll from '@/components/infinite-scroll'
 import sinon from 'sinon'
 
 describe('infinite-scroll', () => {

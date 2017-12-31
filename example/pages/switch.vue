@@ -5,7 +5,7 @@
       <wv-switch title="开关2（禁用）" disabled v-model="switchValue2"/>
     </wv-group>
 
-    <div class="single-switches">
+    <div class="standalone-switches">
       <wv-switch v-model="switchValue3" :is-in-cell="false"/>
       <wv-switch v-model="switchValue4" :is-in-cell="false" disabled/>
     </div>
@@ -26,7 +26,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .single-switches {
-    margin-top: 20px;
+  .standalone-switches {
+    margin: 20px 0;
+
+    .wv-switch {
+      margin: 10px auto;
+    }
   }
 </style>

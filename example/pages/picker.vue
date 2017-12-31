@@ -187,8 +187,8 @@ export default {
 
     onAddressChange (picker, value) {
       console.log(value)
-      picker.setSlotValues(1, getCities(value[0]))
-      picker.setSlotValues(2, getAreas(value[0], value[1]))
+      // picker.setSlotValues(1, getCities(value[0]))
+      // picker.setSlotValues(2, getAreas(value[0], value[1]))
     },
 
     confirmAddress (picker) {
