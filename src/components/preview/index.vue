@@ -13,10 +13,12 @@
     <div class="weui-form-preview__ft">
       <div
         class="weui-form-preview__btn"
-        :class="item.type === 'primary' ? 'weui-form-preview__btn_primary' : 'weui-form-preview__btn_default'"
-        v-text="item.text"
-        @click="item.action"
-        v-for="item in buttons"/>
+        v-for="(button, index) in buttons"
+        :key="index"
+        :class="button.type === 'primary' ? 'weui-form-preview__btn_primary' : 'weui-form-preview__btn_default'"
+        v-text="button.text"
+        @click="button.action"
+      />
     </div>
   </div>
 </template>

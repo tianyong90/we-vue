@@ -13,7 +13,11 @@
       <slot/>
     </div>
     <div class="wv-swipe__indicators" v-if="showIndicators && count > 1">
-      <i v-for="index in count" :class="{ 'wv-swipe__indicator--active': index - 1 === activeIndicator }"/>
+      <i
+        v-for="index in count"
+        :key="index"
+        :class="{ 'wv-swipe__indicator--active': index - 1 === activeIndicator }"
+      />
     </div>
   </div>
 </template>

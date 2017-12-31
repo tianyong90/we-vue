@@ -38,7 +38,6 @@ describe('test top-tips api', () => {
       expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
       expect(document.querySelector('.weui-toptips').textContent).toBe('test')
     })
-
   })
 
   it('create a toast with duration', () => {

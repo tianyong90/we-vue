@@ -23,11 +23,9 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'vue/jsx-uses-vars': 'error',
-    'vue/require-v-for-key': 'off',
     "vue/require-default-prop": 'off',
-    "vue/name-property-casing": 'off',
     "vue/no-unused-vars": 'off',
+    "vue/name-property-casing": ['error', 'kebab-case'],
     'vue/max-attributes-per-line': ['error', {
       "singleline": 5,
       "multiline": {
