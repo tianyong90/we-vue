@@ -206,6 +206,7 @@ export default create({
       })
     },
 
+    // adjust index, avoid disabled options
     adjustIndex (index) {
       index = range(index, 0, this.count)
       for (let i = index; i < this.count; i++) {
@@ -223,11 +224,13 @@ export default create({
     },
 
     setValue (value) {
-      const {options} = this
-      const index = options.findIndex(option => {
+      const { options } = this
+      const valueIndex = options.findIndex(option => {
         return this.getOptionText(option) === value
       })
-      this.setIndex(index)
+      if (valueIndex > -1) {
+        this.setIndex(valueIndex)
+      }
     }
   },
 

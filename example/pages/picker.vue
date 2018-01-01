@@ -41,10 +41,12 @@
 <script>
 import chinaAreaData from 'china-area-data'
 
-let provinces = Object.values(chinaAreaData[86])
+const provinces = Object.values(chinaAreaData[86])
+
+console.log(provinces)
 
 // 获取某一省下的市
-function getCities (province) {
+const getCities = (province) => {
   let provinceCode
   for (let i in chinaAreaData[86]) {
     if (province === chinaAreaData[86][i]) {
@@ -52,8 +54,7 @@ function getCities (province) {
       break
     }
   }
-
-  return Object.values(chinaAreaData[provinceCode])
+  return typeof chinaAreaData[provinceCode] === 'object' ? Object.values(chinaAreaData[provinceCode]) : []
 }
 
 // 获取某一市下的区/县
@@ -74,7 +75,7 @@ function getAreas (province, city) {
   }
 
   if (chinaAreaData[cityCode]) {
-    return Object.values(chinaAreaData[cityCode])
+    return typeof chinaAreaData[cityCode] === 'object' ? Object.values(chinaAreaData[cityCode]) : []
   } else {
     // 只有两级的情况
     return []
@@ -153,10 +154,10 @@ export default {
           values: provinces
         },
         {
-          values: []
+          values: getCities('湖北省')
         },
         {
-          values: []
+          values: getAreas('湖北省', '宜昌市')
         }
       ]
     }
@@ -185,10 +186,9 @@ export default {
       this.dayAndTime = picker.getValues()
     },
 
-    onAddressChange (picker, value) {
-      console.log(value)
-      // picker.setSlotValues(1, getCities(value[0]))
-      // picker.setSlotValues(2, getAreas(value[0], value[1]))
+    onAddressChange (picker, addressValues, slotIndex) {
+      picker.setSlotValues(1, getCities(addressValues[0]))
+      picker.setSlotValues(2, getAreas(addressValues[0], addressValues[1]))
     },
 
     confirmAddress (picker) {

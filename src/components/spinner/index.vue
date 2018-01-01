@@ -1,7 +1,7 @@
 <template>
-  <i class="weui-loading" :style="style" v-if="type === 'default'" />
+  <i class="weui-loading" :style="style" v-if="type === 'default'"/>
   <span v-else class="wv-spinner">
-    <i class="iconfont" :class="fontClassName" :style="style" />
+    <i class="iconfont" :class="fontClassName" :style="style"/>
   </span>
 </template>
 
@@ -63,7 +63,7 @@ export default create({
     animation: circle 1.2s infinite linear;
   }
 
-  @-webkit-keyframes circle {
+  @keyframes circle {
     0% {
       transform: rotate(0deg);
     }

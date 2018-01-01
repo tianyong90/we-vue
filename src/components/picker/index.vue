@@ -27,7 +27,7 @@
             :content="slot.content"
             :default-index="slot.defaultIndex"
             :visible-item-count="visibleItemCount"
-            @change="slotValueChange"
+            @change="slotValueChange(index)"
           />
         </div>
       </div>
@@ -106,9 +106,9 @@ export default create({
       this.currentSlots = this.slots
     },
 
-    slotValueChange () {
+    slotValueChange (slotIndex) {
       this.currentValue = this.getValues()
-      this.$emit('change', this, this.getValues())
+      this.$emit('change', this, this.getValues(), slotIndex)
     },
 
     getSlot (slotIndex) {
