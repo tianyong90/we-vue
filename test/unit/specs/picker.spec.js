@@ -19,9 +19,9 @@ describe('picker', () => {
     expect(wrapper.name()).toBe('wv-picker')
   })
 
-  // TODO:
   it('create a single-column picker', () => {
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
         slots: [{
           values: [1, 2, 3],
@@ -111,23 +111,6 @@ describe('picker', () => {
     const slotValuesResult = wrapper.vm.setSlotValues(0)
 
     expect(slotValuesResult).toEqual(slotValues)
-  })
-
-  it('getSlotValue method', () => {
-    const slotValues = [1, 2, 3]
-
-    wrapper = mount(Picker, {
-      propsData: {
-        slots: [{
-          values: slotValues,
-          default: 0
-        }]
-      }
-    })
-
-    wrapper.vm.setSlotValue(0, 1)
-
-    expect(wrapper.vm.value).toEqual(1)
   })
 
   it('setValues method', () => {

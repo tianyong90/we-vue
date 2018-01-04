@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils'
+import { mount } from 'vue-test-utils'
 import InfiniteScrollComponent from '../components/infinite-scroll-component'
 import sinon from 'sinon'
 
@@ -8,47 +8,99 @@ describe('infinite-scroll', () => {
     wrapper && wrapper.destroy()
   })
 
-  let defaultList = []
-  for (let i = 0; i < 10; i++) {
-    defaultList.push(i)
-  }
-
-  // TODO:
   it('create', () => {
     const loadMoreSpy = sinon.spy()
-    const localVue = createLocalVue()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
-        list: defaultList
+        list: [],
+        onLoadMore: loadMoreSpy
       },
       methods: {
         loadMore: loadMoreSpy
       }
     })
 
-    localVue.nextTick(() => {
-      wrapper.element.scrollTo(0, 1000)
+    setTimeout(() => {
 
-      expect(loadMoreSpy.called).toBe(true)
+      expect(loadMoreSpy.called).toBe(false)
+
+    }, 500)
+
+    wrapper.vm.$nextTick(() => {
+      expect(loadMoreSpy.called).toBe(false)
     })
   })
 
-  // TODO;
-  // it('unbind directive', () => {
-  //   const loadMoreSpy = sinon.spy()
-  //   wrapper = mount(InfiniteScrollComponent, {
-  //     attachToDocument: true,
-  //     propsData: {
-  //       disabled: false,
-  //       list: defaultList,
-  //       loadMore: loadMoreSpy
-  //     }
-  //   })
-  //
-  //   InfiniteScroll.unbind(wrapper.find('.list').element)
-  //
-  //   expect(loadMoreSpy.called).toBeTruthy()
-  // })
+  // TODO:
+  it('test loadMore function', (done) => {
+    const loadMoreSpy = sinon.spy(function () {
+      wrapper.vm.list = wrapper.vm.list.concat([{id: 1}, {id: 2}, {id: 3}])
+      wrapper.vm.disabled = true
+    })
+    wrapper = mount(InfiniteScrollComponent, {
+      attachToDocument: true,
+      propsData: {
+        disabled: false,
+        list: [{id: 10}],
+        onLoadMore: loadMoreSpy
+      }
+    })
+
+    setTimeout(() => {
+      const callCount = loadMoreSpy.callCount
+
+      const item = wrapper.findAll('.list-item')
+      // expect(loadMoreSpy.calledOnce).toBe(true)
+      expect(loadMoreSpy.called).toBe(true)
+      expect(item.length).toEqual(4)
+      expect(item[item.length - 1].text()).toEqual('3')
+      done()
+    }, 500)
+  })
+
+  it('test disabled', (done) => {
+    const loadMoreSpy = sinon.spy()
+    wrapper = mount(InfiniteScrollComponent, {
+      attachToDocument: true,
+      propsData: {
+        disabled: true,
+        list: [],
+        onLoadMore: loadMoreSpy
+      }
+    })
+
+    setTimeout(() => {
+      expect(loadMoreSpy.called).toBe(false)
+    }, 500)
+
+    setTimeout(() => {
+      wrapper.setProps({
+        disabled: false
+      })
+
+      setTimeout(() => {
+        expect(loadMoreSpy.called).toBe(true)
+        done()
+      }, 500)
+    }, 600)
+  })
+
+  it('don not loadmore when mounted, immedialateCheck === false', (done) => {
+    const loadMoreSpy = sinon.spy()
+    wrapper = mount(InfiniteScrollComponent, {
+      attachToDocument: true,
+      propsData: {
+        immediateCheck: false,
+        list: [],
+        onLoadMore: loadMoreSpy
+      }
+    })
+
+    setTimeout(() => {
+      expect(loadMoreSpy.called).toBe(false)
+      done()
+    }, 500)
+  })
 })

@@ -1,11 +1,15 @@
 <template>
-  <div style="width: 100%; height: 300px;" @touchstart="onTouchstart">
-    <div class="list"
-         v-infinite-scroll="loadMore"
-         :infinite-scroll-disabled="disabled"
-         :infinite-scroll-distance="distance"
-    >
-      <div class="item" v-for="item in list">{{ item.id }}</div>
+  <div
+    class="list"
+    v-infinite-scroll="triggerLoadMore"
+    infinite-scroll-disabled="disabled"
+    infinite-scroll-immediate-check="immediateCheck"
+    infinite-scroll-distance="distance"
+  >
+    <div
+      class="list-item"
+      v-for="item in list"
+    >{{ item.id }}
     </div>
   </div>
 </template>
@@ -21,19 +25,24 @@
     props: {
       list: Array,
       disabled: Boolean,
-      distance: Number
+      distance: Number,
+      immediateCheck: {
+        type: Boolean,
+        default: true
+      },
+      onLoadMore: {
+        type: Function,
+        default () {
+          return function () {}
+        }
+      }
     },
 
     methods: {
-      loadMore () {}
+      triggerLoadMore () {
+        this.onLoadMore()
+      }
     }
   }
 </script>
 
-<style scoped lang="">
-  .item {
-    display: block;
-    width: 100%;
-    height: 30px;
-  }
-</style>

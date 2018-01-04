@@ -1,7 +1,7 @@
 import ScrollUtil from '@/utils/scroll'
 import sinon from 'sinon'
 
-describe('test top-tips api', () => {
+describe('utils scroll', () => {
   let clock
 
   beforeEach(() => {
@@ -20,10 +20,35 @@ describe('test top-tips api', () => {
     // append element to document
     document.body.appendChild(element)
     expect(ScrollUtil.isAttached(element)).toBe(true)
+
+    // create a mockElement
+    const mockElement = {
+      parentNode: {
+        nodeType: 11
+      }
+    }
+    expect(ScrollUtil.isAttached(mockElement)).toBe(false)
   })
 
+  // TODO:
   it('debounce method', () => {
-    // TODO
+    // debounce should be defines as functin
+    expect(typeof ScrollUtil.debounce).toEqual('function')
+
+    // debounce should return a functin
+    expect(typeof ScrollUtil.debounce()).toEqual('function')
+
+    // the callback stub
+    const callback = sinon.stub()
+
+    let fn = ScrollUtil.debounce(callback, 100)
+
+    setTimeout(fn, 100)
+    setTimeout(fn, 250)
+
+    clock.tick(200)
+
+    expect(callback.called).toBe(true)
   })
 
   it('getScrollEventTarget method', () => {

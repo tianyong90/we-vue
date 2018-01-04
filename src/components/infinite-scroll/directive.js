@@ -1,210 +1,123 @@
-import Vue from 'vue'
+import scrollUtil from '../../utils/scroll'
 
-const ctx = '@@InfiniteScroll'
+const CONTEXT = '@@InfiniteScroll'
+const DISTANCE = 300
 
-let throttle = function (fn, delay) {
-  let now, lastExec, timer, context, args
-
-  let execute = function () {
-    fn.apply(context, args)
-    lastExec = now
+function doBindEvent () {
+  if (this.el[CONTEXT].binded) {
+    return
   }
+  this.el[CONTEXT].binded = true
 
-  return function () {
-    context = this
-    args = arguments
+  this.scrollEventTarget = scrollUtil.getScrollEventTarget(this.el)
+  this.scrollEventListener = scrollUtil.debounce(handleScrollEvent.bind(this), 200)
+  this.scrollEventTarget.addEventListener('scroll', this.scrollEventListener, true)
 
-    now = Date.now()
-
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
-    }
-
-    if (lastExec) {
-      let diff = delay - (now - lastExec)
-      if (diff < 0) {
-        execute()
-      } else {
-        timer = setTimeout(() => {
-          execute()
-        }, diff)
-      }
-    } else {
-      execute()
-    }
-  }
-}
-
-let getScrollTop = function (element) {
-  if (element === window) {
-    return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop)
-  }
-
-  return element.scrollTop
-}
-
-let getComputedStyle = Vue.prototype.$isServer ? {} : document.defaultView.getComputedStyle
-
-let getScrollEventTarget = function (element) {
-  let currentNode = element
-  // bugfix, see http://w3help.org/zh-cn/causes/SD9013 and http://stackoverflow.com/questions/17016740/onscroll-function-is-not-working-for-chrome
-  while (currentNode && currentNode.tagName !== 'HTML' && currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
-    let overflowY = getComputedStyle(currentNode).overflowY
-    if (overflowY === 'scroll' || overflowY === 'auto') {
-      return currentNode
-    }
-    currentNode = currentNode.parentNode
-  }
-  return window
-}
-
-let getVisibleHeight = function (element) {
-  if (element === window) {
-    return document.documentElement.clientHeight
-  }
-
-  return element.clientHeight
-}
-
-let getElementTop = function (element) {
-  if (element === window) {
-    return getScrollTop(window)
-  }
-  return element.getBoundingClientRect().top + getScrollTop(window)
-}
-
-let isAttached = function (element) {
-  let currentNode = element.parentNode
-  while (currentNode) {
-    if (currentNode.tagName === 'HTML') {
-      return true
-    }
-    if (currentNode.nodeType === 11) {
-      return false
-    }
-    currentNode = currentNode.parentNode
-  }
-  return false
-}
-
-let doBind = function () {
-  if (this.binded) return
-  this.binded = true
-
-  let directive = this
-  let element = directive.el
-
-  directive.scrollEventTarget = getScrollEventTarget(element)
-  directive.scrollListener = throttle(doCheck.bind(directive), 200)
-  directive.scrollEventTarget.addEventListener('scroll', directive.scrollListener)
-
-  let disabledExpr = element.getAttribute('infinite-scroll-disabled')
+  const disabledExpr = this.el.getAttribute('infinite-scroll-disabled')
   let disabled = false
 
   if (disabledExpr) {
-    this.vm.$watch(disabledExpr, function (value) {
-      directive.disabled = value
-      if (!value && directive.immediateCheck) {
-        doCheck.call(directive)
-      }
+    this.vm.$watch(disabledExpr, (value) => {
+      this.disabled = value
+      this.scrollEventListener()
     })
-    disabled = Boolean(directive.vm[disabledExpr])
+    disabled = Boolean(this.vm[disabledExpr])
   }
-  directive.disabled = disabled
+  this.disabled = disabled
 
-  let distanceExpr = element.getAttribute('infinite-scroll-distance')
-  let distance = 0
-  if (distanceExpr) {
-    distance = Number(directive.vm[distanceExpr] || distanceExpr)
-    if (isNaN(distance)) {
-      distance = 0
-    }
-  }
-  directive.distance = distance
+  let distance = this.el.getAttribute('infinite-scroll-distance')
+  this.distance = Number(distance) || DISTANCE
 
-  let immediateCheckExpr = element.getAttribute('infinite-scroll-immediate-check')
+  const immediateCheckExpr = this.el.getAttribute('infinite-scroll-immediate-check')
   let immediateCheck = true
   if (immediateCheckExpr) {
-    immediateCheck = Boolean(directive.vm[immediateCheckExpr])
+    immediateCheck = Boolean(this.vm[immediateCheckExpr])
   }
-  directive.immediateCheck = immediateCheck
+  this.immediateCheck = immediateCheck
 
   if (immediateCheck) {
-    doCheck.call(directive)
-  }
-
-  let eventName = element.getAttribute('infinite-scroll-listen-for-event')
-  if (eventName) {
-    directive.vm.$on(eventName, function () {
-      doCheck.call(directive)
-    })
+    this.scrollEventListener()
   }
 }
 
-let doCheck = function (force) {
-  let scrollEventTarget = this.scrollEventTarget
-  let element = this.el
-  let distance = this.distance
+/**
+ * handle the scroll event
+ */
+function handleScrollEvent () {
+  const scrollEventTarget = this.scrollEventTarget
+  const element = this.el
 
-  if (force !== true && this.disabled) return //eslint-disable-line
-  let viewportScrollTop = getScrollTop(scrollEventTarget)
-  let viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget)
-
-  let shouldTrigger = false
-
-  if (scrollEventTarget === element) {
-    shouldTrigger = scrollEventTarget.scrollHeight - viewportBottom <= distance
-  } else {
-    let elementBottom = getElementTop(element) - getElementTop(scrollEventTarget) + element.offsetHeight + viewportScrollTop
-
-    shouldTrigger = viewportBottom + distance >= elementBottom
+  if (this.disabled) {
+    return
   }
 
-  if (shouldTrigger && this.expression) {
+  const targetScrollTop = scrollUtil.getScrollTop(scrollEventTarget)
+  const targetBottom = targetScrollTop + scrollUtil.getVisibleHeight(scrollEventTarget)
+  const targetVisibleHeight = scrollUtil.getVisibleHeight(scrollEventTarget)
+
+  // return when the targetElement has no height (treat as hidden)
+  if (!targetVisibleHeight) {
+    return
+  }
+
+  let needLoadMore = false
+  if (scrollEventTarget === element) {
+    needLoadMore = scrollEventTarget.scrollHeight - targetBottom < this.distance
+  } else {
+    const elementBottom = scrollUtil.getElementTop(element) - scrollUtil.getElementTop(scrollEventTarget) + scrollUtil.getVisibleHeight(element)
+
+    needLoadMore = elementBottom - targetVisibleHeight < this.distance
+  }
+
+  if (needLoadMore && this.expression) {
     this.expression()
+  }
+}
+
+function startBind (el) {
+  const context = el[CONTEXT]
+
+  context.vm.$nextTick(function () {
+    if (scrollUtil.isAttached(el)) {
+      doBindEvent.call(el[CONTEXT])
+    }
+  })
+}
+
+function doCheckStartBind (el) {
+  const context = el[CONTEXT]
+
+  if (context.vm._isMounted) {
+    startBind(el)
+  } else {
+    context.vm.$on('hook:mounted', function () {
+      startBind(el)
+    })
   }
 }
 
 export default {
   bind (el, binding, vnode) {
-    el[ctx] = {
-      el,
-      vm: vnode.context,
-      expression: binding.value
+    if (!el[CONTEXT]) {
+      el[CONTEXT] = {
+        el,
+        vm: vnode.context,
+        expression: binding.value
+      }
     }
-    const args = arguments
-    let cb = function () {
-      el[ctx].vm.$nextTick(function () {
-        if (isAttached(el)) {
-          doBind.call(el[ctx], args)
-        }
+    el[CONTEXT].expression = binding.value
 
-        el[ctx].bindTryCount = 0
+    doCheckStartBind(el)
+  },
 
-        let tryBind = function () {
-          if (el[ctx].bindTryCount > 10) return //eslint-disable-line
-          el[ctx].bindTryCount++
-          if (isAttached(el)) {
-            doBind.call(el[ctx], args)
-          } else {
-            setTimeout(tryBind, 50)
-          }
-        }
-
-        tryBind()
-      })
-    }
-    if (el[ctx].vm._isMounted) {
-      cb()
-      return
-    }
-    el[ctx].vm.$on('hook:mounted', cb)
+  update (el) {
+    const context = el[CONTEXT]
+    context.scrollEventListener && context.scrollEventListener()
   },
 
   unbind (el) {
-    if (el[ctx] && el[ctx].scrollEventTarget) {
-      el[ctx].scrollEventTarget.removeEventListener('scroll', el[ctx].scrollListener)
+    if (el[CONTEXT] && el[CONTEXT].scrollEventTarget) {
+      el[CONTEXT].scrollEventTarget.removeEventListener('scroll', el[CONTEXT].scrollEventListener)
     }
   }
 }
