@@ -1,8 +1,17 @@
 <template>
   <div class="weui-cell">
     <div class="weui-cell__bd">
-      <textarea @change="$emit('change', currentValue)" class="weui-textarea" ref="rextarea" :placeholder="placeholder"
-                :rows="rows" :disabled="disabled" :readonly="readonly" v-model="currentValue"></textarea>
+      <textarea
+        ref="rextarea"
+        @change="$emit('change', currentValue)"
+        class="weui-textarea"
+        :placeholder="placeholder"
+        :rows="rows"
+        :disabled="disabled"
+        :readonly="readonly"
+        @focus="onFocus"
+        @blur="onBlur"
+        v-model="currentValue"></textarea>
       <div class="weui-textarea-counter" v-if="showCounter"><span>{{ length }}</span>/{{ maxLength }}</div>
     </div>
   </div>
@@ -51,6 +60,16 @@
         this.currentValue = this.value.slice(0, this.maxLength)
       } else {
         this.currentValue = this.value
+      }
+    },
+
+    methods: {
+      focus () {
+        this.$emit('focus')
+      },
+
+      blur () {
+        this.$emit('blur')
       }
     },
 

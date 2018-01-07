@@ -105,6 +105,7 @@
       onFocus () {
         this.active = true
 
+        this.$emit('focus')
         if (typeof this.validateMode === 'undefined' || this.validateMode.onFocus !== false) {
           this.validate()
         }
@@ -113,6 +114,7 @@
       onBlur () {
         this.active = false
 
+        this.$emit('blur')
         if (typeof this.validateMode === 'undefined' || this.validateMode.onBlur !== false) {
           this.validate()
         }

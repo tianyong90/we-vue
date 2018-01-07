@@ -40,7 +40,7 @@
   export default {
     data () {
       return {
-        valueText: 'hello we-vue',
+        valueText: 'hi we-vue',
         valueNumber: '',
         valueReadonly: '内容是只读的',
         valueRequired: '',
@@ -49,9 +49,6 @@
         vcode: '',
         vcodeImage
       }
-    },
-
-    mounted () {
     }
   }
 </script>

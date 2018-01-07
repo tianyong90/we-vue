@@ -1,6 +1,5 @@
-import { shallow, createLocalVue } from 'vue-test-utils'
+import { shallow } from 'vue-test-utils'
 import GridItem from '@/components/grid-item'
-import VueRouter from 'vue-router'
 import sinon from 'sinon'
 
 describe('grid-item', () => {
