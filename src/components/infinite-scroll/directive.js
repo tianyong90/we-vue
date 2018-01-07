@@ -4,6 +4,7 @@ const CONTEXT = '@@InfiniteScroll'
 const DISTANCE = 300
 
 function doBindEvent () {
+  /* istanbul ignore if */
   if (this.el[CONTEXT].binded) {
     return
   }
@@ -88,6 +89,7 @@ function doCheckStartBind (el) {
   const context = el[CONTEXT]
 
   if (context.vm._isMounted) {
+    /* istanbul ignore next */
     startBind(el)
   } else {
     context.vm.$on('hook:mounted', function () {

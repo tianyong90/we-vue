@@ -1,19 +1,20 @@
 <template>
   <wv-picker
+    ref="picker"
     :visible.sync="visible"
     :slots="dateSlots"
     @change="onChange"
     @confirm="onConfirm"
-    @cnncel="onCancel"
-    ref="picker"
+    @cancel="onCancel"
     :confirm-text="confirmText"
     :cancel-text="cancelText"
+    :visible-item-count="visibleItemCount"
   />
 </template>
 
 <script>
 import { create } from '../../utils'
-import WvPicker from '../picker/index'
+import WvPicker from '../picker'
 
 const FORMAT_MAP = {
   Y: 'year',
@@ -83,7 +84,11 @@ export default create({
       type: String,
       default: '{value}'
     },
-    value: null
+    visibleItemCount: {
+      type: Number,
+      default: 7
+    },
+    value: {}
   },
 
   data () {
@@ -96,26 +101,20 @@ export default create({
       endMonth: 12,
       startDay: 1,
       endDay: 31,
-      selfTriggered: false,
-      dateSlots: [],
-      shortMonthDates: [],
-      longMonthDates: [],
-      febDates: [],
-      leapFebDates: []
+      selfTriggered: false
     }
   },
 
   computed: {
-    rims () {
+    ranges () {
       if (!this.currentValue) return {year: [], month: [], date: [], hour: [], min: []}
-      let result
       if (this.type === 'time') {
-        result = {
+        return {
           hour: [this.startHour, this.endHour],
           min: [0, 59]
         }
-        return result
       }
+      let result
       result = {
         year: [this.startDate.getFullYear(), this.endDate.getFullYear()],
         month: [1, 12],
@@ -123,8 +122,8 @@ export default create({
         hour: [0, 23],
         min: [0, 59]
       }
-      this.rimDetect(result, 'start')
-      this.rimDetect(result, 'end')
+      this.rangeDetect(result, 'start')
+      this.rangeDetect(result, 'end')
       return result
     },
 
@@ -136,6 +135,30 @@ export default create({
       } else {
         return 'YMDHm'
       }
+    },
+
+    dateSlots () {
+      let dateSlots = []
+      const INTERVAL_MAP = {
+        Y: this.ranges.year,
+        M: this.ranges.month,
+        D: this.ranges.date,
+        H: this.ranges.hour,
+        m: this.ranges.min
+      }
+      const typesArr = this.typeStr.split('')
+      typesArr.forEach(type => {
+        if (INTERVAL_MAP[type]) {
+          this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]))
+        }
+      })
+      if (/Hm$/.test(this.typeStr)) {
+        dateSlots.splice(typesArr.length - 1, 0, {
+          divider: true,
+          content: ':'
+        })
+      }
+      return dateSlots
     }
   },
 
@@ -148,17 +171,16 @@ export default create({
       this.visible = false
     },
 
-    // 是否为闰年
     isLeapYear (year) {
-      return (year % 400 === 0) || (year % 100 === 0 && year % 4 === 0)
+      return (year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0)
     },
 
-    isSortMonth (month) {
+    isShortMonth (month) {
       return [4, 6, 9, 11].indexOf(month) > -1
     },
 
     getMonthEndDay (year, month) {
-      if (this.isSortMonth(month)) {
+      if (this.isShortMonth(month)) {
         return 30
       } else if (month === 2) {
         return this.isLeapYear(year) ? 29 : 28
@@ -202,7 +224,6 @@ export default create({
         return
       }
       this.currentValue = this.getValue(values)
-      this.handleValueChange()
     },
 
     fillValues (type, start, end) {
@@ -221,81 +242,6 @@ export default create({
       slots.push({
         values: this.fillValues(type, start, end)
       })
-    },
-
-    generateSlots () {
-      let dateSlots = []
-      const INTERVAL_MAP = {
-        Y: this.rims.year,
-        M: this.rims.month,
-        D: this.rims.date,
-        H: this.rims.hour,
-        m: this.rims.min
-      }
-      let typesArr = this.typeStr.split('')
-      typesArr.forEach(type => {
-        if (INTERVAL_MAP[type]) {
-          this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]))
-        }
-      })
-      if (/Hm$/.test(this.typeStr)) {
-        dateSlots.splice(typesArr.length - 1, 0, {
-          divider: true,
-          content: ':'
-        })
-      }
-      this.dateSlots = dateSlots
-      this.handleExceededValue()
-    },
-
-    handleExceededValue () {
-      let values = []
-      if (this.type === 'time') {
-        const currentValue = this.currentValue.split(':')
-        values = [
-          this.hourFormat.replace('{value}', currentValue[0]),
-          this.minuteFormat.replace('{value}', currentValue[1])
-        ]
-      } else {
-        values = [
-          this.yearFormat.replace('{value}', this.getYear(this.currentValue)),
-          this.monthFormat.replace('{value}', ('0' + this.getMonth(this.currentValue)).slice(-2)),
-          this.dateFormat.replace('{value}', ('0' + this.getDate(this.currentValue)).slice(-2))
-        ]
-        if (this.type === 'datetime') {
-          values.push(
-            this.hourFormat.replace('{value}', ('0' + this.getHour(this.currentValue)).slice(-2)),
-            this.minuteFormat.replace('{value}', ('0' + this.getMinute(this.currentValue)).slice(-2))
-          )
-        }
-      }
-      this.dateSlots.filter(child => child.values !== undefined)
-        .map(slot => slot.values).forEach((slotValues, index) => {
-          if (slotValues.indexOf(values[index]) === -1) {
-            values[index] = slotValues[0]
-          }
-        })
-      this.$nextTick(() => {
-        this.setSlotsByValues(values)
-      })
-    },
-
-    setSlotsByValues (values) {
-      const setSlotValue = this.$refs.picker.setSlotValue
-      if (this.type === 'time') {
-        setSlotValue(0, values[0])
-        setSlotValue(1, values[1])
-      }
-      if (this.type !== 'time') {
-        setSlotValue(0, values[0])
-        setSlotValue(1, values[1])
-        setSlotValue(2, values[2])
-        if (this.type === 'datetime') {
-          setSlotValue(3, values[3])
-          setSlotValue(4, values[4])
-        }
-      }
-      [].forEach.call(this.$refs.picker.$children, child => child.doOnValueChange())
     },
 
     isDateString (str) {
@@ -322,34 +268,17 @@ export default create({
       return value.getHours()
     },
 
-    getMinute (value) {
-      if (this.isDateString(value)) {
-        const str = value.split(' ')[1] || '00:00:00'
-        return str.split(':')[1]
-      }
-      return value.getMinutes()
-    },
-
-    confirm () {
-      this.visible = false
-      this.$emit('confirm', this.currentValue)
-    },
-
-    handleValueChange () {
-      this.$emit('input', this.currentValue)
-    },
-
-    rimDetect (result, rim) {
-      let position = rim === 'start' ? 0 : 1
-      let rimDate = rim === 'start' ? this.startDate : this.endDate
-      if (this.getYear(this.currentValue) === rimDate.getFullYear()) {
-        result.month[position] = rimDate.getMonth() + 1
-        if (this.getMonth(this.currentValue) === rimDate.getMonth() + 1) {
-          result.date[position] = rimDate.getDate()
-          if (this.getDate(this.currentValue) === rimDate.getDate()) {
-            result.hour[position] = rimDate.getHours()
-            if (this.getHour(this.currentValue) === rimDate.getHours()) {
-              result.min[position] = rimDate.getMinutes()
+    rangeDetect (result, range) {
+      const position = range === 'start' ? 0 : 1
+      const rangeDate = range === 'start' ? this.startDate : this.endDate
+      if (this.getYear(this.currentValue) === rangeDate.getFullYear()) {
+        result.month[position] = rangeDate.getMonth() + 1
+        if (this.getMonth(this.currentValue) === rangeDate.getMonth() + 1) {
+          result.date[position] = rangeDate.getDate()
+          if (this.getDate(this.currentValue) === rangeDate.getDate()) {
+            result.hour[position] = rangeDate.getHours()
+            if (this.getHour(this.currentValue) === rangeDate.getHours()) {
+              result.min[position] = rangeDate.getMinutes()
             }
           }
         }
@@ -376,7 +305,6 @@ export default create({
         this.currentValue = `${('0' + this.startHour).slice(-2)}:00`
       }
     }
-    this.generateSlots()
   },
 
   watch: {
@@ -384,8 +312,8 @@ export default create({
       this.currentValue = val
     },
 
-    rims () {
-      this.generateSlots()
+    currentValue (val) {
+      this.$emit('input', val)
     }
   }
 })

@@ -13,46 +13,11 @@
     </wv-group>
 
     <wv-datetime-picker
-      type="time"
-      ref="picker1"
-      v-model="value1"
-      @confirm="onConfirm"
-    />
-    <wv-datetime-picker
-      type="date"
-      ref="picker2"
-      v-model="value2"
-      @confirm="onConfirm"
-    />
-    <wv-datetime-picker
+      :visible="true"
       type="datetime"
       ref="picker3"
       v-model="value3"
       @confirm="onConfirm"
-    />
-
-    <wv-datetime-picker
-      type="date"
-      ref="picker4"
-      v-model="value4"
-      year-format="{value} 年"
-      month-format="{value} 月"
-      date-format="{value} 日"
-      @confirm="onConfirm"
-    />
-    <wv-datetime-picker
-      type="date"
-      ref="picker5"
-      v-model="value5"
-      @confirm="onConfirm"
-    />
-    <wv-datetime-picker
-      type="date"
-      ref="picker6"
-      v-model="value6"
-      @confirm="onConfirm"
-      :start-date="new Date()"
-      :end-date="new Date(new Date().getFullYear() + 3, 4, 15)"
     />
   </div>
 </template>

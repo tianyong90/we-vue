@@ -6,6 +6,7 @@
     @touchmove.prevent="onTouchmove"
     @touchend="onTouchend"
     @touchcancel="onTouchend"
+    @click="onClick"
   >
     <div class="weui-picker__mask" :style="pickerMaskStyle"/>
     <div class="weui-picker__indicator" ref="indicator" :style="pickerIndicatorStyle"/>
@@ -123,10 +124,10 @@ export default create({
 
   methods: {
     getOptionText (item) {
-      if (typeof item === 'string') {
-        return item
-      } else {
+      if (typeof item === 'object') {
         return item[this.valueKey]
+      } else {
+        return item
       }
     },
 
@@ -171,28 +172,8 @@ export default create({
       this.prevTime = currentTime
     },
 
-    onTouchend (event) {
-      const touch = getTouch(event)
-
-      const indicator = this.$refs.indicator
-
-      const distance = Math.abs(this.offset - this.startOffset)
-
+    onTouchend () {
       this.transition = 'all 150ms ease'
-
-      if (distance < 10) {
-        // treat the event as 'click' when the moving distance is shorter than 10px
-        const indicatorRect = indicator.getBoundingClientRect()
-        const clickOffset = Math.floor((touch.clientY - indicatorRect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
-
-        const targetOffset = this.offset - clickOffset
-
-        // offset should be within the range
-        this.offset = range(targetOffset, this.minTranslateY, this.maxTranslateY)
-
-        this.currentIndex = this.offsetToIndex(this.offset)
-        return
-      }
 
       let endOffset = this.offset + this.velocity * 150
 
@@ -204,6 +185,23 @@ export default create({
 
         this.currentIndex = this.offsetToIndex(this.offset)
       })
+    },
+
+    onClick (event) {
+      const indicator = this.$refs.indicator
+
+      this.transition = 'all 150ms ease'
+
+      // treat the event as 'click' when the moving distance is shorter than 10px
+      const indicatorRect = indicator.getBoundingClientRect()
+      const clickOffset = Math.floor((event.clientY - indicatorRect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
+
+      const targetOffset = this.offset - clickOffset
+
+      // offset should be within the range
+      this.offset = range(targetOffset, this.minTranslateY, this.maxTranslateY)
+
+      this.currentIndex = this.offsetToIndex(this.offset)
     },
 
     // adjust index, avoid disabled options
