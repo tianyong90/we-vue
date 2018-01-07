@@ -3,6 +3,8 @@
     <div class="weui-cell__bd">
       <textarea
         @change="$emit('change', currentValue)"
+        @focus="onFocus"
+        @blur="onBlur"
         class="weui-textarea"
         ref="rextarea"
         :placeholder="placeholder"
@@ -63,6 +65,16 @@ export default create({
       this.currentValue = this.value.slice(0, this.maxLength)
     } else {
       this.currentValue = this.value
+    }
+  },
+
+  methods: {
+    onFocus () {
+      this.$emit('focus')
+    },
+
+    onBlur () {
+      this.$emit('blur')
     }
   },
 
