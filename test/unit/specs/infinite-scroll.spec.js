@@ -23,9 +23,7 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-
       expect(loadMoreSpy.called).toBe(false)
-
     }, 500)
 
     wrapper.vm.$nextTick(() => {

@@ -16,38 +16,37 @@
 </template>
 
 <script>
-  import InfiniteScroll from '@/components/infinite-scroll'
+import InfiniteScroll from '@/components/infinite-scroll'
 
-  export default {
-    directives: {
-      InfiniteScroll
+export default {
+  directives: {
+    InfiniteScroll
+  },
+
+  props: {
+    list: Array,
+    disabled: Boolean,
+    distance: Number,
+    immediateCheck: {
+      type: Boolean,
+      default: true
     },
-
-    props: {
-      list: Array,
-      disabled: Boolean,
-      distance: Number,
-      immediateCheck: {
-        type: Boolean,
-        default: true
-      },
-      onLoadMore: {
-        type: Function,
-        default () {
-          return function () {}
-        }
-      },
-      height: {
-        type: String,
-        default: 'auto'
+    onLoadMore: {
+      type: Function,
+      default () {
+        return function () {}
       }
     },
+    height: {
+      type: String,
+      default: 'auto'
+    }
+  },
 
-    methods: {
-      triggerLoadMore () {
-        this.onLoadMore()
-      }
+  methods: {
+    triggerLoadMore () {
+      this.onLoadMore()
     }
   }
+}
 </script>
-

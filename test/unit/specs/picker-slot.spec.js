@@ -86,7 +86,7 @@ describe('picker-slot', () => {
 
       const indicatorRect = indicator.getBoundingClientRect()
 
-      wrapper.find(PickerSlot).trigger('click', { clientX: 0, clientY: indicatorRect.top + 35})
+      wrapper.find(PickerSlot).trigger('click', { clientX: 0, clientY: indicatorRect.top + 35 })
 
       expect(wrapper.find(PickerSlot).vm.currentIndex).toBe(1)
       done()

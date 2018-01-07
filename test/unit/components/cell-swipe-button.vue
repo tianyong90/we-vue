@@ -3,13 +3,13 @@
 </template>
 
 <script>
-  import CellSwipeButton from '@/components/cell-swipe-button'
+import CellSwipeButton from '@/components/cell-swipe-button'
 
-  export default {
-    name: 'cell-swipe-button-conponent',
+export default {
+  name: 'cell-swipe-button-conponent',
 
-    components: {
-      [CellSwipeButton.name]: CellSwipeButton
-    }
+  components: {
+    [CellSwipeButton.name]: CellSwipeButton
   }
+}
 </script>

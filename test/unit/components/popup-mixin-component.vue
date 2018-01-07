@@ -3,11 +3,11 @@
 </template>
 
 <script>
-  import PopupMixin from '@/mixins/popup'
+import PopupMixin from '@/mixins/popup'
 
-  export default {
-    name: 'emitter-mixin-component',
+export default {
+  name: 'emitter-mixin-component',
 
-    mixins: [PopupMixin]
-  }
+  mixins: [PopupMixin]
+}
 </script>

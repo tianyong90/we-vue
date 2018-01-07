@@ -107,7 +107,6 @@ export default create({
 
   computed: {
     ranges () {
-      if (!this.currentValue) return {year: [], month: [], date: [], hour: [], min: []}
       if (this.type === 'time') {
         return {
           hour: [this.startHour, this.endHour],
@@ -138,27 +137,41 @@ export default create({
     },
 
     dateSlots () {
-      let dateSlots = []
-      const INTERVAL_MAP = {
-        Y: this.ranges.year,
-        M: this.ranges.month,
-        D: this.ranges.date,
-        H: this.ranges.hour,
-        m: this.ranges.min
-      }
-      const typesArr = this.typeStr.split('')
-      typesArr.forEach(type => {
-        if (INTERVAL_MAP[type]) {
-          this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]))
+      console.log(this.ranges)
+
+      const results = this.ranges.map(range => {
+        const values = this.times(range[1] - range[0] + 1, index => {
+          const value = range[0] + index
+          return value < 10 ? `0${value}` : `${value}`
+        })
+
+        return {
+          values
         }
       })
-      if (/Hm$/.test(this.typeStr)) {
-        dateSlots.splice(typesArr.length - 1, 0, {
-          divider: true,
-          content: ':'
-        })
-      }
-      return dateSlots
+      return results
+
+      // let dateSlots = []
+      // const INTERVAL_MAP = {
+      //   Y: this.ranges.year,
+      //   M: this.ranges.month,
+      //   D: this.ranges.date,
+      //   H: this.ranges.hour,
+      //   m: this.ranges.min
+      // }
+      // const typesArr = this.typeStr.split('')
+      // typesArr.forEach(type => {
+      //   if (INTERVAL_MAP[type]) {
+      //     this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]))
+      //   }
+      // })
+      // if (/Hm$/.test(this.typeStr)) {
+      //   dateSlots.splice(typesArr.length - 1, 0, {
+      //     divider: true,
+      //     content: ':'
+      //   })
+      // }
+      // return dateSlots
     }
   },
 

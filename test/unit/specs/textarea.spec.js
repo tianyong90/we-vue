@@ -77,4 +77,24 @@ describe('textarea', () => {
     expect(wrapper.vm.currentValue.length).toBe(2)
     expect(wrapper.vm.currentValue).toBe('te')
   })
+
+  it('focus event', () => {
+    wrapper = shallow(Textarea, {
+      propsData: {}
+    })
+
+    wrapper.find('textarea').trigger('focus')
+
+    expect(wrapper.emitted().focus).toBeTruthy()
+  })
+
+  it('blur event', () => {
+    wrapper = shallow(Textarea, {
+      propsData: {}
+    })
+
+    wrapper.find('textarea').trigger('blur')
+
+    expect(wrapper.emitted().blur).toBeTruthy()
+  })
 })

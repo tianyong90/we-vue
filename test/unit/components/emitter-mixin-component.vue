@@ -3,11 +3,11 @@
 </template>
 
 <script>
-  import EmitterMixin from '@/mixins/emitter'
+import EmitterMixin from '@/mixins/emitter'
 
-  export default {
-    name: 'emitter-mixin-component',
+export default {
+  name: 'emitter-mixin-component',
 
-    mixins: [EmitterMixin]
-  }
+  mixins: [EmitterMixin]
+}
 </script>

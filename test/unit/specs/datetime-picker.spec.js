@@ -2,7 +2,7 @@ import { mount } from 'vue-test-utils'
 import DatetimePicker from '@/components/datetime-picker'
 // import { dragHelper } from '../utils'
 
-describe('picker', () => {
+describe('datetime-picker', () => {
   let wrapper
   afterEach(() => {
     wrapper && wrapper.destroy()
@@ -11,7 +11,7 @@ describe('picker', () => {
   it('create a datetime picker', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {
-        slots: []
+        type: 'datetime'
       }
     })
 
