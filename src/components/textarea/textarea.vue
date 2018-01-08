@@ -64,11 +64,11 @@
     },
 
     methods: {
-      focus () {
+      onFocus () {
         this.$emit('focus')
       },
 
-      blur () {
+      onBlur () {
         this.$emit('blur')
       }
     },
