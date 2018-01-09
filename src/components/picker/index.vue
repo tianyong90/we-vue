@@ -112,7 +112,7 @@ export default create({
     },
 
     getSlot (slotIndex) {
-      let children = this.$children
+      let children = this.children
       return children.find((child, index) => {
         return (child.$options.name === 'wv-picker-slot' && !child.divider && index === slotIndex)
       })
@@ -139,7 +139,7 @@ export default create({
     },
 
     getValues () {
-      return this.$children.filter(slot => !slot.divider).map(slot => slot.currentValue)
+      return this.children.filter(slot => !slot.divider).map(slot => slot.currentValue)
     },
 
     setValues (values) {

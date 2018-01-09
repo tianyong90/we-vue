@@ -86,20 +86,23 @@ describe('infinite-scroll', () => {
   })
 
   // TODO
-  it('element height === 0', (done) => {
+  it('scrollTarget height === 0', (done) => {
     const loadMoreSpy = sinon.spy()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
-        height: '0px',
+        display: 'none',
         list: [],
         onLoadMore: loadMoreSpy
       }
     })
 
     setTimeout(() => {
+      const el = wrapper.vm.$el.outerHTML
+
       expect(loadMoreSpy.called).toBe(false)
+      done()
     }, 500)
   })
 

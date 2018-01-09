@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount, createLocalVue } from 'vue-test-utils'
 import Picker from '@/components/picker'
 import PickerSlot from '@/components/picker/picker-slot.vue'
 import { dragHelper } from '../utils'
@@ -31,12 +31,14 @@ describe('picker', () => {
     })
 
     setTimeout(() => {
-      expect(wrapper.vm.children.length).toBe(1)
-      expect(wrapper.vm.getValues()).toEqual([1])
+      expect(wrapper.findAll(PickerSlot).length).toBe(1)
+
+      expect(wrapper.vm.getValues()).toEqual([2])
       done()
     }, 500)
   })
 
+  // TODO
   it('create a nulti-column picker', (done) => {
     wrapper = mount(Picker, {
       propsData: {
@@ -52,6 +54,7 @@ describe('picker', () => {
 
     setTimeout(() => {
       expect(wrapper.findAll(PickerSlot).length).toBe(2)
+
       expect(wrapper.vm.getValues()).toEqual([1, 1])
       done()
     }, 500)

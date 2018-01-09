@@ -1,7 +1,7 @@
 <template>
   <div
     class="list"
-    :style="{ height: height }"
+    :style="{ display: display }"
     v-infinite-scroll="triggerLoadMore"
     infinite-scroll-disabled="disabled"
     infinite-scroll-immediate-check="immediateCheck"
@@ -37,9 +37,9 @@ export default {
         return function () {}
       }
     },
-    height: {
+    display: {
       type: String,
-      default: 'auto'
+      default: 'block'
     }
   },
 
