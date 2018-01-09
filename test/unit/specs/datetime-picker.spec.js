@@ -1,6 +1,9 @@
 import { mount } from 'vue-test-utils'
 import DatetimePicker from '@/components/datetime-picker'
-// import { dragHelper } from '../utils'
+import { dragHelper } from '../utils'
+
+const testTime = '9:00'
+const testDate = new Date('2018/01/01 19:00')
 
 describe('datetime-picker', () => {
   let wrapper
@@ -9,9 +12,12 @@ describe('datetime-picker', () => {
   })
 
   it('create a datetime picker', () => {
+    let date = new Date()
+
     wrapper = mount(DatetimePicker, {
       propsData: {
-        type: 'datetime'
+        type: 'datetime',
+        value: date
       }
     })
 
@@ -41,10 +47,10 @@ describe('datetime-picker', () => {
 
     wrapper.vm.$nextTick(() => {
       wrapper.vm.open()
-      expect(wrapper.vm.visible).toBe(true)
+      expect(wrapper.vm.currentVisible).toBe(true)
 
       wrapper.vm.close()
-      expect(wrapper.vm.visible).toBe(false)
+      expect(wrapper.vm.currentVisible).toBe(false)
     })
   })
 
@@ -104,6 +110,88 @@ describe('datetime-picker', () => {
 
       expect(wrapper.vm.visible).toBe(false)
       expect(wrapper.emitted().cancel).toBeTruthy()
+      done()
+    }, 500)
+  })
+
+  // TODO:
+  it('drag time picker', () => {
+    wrapper = mount(DatetimePicker, {
+      attachToDocument: true,
+      propsData: {
+        type: 'time',
+        value: testTime
+      }
+    })
+
+    const hour = wrapper.findAll('.weui-picker__group').at(0)
+    const minute = wrapper.findAll('.weui-picker__group').at(1)
+
+    dragHelper(hour, 0, -50)
+    dragHelper(minute, 0, -50)
+
+
+  })
+
+  // TODO:
+  it('drag datetime picker', () => {
+    wrapper = mount(DatetimePicker, {
+      attachToDocument: true,
+      propsData: {
+        type: 'datetime',
+        value: testDate
+      }
+    })
+
+    const year = wrapper.findAll('.weui-picker__group').at(0)
+    const month = wrapper.findAll('.weui-picker__group').at(1)
+    const date = wrapper.findAll('.weui-picker__group').at(2)
+    const hour = wrapper.findAll('.weui-picker__group').at(3)
+    const minute = wrapper.findAll('.weui-picker__group').at(4)
+
+    dragHelper(year, 0, -50)
+    dragHelper(month, 0, -50)
+    dragHelper(date, 0, -50)
+    dragHelper(hour, 0, -50)
+    dragHelper(minute, 0, -50)
+
+
+  })
+
+  // TODO:
+  it('drag date picker', () => {
+    wrapper = mount(DatetimePicker, {
+      attachToDocument: true,
+      propsData: {
+        type: 'date',
+        value: testDate
+      }
+    })
+
+    const year = wrapper.findAll('.weui-picker__group').at(0)
+    const month = wrapper.findAll('.weui-picker__group').at(1)
+    const date = wrapper.findAll('.weui-picker__group').at(2)
+
+    dragHelper(year, 0, -50)
+    dragHelper(month, 0, -50)
+    dragHelper(date, 0, -50)
+
+
+  })
+
+  it('watch value change', (done) => {
+    wrapper = mount(DatetimePicker, {
+      propsData: {}
+    })
+
+    const newValue = new Date()
+
+    setTimeout(() => {
+      wrapper.setProps({
+        value: newValue
+      })
+
+      expect(wrapper.vm.currentValue).toEqual(newValue)
       done()
     }, 500)
   })

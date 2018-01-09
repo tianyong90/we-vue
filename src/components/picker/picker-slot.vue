@@ -175,16 +175,12 @@ export default create({
     onTouchend () {
       this.transition = 'all 150ms ease'
 
-      let endOffset = this.offset + this.velocity * 150
+      const endOffset = this.offset + this.velocity * 150
 
-      this.$nextTick(() => {
-        endOffset = Math.round(endOffset / ITEM_HEIGHT) * ITEM_HEIGHT
+      const index = this.offsetToIndex(endOffset)
 
-        // offset should be within the range
-        this.offset = range(endOffset, this.minTranslateY, this.maxTranslateY)
-
-        this.currentIndex = this.offsetToIndex(this.offset)
-      })
+      this.setIndex(index)
+      this.$emit('change', index)
     },
 
     onClick (event) {
@@ -239,13 +235,8 @@ export default create({
 
     options (val, oldValue) {
       if (JSON.stringify(val) !== JSON.stringify(oldValue)) {
-        this.setIndex(this.defaultIndex)
+        this.setIndex(0)
       }
-    },
-
-    currentIndex (index) {
-      if (this.divider) return
-      this.$emit('change', index)
     }
   }
 })

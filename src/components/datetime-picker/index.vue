@@ -1,7 +1,7 @@
 <template>
   <wv-picker
     ref="picker"
-    :visible.sync="visible"
+    :visible.sync="currentVisible"
     :slots="dateSlots"
     @change="onChange"
     @confirm="onConfirm"
@@ -16,13 +16,7 @@
 import { create } from '../../utils'
 import WvPicker from '../picker'
 
-const FORMAT_MAP = {
-  Y: 'year',
-  M: 'month',
-  D: 'date',
-  H: 'hour',
-  m: 'minute'
-}
+const isValidDate = date => Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())
 
 export default create({
   name: 'wv-datetime-picker',
@@ -32,6 +26,7 @@ export default create({
   },
 
   props: {
+    visible: Boolean,
     confirmText: {
       type: String,
       default: '确定'
@@ -48,13 +43,15 @@ export default create({
       type: Date,
       default () {
         return new Date(new Date().getFullYear() - 10, 0, 1)
-      }
+      },
+      validator: isValidDate
     },
     endDate: {
       type: Date,
       default () {
         return new Date(new Date().getFullYear() + 10, 11, 31)
-      }
+      },
+      validator: isValidDate
     },
     startHour: {
       type: Number,
@@ -93,15 +90,8 @@ export default create({
 
   data () {
     return {
-      visible: false,
-      currentValue: null,
-      startYear: null,
-      endYear: null,
-      startMonth: 1,
-      endMonth: 12,
-      startDay: 1,
-      endDay: 31,
-      selfTriggered: false
+      currentVisible: this.visible,
+      currentValue: this.correctValue(this.value)
     }
   },
 
@@ -110,78 +100,49 @@ export default create({
       if (this.type === 'time') {
         return {
           hour: [this.startHour, this.endHour],
-          min: [0, 59]
+          minute: [0, 59]
         }
       }
-      let result
-      result = {
-        year: [this.startDate.getFullYear(), this.endDate.getFullYear()],
-        month: [1, 12],
-        date: [1, this.getMonthEndDay(this.getYear(this.currentValue), this.getMonth(this.currentValue))],
-        hour: [0, 23],
-        min: [0, 59]
-      }
-      this.rangeDetect(result, 'start')
-      this.rangeDetect(result, 'end')
-      return result
-    },
 
-    typeStr () {
-      if (this.type === 'time') {
-        return 'Hm'
-      } else if (this.type === 'date') {
-        return 'YMD'
+      const { startYear, startMonth, startDate, startHour, startMinute } = this.getBoundary('start', this.currentValue)
+      const { endYear, endMonth, endDate, endHour, endMinute } = this.getBoundary('end', this.currentValue)
+
+      if (this.type === 'datetime') {
+        return {
+          year: [startYear, endYear],
+          month: [startMonth, endMonth],
+          date: [startDate, endDate],
+          hour: [startHour, endHour],
+          minute: [startMinute, endMinute]
+        }
       } else {
-        return 'YMDHm'
+        return {
+          year: [startYear, endYear],
+          month: [startMonth, endMonth],
+          date: [startDate, endDate]
+        }
       }
     },
 
     dateSlots () {
-      console.log(this.ranges)
-
-      const results = this.ranges.map(range => {
-        const values = this.times(range[1] - range[0] + 1, index => {
-          const value = range[0] + index
-          return value < 10 ? `0${value}` : `${value}`
+      let result = []
+      for (let rangeKey in this.ranges) {
+        result.push({
+          values: this.fillSlotValues(rangeKey, this.ranges[rangeKey][0], this.ranges[rangeKey][1])
         })
+      }
 
-        return {
-          values
-        }
-      })
-      return results
-
-      // let dateSlots = []
-      // const INTERVAL_MAP = {
-      //   Y: this.ranges.year,
-      //   M: this.ranges.month,
-      //   D: this.ranges.date,
-      //   H: this.ranges.hour,
-      //   m: this.ranges.min
-      // }
-      // const typesArr = this.typeStr.split('')
-      // typesArr.forEach(type => {
-      //   if (INTERVAL_MAP[type]) {
-      //     this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]))
-      //   }
-      // })
-      // if (/Hm$/.test(this.typeStr)) {
-      //   dateSlots.splice(typesArr.length - 1, 0, {
-      //     divider: true,
-      //     content: ':'
-      //   })
-      // }
-      // return dateSlots
+      return result
     }
   },
 
   methods: {
     open () {
-      this.visible = true
+      this.currentVisible = true
     },
 
     close () {
-      this.visible = false
+      this.currentVisible = false
     },
 
     isLeapYear (year) {
@@ -210,92 +171,147 @@ export default create({
       return parseInt(formattedValue, 10)
     },
 
-    getValue (values) {
-      let value
-      if (this.type === 'time') {
-        value = values.map(value => ('0' + this.getTrueValue(value)).slice(-2)).join(':')
-      } else {
-        let year = this.getTrueValue(values[0])
-        let month = this.getTrueValue(values[1])
-        let date = this.getTrueValue(values[2])
-        let maxDate = this.getMonthEndDay(year, month)
-        if (date > maxDate) {
-          this.selfTriggered = true
-          date = 1
-        }
-        let hour = this.typeStr.indexOf('H') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('H')]) : 0
-        let minute = this.typeStr.indexOf('m') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('m')]) : 0
-        value = new Date(year, month - 1, date, hour, minute)
+    correctValue (value) {
+      // validate value
+      const isDateType = this.type.indexOf('date') > -1
+      if (isDateType && !isValidDate(value)) {
+        value = this.startDate
+      } else if (!value) {
+        const { startHour } = this
+        value = `${startHour > 10 ? startHour : '0' + startHour}:00`
       }
-      return value
+
+      // time type
+      if (!isDateType) {
+        const [hour, minute] = value.split(':')
+        let correctedHour = Math.max(hour, this.startHour)
+        correctedHour = Math.min(correctedHour, this.endHour)
+
+        return `${correctedHour}:${minute}`
+      }
+
+      // date type
+      const { endYear, endDate, endMonth, endHour, endMinute } = this.getBoundary('end', value)
+      const { startYear, startDate, startMonth, startHour, startMinute } = this.getBoundary('start', value)
+      const startDay = new Date(startYear, startMonth - 1, startDate, startHour, startMinute)
+      const endDay = new Date(endYear, endMonth - 1, endDate, endHour, endMinute)
+      value = Math.max(value, startDay)
+      value = Math.min(value, endDay)
+
+      return new Date(value)
     },
 
     onChange (picker) {
-      let values = picker.$children.filter(child => child.currentValue !== undefined).map(child => child.currentValue)
-      if (this.selfTriggered) {
-        this.selfTriggered = false
-        return
+      console.log(picker)
+      const values = picker.getValues()
+      let value
+
+      if (this.type === 'time') {
+        value = values.join(':')
+      } else {
+        const year = this.getTrueValue(values[0])
+        const month = this.getTrueValue(values[1])
+        let date = this.getTrueValue(values[2])
+        const endDate = this.getMonthEndDay(year, month)
+
+        date = date > endDate ? endDate : date
+        let hour = 0
+        let minute = 0
+        if (this.type === 'datetime') {
+          hour = this.getTrueValue(values[3])
+          minute = this.getTrueValue(values[4])
+        }
+        value = new Date(year, month - 1, date, hour, minute)
       }
-      this.currentValue = this.getValue(values)
+
+      value = this.correctValue(value)
+      this.currentValue = value
+      this.$emit('change', picker)
+      this.$emit('input', value)
     },
 
-    fillValues (type, start, end) {
+    fillSlotValues (type, start, end) {
       let values = []
       for (let i = start; i <= end; i++) {
         if (i < 10) {
-          values.push(this[`${FORMAT_MAP[type]}Format`].replace('{value}', ('0' + i).slice(-2)))
+          values.push(this[`${type}Format`].replace('{value}', ('0' + i).slice(-2)))
         } else {
-          values.push(this[`${FORMAT_MAP[type]}Format`].replace('{value}', i))
+          values.push(this[`${type}Format`].replace('{value}', i))
         }
       }
       return values
     },
 
-    pushSlots (slots, type, start, end) {
-      slots.push({
-        values: this.fillValues(type, start, end)
-      })
-    },
+    getBoundary (type, value) {
+      const boundary = this[`${type}Date`]
+      const year = boundary.getFullYear()
+      let month = 1
+      let date = 1
+      let hour = 0
+      let minute = 0
 
-    isDateString (str) {
-      return /\d{4}(-|\/|.)\d{1,2}\1\d{1,2}/.test(str)
-    },
-
-    getYear (value) {
-      return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[0] : value.getFullYear()
-    },
-
-    getMonth (value) {
-      return this.isDateString(value) ? value.spit('  ')[0].split(/-|\/|\./)[1] : value.getMonth() + 1
-    },
-
-    getDate (value) {
-      return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[2] : value.getDate()
-    },
-
-    getHour (value) {
-      if (this.isDateString(value)) {
-        const str = value.split(' ')[1] || '00:00:00'
-        return str.split(':')[0]
+      if (type === 'end') {
+        month = 12
+        date = this.getMonthEndDay(value.getFullYear(), value.getMonth() + 1)
+        hour = 23
+        minute = 59
       }
-      return value.getHours()
-    },
 
-    rangeDetect (result, range) {
-      const position = range === 'start' ? 0 : 1
-      const rangeDate = range === 'start' ? this.startDate : this.endDate
-      if (this.getYear(this.currentValue) === rangeDate.getFullYear()) {
-        result.month[position] = rangeDate.getMonth() + 1
-        if (this.getMonth(this.currentValue) === rangeDate.getMonth() + 1) {
-          result.date[position] = rangeDate.getDate()
-          if (this.getDate(this.currentValue) === rangeDate.getDate()) {
-            result.hour[position] = rangeDate.getHours()
-            if (this.getHour(this.currentValue) === rangeDate.getHours()) {
-              result.min[position] = rangeDate.getMinutes()
+      if (value.getFullYear() === year) {
+        month = boundary.getMonth() + 1
+        if (value.getMonth() + 1 === month) {
+          date = boundary.getDate()
+          if (value.getDate() === date) {
+            hour = value.getHours()
+            if (value.getHours() === hour) {
+              minute = boundary.getMinutes()
             }
           }
         }
       }
+
+      return {
+        [`${type}Year`]: year,
+        [`${type}Month`]: month,
+        [`${type}Date`]: date,
+        [`${type}Hour`]: hour,
+        [`${type}Minute`]: minute
+      }
+    },
+
+    updateSlotValue (value) {
+      let values = []
+      if (this.type === 'time') {
+        const currentValue = value.split(':')
+        values = [
+          currentValue[0],
+          currentValue[1]
+        ]
+      } else {
+        values = [
+          `${value.getFullYear()}`,
+          `0${value.getMonth() + 1}`.slice(-2),
+          `0${value.getDate()}`.slice(-2)
+        ]
+        if (this.type === 'datetime') {
+          values.push(
+            `0${value.getHours()}`.slice(-2),
+            `0${value.getMinutes()}`.slice(-2)
+          )
+        }
+      }
+
+      this.$nextTick(() => {
+        this.setSlotByValues(values)
+      })
+    },
+
+    setSlotByValues (values) {
+      /* istanbul ignore if */
+      if (!this.$refs.picker) {
+        return
+      }
+      this.$refs.picker.setValues(values)
     },
 
     onConfirm () {
@@ -322,10 +338,16 @@ export default create({
 
   watch: {
     value (val) {
-      this.currentValue = val
+      val = this.correctValue(val)
+      const isEqual = this.type === 'time' ? val === this.currentValue : val.valueOf() === this.currentValue.valueOf()
+
+      if (!isEqual) {
+        this.currentValue = val
+      }
     },
 
     currentValue (val) {
+      this.updateSlotValue(val)
       this.$emit('input', val)
     }
   }
