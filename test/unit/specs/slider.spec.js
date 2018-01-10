@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { mount, shallow } from 'vue-test-utils'
 import Slider from '@/components/slider'
 import { dragHelper } from '../utils'
 import faker from 'faker'
@@ -75,7 +75,6 @@ describe('slider', () => {
     expect(wrapper.vm.value).toBe(0)
   })
 
-  // TODO:
   it('drag the handler', () => {
     wrapper = shallow(Slider, {
       propsData: {
@@ -83,21 +82,37 @@ describe('slider', () => {
       }
     })
 
-    dragHelper(wrapper.find({ref: 'handler'}), 10, 10)
+    const { sliderLeft, min, max, step, stepWidth} = wrapper.vm
 
-    // expect(wrapper.contains('.weui-slider-box__value')).toBeFalsy()
+    const mockClientX = sliderLeft + 50
+
+    dragHelper(wrapper.find({ ref: 'handler' }), mockClientX, 0)
+
+    let expectedValue = min + step * (Math.round((mockClientX - sliderLeft) / stepWidth))
+
+    expectedValue = expectedValue < min ? min : expectedValue > max ? max : expectedValue
+
+    expect(wrapper.emitted().input[0]).toEqual([expectedValue])
+    expect(wrapper.emitted().change[0]).toEqual([expectedValue])
   })
 
-  // TODO:
   it('click the inner', () => {
-    wrapper = shallow(Slider, {
+    wrapper = mount(Slider, {
+      attachToDocument: true,
       propsData: {
         value: 0
       }
     })
 
-    wrapper.find({ ref: 'inner' }).trigger('click')
+    const { min, step, sliderLeft, stepWidth } = wrapper.vm
 
-    // expect(wrapper.contains('.weui-slider-box__value')).toBeFalsy()
+    const mockClientX = sliderLeft + 50
+
+    wrapper.find({ ref: 'inner' }).trigger('click', { clientX: mockClientX})
+
+    const expectedValue = min + step * (Math.round((mockClientX - sliderLeft) / stepWidth))
+
+    expect(wrapper.emitted().input[0]).toEqual([expectedValue])
+    expect(wrapper.emitted().change[0]).toEqual([expectedValue])
   })
 })

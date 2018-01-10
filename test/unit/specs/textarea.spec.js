@@ -24,8 +24,7 @@ describe('textarea', () => {
     })
 
     expect(wrapper.contains('.weui-textarea-counter')).toBeTruthy()
-    // TODO:
-    // expect(wrapper.find('.weui-textarea-counter').text()).toBeEqual(wrapper.vm.length)
+    expect(wrapper.find('.weui-textarea-counter').text()).toEqual(`${wrapper.vm.length}/${wrapper.vm.maxLength}`)
 
     wrapper.setProps({
       showCounter: false

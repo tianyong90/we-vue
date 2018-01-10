@@ -24,9 +24,7 @@ describe('tabbar-item', () => {
       }
     })
 
-    expect(wrapper.contains('.weui-tabbar__label')).toBeTruthy()
-    // TODO:
-    // expect(wrapper.find('p.weui-tabbar__label').text()).toBe('test')
+    expect(wrapper.find('p.weui-tabbar__label').text()).toBe('test')
   })
 
   it('isOn', () => {

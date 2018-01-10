@@ -96,11 +96,11 @@ export default create({
       return handlerRect.left - innerRect.left
     },
 
-    onClick (evt) {
+    onClick (event) {
       if (this.disabled || !this.enableClick) return
 
       // 距初始值的目标步数
-      const steps = Math.round((evt.pageX - this.sliderLeft) / this.stepWidth)
+      const steps = Math.round((event.clientX - this.sliderLeft) / this.stepWidth)
 
       const value = this.min + this.step * steps
 
@@ -113,13 +113,13 @@ export default create({
       this.handlerStartPos = this.getHandlerStartPos()
     },
 
-    onTouchmove (evt) {
+    onTouchmove (event) {
       if (this.disabled) return
 
-      const touch = getTouch(evt)
+      const touch = getTouch(event)
 
       // 距初始值的目标步数
-      const steps = Math.round((touch.pageX - this.sliderLeft) / this.stepWidth)
+      const steps = Math.round((touch.clientX - this.sliderLeft) / this.stepWidth)
 
       let value = this.min + this.step * steps
       value = value < this.min ? this.min : value > this.max ? this.max : value

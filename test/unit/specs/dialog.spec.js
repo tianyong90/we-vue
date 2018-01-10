@@ -89,27 +89,43 @@ describe('dialog component', () => {
     expect(wrapper.contains('.weui-dialog')).toBeTruthy()
   })
 
-  // TODO
-  it('click cancel button', () => {
+  it('click cancel button', (done) => {
+    const callbackSpy = sinon.spy()
+
     wrapper = shallow(Dialog, {
-      propsData: {}
+      propsData: {
+        'visible.sync': true,
+        callback: callbackSpy
+      }
     })
 
-    wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
+    setTimeout(() => {
+      wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
+      expect(wrapper.vm.visible).toBe(false)
+      expect(wrapper.emitted().cancel).toBeTruthy()
+      expect(callbackSpy.called).toBeTruthy()
 
-    // expect(wrapper.name()).toBe('wv-dialog')
-    // expect(wrapper.contains('.weui-dialog')).toBeTruthy()
+      done()
+    }, 50)
   })
 
-  // TODO
-  it('click confirm button', () => {
+  it('click confirm button', (done) => {
+    const callbackSpy = sinon.spy()
+
     wrapper = shallow(Dialog, {
-      propsData: {}
+      propsData: {
+        'visible.sync': true,
+        callback: callbackSpy
+      }
     })
 
-    wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')
+    setTimeout(() => {
+      wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')
+      expect(wrapper.vm.visible).toBe(false)
+      expect(wrapper.emitted().confirm).toBeTruthy()
+      expect(callbackSpy.called).toBeTruthy()
 
-    // expect(wrapper.name()).toBe('wv-dialog')
-    // expect(wrapper.contains('.weui-dialog')).toBeTruthy()
+      done()
+    }, 50)
   })
 })

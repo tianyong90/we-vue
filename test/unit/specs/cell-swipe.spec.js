@@ -122,7 +122,6 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  // TODO
   it('clickoutside', () => {
     let onClickoutsideSpy = sinon.spy()
 
@@ -143,15 +142,9 @@ describe('cell-swipe', () => {
       }
     })
 
-    const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
-
-    dragHelper(wrapper.find({ref: 'cellBd'}), -rightWidth, 0)
-
-    expect(wrapper.vm.offset).toBe(-rightWidth)
-
     // click at a point that outside the cell (like the body element)
-    wrapper2.trigger('click')
+    wrapper2.trigger('touchstart')
 
-    // expect(onClickoutsideSpy.called).toBeTruthy()
+    expect(onClickoutsideSpy.called).toBeTruthy()
   })
 })
