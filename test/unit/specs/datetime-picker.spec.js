@@ -142,13 +142,13 @@ describe('datetime-picker', () => {
       const hour = wrapper.findAll('.weui-picker__group').at(0)
       const minute = wrapper.findAll('.weui-picker__group').at(1)
 
-      dragHelper(hour, 0, 34)
-      dragHelper(minute, 0, 34)
+      dragHelper(hour, 0, -34)
+      dragHelper(minute, 0, -34)
 
       // TODO
       // expect(wrapper.vm.currentValue).toEqual('1:01')
       done()
-    }, 500)
+    }, 50)
   })
 
   // TODO:

@@ -1,6 +1,7 @@
 import { mount } from 'vue-test-utils'
 import InfiniteScrollComponent from '../components/infinite-scroll-component'
 import sinon from 'sinon'
+import { dragHelper } from '../utils'
 
 describe('infinite-scroll', () => {
   let wrapper
@@ -8,7 +9,7 @@ describe('infinite-scroll', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  it('create', (done) => {
     const loadMoreSpy = sinon.spy()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
@@ -23,12 +24,10 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy.called).toBe(false)
-    }, 500)
+      expect(loadMoreSpy.called).toBe(true)
 
-    wrapper.vm.$nextTick(() => {
-      expect(loadMoreSpy.called).toBe(false)
-    })
+      done()
+    }, 500)
   })
 
   // TODO:
@@ -47,13 +46,16 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      const callCount = loadMoreSpy.callCount
-
       const item = wrapper.findAll('.list-item')
-      // expect(loadMoreSpy.calledOnce).toBe(true)
-      // expect(loadMoreSpy.called).toBe(true)
-      // expect(item.length).toEqual(4)
-      // expect(item[item.length - 1].text()).toEqual('3')
+      expect(loadMoreSpy.calledOnce).toBe(true)
+      expect(item.length).toEqual(4)
+
+      // TODO: SCROLL
+      wrapper.find('.list').element.scrollTo(0, 1000)
+      document.body.scrollTop = 1000
+
+      dragHelper(wrapper, 0, -200)
+      expect(loadMoreSpy.calledOnce).toBe(true)
       done()
     }, 500)
   })
