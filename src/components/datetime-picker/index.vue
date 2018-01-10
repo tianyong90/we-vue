@@ -2,7 +2,7 @@
   <wv-picker
     ref="picker"
     :visible.sync="currentVisible"
-    :slots="dateSlots"
+    :columns="pickerColumns"
     @change="onChange"
     @confirm="onConfirm"
     @cancel="onCancel"
@@ -124,7 +124,7 @@ export default create({
       }
     },
 
-    dateSlots () {
+    pickerColumns () {
       let result = []
       for (let rangeKey in this.ranges) {
         result.push({
@@ -202,7 +202,6 @@ export default create({
     },
 
     onChange (picker) {
-      console.log(picker)
       const values = picker.getValues()
       let value
 
@@ -334,6 +333,7 @@ export default create({
         this.currentValue = `${('0' + this.startHour).slice(-2)}:00`
       }
     }
+    this.updateSlotValue(this.currentValue)
   },
 
   watch: {

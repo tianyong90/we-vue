@@ -18,16 +18,16 @@
           />
         </div>
         <div class="weui-picker__bd" :style="pickerBodyStyle">
-          <wv-picker-slot
-            v-for="(slot, index) in slots"
+          <wv-picker-column
+            v-for="(column, index) in columns"
             :key="index"
-            :options="slot.values || []"
+            :options="column.values || []"
             :value-key="valueKey"
-            :divider="slot.divider"
-            :content="slot.content"
-            :default-index="slot.defaultIndex"
+            :divider="column.divider"
+            :content="column.content"
+            :default-index="column.defaultIndex"
             :visible-item-count="visibleItemCount"
-            @change="slotValueChange(index)"
+            @change="columnValueChange(index)"
           />
         </div>
       </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import WvPickerSlot from './picker-slot.vue'
+import WvPickerColumn from './picker-column.vue'
 import { create } from '../../utils'
 
 // height of th option item
@@ -46,7 +46,7 @@ export default create({
   name: 'wv-picker',
 
   components: {
-    WvPickerSlot
+    WvPickerColumn
   },
 
   props: {
@@ -59,7 +59,7 @@ export default create({
       type: String,
       default: '取消'
     },
-    slots: {
+    columns: {
       type: Array,
       required: true
     },
@@ -86,8 +86,8 @@ export default create({
   },
 
   computed: {
-    slotCount () {
-      return this.slots.filter(slot => !slot.divider).length
+    columnCount () {
+      return this.columns.filter(column => !column.divider).length
     },
 
     pickerBodyStyle () {
@@ -103,62 +103,62 @@ export default create({
 
   methods: {
     initialize () {
-      this.currentSlots = this.slots
+      this.currentColumns = this.columns
     },
 
-    slotValueChange (slotIndex) {
+    columnValueChange (columnIndex) {
       this.currentValue = this.getValues()
-      this.$emit('change', this, this.getValues(), slotIndex)
+      this.$emit('change', this, this.getValues(), columnIndex)
     },
 
-    getSlot (slotIndex) {
+    getColumn (columnIndex) {
       let children = this.children
       return children.find((child, index) => {
-        return (child.$options.name === 'wv-picker-slot' && !child.divider && index === slotIndex)
+        return (child.$options.name === 'wv-picker-column' && !child.divider && index === columnIndex)
       })
     },
 
-    getSlotValue (slotIndex) {
-      return (this.getSlot(slotIndex) || {}).currentValue
+    getColumnValue (columnIndex) {
+      return (this.getColumn(columnIndex) || {}).currentValue
     },
 
-    setSlotValue (slotIndex, value) {
-      const slot = this.getSlot(slotIndex)
-      slot && slot.setValue(value)
+    setColumnValue (columnIndex, value) {
+      const column = this.getColumn(columnIndex)
+      column && column.setValue(value)
     },
 
-    getSlotValues (slotIndex) {
-      return (this.currentSlots[slotIndex] || {}).values
+    getColumnValues (columnIndex) {
+      return (this.currentColumns[columnIndex] || {}).values
     },
 
-    setSlotValues (slotIndex, values) {
-      const slot = this.currentSlots[slotIndex]
-      if (slot) {
-        slot.values = values
+    setColumnValues (columnIndex, values) {
+      const column = this.currentColumns[columnIndex]
+      if (column) {
+        column.values = values
       }
     },
 
     getValues () {
-      return this.children.filter(slot => !slot.divider).map(slot => slot.currentValue)
+      return this.children.map(child => child.currentValue)
     },
 
     setValues (values) {
-      if (this.slotCount !== values.length) {
-        throw new Error('values length is not equal slot count.')
+      if (this.columnCount !== values.length) {
+        throw new Error('values length is not equal columns count.')
       }
 
       values.forEach((value, index) => {
-        this.setSlotValue(index, value)
+        this.setColumnValue(index, value)
       })
     },
 
-    getSlotIndex (slotIndex) {
-      return (this.getSlot(slotIndex) || {}).currentIndex
+    getColumnIndex (columnIndex) {
+      return (this.getColumn(columnIndex) || {}).currentIndex
     },
 
-    setSlotIndex (slotIndex, index) {
-      const slot = this.getSlot(slotIndex)
-      slot && slot.setIndex(index)
+    setColumnIndex (columnIndex, index) {
+      const column = this.getColumn(columnIndex)
+      column && column.setIndex(index)
     },
 
     getIndexes () {
@@ -166,8 +166,8 @@ export default create({
     },
 
     setIndexes (indexes) {
-      indexes.forEach((optionIndex, slotIndex) => {
-        this.setSlotIndex(slotIndex, optionIndex)
+      indexes.forEach((optionIndex, columnIndex) => {
+        this.setColumnIndex(columnIndex, optionIndex)
       })
     },
 

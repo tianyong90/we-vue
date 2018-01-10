@@ -22,8 +22,10 @@ describe('actionsheet', () => {
       type: 'android'
     })
 
-    // check mask element class for android type
-    expect(wrapper.contains('.weui-skin_android')).toBeTruthy()
+    wrapper.vm.$nextTick(() => {
+      // check mask element class for android type
+      expect(wrapper.contains('.weui-skin_android')).toBeTruthy()
+    })
   })
 
   it('watch value change', () => {

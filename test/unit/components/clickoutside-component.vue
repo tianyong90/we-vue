@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="item-1" v-clickoutside="onClickoutside1"></div>
-    <div class="item-2" v-clickoutside="onClickoutside2"></div>
-    <div class="item-3"></div>
+    <div class="item-1" v-clickoutside="onClickoutside1"/>
+    <div class="item-2" v-clickoutside="onClickoutside2"/>
+    <div class="item-3"/>
   </div>
 </template>
 

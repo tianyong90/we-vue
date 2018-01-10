@@ -55,8 +55,8 @@ describe('input', () => {
     expect(wrapper.vm.currentValue).toBe('test')
     expect(validateSpy.called).toBeTruthy()
 
-    // reset the spy
-    validateSpy.reset()
+    // reset the spy states
+    validateSpy.resetHistory()
 
     // do not validate on input
     wrapper = shallow(Input, {

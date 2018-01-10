@@ -20,7 +20,7 @@
       />
     </div>
   </div>
-  <div class="wv-picker-slot-divider" v-else v-html="content"/>
+  <div class="wv-picker-column-divider" v-else v-html="content"/>
 </template>
 
 <script>
@@ -32,7 +32,7 @@ const range = (num, min, max) => Math.min(Math.max(num, min), max)
 const ITEM_HEIGHT = 34
 
 export default create({
-  name: 'wv-picker-slot',
+  name: 'wv-picker-column',
 
   props: {
     options: {
@@ -243,7 +243,7 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  .wv-picker-slot-divider {
+  .wv-picker-column-divider {
     transform: translateY(106px);
   }
 </style>

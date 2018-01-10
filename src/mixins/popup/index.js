@@ -103,7 +103,7 @@ export default {
         })
 
         if (this.lockOnScroll) {
-          document.body.classList.add('van-overflow-hidden')
+          document.body.classList.add('wv-overflow-hidden')
         }
       }
 
@@ -130,7 +130,7 @@ export default {
       manager.closeModal(this._popupId)
 
       if (this.lockOnScroll) {
-        document.body.classList.remove('van-overflow-hidden')
+        document.body.classList.remove('wv-overflow-hidden')
       }
 
       if (this.preventScroll) {

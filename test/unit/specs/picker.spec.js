@@ -1,7 +1,22 @@
-import { mount, createLocalVue } from 'vue-test-utils'
+import { mount, shallow } from 'vue-test-utils'
 import Picker from '@/components/picker'
-import PickerSlot from '@/components/picker/picker-slot.vue'
+import PickerColumn from '@/components/picker/picker-column.vue'
 import { dragHelper } from '../utils'
+
+const testSingleColumn = [
+  {
+    values: [1, 2, 3]
+  }
+]
+
+const testMultiColumn = [
+  {
+    values: [1, 2, 3]
+  },
+  {
+    values: ['yes', 'no']
+  }
+]
 
 describe('picker', () => {
   let wrapper
@@ -12,7 +27,8 @@ describe('picker', () => {
   it('create', () => {
     wrapper = mount(Picker, {
       propsData: {
-        slots: []
+        visible: true,
+        columns: []
       }
     })
 
@@ -23,124 +39,123 @@ describe('picker', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
-        slots: [{
-          values: [1, 2, 3],
-          defaultIndex: 0
-        }]
+        visible: true,
+        columns: testSingleColumn
       }
     })
 
     setTimeout(() => {
-      expect(wrapper.findAll(PickerSlot).length).toBe(1)
+      expect(wrapper.findAll(PickerColumn).length).toBe(1)
 
-      expect(wrapper.vm.getValues()).toEqual([2])
+      expect(wrapper.vm.getColumnValues(0).length).toBe(3)
+      expect(wrapper.vm.getValues()).toEqual([1])
+
       done()
-    }, 500)
+    }, 50)
+  })
+
+  it('create a nulti-column picker', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: testMultiColumn
+      }
+    })
+
+    setTimeout(() => {
+      expect(wrapper.findAll(PickerColumn).length).toBe(2)
+
+      expect(wrapper.vm.getColumnValues(0).length).toBe(3)
+      expect(wrapper.vm.getColumnValues(1).length).toBe(2)
+      expect(wrapper.vm.getValues()).toEqual([1, 'yes'])
+
+      done()
+    }, 50)
+  })
+
+  it('getColumnValue method', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: testSingleColumn
+      }
+    })
+
+    setTimeout(() => {
+      expect(wrapper.vm.getColumnValue(0)).toEqual(1)
+
+      done()
+    }, 50)
   })
 
   // TODO
-  it('create a nulti-column picker', (done) => {
+  it('setColumnValue method', (done) => {
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
-          values: [1, 2, 3],
-          defaultIndex: 0
-        }, {
-          values: [1, 2, 3],
-          defaultIndex: 0
-        }]
+        visible: true,
+        columns: testSingleColumn
+      }
+    })
+
+    wrapper.vm.setColumnValues(0, 2)
+
+    setTimeout(() => {
+      expect(wrapper.vm.getColumnValue(0)).toEqual(2)
+
+      done()
+    }, 50)
+  })
+
+  it('getColumnValues method', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: testMultiColumn
       }
     })
 
     setTimeout(() => {
-      expect(wrapper.findAll(PickerSlot).length).toBe(2)
+      expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
+      expect(wrapper.vm.getColumnValues(1)).toEqual(['yes', 'no'])
 
-      expect(wrapper.vm.getValues()).toEqual([1, 1])
       done()
-    }, 500)
+    }, 50)
   })
 
-  // TODO: getSlotValue
-  it('getSlotValue method', (done) => {
+  // TODO: setColumnValues
+  it('setColumnValue method', (done) => {
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
-          values: [1, 2, 3],
-          default: 0
-        }]
+        visible: true,
+        columns: []
       }
     })
+
+    wrapper.vm.setColumnValues(0, [1, 2, 3])
 
     setTimeout(() => {
-      wrapper.vm.getSlotValue(0)
+      expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
+
       done()
-    }, 500)
-  })
-
-  // TODO: setSlotValue
-  it('setSlotValue method', () => {
-    wrapper = mount(Picker, {
-      propsData: {
-        slots: [{
-          values: [1, 2, 3],
-          default: 0
-        }]
-      }
-    })
-
-    wrapper.vm.setSlotValues(0, [1, 2, 3])
-
-    // expect(wrapper.contains('.wv-picker')).toBeTruthy()
-  })
-
-  // TODO: getSlotValues
-  it('getSlotValues method', () => {
-    wrapper = mount(Picker, {
-      propsData: {
-        slots: [{
-          values: [1, 2, 3],
-          default: 0
-        }]
-      }
-    })
-
-    wrapper.vm.$nextTick(() => {
-      wrapper.vm.getSlotValues(0)
-    })
-  })
-
-  // TODO: setSlotValues
-  it('setSlotValue method', () => {
-    wrapper = mount(Picker, {
-      propsData: {
-        slots: [{
-          values: [1, 2, 3],
-          default: 0
-        }]
-      }
-    })
-
-    wrapper.vm.setSlotValues(0, 2)
-
-    // expect(wrapper.contains('.wv-picker')).toBeTruthy()
+    }, 50)
   })
 
   // TODO: getValues
   it('test getValues method', () => {
-    const slotValues = [1, 2, 3]
-
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
-          values: slotValues,
-          default: 0
-        }]
+        visible: true,
+        columns: testSingleColumn
       }
     })
 
-    const slotValuesResult = wrapper.vm.setSlotValues(0)
-
-    expect(slotValuesResult).toEqual(slotValues)
+    expect(wrapper.vm.getValues()).toEqual([1])
   })
 
   // TODO: setValues
@@ -148,8 +163,10 @@ describe('picker', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
+        visible: true,
+        columns: [{
           values: slotValues,
           default: 0
         }]
@@ -173,8 +190,10 @@ describe('picker', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
+        visible: true,
+        columns: [{
           values: slotValues,
           default: 0
         }]
@@ -184,36 +203,40 @@ describe('picker', () => {
     expect(wrapper.vm.getValues()).toEqual(1)
   })
 
-  // TODO: getSlotIndex
-  it('test getSlotIndex method', () => {
+  // TODO: getColumnIndex
+  it('test getColumnIndex method', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
+        visible: true,
+        columns: [{
           values: slotValues,
           default: 0
         }]
       }
     })
 
-    expect(wrapper.vm.getSlotIndex(0)).toEqual(1)
+    expect(wrapper.vm.getColumnIndex(0)).toEqual(1)
   })
 
-  // TODO: setSlotIndex
-  it('test setSlotIndex method', () => {
+  // TODO: setColumnIndex
+  it('test setColumnIndex method', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
+        visible: true,
+        columns: [{
           values: slotValues,
           default: 0
         }]
       }
     })
 
-    expect(wrapper.vm.setSlotIndex(0, 1)).toEqual(1)
+    expect(wrapper.vm.setColumnIndex(0, 1)).toEqual(1)
   })
 
   // TODO: getIndexes
@@ -221,20 +244,28 @@ describe('picker', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
+        visible: true,
+        columns: [{
           values: slotValues,
           default: 0
         }]
       }
     })
 
+    wrapper.vm.$nextTick(() => {
+      const ccc = wrapper.vm.children
+
+      expect(wrapper.vm.getIndexes()).toEqual([1])
+    })
+
     setTimeout(() => {
-      // const ccc = wrapper.vm.children
-      //
-      // expect(wrapper.vm.getIndexes()).toEqual(1)
+      const ccc = wrapper.vm.children
+
+      expect(wrapper.vm.getIndexes()).toEqual([1])
       done()
-    }, 500)
+    }, 50)
   })
 
   // TODO: setIndexes
@@ -242,21 +273,26 @@ describe('picker', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
-          values: slotValues,
-          default: 0
+        visible: true,
+        columns: [{
+          values: slotValues
         }]
       }
     })
 
-    expect(wrapper.vm.setIndexes([1])).toEqual(1)
+    wrapper.vm.setIndexes([1])
+
+    expect(wrapper.vm.getIndexes()).toEqual([1])
   })
 
   it('click cancel button', () => {
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: []
+        visible: true,
+        columns: []
       }
     })
 
@@ -267,8 +303,10 @@ describe('picker', () => {
 
   it('click confirm button', () => {
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: []
+        visible: true,
+        columns: []
       }
     })
 
@@ -281,16 +319,253 @@ describe('picker', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
+      attachToDocument: true,
       propsData: {
-        slots: [{
+        visible: true,
+        columns: [{
           values: slotValues,
           default: 0
         }]
       }
     })
 
-    wrapper.findAll(PickerSlot).at(0).vm.$emit('change', 0)
+    wrapper.findAll(PickerColumn).at(0).vm.$emit('change', 0)
 
     expect(wrapper.emitted().change).toBeTruthy()
+  })
+})
+
+describe('picker-column', () => {
+  let wrapper
+  afterEach(() => {
+    wrapper && wrapper.destroy()
+  })
+
+  it('create', () => {
+    wrapper = mount(PickerColumn, {
+      propsData: {}
+    })
+
+    expect(wrapper.name()).toBe('wv-picker-column')
+  })
+
+  it('create using object-array values', () => {
+    const slotValues = [
+      {
+        label: 'label1',
+        value: 'value1'
+      },
+      {
+        label: 'label2',
+        value: 'value2'
+      },
+      {
+        label: 'label3',
+        value: 'value3'
+      }
+    ]
+
+    wrapper = mount(PickerColumn, {
+      propsData: {
+        values: slotValues,
+        valueKey: 'value',
+        value: 'value1'
+      }
+    })
+
+    // expect(wrapper.)
+  })
+
+  it('render a divider slot', () => {
+    wrapper = shallow(PickerColumn, {
+      propsData: {
+        divider: true,
+        content: '-'
+      }
+    })
+
+    expect(wrapper.text()).toBe('-')
+  })
+
+  it('drag slot', () => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            values: [1, 2, 3],
+            defaultIndex: 0
+          }
+        ]
+      }
+    })
+
+    dragHelper(wrapper.find(PickerColumn), 0, 50)
+  })
+
+  it('click slot to change the current-value', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            values: [1, 2, 3],
+            defaultIndex: 0
+          }
+        ]
+      }
+    })
+
+    setTimeout(() => {
+      const indicator = wrapper.find('.weui-picker__indicator').element
+
+      const indicatorRect = indicator.getBoundingClientRect()
+
+      wrapper.find(PickerColumn).trigger('click', { clientX: 0, clientY: indicatorRect.top + 35 })
+
+      expect(wrapper.find(PickerColumn).vm.currentIndex).toBe(1)
+      done()
+    }, 50)
+  })
+
+  it('watch currentValue', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            values: [1, 2, 3],
+            defaultIndex: 0
+          }
+        ]
+      }
+    })
+
+    const pickerColumnWrapper = wrapper.find(PickerColumn)
+
+    setTimeout(() => {
+      pickerColumnWrapper.setData({
+        currentIndex: 1
+      })
+
+      expect(pickerColumnWrapper.emitted().change[0]).toEqual([1])
+      done()
+    }, 50)
+  })
+
+  it('divider pickerSlot', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            divider: true
+          }
+        ]
+      }
+    })
+
+    const pickerColumnWrapper = wrapper.find(PickerColumn)
+
+    setTimeout(() => {
+      pickerColumnWrapper.setData({
+        currentIndex: 1
+      })
+
+      // divider should not emit change event when currentIndex changed
+      expect(pickerColumnWrapper.emitted().change).toBeFalsy()
+      done()
+    }, 50)
+  })
+
+  it('index should be adjust to a suitable value when it is exceeded ot disabled', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            values: [
+              {
+                text: 1
+              },
+              {
+                text: 2
+              },
+              {
+                text: 3,
+                disabled: true
+              }
+            ],
+            defaultIndex: 0
+          }
+        ]
+      }
+    })
+
+    const pickerColumnWrapper = wrapper.find(PickerColumn)
+
+    setTimeout(() => {
+      pickerColumnWrapper.vm.setIndex(4)
+
+      // divider should not emit change event when currentIndex changed
+      expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
+      done()
+    }, 50)
+  })
+
+  it('watch defaultIndex', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            values: [1, 2, 3],
+            defaultIndex: 0
+          }
+        ]
+      }
+    })
+
+    const pickerColumnWrapper = wrapper.find(PickerColumn)
+
+    setTimeout(() => {
+      pickerColumnWrapper.setProps({
+        defaultIndex: 1
+      })
+
+      expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
+      done()
+    }, 50)
+  })
+
+  it('test setValue method', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            values: [1, 2, 3],
+            defaultIndex: 0
+          }
+        ]
+      }
+    })
+
+    const pickerColumnWrapper = wrapper.find(PickerColumn)
+
+    setTimeout(() => {
+      pickerColumnWrapper.vm.setValue(3)
+
+      expect(pickerColumnWrapper.vm.currentValue).toBe(3)
+      expect(pickerColumnWrapper.vm.currentIndex).toBe(2)
+      done()
+    }, 50)
   })
 })

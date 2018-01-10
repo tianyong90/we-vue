@@ -11,26 +11,26 @@
 
     <wv-picker
       :visible.sync="peoplePickerShow"
-      :slots="peopleSlots"
+      :columns="peopleColumns"
       value-key="name"
       @confirm="confirmPerson"
     />
     <wv-picker
       :visible.sync="ticketPickerShow"
       v-model="res"
-      :slots="ticketSlots"
+      :columns="ticketColumns"
       @confirm="confirmTicket"
     />
     <wv-picker
       :visible.sync="dayPickerShow"
-      :slots="daySlots"
+      :columns="dayColumns"
       @confirm="confirmDayTime"
     />
     <wv-picker
       :visible.sync="addressPickerShow"
       v-model="addressRes"
       ref="addressPicker"
-      :slots="addressSlots"
+      :columns="addressColumns"
       :visible-item-count="5"
       @change="onAddressChange"
       @confirm="confirmAddress"
@@ -42,8 +42,6 @@
 import chinaAreaData from 'china-area-data'
 
 const provinces = Object.values(chinaAreaData[86])
-
-console.log(provinces)
 
 // 获取某一省下的市
 const getCities = (province) => {
@@ -97,7 +95,7 @@ export default {
       dayAndTime: '',
       address: '',
       person: [{name: 'a', age: 1}],
-      peopleSlots: [
+      peopleColumns: [
         {
           values: [
             {
@@ -116,7 +114,7 @@ export default {
           defaultIndex: 0
         }
       ],
-      ticketSlots: [
+      ticketColumns: [
         {
           values: [
             '汽车票',
@@ -128,7 +126,7 @@ export default {
           defaultIndex: 2
         }
       ],
-      daySlots: [
+      dayColumns: [
         {
           values: [
             '星期一',
@@ -149,7 +147,7 @@ export default {
           defaultIndex: 0
         }
       ],
-      addressSlots: [
+      addressColumns: [
         {
           values: provinces
         },
@@ -187,8 +185,11 @@ export default {
     },
 
     onAddressChange (picker, addressValues, slotIndex) {
-      picker.setSlotValues(1, getCities(addressValues[0]))
-      picker.setSlotValues(2, getAreas(addressValues[0], addressValues[1]))
+      console.log(picker.$children)
+      console.log(picker.getValues())
+
+      picker.setColumnValues(1, getCities(addressValues[0]))
+      picker.setColumnValues(2, getAreas(addressValues[0], addressValues[1]))
     },
 
     confirmAddress (picker) {

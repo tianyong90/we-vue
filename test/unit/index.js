@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import expect from 'expect'
+import VueTestUtils from 'vue-test-utils'
 
 Vue.config.productionTip = false
+
+// IMPORTANT: DO NOT use vue-test-utils transitionStub
+VueTestUtils.config.stubs.transition = false
 
 global.expect = expect
 

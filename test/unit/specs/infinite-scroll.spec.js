@@ -85,22 +85,19 @@ describe('infinite-scroll', () => {
     }, 600)
   })
 
-  // TODO
-  it('scrollTarget height === 0', (done) => {
+  it('when scrollTarget is hidden, the loadMore callback should not be called', (done) => {
     const loadMoreSpy = sinon.spy()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
-        display: 'none',
+        hidden: true,
         list: [],
         onLoadMore: loadMoreSpy
       }
     })
 
     setTimeout(() => {
-      const el = wrapper.vm.$el.outerHTML
-
       expect(loadMoreSpy.called).toBe(false)
       done()
     }, 500)

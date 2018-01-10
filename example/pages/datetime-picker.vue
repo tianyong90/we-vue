@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <wv-group title="基本示例">
-      <wv-cell title="时间" :value="value1 | datetimeFilter('time')" is-link @click.native="$refs.timePicker.open()"/>
+      <wv-cell title="时间" :value="demoTime | datetimeFilter('time')" is-link @click.native="$refs.timePicker.open()"/>
       <wv-cell title="日期" :value="value2 | datetimeFilter('date')" is-link @click.native="$refs.picker2.open()"/>
-      <wv-cell title="日期时间" :value="value3 | datetimeFilter('datetime')" is-link @click.native="$refs.picker3.open()"/>
+      <wv-cell title="日期时间" :value="demoDatetime | datetimeFilter('datetime')" is-link @click.native="$refs.picker3.open()"/>
     </wv-group>
 
     <wv-group title="高级示例">
@@ -22,7 +22,7 @@
     <wv-datetime-picker
       type="datetime"
       ref="picker3"
-      v-model="value3"
+      v-model="demoDatetime"
       @confirm="onConfirm"
     />
   </div>
@@ -34,10 +34,9 @@ import Toast from '../../src/components/toast'
 export default {
   data () {
     return {
-      demoTime: '10:00',
-      value1: null,
+      demoTime: '12:23',
       value2: null,
-      value3: null,
+      demoDatetime: new Date(),
       value4: null,
       value5: new Date(), // 设置初始值
       value6: null

@@ -1,7 +1,7 @@
 <template>
   <div
     class="list"
-    :style="{ display: display }"
+    :class="{ 'infinite-scroll-hidden': hidden }"
     v-infinite-scroll="triggerLoadMore"
     infinite-scroll-disabled="disabled"
     infinite-scroll-immediate-check="immediateCheck"
@@ -9,7 +9,8 @@
   >
     <div
       class="list-item"
-      v-for="item in list"
+      v-for="(item, index) in list"
+      :key="index"
     >{{ item.id }}
     </div>
   </div>
@@ -37,10 +38,7 @@ export default {
         return function () {}
       }
     },
-    display: {
-      type: String,
-      default: 'block'
-    }
+    hidden: Boolean
   },
 
   methods: {
@@ -50,3 +48,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .infinite-scroll-hidden {
+    overflow: scroll;
+    height: 200px;
+    display: none;
+  }
+</style>

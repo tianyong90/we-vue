@@ -1,5 +1,5 @@
 <template>
-  <div v-show="visible"></div>
+  <div v-show="visible"/>
 </template>
 
 <script>

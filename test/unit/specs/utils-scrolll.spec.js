@@ -30,7 +30,6 @@ describe('utils scroll', () => {
     expect(ScrollUtil.isAttached(mockElement)).toBe(false)
   })
 
-  // TODO:
   it('debounce method', () => {
     // debounce should be defines as functin
     expect(typeof ScrollUtil.debounce).toEqual('function')
@@ -41,14 +40,17 @@ describe('utils scroll', () => {
     // the callback stub
     const callback = sinon.stub()
 
-    let fn = ScrollUtil.debounce(callback, 100)
+    const fn = ScrollUtil.debounce(callback, 100)
 
-    setTimeout(fn, 100)
-    setTimeout(fn, 250)
+    fn() // callback should be called
 
-    clock.tick(200)
+    setTimeout(fn, 50) // callback should NOT be called
+    setTimeout(fn, 151) // callback should be called
+
+    clock.tick(500)
 
     expect(callback.called).toBe(true)
+    expect(callback.callCount).toBe(2)
   })
 
   it('getScrollEventTarget method', () => {

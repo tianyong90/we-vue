@@ -132,8 +132,9 @@ describe('datetime-picker', () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
+        visible: true,
         type: 'time',
-        value: testTime
+        value: '12:00'
       }
     })
 
@@ -141,9 +142,11 @@ describe('datetime-picker', () => {
       const hour = wrapper.findAll('.weui-picker__group').at(0)
       const minute = wrapper.findAll('.weui-picker__group').at(1)
 
-      dragHelper(hour, 0, -50)
-      dragHelper(minute, 0, -50)
+      dragHelper(hour, 0, 34)
+      dragHelper(minute, 0, 34)
 
+      // TODO
+      // expect(wrapper.vm.currentValue).toEqual('1:01')
       done()
     }, 500)
   })
