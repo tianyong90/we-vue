@@ -1,11 +1,13 @@
 <template>
   <div class="page">
     <wv-group title="选择器示例">
+      <wv-cell title="单列选择(对象数组)" is-link :value="fruit.name" @click.native="fruitPickerShow = true"></wv-cell>
       <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true"></wv-cell>
       <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true"></wv-cell>
       <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true"></wv-cell>
     </wv-group>
 
+    <wv-picker v-model="fruitPickerShow" :slots="fruitSlots" value-key="name" @change="onFruitPickerChange"></wv-picker>
     <wv-picker v-model="ticketPickerShow" :slots="ticketSlots" @confirm="confirmTicket"></wv-picker>
     <wv-picker v-model="dayPickerShow" :slots="daySlots" @confirm="confirmDayTime"></wv-picker>
     <wv-picker v-model="addressPickerShow" ref="addressPicker" :slots="addressSlots" @change="onAddressChange" @confirm="confirmAddress"></wv-picker>
@@ -58,14 +60,34 @@
   export default {
     data () {
       return {
+        fruit: {},
         ticketValue: [],
         dayValue: [],
+        fruitPickerShow: false,
         ticketPickerShow: false,
         dayPickerShow: false,
         addressPickerShow: false,
         ticket: '',
         dayAndTime: '',
         address: '',
+        fruitSlots: [
+          {
+            values: [
+              {
+                name: 'Apple',
+                price: '1'
+              },
+              {
+                name: 'Banana',
+                price: '1.2'
+              },
+              {
+                name: 'Orange',
+                price: '2'
+              }
+            ]
+          }
+        ],
         ticketSlots: [
           {
             values: [
@@ -120,6 +142,11 @@
     methods: {
       onChange (picker, value) {
         console.log(value)
+      },
+
+      onFruitPickerChange (picker, value) {
+        console.log(value)
+        this.fruit = value[0]
       },
 
       confirmTicket (picker) {
