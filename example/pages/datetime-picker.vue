@@ -2,14 +2,13 @@
   <div class="page">
     <wv-group title="基本示例">
       <wv-cell title="时间" :value="demoTime | datetimeFilter('time')" is-link @click.native="$refs.timePicker.open()"/>
-      <wv-cell title="日期" :value="value2 | datetimeFilter('date')" is-link @click.native="$refs.picker2.open()"/>
-      <wv-cell title="日期时间" :value="demoDatetime | datetimeFilter('datetime')" is-link @click.native="$refs.picker3.open()"/>
+      <wv-cell title="日期" :value="demoDate | datetimeFilter('date')" is-link @click.native="$refs.datePicker.open()"/>
+      <wv-cell title="日期时间" :value="demoDatetime | datetimeFilter('datetime')" is-link @click.native="$refs.datetimePicker.open()"/>
     </wv-group>
 
     <wv-group title="高级示例">
-      <wv-cell title="自定义模板" :value="value4 | datetimeFilter('date')" is-link @click.native="$refs.picker4.open()"/>
-      <wv-cell title="设置初始值" :value="value5 | datetimeFilter('date')" is-link @click.native="$refs.picker5.open()"/>
-      <wv-cell title="自定义起止范围" :value="value6 | datetimeFilter('date')" is-link @click.native="$refs.picker6.open()"/>
+      <wv-cell title="自定义模板" :value="demoDatetime | datetimeFilter('datetime')" is-link @click.native="$refs.formatDatetimePicker.open()"/>
+      <wv-cell title="自定义起止范围" :value="demoDatetime | datetimeFilter('datetime')" is-link @click.native="$refs.rangeDatetimePicker.open()"/>
     </wv-group>
 
     <wv-datetime-picker
@@ -20,10 +19,38 @@
     />
 
     <wv-datetime-picker
+      type="date"
+      ref="datePicker"
+      v-model="demoDate"
+      @confirm="onConfirm"
+    />
+
+    <wv-datetime-picker
       type="datetime"
-      ref="picker3"
+      ref="datetimePicker"
       v-model="demoDatetime"
       @confirm="onConfirm"
+    />
+
+    <wv-datetime-picker
+      type="datetime"
+      ref="formatDatetimePicker"
+      v-model="demoDatetime"
+      @confirm="onConfirm"
+      year-format="{value}年"
+      month-format="{value}月"
+      date-format="{value}日"
+      hour-format="{value}时"
+      minute-format="{value}分"
+    />
+
+    <wv-datetime-picker
+      type="datetime"
+      ref="rangeDatetimePicker"
+      v-model="demoDatetime"
+      @confirm="onConfirm"
+      :start-date="new Date('2017/01/01 00:00')"
+      :end-date="new Date('2020/01/01 23:00')"
     />
   </div>
 </template>
@@ -35,19 +62,30 @@ export default {
   data () {
     return {
       demoTime: '12:23',
-      value2: null,
       demoDatetime: new Date(),
-      value4: null,
-      value5: new Date(), // 设置初始值
-      value6: null
+      demoDate: new Date()
     }
   },
 
   methods: {
     onConfirm (value) {
+      let message = ''
+
+      if (value !== null && typeof value === 'object') {
+        let year = value.getFullYear()
+        let month = value.getMonth() + 1
+        let date = value.getDate()
+        let hour = value.getHours()
+        let minute = value.getMinutes()
+
+        message = `${year}-${month}-${date} ${hour}:${minute}`
+      } else {
+        message = value
+      }
+
       Toast({
         duration: 3000,
-        message: value.toString(),
+        message: message,
         type: 'text'
       })
     }

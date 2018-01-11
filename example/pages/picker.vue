@@ -1,23 +1,21 @@
 <template>
   <div class="page">
-    <h3>{{ addressRes }}</h3>
-
     <wv-group title="选择器示例">
-      <wv-cell title="单列选择(对象数组)" is-link :value="person.name" @click.native="peoplePickerShow = true" />
-      <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true" />
-      <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true" />
-      <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true" />
+      <wv-cell title="单列(对象数组)" is-link :value="fruit.name" @click.native="fruitPickerShow = true" />
+      <wv-cell title="单列" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true" />
+      <wv-cell title="多列" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true" />
+      <wv-cell title="联动" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true" />
     </wv-group>
 
     <wv-picker
-      :visible.sync="peoplePickerShow"
-      :columns="peopleColumns"
+      :visible.sync="fruitPickerShow"
+      :columns="fruitColumns"
       value-key="name"
       @confirm="confirmPerson"
     />
     <wv-picker
       :visible.sync="ticketPickerShow"
-      v-model="res"
+      v-model="ticket"
       :columns="ticketColumns"
       @confirm="confirmTicket"
     />
@@ -28,7 +26,7 @@
     />
     <wv-picker
       :visible.sync="addressPickerShow"
-      v-model="addressRes"
+      v-model="address"
       ref="addressPicker"
       :columns="addressColumns"
       :visible-item-count="5"
@@ -83,35 +81,36 @@ function getAreas (province, city) {
 export default {
   data () {
     return {
-      res: ['火车票'],
-      addressRes: [],
       ticketValue: [],
       dayValue: [],
-      peoplePickerShow: false,
+      fruitPickerShow: false,
       ticketPickerShow: false,
       dayPickerShow: false,
       addressPickerShow: false,
       ticket: ['汽车票'],
-      dayAndTime: '',
-      address: '',
-      person: [{name: 'a', age: 1}],
-      peopleColumns: [
+      dayAndTime: [],
+      address: [],
+      fruit: [{name: 'Apple', age: 1}],
+      fruitColumns: [
         {
           values: [
             {
-              name: 'a',
-              age: 1
+              name: 'Apple',
+              price: 1.3
             },
             {
-              name: 'b',
-              age: 1
+              name: 'Banana',
+              price: 2.0
             },
             {
-              name: 'c',
-              age: 1
+              name: 'Orange',
+              price: 10
+            },
+            {
+              name: 'Pear',
+              price: 0.5
             }
-          ],
-          defaultIndex: 0
+          ]
         }
       ],
       ticketColumns: [
@@ -173,7 +172,7 @@ export default {
     },
 
     confirmPerson (picker) {
-      this.person = picker.getValues()[0]
+      this.fruit = picker.getValues()[0]
     },
 
     confirmTicket (picker) {
@@ -185,11 +184,13 @@ export default {
     },
 
     onAddressChange (picker, addressValues, slotIndex) {
-      console.log(picker.$children)
-      console.log(picker.getValues())
-
-      picker.setColumnValues(1, getCities(addressValues[0]))
-      picker.setColumnValues(2, getAreas(addressValues[0], addressValues[1]))
+      if (slotIndex === 0) {
+        const cities = getCities(addressValues[0])
+        picker.setColumnValues(1, cities)
+        picker.setColumnValues(2, getAreas(addressValues[0], cities[0]))
+      } else if (slotIndex === 1) {
+        picker.setColumnValues(2, getAreas(addressValues[0], addressValues[1]))
+      }
     },
 
     confirmAddress (picker) {
