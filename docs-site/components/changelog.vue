@@ -1,17 +1,17 @@
 <template>
   <div class="doc-content">
-    <changelog-md></changelog-md>
+    <changelog-md/>
   </div>
 </template>
 
 <script>
-  import 'highlight.js/styles/github.css'
+import 'highlight.js/styles/github.css'
 
-  export default {
-    components: {
-      'changelog-md': () => import('../../CHANGELOG.md')
-    }
+export default {
+  components: {
+    'changelog-md': () => import('../../CHANGELOG.md')
   }
+}
 </script>
 
 <style scoped lang="scss">

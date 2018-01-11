@@ -23,15 +23,15 @@
 </template>
 
 <script>
-  export default {
-    name: 'doc-header',
+export default {
+  name: 'doc-header',
 
-    computed: {
-      isHomepage () {
-        return this.$route.path === '/'
-      }
+  computed: {
+    isHomepage () {
+      return this.$route.path === '/'
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

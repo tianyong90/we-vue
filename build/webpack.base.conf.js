@@ -3,6 +3,12 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const cache = {
+  loader: 'cache-loader',
+  options: {
+    cacheDirectory: path.resolve(__dirname, '../node_modules/.cache-loader')
+  }
+}
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -43,12 +49,11 @@ module.exports = {
       },
       {
         test: /\.md$/,
-        loader: 'vue-markdown-loader',
-        options: {
-          preset: 'default',
-          breaks: true,
-          preventExtract: true
-        }
+        use: [
+          cache,
+          'vue-loader',
+          'fast-vue-md-loader'
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

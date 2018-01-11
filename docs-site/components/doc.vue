@@ -4,7 +4,7 @@
       <div class="doc-nav">
         <ul>
           <li class="doc-nav__item" v-for="navItem in navs" :key="navItem.title">
-            <h2 class="title" v-html="navItem.title"></h2>
+            <h2 class="title" v-html="navItem.title"/>
             <ul class="sub-tree">
               <li>
                 <router-link
@@ -26,51 +26,51 @@
       </div>
     </div>
     <div class="demo-wrap" :style="{ top: demoWrapTop + 'px' }">
-      <div class="mobile-top"></div>
-      <iframe id="iframe-demo" src="//demo.wevue.org" frameborder="0"></iframe>
+      <div class="mobile-top"/>
+      <iframe id="iframe-demo" src="//demo.wevue.org" frameborder="0"/>
     </div>
   </div>
 </template>
 
 <script>
-  import { navs, demoUrlMap } from '../config'
-  import 'highlight.js/styles/github.css'
+import { navs, demoUrlMap } from '../config'
+import 'highlight.js/styles/github.css'
 
-  export default {
-    data () {
-      return {
-        navs,
-        demoWrapTop: 90
+export default {
+  data () {
+    return {
+      navs,
+      demoWrapTop: 90
+    }
+  },
+
+  mounted () {
+    this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(this.$route.name))
+
+    // 右侧 DEMO 区实在 sticky 效果
+    document.addEventListener('scroll', (e) => {
+      const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
+      if (scrollDistance >= 70) {
+        this.demoWrapTop = scrollDistance + 20
+      } else {
+        this.demoWrapTop = 90
       }
-    },
+    })
+  },
 
-    mounted () {
-      this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(this.$route.name))
+  methods: {
+    setIframeSrc (src) {
+      let demoIframe = document.getElementById('iframe-demo')
+      demoIframe.src = src
+    }
+  },
 
-      // 右侧 DEMO 区实在 sticky 效果
-      document.addEventListener('scroll', (e) => {
-        const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
-        if (scrollDistance >= 70) {
-          this.demoWrapTop = scrollDistance + 20
-        } else {
-          this.demoWrapTop = 90
-        }
-      })
-    },
-
-    methods: {
-      setIframeSrc (src) {
-        let demoIframe = document.getElementById('iframe-demo')
-        demoIframe.src = src
-      }
-    },
-
-    watch: {
-      '$route.name': function (val) {
-        this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(val))
-      }
+  watch: {
+    '$route.name': function (val) {
+      this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(val))
     }
   }
+}
 </script>
 
 <style scoped lang="scss">
