@@ -1,3 +1,5 @@
+import sinon from 'sinon'
+
 // 触发一个 touch 事件
 export function triggerTouch (wrapper, eventName, x, y) {
   const el = wrapper.element ? wrapper.element : wrapper
@@ -49,6 +51,33 @@ export function horizontalDrag (el, startX = 0, endX) {
   triggerTouch(el, 'touchmove', (startX + endX) / 2, 0)
   triggerTouch(el, 'touchmove', endX, 0)
   triggerTouch(el, 'touchend', endX, 0)
+}
+
+/**
+ * vertical drag slowly
+ *
+ * because it hard to test PICKER component when the velocity is too big.
+ *
+ * @param el
+ * @param startY
+ * @param endY
+ */
+export function slowVerticalDrag (el, startY, endY) {
+  const clock = sinon.useFakeTimers()
+
+  triggerTouch(el, 'touchstart', 0, startY)
+  clock.tick(500)
+  triggerTouch(el, 'touchmove', 0, (startY + endY) / 4)
+  clock.tick(500)
+  triggerTouch(el, 'touchmove', 0, (startY + endY) / 3)
+  clock.tick(500)
+  triggerTouch(el, 'touchmove', 0, (startY + endY) / 2)
+  clock.tick(500)
+  triggerTouch(el, 'touchmove', 0, endY)
+  clock.tick(500)
+  triggerTouch(el, 'touchend', 0, endY)
+
+  clock.restore()
 }
 
 // drag an emelent to a point but DO NOT release

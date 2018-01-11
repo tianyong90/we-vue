@@ -28,6 +28,7 @@ export default {
   },
 
   update (el, binding) {
+    /* istanbul ignore next */
     el[context].callback = binding.value
   },
 

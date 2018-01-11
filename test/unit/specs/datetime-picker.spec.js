@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import DatetimePicker from '@/components/datetime-picker'
-import { verticalDrag } from '../utils'
+import { slowVerticalDrag } from '../utils'
 
 const testTime = '9:00'
 const testDate = new Date('2018/01/01 19:00')
@@ -127,7 +127,6 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  // TODO:
   it('drag time picker', (done) => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -139,21 +138,31 @@ describe('datetime-picker', () => {
     })
 
     setTimeout(() => {
-      expect(wrapper.vm.currentValue).toEqual('12:00')
-
       const hour = wrapper.findAll('.weui-picker__group').at(0)
       const minute = wrapper.findAll('.weui-picker__group').at(1)
 
-      verticalDrag(hour, 0, 0)
-      verticalDrag(minute, 0, 0)
+      slowVerticalDrag(hour, 0, -34)
+      expect(wrapper.vm.currentValue).toEqual('13:00')
 
-      // TODO
-      // expect(wrapper.vm.currentValue).toEqual('1:01')
+      slowVerticalDrag(minute, 0, -34)
+      expect(wrapper.vm.currentValue).toEqual('13:01')
+
+      slowVerticalDrag(hour, 0, -34 * 5)
+      expect(wrapper.vm.currentValue).toEqual('19:01')
+
+      // hour will be 23
+      slowVerticalDrag(hour, 0, -34 * 10)
+      expect(wrapper.vm.currentValue).toEqual('23:01')
+
+      // hour will be 0
+      slowVerticalDrag(hour, 0, 34 * 24)
+      slowVerticalDrag(minute, 0, 34 * 10)
+      expect(wrapper.vm.currentValue).toEqual('0:00')
+
       done()
     }, 50)
   })
 
-  // TODO:
   it('drag datetime picker', (done) => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -164,23 +173,30 @@ describe('datetime-picker', () => {
     })
 
     setTimeout(() => {
+      expect(wrapper.vm.currentValue).toEqual(testDate)
+
       const year = wrapper.findAll('.weui-picker__group').at(0)
       const month = wrapper.findAll('.weui-picker__group').at(1)
       const date = wrapper.findAll('.weui-picker__group').at(2)
       const hour = wrapper.findAll('.weui-picker__group').at(3)
       const minute = wrapper.findAll('.weui-picker__group').at(4)
 
-      verticalDrag(year, 0, -50)
-      verticalDrag(month, 0, -50)
-      verticalDrag(date, 0, -50)
-      verticalDrag(hour, 0, -50)
-      verticalDrag(minute, 0, -50)
+      slowVerticalDrag(year, 0, -34)
+      slowVerticalDrag(month, 0, -34)
+      slowVerticalDrag(date, 0, -34)
+      slowVerticalDrag(hour, 0, -34)
+      slowVerticalDrag(minute, 0, -34)
+
+      expect(wrapper.vm.currentValue.getFullYear()).toEqual(2019)
+      expect(wrapper.vm.currentValue.getMonth() + 1).toEqual(2)
+      expect(wrapper.vm.currentValue.getDate()).toEqual(2)
+      expect(wrapper.vm.currentValue.getHours()).toEqual(20)
+      expect(wrapper.vm.currentValue.getMinutes()).toEqual(1)
 
       done()
     }, 500)
   })
 
-  // TODO:
   it('drag date picker', (done) => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -191,13 +207,19 @@ describe('datetime-picker', () => {
     })
 
     setTimeout(() => {
+      expect(wrapper.vm.currentValue).toEqual(testDate)
+
       const year = wrapper.findAll('.weui-picker__group').at(0)
       const month = wrapper.findAll('.weui-picker__group').at(1)
       const date = wrapper.findAll('.weui-picker__group').at(2)
 
-      verticalDrag(year, 0, -50)
-      verticalDrag(month, 0, -50)
-      verticalDrag(date, 0, -50)
+      slowVerticalDrag(year, 0, -34)
+      slowVerticalDrag(month, 0, -34)
+      slowVerticalDrag(date, 0, -34)
+
+      expect(wrapper.vm.currentValue.getFullYear()).toEqual(2019)
+      expect(wrapper.vm.currentValue.getMonth() + 1).toEqual(2)
+      expect(wrapper.vm.currentValue.getDate()).toEqual(2)
 
       done()
     }, 500)

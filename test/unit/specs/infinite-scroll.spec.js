@@ -51,10 +51,7 @@ describe('infinite-scroll', () => {
       expect(item.length).toEqual(4)
 
       // TODO: SCROLL
-      wrapper.find('.list').element.scrollTo(0, 1000)
-      document.body.scrollTop = 1000
 
-      verticalDrag(wrapper, 0, -200)
       expect(loadMoreSpy.calledOnce).toBe(true)
       done()
     }, 500)

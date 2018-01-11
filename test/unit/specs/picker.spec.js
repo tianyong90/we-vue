@@ -1,7 +1,7 @@
 import { mount, shallow } from '@vue/test-utils'
 import Picker from '@/components/picker'
 import PickerColumn from '@/components/picker/picker-column.vue'
-import { verticalDrag } from '../utils'
+import { slowVerticalDrag } from '../utils'
 
 const testSingleColumn = [
   {
@@ -338,7 +338,6 @@ describe('picker-column', () => {
     expect(wrapper.text()).toBe('-')
   })
 
-  // TODO
   it('drag slot', (done) => {
     wrapper = mount(Picker, {
       attachToDocument: true,
@@ -351,16 +350,22 @@ describe('picker-column', () => {
     const columnWrapper = wrapper.find(PickerColumn)
 
     setTimeout(() => {
-      const indicator = wrapper.find('.weui-picker__indicator').element
-
-      const indicatorRect = indicator.getBoundingClientRect()
-
-      // columnWrapper.trigger('touchstart', { touches: [{ clientX: 0, clientY: indicatorRect.top + 35 }] })
-      // columnWrapper.trigger('touchstart', { clientX: 0, clientY: indicatorRect.top + 35 })
-
-      verticalDrag(columnWrapper, 0, -10)
-
+      slowVerticalDrag(columnWrapper, 0, -34)
       expect(columnWrapper.vm.currentIndex).toBe(1)
+
+      slowVerticalDrag(columnWrapper, 0, -34)
+      expect(columnWrapper.vm.currentIndex).toBe(2)
+
+      // this will out of range
+      slowVerticalDrag(columnWrapper, 0, -34)
+      expect(columnWrapper.vm.currentIndex).toBe(2)
+
+      slowVerticalDrag(columnWrapper, 0, 34)
+      expect(columnWrapper.vm.currentIndex).toBe(1)
+
+      // this will out of range
+      slowVerticalDrag(columnWrapper, 0, 100)
+      expect(columnWrapper.vm.currentIndex).toBe(0)
 
       done()
     }, 50)
