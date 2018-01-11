@@ -82,7 +82,7 @@ describe('slider', () => {
       }
     })
 
-    const { sliderLeft, min, max, step, stepWidth} = wrapper.vm
+    const { sliderLeft, min, max, step, stepWidth } = wrapper.vm
 
     const mockClientX = sliderLeft + 50
 
@@ -108,7 +108,7 @@ describe('slider', () => {
 
     const mockClientX = sliderLeft + 50
 
-    wrapper.find({ ref: 'inner' }).trigger('click', { clientX: mockClientX})
+    wrapper.find({ ref: 'inner' }).trigger('click', { clientX: mockClientX })
 
     const expectedValue = min + step * (Math.round((mockClientX - sliderLeft) / stepWidth))
 

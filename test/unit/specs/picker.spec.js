@@ -302,7 +302,7 @@ describe('picker-column', () => {
   })
 
   it('create using object-array values', () => {
-    const slotValues = [
+    const options = [
       {
         label: 'label1',
         value: 'value1'
@@ -319,13 +319,12 @@ describe('picker-column', () => {
 
     wrapper = mount(PickerColumn, {
       propsData: {
-        values: slotValues,
-        valueKey: 'value',
-        value: 'value1'
+        options: options,
+        valueKey: 'value'
       }
     })
 
-    // expect(wrapper.)
+    expect(wrapper.findAll('.weui-picker__item').length).toBe(3)
   })
 
   it('render a divider slot', () => {
@@ -339,21 +338,32 @@ describe('picker-column', () => {
     expect(wrapper.text()).toBe('-')
   })
 
-  it('drag slot', () => {
+  // TODO
+  it('drag slot', (done) => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: [
-          {
-            values: [1, 2, 3],
-            defaultIndex: 0
-          }
-        ]
+        columns: testSingleColumn
       }
     })
 
-    dragHelper(wrapper.find(PickerColumn), 0, 50)
+    const columnWrapper = wrapper.find(PickerColumn)
+
+    setTimeout(() => {
+      const indicator = wrapper.find('.weui-picker__indicator').element
+
+      const indicatorRect = indicator.getBoundingClientRect()
+
+      // columnWrapper.trigger('touchstart', { touches: [{ clientX: 0, clientY: indicatorRect.top + 35 }] })
+      // columnWrapper.trigger('touchstart', { clientX: 0, clientY: indicatorRect.top + 35 })
+
+      dragHelper(columnWrapper, 0, -10)
+
+      expect(columnWrapper.vm.currentIndex).toBe(1)
+
+      done()
+    }, 50)
   })
 
   it('click slot to change the current-value', (done) => {
@@ -370,14 +380,16 @@ describe('picker-column', () => {
       }
     })
 
+    const columnWrapper = wrapper.find(PickerColumn)
+
     setTimeout(() => {
       const indicator = wrapper.find('.weui-picker__indicator').element
 
       const indicatorRect = indicator.getBoundingClientRect()
 
-      wrapper.find(PickerColumn).trigger('click', { clientX: 0, clientY: indicatorRect.top + 35 })
+      columnWrapper.trigger('click', { clientX: 0, clientY: indicatorRect.top + 35 })
 
-      expect(wrapper.find(PickerColumn).vm.currentIndex).toBe(1)
+      expect(columnWrapper.vm.currentIndex).toBe(1)
       done()
     }, 50)
   })
