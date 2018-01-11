@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import expect from 'expect'
-import VueTestUtils from 'vue-test-utils'
+import VueTestUtils from '@vue/test-utils'
 
 Vue.config.productionTip = false
 

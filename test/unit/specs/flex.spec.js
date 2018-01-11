@@ -1,4 +1,4 @@
-import { shallow, mount } from 'vue-test-utils'
+import { shallow, mount } from '@vue/test-utils'
 import Flex from '@/components/flex'
 // import FlexCompponent from '../components/flex.vue'
 

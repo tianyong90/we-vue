@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import TabbarItem from '@/components/tabbar-item'
 import sinon from 'sinon'
 

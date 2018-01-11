@@ -1,6 +1,6 @@
-import { mount, shallow } from 'vue-test-utils'
+import { mount, shallow } from '@vue/test-utils'
 import Slider from '@/components/slider'
-import { dragHelper } from '../utils'
+import { horizontalDrag } from '../utils'
 import faker from 'faker'
 
 describe('slider', () => {
@@ -70,7 +70,7 @@ describe('slider', () => {
     wrapper.find({ ref: 'inner' }).trigger('click')
 
     // drag handler
-    dragHelper(wrapper.find({ref: 'handler'}), 10, 10)
+    horizontalDrag(wrapper.find({ref: 'handler'}), 0, 10)
 
     expect(wrapper.vm.value).toBe(0)
   })
@@ -86,7 +86,7 @@ describe('slider', () => {
 
     const mockClientX = sliderLeft + 50
 
-    dragHelper(wrapper.find({ ref: 'handler' }), mockClientX, 0)
+    horizontalDrag(wrapper.find({ ref: 'handler' }), 0, mockClientX)
 
     let expectedValue = min + step * (Math.round((mockClientX - sliderLeft) / stepWidth))
 

@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import DialogApi from '@/components/dialog'
 import Dialog from '@/components/dialog/dialog.vue'
 import sinon from 'sinon'

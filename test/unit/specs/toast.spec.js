@@ -1,4 +1,4 @@
-import { shallow, createLocalVue } from 'vue-test-utils'
+import { shallow, createLocalVue } from '@vue/test-utils'
 import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
 import sinon from 'sinon'

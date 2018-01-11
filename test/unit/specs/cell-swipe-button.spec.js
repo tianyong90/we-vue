@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import CellSwipeButtom from '@/components/cell-swipe-button'
 
 describe('cell-swipe-button', () => {

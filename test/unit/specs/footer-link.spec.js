@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import FooterLink from '@/components/footer/footer-link.vue'
 import sinon from 'sinon'
 

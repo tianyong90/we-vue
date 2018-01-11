@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import Spinner from '@/components/spinner'
 
 describe('spinner', () => {

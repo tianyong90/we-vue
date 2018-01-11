@@ -1,4 +1,4 @@
-import { shallow, mount } from 'vue-test-utils'
+import { shallow, mount } from '@vue/test-utils'
 import Checklist from '@/components/checklist'
 
 describe('checklist', () => {

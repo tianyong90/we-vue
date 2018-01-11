@@ -1,4 +1,4 @@
-import { shallow, mount } from 'vue-test-utils'
+import { shallow, mount } from '@vue/test-utils'
 import Navbar from '@/components/navbar'
 import NavbarItem from '@/components/navbar-item'
 import sinon from 'sinon'

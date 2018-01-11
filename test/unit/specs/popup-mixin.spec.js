@@ -1,7 +1,6 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import PopupMixinComponent from '../components/popup-mixin-component'
-// import PopupMixin from '@/mixins/popup'
-import { dragHelper } from '../utils'
+import { verticalDrag } from '../utils'
 
 describe('mixins/popup', () => {
   let wrapper
@@ -85,7 +84,7 @@ describe('mixins/popup', () => {
 
     wrapper.vm.open()
 
-    dragHelper(document.body, 0, 1000)
+    verticalDrag(document.body, 0, 1000)
 
     wrapper.vm.close()
   })

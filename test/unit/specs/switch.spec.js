@@ -1,6 +1,6 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import Switch from '@/components/switch'
-import { dragHelper } from '../utils'
+import { horizontalDrag } from '../utils'
 
 const THUMB_STROKE = 20
 
@@ -75,7 +75,7 @@ describe('switch', () => {
     })
 
     // the switch can not drag when it's disabled
-    dragHelper(wrapper.find('.thumb'), THUMB_STROKE, 0)
+    horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE)
     expect(wrapper.vm.currentValue).toBe(false)
 
     // enable the switch
@@ -84,27 +84,27 @@ describe('switch', () => {
     })
 
     // drag to right (distance <= THUMB_STROKE / 2), the value should not change
-    dragHelper(wrapper.find('.thumb'), THUMB_STROKE / 2, 0)
+    horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE / 2)
     expect(wrapper.vm.currentValue).toBe(false)
 
     // drag to right (distance >= THUMB_STROKE / 2), the value should change
-    dragHelper(wrapper.find('.thumb'), THUMB_STROKE / 2 + 5, 0)
+    horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE / 2 + 5)
     expect(wrapper.vm.currentValue).toBe(true)
 
     // drag to left (distance <= THUMB_STROKE / 2), the value should not change
-    dragHelper(wrapper.find('.thumb'), -(THUMB_STROKE / 2), 0)
+    horizontalDrag(wrapper.find('.thumb'), 0, -(THUMB_STROKE / 2))
     expect(wrapper.vm.currentValue).toBe(true)
 
     // drag to left (distance >= THUMB_STROKE / 2), the value should change
-    dragHelper(wrapper.find('.thumb'), -(THUMB_STROKE / 2 + 5), 0)
+    horizontalDrag(wrapper.find('.thumb'), 0, -(THUMB_STROKE / 2 + 5))
     expect(wrapper.vm.currentValue).toBe(false)
 
     // drag to right with a distance bigger than THUMB_STROKE
-    dragHelper(wrapper.find('.thumb'), THUMB_STROKE + 5, 0)
+    horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE + 5)
     expect(wrapper.vm.currentValue).toBe(true)
 
     // drag to left with a distance bigger than THUMB_STROKE
-    dragHelper(wrapper.find('.thumb'), -(THUMB_STROKE + 5), 0)
+    horizontalDrag(wrapper.find('.thumb'), 0, -(THUMB_STROKE + 5))
     expect(wrapper.vm.currentValue).toBe(false)
   })
 

@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import EmptyComponent from '../components/empty.vue'
 import RouterLink from '@/mixins/router-link'
 import sinon from 'sinon'

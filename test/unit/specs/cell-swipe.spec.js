@@ -1,7 +1,7 @@
-import { shallow, mount } from 'vue-test-utils'
+import { shallow, mount } from '@vue/test-utils'
 import CellSwipe from '@/components/cell-swipe'
 import CellSwipeButtonComponent from '../components/cell-swipe-button'
-import { dragHelper } from '../utils'
+import { horizontalDrag } from '../utils'
 import sinon from 'sinon'
 
 describe('cell-swipe', () => {
@@ -29,7 +29,7 @@ describe('cell-swipe', () => {
 
     const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
 
-    dragHelper(wrapper.find({ref: 'cellBd'}), -rightWidth, 0)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -rightWidth)
 
     expect(wrapper.vm.offset).toBe(-rightWidth)
   })
@@ -42,7 +42,7 @@ describe('cell-swipe', () => {
       }
     })
 
-    dragHelper(wrapper.find({ref: 'cellBd'}), -10, 0)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -10)
 
     expect(wrapper.vm.offset).toBe(0)
   })
@@ -57,7 +57,7 @@ describe('cell-swipe', () => {
 
     const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
 
-    dragHelper(wrapper.find({ref: 'cellBd'}), -(rightWidth + 20), 0)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -(rightWidth + 20))
 
     expect(wrapper.vm.offset).toBe(-rightWidth)
   })
@@ -77,7 +77,7 @@ describe('cell-swipe', () => {
       offset: -rightWidth
     })
 
-    dragHelper(wrapper.find({ref: 'cellBd'}), rightWidth, 0)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, rightWidth)
 
     expect(wrapper.vm.offset).toBe(0)
   })
@@ -97,7 +97,7 @@ describe('cell-swipe', () => {
       offset: -rightWidth
     })
 
-    dragHelper(wrapper.find({ref: 'cellBd'}), 10, 0)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, 10)
 
     expect(wrapper.vm.offset).toBe(-rightWidth)
   })
@@ -117,7 +117,7 @@ describe('cell-swipe', () => {
       offset: -rightWidth
     })
 
-    dragHelper(wrapper.find({ref: 'cellBd'}), rightWidth + 10, 0)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, rightWidth + 10)
 
     expect(wrapper.vm.offset).toBe(0)
   })

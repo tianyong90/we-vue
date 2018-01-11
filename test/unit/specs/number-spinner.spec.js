@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import NumberSpinner from '@/components/number-spinner'
 // import sinon from 'sinon'
 

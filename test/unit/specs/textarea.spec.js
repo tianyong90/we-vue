@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import Textarea from '@/components/textarea'
 
 describe('textarea', () => {

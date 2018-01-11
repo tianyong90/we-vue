@@ -1,6 +1,6 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import DatetimePicker from '@/components/datetime-picker'
-import { dragHelper } from '../utils'
+import { verticalDrag } from '../utils'
 
 const testTime = '9:00'
 const testDate = new Date('2018/01/01 19:00')
@@ -144,8 +144,8 @@ describe('datetime-picker', () => {
       const hour = wrapper.findAll('.weui-picker__group').at(0)
       const minute = wrapper.findAll('.weui-picker__group').at(1)
 
-      dragHelper(hour, 0, 0)
-      dragHelper(minute, 0, 0)
+      verticalDrag(hour, 0, 0)
+      verticalDrag(minute, 0, 0)
 
       // TODO
       // expect(wrapper.vm.currentValue).toEqual('1:01')
@@ -170,11 +170,11 @@ describe('datetime-picker', () => {
       const hour = wrapper.findAll('.weui-picker__group').at(3)
       const minute = wrapper.findAll('.weui-picker__group').at(4)
 
-      dragHelper(year, 0, -50)
-      dragHelper(month, 0, -50)
-      dragHelper(date, 0, -50)
-      dragHelper(hour, 0, -50)
-      dragHelper(minute, 0, -50)
+      verticalDrag(year, 0, -50)
+      verticalDrag(month, 0, -50)
+      verticalDrag(date, 0, -50)
+      verticalDrag(hour, 0, -50)
+      verticalDrag(minute, 0, -50)
 
       done()
     }, 500)
@@ -195,9 +195,9 @@ describe('datetime-picker', () => {
       const month = wrapper.findAll('.weui-picker__group').at(1)
       const date = wrapper.findAll('.weui-picker__group').at(2)
 
-      dragHelper(year, 0, -50)
-      dragHelper(month, 0, -50)
-      dragHelper(date, 0, -50)
+      verticalDrag(year, 0, -50)
+      verticalDrag(month, 0, -50)
+      verticalDrag(date, 0, -50)
 
       done()
     }, 500)

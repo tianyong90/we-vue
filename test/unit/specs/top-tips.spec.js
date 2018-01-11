@@ -1,4 +1,4 @@
-import { shallow, createLocalVue } from 'vue-test-utils'
+import { shallow, createLocalVue } from '@vue/test-utils'
 import TopTipsApi from '@/components/top-tips'
 import TopTips from '@/components/top-tips/top-tips.vue'
 import sinon from 'sinon'

@@ -1,7 +1,7 @@
-import { mount, shallow } from 'vue-test-utils'
+import { mount, shallow } from '@vue/test-utils'
 import Picker from '@/components/picker'
 import PickerColumn from '@/components/picker/picker-column.vue'
-import { dragHelper } from '../utils'
+import { verticalDrag } from '../utils'
 
 const testSingleColumn = [
   {
@@ -358,7 +358,7 @@ describe('picker-column', () => {
       // columnWrapper.trigger('touchstart', { touches: [{ clientX: 0, clientY: indicatorRect.top + 35 }] })
       // columnWrapper.trigger('touchstart', { clientX: 0, clientY: indicatorRect.top + 35 })
 
-      dragHelper(columnWrapper, 0, -10)
+      verticalDrag(columnWrapper, 0, -10)
 
       expect(columnWrapper.vm.currentIndex).toBe(1)
 

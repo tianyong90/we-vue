@@ -1,4 +1,4 @@
-import { mount, shallow } from 'vue-test-utils'
+import { mount, shallow } from '@vue/test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
 

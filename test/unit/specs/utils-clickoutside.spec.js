@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import ClickoutsideComponent from '../components/clickoutside-component'
 import sinon from 'sinon'
 

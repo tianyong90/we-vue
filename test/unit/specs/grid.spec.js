@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import Grid from '@/components/grid'
 
 describe('grid', () => {

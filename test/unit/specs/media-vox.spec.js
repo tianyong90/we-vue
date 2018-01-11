@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import MediaBox from '@/components/media-box'
 import sinon from 'sinon'
 

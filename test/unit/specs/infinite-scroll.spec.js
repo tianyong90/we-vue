@@ -1,7 +1,7 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import InfiniteScrollComponent from '../components/infinite-scroll-component'
 import sinon from 'sinon'
-import { dragHelper } from '../utils'
+import { verticalDrag } from '../utils'
 
 describe('infinite-scroll', () => {
   let wrapper
@@ -54,7 +54,7 @@ describe('infinite-scroll', () => {
       wrapper.find('.list').element.scrollTo(0, 1000)
       document.body.scrollTop = 1000
 
-      dragHelper(wrapper, 0, -200)
+      verticalDrag(wrapper, 0, -200)
       expect(loadMoreSpy.calledOnce).toBe(true)
       done()
     }, 500)

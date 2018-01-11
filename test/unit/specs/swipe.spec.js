@@ -1,7 +1,7 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
-import { dragHelper, dragAndHoldHelper } from '../utils'
+import { horizontalDrag, verticalDrag, dragAndHoldHelper } from '../utils'
 import sinon from 'sinon'
 import faker from 'faker'
 
@@ -68,11 +68,11 @@ describe('swipe', () => {
       }
     })
 
-    dragHelper(wrapper, 100, 0)
+    horizontalDrag(wrapper, 0, 100)
     expect(wrapper.vm.active).toBe(-1)
-    dragHelper(wrapper, 100, 0)
+    horizontalDrag(wrapper, 0, 100)
     expect(wrapper.vm.active).toBe(1)
-    dragHelper(wrapper, 100, 0)
+    horizontalDrag(wrapper, 0, 100)
     expect(wrapper.vm.active).toBe(0)
   })
 
@@ -87,13 +87,13 @@ describe('swipe', () => {
       }
     })
 
-    dragHelper(wrapper, -100, 0)
+    horizontalDrag(wrapper, 0, -100)
     expect(wrapper.vm.active).toBe(1)
-    dragHelper(wrapper, -100, 0)
+    horizontalDrag(wrapper, 0, -100)
     expect(wrapper.vm.active).toBe(2)
-    dragHelper(wrapper, -100, 0)
+    horizontalDrag(wrapper, 0, -100)
     expect(wrapper.vm.active).toBe(3)
-    dragHelper(wrapper, -100, 0)
+    horizontalDrag(wrapper, 0, -100)
     expect(wrapper.vm.active).toBe(1)
   })
 
@@ -113,7 +113,7 @@ describe('swipe', () => {
     dragAndHoldHelper(wrapper, distance, 0)
     expect(wrapper.vm.offset).toBe(0)
 
-    dragHelper(wrapper, distance, 0)
+    horizontalDrag(wrapper, 0, distance)
     expect(wrapper.vm.offset).toBe(0)
   })
 
@@ -140,7 +140,7 @@ describe('swipe', () => {
     }
 
     // drag a single slide, the offset will return to 0 after touchend event
-    dragHelper(wrapper, distance, 0)
+    horizontalDrag(wrapper, 0, distance)
     expect(wrapper.vm.offset).toBe(0)
   })
 
@@ -215,6 +215,6 @@ describe('swipe', () => {
       }
     })
 
-    dragHelper(wrapper, 0, 100)
+    verticalDrag(wrapper, 0, 100)
   })
 })
