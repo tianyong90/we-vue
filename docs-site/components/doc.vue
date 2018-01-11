@@ -7,7 +7,13 @@
             <h2 class="title" v-html="navItem.title"></h2>
             <ul class="sub-tree">
               <li>
-                <router-link :to="subItem.path" v-for="subItem in navItem.list" :key="subItem.title" v-text="subItem.title" active-class="current"></router-link>
+                <router-link
+                  :to="subItem.path"
+                  v-for="subItem in navItem.list"
+                  :key="subItem.title"
+                  v-text="subItem.title"
+                  active-class="current"
+                />
               </li>
             </ul>
           </li>
@@ -15,13 +21,13 @@
       </div>
       <div class="doc-content">
         <transition name="fade">
-          <router-view></router-view>
+          <router-view/>
         </transition>
       </div>
     </div>
     <div class="demo-wrap" :style="{ top: demoWrapTop + 'px' }">
       <div class="mobile-top"></div>
-      <iframe id="iframe-demo" src="http://demo.wevue.org" frameborder="0"></iframe>
+      <iframe id="iframe-demo" src="//demo.wevue.org" frameborder="0"></iframe>
     </div>
   </div>
 </template>
@@ -39,7 +45,7 @@
     },
 
     mounted () {
-      this.setIframeSrc('http://demo.wevue.org/' + demoUrlMap.get(this.$route.name))
+      this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(this.$route.name))
 
       // 右侧 DEMO 区实在 sticky 效果
       document.addEventListener('scroll', (e) => {
@@ -61,7 +67,7 @@
 
     watch: {
       '$route.name': function (val) {
-        this.setIframeSrc('http://demo.wevue.org/' + demoUrlMap.get(val))
+        this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(val))
       }
     }
   }
