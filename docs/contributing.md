@@ -4,7 +4,9 @@
 我们非常欢迎您加入 WE-VUE 的开发，这份文件将帮助您了解开发流程。
 
 ---
+
 ## 开发
+
 ### 开始之前
 
 请遵守以下准则：
@@ -43,13 +45,9 @@
 
 - 不要修改 `package.json` 的版本号。
 - 代码必须通过 Eslint 代码规范检查，并请保留一些必要的注释。
-- 请不要对开发分支进行构建操作，即执行 `npm run build` 及相关命令。
 - 在建立 PR 之前请进行变基（rebase）操作，确保与主仓库 master 分支无重大冲突。
 
 ---
-## 更新文档
-
-本文档开放源代码，您可以在 [tianyong90/we-vue-docs-site](https://github.com/tianyong90/we-vue-docs-site) 找到源代码。
 
 ### 工作流程
 
@@ -80,4 +78,3 @@
 3. 附上相关代码及调试信息。
 
 [we-vue 项目](https://github.com/tianyong90/we-vue)
-[we-vue 文档项目](https://github.com/tianyong90/we-vue-docs-site)

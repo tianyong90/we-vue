@@ -13,9 +13,9 @@
 
 we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库，封装了一系列组件，非常适于微信公众号等移动端开发。
 
-## [中文文档](http://wevue.org)
+## [在线文档](http://wevue.org)
 
-## Demo
+## 在线预览
 
 <div align="center">
   <a href="http://demo.wevue.org">
@@ -26,15 +26,11 @@ we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库�
 
 ## 安装
 
-npm
-
 ```shell
+// npm
 $ npm install we-vue -S
-```
 
-yarn
-
-```shell
+// yarn
 $ yarn add we-vue -S
 ```
 
