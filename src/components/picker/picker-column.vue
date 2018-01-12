@@ -198,7 +198,7 @@ export default create({
 
       const index = this.offsetToIndex(this.offset)
 
-      this.currentIndex = this.setIndex(index, true)
+      this.setIndex(index, true)
     },
 
     // adjust index, avoid disabled options
