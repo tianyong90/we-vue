@@ -37,3 +37,4 @@ script:
 after_success:
   - rsync -vzrtopg --progress -e ssh --delete ./dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
   - rsync -vzrtopg --progress -e ssh --delete ./docs-dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
+  - ./node_modules/.bin/codecov
