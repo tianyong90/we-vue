@@ -10,7 +10,7 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const webpackConfig = require('./webpack.docsprod.conf')
 
-const spinner = ora('building docs-site...')
+const spinner = ora('building docs...')
 spinner.start()
 
 rm(path.join(__dirname, '../docs-dist/*'), err => {

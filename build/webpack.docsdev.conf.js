@@ -15,7 +15,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   entry: {
-    docs: './docs-site/main.js'
+    docs: './docs/main.js'
   },
   output: {
     path: path.resolve(__dirname, '../docs-dist'),
@@ -60,13 +60,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'docs-site/index.html',
+      template: 'docs/index.html',
       inject: true
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../docs-site/static'),
+        from: path.resolve(__dirname, '../docs/static'),
         to: path.resolve(__dirname, '../docs-dist/static'),
         ignore: ['.*']
       }

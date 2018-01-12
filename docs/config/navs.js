@@ -1,18 +1,21 @@
-let navs = [
+const navs = [
   {
     title: '开始使用',
     list: [
       {
         title: '概述',
         name: 'index',
-        path: '/doc/index',
-        doc: '../docs/index.md'
+        path: '/doc/index'
       },
       {
         title: '快速上手',
         name: 'quickstart',
         path: '/doc/quickstart',
-        doc: '../docs/quickstart.md'
+      },
+      {
+        title: '变更记录',
+        name: 'changelog',
+        path: '/doc/changelog',
       }
     ]
   },
@@ -22,218 +25,182 @@ let navs = [
       {
         title: 'Badge',
         name: 'badge',
-        path: '/doc/badge',
-        doc: '../docs/badge.md'
+        path: '/doc/badge'
       },
       {
         title: 'Circle',
         name: 'circle',
-        path: '/doc/circle',
-        doc: '../docs/circle.md'
+        path: '/doc/circle'
       },
       {
         title: 'Icons',
         name: 'icons',
-        path: '/doc/icons',
-        doc: '../docs/icons.md'
+        path: '/doc/icons'
       },
       {
         title: 'Lazyload',
         name: 'lazyload',
-        path: '/doc/lazyload',
-        doc: '../docs/badge.md'
+        path: '/doc/lazyload'
       },
       {
         title: 'Progress',
         name: 'progress',
-        path: '/doc/progress',
-        doc: '../docs/badge.md'
+        path: '/doc/progress'
       },
       {
         title: 'Slider',
         name: 'slider',
-        path: '/doc/slider',
-        doc: '../docs/badge.md'
+        path: '/doc/slider'
       },
       {
         title: 'Spinner',
         name: 'spinner',
-        path: '/doc/spinner',
-        doc: '../docs/badge.md'
+        path: '/doc/spinner'
       },
       {
         title: 'Swipe',
         name: 'swipe',
-        path: '/doc/swipe',
-        doc: '../docs/badge.md'
+        path: '/doc/swipe'
       },
       {
         title: 'Button',
         name: 'button',
-        path: '/doc/button',
-        doc: '../docs/badge.md'
+        path: '/doc/button'
       },
       {
         title: 'CheckList',
         name: 'check_list',
-        path: '/doc/check_list',
-        doc: '../docs/badge.md'
+        path: '/doc/check_list'
       },
       {
         title: 'Input',
         name: 'input',
-        path: '/doc/input',
-        doc: '../docs/badge.md'
+        path: '/doc/input'
       },
       {
         title: 'NumberSpinner',
         name: 'number_spinner',
-        path: '/doc/number_spinner',
-        doc: '../docs/number_spinner.md'
+        path: '/doc/number_spinner'
       },
       {
         title: 'Radio',
         name: 'radio',
-        path: '/doc/radio',
-        doc: '../docs/badge.md'
+        path: '/doc/radio'
       },
       {
         title: 'Switch',
         name: 'switch',
-        path: '/doc/switch',
-        doc: '../docs/badge.md'
+        path: '/doc/switch'
       },
       {
         title: 'Textarea',
         name: 'textarea',
-        path: '/doc/textarea',
-        doc: '../docs/badge.md'
+        path: '/doc/textarea'
       },
       {
         title: 'Preview',
         name: 'preview',
-        path: '/doc/preview',
-        doc: '../docs/badge.md'
+        path: '/doc/preview'
       },
       {
         title: 'ActionSheet',
         name: 'action_sheet',
-        path: '/doc/action_sheet',
-        doc: '../docs/badge.md'
+        path: '/doc/action_sheet'
       },
       {
         title: 'Dialog',
         name: 'dialog',
-        path: '/doc/dialog',
-        doc: '../docs/badge.md'
+        path: '/doc/dialog'
       },
       {
         title: 'Indicator',
         name: 'indicator',
-        path: '/doc/indicator',
-        doc: '../docs/badge.md'
+        path: '/doc/indicator'
       },
       {
         title: 'InfiniteScroll',
         name: 'infinite_scroll',
-        path: '/doc/infinite_scroll',
-        doc: '../docs/badge.md'
+        path: '/doc/infinite_scroll'
       },
       {
         title: 'Toast',
         name: 'toast',
-        path: '/doc/toast',
-        doc: '../docs/badge.md'
+        path: '/doc/toast'
       },
       {
         title: 'TopTips',
         name: 'top_tips',
-        path: '/doc/top_tips',
-        doc: '../docs/badge.md'
+        path: '/doc/top_tips'
       },
       {
         title: 'Picker',
         name: 'picker',
-        path: '/doc/picker',
-        doc: '../docs/badge.md'
+        path: '/doc/picker'
       },
       {
         title: 'DatetimePicker',
         name: 'datetime_picker',
-        path: '/doc/datetime_picker',
-        doc: '../docs/badge.md'
+        path: '/doc/datetime_picker'
       },
       {
         title: 'Header',
         name: 'header',
-        path: '/doc/header',
-        doc: '../docs/badge.md'
+        path: '/doc/header'
       },
       {
         title: 'Navbar',
         name: 'navbar',
-        path: '/doc/navbar',
-        doc: '../docs/badge.md'
+        path: '/doc/navbar'
       },
       {
         title: 'Tabbar',
         name: 'tabbar',
-        path: '/doc/tabbar',
-        doc: '../docs/badge.md'
+        path: '/doc/tabbar'
       },
       {
         title: 'Search',
         name: 'search',
-        path: '/doc/search',
-        doc: '../docs/badge.md'
+        path: '/doc/search'
       },
       {
         title: 'Cell',
         name: 'cell',
-        path: '/doc/cell',
-        doc: '../docs/badge.md'
+        path: '/doc/cell'
       },
       {
         title: 'CellSwipe',
         name: 'cell_swipe',
-        path: '/doc/cell_swipe',
-        doc: '../docs/badge.md'
+        path: '/doc/cell_swipe'
       },
       {
         title: 'Flex',
         name: 'flex',
-        path: '/doc/flex',
-        doc: '../docs/badge.md'
+        path: '/doc/flex'
       },
       {
         title: 'Footer',
         name: 'footer',
-        path: '/doc/footer',
-        doc: '../docs/badge.md'
+        path: '/doc/footer'
       },
       {
         title: 'Grid',
         name: 'grid',
-        path: '/doc/grid',
-        doc: '../docs/badge.md'
+        path: '/doc/grid'
       },
       {
         title: 'Loadmore',
         name: 'loadmore',
-        path: '/doc/loadmore',
-        doc: '../docs/badge.md'
+        path: '/doc/loadmore'
       },
       {
         title: 'Panel',
         name: 'panel',
-        path: '/doc/panel',
-        doc: '../docs/badge.md'
+        path: '/doc/panel'
       },
       {
         title: 'Popup',
         name: 'popup',
-        path: '/doc/popup',
-        doc: '../docs/badge.md'
+        path: '/doc/popup'
       }
     ]
   },
@@ -243,14 +210,12 @@ let navs = [
       {
         title: '问题解答',
         name: 'troubleshooting',
-        path: '/doc/troubleshooting',
-        doc: '../docs/badge.md'
+        path: '/doc/troubleshooting'
       },
       {
         title: '贡献指南',
         name: 'contributing',
-        path: '/doc/contributing',
-        doc: '../docs/badge.md'
+        path: '/doc/contributing'
       }
     ]
   }

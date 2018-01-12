@@ -16,7 +16,7 @@ const env = process.env.NODE_ENV === 'testing'
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    docs: './docs-site/main.js'
+    docs: './docs/main.js'
   },
   module: {
     rules: utils.styleLoaders({
@@ -59,7 +59,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'docs-site/index.html',
+      template: 'docs/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -96,7 +96,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../docs-site/static'),
+        from: path.resolve(__dirname, '../docs/static'),
         to: path.resolve(__dirname, '../docs-dist/static'),
         ignore: ['.*']
       }

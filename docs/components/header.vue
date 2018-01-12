@@ -12,9 +12,6 @@
           <router-link to="/doc">文档</router-link>
         </li>
         <li>
-          <router-link to="/changelog">变更记录</router-link>
-        </li>
-        <li>
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
         </li>
       </ul>

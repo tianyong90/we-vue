@@ -1,6 +1,7 @@
 let urlMap = new Map([
   ['index', ''],
   ['quickstart', ''],
+  ['changelog', ''],
   ['badge', 'badge'],
   ['circle', 'circle'],
   ['icons', 'icons'],

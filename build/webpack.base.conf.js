@@ -3,12 +3,6 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const cache = {
-  loader: 'cache-loader',
-  options: {
-    cacheDirectory: path.resolve(__dirname, '../node_modules/.cache-loader')
-  }
-}
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -18,7 +12,7 @@ const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
-  include: [resolve('src'), resolve('test'), resolve('example'), resolve('docs-site')],
+  include: [resolve('src'), resolve('test'), resolve('example'), resolve('docs')],
   options: {
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
@@ -45,15 +39,16 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('example'), resolve('docs-site'), resolve('test')]
+        include: [resolve('src'), resolve('example'), resolve('docs'), resolve('test')]
       },
       {
         test: /\.md$/,
-        use: [
-          cache,
-          'vue-loader',
-          'fast-vue-md-loader'
-        ]
+        loader: 'vue-markdown-loader',
+        options: {
+          preset: 'default',
+          breaks: true,
+          preventExtract: true
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
