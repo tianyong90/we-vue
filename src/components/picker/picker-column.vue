@@ -97,7 +97,7 @@ export default create({
 
     pickerMaskStyle () {
       return {
-        backgroundSize: '100% 68px'
+        backgroundSize: '100% ' + Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT + 'px'
       }
     },
 
@@ -179,8 +179,7 @@ export default create({
 
       const index = this.offsetToIndex(endOffset)
 
-      this.setIndex(index)
-      this.$emit('change', index)
+      this.setIndex(index, true)
     },
 
     onClick (event) {
@@ -197,7 +196,9 @@ export default create({
       // offset should be within the range
       this.offset = range(targetOffset, this.minTranslateY, this.maxTranslateY)
 
-      this.currentIndex = this.offsetToIndex(this.offset)
+      const index = this.offsetToIndex(this.offset)
+
+      this.currentIndex = this.setIndex(index, true)
     },
 
     // adjust index, avoid disabled options
@@ -211,10 +212,14 @@ export default create({
       }
     },
 
-    setIndex (index) {
+    setIndex (index, userAction = false) {
       index = this.adjustIndex(index)
       this.offset = this.indexToOffset(index)
-      this.currentIndex = index
+
+      if (index !== this.currentIndex) {
+        this.currentIndex = index
+        userAction && this.$emit('change', index)
+      }
     },
 
     setValue (value) {
