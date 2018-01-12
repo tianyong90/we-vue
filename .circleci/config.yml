@@ -1,25 +1,14 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:7.10-browsers
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+    working_directory: ~/we-vue
 
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -32,8 +21,71 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+
       # run tests!
       - run: yarn test
 
+      # update codecov stats
+      - run: ./node_modules/.bin/codecov
 
+      # build demo
+      - run: yarn build:demo
+
+      # build docs
+      - run: yarn build:docs
+
+      - run: ls -la
+
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist
+            - docs-dist
+
+  deploy:
+    docker:
+      - image: circleci/ubuntu-server
+
+    steps:
+      - attach_workspace:
+          at: ~/we-vue
+
+      - add_ssh_keys:
+          fingerprints:
+            - "6f:b8:91:11:81:42:a3:9c:24:17:cf:be:e9:0b:41:67"
+
+      - run: echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+      - run: ls -la
+      - run: ls ~/we-vue
+
+      # deploy demo
+      - deploy:
+          when: on_success
+          command: |
+            rsync -vzrtopg --progress -e ssh --delete ~/we-vue/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
+
+      # deploy docs
+      - deploy:
+          when: on_success
+          command: |
+            rsync -vzrtopg --progress -e ssh --delete ~/we-vue/docs-dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - docs
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - docs
