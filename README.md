@@ -7,6 +7,7 @@
   <a href="https://npmjs.org/package/we-vue"><img src="https://img.shields.io/npm/dt/we-vue.svg" alt="downloads"></a>
   <a href="https://travis-ci.org/tianyong90/we-vue"><img src="https://travis-ci.org/tianyong90/we-vue.svg?branch=master" alt="travisci"></a>
   <a href="https://github.com/standard/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"></a>
+  <a href="https://codecov.io/github/tianyong90/we-vue?branch=master"><img src="https://img.shields.io/codecov/c/github/tianyong90/we-vue/master.svg"></a>
 </p>
 
 
