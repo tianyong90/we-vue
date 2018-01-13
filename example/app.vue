@@ -1,7 +1,7 @@
 <template>
-  <transition :name="$root.transitionName">
-    <keep-alive>
+  <div id="app">
+    <transition :name="$root.transitionName">
       <router-view/>
-    </keep-alive>
-  </transition>
+    </transition>
+  </div>
 </template>
