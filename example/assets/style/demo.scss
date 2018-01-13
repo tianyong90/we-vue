@@ -2,6 +2,8 @@ html,
 body {
   background-color: #f8f8f8;
   user-select: none;
+  margin: 0;
+  padding: 0;
 }
 
 a,
@@ -11,7 +13,6 @@ img {
 
 .page {
   width: 100%;
-  min-height: 100vh;
 }
 
 .page-with-padding {
