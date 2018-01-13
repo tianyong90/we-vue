@@ -34,8 +34,6 @@ jobs:
       # build docs
       - run: yarn build:docs
 
-      - run: ls -la
-
       - persist_to_workspace:
           root: ./
           paths:
@@ -55,9 +53,6 @@ jobs:
             - "6f:b8:91:11:81:42:a3:9c:24:17:cf:be:e9:0b:41:67"
 
       - run: echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
-      - run: ls -la
-      - run: ls ~/we-vue
 
       # deploy demo
       - deploy:
