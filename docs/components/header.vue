@@ -15,6 +15,17 @@
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
         </li>
       </ul>
+
+      <div class="version-picker"
+           @mouseenter="onMouseenterVersion"
+           @mouseleave="onMouseleaveVersion"
+      >
+        <span>v1.6.x</span>
+        <ul class="dropdown" v-show="false">
+          <li class="dropdown-item">v1.6.x</li>
+          <li class="dropdown-item">v2.0</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -23,11 +34,27 @@
 export default {
   name: 'doc-header',
 
+  data () {
+    return {
+      versionPickerVisible: false
+    }
+  },
+
   computed: {
     isHomepage () {
       return this.$route.path === '/'
     }
-  }
+  },
+
+  methods: {
+    onMouseenterVersion () {
+      this.versionPickerVisible = true
+    },
+
+    onMouseleaveVersion () {
+      this.versionPickerVisible = false
+    }
+  },
 }
 </script>
 
@@ -42,7 +69,7 @@ export default {
 
   .header {
     display: block;
-    overflow: hidden;
+    overflow: visible;
     top: 0;
     left: 0;
     width: 100%;
@@ -52,7 +79,6 @@ export default {
 
     .main {
       display: block;
-      overflow: hidden;
       margin: 0 auto;
       width: 90vw;
     }
@@ -87,6 +113,43 @@ export default {
 
           &.router-link-active {
             color: #41b883;
+          }
+        }
+      }
+    }
+
+    .version-picker {
+      display: inline-block;
+      float: right;
+      padding: 0 2em;
+      background-color: #efefef;
+      line-height: $header-height;
+      position: relative;
+
+      .dropdown {
+        display: block;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        background-color: #fafafa;
+        top: $header-height;
+        left: 0;
+        z-index: 2000;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        &-item {
+          display: block;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          line-height: 30px;
+          height: 30px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #bbb;
           }
         }
       }
