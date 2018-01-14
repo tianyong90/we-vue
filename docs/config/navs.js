@@ -113,11 +113,6 @@ const navs = [
         path: '/doc/dialog'
       },
       {
-        title: 'Indicator',
-        name: 'indicator',
-        path: '/doc/indicator'
-      },
-      {
         title: 'InfiniteScroll',
         name: 'infinite_scroll',
         path: '/doc/infinite_scroll'
