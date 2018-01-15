@@ -1,15 +1,12 @@
 <template>
   <div class="page page-with-padding">
-    <ul class="icon-list-big">
+    <ul class="icon-list">
       <li v-for="type in iconTypes" :key="type">
-        <wv-icon class="demo-icon-large" :type="type" :large="true"/>
+        <wv-icon class="demo-icon-large" :type="type" large/>
+        <wv-icon :type="type" :large="false"/>
         <label class="label" v-text="type"/>
       </li>
     </ul>
-
-    <div class="icon-list-small">
-      <wv-icon :type="type" v-for="type in iconTypes" :key="type"/>
-    </div>
   </div>
 </template>
 
@@ -35,11 +32,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .icon-list-big {
-    width: 80%;
-    margin: 0 auto;
+  .icon-list {
+    width: 100%;
+    margin: 0 auto 40px;
     padding: 0;
-    margin-bottom: 40px;
 
     li {
       display: flex;
@@ -49,21 +45,15 @@ export default {
       .demo-icon-large {
         display: block;
         margin-right: 1rem;
-        font-size: 4rem;
+        font-size: 3rem;
       }
 
       .label {
         font-size: 1.1rem;
         display: block;
         float: left;
+        margin-left: 1em;
       }
     }
-  }
-
-  .icon-list-small {
-    display: block;
-    overflow: hidden;
-    width: 80%;
-    margin: 0 auto 20px;
   }
 </style>

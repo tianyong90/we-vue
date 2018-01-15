@@ -42,7 +42,9 @@ const TopTips = (options = {}) => {
 }
 
 TopTips.close = () => {
-  instance.visible = false
+  if (instance) {
+    instance.visible = false
+  }
 }
 
 Vue.prototype.$toptips = TopTips
