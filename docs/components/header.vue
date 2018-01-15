@@ -19,6 +19,7 @@
       <div class="version-picker"
            @mouseenter="onMouseenterVersion"
            @mouseleave="onMouseleaveVersion"
+           v-if="false"
       >
         <span>v1.6.x</span>
         <ul class="dropdown" v-show="false">
@@ -161,6 +162,10 @@ export default {
 
     .nav li a {
       color: #fff;
+    }
+
+    .version-picker {
+      display: none;
     }
   }
 </style>
