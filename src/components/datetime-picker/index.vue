@@ -306,10 +306,6 @@ export default create({
     },
 
     setSlotByValues (values) {
-      /* istanbul ignore if */
-      if (!this.$refs.picker) {
-        return
-      }
       this.$refs.picker.setValues(values)
     },
 

@@ -128,7 +128,8 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
+    "Android >= 4.0",
+    "iOS >= 7",
     "last 2 versions",
     "not ie <= 8"
   ]
