@@ -4,7 +4,6 @@
       <div
         class="weui-toast"
         :class="{ 'weui-toast_text': type === 'text' }"
-        :style="style"
         ref="toast">
         <wv-icon
           :type="icon"
@@ -65,20 +64,6 @@ export default create({
     maskClass: {
       default: 'weui-mask_transparent'
     }
-  },
-
-  computed: {
-    style () {
-      if (this.type === 'text') {
-        return {
-          width: this.message.length + 'em',
-          paddingLeft: '1em',
-          paddingRight: '1em'
-        }
-      }
-
-      return {}
-    }
   }
 })
 </script>
@@ -92,10 +77,10 @@ export default create({
     width: auto;
     min-width: 0;
     min-height: 0;
-    padding: .5em 0;
 
     .weui-toast__content {
       margin: 0;
+      padding: .5em 1em;
     }
   }
 </style>

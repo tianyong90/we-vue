@@ -25,7 +25,7 @@ export default {
 
     showText () {
       Toast.text({
-        duration: 1000,
+        duration: 1000000,
         message: 'hello'
       })
     },
