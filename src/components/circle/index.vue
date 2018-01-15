@@ -10,10 +10,15 @@
         :style="pathStyle"
         :fill="fillColor"
       />
+      <text
+        class="wv-circle-content"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        x="50%"
+        y="50%">
+        <slot/>
+      </text>
     </svg>
-    <div class="wv-circle-content">
-      <slot/>
-    </div>
   </div>
 </template>
 
@@ -42,7 +47,7 @@ export default create({
     },
     fillColor: {
       type: String,
-      default: 'none'
+      default: 'transparent'
     },
     speed: {
       type: Number,
@@ -108,20 +113,4 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  .wv-circle {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-      display: block;
-      position: absolute;
-      z-index: 1;
-    }
-
-    .wv-circle-content {
-      z-index: 1000;
-    }
-  }
 </style>
