@@ -1,27 +1,29 @@
 <template>
-  <div>
-    <div class="doc-wrap">
-      <div class="doc-nav">
-        <ul>
-          <li class="doc-nav__item" v-for="navItem in navs" :key="navItem.title">
-            <h2 class="title" v-html="navItem.title"/>
-            <ul class="sub-tree">
-              <li>
-                <router-link
-                  :to="subItem.path"
-                  v-for="subItem in navItem.list"
-                  :key="subItem.title"
-                  v-text="subItem.title"
-                  active-class="current"
-                />
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="doc-content">
-        <router-view/>
-      </div>
+  <div class="doc-wrap">
+    <div class="doc-nav">
+      <ul>
+        <li
+          class="doc-nav__item"
+          v-for="navItem in navs"
+          :key="navItem.title"
+        >
+          <h2 class="title" v-html="navItem.title"/>
+          <ul class="sub-tree">
+            <li>
+              <router-link
+                :to="subItem.path"
+                v-for="subItem in navItem.list"
+                :key="subItem.title"
+                v-text="subItem.title"
+                active-class="current"
+              />
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="doc-content">
+      <router-view/>
     </div>
     <div class="demo-wrap" :style="{ top: demoWrapTop + 'px' }">
       <div class="mobile-top"/>
@@ -74,16 +76,14 @@ export default {
 <style scoped lang="scss">
   .doc-wrap {
     display: flex;
-    margin: 20px 100px 50px 30px;
-    width: calc(100vw - 480px);
+    width: 100%;
     background-color: #fff;
-    border-radius: 5px;
 
     .doc-nav {
       display: block;
       overflow: hidden;
-      width: 240px;
-      min-width: 240px;
+      width: 220px;
+      min-width: 220px;
       border-right: 1px solid #ececec;
 
       ul {
@@ -146,7 +146,7 @@ export default {
       display: block;
       width: 100%;
       overflow: hidden;
-      padding: 1.8em;
+      padding: 1.5em 420px 1.5em 1.5em;
     }
   }
 
@@ -159,9 +159,9 @@ export default {
     border-radius: 6px;
     background: #f2f2f2;
     box-sizing: border-box;
-    right: 30px;
+    right: 15px;
     position: absolute;
-    box-shadow: #999 5px 5px 10px;
+    box-shadow: #999 -3px 3px 20px;
 
     .mobile-top {
       display: block;
