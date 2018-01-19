@@ -1,6 +1,6 @@
 <template>
-  <div class="header" :class="{ 'header-home': isHomepage }">
-    <div class="main">
+  <div class="header">
+    <div class="header-main">
       <router-link to="/" exact>
         <img class="logo" src="../assets/logo.png" alt="">
       </router-link>
@@ -9,7 +9,7 @@
           <router-link to="/" exact>首页</router-link>
         </li>
         <li>
-          <router-link to="/doc">文档</router-link>
+          <router-link to="/doc/v2_0/index">文档</router-link>
         </li>
         <li>
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
@@ -19,10 +19,11 @@
       <div class="version-picker"
            @mouseenter="onMouseenterVersion"
            @mouseleave="onMouseleaveVersion"
-           v-if="false"
+           v-if="versionPickerVisible"
       >
+
         <span>v1.6.x</span>
-        <ul class="dropdown" v-show="false">
+        <ul class="dropdown" v-show="dropDownVisible">
           <li class="dropdown-item">v1.6.x</li>
           <li class="dropdown-item">v2.0</li>
         </ul>
@@ -35,27 +36,25 @@
 export default {
   name: 'doc-header',
 
-  data () {
-    return {
-      versionPickerVisible: false
-    }
+  props: {
+    versionPickerVisible: Boolean
   },
 
-  computed: {
-    isHomepage () {
-      return this.$route.path === '/'
+  data () {
+    return {
+      dropDownVisible: false
     }
   },
 
   methods: {
     onMouseenterVersion () {
-      this.versionPickerVisible = true
+      this.dropDownVisible = true
     },
 
     onMouseleaveVersion () {
-      this.versionPickerVisible = false
+      this.dropDownVisible = false
     }
-  },
+  }
 }
 </script>
 
@@ -77,8 +76,9 @@ export default {
     height: $header-height;
     background-color: $header-background-color;
     z-index: 100;
+    border-bottom: 1px solid #dfdfdf;
 
-    .main {
+    .header-main {
       display: block;
       margin: 0 auto;
       width: 90vw;
@@ -154,18 +154,6 @@ export default {
           }
         }
       }
-    }
-  }
-
-  .header-home {
-    background-color: $header-home-background-color;
-
-    .nav li a {
-      color: #fff;
-    }
-
-    .version-picker {
-      display: none;
     }
   }
 </style>

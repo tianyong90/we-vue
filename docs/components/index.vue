@@ -1,10 +1,13 @@
 <template>
-  <div class="main">
-    <div id="particles-js"/>
-    <div class="title">WE-VUE</div>
-    <div class="slogan">简单易用的 vue 组件</div>
-    <router-link to="/doc" class="btn-quickstart">开始使用</router-link>
-    <img class="qrcode" src="../assets/demo_qrcode.png" alt="">
+  <div>
+    <doc-header/>
+    <div class="header-main">
+      <div id="particles-js"/>
+      <div class="title">WE-VUE</div>
+      <div class="slogan">简单易用的 vue 组件</div>
+      <router-link to="/doc" class="btn-quickstart">开始使用</router-link>
+      <img class="qrcode" src="../assets/demo_qrcode.png" alt="">
+    </div>
   </div>
 </template>
 
@@ -144,7 +147,7 @@ export default {
     z-index: -1;
   }
 
-  .main {
+  .header-main {
     display: flex;
     flex-direction: column;
     position: absolute;

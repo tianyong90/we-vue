@@ -20,7 +20,6 @@ let urlMap = new Map([
   ['preview', 'preview'],
   ['action_sheet', 'actionsheet'],
   ['dialog', 'dialog'],
-  ['indicator', 'indicator'],
   ['infinite_scroll', 'infinite-scroll'],
   ['toast', 'toast'],
   ['top_tips', 'top-tips'],

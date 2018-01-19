@@ -1,7 +1,7 @@
-import navs from './navs'
+import nav from './nav'
 import demoUrlMap from './demourl_map'
 
 export {
-  navs,
+  nav,
   demoUrlMap
 }

@@ -1,73 +1,65 @@
 <template>
-  <div class="doc-wrap">
-    <div class="doc-nav">
-      <ul>
-        <li
-          class="doc-nav__item"
-          v-for="navItem in navs"
-          :key="navItem.title"
-        >
-          <h2 class="title" v-html="navItem.title"/>
-          <ul class="sub-tree">
-            <li>
-              <router-link
-                :to="subItem.path"
-                v-for="subItem in navItem.list"
-                :key="subItem.title"
-                v-text="subItem.title"
-                active-class="current"
-              />
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="doc-content">
-      <router-view/>
-    </div>
-    <div class="demo-wrap" :style="{ top: demoWrapTop + 'px' }">
-      <div class="mobile-top"/>
-      <iframe id="iframe-demo" src="//demo.wevue.org" frameborder="0"/>
+  <div>
+    <doc-header :version-picker-visible="true"/>
+    <div class="doc-wrap">
+      <div class="doc-nav">
+        <ul>
+          <li
+            class="doc-nav__item"
+            v-for="navItem in nav[version]"
+            :key="navItem.title"
+          >
+            <h2 class="title" v-html="navItem.title"/>
+            <ul class="sub-tree">
+              <li>
+                <router-link
+                  :to="subItem.path"
+                  v-for="subItem in navItem.list"
+                  :key="subItem.title"
+                  v-text="subItem.title"
+                  active-class="current"
+                />
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="doc-content">
+        <router-view/>
+      </div>
+
+      <wevue-demo :url.sync="demoUrl" :sticky-top="90"/>
     </div>
   </div>
 </template>
 
 <script>
-import { navs, demoUrlMap } from '../config'
+import { nav, demoUrlMap } from '../config'
 import 'highlight.js/styles/github.css'
 
 export default {
+  components: {
+    'wevue-demo': () => import('./wevue-demo.vue')
+  },
+
   data () {
     return {
-      navs,
+      version: 'v1_6',
+      nav: nav,
+      demoUrl: '//demo.wevue.org',
       demoWrapTop: 90
     }
   },
 
   mounted () {
-    this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(this.$route.name))
+    this.demoUrl = '//demo.wevue.org/' + demoUrlMap.get(this.$route.name)
 
-    // 右侧 DEMO 区实在 sticky 效果
-    document.addEventListener('scroll', (e) => {
-      const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
-      if (scrollDistance >= 70) {
-        this.demoWrapTop = scrollDistance + 20
-      } else {
-        this.demoWrapTop = 90
-      }
-    })
-  },
-
-  methods: {
-    setIframeSrc (src) {
-      let demoIframe = document.getElementById('iframe-demo')
-      demoIframe.src = src
-    }
+    console.log(this.$router)
   },
 
   watch: {
     '$route.name': function (val) {
-      this.setIframeSrc('//demo.wevue.org/' + demoUrlMap.get(val))
+      this.demoUrl = '//demo.wevue.org/' + demoUrlMap.get(val)
     }
   }
 }
@@ -147,34 +139,6 @@ export default {
       width: 100%;
       overflow: hidden;
       padding: 1.5em 420px 1.5em 1.5em;
-    }
-  }
-
-  .demo-wrap {
-    display: block;
-    overflow: hidden;
-    width: 375px;
-    min-width: 375px;
-    z-index: 100;
-    border-radius: 6px;
-    background: #f2f2f2;
-    box-sizing: border-box;
-    right: 15px;
-    position: absolute;
-    box-shadow: #999 -3px 3px 20px;
-
-    .mobile-top {
-      display: block;
-      overflow: hidden;
-      width: 100%;
-      height: 42px;
-      background: url(../assets/mobile_top.jpg) left top no-repeat;
-      background-size: contain;
-    }
-
-    iframe {
-      width: 100%;
-      height: 555px;
     }
   }
 </style>
