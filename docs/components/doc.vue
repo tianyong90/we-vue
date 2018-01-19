@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { nav, demoUrlMap } from '../config'
+import { nav } from '../config'
 import 'highlight.js/styles/github.css'
 
 export default {
@@ -44,22 +44,19 @@ export default {
 
   data () {
     return {
-      version: 'v1_6',
+      version: 'v2_0',
       nav: nav,
-      demoUrl: '//demo.wevue.org',
-      demoWrapTop: 90
+      demoUrl: '//demo.wevue.org'
     }
   },
 
   mounted () {
-    this.demoUrl = '//demo.wevue.org/' + demoUrlMap.get(this.$route.name)
-
-    console.log(this.$router)
+    this.demoUrl = this.$route.meta.demo_url || '//demo.wevue.org/'
   },
 
   watch: {
-    '$route.name': function (val) {
-      this.demoUrl = '//demo.wevue.org/' + demoUrlMap.get(val)
+    '$route': function () {
+      this.demoUrl = this.$route.meta.demo_url || '//demo.wevue.org/'
     }
   }
 }
