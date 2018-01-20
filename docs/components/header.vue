@@ -22,10 +22,10 @@
            v-if="versionPickerVisible"
       >
 
-        <span>v1.6.x</span>
+        <span>{{ version | versionText }}</span>
         <ul class="dropdown" v-show="dropDownVisible">
-          <li class="dropdown-item">v1.6.x</li>
-          <li class="dropdown-item">v2.0</li>
+          <li class="dropdown-item" @click="changeVersion('v1_6')">v1.6</li>
+          <li class="dropdown-item" @click="changeVersion('v2_0')">v2.0</li>
         </ul>
       </div>
     </div>
@@ -42,7 +42,8 @@ export default {
 
   data () {
     return {
-      dropDownVisible: false
+      dropDownVisible: false,
+      version: this.$route.meta.version
     }
   },
 
@@ -53,6 +54,22 @@ export default {
 
     onMouseleaveVersion () {
       this.dropDownVisible = false
+    },
+
+    changeVersion (version) {
+      this.$router.push(`/doc/${version}/index`)
+    }
+  },
+
+  watch: {
+    '$route' (newValue) {
+      this.version = newValue.meta.version
+    }
+  },
+
+  filters: {
+    versionText: (value) => {
+      return value.replace('_', '.')
     }
   }
 }

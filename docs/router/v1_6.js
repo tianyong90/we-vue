@@ -1,6 +1,6 @@
 const demoUrlBase = 'https://demo.wevue.org'
 
-const v1_6 = [
+let v1_6 = [
   {
     path: 'v1_6/index',
     component: () => import('../markdown/v1_6/index.md'),
@@ -311,8 +311,17 @@ const v1_6 = [
   },
   {
     path: 'v1_6/changelog',
-    component: () => import('../../CHANGELOG.md')
+    component: () => import('../../CHANGELOG.md'),
+    meta: {
+      title: '变更记录'
+    }
   }
 ]
+
+v1_6 = v1_6.map((route) => {
+  route.meta.version = 'v1_6'
+
+  return route
+})
 
 export default v1_6

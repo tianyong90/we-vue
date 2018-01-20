@@ -2,7 +2,7 @@
   <div>
     <doc-header :version-picker-visible="true"/>
     <div class="doc-wrap">
-      <div class="doc-nav">
+      <div class="sidebar-wrapper" id="sidebar" :style="{ top: sidebarTop + 'px' }">
         <ul>
           <li
             class="doc-nav__item"
@@ -35,6 +35,8 @@
 
 <script>
 import { nav } from '../config'
+import PerfectScrollbar from 'perfect-scrollbar'
+import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'highlight.js/styles/github.css'
 
 export default {
@@ -44,19 +46,34 @@ export default {
 
   data () {
     return {
-      version: 'v2_0',
+      version: this.$route.meta.version,
       nav: nav,
-      demoUrl: '//demo.wevue.org'
+      demoUrl: '//demo.wevue.org',
+      sidebarTop: 71
     }
   },
 
   mounted () {
     this.demoUrl = this.$route.meta.demo_url || '//demo.wevue.org/'
+
+    new PerfectScrollbar('#sidebar')
+
+    // 右侧 DEMO 区实在 sticky 效果
+    document.addEventListener('scroll', () => {
+      const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
+      if (scrollDistance >= 71) {
+        this.sidebarTop = 0
+      } else {
+        this.sidebarTop = 71 - scrollDistance
+      }
+    })
   },
 
   watch: {
     '$route': function () {
       this.demoUrl = this.$route.meta.demo_url || '//demo.wevue.org/'
+
+      this.version = this.$route.meta.version
     }
   }
 }
@@ -68,14 +85,17 @@ export default {
     width: 100%;
     background-color: #fff;
 
-    .doc-nav {
-      display: block;
-      overflow: hidden;
+    .sidebar-wrapper {
+      position: fixed;
+      overflow: auto;
       width: 220px;
+      bottom: 0;
       min-width: 220px;
       border-right: 1px solid #ececec;
+      background-color: #fff;
 
       ul {
+        overflow: hidden;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -135,7 +155,7 @@ export default {
       display: block;
       width: 100%;
       overflow: hidden;
-      padding: 1.5em 420px 1.5em 1.5em;
+      padding: .5em 420px 1.5em 250px;
     }
   }
 </style>
