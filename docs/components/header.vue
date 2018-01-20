@@ -66,7 +66,7 @@ export default {
   },
 
   watch: {
-    '$route' (newValue) {
+    '$route': (newValue) => {
       this.version = newValue.meta.version
     }
   },
