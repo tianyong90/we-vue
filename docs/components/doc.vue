@@ -70,8 +70,8 @@ export default {
   },
 
   watch: {
-    '$route': function () {
-      this.demoUrl = this.$route.meta.demo_url || '//demo.wevue.org/'
+    '$route': function (val) {
+      this.demoUrl = val.meta.demo_url || '//demo.wevue.org/'
 
       this.version = this.$route.meta.version
     }
