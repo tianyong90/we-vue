@@ -1,11 +1,14 @@
 <template>
   <div>
-    <doc-header/>
-    <div class="header-main">
+    <doc-header theme="dark"/>
+    <div class="main">
       <div id="particles-js"/>
       <div class="title">WE-VUE</div>
       <div class="slogan">简单易用的 vue 组件</div>
-      <router-link to="/doc" class="btn-quickstart">开始使用</router-link>
+      <div class="btns">
+        <router-link to="/doc/v1_6/index" class="btn btn-quickstart">开始使用</router-link>
+        <a href="https://demo.wevue.org" class="btn btn-demo">查看示例</a>
+      </div>
       <img class="qrcode" src="../assets/demo_qrcode.png" alt="">
     </div>
   </div>
@@ -147,7 +150,7 @@ export default {
     z-index: -1;
   }
 
-  .header-main {
+  .main {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -172,15 +175,20 @@ export default {
       margin-top: 20px;
     }
 
-    .btn-quickstart {
-      display: block;
-      padding: .5em 1em;
-      background-color: #329368;
-      color: white;
+    .btns {
       margin: 50px 0;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 500;
+
+      .btn {
+        display: block;
+        padding: .5em 1em;
+        background-color: #329368;
+        margin: 0 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        float: left;
+      }
     }
 
     .qrcode {

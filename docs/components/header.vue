@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :class="[theme]">
     <div class="header-main">
       <router-link to="/" exact>
         <img class="logo" src="../assets/logo.png" alt="">
@@ -9,7 +9,7 @@
           <router-link to="/" exact>首页</router-link>
         </li>
         <li>
-          <router-link to="/doc/v2_0/index">文档</router-link>
+          <router-link to="/doc/v1_6/index">文档</router-link>
         </li>
         <li>
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
@@ -37,7 +37,11 @@ export default {
   name: 'doc-header',
 
   props: {
-    versionPickerVisible: Boolean
+    versionPickerVisible: Boolean,
+    theme: {
+      type: String,
+      default: 'light'
+    }
   },
 
   data () {
@@ -132,6 +136,23 @@ export default {
           &.router-link-active {
             color: #41b883;
           }
+        }
+      }
+    }
+
+    &.dark {
+      background-color: #01061a;
+      border-bottom: none;
+
+      a {
+        color: #fff !important;
+
+        &:hover {
+          color: #41b883 !important;
+        }
+
+        &.router-link-active {
+          color: #41b883 !important;
         }
       }
     }
