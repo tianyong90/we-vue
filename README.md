@@ -32,6 +32,16 @@ $ npm install we-vue -S
 $ yarn add we-vue -S
 ```
 
+**2.0 版正在测试中，可使用 `next` tag 进行安装尝鲜，欢迎反馈或提出建议。**
+
+```shell
+// npm
+$ npm install we-vue@next -S
+
+// yarn
+$ yarn add we-vue@next -S
+```
+
 ## 开发
 
 1. 克隆代码

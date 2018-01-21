@@ -65,10 +65,10 @@ export default {
     }
   },
 
-  watch: {
-    '$route': (newValue) => {
-      this.version = newValue.meta.version
-    }
+  beforeRouteUpdate (to, from, next) {
+    this.version = to.meta.version
+
+    next()
   },
 
   filters: {

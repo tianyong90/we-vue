@@ -33,7 +33,12 @@
   - 使用 :visible.sync="visible" 形式控制 picker 是否显示
   - 新增 visibleItem 属性，定义可见选项数
   - slots 属性重命名为 columns
-  
+
+## v1.6.2 (2018-1-8)
+
+### 修复
+
+- 方法名拼写错误
 
 ## v1.6.1 (2018-1-7)
 

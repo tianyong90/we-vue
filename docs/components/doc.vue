@@ -54,9 +54,10 @@ export default {
   },
 
   mounted () {
-    this.demoUrl = this.$route.meta.demo_url || '//demo.wevue.org/'
-
     new PerfectScrollbar('#sidebar')
+
+    this.demoUrl = this.$route.meta.demo_url
+    this.version = this.$route.meta.version
 
     // 右侧 DEMO 区实在 sticky 效果
     document.addEventListener('scroll', () => {
@@ -69,12 +70,11 @@ export default {
     })
   },
 
-  watch: {
-    '$route': (val) => {
-      this.demoUrl = val.meta.demo_url || '//demo.wevue.org/'
+  beforeRouteUpdate (to, from, next) {
+    this.demoUrl = to.meta.demo_url
+    this.version = to.meta.version
 
-      this.version = val.meta.version
-    }
+    next()
   }
 }
 </script>
