@@ -1,5 +1,4 @@
-## v2.0.0 (进行中)
-
+## v2.0.0-alpha.1
 
 - 重构 swipe 组件
   - speed => duration
@@ -7,11 +6,12 @@
   - defaultIndex => initialSwipe
   - 取消 condinuous 属性
   - 取消 noDragWhenSingle 属性
+  - 优化连续滑动操作体验
   
 - 优化 slider 组件
   - 新增 enableClick 组件，支持点击操作（默认开启）
   - 优化属性值校验
-  - 优化 slider 值计算逻辑，简化代码
+  - 简化计算逻辑
   
 - 重构 dialog 组件
   - 组件返回 Promise 对象
@@ -33,6 +33,8 @@
   - 使用 :visible.sync="visible" 形式控制 picker 是否显示
   - 新增 visibleItem 属性，定义可见选项数
   - slots 属性重命名为 columns
+
+- datetime-picker
 
 ## v1.6.2 (2018-1-8)
 
