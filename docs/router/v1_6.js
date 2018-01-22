@@ -33,7 +33,7 @@ let v1_6 = [
   },
   {
     path: 'v1_6/icons',
-    component: () => import('../markdown/v1_6/icons.md'),
+    component: () => import('../markdown/v1_6/icon.md'),
     meta: {
       title: 'Icons',
       demo_url: `${demoUrlBase}/icons`

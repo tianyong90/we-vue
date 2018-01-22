@@ -7,6 +7,9 @@ Icon
 ```js
 import { Icon } from 'we-vue'
 Vue.component(Icon.name, Icon)
+
+// or
+Vue.use(Icon)
 ```
 
 ## 例子
@@ -14,13 +17,13 @@ Vue.component(Icon.name, Icon)
 ### 大图标
 
 ```html
-<wv-icon :type="success" :large="true"></wv-icon>
+<wv-icon type="success" :large="true"></wv-icon>
 ```
 
 ### 小图标
 
 ```html
-<wv-icon :type="success"></wv-icon>
+<wv-icon type="success"></wv-icon>
 ```
 
 ## API
@@ -29,3 +32,4 @@ Vue.component(Icon.name, Icon)
 | :----: | :-----: | :----: | :--: | :---: |
 | type `(required)`  | String  |  图标类型   | 'success', 'info', 'warn', 'waiting', 'success-no-circle', 'circle', 'info-circle', 'download', 'cancel', 'search'   |      |
 | large | Boolean | 是否为大图标 |      | false |
+
