@@ -1,5 +1,13 @@
 ## v2.0.0-alpha.1
 
+### 代码质量控制
+
+- 全面的单元测试，覆盖组件源码 95% 以上
+- 更规范的代码，使用 eslint-plugin-vue 插件检查及修正代码
+- 使用 CircleCI 自动测试，确保组件可用性
+
+### 重要更改及优化
+
 - 重构 swipe 组件
   - speed => duration
   - auto => autoplay
@@ -19,6 +27,7 @@
   - shouConfirmBtn => showConfirmButton
   - cancelText => cancelButtonText
   - confirmText => confirmButtonText
+  - 优化动画效果
 
 - cell-swipe 优化
   - 组件外部点击时自动复位
@@ -26,7 +35,10 @@
 - poopup 重构
   - 事件名调整 show => open, hide => close
   - 使用 :visible.sync="visible" 形式控制 popup 是否显示
-  
+  - 支持动画效果
+
+- toast  
+
 - 删除 Indicator 组件，其功能整合到 Toast 组件中，使用 Toast.loading() 方法
 
 - picker
