@@ -2434,7 +2434,7 @@ doctrine@1.5.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-doctrine@^2.0.2:
+doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
   dependencies:
@@ -2561,8 +2561,8 @@ emojis-list@^2.0.0:
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
 
 encodeurl@~1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.1.tgz#79e3d58655346909fe6f0f45a5de68103b294d20"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.1"
@@ -2845,8 +2845,8 @@ eslint-visitor-keys@^1.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
 eslint@^4.15.0:
-  version "4.15.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.15.0.tgz#89ab38c12713eec3d13afac14e4a89e75ef08145"
+  version "4.16.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.16.0.tgz#934ada9e98715e1d7bbfd6f6f0519ed2fab35cc1"
   dependencies:
     ajv "^5.3.0"
     babel-code-frame "^6.22.0"
@@ -2854,7 +2854,7 @@ eslint@^4.15.0:
     concat-stream "^1.6.0"
     cross-spawn "^5.1.0"
     debug "^3.1.0"
-    doctrine "^2.0.2"
+    doctrine "^2.1.0"
     eslint-scope "^3.7.1"
     eslint-visitor-keys "^1.0.0"
     espree "^3.5.2"
@@ -4077,8 +4077,8 @@ inquirer@^3.0.6:
     through "^2.3.6"
 
 inquirer@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-5.0.0.tgz#261b77cdb535495509f1b90197108ffb96c02db5"
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-5.0.1.tgz#5c0396c974fd98df4cab9afd26ed85874b563550"
   dependencies:
     ansi-escapes "^3.0.0"
     chalk "^2.0.0"
@@ -4363,8 +4363,8 @@ is-regex@^1.0.4:
     has "^1.0.1"
 
 is-resolvable@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/is-resolvable/-/is-resolvable-1.0.1.tgz#acca1cd36dbe44b974b924321555a70ba03b1cf4"
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/is-resolvable/-/is-resolvable-1.1.0.tgz#fb18f87ce1feb925169c9a407c19318a3206ed88"
 
 is-stream@^1.1.0:
   version "1.1.0"
@@ -4961,8 +4961,8 @@ log-update@^1.0.2:
     cli-cursor "^1.0.2"
 
 log4js@^2.3.9:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/log4js/-/log4js-2.5.1.tgz#5b4553ee2b2bcf220027bb05d8daafd48c8d5431"
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/log4js/-/log4js-2.5.2.tgz#234e9c688bc4aab3999bd4b149c85851a4e62faa"
   dependencies:
     circular-json "^0.5.1"
     date-format "^1.2.0"
@@ -7222,8 +7222,8 @@ setprototypeof@1.1.0:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
 
 sha.js@^2.4.0, sha.js@^2.4.8, sha.js@~2.4.4:
-  version "2.4.9"
-  resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.9.tgz#98f64880474b74f4a38b8da9d3c0f2d104633e7d"
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.10.tgz#b1fde5cd7d11a5626638a07c604ab909cfa31f9b"
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
@@ -7264,8 +7264,8 @@ shell-quote@^1.6.1:
     jsonify "~0.0.0"
 
 shelljs@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.0.tgz#12f561c52ec5d0d3315af15616c011a18ff80d59"
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.1.tgz#729e038c413a2254c4078b95ed46e0397154a9f1"
   dependencies:
     glob "^7.0.0"
     interpret "^1.0.0"
@@ -7280,8 +7280,8 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
 sinon@^4.1.2:
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/sinon/-/sinon-4.1.6.tgz#9cb346bddb180d68a804429ffe14978d7fafd629"
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/sinon/-/sinon-4.2.0.tgz#3b7c0d2289a80d2d84c4685f2ec130b7ab9af621"
   dependencies:
     diff "^3.1.0"
     formatio "1.2.0"
@@ -7554,8 +7554,8 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-5.0.0.tgz#13c19390b606c821f2a10d02b351c1729b94d8cf"
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-5.1.0.tgz#2cbf1df36b74d0fc91fcf89640a4b3e1d10b1899"
   dependencies:
     safe-buffer "^5.1.0"
 
@@ -7984,8 +7984,8 @@ type-check@~0.3.2:
     prelude-ls "~1.1.2"
 
 type-detect@^4.0.5:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.6.tgz#88cbce3d13bc675a63f840b3225c180f870786d7"
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.7.tgz#862bd2cf6058ad92799ff5a5b8cf7b6cec726198"
 
 type-is@~1.6.15:
   version "1.6.15"
@@ -8003,15 +8003,15 @@ uc.micro@^1.0.1, uc.micro@^1.0.3:
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.3.tgz#7ed50d5e0f9a9fb0a573379259f2a77458d50192"
 
 uglify-es@^3.3.4:
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.7.tgz#d1249af668666aba7cb1163e277455be9eb393cf"
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.8.tgz#f2c68e6cff0d0f9dc9577e4da207151c2e753b7e"
   dependencies:
     commander "~2.13.0"
     source-map "~0.6.1"
 
 uglify-js@3.3.x:
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.3.7.tgz#28463e7c7451f89061d2b235e30925bf5625e14d"
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.3.8.tgz#51e9a5db73afb53ac98603d08224edcd0be45fd8"
   dependencies:
     commander "~2.13.0"
     source-map "~0.6.1"
@@ -8358,8 +8358,8 @@ webpack-dev-middleware@1.12.2, webpack-dev-middleware@^1.12.0:
     time-stamp "^2.0.0"
 
 webpack-dev-server@^2.10.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.11.0.tgz#e9d4830ab7eb16c6f92ed68b92f6089027960e1b"
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.11.1.tgz#6f9358a002db8403f016e336816f4485384e5ec0"
   dependencies:
     ansi-html "0.0.7"
     array-includes "^3.0.3"
@@ -8384,7 +8384,7 @@ webpack-dev-server@^2.10.0:
     sockjs "0.3.19"
     sockjs-client "1.1.4"
     spdy "^3.4.1"
-    strip-ansi "^4.0.0"
+    strip-ansi "^3.0.0"
     supports-color "^5.1.0"
     webpack-dev-middleware "1.12.2"
     yargs "6.6.0"

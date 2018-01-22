@@ -61,6 +61,7 @@ export default {
     },
 
     changeVersion (version) {
+      this.version = version
       this.$router.push(`/doc/${version}/index`)
     }
   },

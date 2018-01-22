@@ -9,11 +9,7 @@ export default new Router({
   mode: 'history',
   base: '/',
   scrollBehavior: (to, from, savedPosition) => {
-    if (to.path.indexOf('/doc/') > -1) {
-      return { x: 0, y: 70 }
-    } else {
-      return { x: 0, y: 0 }
-    }
+    return { x: 0, y: 0 }
   },
   routes: [
     {
