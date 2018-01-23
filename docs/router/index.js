@@ -25,6 +25,10 @@ export default new Router({
         ...routes_v1_6,
         ...routes_v2_0
       ]
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
