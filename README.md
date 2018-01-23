@@ -11,15 +11,20 @@
 
 we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库，封装了一系列组件，非常适于微信公众号等移动端开发。
 
-## [在线文档](http://wevue.org)
+## 特性
 
-## 在线预览
+* 35+ 个组件
+* 单元测试覆盖率超 96%
+* 支持 `babel-plugin-import` 和 `babel-plugin-component`
+* 完善的在线中文文档
+* 每个组件都有在线示例，示例源码也在本项目中，开源
+
+## [在线文档（https://wevue.org）](https://wevue.org)
+
+## [在线示例（https://demo.wevue.org）](https://demo.wevue.org)
 
 <div align="center">
-  <a href="http://demo.wevue.org">
-    <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode-demo.png" width="120">
-  </a>
-  <p align="center">使用手机扫描或直接点击二维码查看在线示例</p align="center">
+  <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode-demo.png" width="200">
 </div>
 
 ## 安装
