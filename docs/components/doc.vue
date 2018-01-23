@@ -10,17 +10,21 @@
             :key="navItem.title"
           >
             <h2 class="title" v-html="navItem.title"/>
-            <ul class="sub-tree">
-              <li>
-                <router-link
-                  :to="subItem.path"
-                  v-for="subItem in navItem.list"
-                  :key="subItem.title"
-                  v-text="subItem.title"
-                  active-class="current"
-                />
-              </li>
-            </ul>
+
+            <div v-for="group in navItem.groups">
+              <div class="group-name" v-text="group.groupName" v-if="group.groupName"></div>
+              <ul class="sub-tree">
+                <li>
+                  <router-link
+                    :to="subItem.path"
+                    v-for="subItem in group.list"
+                    :key="subItem.title"
+                    v-text="subItem.title"
+                    active-class="current"
+                  />
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -112,6 +116,11 @@ export default {
           color: #333;
           display: block;
           text-indent: 1em;
+        }
+
+        .group-name {
+          display: block;
+          padding: .5em 0 .5em 1.5em;
         }
 
         .sub-title {
