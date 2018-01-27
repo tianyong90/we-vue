@@ -6,7 +6,8 @@ Slider
 
 ```js
 import { Slider } from 'we-vue'
-Vue.component(Slider.name, Slider)
+
+Vue.use(Slider)
 ```
 
 ## 例子
@@ -17,10 +18,16 @@ Vue.component(Slider.name, Slider)
 <wv-slider v-model="percent" :min="10" :max="80"></wv-slider>
 ```
 
-### 禁用状态
+### 不显示当前数值
 
 ```html
-<wv-slider :value="50" :min="10" :max="100" disabled :show-value-box="false"></wv-slider>
+<wv-slider v-model="percent" :show-value="false"></wv-slider>
+```
+
+### 禁用
+
+```html
+<wv-slider v-model="percent" disabled></wv-slider>
 ```
 
 ## API
@@ -30,5 +37,6 @@ Vue.component(Slider.name, Slider)
 | min  | Number  |  最小值   |      |   0    |
 | max  | Number  |  最大值   |      |   100    |
 | step  | Number  |  步进值   |      |   1    |
-| show-value-box  | Boolean  |  是否显示右侧当前值文字   |      |   true    |
+| show-value  | Boolean  |  是否显示右侧当前值文字   |      |   true    |
+| enable-click  | Boolean  |  是否启用点击操作   |      |   true    |
 | disabled | Boolean | 是否禁用 |      | false |

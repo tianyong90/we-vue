@@ -17,6 +17,7 @@
   
 - 优化 slider 组件
   - 新增 enableClick 组件，支持点击操作（默认开启）
+  - show-value-box 更名为 show-value
   - 优化属性值校验
   - 简化计算逻辑
   
