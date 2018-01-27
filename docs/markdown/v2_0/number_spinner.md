@@ -6,7 +6,8 @@ NumberSpinner
 
 ```js
 import { NumberSpinner } from 'we-vue'
-Vue.component(NumberSpinner.name, NumberSpinner)
+
+Vue.use(NumberSpinner)
 ```
 
 ## 例子

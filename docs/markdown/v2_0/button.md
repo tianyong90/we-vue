@@ -6,7 +6,8 @@ Button
 
 ```js
 import { Button } from 'we-vue'
-Vue.component(Button.name, Button)
+
+Vue.use(Button)
 ```
 
 ## 例子

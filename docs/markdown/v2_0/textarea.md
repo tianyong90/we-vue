@@ -6,7 +6,8 @@ Textarea
 
 ```js
 import { Textarea } from 'we-vue'
-Vue.component(Textarea.name, Textarea)
+
+Vue.use(Textarea)
 ```
 
 > **textarea 只能在 group 中使用。**

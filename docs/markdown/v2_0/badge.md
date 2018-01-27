@@ -6,7 +6,8 @@ Badge
 
 ```js
 import { Badge } from 'we-vue'
-Vue.component(Badge.name, Badge)
+
+Vue.use(Badge)
 ```
 
 ## 例子

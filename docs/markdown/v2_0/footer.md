@@ -6,7 +6,8 @@ Footer
 
 ```js
 import { Footer } from 'we-vue'
-Vue.component(Footer.name, Footer)
+
+Vue.use(Footer)
 ```
 
 ## 例子

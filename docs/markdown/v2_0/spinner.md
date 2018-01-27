@@ -6,7 +6,8 @@ Spinner
 
 ```js
 import { Spinner } from 'we-vue'
-Vue.component(Spinner.name, Spinner)
+
+Vue.use(Spinner)
 ```
 
 ## 例子

@@ -6,8 +6,9 @@ Grid
 
 ```js
 import { Grid, GridItem } from 'we-vue'
-Vue.component(Grid.name, Grid)
-Vue.component(GridItem.name, GridItem)
+
+Vue.use(Grid)
+Vue.use(GridItem)
 ```
 > **grid 需要与 grid-item 配合使用**
 

@@ -6,7 +6,8 @@ Search
 
 ```js
 import { Search } from 'we-vue'
-Vue.component(Search.name, Search)
+
+Vue.use(Search)
 ```
 
 ## 例子

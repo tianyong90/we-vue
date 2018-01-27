@@ -6,8 +6,9 @@ flex 布局。
 
 ```js
 import { Flex, FlexItem } from 'we-vue'
-Vue.component(Flex.name, Flex)
-Vue.component(FlexItem.name, FlexItem)
+
+Vue.use(Flex)
+Vue.use(FlexItem)
 ```
 > **flex 需要与 flex-item 配合使用**
 

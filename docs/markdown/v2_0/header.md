@@ -6,7 +6,8 @@ Header
 
 ```js
 import { Header } from 'we-vue'
-Vue.component(Header.name, Header)
+
+Vue.use(Header)
 ```
 
 ## 例子

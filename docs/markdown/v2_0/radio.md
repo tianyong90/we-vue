@@ -14,9 +14,9 @@ Vue.use(Radio)
 
 ```html
 <template>
-	<div>
+  <div>
     <wv-radio title="title" v-model="value" :options="options" @change="onChange"></wv-radio>
-	</div>
+  </div>
 </template>
 
 <script>

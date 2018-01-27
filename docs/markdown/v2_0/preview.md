@@ -6,7 +6,8 @@ Preview
 
 ```js
 import { Preview } from 'we-vue'
-Vue.component(Preview.name, Preview)
+
+Vue.use(Preview)
 ```
 
 ## 例子

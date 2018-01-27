@@ -6,8 +6,9 @@ Tabbar
 
 ```js
 import { Tabbar, TabbarItem } from 'we-vue'
-Vue.component(Tabbar.name, Tabbar)
-Vue.component(TabbarItem.name, TabbarItem)
+
+Vue.use(Tabbar)
+Vue.use(TabbarItem)
 ```
 
 ## 例子

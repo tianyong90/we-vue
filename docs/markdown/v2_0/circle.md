@@ -6,7 +6,8 @@ Circle
 
 ```js
 import { Circle } from 'we-vue'
-Vue.component(Circle.name, Circle)
+
+Vue.use(Circle)
 ```
 
 ## 例子

@@ -5,10 +5,10 @@ CellSwipe
 ## 引入
 
 ```js
-import { CellSwipe } from 'we-vue'
-import { CellSwipeButton } from 'we-vue'
-Vue.component(CellSwipe.name, CellSwipe)
-Vue.component(CellSwipeButton.name, CellSwipeButton)
+import { CellSwipe, CellSwipeButton } from 'we-vue'
+
+Vue.use(CellSwipe)
+Vue.use(CellSwipeButton)
 ```
 > **cell-swipe 只能在 group 中使用。cell-swipe-button 仅与 cell-swipe 结合使用**
 

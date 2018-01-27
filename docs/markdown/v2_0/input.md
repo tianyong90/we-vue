@@ -6,7 +6,8 @@ Input
 
 ```js
 import { Input } from 'we-vue'
-Vue.component(Input.name, Input)
+
+Vue.use(Input)
 ```
 
 > **input 只能在 group 中使用。**

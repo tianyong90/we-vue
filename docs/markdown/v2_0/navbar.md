@@ -6,8 +6,9 @@ Navbar
 
 ```js
 import { Navbar, NavbarItem } from 'we-vue'
-Vue.component(Navbar.name, Navbar)
-Vue.component(NavbarItem.name, NavbarItem)
+
+Vue.use(Navbar)
+Vue.use(NavbarItem)
 ```
 
 ## 例子

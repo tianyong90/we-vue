@@ -6,7 +6,8 @@ Cell
 
 ```js
 import { Cell } from 'we-vue'
-Vue.component(Cell.name, Cell)
+
+Vue.use(Cell)
 ```
 > **cell 只能在 group 中使用。**
 

@@ -6,7 +6,8 @@ Icon
 
 ```js
 import { Icon } from 'we-vue'
-Vue.component(Icon.name, Icon)
+
+Vue.use(Icon)
 
 // or
 Vue.use(Icon)

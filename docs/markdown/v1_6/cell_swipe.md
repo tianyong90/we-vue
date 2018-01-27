@@ -5,8 +5,7 @@ CellSwipe
 ## 引入
 
 ```js
-import { CellSwipe } from 'we-vue'
-import { CellSwipeButton } from 'we-vue'
+import { CellSwipe, CellSwipeButton } from 'we-vue'
 Vue.component(CellSwipe.name, CellSwipe)
 Vue.component(CellSwipeButton.name, CellSwipeButton)
 ```

@@ -63,8 +63,8 @@ import Vue from 'vue'
 import { Group, Cell } from 'we-vue'
 import App from './App.vue'
 
-Vue.component(Group.name, Group)
-Vue.component(Cell.name, Cell)
+Vue.use(Group)
+Vue.use(Cell)
 /* 或写为
  * Vue.use(Group)
  * Vue.use(Cell)

@@ -6,7 +6,8 @@ ActionSheet
 
 ```js
 import { ActionSheet } from 'we-vue'
-Vue.component(ActionSheet.name, ActionSheet)
+
+Vue.use(ActionSheet)
 ```
 
 ## 例子

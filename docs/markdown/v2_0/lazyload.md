@@ -6,6 +6,7 @@ Lazyload
 
 ```js
 import { Lazyload } from 'we-vue'
+
 Vue.use(Lazyload)
 ```
 

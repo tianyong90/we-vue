@@ -6,7 +6,8 @@ Switch
 
 ```js
 import { Switch } from 'we-vue'
-Vue.component(Switch.name, Switch)
+
+Vue.use(Switch)
 ```
 
 ## 例子

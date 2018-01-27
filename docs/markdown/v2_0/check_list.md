@@ -6,7 +6,8 @@ CheckList
 
 ```js
 import { CheckList } from 'we-vue'
-Vue.component(CheckList.name, CheckList)
+
+Vue.use(CheckList)
 ```
 
 ## 例子

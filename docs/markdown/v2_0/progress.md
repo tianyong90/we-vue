@@ -6,7 +6,8 @@ Progress
 
 ```js
 import { Progress } from 'we-vue'
-Vue.component(Progress.name, Progress)
+
+Vue.use(Progress)
 ```
 
 ## 例子

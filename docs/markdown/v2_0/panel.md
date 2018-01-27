@@ -6,8 +6,9 @@ Panel
 
 ```js
 import { Panel， MediaBox } from 'we-vue'
-Vue.component(Panel.name, Panel)
-Vue.component(MediaBox.name, MediaBox)
+
+Vue.use(Panel)
+Vue.use(MediaBox)
 ```
 
 > **media-box 仅与 panel 结合使用**

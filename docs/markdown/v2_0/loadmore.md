@@ -6,7 +6,8 @@ Loadmore
 
 ```js
 import { Loadmore } from 'we-vue'
-Vue.component(Loadmore.name, Loadmore)
+
+Vue.use(Loadmore)
 ```
 
 ## 例子
