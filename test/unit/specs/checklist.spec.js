@@ -1,6 +1,12 @@
 import { shallow, mount } from '@vue/test-utils'
 import Checklist from '@/components/checklist'
 
+const options = [
+  'value1',
+  'value2',
+  'value3'
+]
+
 describe('checklist', () => {
   let wrapper
   afterEach(() => {
@@ -27,11 +33,6 @@ describe('checklist', () => {
   })
 
   it('options', () => {
-    const options = [
-      'value1',
-      'value2',
-      'value3'
-    ]
     wrapper = mount(Checklist, {
       propsData: {
         value: 'value2',
@@ -51,13 +52,8 @@ describe('checklist', () => {
   })
 
   it('max selection', () => {
-    const options = [
-      'value1',
-      'value2',
-      'value3'
-    ]
-
-    wrapper = shallow(Checklist, {
+    wrapper = mount(Checklist, {
+      attachToDocument: true,
       propsData: {
         max: 2,
         options: options,
@@ -72,40 +68,47 @@ describe('checklist', () => {
     wrapper = shallow(Checklist, {
       propsData: {
         max: 1,
+        options: options,
+        value: options
+      }
+    })
+
+    expect(wrapper.vm.currentValue.length).toBe(1)
+    expect(wrapper.vm.currentValue).toEqual(['value1'])
+  })
+
+  it('watch currentValue', () => {
+    wrapper = shallow(Checklist, {
+      propsData: {
+        max: 2,
         options: options
       }
     })
 
     wrapper.setData({
-      currentValue: options
-    })
-
-    expect(wrapper.emitted().input.length).toBe(1)
-    expect(wrapper.emitted().input[0][0]).toEqual(['value1'])
-  })
-
-  it('watch currentValue', () => {
-    wrapper = shallow(Checklist, {
-      propsData: {}
-    })
-
-    wrapper.setData({
-      currentValue: 'current-value'
+      currentValue: ['value1']
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
-    expect(wrapper.emitted().change).toBeTruthy()
+
+    wrapper.setData({
+      currentValue: options
+    })
+
+    expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
   })
 
   it('watch value', () => {
     wrapper = shallow(Checklist, {
-      propsData: {}
+      propsData: {
+        options: options
+      }
     })
 
     wrapper.setProps({
       value: 'new-value'
     })
 
-    expect(wrapper.vm.currentValue).toBe('new-value')
+    expect(wrapper.emitted().change).toEqual([['new-value']])
   })
 })
