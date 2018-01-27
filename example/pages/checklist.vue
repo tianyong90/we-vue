@@ -3,8 +3,15 @@
     <wv-checklist
       title="基本示例"
       :options="options"
-      v-model="checkedItems"
-      :max="1"
+      v-model="checkedItems1"
+      @change="onChange"
+    />
+
+    <wv-checklist
+      title="限制最多选两个"
+      :options="options"
+      v-model="checkedItems2"
+      :max="2"
       @change="onChange"
     />
   </div>
@@ -33,7 +40,8 @@ export default {
           disabled: true
         }
       ],
-      checkedItems: ['value1', 'value3']
+      checkedItems1: ['value1'],
+      checkedItems2: ['value1', 'value3']
     }
   },
 
