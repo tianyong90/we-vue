@@ -9,11 +9,10 @@
 ### 重要更改及优化
 
 - 重构 swipe 组件
-  - speed => duration
-  - auto => autoplay
-  - defaultIndex => initialSwipe
+  部分属性调整（重命名、调整默认值）
+  - speed => duration，默认值由 300 改为 500
+  - auto => autoplay，无默认值
   - 取消 condinuous 属性
-  - 取消 noDragWhenSingle 属性
   - 优化连续滑动操作体验
   
 - 优化 slider 组件
