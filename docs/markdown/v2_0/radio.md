@@ -6,7 +6,8 @@ Radio
 
 ```js
 import { Radio } from 'we-vue'
-Vue.component(Radio.name, Radio)
+
+Vue.use(Radio)
 ```
 
 ## 例子
@@ -22,14 +23,14 @@ Vue.component(Radio.name, Radio)
   export default {
     data () {
       return {
-        value: 'value2',
+        value: 'hello',
         options: [{
           label: 'label1',
-          value: 'value1'
+          value: 'hello'
         },
         {
           label: 'label2',
-          value: 'value2'
+          value: true
         },
         {
           label: 'label3 (disabled)',
@@ -55,4 +56,4 @@ Vue.component(Radio.name, Radio)
 | title  | String  |  标题，即左侧label   |      |       |
 | align  | String  |  对齐方式   |  'left','right'    |   'left'    |
 | options  | Array  |  选项   |      |       |
-| value | String | 当前值 |      |    |
+| value | String, Number, Object, Boolean | 当前值 |      |    |

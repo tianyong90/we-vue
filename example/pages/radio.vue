@@ -6,18 +6,24 @@
 export default {
   data () {
     return {
-      value: 'value2',
+      value: 'hello',
       options: [{
-        label: 'label1',
-        value: 'value1'
+        label: '对象值',
+        value: {
+          name: 'tian'
+        }
       },
       {
-        label: 'label2',
-        value: 'value2'
+        label: '字符串值',
+        value: 'hello'
       },
       {
-        label: 'label3 (disabled)',
-        value: 'value3',
+        label: '布尔值',
+        value: true
+      },
+      {
+        label: '禁用项',
+        value: 'value4',
         disabled: true
       }]
     }

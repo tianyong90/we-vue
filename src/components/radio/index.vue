@@ -36,8 +36,11 @@ export default create({
       type: String,
       default: 'left'
     },
-    options: Array,
-    value: String
+    options: {
+      type: Array,
+      required: true
+    },
+    value: {}
   },
 
   data () {
