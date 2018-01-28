@@ -9,10 +9,10 @@ const Listr = require('listr')
 inquirer.prompt({
   type: 'input',
   name: 'version',
-  message: '[we-vue]Enter release version:',
+  message: '[we-vue] Enter release version:',
   validate: function(value) {
     const pass = value.match(
-      /^1\.\d\.\d+$/i
+      /^1|2\.\d\.\d+(\-(alpha|beta)\.\d+)?$/
     )
     if (pass) {
       return true
