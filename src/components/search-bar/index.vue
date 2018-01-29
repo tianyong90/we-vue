@@ -9,7 +9,7 @@
             :placeholder="placeholder"
             :autofocus="autofocus"
             v-model="currentValue"
-            ref="searchInput"
+            ref="input"
           >
           <div class="weui-icon-clear" @click="clear"/>
         </div>
@@ -35,7 +35,7 @@
           v-for="(item, index) in result"
           :key="index"
           :title="typeof item === 'object' ? item[resultTextKey] : item"
-          @click="onClickResult(item)"
+          @click="$emit('click-result', item)"
         />
       </div>
     </slot>
@@ -85,7 +85,7 @@ export default create({
   methods: {
     textClick () {
       // focus the input
-      this.$refs.searchInput.focus()
+      this.$refs.input.focus()
       this.isActive = true
     },
 
@@ -98,10 +98,6 @@ export default create({
     cancel () {
       this.clear()
       this.isActive = false
-    },
-
-    onClickResult (item) {
-      this.$emit('click-result', item)
     }
   },
 

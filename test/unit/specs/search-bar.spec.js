@@ -24,7 +24,7 @@ describe('search', () => {
       }
     })
 
-    expect(wrapper.find({ ref: 'searchInput' }).attributes().autofocus).toBe('autofocus')
+    expect(wrapper.find({ ref: 'input' }).attributes().autofocus).toBe('autofocus')
     expect(wrapper.vm.isActive).toBeTruthy()
 
     wrapper = shallow(SearchBar, {
@@ -33,7 +33,7 @@ describe('search', () => {
       }
     })
 
-    expect(wrapper.find({ ref: 'searchInput' }).attributes()).not.toContain('autofocus')
+    expect(wrapper.find({ ref: 'input' }).attributes()).not.toContain('autofocus')
     expect(wrapper.vm.isActive).toBeFalsy()
   })
 
@@ -47,27 +47,27 @@ describe('search', () => {
     expect(wrapper.vm.isActive).toBeTruthy()
   })
 
-  it('method serachClear', () => {
+  it('method clear', () => {
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
 
-    wrapper.vm.searchClear()
+    wrapper.vm.clear()
 
     expect(wrapper.vm.currentValue).toBe('')
   })
 
-  it('method searchCancel', () => {
+  it('method cancel', () => {
     const spySearchBarClear = sinon.spy()
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
 
     wrapper.setMethods({
-      searchClear: spySearchBarClear
+      clear: spySearchBarClear
     })
 
-    wrapper.vm.searchCancel()
+    wrapper.vm.cancel()
 
     expect(wrapper.vm.isActive).toBeFalsy()
     expect(spySearchBarClear.called).toBeTruthy()
@@ -95,5 +95,19 @@ describe('search', () => {
     })
 
     expect(wrapper.vm.currentValue).toBe('new-value')
+  })
+
+  it('click result', () => {
+    wrapper = shallow(SearchBar, {
+      attachToDocument: true,
+      propsData: {
+        result: [1, 2, 3]
+      }
+    })
+
+    wrapper.find('wv-cell').trigger('click')
+
+    expect(wrapper.emitted()['click-result']).toBeTruthy()
+    expect(wrapper.emitted()['click-result']).toEqual([[1]])
   })
 })
