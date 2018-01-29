@@ -1,3 +1,11 @@
+## v2.0.0-alpha.2 (2018-1-29)
+
+### 优化
+
+- radio 组件 options 属性设为 required
+- radio 组件 value 支持 Object, Bookean, String 多种类型
+- 优化 checklist 组件 change 事件触发逻辑，避免选中值实际没有改变时触发该事件
+
 ## v2.0.0-alpha.1
 
 ### 代码质量控制
@@ -9,9 +17,8 @@
 ### 重要更改及优化
 
 - 重构 swipe 组件
-  部分属性调整（重命名、调整默认值）
-  - speed => duration，默认值由 300 改为 500
-  - auto => autoplay，无默认值
+  - 属性 speed => duration，默认值由 300 改为 500
+  - 属性 auto => autoplay，无默认值
   - 取消 condinuous 属性
   - 优化连续滑动操作体验
   
@@ -37,7 +44,7 @@
   - 使用 :visible.sync="visible" 形式控制 popup 是否显示
   - 支持动画效果
 
-- toast  
+- toast
 
 - 删除 Indicator 组件，其功能整合到 Toast 组件中，使用 Toast.loading() 方法
 
@@ -47,6 +54,7 @@
   - slots 属性重命名为 columns
 
 - datetime-picker
+  - 根据 picker 的变化进行相应调整
 
 ## v1.6.2 (2018-1-8)
 
