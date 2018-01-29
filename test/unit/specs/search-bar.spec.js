@@ -1,5 +1,5 @@
 import { shallow } from '@vue/test-utils'
-import Search from '@/components/search'
+import SearchBar from '@/components/search-bar'
 import sinon from 'sinon'
 
 describe('search', () => {
@@ -9,16 +9,16 @@ describe('search', () => {
   })
 
   it('create', () => {
-    wrapper = shallow(Search, {
+    wrapper = shallow(SearchBar, {
       propsData: {}
     })
 
-    expect(wrapper.name()).toBe('wv-search')
+    expect(wrapper.name()).toBe('wv-search-bar')
     expect(wrapper.contains('.weui-search-bar')).toBeTruthy()
   })
 
   it('autofocus', () => {
-    wrapper = shallow(Search, {
+    wrapper = shallow(SearchBar, {
       propsData: {
         autofocus: true
       }
@@ -27,7 +27,7 @@ describe('search', () => {
     expect(wrapper.find({ ref: 'searchInput' }).attributes().autofocus).toBe('autofocus')
     expect(wrapper.vm.isActive).toBeTruthy()
 
-    wrapper = shallow(Search, {
+    wrapper = shallow(SearchBar, {
       propsData: {
         autofocus: false
       }
@@ -38,7 +38,7 @@ describe('search', () => {
   })
 
   it('method textClick', () => {
-    wrapper = shallow(Search, {
+    wrapper = shallow(SearchBar, {
       propsData: {}
     })
 
@@ -48,7 +48,7 @@ describe('search', () => {
   })
 
   it('method serachClear', () => {
-    wrapper = shallow(Search, {
+    wrapper = shallow(SearchBar, {
       propsData: {}
     })
 
@@ -58,23 +58,23 @@ describe('search', () => {
   })
 
   it('method searchCancel', () => {
-    const spySearchClear = sinon.spy()
-    wrapper = shallow(Search, {
+    const spySearchBarClear = sinon.spy()
+    wrapper = shallow(SearchBar, {
       propsData: {}
     })
 
     wrapper.setMethods({
-      searchClear: spySearchClear
+      searchClear: spySearchBarClear
     })
 
     wrapper.vm.searchCancel()
 
     expect(wrapper.vm.isActive).toBeFalsy()
-    expect(spySearchClear.called).toBeTruthy()
+    expect(spySearchBarClear.called).toBeTruthy()
   })
 
   it('watch currentValue', () => {
-    wrapper = shallow(Search, {
+    wrapper = shallow(SearchBar, {
       propsData: {}
     })
 
@@ -86,7 +86,7 @@ describe('search', () => {
   })
 
   it('watch value', () => {
-    wrapper = shallow(Search, {
+    wrapper = shallow(SearchBar, {
       propsData: {}
     })
 

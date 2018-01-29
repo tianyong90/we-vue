@@ -9,9 +9,7 @@ const registerRoute = (groups) => {
   let routes = []
 
   groups.map(group => {
-    let groupItems = group.navItems
-
-    groupItems.map(nav => {
+    group.navItems.map(nav => {
       try {
         routes.push({
           path: `${nav.path}`,

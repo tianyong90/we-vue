@@ -11,7 +11,7 @@
             v-model="currentValue"
             ref="searchInput"
           >
-          <div class="weui-icon-clear" @click="searchClear"/>
+          <div class="weui-icon-clear" @click="clear"/>
         </div>
         <label class="weui-search-bar__label" @click="textClick" v-show="!isActive">
           <i class="weui-icon-search"/>
@@ -20,15 +20,23 @@
       </div>
       <div
         class="weui-search-bar__cancel-btn"
-        @click="searchCancel"
+        @click="cancel"
         v-show="isActive"
         v-text="cancelText"
       />
     </div>
 
     <slot>
-      <div class="weui-cells searchbar-result" v-show="show || currentValue">
-        <wv-cell v-for="(item, key) in result" :key="key" :title="item"/>
+      <div
+        class="weui-cells searchbar-result"
+        v-show="show || currentValue"
+      >
+        <wv-cell
+          v-for="(item, index) in result"
+          :key="index"
+          :title="typeof item === 'object' ? item[resultTextKey] : item"
+          @click="onClickResult(item)"
+        />
       </div>
     </slot>
   </div>
@@ -39,7 +47,7 @@ import { create } from '../../utils'
 import Cell from '../cell/index'
 
 export default create({
-  name: 'wv-search',
+  name: 'wv-search-bar',
 
   components: {
     Cell
@@ -57,6 +65,7 @@ export default create({
       type: String,
       default: '取消'
     },
+    resultTextKey: String,
     result: Array
   },
 
@@ -81,14 +90,18 @@ export default create({
     },
 
     // 清除输入
-    searchClear () {
+    clear () {
       this.currentValue = ''
     },
 
     // 取消搜索
-    searchCancel () {
-      this.searchClear()
+    cancel () {
+      this.clear()
       this.isActive = false
+    },
+
+    onClickResult (item) {
+      this.$emit('click-result', item)
     }
   },
 

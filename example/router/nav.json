@@ -179,7 +179,7 @@
     "groupTitle": "搜索相关",
     "navItems": [
       {
-        "path": "/search",
+        "path": "/search-bar",
         "name": "Search",
         "description": "搜索框",
         "icon": "search"

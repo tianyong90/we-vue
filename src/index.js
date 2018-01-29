@@ -32,7 +32,7 @@ import Popup from './components/popup'
 import Preview from './components/preview'
 import Progress from './components/progress'
 import Radio from './components/radio'
-import Search from './components/search'
+import SearchBar from './components/search-bar'
 import Slider from './components/slider'
 import Spinner from './components/spinner'
 import Swipe from './components/swipe'
@@ -44,7 +44,7 @@ import Textarea from './components/textarea'
 import Toast from './components/toast'
 import TopTips from './components/top-tips'
 
-const version = '2.0.0-alpha.1'
+const version = '2.0.0-alpha.2'
 const components = [
   Actionsheet,
   Badge,
@@ -75,7 +75,7 @@ const components = [
   Preview,
   Progress,
   Radio,
-  Search,
+  SearchBar,
   Slider,
   Spinner,
   Swipe,
@@ -143,7 +143,7 @@ export {
   Preview,
   Progress,
   Radio,
-  Search,
+  SearchBar,
   Slider,
   Spinner,
   Swipe,

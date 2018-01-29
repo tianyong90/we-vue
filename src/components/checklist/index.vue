@@ -63,12 +63,6 @@ export default create({
     }
   },
 
-  computed: {
-    limit () {
-      return this.max < this.currentValue.length
-    }
-  },
-
   watch: {
     currentValue (val) {
       if (this.max && val.length > this.max) {
