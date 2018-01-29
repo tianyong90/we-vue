@@ -180,7 +180,7 @@
     "navItems": [
       {
         "path": "/search-bar",
-        "name": "Search",
+        "name": "SearchBar",
         "description": "搜索框",
         "icon": "search"
       }
