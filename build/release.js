@@ -69,7 +69,13 @@ inquirer.prompt({
         },
         {
           title: 'npm publish',
-          task: () => execa.shell('npm publish')
+          task: () => {
+            if (/alpha|beta/.test(answer.version)) {
+              execa.shell('npm publish --tag next')
+            } else {
+              execa.shell('npm publish')
+            }
+          }
         }
       ])
 
