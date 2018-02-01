@@ -1,3 +1,15 @@
+## v2.0.0-alpha.3 (2018-2.1)
+
+### 非兼容更改
+
+- search 组件重命名为 search-bar
+
+
+### 新增
+
+- search-bar 组件新增 result-text-key 属性
+- search-bar 新增 `click-result` 事件，点击搜索结果项时触发
+
 ## v2.0.0-alpha.2 (2018-1-29)
 
 ### 优化
@@ -6,7 +18,7 @@
 - radio 组件 value 支持 Object, Bookean, String 多种类型
 - 优化 checklist 组件 change 事件触发逻辑，避免选中值实际没有改变时触发该事件
 
-## v2.0.0-alpha.1
+## v2.0.0-alpha.1 (2018-1-20)
 
 ### 代码质量控制
 
