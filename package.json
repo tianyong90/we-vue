@@ -114,7 +114,7 @@
     "uppercamelcase": "3.0.0",
     "url-loader": "0.6.2",
     "vue": "^2.5.9",
-    "vue-loader": "^13.3.0",
+    "vue-loader": "^14.0.0",
     "vue-markdown-loader": "^2.3.0",
     "vue-router": "^3.0.1",
     "vue-style-loader": "^3.0.1",
