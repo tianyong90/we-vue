@@ -224,11 +224,11 @@ let v2_0 = [
     }
   },
   {
-    path: 'v2_0/search',
-    component: () => import('../markdown/v2_0/search.md'),
+    path: 'v2_0/search-bar',
+    component: () => import('../markdown/v2_0/search_bar.md'),
     meta: {
-      title: 'Search',
-      demo_url: `${demoUrlBase}/search`
+      title: 'SearchBar',
+      demo_url: `${demoUrlBase}/search-bar`
     }
   },
   {

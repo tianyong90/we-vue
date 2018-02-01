@@ -1,13 +1,13 @@
-Search
+SearchBar
 ---
 搜索框。
 
 ## 引入
 
 ```js
-import { Search } from 'we-vue'
+import { SearchBar } from 'we-vue'
 
-Vue.use(Search)
+Vue.use(SearchBar)
 ```
 
 ## 例子
@@ -15,7 +15,7 @@ Vue.use(Search)
 ```html
 <template>
   <div>
-    <wv-search :autofocus="false" v-model="value" :result="filterResult"></wv-search>
+    <wv-search-bar :autofocus="false" v-model="value" :result="filterResult"></wv-search-bar>
   </div>
 </template>
 
@@ -63,9 +63,17 @@ export default {
 | placeholder  | String  |  占位提示文字   |      |   '搜索'    |
 | cancel-text  | String  |  取消按钮文字   |      |   '取消'    |
 | result  | Array  |  结果   |      |     |
+| result-text-key  | String  |  结果列表显示字段对应的 key(结果为对象数组时用)   |      |     |
 
 ## Slots
 
 |   name   |   描述    |
 | :----: | :-----: |
 | -  | 结果列表位  |
+
+
+## Events
+
+|   事件名   |   说明    |   参数   |
+| :----: | :-----: | :----: |
+| click-result  | 点击搜索结果项事件  |  所点击的搜索结果项   |

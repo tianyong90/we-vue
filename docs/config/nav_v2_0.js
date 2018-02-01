@@ -151,8 +151,8 @@ export default [
         groupName: '搜索相关',
         list: [
           {
-            title: 'Search',
-            path: '/doc/v2_0/search'
+            title: 'SearchBar',
+            path: '/doc/v2_0/search-bar'
           }
         ]
       },
