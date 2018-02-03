@@ -136,11 +136,11 @@ let v2_0 = [
     }
   },
   {
-    path: 'v2_0/preview',
-    component: () => import('../markdown/v2_0/preview.md'),
+    path: 'v2_0/form_preview',
+    component: () => import('../markdown/v2_0/form_preview.md'),
     meta: {
       title: 'Preview',
-      demo_url: `${demoUrlBase}/preview`
+      demo_url: `${demoUrlBase}/form-preview`
     }
   },
   {

@@ -1,13 +1,13 @@
-Preview
+FormPreview
 ---
 表单预览。
 
 ## 引入
 
 ```js
-import { Preview } from 'we-vue'
+import { FormPreview } from 'we-vue'
 
-Vue.use(Preview)
+Vue.use(FormPreview)
 ```
 
 ## 例子
@@ -15,8 +15,8 @@ Vue.use(Preview)
 ```html
 <template>
   <div class="page">
-    <wv-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons1"></wv-preview>
-    <wv-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons2"></wv-preview>
+    <wv-form-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons1"/>
+    <wv-form-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons2"/>
   </div>
 </template>
 

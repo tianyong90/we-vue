@@ -92,8 +92,8 @@ export default [
             path: '/doc/v2_0/textarea'
           },
           {
-            title: 'Preview',
-            path: '/doc/v2_0/preview'
+            title: 'FormPreview',
+            path: '/doc/v2_0/form_preview'
           }
         ]
       },
