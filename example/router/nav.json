@@ -98,8 +98,8 @@
         "icon": "amy-ui-textarea"
       },
       {
-        "path": "/preview",
-        "name": "Preview",
+        "path": "/form-preview",
+        "name": "FormPreview",
         "description": "表单预览",
         "icon": "39liulanyulan"
       }

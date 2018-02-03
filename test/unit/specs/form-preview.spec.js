@@ -1,5 +1,5 @@
 import { shallow } from '@vue/test-utils'
-import Preview from '@/components/preview'
+import FormPreview from '@/components/form-preview'
 
 describe('preview', () => {
   let wrapper
@@ -8,16 +8,16 @@ describe('preview', () => {
   })
 
   it('create', () => {
-    wrapper = shallow(Preview, {
+    wrapper = shallow(FormPreview, {
       propsData: {}
     })
 
-    expect(wrapper.name()).toBe('wv-preview')
+    expect(wrapper.name()).toBe('wv-form-preview')
     expect(wrapper.classes()).toContain('weui-form-preview')
   })
 
   it('render title and value', () => {
-    wrapper = shallow(Preview, {
+    wrapper = shallow(FormPreview, {
       propsData: {
         title: 'test-title',
         value: 'test-value'

@@ -13,6 +13,7 @@ import Dialog from './components/dialog'
 import Flex from './components/flex'
 import FlexItem from './components/flex-item'
 import Footer from './components/footer'
+import FormPreview from './components/form-preview'
 import Grid from './components/grid'
 import GridItem from './components/grid-item'
 import Group from './components/group'
@@ -29,7 +30,6 @@ import NumberSpinner from './components/number-spinner'
 import Panel from './components/panel'
 import Picker from './components/picker'
 import Popup from './components/popup'
-import Preview from './components/preview'
 import Progress from './components/progress'
 import Radio from './components/radio'
 import SearchBar from './components/search-bar'
@@ -44,7 +44,7 @@ import Textarea from './components/textarea'
 import Toast from './components/toast'
 import TopTips from './components/top-tips'
 
-const version = '2.0.0-alpha.2'
+const version = '2.0.0-alpha.3'
 const components = [
   Actionsheet,
   Badge,
@@ -58,6 +58,7 @@ const components = [
   Flex,
   FlexItem,
   Footer,
+  FormPreview,
   Grid,
   GridItem,
   Group,
@@ -72,7 +73,6 @@ const components = [
   Panel,
   Picker,
   Popup,
-  Preview,
   Progress,
   Radio,
   SearchBar,
@@ -124,6 +124,7 @@ export {
   Flex,
   FlexItem,
   Footer,
+  FormPreview,
   Grid,
   GridItem,
   Group,
@@ -140,7 +141,6 @@ export {
   Panel,
   Picker,
   Popup,
-  Preview,
   Progress,
   Radio,
   SearchBar,

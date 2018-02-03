@@ -27,7 +27,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-preview',
+  name: 'wv-form-preview',
 
   props: {
     title: String,

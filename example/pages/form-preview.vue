@@ -1,13 +1,13 @@
 <template>
   <div class="page">
-    <wv-preview
+    <wv-form-preview
       class="preview-item"
       title="订单详情"
       value="100.00"
       :data-items="dataItems"
       :buttons="buttons1"
     />
-    <wv-preview
+    <wv-form-preview
       class="preview-item"
       title="订单详情"
       value="100.00"
