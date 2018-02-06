@@ -18,6 +18,10 @@ export default {
         message: '欢迎使用 we-vue!',
         skin,
         showCancelBtn: true
+      }).then(() => {
+        this.$root.message('confirmed')
+      }).catch(() => {
+        this.$root.message('canceled')
       })
     }
   }
