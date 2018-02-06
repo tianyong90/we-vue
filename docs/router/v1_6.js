@@ -228,7 +228,7 @@ let v1_6 = [
     component: () => import('../markdown/v1_6/search.md'),
     meta: {
       title: 'Search',
-      demo_url: `${demoUrlBase}/search`
+      demo_url: `${demoUrlBase}/search-bar`
     }
   },
   {

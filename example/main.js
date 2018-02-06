@@ -30,7 +30,7 @@ new Vue({
 
   methods: {
     message (msg) {
-      WeVue.Toast(msg)
+      this.$toast.text(msg)
     }
   },
 
