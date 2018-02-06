@@ -12,23 +12,19 @@ export default create({
 
   props: {
     gutter: {
-      type: Number,
-      default: 0
+      type: [Number, String],
+      default: 0,
+      validator: (val) => {
+        return Number(val) >= 0
+      }
     }
   },
 
   computed: {
     style () {
-      let result = {}
+      const margin = `-${Number(this.gutter) / 2}px`
 
-      if (this.gutter) {
-        const margin = `-${this.gutter / 2}px`
-
-        result.marginLeft = margin
-        result.marginRight = margin
-      }
-
-      return result
+      return this.gutter ? { marginLeft: margin, marginRight: margin } : {}
     }
   }
 })

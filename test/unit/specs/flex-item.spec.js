@@ -49,7 +49,8 @@ describe('flex-item', () => {
     })
 
     let computedStyle = {
-      flex: wrapper.vm.flex
+      flex: wrapper.vm.flex,
+      marginLeft: wrapper.vm.offset
     }
 
     if (wrapper.vm.gutter) {

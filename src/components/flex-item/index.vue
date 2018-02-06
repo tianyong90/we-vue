@@ -14,25 +14,29 @@ export default create({
     flex: {
       type: [Number, String],
       default: 1
+    },
+    offset: {
+      type: String,
+      default: ''
     }
   },
 
   computed: {
     gutter () {
-      return this.$parent.gutter
+      return (this.$parent && Number(this.$parent.gutter)) || 0
     },
 
     style () {
-      let ret = {}
+      const padding = `${Number(this.gutter) / 2}px`
 
-      if (this.gutter) {
-        ret.paddingLeft = this.gutter / 2 + 'px'
-        ret.paddingRight = ret.paddingLeft
-      }
+      let ret = this.gutter
+        ? {
+          paddingLeft: padding,
+          paddingRight: padding
+        }
+        : {}
 
-      ret.flex = this.flex
-
-      return ret
+      return { ...ret, ...{ flex: Number(this.flex), marginLeft: this.offset } }
     }
   }
 })
