@@ -69,6 +69,24 @@ Vue.use(FlexItem)
 </wv-flex>
 ```
 
+### offset
+
+flex-item offset 属性接受一个 String 类型的值，表示对应 fle-item 的 margin-left
+
+```html
+<wv-flex :gutter="10">
+  <wv-flex-item>
+    <div class="placeholder">1/4</div>
+  </wv-flex-item>
+  <wv-flex-item flex="2">
+    <div class="placeholder">1/2</div>
+  </wv-flex-item>
+  <wv-flex-item>
+    <div class="placeholder">1/4</div>
+  </wv-flex-item>
+</wv-flex>
+```
+
 ## API
 
 - flex
@@ -81,4 +99,5 @@ Vue.use(FlexItem)
 
 |     参数     |   类型    |   说明    |         可选值          |   默认值   |
 | :--------: | :-----: | :-----: | :------------------: | :-----: |
-|    flex    | Number|String  |   相当于 CSS3 中 flex 属性    |  | 1 |
+|    flex    | Number/String  |   相当于 CSS3 中 flex 属性    |  | 1 |
+|    offset    | String  |   指定 flex-item margin-left    |  |  |

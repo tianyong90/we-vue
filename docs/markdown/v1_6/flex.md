@@ -80,4 +80,4 @@ Vue.component(FlexItem.name, FlexItem)
 
 |     参数     |   类型    |   说明    |         可选值          |   默认值   |
 | :--------: | :-----: | :-----: | :------------------: | :-----: |
-|    flex    | Number|String  |   相当于 CSS3 中 flex 属性    |  | 1 |
+|    flex    | Number/String  |   相当于 CSS3 中 flex 属性    |  | 1 |
