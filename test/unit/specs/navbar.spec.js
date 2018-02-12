@@ -24,7 +24,7 @@ describe('navbar', () => {
       }
     })
 
-    expect(wrapper.hasStyle('position', 'fixed')).toBeTruthy()
+    expect(wrapper.element.style.position).toBe('fixed')
     expect(wrapper.vm.$el.style.top).toBe('0px')
     expect(wrapper.vm.$el.style.left).toBe('0px')
     expect(wrapper.vm.$el.style.right).toBe('0px')

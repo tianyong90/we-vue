@@ -18,14 +18,17 @@ describe('popup', () => {
 
   it('create a popup that is visible', () => {
     wrapper = shallow(Popup, {
+      attachToDocument: true,
       propsData: {
         visible: true
       }
     })
 
-    expect(wrapper.name()).toBe('wv-popup')
     expect(wrapper.classes()).toContain('wv-popup')
-    expect(wrapper.hasStyle('display', 'block')).toBeTruthy()
+
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.element.style.display).toBe('block')
+    })
   })
 
   it('computed style', () => {

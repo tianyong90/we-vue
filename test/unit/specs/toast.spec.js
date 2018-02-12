@@ -107,7 +107,7 @@ describe('toast', () => {
 
     wrapper.vm.$nextTick(() => {
       expect(wrapper.contains('.weui-icon_toast')).toBeFalsy()
-      expect(wrapper.find('.weui-toast').hasStyle('width', '7em')).toBeTruthy()
+      expect(wrapper.find('.weui-toast').element.style.width).toBe('7em')
     })
   })
 })

@@ -22,7 +22,7 @@ describe('tabbar', () => {
       propsData: {}
     })
 
-    expect(wrapper.hasStyle('position', 'absolute')).toBeTruthy()
+    expect(wrapper.element.style.position).toBe('absolute')
 
     wrapper = shallow(Tabbar, {
       propsData: {
@@ -30,6 +30,6 @@ describe('tabbar', () => {
       }
     })
 
-    expect(wrapper.hasStyle('position', 'fixed')).toBeTruthy()
+    expect(wrapper.element.style.position).toBe('fixed')
   })
 })
