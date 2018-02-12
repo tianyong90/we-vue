@@ -137,7 +137,7 @@ picker 上注册了下列方法，最常见的使用场景就是在 change 事�
 | cancel-text  | String  |  取消按钮文字   |      |   '取消'    |
 | columns  | Array  |  列数据   |      |       |
 | value-kay  | String  |  当前选中项 key   |      |        |
-| visible-item-count  | Number  |  可见选项数量   |      |        |
+| visible-item-count  | Number  |  可见选项数量   |      |  7   |
 
 - picker-column
 

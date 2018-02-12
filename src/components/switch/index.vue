@@ -189,10 +189,6 @@ export default create({
       transition: transform .35s cubic-bezier(0.45, 1, 0.4, 1);
     }
 
-    &.wv-switch-disabled .background {
-      background-color: darken($off-color, 10%);
-    }
-
     .thumb {
       content: " ";
       position: absolute;
@@ -203,10 +199,6 @@ export default create({
       border-radius: 15px;
       background-color: $thumb-color;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-    }
-
-    &.wv-switch-disabled .thumb {
-      background-color: darken($thumb-color, 10%);
     }
 
     &.wv-switch-on {
@@ -220,15 +212,20 @@ export default create({
       .thumb {
         transform: translateX(20px);
       }
+    }
+  }
 
-      &.wv-switch-disabled {
-        border-color: darken($on-color, 5%);
-        background-color: darken($on-color, 5%);
+  .wv-switch-disabled {
+    &.wv-switch-on {
+      border-color: #dedede;
+      background-color: #dedede;
+    }
+    .background {
+      background-color: #dedede;
+    }
 
-        .thumb {
-          background-color: darken($thumb-color, 10%);
-        }
-      }
+    .thumb {
+      background-color: lightgray;
     }
   }
 
