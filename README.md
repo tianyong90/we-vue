@@ -17,11 +17,11 @@ we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库�
 * 单元测试覆盖率超 96%
 * 支持 `babel-plugin-import` 和 `babel-plugin-component`
 * 完善的在线中文文档
-* 每个组件都有在线示例，示例源码也在本项目中，开源
+* 每个组件都有在线示例，示例源码也在本项目中
 
-## [在线文档（https://wevue.org）](https://wevue.org)
+### [在线文档（https://wevue.org）](https://wevue.org)
 
-## [在线示例（https://demo.wevue.org）](https://demo.wevue.org)
+### [在线示例（https://demo.wevue.org）](https://demo.wevue.org)
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode-demo.png" width="200">
@@ -35,16 +35,6 @@ $ npm install we-vue -S
 
 // yarn
 $ yarn add we-vue -S
-```
-
-**2.0 版正在测试中，可使用 `next` tag 进行安装尝鲜，欢迎反馈或提出建议。**
-
-```shell
-// npm
-$ npm install we-vue@next -S
-
-// yarn
-$ yarn add we-vue@next -S
 ```
 
 ## 开发
