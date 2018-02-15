@@ -117,7 +117,7 @@
     "vue-loader": "^14.0.0",
     "vue-markdown-loader": "^2.3.0",
     "vue-router": "^3.0.1",
-    "vue-style-loader": "^3.0.1",
+    "vue-style-loader": "^4.0.2",
     "vue-template-compiler": "^2.5.9",
     "vuex": "3.0.1",
     "webpack": "^3.9.1",
