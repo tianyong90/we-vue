@@ -45,7 +45,7 @@
     "weui": "^1.1.2"
   },
   "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.11",
+    "@vue/test-utils": "^1.0.0-beta.12",
     "animate.css": "^3.5.2",
     "autoprefixer": "^8.0.0",
     "babel-core": "^6.22.1",
