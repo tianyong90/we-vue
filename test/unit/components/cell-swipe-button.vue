@@ -1,5 +1,5 @@
 <template>
-  <cell-swipe-button>test</cell-swipe-button>
+  <wv-cell-swipe-button>test</wv-cell-swipe-button>
 </template>
 
 <script>

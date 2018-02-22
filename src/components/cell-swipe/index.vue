@@ -1,5 +1,8 @@
 <template>
-  <div class="weui-cell weui-cell_swiped" v-clickoutside:touchstart="onClickoutside">
+  <div
+    class="weui-cell weui-cell_swiped"
+    v-clickoutside:touchstart="onClickoutside"
+  >
     <div
       class="weui-cell__bd"
       ref="cellBd"
