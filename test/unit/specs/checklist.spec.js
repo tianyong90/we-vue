@@ -15,7 +15,9 @@ describe('checklist', () => {
 
   it('create', () => {
     wrapper = shallow(Checklist, {
-      propsData: {}
+      propsData: {
+        options: options
+      }
     })
 
     expect(wrapper.name()).toBe('wv-checklist')
@@ -24,7 +26,8 @@ describe('checklist', () => {
     // create with 'title'
     wrapper = shallow(Checklist, {
       propsData: {
-        title: 'test title'
+        title: 'test title',
+        options: options
       }
     })
 
@@ -35,7 +38,7 @@ describe('checklist', () => {
   it('options', () => {
     wrapper = mount(Checklist, {
       propsData: {
-        value: 'value2',
+        value: ['value2'],
         options: options
       }
     })
@@ -106,9 +109,9 @@ describe('checklist', () => {
     })
 
     wrapper.setProps({
-      value: 'new-value'
+      value: ['new-value']
     })
 
-    expect(wrapper.emitted().change).toEqual([['new-value']])
+    expect(wrapper.emitted().change).toEqual([[['new-value']]])
   })
 })

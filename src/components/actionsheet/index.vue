@@ -1,14 +1,24 @@
 <template>
   <div>
-    <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+    <transition
+      enter-active-class="weui-animate-fade-in"
+      leave-active-class="weui-animate-fade-out"
+    >
       <div
         class="weui-mask weui-animate-fade-in"
         v-show="currentValue && type === 'ios'"
         @click="currentValue = false"
       />
     </transition>
-    <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
-      <div class="weui-actionsheet weui-actionsheet_toggle" v-if="type === 'ios'" v-show="currentValue">
+    <transition
+      enter-active-class="weui-animate-slide-up"
+      leave-active-class="weui-animate-slide-down"
+    >
+      <div
+        class="weui-actionsheet weui-actionsheet_toggle"
+        v-if="type === 'ios'"
+        v-show="currentValue"
+      >
         <div class="weui-actionsheet__title" v-if="title">
           <p class="weui-actionsheet__title-text" v-html="title"/>
         </div>
@@ -27,8 +37,15 @@
       </div>
     </transition>
 
-    <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
-      <div class="weui-skin_android" v-if="type === 'android'" v-show="currentValue">
+    <transition
+      enter-active-class="weui-animate-fade-in"
+      leave-active-class="weui-animate-fade-out"
+    >
+      <div
+        class="weui-skin_android"
+        v-if="type === 'android'"
+        v-show="currentValue"
+      >
         <div class="weui-mask" @click="currentValue = false"/>
         <div class="weui-actionsheet">
           <div class="weui-actionsheet__menu">

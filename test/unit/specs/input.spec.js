@@ -81,7 +81,7 @@ describe('input', () => {
     wrapper = shallow(Input, {
       propsData: {
         label: 'test-label',
-        labelWidth: '100'
+        labelWidth: 100
       }
     })
 

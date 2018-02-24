@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { mount, shallow } from '@vue/test-utils'
 import Actionsheet from '@/components/actionsheet'
 import sinon from 'sinon'
 
@@ -9,7 +9,8 @@ describe('actionsheet', () => {
   })
 
   it('create', () => {
-    wrapper = shallow(Actionsheet, {
+    wrapper = mount(Actionsheet, {
+      attachToDocument: true,
       propsData: {}
     })
 
@@ -18,8 +19,11 @@ describe('actionsheet', () => {
     // default type == 'ios', check mask element class
     expect(wrapper.contains('.weui-mask')).toBeTruthy()
 
-    wrapper.setProps({
-      type: 'android'
+    wrapper = mount(Actionsheet, {
+      attachToDocument: true,
+      propsData: {
+        type: 'android'
+      }
     })
 
     wrapper.vm.$nextTick(() => {

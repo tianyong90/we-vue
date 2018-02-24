@@ -1,6 +1,12 @@
 import { shallow } from '@vue/test-utils'
 import Radio from '@/components/radio'
 
+const testOptions = [
+  'option1',
+  'option2',
+  'option3'
+]
+
 describe('radio', () => {
   let wrapper
   afterEach(() => {
@@ -9,7 +15,9 @@ describe('radio', () => {
 
   it('create', () => {
     wrapper = shallow(Radio, {
-      propsData: {}
+      propsData: {
+        options: testOptions
+      }
     })
 
     expect(wrapper.name()).toBe('wv-radio')
@@ -18,7 +26,8 @@ describe('radio', () => {
     // create with 'title'
     wrapper = shallow(Radio, {
       propsData: {
-        title: 'test title'
+        title: 'test title',
+        options: testOptions
       }
     })
 
@@ -27,36 +36,33 @@ describe('radio', () => {
   })
 
   it('options', () => {
-    const options = [
-      'value1',
-      'value2',
-      'value3'
-    ]
     wrapper = shallow(Radio, {
       propsData: {
         value: 'value2',
-        options: options
+        options: testOptions
       }
     })
 
     expect(wrapper.findAll('.weui-check__label').length).toBe(3)
 
-    expect(wrapper.findAll('.weui-cell__bd p').at(0).text()).toBe('value1')
-    expect(wrapper.findAll('.weui-cell__bd p').at(1).text()).toBe('value2')
-    expect(wrapper.findAll('.weui-cell__bd p').at(2).text()).toBe('value3')
+    expect(wrapper.findAll('.weui-cell__bd p').at(0).text()).toBe('option1')
+    expect(wrapper.findAll('.weui-cell__bd p').at(1).text()).toBe('option2')
+    expect(wrapper.findAll('.weui-cell__bd p').at(2).text()).toBe('option3')
 
-    expect(wrapper.findAll('input').at(0).attributes().value).toBe('value1')
-    expect(wrapper.findAll('input').at(1).attributes().value).toBe('value2')
-    expect(wrapper.findAll('input').at(2).attributes().value).toBe('value3')
+    expect(wrapper.findAll('input').at(0).attributes().value).toBe('option1')
+    expect(wrapper.findAll('input').at(1).attributes().value).toBe('option2')
+    expect(wrapper.findAll('input').at(2).attributes().value).toBe('option3')
   })
 
   it('watch currentValue', () => {
     wrapper = shallow(Radio, {
-      propsData: {}
+      propsData: {
+        options: testOptions
+      }
     })
 
     wrapper.setData({
-      currentValue: 'current-value'
+      currentValue: 'option2'
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -65,13 +71,15 @@ describe('radio', () => {
 
   it('watch value', () => {
     wrapper = shallow(Radio, {
-      propsData: {}
+      propsData: {
+        options: testOptions
+      }
     })
 
     wrapper.setProps({
-      value: 'new-value'
+      value: 'option3'
     })
 
-    expect(wrapper.vm.currentValue).toBe('new-value')
+    expect(wrapper.vm.currentValue).toBe('option3')
   })
 })
