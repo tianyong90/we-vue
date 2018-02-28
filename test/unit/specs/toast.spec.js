@@ -99,6 +99,7 @@ describe('toast', () => {
 
   it('text toast', () => {
     wrapper = shallow(Toast, {
+      attachToDocument: true,
       propsData: {
         type: 'text',
         message: 'hello'
@@ -107,7 +108,6 @@ describe('toast', () => {
 
     wrapper.vm.$nextTick(() => {
       expect(wrapper.contains('.weui-icon_toast')).toBeFalsy()
-      expect(wrapper.find('.weui-toast').element.style.width).toBe('7em')
     })
   })
 })
