@@ -9,7 +9,7 @@
           <router-link to="/" exact>首页</router-link>
         </li>
         <li>
-          <router-link to="/doc/v1_6/index">文档</router-link>
+          <router-link to="/doc/v2_0/index">文档</router-link>
         </li>
         <li>
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
