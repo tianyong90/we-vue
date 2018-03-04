@@ -76,7 +76,13 @@ export default create({
   .weui-toast_text {
     width: auto;
     min-width: 0;
+    max-width: 85%;
     min-height: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 0;
+    text-align: center;
+    word-break: break-all;
 
     .weui-toast__content {
       margin: 0;
