@@ -36,7 +36,7 @@
     "lint": "eslint --ext .js,.vue src example docs test/unit/specs",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
-    "test:watch": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
+    "test:watch": "jest --config test/unit/jest.conf.js --coverage --watchAll",
     "coverage": "opener test/unit/coverage/lcov-report/index.html",
     "pub": "node build/release.js"
   },
