@@ -8,8 +8,12 @@ module.exports = {
     'vue'
   ],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\.(css)$': '<rootDir>/node_modules/jest-css-modules'
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!weui)'
+  ],
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
@@ -19,8 +23,7 @@ module.exports = {
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'src/**/*.{js,vue}',
-    '!src/index.js',
-    '!src/router/index.js',
+    // '!src/index.js',
     '!**/node_modules/**'
   ]
 }
