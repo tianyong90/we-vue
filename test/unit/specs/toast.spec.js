@@ -1,4 +1,4 @@
-import { shallow, createLocalVue } from '@vue/test-utils'
+import { shallow } from '@vue/test-utils'
 import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
 import sinon from 'sinon'
@@ -16,12 +16,9 @@ describe('toast api', () => {
   })
 
   it('create a toast', () => {
-    const localVue = createLocalVue()
     ToastApi({})
 
-    localVue.nextTick(() => {
-      expect(document.querySelector('.weui-toast')).toBeTruthy()
-    })
+    expect(document.querySelector('.weui-toast')).toBeTruthy()
   })
 
   it('create a toast using string parameter', () => {
@@ -34,7 +31,7 @@ describe('toast api', () => {
   })
 
   it('create a toast with duration', () => {
-    let instance = ToastApi({
+    const instance = ToastApi({
       duration: 2000
     })
 
@@ -44,41 +41,31 @@ describe('toast api', () => {
   })
 
   it('create a text toast', () => {
-    let instance = ToastApi.text('test')
+    const instance = ToastApi.text('test')
 
-    setTimeout(() => {
-      expect(document.querySelector('.weui-toast')).toBeTruthy()
-      expect(instance.type).toBe('text')
-    }, 200)
+    expect(document.querySelector('.weui-toast')).toBeTruthy()
+    expect(instance.type).toBe('text')
   })
 
   it('create a success toast', () => {
-    let instance = ToastApi.success('test')
+    const instance = ToastApi.success('test')
 
-    setTimeout(() => {
-      expect(document.querySelector('.weui-toast')).toBeTruthy()
-      expect(instance.type).toBe('success')
-    }, 200)
+    expect(document.querySelector('.weui-toast')).toBeTruthy()
+    expect(instance.type).toBe('success')
   })
 
   it('create a fail toast', () => {
-    const localVue = createLocalVue()
-    let instance = ToastApi.fail('test')
+    const instance = ToastApi.fail('test')
 
-    localVue.nextTick(() => {
-      expect(document.querySelector('.weui-toast')).toBeTruthy()
-      expect(instance.type).toBe('fail')
-    })
+    expect(document.querySelector('.weui-toast')).toBeTruthy()
+    expect(instance.type).toBe('fail')
   })
 
   it('create a loading toast', () => {
-    const localVue = createLocalVue()
-    let instance = ToastApi.loading('test')
+    const instance = ToastApi.loading('test')
 
-    localVue.nextTick(() => {
-      expect(document.querySelector('.weui-toast')).toBeTruthy()
-      expect(instance.type).toBe('loading')
-    })
+    expect(document.querySelector('.weui-toast')).toBeTruthy()
+    expect(instance.type).toBe('loading')
   })
 })
 
