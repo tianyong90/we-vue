@@ -1,4 +1,4 @@
-import { mount, shallow } from '@vue/test-utils'
+import { mount, shallow, createLocalVue } from '@vue/test-utils'
 import Slider from '@/components/slider'
 import { horizontalDrag } from '../utils'
 import faker from 'faker'
@@ -19,6 +19,7 @@ describe('slider', () => {
 
     // set the min be bigger than max
     // TODO: IS THIS A BUG WITH JEST? toThrow() does not catch the exception.
+    // const localVue = createLocalVue()
     // expect(() => {
     //   shallow(Slider, {
     //     propsData: {
