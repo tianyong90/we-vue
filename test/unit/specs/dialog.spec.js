@@ -23,54 +23,42 @@ describe('test dialog api', () => {
     }, 300)
   })
 
-  it('create an alert dialog', (done) => {
+  it('open an alert dialog', () => {
     DialogApi.alert({}).then(action => {
       expect(action).toBe('confirm')
-      done()
     })
 
-    setTimeout(() => {
-      expect(document.querySelector('.weui-dialog')).toBeTruthy()
-      document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
-    }, 300)
+    expect(document.querySelector('.weui-dialog')).toBeTruthy()
+    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
   })
 
-  it('open a confirm dialog, and confirm it', (done) => {
+  it('open a confirm dialog, and confirm it', () => {
     DialogApi.confirm({}).then(action => {
       expect(action).toBe('confirm')
-      done()
     })
 
-    setTimeout(() => {
-      expect(document.querySelector('.weui-dialog')).toBeTruthy()
-      document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
-    }, 300)
+    expect(document.querySelector('.weui-dialog')).toBeTruthy()
+    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
   })
 
-  it('open a confirm dialog, and cancle it', (done) => {
+  it('open a confirm dialog, and cancle it', () => {
     DialogApi.confirm({}).catch(action => {
       expect(action).toBe('cancel')
-      done()
     })
 
-    setTimeout(() => {
-      expect(document.querySelector('.weui-dialog')).toBeTruthy()
-      document.querySelector('.weui-dialog__ft>.weui-dialog__btn_default').click()
-    }, 300)
+    expect(document.querySelector('.weui-dialog')).toBeTruthy()
+    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_default').click()
   })
 
-  it('open a confirm dialog with callback', (done) => {
+  it('open a confirm dialog with callback', () => {
     DialogApi.confirm({
       callback: action => {
         expect(action).toBe('confirm')
-        done()
       }
     })
 
-    setTimeout(() => {
-      expect(document.querySelector('.weui-dialog')).toBeTruthy()
-      document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
-    }, 300)
+    expect(document.querySelector('.weui-dialog')).toBeTruthy()
+    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
   })
 })
 
@@ -89,7 +77,7 @@ describe('dialog component', () => {
     expect(wrapper.contains('.weui-dialog')).toBeTruthy()
   })
 
-  it('click cancel button', (done) => {
+  it('click cancel button', () => {
     const callbackSpy = sinon.spy()
 
     wrapper = shallow(Dialog, {
@@ -99,17 +87,13 @@ describe('dialog component', () => {
       }
     })
 
-    setTimeout(() => {
-      wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
-      expect(wrapper.vm.visible).toBe(false)
-      expect(wrapper.emitted().cancel).toBeTruthy()
-      expect(callbackSpy.called).toBeTruthy()
-
-      done()
-    }, 50)
+    wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
+    expect(wrapper.vm.visible).toBe(false)
+    expect(wrapper.emitted().cancel).toBeTruthy()
+    expect(callbackSpy.called).toBeTruthy()
   })
 
-  it('click confirm button', (done) => {
+  it('click confirm button', () => {
     const callbackSpy = sinon.spy()
 
     wrapper = shallow(Dialog, {
@@ -119,13 +103,9 @@ describe('dialog component', () => {
       }
     })
 
-    setTimeout(() => {
-      wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')
-      expect(wrapper.vm.visible).toBe(false)
-      expect(wrapper.emitted().confirm).toBeTruthy()
-      expect(callbackSpy.called).toBeTruthy()
-
-      done()
-    }, 50)
+    wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')
+    expect(wrapper.vm.visible).toBe(false)
+    expect(wrapper.emitted().confirm).toBeTruthy()
+    expect(callbackSpy.called).toBeTruthy()
   })
 })
