@@ -147,7 +147,6 @@ export default {
     background: url(../assets/background.jpg) center top no-repeat;
     background-size: cover;
     position: absolute;
-    z-index: -1;
   }
 
   .main {
@@ -165,6 +164,7 @@ export default {
       font-size: 5em;
       font-weight: 200;
       text-shadow: #333 3px 3px 6px;
+      z-index: 100;
     }
 
     .slogan {
@@ -173,10 +173,12 @@ export default {
       font-weight: 100;
       text-shadow: #333 2px 2px 0px;
       margin-top: 20px;
+      z-index: 100;
     }
 
     .btns {
       margin: 50px 0;
+      z-index: 100;
 
       .btn {
         display: block;
@@ -197,6 +199,7 @@ export default {
       height: $qrcode-size;
       background-color: #fff;
       margin-top: 30px;
+      z-index: 100;
     }
   }
 </style>
