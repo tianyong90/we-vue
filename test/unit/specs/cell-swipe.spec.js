@@ -27,6 +27,11 @@ describe('cell-swipe', () => {
       }
     })
 
+    // mock rightBtns clientWidth
+    wrapper.vm.$refs.rightBtns = jest.fn(() => {
+      return { clientWidth: 20 }
+    })
+
     const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
 
     horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -rightWidth)
@@ -53,6 +58,11 @@ describe('cell-swipe', () => {
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent]
       }
+    })
+
+    // mock rightBtns clientWidth
+    wrapper.vm.$refs.rightBtns = jest.fn(() => {
+      return { clientWidth: 20 }
     })
 
     const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
@@ -88,6 +98,11 @@ describe('cell-swipe', () => {
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent]
       }
+    })
+
+    // mock rightBtns clientWidth
+    wrapper.vm.$refs.rightBtns = jest.fn(() => {
+      return { clientWidth: 20 }
     })
 
     const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
