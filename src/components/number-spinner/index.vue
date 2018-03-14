@@ -2,30 +2,35 @@
   <div class="wv-number-spinner">
     <button
       class="spinner-btn btn-decrease"
-      :class="{ 'btn-disabled': btnDecreaseDisabled}"
-      :disabled="btnDecreaseDisabled"
       @click="decrease"
-    >-
-    </button>
+      :disabled="disabled || readonly || !decreasable"
+    />
     <input
+      ref="input"
       type="number"
-      v-model.number="currentValue"
-      :disabled="disabled"
-      :readonly="!fillable"
+      :value="currentValue"
+      :min="min"
+      :max="max"
+      :step="step"
+      :disabled="disabled || (!decreasable && !increasable)"
+      :readonly="readonly"
       @blur="onBlur"
+      @change="onChange"
+      @paste="onPaste"
+      v-bind="$attrs"
       :style="inputStyle">
     <button
       class="spinner-btn btn-increase"
-      :class="{ 'btn-disabled': btnIncreaseDisabled}"
-      :disabled="btnIncreaseDisabled"
       @click="increase"
-    >+
-    </button>
+      :disabled="disabled || readonly || !increasable"
+    />
   </div>
 </template>
 
 <script>
 import { create } from '../../utils'
+
+const isNaN = Number.isNaN || window.isNaN
 
 export default create({
   name: 'wv-number-spinner',
@@ -47,24 +52,15 @@ export default create({
       type: String,
       default: '3em'
     },
-    fillable: {
-      type: Boolean,
-      default: true
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
+    readonly: Boolean,
+    disabled: Boolean,
     align: {
       type: String,
       default: 'center'
     },
     value: {
-      type: [Number, String],
-      default: 0,
-      validator: (val) => {
-        return typeof val === 'number' || val === ''
-      }
+      type: Number,
+      default: 0
     }
   },
 
@@ -74,13 +70,19 @@ export default create({
     }
   },
 
+  inheritAttrs: false,
+
   computed: {
-    btnDecreaseDisabled () {
-      return this.disabled || (this.currentValue === this.min)
+    increasable () {
+      const num = this.currentValue
+
+      return isNaN(num) || num < this.max
     },
 
-    btnIncreaseDisabled () {
-      return this.disabled || (this.currentValue === this.max)
+    decreasable () {
+      const num = this.currentValue
+
+      return isNaN(num) || num > this.min
     },
 
     inputStyle () {
@@ -104,6 +106,16 @@ export default create({
 
     decrease () {
       this.currentValue -= this.step
+    },
+
+    onChange (event) {
+      //
+    },
+
+    onPaste (event) {
+      if (!/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(event.clipboardData.getData('text'))) {
+        event.preventDefault()
+      }
     }
   },
 
@@ -132,11 +144,13 @@ export default create({
 
 <style scoped lang="scss">
   .wv-number-spinner {
-    display: inline-block;
+    display: block;
     border: 1px solid #ccc;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 13px;
     overflow: hidden;
+    position: relative;
+    height: 2.5em;
 
     input {
       display: inline-block;
@@ -147,12 +161,34 @@ export default create({
     }
 
     .spinner-btn {
-      display: inline-block;
-      float: left;
-      color: #000;
-      font-size: 13px;
-      padding: 0 .6em;
-      border: none;
+      border: 0;
+      border-radius: .25rem;
+      top: 0.0625rem;
+      bottom: 0.0625rem;
+      position: absolute;
+      background-color: transparent;
+      width: 2.5em;
+
+      &::before,
+      &::after {
+        background-color: #111;
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: background-color .15s;
+      }
+
+      &::before {
+        height: 0.0625rem;
+        width: 50%;
+      }
+
+      &::after {
+        height: 50%;
+        width: 0.0625rem;
+      }
     }
 
     .btn-decrease {
