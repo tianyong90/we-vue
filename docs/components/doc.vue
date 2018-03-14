@@ -41,7 +41,8 @@
 import { nav } from '../config'
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import 'highlight.js/styles/github.css'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/atom-one-dark.css'
 
 export default {
   components: {
@@ -63,6 +64,12 @@ export default {
     this.demoUrl = this.$route.meta.demo_url
     this.version = this.$route.meta.version
 
+    const preEl = document.querySelectorAll('pre')
+
+    preEl.forEach((el) => {
+      hljs.highlightBlock(el)
+    })
+
     // 右侧 DEMO 区实在 sticky 效果
     document.addEventListener('scroll', () => {
       const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
@@ -71,6 +78,14 @@ export default {
       } else {
         this.sidebarTop = 71 - scrollDistance
       }
+    })
+  },
+
+  updated () {
+    const preEl = document.querySelectorAll('pre')
+
+    preEl.forEach((el) => {
+      hljs.highlightBlock(el)
     })
   },
 
