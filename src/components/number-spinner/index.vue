@@ -1,5 +1,9 @@
 <template>
-  <div class="wv-number-spinner">
+  <div
+    class="wv-number-spinner"
+    :class="{[`wv-number-spinner--${size}`]: size }"
+    v-on="listeners"
+  >
     <button
       class="spinner-btn btn-decrease"
       @click="decrease"
@@ -14,7 +18,6 @@
       :step="step"
       :disabled="disabled || (!decreasable && !increasable)"
       :readonly="readonly"
-      @blur="onBlur"
       @change="onChange"
       @paste="onPaste"
       v-bind="$attrs"
@@ -58,6 +61,7 @@ export default create({
       type: String,
       default: 'center'
     },
+    size: String,
     value: {
       type: Number,
       default: 0
@@ -71,6 +75,10 @@ export default create({
   },
 
   inheritAttrs: false,
+
+  model: {
+    event: 'change'
+  },
 
   computed: {
     increasable () {
@@ -90,32 +98,60 @@ export default create({
         width: this.inputWidth,
         textAlign: this.align
       }
+    },
+
+    listeners () {
+      const listeners = { ...this.$listeners }
+      delete listeners.change
+      return listeners
+    }
+  },
+
+  created () {
+    if (this.min < this.max) {
+      this.currentValue = Math.min(this.max, Math.max(this.min, this.value))
     }
   },
 
   methods: {
-    onBlur () {
-      if (this.currentValue === '') {
-        this.currentValue = this.min
+    decrease () {
+      if (this.decreasable) {
+        let { currentValue } = this
+        if (isNaN(currentValue)) {
+          currentValue = 0
+        }
+        this.setValue(Math.min(this.max, Math.max(this.min, currentValue - this.step)))
       }
     },
 
     increase () {
-      this.currentValue += this.step
-    },
-
-    decrease () {
-      this.currentValue -= this.step
+      if (this.increasable) {
+        let { currentValue } = this
+        if (isNaN(currentValue)) {
+          currentValue = 0
+        }
+        this.setValue(Math.min(this.max, Math.max(this.min, currentValue + this.step)))
+      }
     },
 
     onChange (event) {
-      //
+      this.setValue(Math.min(this.max, Math.max(this.min, event.target.value)))
     },
 
     onPaste (event) {
       if (!/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(event.clipboardData.getData('text'))) {
         event.preventDefault()
       }
+    },
+
+    setValue (val) {
+      const oldValue = this.currentValue
+
+      this.currentValue = val
+      this.$emit('change', val, oldValue)
+      this.$nextTick(() => {
+        this.$refs.input.value = val
+      })
     }
   },
 
@@ -145,15 +181,13 @@ export default create({
 <style scoped lang="scss">
   .wv-number-spinner {
     display: block;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    min-width: 100%;
     font-size: 13px;
     overflow: hidden;
     position: relative;
-    height: 2.5em;
 
     input {
-      display: inline-block;
+      display: block;
       float: left;
       border: none;
       outline: none;
