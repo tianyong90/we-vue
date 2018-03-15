@@ -44,6 +44,14 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark.css'
 
+const highlightCode = () => {
+  const preEl = document.querySelectorAll('pre')
+
+  preEl.forEach((el) => {
+    hljs.highlightBlock(el)
+  })
+}
+
 export default {
   components: {
     'wevue-demo': () => import('./wevue-demo.vue')
@@ -64,11 +72,7 @@ export default {
     this.demoUrl = this.$route.meta.demo_url
     this.version = this.$route.meta.version
 
-    const preEl = document.querySelectorAll('pre')
-
-    preEl.forEach((el) => {
-      hljs.highlightBlock(el)
-    })
+    highlightCode()
 
     // 右侧 DEMO 区实在 sticky 效果
     document.addEventListener('scroll', () => {
@@ -82,11 +86,7 @@ export default {
   },
 
   updated () {
-    const preEl = document.querySelectorAll('pre')
-
-    preEl.forEach((el) => {
-      hljs.highlightBlock(el)
-    })
+    highlightCode()
   },
 
   beforeRouteUpdate (to, from, next) {
