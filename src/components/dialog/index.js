@@ -42,8 +42,11 @@ const Dialog = options => {
     Object.assign(instance, {
       resolve,
       reject,
+      ...defaultOptions,
       ...options
     })
+
+    console.log(instance.visible)
   })
 }
 

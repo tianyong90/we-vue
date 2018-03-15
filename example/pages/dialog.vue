@@ -13,11 +13,11 @@ import Dialog from '../../src/components/dialog'
 export default {
   methods: {
     showDialog (skin, title) {
-      Dialog.confirm({
+      Dialog({
         title: title,
         message: '欢迎使用 we-vue!',
         skin,
-        showCancelBtn: true
+        showCancelButton: true
       }).then(() => {
         this.$root.message('confirmed')
       }).catch(() => {
