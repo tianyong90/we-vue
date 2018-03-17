@@ -1,14 +1,12 @@
 import ScrollUtil from '@/utils/scroll'
 
 describe('utils scroll', () => {
-  let clock
-
   beforeEach(() => {
-    clock = sinon.useFakeTimers()
+    jest.useFakeTimers()
   })
 
   afterEach(() => {
-    clock.reset()
+    jest.clearAllTimers()
   })
 
   test('isAttached method', () => {
@@ -37,18 +35,18 @@ describe('utils scroll', () => {
     expect(typeof ScrollUtil.debounce()).toEqual('function')
 
     // the callback stub
-    const callback = sinon.stub()
+    const callback = jest.fn()
 
     const fn = ScrollUtil.debounce(callback, 100)
 
-    fn() // callback should be called
+    // callback should be called
 
     setTimeout(fn, 50) // callback should NOT be called
     setTimeout(fn, 151) // callback should be called
 
-    clock.tick(500)
+    jest.advanceTimersByTime(500)
 
-    expect(callback.mock.calls.length).toBe(2)
+    expect(callback).toHaveBeenCalledTimes(2)
   })
 
   test('getScrollEventTarget method', () => {
@@ -94,7 +92,7 @@ describe('utils scroll', () => {
 
     ScrollUtil.setScrollTop(element, 10)
 
-    expect(scrollToSpy.calledWith(0, 10)).toBe(true)
+    expect(scrollToSpy).toHaveBeenCalledWith(0, 10)
   })
 
   test('getElementTop method', () => {
@@ -103,10 +101,10 @@ describe('utils scroll', () => {
 
     const element = {getBoundingClientRect: () => {}}
 
-    const getBoundingClientRectStub = sinon.stub(element, 'getBoundingClientRect')
+    const getBoundingClientRectStub = jest.spyOn(element, 'getBoundingClientRect')
     getBoundingClientRectStub.returns({ top: 10 })
 
-    const getScrollTopStub = sinon.stub(ScrollUtil, 'getScrollTop')
+    const getScrollTopStub = jest.spyOn(ScrollUtil, 'getScrollTop')
     getScrollTopStub.withArgs(window).returns(10)
 
     expect(ScrollUtil.getElementTop(element)).toBe(20)
@@ -121,7 +119,7 @@ describe('utils scroll', () => {
 
     const element = {getBoundingClientRect: () => {}}
 
-    const getBoundingClientRectStub = sinon.stub(element, 'getBoundingClientRect')
+    const getBoundingClientRectStub = jest.spyOn(element, 'getBoundingClientRect')
     getBoundingClientRectStub.returns({ height: 10 })
 
     expect(ScrollUtil.getVisibleHeight(element)).toBe(10)

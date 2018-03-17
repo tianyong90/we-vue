@@ -89,7 +89,7 @@ describe('dialog component', () => {
     wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
     expect(wrapper.vm.visible).toBe(false)
     expect(wrapper.emitted().cancel).toBeTruthy()
-    expect(callbackSpy.mock.calls.length).toBeTruthy()
+    expect(callbackSpy).toHaveBeenCalled()
   })
 
   test('click confirm button', () => {
@@ -105,6 +105,6 @@ describe('dialog component', () => {
     wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')
     expect(wrapper.vm.visible).toBe(false)
     expect(wrapper.emitted().confirm).toBeTruthy()
-    expect(callbackSpy.mock.calls.length).toBeTruthy()
+    expect(callbackSpy).toHaveBeenCalled()
   })
 })

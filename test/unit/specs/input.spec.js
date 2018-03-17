@@ -35,7 +35,7 @@ describe('input', () => {
 
     wrapper.update()
     expect(wrapper.vm.currentValue).toBe('te')
-    expect(validateSpy.mock.calls.length).toBeTruthy()
+    expect(validateSpy).toHaveBeenCalled()
 
     // use with maxlength
     wrapper = shallow(Input, {
@@ -52,10 +52,10 @@ describe('input', () => {
 
     wrapper.update()
     expect(wrapper.vm.currentValue).toBe('test')
-    expect(validateSpy.mock.calls.length).toBeTruthy()
+    expect(validateSpy).toHaveBeenCalled()
 
     // reset the spy states
-    validateSpy.resetHistory()
+    validateSpy.mockClear()
 
     // do not validate on input
     wrapper = shallow(Input, {
@@ -73,7 +73,7 @@ describe('input', () => {
     wrapper.find('input').trigger('input')
 
     wrapper.update()
-    expect(validateSpy.mock.calls.length).toBeFalsy()
+    expect(validateSpy).not.toHaveBeenCalled()
   })
 
   test('render with label', () => {
@@ -122,7 +122,7 @@ describe('input', () => {
 
     expect(wrapper.vm.active).toBeTruthy()
     // validate should not be called while validateMode.onFocus is false
-    expect(mockValidateMethod.mock.calls.length).toBeFalsy()
+    expect(mockValidateMethod).not.toHaveBeenCalled()
 
     // set validateMode.onFocus to true
     wrapper.setProps({
@@ -136,7 +136,7 @@ describe('input', () => {
     expect(wrapper.vm.active).toBeTruthy()
 
     // validate should be called while validateMode.onFocus is true
-    expect(mockValidateMethod.mock.calls.length).toBeTruthy()
+    expect(mockValidateMethod).toHaveBeenCalled()
   })
 
   test('blur event', () => {
@@ -156,7 +156,7 @@ describe('input', () => {
 
     expect(wrapper.vm.active).toBeFalsy()
     // validate should not be called while validateMode.onBlur is false
-    expect(mockValidateMethod.mock.calls.length).toBeFalsy()
+    expect(mockValidateMethod).not.toHaveBeenCalled()
 
     // set validateMode.onBlur to true
     wrapper.setProps({
@@ -170,7 +170,7 @@ describe('input', () => {
     expect(wrapper.vm.active).toBeFalsy()
 
     // validate should be called while validateMode.onBlur is true
-    expect(mockValidateMethod.mock.calls.length).toBeTruthy()
+    expect(mockValidateMethod).toHaveBeenCalled()
   })
 
   test('change event', () => {
@@ -190,7 +190,7 @@ describe('input', () => {
 
     expect(wrapper.emitted().change).toBeTruthy()
     // validate should not be called while validateMode.onChange is false
-    expect(mockValidateMethod.mock.calls.length).toBeFalsy()
+    expect(mockValidateMethod).not.toHaveBeenCalled()
 
     // set validateMode.onChange to true
     wrapper.setProps({
@@ -202,7 +202,7 @@ describe('input', () => {
     wrapper.find('input').trigger('change')
 
     // validate should be called while validateMode.onChange is true
-    expect(mockValidateMethod.mock.calls.length).toBeTruthy()
+    expect(mockValidateMethod).toHaveBeenCalled()
   })
 
   test('validate with pattern', () => {

@@ -159,6 +159,6 @@ describe('cell-swipe', () => {
     // click at a point that outside the cell (like the body element)
     wrapper2.trigger('touchstart')
 
-    expect(onClickoutsideSpy.mock.calls.length).toBeTruthy()
+    expect(onClickoutsideSpy).toHaveBeenCalled()
   })
 })

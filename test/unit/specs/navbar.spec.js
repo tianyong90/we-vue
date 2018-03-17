@@ -44,12 +44,12 @@ describe('navbar', () => {
       propsData: {}
     })
 
-    const updateCurrentIndexSpy = sinon.spy(wrapper.vm, 'updateCurrentIndex')
+    const updateCurrentIndexSpy = jest.spyOn(wrapper.vm, 'updateCurrentIndex')
 
     wrapper.setProps({
       value: '1'
     })
     expect(wrapper.emitted().change).toBeTruthy()
-    expect(updateCurrentIndexSpy.mock.calls.length).toBeTruthy()
+    expect(updateCurrentIndexSpy).toHaveBeenCalled()
   })
 })

@@ -3,15 +3,13 @@ import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
 
 describe('toast api', () => {
-  let clock
-
   beforeEach(() => {
-    clock = sinon.useFakeTimers()
+    jest.useFakeTimers()
   })
 
   afterEach(() => {
     ToastApi.close()
-    clock.restore()
+    jest.clearAllTimers()
   })
 
   test('create a toast', () => {
@@ -34,7 +32,7 @@ describe('toast api', () => {
       duration: 2000
     })
 
-    clock.tick(2001)
+    jest.advanceTimersByTime(2001)
 
     expect(instance.visible).toBe(false)
   })

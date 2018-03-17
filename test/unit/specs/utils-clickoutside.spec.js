@@ -22,16 +22,16 @@ describe('clickoutside', () => {
     // onClickoutside2Spy should be called when click .item-1
     wrapper.find('.item-1').trigger('click')
 
-    expect(onClickoutside1Spy..mock.calls.length).toBeFalsy()
-    expect(onClickoutside2Spy..mock.calls.length).toBeTruthy()
+    expect(onClickoutside1Spy).not.toHaveBeenCalled()
+    expect(onClickoutside2Spy).toHaveBeenCalled()
 
-    onClickoutside1Spy.resetHistory()
-    onClickoutside2Spy.resetHistory()
+    onClickoutside1Spy.mockClear()
+    onClickoutside2Spy.mockClear()
 
     // both handler should be called when click .item-3
     wrapper.find('.item-3').trigger('click')
 
-    expect(onClickoutside1Spy.mock.calls.length).toBe(1)
-    expect(onClickoutside2Spy.mock.calls.length).toBe(1)
+    expect(onClickoutside1Spy).toHaveBeenCalledTimes(1)
+    expect(onClickoutside2Spy).toHaveBeenCalledTimes(1)
   })
 })

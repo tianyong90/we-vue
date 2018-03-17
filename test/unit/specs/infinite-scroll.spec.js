@@ -23,7 +23,7 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy.mock.calls.length).toBeTruthy()
+      expect(loadMoreSpy).toHaveBeenCalled()
 
       done()
     }, 500)
@@ -46,12 +46,12 @@ describe('infinite-scroll', () => {
 
     setTimeout(() => {
       const item = wrapper.findAll('.list-item')
-      expect(loadMore.mock.calls.length).toBe(1)
+      expect(loadMore).toHaveBeenCalledTimes(1)
       expect(item.length).toEqual(4)
 
       // TODO: SCROLL
 
-      expect(loadMore.mock.calls.length).toBe(1)
+      expect(loadMore).toHaveBeenCalledTimes(1)
       done()
     }, 500)
   })
@@ -68,7 +68,7 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy.mock.calls.length).toBeFalsy()
+      expect(loadMoreSpy).not.toHaveBeenCalled()
     }, 500)
 
     setTimeout(() => {
@@ -77,7 +77,7 @@ describe('infinite-scroll', () => {
       })
 
       setTimeout(() => {
-        expect(loadMoreSpy.mock.calls.length).toBeTruthy()
+        expect(loadMoreSpy).toHaveBeenCalled()
         done()
       }, 500)
     }, 600)
@@ -98,7 +98,7 @@ describe('infinite-scroll', () => {
       })
 
       setTimeout(() => {
-        expect(loadMoreSpy.mock.calls.length).toBeFalsy()
+        expect(loadMoreSpy).not.toHaveBeenCalled()
         done()
       }, 500)
     }
@@ -116,7 +116,7 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy.mock.calls.length).toBeFalsy()
+      expect(loadMoreSpy).not.toHaveBeenCalled()
       done()
     }, 500)
   })

@@ -37,8 +37,8 @@ describe('textarea', () => {
 
     wrapper.vm.routerLink()
 
-    expect(pushSpy.mock.calls.length).toBeTruthy()
-    expect(pushSpy.calledWith('test')).toBeTruthy()
+    expect(pushSpy).toHaveBeenCalled()
+    expect(pushSpy).toHaveBeenCalledWith('test')
 
     // replace = true
     wrapper.setProps({
@@ -47,8 +47,8 @@ describe('textarea', () => {
 
     wrapper.vm.routerLink()
 
-    expect(replaceSpy.mock.calls.length).toBeTruthy()
-    expect(replaceSpy.calledWith('test')).toBeTruthy()
+    expect(replaceSpy).toHaveBeenCalled()
+    expect(pushSpy).toHaveBeenCalledWith('test')
   })
 
   test('routerLink method without $router', () => {

@@ -6,15 +6,14 @@ import faker from 'faker'
 
 describe('swipe', () => {
   let wrapper
-  let clock
 
   beforeEach(() => {
-    clock = sinon.useFakeTimers()
+    jest.useFakeTimers()
   })
 
   afterEach(() => {
     wrapper && wrapper.destroy()
-    clock.restore()
+    jest.clearAllTimers()
   })
 
   test('create', () => {
@@ -159,7 +158,7 @@ describe('swipe', () => {
       swipes: []
     })
 
-    expect(initializeSpy.mock.calls.length).toBeTruthy()
+    expect(initializeSpy).toHaveBeenCalled()
   })
 
   test('change defaultIndex', () => {
@@ -192,13 +191,13 @@ describe('swipe', () => {
       }
     })
 
-    clock.tick(3030)
+    jest.advanceTimersByTime(3030)
     expect(wrapper.vm.active).toBe(1)
-    clock.tick(3030)
+    jest.advanceTimersByTime(3030)
     expect(wrapper.vm.active).toBe(2)
-    clock.tick(3030)
+    jest.advanceTimersByTime(3030)
     expect(wrapper.vm.active).toBe(3)
-    clock.tick(3030)
+    jest.advanceTimersByTime(3030)
     expect(wrapper.vm.active).toBe(1)
   })
 

@@ -68,12 +68,12 @@ describe('navbar-item', () => {
       parent: parentWrapper.vm
     })
 
-    const emitSpy = sinon.spy(wrapper.vm.$parent, '$emit')
+    const emitSpy = jest.spyOn(wrapper.vm.$parent, '$emit')
 
     wrapper.trigger('click')
 
-    expect(emitSpy.mock.calls.length).toBeTruthy()
-    expect(emitSpy.calledWith('input', wrapper.vm.id)).toBeTruthy()
+    expect(emitSpy).toHaveBeenCalled()
+    expect(emitSpy).toHaveBeenCalledWith('input', wrapper.vm.id)
   })
 
   test('disabled', () => {
@@ -93,10 +93,10 @@ describe('navbar-item', () => {
     // should has disabled class
     expect(wrapper.classes()).toContain('disabled')
 
-    const emitSpy = sinon.spy(wrapper.vm.$parent, '$emit')
+    const emitSpy = jest.spyOn(wrapper.vm.$parent, '$emit')
 
     wrapper.trigger('click')
 
-    expect(emitSpy.mock.calls.length).toBeFalsy()
+    expect(emitSpy).not.toHaveBeenCalled()
   })
 })

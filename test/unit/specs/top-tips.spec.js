@@ -3,15 +3,13 @@ import TopTipsApi from '@/components/top-tips'
 import TopTips from '@/components/top-tips/top-tips.vue'
 
 describe('test top-tips api', () => {
-  let clock
-
   beforeEach(() => {
-    clock = sinon.useFakeTimers()
+    jest.useFakeTimers()
   })
 
   afterEach(() => {
     TopTipsApi.close()
-    clock.reset()
+    jest.clearAllTimers()
   })
 
   test('open a top-tips and then close it', () => {
@@ -20,7 +18,7 @@ describe('test top-tips api', () => {
       duration: 3000
     })
 
-    clock.tick(1000)
+    jest.advanceTimersByTime(1000)
 
     TopTipsApi.close()
 
@@ -44,7 +42,7 @@ describe('test top-tips api', () => {
       duration: 2000
     })
 
-    clock.tick(2001)
+    jest.advanceTimersByTime(2001)
 
     expect(instance.visible).toBe(false)
   })

@@ -95,7 +95,7 @@ describe('actionsheet', () => {
 
     wrapper.find('.weui-actionsheet__cell').trigger('click')
 
-    expect(itemClickMethodSpy.mock.calls.length).toBeTruthy()
+    expect(itemClickMethodSpy).toHaveBeenCalled()
 
     // currentValue should be false after action item clicked
     expect(wrapper.vm.currentValue).toBeFalsy()

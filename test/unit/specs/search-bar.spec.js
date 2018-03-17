@@ -69,7 +69,7 @@ describe('search', () => {
     wrapper.vm.cancel()
 
     expect(wrapper.vm.isActive).toBeFalsy()
-    expect(spySearchBarClear.mock.calls.length).toBeTruthy()
+    expect(spySearchBarClear).toHaveBeenCalled()
   })
 
   test('watch currentValue', () => {

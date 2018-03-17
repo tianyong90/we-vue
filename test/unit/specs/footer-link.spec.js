@@ -37,6 +37,6 @@ describe('footer-link', () => {
 
     wrapper.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
-    expect(routerLinkSpy.mock.calls.length).toBeTruthy()
+    expect(routerLinkSpy).toHaveBeenCalled()
   })
 })
