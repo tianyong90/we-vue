@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import DatetimePicker from '@/components/datetime-picker'
 import { slowVerticalDrag } from '../utils'
 
-const testTime = '9:00'
+const testTime = '12:00'
 const testDate = new Date('2018/01/01 19:00')
 
 describe('datetime-picker', () => {
@@ -133,30 +133,30 @@ describe('datetime-picker', () => {
       propsData: {
         visible: true,
         type: 'time',
-        value: '12:00'
+        value: testTime
       }
     })
 
     setTimeout(() => {
-      const hour = wrapper.findAll('.weui-picker__group').at(0)
-      const minute = wrapper.findAll('.weui-picker__group').at(1)
+      const hourColumn = wrapper.findAll('.weui-picker__group').at(0)
+      const minuteColumn = wrapper.findAll('.weui-picker__group').at(1)
 
-      slowVerticalDrag(hour, 0, -34)
+      slowVerticalDrag(hourColumn, 0, -34)
       expect(wrapper.vm.currentValue).toEqual('13:00')
 
-      slowVerticalDrag(minute, 0, -34)
+      slowVerticalDrag(minuteColumn, 0, -34)
       expect(wrapper.vm.currentValue).toEqual('13:01')
 
-      slowVerticalDrag(hour, 0, -34 * 5)
+      slowVerticalDrag(hourColumn, 0, -34 * 5)
       expect(wrapper.vm.currentValue).toEqual('19:01')
 
       // hour will be 23
-      slowVerticalDrag(hour, 0, -34 * 10)
+      slowVerticalDrag(hourColumn, 0, -34 * 10)
       expect(wrapper.vm.currentValue).toEqual('23:01')
 
       // hour will be 0
-      slowVerticalDrag(hour, 0, 34 * 24)
-      slowVerticalDrag(minute, 0, 34 * 10)
+      slowVerticalDrag(hourColumn, 0, 34 * 24)
+      slowVerticalDrag(minuteColumn, 0, 34 * 10)
       expect(wrapper.vm.currentValue).toEqual('0:00')
 
       done()
@@ -175,19 +175,19 @@ describe('datetime-picker', () => {
     setTimeout(() => {
       expect(wrapper.vm.currentValue).toEqual(testDate)
 
-      const year = wrapper.findAll('.weui-picker__group').at(0)
-      const month = wrapper.findAll('.weui-picker__group').at(1)
-      const date = wrapper.findAll('.weui-picker__group').at(2)
-      const hour = wrapper.findAll('.weui-picker__group').at(3)
-      const minute = wrapper.findAll('.weui-picker__group').at(4)
+      const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
+      const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
+      const dateColumn = wrapper.findAll('.weui-picker__group').at(2)
+      const hourColumn = wrapper.findAll('.weui-picker__group').at(3)
+      const minuteColumn = wrapper.findAll('.weui-picker__group').at(4)
 
-      slowVerticalDrag(year, 0, -34)
-      slowVerticalDrag(month, 0, -34)
-      slowVerticalDrag(date, 0, -34)
-      slowVerticalDrag(hour, 0, -34)
-      slowVerticalDrag(minute, 0, -34)
+      slowVerticalDrag(yearColumn, 0, -34)
+      slowVerticalDrag(monthColumn, 0, -34)
+      slowVerticalDrag(dateColumn, 0, -34)
+      slowVerticalDrag(hourColumn, 0, -34)
+      slowVerticalDrag(minuteColumn, 0, -34)
 
-      expect(wrapper.vm.currentValue.getFullYear()).toEqual(2019)
+      expect(wrapper.vm.currentValue.getFullYear()).toEqual(2009)
       expect(wrapper.vm.currentValue.getMonth() + 1).toEqual(2)
       expect(wrapper.vm.currentValue.getDate()).toEqual(2)
       expect(wrapper.vm.currentValue.getHours()).toEqual(20)
@@ -209,15 +209,15 @@ describe('datetime-picker', () => {
     setTimeout(() => {
       expect(wrapper.vm.currentValue).toEqual(testDate)
 
-      const year = wrapper.findAll('.weui-picker__group').at(0)
-      const month = wrapper.findAll('.weui-picker__group').at(1)
+      const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
+      const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
       const date = wrapper.findAll('.weui-picker__group').at(2)
 
-      slowVerticalDrag(year, 0, -34)
-      slowVerticalDrag(month, 0, -34)
+      slowVerticalDrag(yearColumn, 0, -34)
+      slowVerticalDrag(monthColumn, 0, -34)
       slowVerticalDrag(date, 0, -34)
 
-      expect(wrapper.vm.currentValue.getFullYear()).toEqual(2019)
+      expect(wrapper.vm.currentValue.getFullYear()).toEqual(2009)
       expect(wrapper.vm.currentValue.getMonth() + 1).toEqual(2)
       expect(wrapper.vm.currentValue.getDate()).toEqual(2)
 
