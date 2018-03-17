@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import TabbarItem from '@/components/tabbar-item'
-import sinon from 'sinon'
 
 describe('tabbar-item', () => {
   let wrapper
@@ -38,7 +37,7 @@ describe('tabbar-item', () => {
   })
 
   test('handle click', () => {
-    const routerLinkSpy = sinon.spy()
+    const routerLinkSpy = jest.fn()
     wrapper = shallow(TabbarItem, {
       propsData: {},
       methods: {
@@ -48,6 +47,6 @@ describe('tabbar-item', () => {
 
     wrapper.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
-    expect(routerLinkSpy.called).toBeTruthy()
+    expect(routerLinkSpy.mock.calls.length).toBeTruthy()
   })
 })

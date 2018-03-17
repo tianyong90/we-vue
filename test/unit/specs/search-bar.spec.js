@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import SearchBar from '@/components/search-bar'
-import sinon from 'sinon'
 
 describe('search', () => {
   let wrapper
@@ -58,7 +57,7 @@ describe('search', () => {
   })
 
   test('method cancel', () => {
-    const spySearchBarClear = sinon.spy()
+    const spySearchBarClear = jest.fn()
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
@@ -70,7 +69,7 @@ describe('search', () => {
     wrapper.vm.cancel()
 
     expect(wrapper.vm.isActive).toBeFalsy()
-    expect(spySearchBarClear.called).toBeTruthy()
+    expect(spySearchBarClear.mock.calls.length).toBeTruthy()
   })
 
   test('watch currentValue', () => {

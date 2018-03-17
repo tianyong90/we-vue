@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import FooterLink from '@/components/footer/footer-link.vue'
-import sinon from 'sinon'
 
 describe('footer-link', () => {
   let wrapper
@@ -28,7 +27,7 @@ describe('footer-link', () => {
   })
 
   test('handle click', () => {
-    const routerLinkSpy = sinon.spy()
+    const routerLinkSpy = jest.fn()
     wrapper = shallow(FooterLink, {
       propsData: {},
       methods: {
@@ -38,6 +37,6 @@ describe('footer-link', () => {
 
     wrapper.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
-    expect(routerLinkSpy.called).toBeTruthy()
+    expect(routerLinkSpy.mock.calls.length).toBeTruthy()
   })
 })

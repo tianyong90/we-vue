@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import Navbar from '@/components/navbar'
-import sinon from 'sinon'
 
 describe('navbar', () => {
   let wrapper
@@ -51,6 +50,6 @@ describe('navbar', () => {
       value: '1'
     })
     expect(wrapper.emitted().change).toBeTruthy()
-    expect(updateCurrentIndexSpy.called).toBeTruthy()
+    expect(updateCurrentIndexSpy.mock.calls.length).toBeTruthy()
   })
 })

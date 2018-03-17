@@ -1,7 +1,6 @@
 import { shallow } from '@vue/test-utils'
 import DialogApi from '@/components/dialog'
 import Dialog from '@/components/dialog/dialog.vue'
-import sinon from 'sinon'
 
 describe('test dialog api', () => {
   afterEach(() => {
@@ -9,7 +8,7 @@ describe('test dialog api', () => {
   })
 
   test('create a dialog', () => {
-    const callbackSpy = sinon.spy()
+    const callbackSpy = jest.fn()
 
     DialogApi({
       title: 'title',
@@ -78,7 +77,7 @@ describe('dialog component', () => {
   })
 
   test('click cancel button', () => {
-    const callbackSpy = sinon.spy()
+    const callbackSpy = jest.fn()
 
     wrapper = shallow(Dialog, {
       propsData: {
@@ -90,11 +89,11 @@ describe('dialog component', () => {
     wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
     expect(wrapper.vm.visible).toBe(false)
     expect(wrapper.emitted().cancel).toBeTruthy()
-    expect(callbackSpy.called).toBeTruthy()
+    expect(callbackSpy.mock.calls.length).toBeTruthy()
   })
 
   test('click confirm button', () => {
-    const callbackSpy = sinon.spy()
+    const callbackSpy = jest.fn()
 
     wrapper = shallow(Dialog, {
       propsData: {
@@ -106,6 +105,6 @@ describe('dialog component', () => {
     wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')
     expect(wrapper.vm.visible).toBe(false)
     expect(wrapper.emitted().confirm).toBeTruthy()
-    expect(callbackSpy.called).toBeTruthy()
+    expect(callbackSpy.mock.calls.length).toBeTruthy()
   })
 })

@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import Input from '@/components/input'
-import sinon from 'sinon'
 
 describe('input', () => {
   let wrapper
@@ -18,7 +17,7 @@ describe('input', () => {
   })
 
   test('input event', () => {
-    const validateSpy = sinon.spy()
+    const validateSpy = jest.fn()
 
     // use with maxlength
     wrapper = shallow(Input, {
@@ -36,7 +35,7 @@ describe('input', () => {
 
     wrapper.update()
     expect(wrapper.vm.currentValue).toBe('te')
-    expect(validateSpy.called).toBeTruthy()
+    expect(validateSpy.mock.calls.length).toBeTruthy()
 
     // use with maxlength
     wrapper = shallow(Input, {
@@ -53,7 +52,7 @@ describe('input', () => {
 
     wrapper.update()
     expect(wrapper.vm.currentValue).toBe('test')
-    expect(validateSpy.called).toBeTruthy()
+    expect(validateSpy.mock.calls.length).toBeTruthy()
 
     // reset the spy states
     validateSpy.resetHistory()
@@ -74,7 +73,7 @@ describe('input', () => {
     wrapper.find('input').trigger('input')
 
     wrapper.update()
-    expect(validateSpy.called).toBeFalsy()
+    expect(validateSpy.mock.calls.length).toBeFalsy()
   })
 
   test('render with label', () => {
@@ -107,7 +106,7 @@ describe('input', () => {
   })
 
   test('focus event', () => {
-    const mockValidateMethod = sinon.spy()
+    const mockValidateMethod = jest.fn()
     wrapper = shallow(Input, {
       propsData: {
         validateMode: {
@@ -123,7 +122,7 @@ describe('input', () => {
 
     expect(wrapper.vm.active).toBeTruthy()
     // validate should not be called while validateMode.onFocus is false
-    expect(mockValidateMethod.called).toBeFalsy()
+    expect(mockValidateMethod.mock.calls.length).toBeFalsy()
 
     // set validateMode.onFocus to true
     wrapper.setProps({
@@ -137,11 +136,11 @@ describe('input', () => {
     expect(wrapper.vm.active).toBeTruthy()
 
     // validate should be called while validateMode.onFocus is true
-    expect(mockValidateMethod.called).toBeTruthy()
+    expect(mockValidateMethod.mock.calls.length).toBeTruthy()
   })
 
   test('blur event', () => {
-    const mockValidateMethod = sinon.spy()
+    const mockValidateMethod = jest.fn()
     wrapper = shallow(Input, {
       propsData: {
         validateMode: {
@@ -157,7 +156,7 @@ describe('input', () => {
 
     expect(wrapper.vm.active).toBeFalsy()
     // validate should not be called while validateMode.onBlur is false
-    expect(mockValidateMethod.called).toBeFalsy()
+    expect(mockValidateMethod.mock.calls.length).toBeFalsy()
 
     // set validateMode.onBlur to true
     wrapper.setProps({
@@ -171,11 +170,11 @@ describe('input', () => {
     expect(wrapper.vm.active).toBeFalsy()
 
     // validate should be called while validateMode.onBlur is true
-    expect(mockValidateMethod.called).toBeTruthy()
+    expect(mockValidateMethod.mock.calls.length).toBeTruthy()
   })
 
   test('change event', () => {
-    const mockValidateMethod = sinon.spy()
+    const mockValidateMethod = jest.fn()
     wrapper = shallow(Input, {
       propsData: {
         validateMode: {
@@ -191,7 +190,7 @@ describe('input', () => {
 
     expect(wrapper.emitted().change).toBeTruthy()
     // validate should not be called while validateMode.onChange is false
-    expect(mockValidateMethod.called).toBeFalsy()
+    expect(mockValidateMethod.mock.calls.length).toBeFalsy()
 
     // set validateMode.onChange to true
     wrapper.setProps({
@@ -203,7 +202,7 @@ describe('input', () => {
     wrapper.find('input').trigger('change')
 
     // validate should be called while validateMode.onChange is true
-    expect(mockValidateMethod.called).toBeTruthy()
+    expect(mockValidateMethod.mock.calls.length).toBeTruthy()
   })
 
   test('validate with pattern', () => {

@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils'
 import InfiniteScrollComponent from '../components/infinite-scroll-component'
-import sinon from 'sinon'
 import { verticalDrag } from '../utils'
 
 describe('infinite-scroll', () => {
@@ -10,7 +9,7 @@ describe('infinite-scroll', () => {
   })
 
   test('create', (done) => {
-    const loadMoreSpy = sinon.spy()
+    const loadMoreSpy = jest.fn()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
@@ -24,7 +23,7 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy.called).toBe(true)
+      expect(loadMoreSpy.mock.calls.length).toBeTruthy()
 
       done()
     }, 500)
@@ -32,7 +31,7 @@ describe('infinite-scroll', () => {
 
   // TODO:
   test('test loadMore function', (done) => {
-    const loadMoreSpy = sinon.spy(function () {
+    const loadMore = sinon.spy(function () {
       wrapper.vm.list = wrapper.vm.list.concat([{id: 1}, {id: 2}, {id: 3}])
       wrapper.vm.disabled = true
     })
@@ -41,24 +40,24 @@ describe('infinite-scroll', () => {
       propsData: {
         disabled: false,
         list: [{id: 10}],
-        onLoadMore: loadMoreSpy
+        onLoadMore: loadMore
       }
     })
 
     setTimeout(() => {
       const item = wrapper.findAll('.list-item')
-      expect(loadMoreSpy.calledOnce).toBe(true)
+      expect(loadMore.mock.calls.length).toBe(1)
       expect(item.length).toEqual(4)
 
       // TODO: SCROLL
 
-      expect(loadMoreSpy.calledOnce).toBe(true)
+      expect(loadMore.mock.calls.length).toBe(1)
       done()
     }, 500)
   })
 
   test('test disabled', (done) => {
-    const loadMoreSpy = sinon.spy()
+    const loadMoreSpy = jest.fn()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
@@ -69,7 +68,7 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy.called).toBe(false)
+      expect(loadMoreSpy.mock.calls.length).toBeFalsy()
     }, 500)
 
     setTimeout(() => {
@@ -78,7 +77,7 @@ describe('infinite-scroll', () => {
       })
 
       setTimeout(() => {
-        expect(loadMoreSpy.called).toBe(true)
+        expect(loadMoreSpy.mock.calls.length).toBeTruthy()
         done()
       }, 500)
     }, 600)
@@ -87,7 +86,7 @@ describe('infinite-scroll', () => {
   test(
     'when scrollTarget is hidden, the loadMore callback should not be called',
     (done) => {
-      const loadMoreSpy = sinon.spy()
+      const loadMoreSpy = jest.fn()
       wrapper = mount(InfiniteScrollComponent, {
         attachToDocument: true,
         propsData: {
@@ -99,14 +98,14 @@ describe('infinite-scroll', () => {
       })
 
       setTimeout(() => {
-        expect(loadMoreSpy.called).toBe(false)
+        expect(loadMoreSpy.mock.calls.length).toBeFalsy()
         done()
       }, 500)
     }
   )
 
   test('don not loadmore when mounted, immedialateCheck === false', (done) => {
-    const loadMoreSpy = sinon.spy()
+    const loadMoreSpy = jest.fn()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
@@ -117,7 +116,7 @@ describe('infinite-scroll', () => {
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy.called).toBe(false)
+      expect(loadMoreSpy.mock.calls.length).toBeFalsy()
       done()
     }, 500)
   })

@@ -1,5 +1,4 @@
 import ScrollUtil from '@/utils/scroll'
-import sinon from 'sinon'
 
 describe('utils scroll', () => {
   let clock
@@ -49,8 +48,7 @@ describe('utils scroll', () => {
 
     clock.tick(500)
 
-    expect(callback.called).toBe(true)
-    expect(callback.callCount).toBe(2)
+    expect(callback.mock.calls.length).toBe(2)
   })
 
   test('getScrollEventTarget method', () => {
@@ -88,7 +86,7 @@ describe('utils scroll', () => {
     expect(element.scrollTop).toBe(10)
 
     // the element HAS NO scrollTop property
-    const scrollToSpy = sinon.spy()
+    const scrollToSpy = jest.fn()
     element = {
       scrollX: 0,
       scrollTo: scrollToSpy

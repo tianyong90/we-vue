@@ -1,7 +1,6 @@
 import { shallow, mount } from '@vue/test-utils'
 import Navbar from '@/components/navbar'
 import NavbarItem from '@/components/navbar-item'
-import sinon from 'sinon'
 
 describe('navbar-item', () => {
   let parentWrapper
@@ -73,7 +72,7 @@ describe('navbar-item', () => {
 
     wrapper.trigger('click')
 
-    expect(emitSpy.called).toBeTruthy()
+    expect(emitSpy.mock.calls.length).toBeTruthy()
     expect(emitSpy.calledWith('input', wrapper.vm.id)).toBeTruthy()
   })
 
@@ -98,6 +97,6 @@ describe('navbar-item', () => {
 
     wrapper.trigger('click')
 
-    expect(emitSpy.called).toBeFalsy()
+    expect(emitSpy.mock.calls.length).toBeFalsy()
   })
 })

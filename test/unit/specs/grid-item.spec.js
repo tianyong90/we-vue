@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import GridItem from '@/components/grid-item'
-import sinon from 'sinon'
 
 describe('grid-item', () => {
   let wrapper
@@ -18,7 +17,7 @@ describe('grid-item', () => {
   })
 
   test('handle click', () => {
-    const routerLinkSpy = sinon.spy()
+    const routerLinkSpy = jest.fn()
     wrapper = shallow(GridItem, {
       propsData: {},
       methods: {
@@ -28,6 +27,6 @@ describe('grid-item', () => {
 
     wrapper.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
-    expect(routerLinkSpy.called).toBeTruthy()
+    expect(routerLinkSpy.mock.calls.length).toBeTruthy()
   })
 })

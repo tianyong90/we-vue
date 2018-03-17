@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import NumberSpinner from '@/components/number-spinner'
-// import sinon from 'sinon'
 
 describe('number-spinner', () => {
   let wrapper

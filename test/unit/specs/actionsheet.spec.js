@@ -1,6 +1,5 @@
 import { mount, shallow } from '@vue/test-utils'
 import Actionsheet from '@/components/actionsheet'
-import sinon from 'sinon'
 
 describe('actionsheet', () => {
   let wrapper
@@ -78,7 +77,7 @@ describe('actionsheet', () => {
   })
 
   test('handle action item click', () => {
-    const itemClickMethodSpy = sinon.spy()
+    const itemClickMethodSpy = jest.fn()
 
     const actions = [
       {
@@ -96,7 +95,7 @@ describe('actionsheet', () => {
 
     wrapper.find('.weui-actionsheet__cell').trigger('click')
 
-    expect(itemClickMethodSpy.called).toBeTruthy()
+    expect(itemClickMethodSpy.mock.calls.length).toBeTruthy()
 
     // currentValue should be false after action item clicked
     expect(wrapper.vm.currentValue).toBeFalsy()

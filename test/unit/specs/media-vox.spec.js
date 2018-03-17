@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import MediaBox from '@/components/media-box'
-import sinon from 'sinon'
 
 describe('media-box', () => {
   let wrapper
@@ -18,7 +17,7 @@ describe('media-box', () => {
   })
 
   test('handle click', () => {
-    const routerLinkSpy = sinon.spy()
+    const routerLinkSpy = jest.fn()
     wrapper = shallow(MediaBox, {
       propsData: {},
       methods: {
@@ -28,6 +27,6 @@ describe('media-box', () => {
 
     wrapper.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
-    expect(routerLinkSpy.called).toBeTruthy()
+    expect(routerLinkSpy.mock.calls.length).toBeTruthy()
   })
 })

@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
 import { horizontalDrag, verticalDrag, dragAndHoldHelper } from '../utils'
-import sinon from 'sinon'
 import faker from 'faker'
 
 describe('swipe', () => {
@@ -145,7 +144,7 @@ describe('swipe', () => {
   })
 
   test('change swipes', () => {
-    const initializeSpy = sinon.spy()
+    const initializeSpy = jest.fn()
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -160,7 +159,7 @@ describe('swipe', () => {
       swipes: []
     })
 
-    expect(initializeSpy.called).toBeTruthy()
+    expect(initializeSpy.mock.calls.length).toBeTruthy()
   })
 
   test('change defaultIndex', () => {

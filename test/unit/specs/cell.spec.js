@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import Cell from '@/components/cell'
-import sinon from 'sinon'
 
 describe('cell', () => {
   let wrapper
@@ -28,7 +27,7 @@ describe('cell', () => {
   })
 
   test('handle click', () => {
-    const routerLinkSpy = sinon.spy()
+    const routerLinkSpy = jest.fn()
     wrapper = shallow(Cell, {
       propsData: {},
       methods: {
@@ -38,6 +37,6 @@ describe('cell', () => {
 
     wrapper.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
-    expect(routerLinkSpy.called).toBeTruthy()
+    expect(routerLinkSpy.mock.calls.length).toBeTruthy()
   })
 })

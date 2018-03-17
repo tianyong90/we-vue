@@ -2,7 +2,6 @@ import { shallow, mount } from '@vue/test-utils'
 import CellSwipe from '@/components/cell-swipe'
 import CellSwipeButtonComponent from '../components/cell-swipe-button'
 import { horizontalDrag } from '../utils'
-import sinon from 'sinon'
 
 describe('cell-swipe', () => {
   let wrapper
@@ -138,7 +137,7 @@ describe('cell-swipe', () => {
   })
 
   test('clickoutside', () => {
-    let onClickoutsideSpy = sinon.spy()
+    let onClickoutsideSpy = jest.fn()
 
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
@@ -160,6 +159,6 @@ describe('cell-swipe', () => {
     // click at a point that outside the cell (like the body element)
     wrapper2.trigger('touchstart')
 
-    expect(onClickoutsideSpy.called).toBeTruthy()
+    expect(onClickoutsideSpy.mock.calls.length).toBeTruthy()
   })
 })

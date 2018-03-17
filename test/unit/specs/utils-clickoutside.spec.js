@@ -1,6 +1,5 @@
 import { shallow } from '@vue/test-utils'
 import ClickoutsideComponent from '../components/clickoutside-component'
-import sinon from 'sinon'
 
 describe('clickoutside', () => {
   let wrapper
@@ -9,8 +8,8 @@ describe('clickoutside', () => {
   })
 
   test('test handlers', () => {
-    const onClickoutside1Spy = sinon.spy()
-    const onClickoutside2Spy = sinon.spy()
+    const onClickoutside1Spy = jest.fn()
+    const onClickoutside2Spy = jest.fn()
 
     wrapper = shallow(ClickoutsideComponent, {
       attachToDocument: true,
@@ -23,8 +22,8 @@ describe('clickoutside', () => {
     // onClickoutside2Spy should be called when click .item-1
     wrapper.find('.item-1').trigger('click')
 
-    expect(onClickoutside1Spy.called).toBe(false)
-    expect(onClickoutside2Spy.called).toBe(true)
+    expect(onClickoutside1Spy..mock.calls.length).toBeFalsy()
+    expect(onClickoutside2Spy..mock.calls.length).toBeTruthy()
 
     onClickoutside1Spy.resetHistory()
     onClickoutside2Spy.resetHistory()
@@ -32,7 +31,7 @@ describe('clickoutside', () => {
     // both handler should be called when click .item-3
     wrapper.find('.item-3').trigger('click')
 
-    expect(onClickoutside1Spy.calledOnce).toBe(true)
-    expect(onClickoutside2Spy.calledOnce).toBe(true)
+    expect(onClickoutside1Spy.mock.calls.length).toBe(1)
+    expect(onClickoutside2Spy.mock.calls.length).toBe(1)
   })
 })

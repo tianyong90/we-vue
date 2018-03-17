@@ -1,7 +1,6 @@
 import { shallow } from '@vue/test-utils'
 import EmptyComponent from '../components/empty.vue'
 import RouterLink from '@/mixins/router-link'
-import sinon from 'sinon'
 
 describe('textarea', () => {
   let wrapper
@@ -20,8 +19,8 @@ describe('textarea', () => {
   })
 
   test('routerLink method with $router', () => {
-    const pushSpy = sinon.spy()
-    const replaceSpy = sinon.spy()
+    const pushSpy = jest.fn()
+    const replaceSpy = jest.fn()
 
     wrapper = shallow(EmptyComponent, {
       propsData: {
@@ -38,7 +37,7 @@ describe('textarea', () => {
 
     wrapper.vm.routerLink()
 
-    expect(pushSpy.called).toBeTruthy()
+    expect(pushSpy.mock.calls.length).toBeTruthy()
     expect(pushSpy.calledWith('test')).toBeTruthy()
 
     // replace = true
@@ -48,7 +47,7 @@ describe('textarea', () => {
 
     wrapper.vm.routerLink()
 
-    expect(replaceSpy.called).toBeTruthy()
+    expect(replaceSpy.mock.calls.length).toBeTruthy()
     expect(replaceSpy.calledWith('test')).toBeTruthy()
   })
 
