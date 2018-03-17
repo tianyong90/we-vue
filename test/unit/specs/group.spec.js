@@ -7,7 +7,7 @@ describe('group', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Group, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('group', () => {
     expect(wrapper.contains('.weui-cells')).toBeTruthy()
   })
 
-  it('create with title', () => {
+  test('create with title', () => {
     wrapper = shallow(Group, {
       propsData: {
         title: 'test'

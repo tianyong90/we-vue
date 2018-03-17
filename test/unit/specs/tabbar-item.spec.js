@@ -8,7 +8,7 @@ describe('tabbar-item', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(TabbarItem, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('tabbar-item', () => {
     expect(wrapper.classes()).toContain('weui-tabbar__item')
   })
 
-  it('text', () => {
+  test('text', () => {
     wrapper = shallow(TabbarItem, {
       slots: {
         default: 'test'
@@ -27,7 +27,7 @@ describe('tabbar-item', () => {
     expect(wrapper.find('p.weui-tabbar__label').text()).toBe('test')
   })
 
-  it('isOn', () => {
+  test('isOn', () => {
     wrapper = shallow(TabbarItem, {
       propsData: {
         isOn: true
@@ -37,7 +37,7 @@ describe('tabbar-item', () => {
     expect(wrapper.classes()).toContain('weui-bar__item_on')
   })
 
-  it('handle click', () => {
+  test('handle click', () => {
     const routerLinkSpy = sinon.spy()
     wrapper = shallow(TabbarItem, {
       propsData: {},

@@ -8,7 +8,7 @@ describe('flex', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = mount(Flex, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('flex', () => {
     expect(wrapper.classes()).toContain('weui-flex')
   })
 
-  it('style should be computed correctly', () => {
+  test('style should be computed correctly', () => {
     wrapper = shallow(Flex, {
       propsData: {
       }

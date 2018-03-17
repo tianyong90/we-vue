@@ -8,7 +8,7 @@ describe('search', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('search', () => {
     expect(wrapper.contains('.weui-search-bar')).toBeTruthy()
   })
 
-  it('autofocus', () => {
+  test('autofocus', () => {
     wrapper = shallow(SearchBar, {
       propsData: {
         autofocus: true
@@ -37,7 +37,7 @@ describe('search', () => {
     expect(wrapper.vm.isActive).toBeFalsy()
   })
 
-  it('method textClick', () => {
+  test('method textClick', () => {
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
@@ -47,7 +47,7 @@ describe('search', () => {
     expect(wrapper.vm.isActive).toBeTruthy()
   })
 
-  it('method clear', () => {
+  test('method clear', () => {
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
@@ -57,7 +57,7 @@ describe('search', () => {
     expect(wrapper.vm.currentValue).toBe('')
   })
 
-  it('method cancel', () => {
+  test('method cancel', () => {
     const spySearchBarClear = sinon.spy()
     wrapper = shallow(SearchBar, {
       propsData: {}
@@ -73,7 +73,7 @@ describe('search', () => {
     expect(spySearchBarClear.called).toBeTruthy()
   })
 
-  it('watch currentValue', () => {
+  test('watch currentValue', () => {
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
@@ -85,7 +85,7 @@ describe('search', () => {
     expect(wrapper.emitted().input).toBeTruthy()
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = shallow(SearchBar, {
       propsData: {}
     })
@@ -97,7 +97,7 @@ describe('search', () => {
     expect(wrapper.vm.currentValue).toBe('new-value')
   })
 
-  it('click result', () => {
+  test('click result', () => {
     wrapper = shallow(SearchBar, {
       attachToDocument: true,
       propsData: {

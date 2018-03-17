@@ -7,7 +7,7 @@ describe('progress', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Input, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('progress', () => {
     expect(wrapper.classes()).toContain('weui-progress')
   })
 
-  it('render with percent', () => {
+  test('render with percent', () => {
     // 0 到 100 的随机数
     const percent = Math.round(Math.random() * 100)
 
@@ -30,7 +30,7 @@ describe('progress', () => {
     expect(innerBarEl.element.style.width).toBe(percent + '%')
   })
 
-  it('clearBtn action', () => {
+  test('clearBtn action', () => {
     wrapper = shallow(Input, {
       propsData: {
         showClear: true

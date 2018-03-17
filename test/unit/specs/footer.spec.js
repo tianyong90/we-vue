@@ -7,7 +7,7 @@ describe('footer', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Footer, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('footer', () => {
     expect(wrapper.classes()).toContain('weui-footer')
   })
 
-  it('text', () => {
+  test('text', () => {
     wrapper = shallow(Footer, {
       propsData: {
         text: 'test'

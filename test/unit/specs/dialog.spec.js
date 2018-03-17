@@ -8,7 +8,7 @@ describe('test dialog api', () => {
     DialogApi.close()
   })
 
-  it('create a dialog', () => {
+  test('create a dialog', () => {
     const callbackSpy = sinon.spy()
 
     DialogApi({
@@ -23,7 +23,7 @@ describe('test dialog api', () => {
     }, 300)
   })
 
-  it('open an alert dialog', () => {
+  test('open an alert dialog', () => {
     DialogApi.alert({}).then(action => {
       expect(action).toBe('confirm')
     })
@@ -32,7 +32,7 @@ describe('test dialog api', () => {
     document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
   })
 
-  it('open a confirm dialog, and confirm it', () => {
+  test('open a confirm dialog, and confirm it', () => {
     DialogApi.confirm({}).then(action => {
       expect(action).toBe('confirm')
     })
@@ -41,7 +41,7 @@ describe('test dialog api', () => {
     document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
   })
 
-  it('open a confirm dialog, and cancle it', () => {
+  test('open a confirm dialog, and cancle it', () => {
     DialogApi.confirm({}).catch(action => {
       expect(action).toBe('cancel')
     })
@@ -50,7 +50,7 @@ describe('test dialog api', () => {
     document.querySelector('.weui-dialog__ft>.weui-dialog__btn_default').click()
   })
 
-  it('open a confirm dialog with callback', () => {
+  test('open a confirm dialog with callback', () => {
     DialogApi.confirm({
       callback: action => {
         expect(action).toBe('confirm')
@@ -68,7 +68,7 @@ describe('dialog component', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Dialog, {
       propsData: {}
     })
@@ -77,7 +77,7 @@ describe('dialog component', () => {
     expect(wrapper.contains('.weui-dialog')).toBeTruthy()
   })
 
-  it('click cancel button', () => {
+  test('click cancel button', () => {
     const callbackSpy = sinon.spy()
 
     wrapper = shallow(Dialog, {
@@ -93,7 +93,7 @@ describe('dialog component', () => {
     expect(callbackSpy.called).toBeTruthy()
   })
 
-  it('click confirm button', () => {
+  test('click confirm button', () => {
     const callbackSpy = sinon.spy()
 
     wrapper = shallow(Dialog, {

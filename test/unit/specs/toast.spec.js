@@ -15,13 +15,13 @@ describe('toast api', () => {
     clock.restore()
   })
 
-  it('create a toast', () => {
+  test('create a toast', () => {
     ToastApi({})
 
     expect(document.querySelector('.weui-toast')).toBeTruthy()
   })
 
-  it('create a toast using string parameter', () => {
+  test('create a toast using string parameter', () => {
     ToastApi('test')
 
     setTimeout(() => {
@@ -30,7 +30,7 @@ describe('toast api', () => {
     }, 200)
   })
 
-  it('create a toast with duration', () => {
+  test('create a toast with duration', () => {
     const instance = ToastApi({
       duration: 2000
     })
@@ -40,28 +40,28 @@ describe('toast api', () => {
     expect(instance.visible).toBe(false)
   })
 
-  it('create a text toast', () => {
+  test('create a text toast', () => {
     const instance = ToastApi.text('test')
 
     expect(document.querySelector('.weui-toast')).toBeTruthy()
     expect(instance.type).toBe('text')
   })
 
-  it('create a success toast', () => {
+  test('create a success toast', () => {
     const instance = ToastApi.success('test')
 
     expect(document.querySelector('.weui-toast')).toBeTruthy()
     expect(instance.type).toBe('success')
   })
 
-  it('create a fail toast', () => {
+  test('create a fail toast', () => {
     const instance = ToastApi.fail('test')
 
     expect(document.querySelector('.weui-toast')).toBeTruthy()
     expect(instance.type).toBe('fail')
   })
 
-  it('create a loading toast', () => {
+  test('create a loading toast', () => {
     const instance = ToastApi.loading('test')
 
     expect(document.querySelector('.weui-toast')).toBeTruthy()
@@ -75,7 +75,7 @@ describe('toast', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Toast, {
       propsData: {}
     })
@@ -84,7 +84,7 @@ describe('toast', () => {
     expect(wrapper.find('.weui-toast').classes()).toContain('weui-toast')
   })
 
-  it('text toast', () => {
+  test('text toast', () => {
     wrapper = shallow(Toast, {
       attachToDocument: true,
       propsData: {

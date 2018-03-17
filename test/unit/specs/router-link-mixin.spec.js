@@ -9,7 +9,7 @@ describe('textarea', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(EmptyComponent, {
       mixins: [RouterLink]
     })
@@ -19,7 +19,7 @@ describe('textarea', () => {
     expect(wrapper.props().replace).toBe(false)
   })
 
-  it('routerLink method with $router', () => {
+  test('routerLink method with $router', () => {
     const pushSpy = sinon.spy()
     const replaceSpy = sinon.spy()
 
@@ -52,7 +52,7 @@ describe('textarea', () => {
     expect(replaceSpy.calledWith('test')).toBeTruthy()
   })
 
-  it('routerLink method without $router', () => {
+  test('routerLink method without $router', () => {
     wrapper = shallow(EmptyComponent, {
       propsData: {
         url: '#test',

@@ -8,7 +8,7 @@ describe('number-spinner', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(NumberSpinner, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('number-spinner', () => {
     expect(wrapper.classes()).toContain('wv-number-spinner')
   })
 
-  it('blur event', () => {
+  test('blur event', () => {
     wrapper = shallow(NumberSpinner, {
       propsData: {},
       data: {
@@ -30,7 +30,7 @@ describe('number-spinner', () => {
     expect(wrapper.vm.currentValue).toBe(wrapper.vm.min)
   })
 
-  it('click decrease button', () => {
+  test('click decrease button', () => {
     wrapper = shallow(NumberSpinner, {
       propsData: {},
       data: {
@@ -42,7 +42,7 @@ describe('number-spinner', () => {
     expect(wrapper.vm.currentValue).toBe(5 - wrapper.vm.step)
   })
 
-  it('click increase button', () => {
+  test('click increase button', () => {
     wrapper = shallow(NumberSpinner, {
       propsData: {},
       data: {
@@ -54,7 +54,7 @@ describe('number-spinner', () => {
     expect(wrapper.vm.currentValue).toBe(1 + wrapper.vm.step)
   })
 
-  it('watch currentValue', () => {
+  test('watch currentValue', () => {
     wrapper = shallow(NumberSpinner, {
       propsData: {}
     })
@@ -67,7 +67,7 @@ describe('number-spinner', () => {
     expect(wrapper.emitted().change).toBeTruthy()
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = shallow(NumberSpinner, {
       propsData: {
         min: 1,

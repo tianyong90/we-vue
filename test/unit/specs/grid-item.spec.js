@@ -8,7 +8,7 @@ describe('grid-item', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(GridItem, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('grid-item', () => {
     expect(wrapper.classes()).toContain('weui-grid')
   })
 
-  it('handle click', () => {
+  test('handle click', () => {
     const routerLinkSpy = sinon.spy()
     wrapper = shallow(GridItem, {
       propsData: {},

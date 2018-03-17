@@ -11,7 +11,7 @@ describe('navbar-item', () => {
     parentWrapper && parentWrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     parentWrapper = mount(Navbar, {
       propsData: {
         animate: true
@@ -25,7 +25,7 @@ describe('navbar-item', () => {
     expect(wrapper.name()).toBe('wv-navbar-item')
   })
 
-  it('comput isSelected', () => {
+  test('comput isSelected', () => {
     parentWrapper = mount(Navbar, {
       propsData: {}
     })
@@ -39,7 +39,7 @@ describe('navbar-item', () => {
     expect(wrapper.vm.isSelected).toBe(isSelected)
   })
 
-  it('comput style', () => {
+  test('comput style', () => {
     parentWrapper = mount(Navbar, {
       propsData: {}
     })
@@ -57,7 +57,7 @@ describe('navbar-item', () => {
     expect(wrapper.vm.style).toEqual(computedStyle)
   })
 
-  it('click', () => {
+  test('click', () => {
     parentWrapper = mount(Navbar, {
       propsData: {
         animate: true
@@ -77,7 +77,7 @@ describe('navbar-item', () => {
     expect(emitSpy.calledWith('input', wrapper.vm.id)).toBeTruthy()
   })
 
-  it('disabled', () => {
+  test('disabled', () => {
     parentWrapper = mount(Navbar, {
       propsData: {
         animate: true

@@ -7,7 +7,7 @@ describe('spinner', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Spinner, {
       propsData: {}
     })
@@ -23,7 +23,7 @@ describe('spinner', () => {
     expect(wrapper.classes()).toContain('wv-spinner')
   })
 
-  it('size', () => {
+  test('size', () => {
     wrapper = shallow(Spinner, {
       propsData: {}
     })
@@ -37,7 +37,7 @@ describe('spinner', () => {
     expect(wrapper.vm.size).toBe(20)
   })
 
-  it('color', () => {
+  test('color', () => {
     wrapper = shallow(Spinner, {
       propsData: {}
     })
@@ -51,7 +51,7 @@ describe('spinner', () => {
     expect(wrapper.vm.color).toBe('red')
   })
 
-  it('icon font class should be computed correctly', () => {
+  test('icon font class should be computed correctly', () => {
     wrapper = shallow(Spinner, {
       propsData: {}
     })

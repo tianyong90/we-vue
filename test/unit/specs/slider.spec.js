@@ -9,7 +9,7 @@ describe('slider', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Slider, {
       propsData: {}
     })
@@ -29,7 +29,7 @@ describe('slider', () => {
     }).toThrow()
   })
 
-  it('compute percent', () => {
+  test('compute percent', () => {
     const fakeValue = faker.random.number({min: 0, max: 100})
     wrapper = shallow(Slider, {
       propsData: {
@@ -42,7 +42,7 @@ describe('slider', () => {
     expect(wrapper.vm.percent).toBe(correctPercent)
   })
 
-  it('show-value', () => {
+  test('show-value', () => {
     wrapper = shallow(Slider, {
       propsData: {
         showValue: true
@@ -57,7 +57,7 @@ describe('slider', () => {
     expect(wrapper.contains('.weui-slider-box__value')).toBeFalsy()
   })
 
-  it('disabled', () => {
+  test('disabled', () => {
     wrapper = shallow(Slider, {
       propsData: {
         value: 0,
@@ -74,7 +74,7 @@ describe('slider', () => {
     expect(wrapper.vm.value).toBe(0)
   })
 
-  it('drag the handler', () => {
+  test('drag the handler', () => {
     wrapper = shallow(Slider, {
       propsData: {
         value: 0
@@ -95,7 +95,7 @@ describe('slider', () => {
     expect(wrapper.emitted().change[0]).toEqual([expectedValue])
   })
 
-  it('click the inner', () => {
+  test('click the inner', () => {
     wrapper = mount(Slider, {
       attachToDocument: true,
       propsData: {

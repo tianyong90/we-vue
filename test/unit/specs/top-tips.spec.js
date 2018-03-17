@@ -15,7 +15,7 @@ describe('test top-tips api', () => {
     clock.reset()
   })
 
-  it('open a top-tips and then close it', () => {
+  test('open a top-tips and then close it', () => {
     const instance = TopTipsApi({
       message: 'test',
       duration: 3000
@@ -28,7 +28,7 @@ describe('test top-tips api', () => {
     expect(instance.visible).toBe(false)
   })
 
-  it('open a top-tips with string parameter', () => {
+  test('open a top-tips with string parameter', () => {
     const localVue = createLocalVue()
     let instance = TopTipsApi('test')
 
@@ -40,7 +40,7 @@ describe('test top-tips api', () => {
     })
   })
 
-  it('create a toast with duration', () => {
+  test('create a toast with duration', () => {
     let instance = TopTipsApi({
       duration: 2000
     })
@@ -50,7 +50,7 @@ describe('test top-tips api', () => {
     expect(instance.visible).toBe(false)
   })
 
-  it('top-tips should be singletom', () => {
+  test('top-tips should be singletom', () => {
     const localVue = createLocalVue()
     TopTipsApi({})
 
@@ -69,7 +69,7 @@ describe('top-tips component', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(TopTips, {
       propsData: {
         visible: true
@@ -80,7 +80,7 @@ describe('top-tips component', () => {
     expect(wrapper.classes()).toContain('weui-toptips')
   })
 
-  it('render message correctlly', () => {
+  test('render message correctlly', () => {
     wrapper = shallow(TopTips, {
       propsData: {
         message: 'test',

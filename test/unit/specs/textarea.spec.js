@@ -7,7 +7,7 @@ describe('textarea', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Textarea, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('textarea', () => {
     expect(wrapper.classes()).toContain('weui-cell')
   })
 
-  it('show counter', () => {
+  test('show counter', () => {
     wrapper = shallow(Textarea, {
       propsData: {
         showCounter: true
@@ -32,7 +32,7 @@ describe('textarea', () => {
     expect(wrapper.contains('.weui-textarea-counter')).toBeFalsy()
   })
 
-  it('watch currentValue', () => {
+  test('watch currentValue', () => {
     wrapper = shallow(Textarea, {
       propsData: {}
     })
@@ -44,7 +44,7 @@ describe('textarea', () => {
     expect(wrapper.emitted().input).toBeTruthy()
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = shallow(Textarea, {
       propsData: {
         maxLength: 10
@@ -65,7 +65,7 @@ describe('textarea', () => {
     expect(wrapper.vm.currentValue).toBe('new-value-')
   })
 
-  it('check max-length', () => {
+  test('check max-length', () => {
     wrapper = shallow(Textarea, {
       propsData: {
         maxLength: 2,
@@ -77,7 +77,7 @@ describe('textarea', () => {
     expect(wrapper.vm.currentValue).toBe('te')
   })
 
-  it('focus event', () => {
+  test('focus event', () => {
     wrapper = shallow(Textarea, {
       propsData: {}
     })
@@ -87,7 +87,7 @@ describe('textarea', () => {
     expect(wrapper.emitted().focus).toBeTruthy()
   })
 
-  it('blur event', () => {
+  test('blur event', () => {
     wrapper = shallow(Textarea, {
       propsData: {}
     })

@@ -7,7 +7,7 @@ describe('icon', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Icon, {
       propsData: {
         type: 'info'
@@ -20,7 +20,7 @@ describe('icon', () => {
     expect(wrapper.vm.large).toBeFalsy()
   })
 
-  it('element class should be computed correctly', () => {
+  test('element class should be computed correctly', () => {
     wrapper = shallow(Icon, {
       propsData: {
         type: 'info',

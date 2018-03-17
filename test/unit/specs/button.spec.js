@@ -7,7 +7,7 @@ describe('button', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Button, {
       propsData: {
         type: 'primary'
@@ -18,7 +18,7 @@ describe('button', () => {
     expect(wrapper.classes()).toContain('weui-btn')
   })
 
-  it('is-loading', () => {
+  test('is-loading', () => {
     wrapper = shallow(Button, {
       propsData: {
         isLoading: true
@@ -28,7 +28,7 @@ describe('button', () => {
     expect(wrapper.classes()).toContain('weui-btn_loading')
   })
 
-  it('disabled', () => {
+  test('disabled', () => {
     wrapper = shallow(Button, {
       propsData: {
         disabled: true
@@ -39,7 +39,7 @@ describe('button', () => {
     expect(wrapper.classes()).toContain(classDisabled)
   })
 
-  it('mini', () => {
+  test('mini', () => {
     wrapper = shallow(Button, {
       propsData: {
         mini: true
@@ -48,7 +48,7 @@ describe('button', () => {
     expect(wrapper.classes()).toContain('weui-btn_mini')
   })
 
-  it('plain', () => {
+  test('plain', () => {
     wrapper = shallow(Button, {
       propsData: {
         type: 'primary',
@@ -59,7 +59,7 @@ describe('button', () => {
     expect(wrapper.classes()).toContain(classType)
   })
 
-  it('click', () => {
+  test('click', () => {
     wrapper = shallow(Button, {
       propsData: {}
     })

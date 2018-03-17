@@ -18,7 +18,7 @@ describe('swipe', () => {
     clock.restore()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = mount(Swipe, {
       propsData: {}
     })
@@ -27,7 +27,7 @@ describe('swipe', () => {
     expect(wrapper.classes()).toContain('wv-swipe')
   })
 
-  it('create with single swipe-item', () => {
+  test('create with single swipe-item', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -42,7 +42,7 @@ describe('swipe', () => {
     expect(wrapper.vm.count).toBe(1)
   })
 
-  it('create with swipe-items', () => {
+  test('create with swipe-items', () => {
     wrapper = mount(Swipe, {
       propsData: {
         height: 120,
@@ -57,7 +57,7 @@ describe('swipe', () => {
     expect(wrapper.vm.activeIndicator).toBe(0)
   })
 
-  it('drag to right', () => {
+  test('drag to right', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -76,7 +76,7 @@ describe('swipe', () => {
     expect(wrapper.vm.active).toBe(0)
   })
 
-  it('drag to left', () => {
+  test('drag to left', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -97,7 +97,7 @@ describe('swipe', () => {
     expect(wrapper.vm.active).toBe(1)
   })
 
-  it('drag single slide while noDragWhenSingle is true', () => {
+  test('drag single slide while noDragWhenSingle is true', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -117,7 +117,7 @@ describe('swipe', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  it('drag single slide while noDragWhenSingle is false', () => {
+  test('drag single slide while noDragWhenSingle is false', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -144,7 +144,7 @@ describe('swipe', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  it('change swipes', () => {
+  test('change swipes', () => {
     const initializeSpy = sinon.spy()
     wrapper = mount(Swipe, {
       attachToDocument: true,
@@ -163,7 +163,7 @@ describe('swipe', () => {
     expect(initializeSpy.called).toBeTruthy()
   })
 
-  it('change defaultIndex', () => {
+  test('change defaultIndex', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -181,7 +181,7 @@ describe('swipe', () => {
     expect(wrapper.vm.active).toBe(1)
   })
 
-  it('autoplay', () => {
+  test('autoplay', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -203,7 +203,7 @@ describe('swipe', () => {
     expect(wrapper.vm.active).toBe(1)
   })
 
-  it('preventScroll', () => {
+  test('preventScroll', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {

@@ -11,7 +11,7 @@ describe('datetime-picker', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create a datetime picker', () => {
+  test('create a datetime picker', () => {
     let date = new Date()
 
     wrapper = mount(DatetimePicker, {
@@ -24,7 +24,7 @@ describe('datetime-picker', () => {
     expect(wrapper.name()).toBe('wv-datetime-picker')
   })
 
-  it('create date picker', () => {
+  test('create date picker', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {
         type: 'date'
@@ -32,7 +32,7 @@ describe('datetime-picker', () => {
     })
   })
 
-  it('create time picker', () => {
+  test('create time picker', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {
         type: 'time'
@@ -40,7 +40,7 @@ describe('datetime-picker', () => {
     })
   })
 
-  it('test open and close method', () => {
+  test('test open and close method', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -54,7 +54,7 @@ describe('datetime-picker', () => {
     })
   })
 
-  it('test isLeapyear method', () => {
+  test('test isLeapyear method', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -64,7 +64,7 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.isLeapYear(2001)).toBe(false)
   })
 
-  it('test isShortMonth method', () => {
+  test('test isShortMonth method', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -73,7 +73,7 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.isShortMonth(1)).toBe(false)
   })
 
-  it('test getMonthEndDay method', () => {
+  test('test getMonthEndDay method', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -86,7 +86,7 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.getMonthEndDay(2018, 2)).toBe(28)
   })
 
-  it('test getTrueValue method', () => {
+  test('test getTrueValue method', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -99,7 +99,7 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.getTrueValue('A2018年')).toBe(2018)
   })
 
-  it('test onConfirm', (done) => {
+  test('test onConfirm', (done) => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -113,7 +113,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  it('test onCancel', (done) => {
+  test('test onCancel', (done) => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -127,7 +127,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  it('drag time picker', (done) => {
+  test('drag time picker', (done) => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -163,7 +163,7 @@ describe('datetime-picker', () => {
     }, 50)
   })
 
-  it('drag datetime picker', (done) => {
+  test('drag datetime picker', (done) => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -197,7 +197,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  it('drag date picker', (done) => {
+  test('drag date picker', (done) => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -225,7 +225,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  it('watch value change', (done) => {
+  test('watch value change', (done) => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })

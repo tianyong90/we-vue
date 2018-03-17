@@ -8,7 +8,7 @@ describe('cell', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Cell, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('cell', () => {
     expect(wrapper.classes()).toContain('weui-cell')
   })
 
-  it('is-link', () => {
+  test('is-link', () => {
     wrapper = shallow(Cell, {
       propsData: {
         isLink: true
@@ -27,7 +27,7 @@ describe('cell', () => {
     expect(wrapper.classes()).toContain('weui-cell_access')
   })
 
-  it('handle click', () => {
+  test('handle click', () => {
     const routerLinkSpy = sinon.spy()
     wrapper = shallow(Cell, {
       propsData: {},

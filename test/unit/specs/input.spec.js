@@ -8,7 +8,7 @@ describe('input', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Input, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('input', () => {
     expect(wrapper.classes()).toContain('weui-cell')
   })
 
-  it('input event', () => {
+  test('input event', () => {
     const validateSpy = sinon.spy()
 
     // use with maxlength
@@ -77,7 +77,7 @@ describe('input', () => {
     expect(validateSpy.called).toBeFalsy()
   })
 
-  it('render with label', () => {
+  test('render with label', () => {
     wrapper = shallow(Input, {
       propsData: {
         label: 'test-label',
@@ -93,7 +93,7 @@ describe('input', () => {
     expect(wrapper.vm.currentValue).toBe(wrapper.vm.value)
   })
 
-  it('default validateMode', () => {
+  test('default validateMode', () => {
     wrapper = shallow(Input, {
       propsData: {}
     })
@@ -106,7 +106,7 @@ describe('input', () => {
     })
   })
 
-  it('focus event', () => {
+  test('focus event', () => {
     const mockValidateMethod = sinon.spy()
     wrapper = shallow(Input, {
       propsData: {
@@ -140,7 +140,7 @@ describe('input', () => {
     expect(mockValidateMethod.called).toBeTruthy()
   })
 
-  it('blur event', () => {
+  test('blur event', () => {
     const mockValidateMethod = sinon.spy()
     wrapper = shallow(Input, {
       propsData: {
@@ -174,7 +174,7 @@ describe('input', () => {
     expect(mockValidateMethod.called).toBeTruthy()
   })
 
-  it('change event', () => {
+  test('change event', () => {
     const mockValidateMethod = sinon.spy()
     wrapper = shallow(Input, {
       propsData: {
@@ -206,7 +206,7 @@ describe('input', () => {
     expect(mockValidateMethod.called).toBeTruthy()
   })
 
-  it('validate with pattern', () => {
+  test('validate with pattern', () => {
     wrapper = shallow(Input, {
       propsData: {
         pattern: '^test$',
@@ -225,7 +225,7 @@ describe('input', () => {
     expect(wrapper.vm.valid).toBeFalsy()
   })
 
-  it('validate required', () => {
+  test('validate required', () => {
     wrapper = shallow(Input, {
       propsData: {
         required: true,
@@ -242,7 +242,7 @@ describe('input', () => {
     expect(wrapper.vm.valid).toBeTruthy()
   })
 
-  it('validate minlength', () => {
+  test('validate minlength', () => {
     wrapper = shallow(Input, {
       propsData: {
         minlength: 5,
@@ -259,7 +259,7 @@ describe('input', () => {
     expect(wrapper.vm.valid).toBeTruthy()
   })
 
-  it('focus method', () => {
+  test('focus method', () => {
     wrapper = shallow(Input, {
       propsData: {}
     })
@@ -268,7 +268,7 @@ describe('input', () => {
     expect(document.activeElement).toBeTruthy()
   })
 
-  it('watch currentValue', () => {
+  test('watch currentValue', () => {
     wrapper = shallow(Input, {
       propsData: {}
     })
@@ -280,7 +280,7 @@ describe('input', () => {
     expect(wrapper.emitted().input).toBeTruthy()
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = shallow(Input, {
       propsData: {}
     })

@@ -7,7 +7,7 @@ describe('loadmore', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Loadmore, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('loadmore', () => {
     expect(wrapper.classes()).toContain('weui-loadmore')
   })
 
-  it('text', () => {
+  test('text', () => {
     wrapper = shallow(Loadmore, {
       propsData: {
         text: 'test'

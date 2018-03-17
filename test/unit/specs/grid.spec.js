@@ -7,7 +7,7 @@ describe('grid', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Grid, {
       propsData: {}
     })

@@ -8,7 +8,7 @@ describe('navbar', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Navbar, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('navbar', () => {
     expect(wrapper.classes()).toContain('wv-navbar')
   })
 
-  it('fixed navbar', () => {
+  test('fixed navbar', () => {
     wrapper = shallow(Navbar, {
       propsData: {
         fixed: true
@@ -30,7 +30,7 @@ describe('navbar', () => {
     expect(wrapper.vm.$el.style.right).toBe('0px')
   })
 
-  it('render with animate', () => {
+  test('render with animate', () => {
     wrapper = shallow(Navbar, {
       propsData: {
         animate: true
@@ -40,7 +40,7 @@ describe('navbar', () => {
     expect(wrapper.contains('.wv-navbar-underline')).toBeTruthy()
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = shallow(Navbar, {
       propsData: {}
     })

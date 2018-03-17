@@ -8,7 +8,7 @@ describe('clickoutside', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('test handlers', () => {
+  test('test handlers', () => {
     const onClickoutside1Spy = sinon.spy()
     const onClickoutside2Spy = sinon.spy()
 

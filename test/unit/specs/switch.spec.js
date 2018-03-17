@@ -10,7 +10,7 @@ describe('switch', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = mount(Switch, {
       propsData: {}
     })
@@ -19,7 +19,7 @@ describe('switch', () => {
     expect(wrapper.contains('.wv-switch')).toBeTruthy()
   })
 
-  it('is-in-cell', () => {
+  test('is-in-cell', () => {
     wrapper = mount(Switch, {
       propsData: {
         isInCell: true
@@ -38,7 +38,7 @@ describe('switch', () => {
     expect(wrapper.classes()).toContain('wv-switch')
   })
 
-  it('click', () => {
+  test('click', () => {
     wrapper = mount(Switch, {
       propsData: {
         value: true
@@ -66,7 +66,7 @@ describe('switch', () => {
     expect(wrapper.vm.currentValue).toBe(true)
   })
 
-  it('drag the thumb', () => {
+  test('drag the thumb', () => {
     wrapper = mount(Switch, {
       propsData: {
         value: false,
@@ -108,7 +108,7 @@ describe('switch', () => {
     expect(wrapper.vm.currentValue).toBe(false)
   })
 
-  it('watch currentValue', () => {
+  test('watch currentValue', () => {
     wrapper = mount(Switch, {
       attachToDocument: true,
       data: {
@@ -130,7 +130,7 @@ describe('switch', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = mount(Switch, {
       propsData: {
         value: false

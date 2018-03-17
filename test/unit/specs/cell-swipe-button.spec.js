@@ -7,7 +7,7 @@ describe('cell-swipe-button', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(CellSwipeButtom, {
       propsData: {}
     })

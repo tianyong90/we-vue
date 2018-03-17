@@ -7,7 +7,7 @@ describe('preview', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(FormPreview, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('preview', () => {
     expect(wrapper.classes()).toContain('weui-form-preview')
   })
 
-  it('render title and value', () => {
+  test('render title and value', () => {
     wrapper = shallow(FormPreview, {
       propsData: {
         title: 'test-title',

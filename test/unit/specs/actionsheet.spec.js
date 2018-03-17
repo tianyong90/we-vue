@@ -8,7 +8,7 @@ describe('actionsheet', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = mount(Actionsheet, {
       attachToDocument: true,
       propsData: {}
@@ -32,7 +32,7 @@ describe('actionsheet', () => {
     })
   })
 
-  it('watch value change', () => {
+  test('watch value change', () => {
     wrapper = shallow(Actionsheet, {
       propsData: {}
     })
@@ -44,7 +44,7 @@ describe('actionsheet', () => {
     expect(wrapper.vm.currentValue).toEqual(true)
   })
 
-  it('watch currentValue change', () => {
+  test('watch currentValue change', () => {
     wrapper = shallow(Actionsheet, {
       propsData: {
         value: false
@@ -59,7 +59,7 @@ describe('actionsheet', () => {
     expect(wrapper.emitted().input).toBeTruthy()
   })
 
-  it('render with actions', () => {
+  test('render with actions', () => {
     const actions = [
       {
         name: 'test-name',
@@ -77,7 +77,7 @@ describe('actionsheet', () => {
     expect(wrapper.find('.weui-actionsheet__cell').text()).toBe('test-name')
   })
 
-  it('handle action item click', () => {
+  test('handle action item click', () => {
     const itemClickMethodSpy = sinon.spy()
 
     const actions = [

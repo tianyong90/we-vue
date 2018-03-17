@@ -7,7 +7,7 @@ describe('badge', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Badge, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('badge', () => {
     expect(wrapper.classes()).toContain('weui-badge')
   })
 
-  it('is-dot', () => {
+  test('is-dot', () => {
     wrapper = shallow(Badge, {
       propsData: {
         isDot: true

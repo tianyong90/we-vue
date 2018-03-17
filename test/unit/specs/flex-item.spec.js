@@ -10,7 +10,7 @@ describe('flex-item', () => {
     parentWrapper && parentWrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     parentWrapper = mount(Flex, {
       propsData: {
         animate: true
@@ -25,7 +25,7 @@ describe('flex-item', () => {
     expect(wrapper.classes()).toContain('weui-flex__item')
   })
 
-  it('comput gutter', () => {
+  test('comput gutter', () => {
     parentWrapper = mount(Flex, {
       propsData: {
         gutter: 10
@@ -39,7 +39,7 @@ describe('flex-item', () => {
     expect(wrapper.vm.gutter).toBe(wrapper.vm.$parent.gutter)
   })
 
-  it('comput style', () => {
+  test('comput style', () => {
     parentWrapper = mount(Flex, {
       propsData: {}
     })

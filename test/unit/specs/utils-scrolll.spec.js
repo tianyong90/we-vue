@@ -12,7 +12,7 @@ describe('utils scroll', () => {
     clock.reset()
   })
 
-  it('isAttached method', () => {
+  test('isAttached method', () => {
     const element = document.createElement('div')
 
     expect(ScrollUtil.isAttached(element)).toBe(false)
@@ -30,7 +30,7 @@ describe('utils scroll', () => {
     expect(ScrollUtil.isAttached(mockElement)).toBe(false)
   })
 
-  it('debounce method', () => {
+  test('debounce method', () => {
     // debounce should be defines as functin
     expect(typeof ScrollUtil.debounce).toEqual('function')
 
@@ -53,7 +53,7 @@ describe('utils scroll', () => {
     expect(callback.callCount).toBe(2)
   })
 
-  it('getScrollEventTarget method', () => {
+  test('getScrollEventTarget method', () => {
     const element = document.createElement('div')
 
     element.style.overflowY = 'scroll'
@@ -67,7 +67,7 @@ describe('utils scroll', () => {
     expect(ScrollUtil.getScrollEventTarget(element)).toBe(window)
   })
 
-  it('getScrollTop method', () => {
+  test('getScrollTop method', () => {
     // the element has scrollTop property
     let element = { scrollTop: 10 }
 
@@ -79,7 +79,7 @@ describe('utils scroll', () => {
     expect(ScrollUtil.getScrollTop(element)).toBe(20)
   })
 
-  it('setScrollTop method', () => {
+  test('setScrollTop method', () => {
     // the element has scrollTop property
     let element = { scrollTop: null }
 
@@ -99,7 +99,7 @@ describe('utils scroll', () => {
     expect(scrollToSpy.calledWith(0, 10)).toBe(true)
   })
 
-  it('getElementTop method', () => {
+  test('getElementTop method', () => {
     // getElementTop of window
     expect(ScrollUtil.getElementTop(window)).toBe(0)
 
@@ -117,7 +117,7 @@ describe('utils scroll', () => {
     getScrollTopStub.restore()
   })
 
-  it('getVisibleHeight method', () => {
+  test('getVisibleHeight method', () => {
     // getVisibleHeight of window
     expect(ScrollUtil.getVisibleHeight(window)).toBe(window.innerHeight)
 

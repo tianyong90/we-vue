@@ -8,7 +8,7 @@ describe('mixins/popup', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('mixed props', () => {
+  test('mixed props', () => {
     wrapper = mount(PopupMixinComponent, {
       propsData: {}
     })
@@ -23,7 +23,7 @@ describe('mixins/popup', () => {
     expect(wrapper.vm.$options.props).toHaveProperty('lockOnScroll')
   })
 
-  it('open popup via open method', () => {
+  test('open popup via open method', () => {
     wrapper = mount(PopupMixinComponent, {
       propsData: {
         zIndex: 1
@@ -37,7 +37,7 @@ describe('mixins/popup', () => {
     expect(wrapper.vm.opened).toBe(true)
   })
 
-  it('open method should return while vm.opened === true', () => {
+  test('open method should return while vm.opened === true', () => {
     wrapper = mount(PopupMixinComponent, {
       data: {
         opened: true
@@ -49,7 +49,7 @@ describe('mixins/popup', () => {
     expect(wrapper.emitted('update:visible')).toBeFalsy()
   })
 
-  it('close popup via close method', () => {
+  test('close popup via close method', () => {
     wrapper = mount(PopupMixinComponent, {
       data: {
         opened: true
@@ -62,7 +62,7 @@ describe('mixins/popup', () => {
     expect(wrapper.vm.opened).toBe(false)
   })
 
-  it('close method should return while vm.opened === false', () => {
+  test('close method should return while vm.opened === false', () => {
     wrapper = mount(PopupMixinComponent, {
       data: {
         opened: false
@@ -74,7 +74,7 @@ describe('mixins/popup', () => {
     expect(wrapper.emitted('update:visible')).toBeFalsy()
   })
 
-  it('preventScroll', () => {
+  test('preventScroll', () => {
     wrapper = mount(PopupMixinComponent, {
       propsData: {
         zIndex: 1,
@@ -89,7 +89,7 @@ describe('mixins/popup', () => {
     wrapper.vm.close()
   })
 
-  it('close popup via click mask', () => {
+  test('close popup via click mask', () => {
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
       propsData: {

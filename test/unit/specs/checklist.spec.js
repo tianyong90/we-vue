@@ -13,7 +13,7 @@ describe('checklist', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Checklist, {
       propsData: {
         options: options
@@ -35,7 +35,7 @@ describe('checklist', () => {
     expect(wrapper.find('.weui-cells__title').text()).toBe('test title')
   })
 
-  it('options', () => {
+  test('options', () => {
     wrapper = mount(Checklist, {
       propsData: {
         value: ['value2'],
@@ -54,7 +54,7 @@ describe('checklist', () => {
     expect(wrapper.findAll('input').at(2).attributes().value).toBe('value3')
   })
 
-  it('max selection', () => {
+  test('max selection', () => {
     wrapper = mount(Checklist, {
       attachToDocument: true,
       propsData: {
@@ -80,7 +80,7 @@ describe('checklist', () => {
     expect(wrapper.vm.currentValue).toEqual(['value1'])
   })
 
-  it('watch currentValue', () => {
+  test('watch currentValue', () => {
     wrapper = shallow(Checklist, {
       propsData: {
         max: 2,
@@ -101,7 +101,7 @@ describe('checklist', () => {
     expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = shallow(Checklist, {
       propsData: {
         options: options

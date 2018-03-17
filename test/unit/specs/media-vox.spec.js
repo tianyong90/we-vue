@@ -8,7 +8,7 @@ describe('media-box', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(MediaBox, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('media-box', () => {
     expect(wrapper.classes()).toContain('weui-media-box')
   })
 
-  it('handle click', () => {
+  test('handle click', () => {
     const routerLinkSpy = sinon.spy()
     wrapper = shallow(MediaBox, {
       propsData: {},

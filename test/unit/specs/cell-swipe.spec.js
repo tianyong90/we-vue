@@ -10,7 +10,7 @@ describe('cell-swipe', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(CellSwipe, {
       propsData: {}
     })
@@ -19,7 +19,7 @@ describe('cell-swipe', () => {
     expect(wrapper.classes()).toContain('weui-cell')
   })
 
-  it('drag to left and show the buttons', () => {
+  test('drag to left and show the buttons', () => {
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
@@ -39,7 +39,7 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(-rightWidth)
   })
 
-  it('drag to left with a small distance', () => {
+  test('drag to left with a small distance', () => {
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
@@ -52,7 +52,7 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  it('drag to left with a distance out of range', () => {
+  test('drag to left with a distance out of range', () => {
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
@@ -72,7 +72,7 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(-rightWidth)
   })
 
-  it('drag to right and close right buttons', () => {
+  test('drag to right and close right buttons', () => {
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
@@ -92,7 +92,7 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  it('drag to right with a small distance', () => {
+  test('drag to right with a small distance', () => {
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
@@ -117,7 +117,7 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(-rightWidth)
   })
 
-  it('drag to right with a distance out of range', () => {
+  test('drag to right with a distance out of range', () => {
     wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
@@ -137,7 +137,7 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  it('clickoutside', () => {
+  test('clickoutside', () => {
     let onClickoutsideSpy = sinon.spy()
 
     wrapper = mount(CellSwipe, {

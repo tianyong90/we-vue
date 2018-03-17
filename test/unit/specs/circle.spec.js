@@ -7,7 +7,7 @@ describe('circle', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Circle, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('circle', () => {
     expect(wrapper.classes()).toContain('wv-circle')
   })
 
-  it('what value change', () => {
+  test('what value change', () => {
     wrapper = shallow(Circle, {
       propsData: {
         value: 0
@@ -30,7 +30,7 @@ describe('circle', () => {
     expect(wrapper.vm.currentValue).toBe(100)
   })
 
-  it('what currentValue change', () => {
+  test('what currentValue change', () => {
     wrapper = shallow(Circle, {
       propsData: {
         value: 0

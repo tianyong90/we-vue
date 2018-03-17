@@ -7,7 +7,7 @@ describe('panel', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Panel, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('panel', () => {
     expect(wrapper.classes()).toContain('weui-panel')
   })
 
-  it('render with title', () => {
+  test('render with title', () => {
     wrapper = shallow(Panel, {
       propsData: {
         title: 'test-title'

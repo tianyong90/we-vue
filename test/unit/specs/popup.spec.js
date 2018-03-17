@@ -7,7 +7,7 @@ describe('popup', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Popup, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('popup', () => {
     expect(wrapper.classes()).toContain('wv-popup')
   })
 
-  it('create a popup that is visible', () => {
+  test('create a popup that is visible', () => {
     wrapper = shallow(Popup, {
       attachToDocument: true,
       propsData: {
@@ -31,7 +31,7 @@ describe('popup', () => {
     })
   })
 
-  it('computed style', () => {
+  test('computed style', () => {
     wrapper = shallow(Popup, {
       propsData: {
         height: 100

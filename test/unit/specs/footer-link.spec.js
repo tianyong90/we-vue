@@ -8,7 +8,7 @@ describe('footer-link', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(FooterLink, {
       propsData: {}
     })
@@ -17,7 +17,7 @@ describe('footer-link', () => {
     expect(wrapper.classes()).toContain('weui-footer__link')
   })
 
-  it('text', () => {
+  test('text', () => {
     wrapper = shallow(FooterLink, {
       propsData: {
         text: 'test'
@@ -27,7 +27,7 @@ describe('footer-link', () => {
     expect(wrapper.text()).toBe('test')
   })
 
-  it('handle click', () => {
+  test('handle click', () => {
     const routerLinkSpy = sinon.spy()
     wrapper = shallow(FooterLink, {
       propsData: {},

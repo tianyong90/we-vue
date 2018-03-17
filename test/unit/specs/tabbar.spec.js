@@ -7,7 +7,7 @@ describe('tabbar', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Tabbar, {
       propsData: {}
     })
@@ -16,7 +16,7 @@ describe('tabbar', () => {
     expect(wrapper.classes()).toContain('weui-tabbar')
   })
 
-  it('fixed tabbar', () => {
+  test('fixed tabbar', () => {
     // is not fixed by default
     wrapper = shallow(Tabbar, {
       propsData: {}

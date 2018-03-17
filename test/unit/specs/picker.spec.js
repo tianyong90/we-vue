@@ -24,7 +24,7 @@ describe('picker', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Picker, {
       propsData: {
         visible: true,
@@ -35,7 +35,7 @@ describe('picker', () => {
     expect(wrapper.name()).toBe('wv-picker')
   })
 
-  it('create a single-column picker', () => {
+  test('create a single-column picker', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -293,7 +293,7 @@ describe('picker-column', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = mount(PickerColumn, {
       propsData: {}
     })

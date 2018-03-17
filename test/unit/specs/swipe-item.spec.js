@@ -10,7 +10,7 @@ describe('swipe', () => {
     parentWrapper && parentWrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     parentWrapper = mount(Swipe, {
       propsData: {}
     })

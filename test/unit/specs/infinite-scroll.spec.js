@@ -9,7 +9,7 @@ describe('infinite-scroll', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', (done) => {
+  test('create', (done) => {
     const loadMoreSpy = sinon.spy()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
@@ -31,7 +31,7 @@ describe('infinite-scroll', () => {
   })
 
   // TODO:
-  it('test loadMore function', (done) => {
+  test('test loadMore function', (done) => {
     const loadMoreSpy = sinon.spy(function () {
       wrapper.vm.list = wrapper.vm.list.concat([{id: 1}, {id: 2}, {id: 3}])
       wrapper.vm.disabled = true
@@ -57,7 +57,7 @@ describe('infinite-scroll', () => {
     }, 500)
   })
 
-  it('test disabled', (done) => {
+  test('test disabled', (done) => {
     const loadMoreSpy = sinon.spy()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
@@ -84,25 +84,28 @@ describe('infinite-scroll', () => {
     }, 600)
   })
 
-  it('when scrollTarget is hidden, the loadMore callback should not be called', (done) => {
-    const loadMoreSpy = sinon.spy()
-    wrapper = mount(InfiniteScrollComponent, {
-      attachToDocument: true,
-      propsData: {
-        disabled: false,
-        hidden: true,
-        list: [],
-        onLoadMore: loadMoreSpy
-      }
-    })
+  test(
+    'when scrollTarget is hidden, the loadMore callback should not be called',
+    (done) => {
+      const loadMoreSpy = sinon.spy()
+      wrapper = mount(InfiniteScrollComponent, {
+        attachToDocument: true,
+        propsData: {
+          disabled: false,
+          hidden: true,
+          list: [],
+          onLoadMore: loadMoreSpy
+        }
+      })
 
-    setTimeout(() => {
-      expect(loadMoreSpy.called).toBe(false)
-      done()
-    }, 500)
-  })
+      setTimeout(() => {
+        expect(loadMoreSpy.called).toBe(false)
+        done()
+      }, 500)
+    }
+  )
 
-  it('don not loadmore when mounted, immedialateCheck === false', (done) => {
+  test('don not loadmore when mounted, immedialateCheck === false', (done) => {
     const loadMoreSpy = sinon.spy()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,

@@ -13,7 +13,7 @@ describe('radio', () => {
     wrapper && wrapper.destroy()
   })
 
-  it('create', () => {
+  test('create', () => {
     wrapper = shallow(Radio, {
       propsData: {
         options: testOptions
@@ -35,7 +35,7 @@ describe('radio', () => {
     expect(wrapper.find('.weui-cells__title').text()).toBe('test title')
   })
 
-  it('options', () => {
+  test('options', () => {
     wrapper = shallow(Radio, {
       propsData: {
         value: 'value2',
@@ -54,7 +54,7 @@ describe('radio', () => {
     expect(wrapper.findAll('input').at(2).attributes().value).toBe('option3')
   })
 
-  it('watch currentValue', () => {
+  test('watch currentValue', () => {
     wrapper = shallow(Radio, {
       propsData: {
         options: testOptions
@@ -69,7 +69,7 @@ describe('radio', () => {
     expect(wrapper.emitted().change).toBeTruthy()
   })
 
-  it('watch value', () => {
+  test('watch value', () => {
     wrapper = shallow(Radio, {
       propsData: {
         options: testOptions
