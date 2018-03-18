@@ -133,8 +133,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  // TODO
-  test.skip('drag time picker', done => {
+  test('drag time picker', done => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -155,7 +154,7 @@ describe('datetime-picker', () => {
       expect(wrapper.vm.currentValue).toEqual('13:01')
 
       slowVerticalDrag(hourColumn, 0, -34 * 5)
-      expect(wrapper.vm.currentValue).toEqual('19:01')
+      expect(wrapper.vm.currentValue).toEqual('18:01')
 
       // hour will be 23
       slowVerticalDrag(hourColumn, 0, -34 * 10)

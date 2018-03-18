@@ -107,14 +107,17 @@ export default create({
     onTouchend () {
       this.transition = 'all 200ms ease'
 
+      // when the moving distance is smaller than 20,
+      // the state of the cell-swipe will recover
       if (Math.abs(this.deltaX) < 20) {
         this.offset = this.startOffset
-      } else {
-        if (this.startOffset < 0 && this.deltaX > 0) {
-          this.offset = 0
-        } else if (this.startOffset === 0 && this.deltaX < 0) {
-          this.offset = -this.rightWidth
-        }
+        return
+      }
+
+      if (this.startOffset < 0 && this.deltaX > 0) {
+        this.offset = 0
+      } else if (this.startOffset === 0 && this.deltaX < 0) {
+        this.offset = -this.rightWidth
       }
     },
 
