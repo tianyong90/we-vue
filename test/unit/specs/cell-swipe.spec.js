@@ -137,28 +137,20 @@ describe('cell-swipe', () => {
   })
 
   test('clickoutside', () => {
-    let onClickoutsideSpy = jest.fn()
-
     wrapper = mount(CellSwipe, {
+      attachToDocument: true
+    })
+
+    const anOtherWrapper = mount(CellSwipe, {
       attachToDocument: true,
-      slots: {
-        right: [CellSwipeButtonComponent, CellSwipeButtonComponent]
-      },
-      methods: {
-        onClickoutside: onClickoutsideSpy
+      data: {
+        offset: 10
       }
     })
 
-    let wrapper2 = mount(CellSwipe, {
-      attachToDocument: true,
-      slots: {
-        right: [CellSwipeButtonComponent, CellSwipeButtonComponent]
-      }
-    })
+    // click warpper, the other cell-swipe's offset should be reset to 0
+    wrapper.trigger('touchstart')
 
-    // click at a point that outside the cell (like the body element)
-    wrapper2.trigger('touchstart')
-
-    expect(onClickoutsideSpy).toHaveBeenCalled()
+    expect(anOtherWrapper.vm.offset).toBe(0)
   })
 })
