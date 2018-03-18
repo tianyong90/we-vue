@@ -5,7 +5,6 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
-const progressBarPlugin = require('progress-bar-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   output: {
@@ -26,7 +25,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
-    new progressBarPlugin(),
     new webpack.DefinePlugin({
       'process.env': require('../config/test.env')
     })

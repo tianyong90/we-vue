@@ -44,9 +44,11 @@ describe('utils scroll', () => {
     setTimeout(fn, 50) // callback should NOT be called
     setTimeout(fn, 151) // callback should be called
 
-    jest.advanceTimersByTime(500)
+    jest.runAllTimers()
 
     expect(callback).toHaveBeenCalledTimes(2)
+
+    jest.clearAllTimers()
   })
 
   test('getScrollEventTarget method', () => {
@@ -102,15 +104,17 @@ describe('utils scroll', () => {
     const element = {getBoundingClientRect: () => {}}
 
     const getBoundingClientRectStub = jest.spyOn(element, 'getBoundingClientRect')
-    getBoundingClientRectStub.returns({ top: 10 })
+    getBoundingClientRectStub.mockReturnValue({ top: 10 })
 
     const getScrollTopStub = jest.spyOn(ScrollUtil, 'getScrollTop')
-    getScrollTopStub.withArgs(window).returns(10)
+    getScrollTopStub.mockReturnValue(10)
 
     expect(ScrollUtil.getElementTop(element)).toBe(20)
 
-    getBoundingClientRectStub.restore()
-    getScrollTopStub.restore()
+    getBoundingClientRectStub.mockReset()
+    getBoundingClientRectStub.mockRestore()
+    getScrollTopStub.mockReset()
+    getScrollTopStub.mockRestore()
   })
 
   test('getVisibleHeight method', () => {
@@ -119,11 +123,12 @@ describe('utils scroll', () => {
 
     const element = {getBoundingClientRect: () => {}}
 
-    const getBoundingClientRectStub = jest.spyOn(element, 'getBoundingClientRect')
-    getBoundingClientRectStub.returns({ height: 10 })
+    const spy = jest.spyOn(element, 'getBoundingClientRect')
+    spy.mockReturnValue({ height: 10 })
 
     expect(ScrollUtil.getVisibleHeight(element)).toBe(10)
 
-    getBoundingClientRectStub.restore()
+    spy.mockReset()
+    spy.mockRestore()
   })
 })

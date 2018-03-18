@@ -25,16 +25,6 @@ export function triggerTouch (wrapper, eventName, x, y) {
   el.dispatchEvent(event)
 }
 
-// drag an element to a point and release, or meant swipe
-export function dragHelper (el, x, y) {
-  triggerTouch(el, 'touchstart', 0, 0)
-  triggerTouch(el, 'touchmove', x / 4, y / 4)
-  triggerTouch(el, 'touchmove', x / 3, y / 3)
-  triggerTouch(el, 'touchmove', x / 2, y / 2)
-  triggerTouch(el, 'touchmove', x, y)
-  triggerTouch(el, 'touchend', x, y)
-}
-
 export function verticalDrag (el, startY = 0, endY) {
   triggerTouch(el, 'touchstart', 0, startY)
   triggerTouch(el, 'touchmove', 0, (startY + endY) / 4)
@@ -66,15 +56,13 @@ export function slowVerticalDrag (el, startY, endY) {
   const clock = sinon.useFakeTimers()
 
   triggerTouch(el, 'touchstart', 0, startY)
-  clock.tick(500)
-  triggerTouch(el, 'touchmove', 0, (startY + endY) / 4)
-  clock.tick(500)
-  triggerTouch(el, 'touchmove', 0, (startY + endY) / 3)
-  clock.tick(500)
-  triggerTouch(el, 'touchmove', 0, (startY + endY) / 2)
-  clock.tick(500)
+  clock.tick(1000)
+  triggerTouch(el, 'touchmove', 0, startY + (endY - startY) / 3)
+  clock.tick(1000)
+  triggerTouch(el, 'touchmove', 0, startY + (endY - startY) * 2 / 3)
+  clock.tick(1000)
   triggerTouch(el, 'touchmove', 0, endY)
-  clock.tick(500)
+  clock.tick(1000)
   triggerTouch(el, 'touchend', 0, endY)
 
   clock.restore()
