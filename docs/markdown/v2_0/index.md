@@ -7,8 +7,6 @@
 
 ## 安装
 
-在正式版发布之前，请使用 `next` tag 来安装最新的测试版。
-
 ```bash
 // npm
 $ npm install we-vue --save
