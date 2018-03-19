@@ -11,10 +11,10 @@
 
 ```bash
 // npm
-$ npm install we-vue@next --save
+$ npm install we-vue --save
 
 // yarn
-$ yarn add we-vue@next
+$ yarn add we-vue
 ```
 
 ## 关于事件绑定
