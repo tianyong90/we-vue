@@ -45,8 +45,6 @@ const Dialog = options => {
       ...defaultOptions,
       ...options
     })
-
-    console.log(instance.visible)
   })
 }
 

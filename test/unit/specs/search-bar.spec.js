@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallow, mount } from '@vue/test-utils'
 import SearchBar from '@/components/search-bar'
 
 describe('search', () => {
@@ -97,7 +97,7 @@ describe('search', () => {
   })
 
   test('click result', () => {
-    wrapper = shallow(SearchBar, {
+    wrapper = mount(SearchBar, {
       attachToDocument: true,
       propsData: {
         result: [1, 2, 3]
