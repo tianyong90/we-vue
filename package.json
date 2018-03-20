@@ -34,9 +34,10 @@
     "dev": "npm run build:entry && webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "dev:docs": "webpack-dev-server --inline --progress --config build/webpack.docsdev.conf.js",
     "lint": "eslint --ext .js,.vue src example docs test/unit/specs",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "unit": "jest --config=test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
-    "test:watch": "jest --config test/unit/jest.conf.js --coverage --watchAll",
+    "test:watch": "jest --config=test/unit/jest.conf.js --coverage --watchAll",
+    "test:ci": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=1",
     "coverage": "opener test/unit/coverage/lcov-report/index.html",
     "pub": "node build/release.js"
   },
