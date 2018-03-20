@@ -26,9 +26,7 @@ describe('popup', () => {
 
     expect(wrapper.classes()).toContain('wv-popup')
 
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.element.style.display).toBe('block')
-    })
+    expect(wrapper.isVisible()).toBeTruthy()
   })
 
   test('computed style', () => {
