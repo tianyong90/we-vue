@@ -1,5 +1,6 @@
 import { shallow, mount } from '@vue/test-utils'
 import SearchBar from '@/components/search-bar'
+import Cell from '@/components/cell'
 
 describe('search', () => {
   let wrapper
@@ -104,7 +105,7 @@ describe('search', () => {
       }
     })
 
-    wrapper.find('wv-cell').trigger('click')
+    wrapper.find(Cell).trigger('click')
 
     expect(wrapper.emitted()['click-result']).toBeTruthy()
     expect(wrapper.emitted()['click-result']).toEqual([[1]])

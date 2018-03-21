@@ -44,13 +44,13 @@
 
 <script>
 import { create } from '../../utils'
-import Cell from '../cell/index'
+import WvCell from '../cell/index'
 
 export default create({
   name: 'wv-search-bar',
 
   components: {
-    Cell
+    WvCell
   },
 
   props: {
