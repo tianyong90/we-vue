@@ -11,7 +11,10 @@
           >
             <h2 class="title" v-html="navItem.title"/>
 
-            <div v-for="group in navItem.groups">
+            <div
+              v-for="(group, index) in navItem.groups"
+              :key="index"
+            >
               <div class="group-name" v-text="group.groupName" v-if="group.groupName"></div>
               <ul class="sub-tree">
                 <li>
