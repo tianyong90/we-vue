@@ -1,5 +1,3 @@
-import sinon from 'sinon'
-
 // 触发一个 touch 事件
 export function triggerTouch (wrapper, eventName, x, y) {
   const el = wrapper.element ? wrapper.element : wrapper
@@ -53,19 +51,12 @@ export function horizontalDrag (el, startX = 0, endX) {
  * @param endY
  */
 export function slowVerticalDrag (el, startY, endY) {
-  const clock = sinon.useFakeTimers()
-
   triggerTouch(el, 'touchstart', 0, startY)
-  clock.tick(1000)
   triggerTouch(el, 'touchmove', 0, startY + (endY - startY) / 3)
-  clock.tick(1000)
   triggerTouch(el, 'touchmove', 0, startY + (endY - startY) * 2 / 3)
-  clock.tick(1000)
   triggerTouch(el, 'touchmove', 0, endY)
-  clock.tick(1000)
+  triggerTouch(el, 'touchmove', 0, endY)
   triggerTouch(el, 'touchend', 0, endY)
-
-  clock.restore()
 }
 
 // drag an emelent to a point but DO NOT release

@@ -170,6 +170,8 @@ export default create({
       this.velocity = (touch.clientY - this.prevY) / (currentTime - this.prevTime)
       this.prevY = currentY
       this.prevTime = currentTime
+
+      console.log('v=' + this.velocity)
     },
 
     onTouchend () {
@@ -177,9 +179,17 @@ export default create({
 
       const endOffset = this.offset + this.velocity * 150
 
+      console.log(this.offset)
+      console.log(this.velocity)
+      console.log(endOffset)
+
       const index = this.offsetToIndex(endOffset)
 
+      console.log('index = ' + index)
+
       this.setIndex(index, true)
+      console.log(this.currentIndex)
+      console.log(this.options)
     },
 
     onClick (event) {
