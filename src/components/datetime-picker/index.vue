@@ -321,13 +321,10 @@ export default create({
   },
 
   mounted () {
-    this.currentValue = this.value
     if (!this.value) {
-      if (this.type.indexOf('date') > -1) {
-        this.currentValue = this.startDate
-      } else {
-        this.currentValue = `${('0' + this.startHour).slice(-2)}:00`
-      }
+      this.currentValue = this.type.indexOf('date') > -1 ? this.startDate : `${('0' + this.startHour).slice(-2)}:00`
+    } else {
+      this.currentValue = this.value
     }
     this.updateSlotValue(this.currentValue)
   },
