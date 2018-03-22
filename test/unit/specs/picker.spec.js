@@ -487,6 +487,34 @@ describe('picker-column', () => {
     }, 50)
   })
 
+  test('watch options', (done) => {
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [
+          {
+            values: [1, 2, 3],
+            defaultIndex: 0
+          }
+        ]
+      }
+    })
+
+    const pickerColumnWrapper = wrapper.find(PickerColumn)
+
+    const setIndexSpy = jest.spyOn(pickerColumnWrapper.vm, 'setIndex')
+
+    setTimeout(() => {
+      pickerColumnWrapper.setProps({
+        options: [1, 2]
+      })
+
+      expect(setIndexSpy).toHaveBeenCalledWith(0)
+      done()
+    }, 50)
+  })
+
   test('test setValue method', (done) => {
     wrapper = mount(Picker, {
       attachToDocument: true,
