@@ -48,8 +48,6 @@ export function horizontalDrag (el, startX = 0, endX) {
  *
  * because it hard to test PICKER component when the velocity is too big.
  *
- * in order to simulate the slowly drag, we add a time interval between the second and the third touchmove event.
- *
  * @param el
  * @param startY
  * @param endY
@@ -57,26 +55,17 @@ export function horizontalDrag (el, startX = 0, endX) {
 export function slowVerticalDrag (el, startY, endY) {
   const clock = sinon.useFakeTimers(new Date())
 
-  // jest.useFakeTimers()
-
   triggerTouch(el, 'touchstart', 0, startY)
   triggerTouch(el, 'touchmove', 0, startY + (endY - startY) / 3)
   triggerTouch(el, 'touchmove', 0, startY + (endY - startY) * 2 / 3)
 
-  console.log('start')
-  console.log(new Date())
-
-  clock.tick(6000)
-  // jest.advanceTimersByTime(5000)
+  // in order to simulate the slowly drag, we add a time interval between the second and the third touchmove event.
+  clock.tick(3000)
 
   triggerTouch(el, 'touchmove', 0, endY)
   triggerTouch(el, 'touchend', 0, endY)
-  console.log('end')
-  console.log(new Date())
 
   clock.restore()
-
-  // jest.clearAllTimers()
 }
 
 // drag an emelent to a point but DO NOT release

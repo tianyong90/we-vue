@@ -9,7 +9,7 @@
   <a href="https://codecov.io/github/tianyong90/we-vue?branch=master"><img src="https://img.shields.io/codecov/c/github/tianyong90/we-vue/master.svg"></a>
 </p>
 
-we-vue 是一套基于vue.js 的移动关组件库，结合 weui.css 样式库，封装了一系列组件，非常适于微信公众号等移动端开发。
+we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui.css 样式库，封装了一系列组件，非常适于微信公众号等移动端开发。
 
 ## 特性
 
@@ -54,7 +54,11 @@ $ cd we-vue && npm install
 3. 运行本地服务并开发
 
 ```shell
+// 开发组件及 demo
 $ npm run dev
+
+// 开发在线文档
+$ npm run dev:docs
 ```
 
 ## 参与贡献

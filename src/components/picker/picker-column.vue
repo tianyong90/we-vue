@@ -115,7 +115,6 @@ export default create({
   },
 
   mounted () {
-    console.log('current value ' + this.currentValue)
     this.setIndex(this.currentIndex)
   },
 
@@ -171,16 +170,20 @@ export default create({
       this.velocity = (touch.clientY - this.prevY) / (currentTime - this.prevTime)
       this.prevY = currentY
       this.prevTime = currentTime
-
-      console.log('v = ' + this.velocity)
     },
 
     onTouchend () {
       this.transition = 'all 150ms ease'
 
+      console.log('index = ' + this.currentIndex)
+
       const endOffset = this.offset + this.velocity * 150
 
+      console.log('velocity = ', this.velocity)
+
       const index = this.offsetToIndex(endOffset)
+
+      console.log('index = ' + index)
 
       this.setIndex(index, true)
     },

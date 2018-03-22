@@ -8,19 +8,15 @@ const testDate = new Date('2018/01/01 19:00')
 describe('datetime-picker', () => {
   let wrapper
 
-  beforeEach(() => {
-    // jest.useFakeTimers()
-  })
-
   afterEach(() => {
     wrapper && wrapper.destroy()
-    // jest.clearAllTimers()
   })
 
-  test('create a datetime picker', () => {
+  test('create datetime picker', () => {
     let date = new Date()
 
     wrapper = mount(DatetimePicker, {
+      attachToDocument: true,
       propsData: {
         type: 'datetime',
         value: date
@@ -28,22 +24,29 @@ describe('datetime-picker', () => {
     })
 
     expect(wrapper.name()).toBe('wv-datetime-picker')
+    expect(wrapper.findAll('.weui-picker__group').length).toBe(5)
   })
 
   test('create date picker', () => {
     wrapper = mount(DatetimePicker, {
+      attachToDocument: true,
       propsData: {
         type: 'date'
       }
     })
+
+    expect(wrapper.findAll('.weui-picker__group').length).toBe(3)
   })
 
   test('create time picker', () => {
     wrapper = mount(DatetimePicker, {
+      attachToDocument: true,
       propsData: {
         type: 'time'
       }
     })
+
+    expect(wrapper.findAll('.weui-picker__group').length).toBe(2)
   })
 
   test('test open and close method', () => {
@@ -105,7 +108,7 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.getTrueValue('A2018年')).toBe(2018)
   })
 
-  test('test onConfirm', done => {
+  test('onConfirm', done => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -122,7 +125,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  test('test onCancel', done => {
+  test('onCancel', done => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
@@ -177,8 +180,6 @@ describe('datetime-picker', () => {
 
   // TODO
   test('drag datetime picker', () => {
-    // expect.assertions(1)
-
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -195,21 +196,21 @@ describe('datetime-picker', () => {
     const hourColumn = wrapper.findAll('.weui-picker__group').at(3)
     const minuteColumn = wrapper.findAll('.weui-picker__group').at(4)
 
-    // jest.useFakeTimers()
+    let index = yearColumn.vm
 
     slowVerticalDrag(yearColumn, 0, -34)
-    // jest.runAllTimers()
-    // // slowVerticalDrag(monthColumn, 0, -34)
-    // // slowVerticalDrag(dateColumn, 0, -34)
-    // // slowVerticalDrag(hourColumn, 0, -34)
-    // // slowVerticalDrag(minuteColumn, 0, -34)
+    // slowVerticalDrag(monthColumn, 0, -34)
+    // slowVerticalDrag(dateColumn, 0, -34)
+    // slowVerticalDrag(hourColumn, 0, -34)
+    // slowVerticalDrag(minuteColumn, 0, -34)
 
+    // index = yearColumn.vm.currentIndex
 
-    // expect(wrapper.vm.currentValue.getFullYear()).toBe(testDate.getFullYear() + 1)
-    // // expect(wrapper.vm.currentValue.getMonth()).toBe(testDate.getMonth() + 1)
-    // // expect(wrapper.vm.currentValue.getDate()).toBe(testDate.getDate() + 1)
-    // // expect(wrapper.vm.currentValue.getHours()).toBe(testDate.getHours() + 1)
-    // // expect(wrapper.vm.currentValue.getMinutes()).toBe(testDate.getMinutes() + 1)
+    expect(wrapper.vm.currentValue.getFullYear()).toBe(testDate.getFullYear() + 1)
+    // expect(wrapper.vm.currentValue.getMonth()).toBe(testDate.getMonth() + 1)
+    // expect(wrapper.vm.currentValue.getDate()).toBe(testDate.getDate() + 1)
+    // expect(wrapper.vm.currentValue.getHours()).toBe(testDate.getHours() + 1)
+    // expect(wrapper.vm.currentValue.getMinutes()).toBe(testDate.getMinutes() + 1)
   }, 10000)
 
   // TODO

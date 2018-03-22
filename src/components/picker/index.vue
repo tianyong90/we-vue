@@ -99,6 +99,13 @@ export default create({
 
   created () {
     this.initialize()
+
+    console.log('created')
+  },
+
+  mounted () {
+    console.log('mounted')
+    console.log(this.value)
   },
 
   methods: {
@@ -186,9 +193,13 @@ export default create({
     value (val) {
       this.setValues(val)
       this.currentValue = val
+
+      console.log('hehe')
     },
 
     currentValue (val) {
+      console.log('hehe')
+
       this.$emit('input', val)
     }
   }

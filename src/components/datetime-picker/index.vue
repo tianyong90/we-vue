@@ -324,8 +324,11 @@ export default create({
     if (!this.value) {
       this.currentValue = this.type.indexOf('date') > -1 ? this.startDate : `${('0' + this.startHour).slice(-2)}:00`
     } else {
+      console.log('date value', this.value)
       this.currentValue = this.value
     }
+
+    // TODO: 根据 currentValue 设置 slotvalue 同时，注意 defaultIndex
     this.updateSlotValue(this.currentValue)
   },
 
