@@ -142,7 +142,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  test('drag time picker', done => {
+  test('drag time picker', () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -152,7 +152,7 @@ describe('datetime-picker', () => {
       }
     })
 
-    setTimeout(() => {
+    wrapper.vm.$nextTick(() => {
       const hourColumn = wrapper.findAll('.weui-picker__group').at(0)
       const minuteColumn = wrapper.findAll('.weui-picker__group').at(1)
 
@@ -173,12 +173,9 @@ describe('datetime-picker', () => {
       slowVerticalDrag(hourColumn, 0, 34 * 24)
       slowVerticalDrag(minuteColumn, 0, 34 * 10)
       expect(wrapper.vm.currentValue).toEqual('0:00')
-
-      done()
-    }, 50)
+    })
   })
 
-  // TODO
   test('drag datetime picker', () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -188,33 +185,30 @@ describe('datetime-picker', () => {
       }
     })
 
-    expect(wrapper.vm.currentValue).toEqual(testDate)
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.vm.currentValue).toEqual(testDate)
 
-    const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
-    const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
-    const dateColumn = wrapper.findAll('.weui-picker__group').at(2)
-    const hourColumn = wrapper.findAll('.weui-picker__group').at(3)
-    const minuteColumn = wrapper.findAll('.weui-picker__group').at(4)
+      const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
+      const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
+      const dateColumn = wrapper.findAll('.weui-picker__group').at(2)
+      const hourColumn = wrapper.findAll('.weui-picker__group').at(3)
+      const minuteColumn = wrapper.findAll('.weui-picker__group').at(4)
 
-    let index = yearColumn.vm
+      slowVerticalDrag(yearColumn, 0, -34)
+      slowVerticalDrag(monthColumn, 0, -34)
+      slowVerticalDrag(dateColumn, 0, -34)
+      slowVerticalDrag(hourColumn, 0, -34)
+      slowVerticalDrag(minuteColumn, 0, -34)
 
-    slowVerticalDrag(yearColumn, 0, -34)
-    // slowVerticalDrag(monthColumn, 0, -34)
-    // slowVerticalDrag(dateColumn, 0, -34)
-    // slowVerticalDrag(hourColumn, 0, -34)
-    // slowVerticalDrag(minuteColumn, 0, -34)
-
-    // index = yearColumn.vm.currentIndex
-
-    expect(wrapper.vm.currentValue.getFullYear()).toBe(testDate.getFullYear() + 1)
-    // expect(wrapper.vm.currentValue.getMonth()).toBe(testDate.getMonth() + 1)
-    // expect(wrapper.vm.currentValue.getDate()).toBe(testDate.getDate() + 1)
-    // expect(wrapper.vm.currentValue.getHours()).toBe(testDate.getHours() + 1)
-    // expect(wrapper.vm.currentValue.getMinutes()).toBe(testDate.getMinutes() + 1)
+      expect(wrapper.vm.currentValue.getFullYear()).toBe(testDate.getFullYear() + 1)
+      expect(wrapper.vm.currentValue.getMonth()).toBe(testDate.getMonth() + 1)
+      expect(wrapper.vm.currentValue.getDate()).toBe(testDate.getDate() + 1)
+      expect(wrapper.vm.currentValue.getHours()).toBe(testDate.getHours() + 1)
+      expect(wrapper.vm.currentValue.getMinutes()).toBe(testDate.getMinutes() + 1)
+    })
   }, 10000)
 
-  // TODO
-  test.skip('drag date picker', () => {
+  test('drag date picker', () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -223,19 +217,21 @@ describe('datetime-picker', () => {
       }
     })
 
-    expect(wrapper.vm.currentValue).toEqual(testDate)
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.vm.currentValue).toEqual(testDate)
 
-    const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
-    const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
-    const date = wrapper.findAll('.weui-picker__group').at(2)
+      const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
+      const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
+      const date = wrapper.findAll('.weui-picker__group').at(2)
 
-    slowVerticalDrag(yearColumn, 0, -34)
-    slowVerticalDrag(monthColumn, 0, -34)
-    slowVerticalDrag(date, 0, -34)
+      slowVerticalDrag(yearColumn, 0, -34)
+      slowVerticalDrag(monthColumn, 0, -34)
+      slowVerticalDrag(date, 0, -34)
 
-    expect(wrapper.vm.currentValue.getFullYear()).toEqual(testDate.getFullYear() + 1)
-    expect(wrapper.vm.currentValue.getMonth()).toEqual(testDate.getMonth() + 1)
-    expect(wrapper.vm.currentValue.getDate()).toEqual(testDate.getDate() + 1)
+      expect(wrapper.vm.currentValue.getFullYear()).toEqual(testDate.getFullYear() + 1)
+      expect(wrapper.vm.currentValue.getMonth()).toEqual(testDate.getMonth() + 1)
+      expect(wrapper.vm.currentValue.getDate()).toEqual(testDate.getDate() + 1)
+    })
   })
 
   test('watch value change', done => {

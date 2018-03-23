@@ -30,6 +30,8 @@ const range = (num, min, max) => Math.min(Math.max(num, min), max)
 
 // height of th option item
 const ITEM_HEIGHT = 34
+// default transition
+const DEFAULT_TRANSITION = 'all 150ms ease'
 
 export default create({
   name: 'wv-picker-column',
@@ -61,7 +63,6 @@ export default create({
 
   data () {
     return {
-      startTime: null,
       startY: 0,
       startOffset: 0,
       offset: 0,
@@ -124,11 +125,7 @@ export default create({
 
   methods: {
     getOptionText (item) {
-      if (typeof item === 'object') {
-        return item[this.valueKey]
-      } else {
-        return item
-      }
+      return typeof item === 'object' ? item[this.valueKey] : item
     },
 
     isDisabled (item) {
@@ -148,7 +145,6 @@ export default create({
     onTouchstart (event) {
       const touch = getTouch(event)
 
-      this.startTime = new Date()
       this.startOffset = this.offset
       this.startY = touch.clientY
       this.prevY = touch.clientY
@@ -173,17 +169,11 @@ export default create({
     },
 
     onTouchend () {
-      this.transition = 'all 150ms ease'
-
-      console.log('index = ' + this.currentIndex)
+      this.transition = DEFAULT_TRANSITION
 
       const endOffset = this.offset + this.velocity * 150
 
-      console.log('velocity = ', this.velocity)
-
       const index = this.offsetToIndex(endOffset)
-
-      console.log('index = ' + index)
 
       this.setIndex(index, true)
     },
@@ -191,7 +181,7 @@ export default create({
     onClick (event) {
       const indicator = this.$refs.indicator
 
-      this.transition = 'all 150ms ease'
+      this.transition = DEFAULT_TRANSITION
 
       // treat the event as 'click' when the moving distance is shorter than 10px
       const indicatorRect = indicator.getBoundingClientRect()

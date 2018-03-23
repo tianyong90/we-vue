@@ -99,13 +99,6 @@ export default create({
 
   created () {
     this.initialize()
-
-    console.log('created')
-  },
-
-  mounted () {
-    console.log('mounted')
-    console.log(this.value)
   },
 
   methods: {
@@ -151,7 +144,7 @@ export default create({
 
     setValues (values) {
       if (this.columnCount !== values.length) {
-        throw new Error('values length is not equal columns count.')
+        throw new Error('Length values is not equal to columns count.')
       }
 
       values.forEach((value, index) => {
@@ -193,13 +186,9 @@ export default create({
     value (val) {
       this.setValues(val)
       this.currentValue = val
-
-      console.log('hehe')
     },
 
     currentValue (val) {
-      console.log('hehe')
-
       this.$emit('input', val)
     }
   }

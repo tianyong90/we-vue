@@ -159,7 +159,7 @@ describe('picker', () => {
     try {
       wrapper.vm.setValues([])
     } catch (e) {
-      expect(e.message).toEqual('values length is not equal columns count.')
+      expect(e.message).toEqual('Length values is not equal to columns count.')
     }
 
     setTimeout(() => {
