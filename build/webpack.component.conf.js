@@ -14,6 +14,7 @@ const env = process.env.NODE_ENV === 'testing'
   : config.build.env
 
 const webpackConfig = merge(baseWebpackConfig, {
+  mode: 'production',
   entry: componentsEntry,
   module: {
     rules: utils.styleLoaders({

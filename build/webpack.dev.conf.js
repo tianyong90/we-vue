@@ -15,6 +15,7 @@ const HOST = myLocalIp()
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
+  mode: 'development',
   entry: {
     example: './example/main.js'
   },
