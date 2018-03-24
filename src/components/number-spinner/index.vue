@@ -180,15 +180,14 @@ export default create({
 
 <style scoped lang="scss">
   .wv-number-spinner {
-    display: block;
-    min-width: 100%;
+    display: flex;
     font-size: 13px;
+    background-color: #ccc;
+    height: 1.5em;
+    width: auto;
     overflow: hidden;
-    position: relative;
 
     input {
-      display: block;
-      float: left;
       border: none;
       outline: none;
       padding: 0 .5em;
@@ -199,13 +198,13 @@ export default create({
       border-radius: .25rem;
       top: 0.0625rem;
       bottom: 0.0625rem;
-      position: absolute;
       background-color: transparent;
-      width: 2.5em;
+      width: 1.5em;
+      position: relative;
 
       &::before,
       &::after {
-        background-color: #111;
+        background-color: #333;
         content: "";
         position: absolute;
         left: 50%;
@@ -225,16 +224,20 @@ export default create({
       }
     }
 
-    .btn-decrease {
-      border-right: 1px solid #ccc;
+    .btn-decrease::after {
+      display: none;
     }
 
-    .btn-increase {
-      border-left: 1px solid #ccc;
-    }
+    /*.btn-decrease {*/
+      /*border-right: 1px solid #ccc;*/
+    /*}*/
 
-    .spinner-btn[disabled] {
-      color: #888;
-    }
+    /*.btn-increase {*/
+      /*border-left: 1px solid #ccc;*/
+    /*}*/
+
+    /*.spinner-btn[disabled] {*/
+      /*color: #888;*/
+    /*}*/
   }
 </style>
