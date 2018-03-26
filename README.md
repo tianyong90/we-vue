@@ -14,10 +14,10 @@ we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui.css 样式库�
 ## 特性
 
 * 35+ 个组件
-* 单元测试覆盖率超 96%
+* 单元测试覆盖率超 98%
 * 支持 `babel-plugin-import` 和 `babel-plugin-component`
-* 完善的在线中文文档
-* 每个组件都有在线示例，示例源码也在本项目中
+* 完善的在线文档
+* 详细的在线示例
 
 ### [在线文档（https://wevue.org）](https://wevue.org)
 
@@ -42,7 +42,11 @@ $ yarn add we-vue -S
 1. 克隆代码
 
 ```shell
+// GitHub
 $ git clone https://github.com/tianyong90/we-vue.git
+
+// 码云
+$ git clone https://gitee.com/tianyong/we-vue.git
 ```
 
 2. 安装依赖
