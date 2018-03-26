@@ -5,7 +5,7 @@
     v-on="listeners"
   >
     <button
-      class="spinner-btn btn-decrease"
+      class="spinner-btn btn-minus"
       @click="decrease"
       :disabled="disabled || readonly || !decreasable"
     />
@@ -23,7 +23,7 @@
       v-bind="$attrs"
       :style="inputStyle">
     <button
-      class="spinner-btn btn-increase"
+      class="spinner-btn btn-plus"
       @click="increase"
       :disabled="disabled || readonly || !increasable"
     />
@@ -179,28 +179,32 @@ export default create({
 </script>
 
 <style scoped lang="scss">
+  $border-color: #ddd;
+
   .wv-number-spinner {
     display: flex;
     font-size: 13px;
-    background-color: #ccc;
     height: 1.5em;
     width: auto;
     overflow: hidden;
+    border: 1px solid $border-color;
+    border-radius: 3px;
 
     input {
       border: none;
       outline: none;
       padding: 0 .5em;
+      font-size: 1em;
+      line-height: 1.5;
     }
 
     .spinner-btn {
-      border: 0;
-      border-radius: .25rem;
-      top: 0.0625rem;
-      bottom: 0.0625rem;
       background-color: transparent;
       width: 1.5em;
       position: relative;
+      border: none;
+      border-radius: 0;
+      outline: none;
 
       &::before,
       &::after {
@@ -224,15 +228,23 @@ export default create({
       }
     }
 
-    .btn-decrease::after {
+    .btn-minus {
+      border-right: 1px solid $border-color;
+    }
+
+    .btn-plus {
+      border-left: 1px solid $border-color;
+    }
+
+    .btn-minus::after {
       display: none;
     }
 
-    /*.btn-decrease {*/
+    /*.btn-minus {*/
       /*border-right: 1px solid #ccc;*/
     /*}*/
 
-    /*.btn-increase {*/
+    /*.btn-plus {*/
       /*border-left: 1px solid #ccc;*/
     /*}*/
 
