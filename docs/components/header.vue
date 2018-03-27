@@ -22,7 +22,7 @@
            v-if="versionPickerVisible"
       >
 
-        <span>{{ version | versionText }}</span>
+        <span class="version-number">{{ version | versionText }}</span>
         <ul class="dropdown" v-show="dropDownVisible">
           <li class="dropdown-item" @click="changeVersion('v1_6')">v1.6</li>
           <li class="dropdown-item" @click="changeVersion('v2_0')">v2.0</li>
@@ -159,12 +159,30 @@ export default {
     }
 
     .version-picker {
-      display: inline-block;
-      float: right;
+      display: block;
       padding: 0 2em;
-      background-color: #efefef;
       line-height: $header-height;
       position: relative;
+      cursor: pointer;
+      float: right;
+
+      .version-number::after {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 8px;
+        top: 45%;
+        border: 7px solid;
+        border-color:  #666 #fff #fff #fff;
+      }
+
+      &:hover {
+        .version-number::after {
+          top: 38%;
+          border-color:  #fff #fff #666 #fff;
+        }
+      }
 
       .dropdown {
         display: block;

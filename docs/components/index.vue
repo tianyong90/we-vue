@@ -4,10 +4,11 @@
     <div class="main">
       <div id="particles-js"/>
       <div class="title">WE-VUE</div>
-      <div class="slogan">简单易用的 vue 组件</div>
+      <div class="slogan">简单易用的 Vue 组件</div>
       <div class="btns">
-        <router-link to="/doc/v1_6/index" class="btn btn-quickstart">开始使用</router-link>
-        <a href="https://demo.wevue.org" class="btn btn-demo">查看示例</a>
+        <router-link to="/doc/v1_6/index" class="btn btn-quickstart">文档</router-link>
+        <a href="https://demo.wevue.org" class="btn btn-flat">示例</a>
+        <a href="https://github.com/tianyong90/we-vue" class="btn btn-flat">GitHub</a>
       </div>
       <img class="qrcode" src="../assets/demo_qrcode.png" alt="">
     </div>
@@ -144,8 +145,7 @@ export default {
   #particles-js {
     width: 100%;
     height: 100vh;
-    background: url(../assets/background.jpg) center top no-repeat;
-    background-size: cover;
+    background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
     position: absolute;
   }
 
@@ -184,12 +184,19 @@ export default {
         display: block;
         padding: .5em 1em;
         background-color: #329368;
+        border: 2px solid #329368;
         margin: 0 10px;
         color: white;
         text-decoration: none;
         font-size: 18px;
         font-weight: 500;
         float: left;
+      }
+
+      .btn-flat {
+        background: none;
+        border: 2px solid #329368;
+        color: #fff;
       }
     }
 
