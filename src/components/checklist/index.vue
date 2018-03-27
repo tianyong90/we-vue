@@ -7,7 +7,7 @@
         :key="option.label || option"
         class="weui-cell weui-check__label"
         :class="{ 'weui-check__label-disabled': option.disabled }">
-        <div class="weui-cell__hd">
+        <div class="weui-cell__hd" v-if="align === 'left'">
           <input
             type="checkbox"
             class="weui-check"
@@ -18,6 +18,15 @@
         </div>
         <div class="weui-cell__bd">
           <p v-text="option.label || option"/>
+        </div>
+        <div class="weui-cell__hd" v-if="align === 'right'">
+          <input
+            type="checkbox"
+            class="weui-check"
+            v-model="currentValue"
+            :disabled="option.disabled"
+            :value="option.value || option">
+          <i class="weui-icon-checked"/>
         </div>
       </label>
     </div>
@@ -38,7 +47,13 @@ export default create({
       }
     },
     title: String,
-    align: String,
+    align: {
+      type: String,
+      default: 'left',
+      validator: (val) => {
+        return val === 'left' || val === 'right'
+      }
+    },
     options: {
       type: Array,
       required: true

@@ -14,6 +14,14 @@
       :max="2"
       @change="onChange"
     />
+
+    <wv-checklist
+      title="右对齐"
+      align="right"
+      :options="options"
+      v-model="checkedItems3"
+      @change="onChange"
+    />
   </div>
 </template>
 
@@ -41,7 +49,8 @@ export default {
         }
       ],
       checkedItems1: ['value1'],
-      checkedItems2: ['value1', 'value3']
+      checkedItems2: ['value1', 'value3'],
+      checkedItems3: []
     }
   },
 
