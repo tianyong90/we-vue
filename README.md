@@ -68,7 +68,12 @@ $ npm run dev:docs
 
 ## 参与贡献
 
-如果你有兴趣参与贡献代码或者提出建议，请阅读 [贡献指南](https://github.com/tianyong90/we-vue/blob/master/.github/CONTRIBUTING.md)
+对于对本项目作出过贡献的朋友表示诚挚的感谢！同时也感谢提出过建议或反馈 Bug 的朋友。
+
+<a href="https://github.com/tianyong90/we-vue/graphs/contributors"><img src="https://opencollective.com/we-vue/contributors.svg?width=890" /></a>
+
+
+如果你有兴趣参与贡献代码或者提出建议，请阅读 [贡献指南](.github/CONTRIBUTING.md)
 
 ## 感谢
 
