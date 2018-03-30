@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'wv-modal',
+  name: 'modal',
 
   props: {
     visible: Boolean,

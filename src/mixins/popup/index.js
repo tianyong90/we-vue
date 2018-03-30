@@ -17,8 +17,6 @@ export default {
     closeOnClickMask: Boolean,
     // z-index
     zIndex: [String, Number],
-    // prevent touchmove scroll
-    preventScroll: Boolean,
     // prevent body scroll
     lockOnScroll: {
       type: Boolean,
@@ -29,20 +27,31 @@ export default {
   watch: {
     visible (val) {
       this[val ? 'open' : 'close']()
+    },
+
+    getContainer () {
+      this.move()
+    },
+
+    mask () {
+      this.renderMask()
     }
   },
 
-  beforeMount () {
+  created () {
     this._popupId = 'popup-' + context.plusKey('idSeed')
+    this.pos = {
+      x: 0,
+      y: 0
+    }
   },
 
-  data () {
-    return {
-      opened: false,
-      pos: {
-        x: 0,
-        y: 0
-      }
+  mounted () {
+    if (this.getContainer) {
+      this.move()
+    }
+    if (this.visible) {
+      this.open()
     }
   },
 
@@ -54,8 +63,23 @@ export default {
       }
     },
 
-    watchTouchMove (e) {
-      const {pos} = this
+    move () {
+      if (this.getContainer) {
+        this.getContainer().appendChild(this.$el)
+      } else if (this.$parent) {
+        this.$parent.$el.appendChild(this.$el)
+      }
+    },
+
+    onTouchstart (e) {
+      this.pos = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      }
+    },
+
+    onTouchmove (e) {
+      const { pos } = this
       const dx = e.touches[0].clientX - pos.x
       const dy = e.touches[0].clientY - pos.y
       const direction = dy > 0 ? '10' : '01'
@@ -82,65 +106,51 @@ export default {
     },
 
     open () {
-      if (this.opened || this.$isServer) {
+      if (this.$isServer) {
         return
       }
-
-      this.$emit('update:visible', true)
 
       // 如果属性中传入了`zIndex`，则覆盖`context`中对应的`zIndex`
       if (this.zIndex !== undefined) {
         context.zIndex = this.zIndex
       }
 
+      if (this.lockOnScroll) {
+        document.body.classList.add('wv-overflow-hidden')
+        on(document, 'touchstart', this.recordPosition)
+        on(document, 'touchmove', this.onTouchmove)
+      }
+
+      this.renderMask()
+      this.$emit('update:visible', true)
+    },
+
+    close () {
+      if (this.lockOnScroll) {
+        document.body.classList.remove('wv-overflow-hidden')
+        off(document, 'touchstart', this.onTouchstart)
+        off(document, 'touchmove', this.onTouchmove)
+      }
+
+      manager.close(this._popupId)
+      this.$emit('update:visible', false)
+    },
+
+    renderMask () {
       if (this.mask) {
-        manager.openModal(this, {
-          id: this._popupId,
-          dom: this.$el,
+        manager.open(this, {
           zIndex: context.plusKey('zIndex'),
           className: this.maskClass,
           customStyle: this.maskStyle
         })
-
-        if (this.lockOnScroll) {
-          document.body.classList.add('wv-overflow-hidden')
-        }
+      } else {
+        manager.close(this._popupId)
       }
-
       this.$el.style.zIndex = context.plusKey('zIndex')
-      this.opened = true
-
-      if (this.preventScroll) {
-        on(document, 'touchstart', this.recordPosition)
-        on(document, 'touchmove', this.watchTouchMove)
-      }
-    },
-
-    close () {
-      if (!this.opened || this.$isServer) {
-        return
-      }
-
-      this.$emit('update:visible', false)
-      this.opened = false
-      this.doAfterClose()
-    },
-
-    doAfterClose () {
-      manager.closeModal(this._popupId)
-
-      if (this.lockOnScroll) {
-        document.body.classList.remove('wv-overflow-hidden')
-      }
-
-      if (this.preventScroll) {
-        off(document, 'touchstart', this.recordPosition)
-        off(document, 'touchmove', this.watchTouchMove)
-      }
     }
   },
 
   beforeDestroy () {
-    this.doAfterClose()
+    this.close()
   }
 }

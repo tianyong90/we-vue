@@ -1,7 +1,6 @@
 const PopupContext = {
   idSeed: 1,
   zIndex: 2000,
-  instances: {},
   stack: [],
 
   plusKey (key) {
