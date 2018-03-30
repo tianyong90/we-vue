@@ -18,6 +18,7 @@ export default {
     // z-index
     zIndex: [String, Number],
     // prevent body scroll
+    getContainer: Function,
     lockOnScroll: {
       type: Boolean,
       default: true
@@ -56,13 +57,6 @@ export default {
   },
 
   methods: {
-    recordPosition (e) {
-      this.pos = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY
-      }
-    },
-
     move () {
       if (this.getContainer) {
         this.getContainer().appendChild(this.$el)
@@ -106,6 +100,7 @@ export default {
     },
 
     open () {
+      /* istanbul ignore next */
       if (this.$isServer) {
         return
       }
@@ -117,7 +112,7 @@ export default {
 
       if (this.lockOnScroll) {
         document.body.classList.add('wv-overflow-hidden')
-        on(document, 'touchstart', this.recordPosition)
+        on(document, 'touchstart', this.onTouchstart)
         on(document, 'touchmove', this.onTouchmove)
       }
 

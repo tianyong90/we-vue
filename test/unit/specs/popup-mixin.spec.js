@@ -19,7 +19,6 @@ describe('mixins/popup', () => {
     expect(wrapper.vm.$options.props).toHaveProperty('maskClass')
     expect(wrapper.vm.$options.props).toHaveProperty('closeOnClickMask')
     expect(wrapper.vm.$options.props).toHaveProperty('zIndex')
-    expect(wrapper.vm.$options.props).toHaveProperty('preventScroll')
     expect(wrapper.vm.$options.props).toHaveProperty('lockOnScroll')
   })
 
@@ -34,59 +33,43 @@ describe('mixins/popup', () => {
 
     expect(wrapper.emitted('update:visible').length).toBe(1)
     expect(wrapper.emitted('update:visible')[0]).toEqual([true])
-    expect(wrapper.vm.opened).toBe(true)
+
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.isVisible()).toBe(true)
+    })
   })
 
-  test('open method should return while vm.opened === true', () => {
+  test('method move() should have been called when property getContainer is set', () => {
+    const spyMove = jest.fn()
+
     wrapper = mount(PopupMixinComponent, {
-      data: {
-        opened: true
+      propsData: {
+        getContainer: () => {}
+      },
+      methods: {
+        move: spyMove
       }
     })
 
-    wrapper.vm.open()
-
-    expect(wrapper.emitted('update:visible')).toBeFalsy()
+    wrapper.vm.$nextTick(() => {
+      expect(spyMove).toHaveBeenCalled()
+    })
   })
 
   test('close popup via close method', () => {
     wrapper = mount(PopupMixinComponent, {
       data: {
-        opened: true
+        visible: true
       }
     })
 
     wrapper.vm.close()
 
     expect(wrapper.emitted('update:visible')[0]).toEqual([false])
-    expect(wrapper.vm.opened).toBe(false)
-  })
 
-  test('close method should return while vm.opened === false', () => {
-    wrapper = mount(PopupMixinComponent, {
-      data: {
-        opened: false
-      }
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.isVisible()).toBe(false)
     })
-
-    wrapper.vm.close()
-
-    expect(wrapper.emitted('update:visible')).toBeFalsy()
-  })
-
-  test('preventScroll', () => {
-    wrapper = mount(PopupMixinComponent, {
-      propsData: {
-        zIndex: 1,
-        preventScroll: true
-      }
-    })
-
-    wrapper.vm.open()
-
-    verticalDrag(document.body, 0, 1000)
-
-    wrapper.vm.close()
   })
 
   test('close popup via click mask', () => {
@@ -105,6 +88,44 @@ describe('mixins/popup', () => {
     const wvModal = document.querySelector('.wv-modal')
     wvModal.click()
 
-    expect(wrapper.vm.opened).toBe(false)
+    expect(wrapper.isVisible()).toBe(false)
+  })
+
+  test('getContainer watcher', () => {
+    const moveSpy = jest.fn()
+
+    wrapper = mount(PopupMixinComponent, {
+      attachToDocument: true,
+      propsData: {},
+      methods: {
+        move: moveSpy
+      }
+    })
+
+    wrapper.setProps({
+      getContainer: jest.fn()
+    })
+
+    expect(moveSpy).toHaveBeenCalled()
+  })
+
+  test('mask watcher', () => {
+    const renderMaskSpy = jest.fn()
+
+    wrapper = mount(PopupMixinComponent, {
+      attachToDocument: true,
+      propsData: {
+        mask: true
+      },
+      methods: {
+        renderMask: renderMaskSpy
+      }
+    })
+
+    wrapper.setProps({
+      mask: false
+    })
+
+    expect(renderMaskSpy).toHaveBeenCalled()
   })
 })

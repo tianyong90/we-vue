@@ -61,12 +61,10 @@ export default {
 
   // close popup when click modal && closeOnClickMask is true
   onClick () {
-    const {top} = context
-    if (top) {
-      const {instance} = top
-      if (instance && instance.closeOnClickMask) {
-        instance.close()
-      }
+    if (context.top) {
+      const { vm } = context.top
+      vm.$emit('click-mask')
+      vm.closeOnClickMask && vm.close()
     }
   }
 }
