@@ -72,7 +72,8 @@ describe('mixins/popup', () => {
     })
   })
 
-  test('close popup via click mask', () => {
+  // TODO
+  test('close popup via click mask', (done) => {
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
       propsData: {
@@ -88,7 +89,31 @@ describe('mixins/popup', () => {
     const wvModal = document.querySelector('.wv-modal')
     wvModal.click()
 
-    expect(wrapper.isVisible()).toBe(false)
+    // expect(wrapper.isVisible()).toBe(false)
+
+    wrapper.vm.$nextTick(() => {
+      console.log('fuck')
+
+      expect(wrapper.isVisible()).toBe(false)
+      done()
+    })
+  })
+
+  // TODO
+  test('lockOnScroll', () => {
+    wrapper = mount(PopupMixinComponent, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        lockOnScroll: true
+      }
+    })
+
+    wrapper.vm.open()
+
+    verticalDrag(wrapper, 0, -100)
+
+    // expect(wrapper.isVisible()).toBe(false)
   })
 
   test('getContainer watcher', () => {
