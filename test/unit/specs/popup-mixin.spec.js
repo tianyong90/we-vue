@@ -72,8 +72,8 @@ describe('mixins/popup', () => {
     })
   })
 
-  // TODO
-  test('close popup via click mask', (done) => {
+  test('close popup via click mask', () => {
+    // closeOnClick is true
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
       propsData: {
@@ -85,21 +85,37 @@ describe('mixins/popup', () => {
 
     wrapper.vm.open()
 
-    // trigger click on the mask element
-    const wvModal = document.querySelector('.wv-modal')
-    wvModal.click()
+    wrapper.vm.$nextTick(() => {
+      const spy = jest.spyOn(wrapper.vm, 'close')
 
-    // expect(wrapper.isVisible()).toBe(false)
+      // trigger click on the mask element
+      wrapper.find('.wv-modal').trigger('click')
+
+      expect(spy).shouldHaveBeenCalledOnce()
+    })
+
+    // closeOnClick is false
+    wrapper = mount(PopupMixinComponent, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        mask: true,
+        closeOnClickMask: false
+      }
+    })
+
+    wrapper.vm.open()
 
     wrapper.vm.$nextTick(() => {
-      console.log('fuck')
+      const spy = jest.spyOn(wrapper.vm, 'close')
 
-      expect(wrapper.isVisible()).toBe(false)
-      done()
+      // trigger click on the mask element
+      wrapper.find('.wv-modal').trigger('click')
+
+      expect(spy).not.toHaveBeenCalled()
     })
   })
 
-  // TODO
   test('lockOnScroll', () => {
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
@@ -113,25 +129,50 @@ describe('mixins/popup', () => {
 
     verticalDrag(wrapper, 0, -100)
 
-    // expect(wrapper.isVisible()).toBe(false)
+    const listener = jest.fn()
+    document.addEventListener('touchmove', listener)
+
+    expect(listener).not.toHaveBeenCalled()
   })
 
-  test('getContainer watcher', () => {
-    const moveSpy = jest.fn()
+  test('visible watcher', () => {
+    const openSpy = jest.fn()
+    const closeSpy = jest.fn()
 
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
-      propsData: {},
       methods: {
-        move: moveSpy
+        open: openSpy,
+        close: closeSpy
       }
     })
+
+    wrapper.setProps({
+      visible: true
+    })
+
+    expect(openSpy).toHaveBeenCalled()
+
+    wrapper.setProps({
+      visible: false
+    })
+
+    expect(closeSpy).toHaveBeenCalled()
+  })
+
+  test('getContainer watcher', () => {
+    wrapper = mount(PopupMixinComponent, {
+      attachToDocument: true,
+      propsData: {}
+    })
+
+    const spy = jest.spyOn(wrapper.vm, 'move')
 
     wrapper.setProps({
       getContainer: jest.fn()
     })
 
-    expect(moveSpy).toHaveBeenCalled()
+    expect(spy).toHaveBeenCalled()
   })
 
   test('mask watcher', () => {

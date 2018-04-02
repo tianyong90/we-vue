@@ -83,6 +83,7 @@ export default {
 
       let status = '11'
 
+      /* istanbul ignore next */
       if (scrollTop === 0) {
         status = offsetHeight >= scrollHeight ? '00' : '01'
       } else if (scrollTop + offsetHeight >= scrollHeight) {
