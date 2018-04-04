@@ -4,7 +4,7 @@
     <div class="main">
       <div id="particles-js"/>
       <div class="title">WE-VUE</div>
-      <div class="slogan">简单易用的 Vue 组件</div>
+      <div class="slogan">简单易用的 Vue.js 组件</div>
       <div class="btns">
         <router-link to="/doc/v1_6/index" class="btn btn-quickstart">文档</router-link>
         <a href="https://demo.wevue.org" class="btn btn-flat">示例</a>
@@ -45,16 +45,11 @@ export default {
           },
           'polygon': {
             'nb_sides': 5
-          },
-          'image': {
-            'src': 'img/github.svg',
-            'width': 100,
-            'height': 100
           }
         },
         'opacity': {
           'value': 0.5,
-          'random': false,
+          'random': true,
           'anim': {
             'enable': false,
             'speed': 1,
@@ -63,7 +58,7 @@ export default {
           }
         },
         'size': {
-          'value': 2,
+          'value': 4,
           'random': true,
           'anim': {
             'enable': false,
@@ -169,7 +164,7 @@ export default {
 
     .slogan {
       color: #fff;
-      font-size: 1.5em;
+      font-size: 1.3em;
       font-weight: 100;
       text-shadow: #333 2px 2px 0px;
       margin-top: 20px;
@@ -191,6 +186,11 @@ export default {
         font-size: 18px;
         font-weight: 500;
         float: left;
+        transition: transform .2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.2);
+        }
       }
 
       .btn-flat {
