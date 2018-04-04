@@ -64,6 +64,25 @@ describe('number-spinner', () => {
     expect(spy).toHaveBeenCalled()
   })
 
+  test('onKeypress method when fillable is false', () => {
+    const spy = jest.fn()
+
+    wrapper = shallow(NumberSpinner, {
+      propsData: {
+        value: 1,
+        fillable: false
+      }
+    })
+
+    const mockEvent = {
+      preventDefault: spy
+    }
+
+    wrapper.find('input').trigger('keypress', mockEvent)
+
+    expect(spy).toHaveBeenCalled()
+  })
+
   test('click minus button', () => {
     wrapper = shallow(NumberSpinner, {
       propsData: {

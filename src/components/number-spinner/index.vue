@@ -19,6 +19,7 @@
       :readonly="readonly"
       @change="onChange"
       @paste="onPaste"
+      @keypress="onKeypress"
       v-bind="$attrs"
       :style="inputStyle">
     <button
@@ -60,7 +61,10 @@ export default create({
       type: String,
       default: 'center'
     },
-    // TODO: fillable 属性？
+    fillable: {
+      type: Boolean,
+      default: true
+    },
     value: {
       type: Number,
       default: 0
@@ -138,7 +142,13 @@ export default create({
     },
 
     onPaste (event) {
-      if (!/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(event.clipboardData.getData('text'))) {
+      if (!this.fillable || !/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(event.clipboardData.getData('text'))) {
+        event.preventDefault()
+      }
+    },
+
+    onKeypress (event) {
+      if (!this.fillable) {
         event.preventDefault()
       }
     },
@@ -186,6 +196,7 @@ export default create({
     overflow: hidden;
     border: 1px solid $border-color;
     border-radius: 3px;
+    justify-content: space-between;
 
     &:focus {
       border: 1px solid red;
