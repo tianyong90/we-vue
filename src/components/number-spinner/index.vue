@@ -1,7 +1,6 @@
 <template>
   <div
     class="wv-number-spinner"
-    :class="{[`wv-number-spinner--${size}`]: size }"
     v-on="listeners"
   >
     <button
@@ -61,7 +60,7 @@ export default create({
       type: String,
       default: 'center'
     },
-    size: String,
+    // TODO: fillable 属性？
     value: {
       type: Number,
       default: 0
@@ -149,9 +148,7 @@ export default create({
 
       this.currentValue = val
       this.$emit('change', val, oldValue)
-      this.$nextTick(() => {
-        this.$refs.input.value = val
-      })
+      this.$refs.input.value = val
     }
   },
 
@@ -190,12 +187,35 @@ export default create({
     border: 1px solid $border-color;
     border-radius: 3px;
 
+    &:focus {
+      border: 1px solid red;
+    }
+
     input {
       border: none;
       outline: none;
       padding: 0 .5em;
       font-size: 1em;
       line-height: 1.5;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+      }
+
+      &:focus {
+        border-color: #0074d9;
+        outline: none;
+      }
+
+      &[readonly] {
+        background: #f8f8f8;
+      }
+
+      &:disabled {
+        background-color: #f8f8f8;
+        opacity: 0.65;
+      }
     }
 
     .spinner-btn {
@@ -205,6 +225,10 @@ export default create({
       border: none;
       border-radius: 0;
       outline: none;
+
+      &:focus {
+        outline: none;
+      }
 
       &::before,
       &::after {
@@ -226,6 +250,13 @@ export default create({
         height: 50%;
         width: 0.0625rem;
       }
+
+      &:disabled {
+        &::before,
+        &::after {
+          background-color: #ddd;
+        }
+      }
     }
 
     .btn-minus {
@@ -239,17 +270,5 @@ export default create({
     .btn-minus::after {
       display: none;
     }
-
-    /*.btn-minus {*/
-      /*border-right: 1px solid #ccc;*/
-    /*}*/
-
-    /*.btn-plus {*/
-      /*border-left: 1px solid #ccc;*/
-    /*}*/
-
-    /*.spinner-btn[disabled] {*/
-      /*color: #888;*/
-    /*}*/
   }
 </style>

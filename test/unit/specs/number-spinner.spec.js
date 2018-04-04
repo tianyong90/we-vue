@@ -29,28 +29,81 @@ describe('number-spinner', () => {
     expect(wrapper.vm.currentValue).toBe(wrapper.vm.min)
   })
 
-  test('click decrease button', () => {
+  test('onChange method', () => {
     wrapper = shallow(NumberSpinner, {
-      propsData: {},
-      data: {
-        currentValue: 5
+      propsData: {
+        value: 1
       }
     })
 
-    wrapper.find('.btn-decrease').trigger('click')
-    expect(wrapper.vm.currentValue).toBe(5 - wrapper.vm.step)
+    wrapper.vm.$refs.input.value = 2
+
+    wrapper.find('input').trigger('change')
+
+    expect(wrapper.vm.currentValue).toBe(2)
   })
 
-  test('click increase button', () => {
+  test('onPaste method', () => {
+    const spy = jest.fn()
+
     wrapper = shallow(NumberSpinner, {
-      propsData: {},
-      data: {
-        currentValue: 1
+      propsData: {
+        value: 1
       }
     })
 
-    wrapper.find('.btn-increase').trigger('click')
+    const mockEvent = {
+      clipboardData: {
+        getData: jest.fn()
+      },
+      preventDefault: spy
+    }
+
+    wrapper.find('input').trigger('paste', mockEvent)
+
+    expect(spy).toHaveBeenCalled()
+  })
+
+  test('click minus button', () => {
+    wrapper = shallow(NumberSpinner, {
+      propsData: {
+        value: 5
+      }
+    })
+
+    wrapper.find('.btn-minus').trigger('click')
+    expect(wrapper.vm.currentValue).toBe(5 - wrapper.vm.step)
+
+    // when the initial value is NaN
+    wrapper = shallow(NumberSpinner, {
+      propsData: {
+        value: NaN
+      }
+    })
+
+    wrapper.find('.btn-minus').trigger('click')
+    expect(wrapper.vm.currentValue).toBe(0)
+  })
+
+  test('click plus button', () => {
+    wrapper = shallow(NumberSpinner, {
+      propsData: {
+        value: 1
+      }
+    })
+
+    wrapper.find('.btn-plus').trigger('click')
     expect(wrapper.vm.currentValue).toBe(1 + wrapper.vm.step)
+
+    // when the initial value is NaN
+    wrapper = shallow(NumberSpinner, {
+      propsData: {
+        value: NaN
+      }
+    })
+
+    wrapper.find('.btn-plus').trigger('click')
+    expect(wrapper.vm.currentValue).toBe(1)
   })
 
   test('watch currentValue', () => {

@@ -234,20 +234,19 @@ describe('datetime-picker', () => {
     })
   })
 
-  test('watch value change', done => {
+  test('watch value change', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {}
     })
 
     const newValue = new Date()
 
-    setTimeout(() => {
+    wrapper.vm.$nextTick(() => {
       wrapper.setProps({
         value: newValue
       })
 
       expect(wrapper.vm.currentValue).toEqual(newValue)
-      done()
-    }, 500)
+    })
   })
 })
