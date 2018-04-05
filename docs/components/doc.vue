@@ -15,7 +15,7 @@
               v-for="(group, index) in navItem.groups"
               :key="index"
             >
-              <div class="group-name" v-text="group.groupName" v-if="group.groupName"></div>
+              <div class="group-name" v-text="group.groupName" v-if="group.groupName"/>
               <ul class="sub-tree">
                 <li>
                   <router-link
@@ -70,6 +70,7 @@ export default {
   },
 
   mounted () {
+    /* eslint-disable no-new */
     new PerfectScrollbar('#sidebar')
 
     this.demoUrl = this.$route.meta.demo_url

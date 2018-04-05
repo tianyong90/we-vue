@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import nav_v1_6 from './nav_v1_6'
 import nav_v2_0 from './nav_v2_0'
 

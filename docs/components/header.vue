@@ -16,10 +16,11 @@
         </li>
       </ul>
 
-      <div class="version-picker"
-           @mouseenter="onMouseenterVersion"
-           @mouseleave="onMouseleaveVersion"
-           v-if="versionPickerVisible"
+      <div
+        class="version-picker"
+        @mouseenter="onMouseenterVersion"
+        @mouseleave="onMouseleaveVersion"
+        v-if="versionPickerVisible"
       >
 
         <span class="version-number">{{ version | versionText }}</span>

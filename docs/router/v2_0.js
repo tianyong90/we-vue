@@ -1,5 +1,6 @@
 const demoUrlBase = 'https://demo.wevue.org'
 
+/* eslint-disable camelcase */
 let v2_0 = [
   {
     path: 'v2_0/index',

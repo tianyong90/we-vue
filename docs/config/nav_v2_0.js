@@ -10,11 +10,11 @@ export default [
           },
           {
             title: '快速上手',
-            path: '/doc/v2_0/quickstart',
+            path: '/doc/v2_0/quickstart'
           },
           {
             title: '变更记录',
-            path: '/doc/v2_0/changelog',
+            path: '/doc/v2_0/changelog'
           }
         ]
       }
@@ -192,7 +192,7 @@ export default [
             path: '/doc/v2_0/popup'
           }
         ]
-      },
+      }
     ]
   },
   {
