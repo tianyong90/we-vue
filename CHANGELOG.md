@@ -1,3 +1,15 @@
+## v2.1.0 (2018-4-6)
+
+### 优化
+
+- 重构 number-spinner 组件，美化样式，优化其输入框对输入、粘贴事件处理逻辑
+
+### 构建
+
+- 升级 webpack 到 v4,调整相关配置
+- 使用 mini-css-extract-plugin 替代 extract-text-webpack-plugin
+- webpack 相关配置调整
+
 ## v2.0.4 (2018-4-2)
 
 ### 修复
