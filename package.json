@@ -79,7 +79,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "highlight.js": "^9.12.0",
     "html-webpack-plugin": "^3.0.6",
-    "inject-loader": "^3.0.0",
+    "inject-loader": "^4.0.0",
     "inquirer": "^5.1.0",
     "jest": "^22.4.2",
     "jest-css-modules": "^1.1.0",
