@@ -35,6 +35,7 @@ describe('datetime-picker', () => {
       }
     })
 
+    expect(wrapper.name()).toBe('wv-datetime-picker')
     expect(wrapper.findAll('.weui-picker__group').length).toBe(3)
   })
 
@@ -46,6 +47,7 @@ describe('datetime-picker', () => {
       }
     })
 
+    expect(wrapper.name()).toBe('wv-datetime-picker')
     expect(wrapper.findAll('.weui-picker__group').length).toBe(2)
   })
 
@@ -236,17 +238,18 @@ describe('datetime-picker', () => {
 
   test('watch value change', () => {
     wrapper = mount(DatetimePicker, {
-      propsData: {}
+      propsData: {
+        type: 'date',
+        value: testDate
+      }
     })
 
     const newValue = new Date()
 
-    wrapper.vm.$nextTick(() => {
-      wrapper.setProps({
-        value: newValue
-      })
-
-      expect(wrapper.vm.currentValue).toEqual(newValue)
+    wrapper.setProps({
+      value: newValue
     })
+
+    expect(wrapper.vm.currentValue).toEqual(newValue)
   })
 })
