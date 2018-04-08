@@ -33,7 +33,6 @@ describe('input', () => {
     wrapper.find('input').element.value = 'test'
     wrapper.find('input').trigger('input')
 
-    wrapper.update()
     expect(wrapper.vm.currentValue).toBe('te')
     expect(validateSpy).toHaveBeenCalled()
 
@@ -50,7 +49,6 @@ describe('input', () => {
     wrapper.find('input').element.value = 'test'
     wrapper.find('input').trigger('input')
 
-    wrapper.update()
     expect(wrapper.vm.currentValue).toBe('test')
     expect(validateSpy).toHaveBeenCalled()
 
@@ -72,7 +70,6 @@ describe('input', () => {
     wrapper.find('input').element.value = 'test'
     wrapper.find('input').trigger('input')
 
-    wrapper.update()
     expect(validateSpy).not.toHaveBeenCalled()
   })
 
