@@ -144,7 +144,7 @@ describe('datetime-picker', () => {
     }, 500)
   })
 
-  test('drag time picker', () => {
+  test('drag time picker', (done) => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -155,8 +155,7 @@ describe('datetime-picker', () => {
     })
 
     wrapper.vm.$nextTick(() => {
-      const hourColumn = wrapper.findAll('.weui-picker__group').at(0)
-      const minuteColumn = wrapper.findAll('.weui-picker__group').at(1)
+      const [hourColumn, minuteColumn] = wrapper.findAll('.weui-picker__group').wrappers
 
       slowVerticalDrag(hourColumn, 0, -34)
       expect(wrapper.vm.currentValue).toEqual('13:00')
@@ -175,6 +174,8 @@ describe('datetime-picker', () => {
       slowVerticalDrag(hourColumn, 0, 34 * 24)
       slowVerticalDrag(minuteColumn, 0, 34 * 10)
       expect(wrapper.vm.currentValue).toEqual('0:00')
+
+      done()
     })
   })
 
@@ -187,14 +188,14 @@ describe('datetime-picker', () => {
       }
     })
 
+    console.log(wrapper.vm.type + 'haha')
+
     wrapper.vm.$nextTick(() => {
+      console.log(wrapper.vm.type + 'haha')
+
       expect(wrapper.vm.currentValue).toEqual(testDate)
 
-      const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
-      const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
-      const dateColumn = wrapper.findAll('.weui-picker__group').at(2)
-      const hourColumn = wrapper.findAll('.weui-picker__group').at(3)
-      const minuteColumn = wrapper.findAll('.weui-picker__group').at(4)
+      const [yearColumn, monthColumn, dateColumn, hourColumn, minuteColumn] = wrapper.findAll('.weui-picker__group').wrappers
 
       slowVerticalDrag(yearColumn, 0, -34)
       slowVerticalDrag(monthColumn, 0, -34)
@@ -207,8 +208,10 @@ describe('datetime-picker', () => {
       expect(wrapper.vm.currentValue.getDate()).toBe(testDate.getDate() + 1)
       expect(wrapper.vm.currentValue.getHours()).toBe(testDate.getHours() + 1)
       expect(wrapper.vm.currentValue.getMinutes()).toBe(testDate.getMinutes() + 1)
+
+      // done()
     })
-  }, 10000)
+  })
 
   test('drag date picker', () => {
     wrapper = mount(DatetimePicker, {
@@ -219,21 +222,19 @@ describe('datetime-picker', () => {
       }
     })
 
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.vm.currentValue).toEqual(testDate)
+    console.log(wrapper.vm.type + 'date')
 
-      const yearColumn = wrapper.findAll('.weui-picker__group').at(0)
-      const monthColumn = wrapper.findAll('.weui-picker__group').at(1)
-      const date = wrapper.findAll('.weui-picker__group').at(2)
+    expect(wrapper.vm.currentValue).toEqual(testDate)
 
-      slowVerticalDrag(yearColumn, 0, -34)
-      slowVerticalDrag(monthColumn, 0, -34)
-      slowVerticalDrag(date, 0, -34)
+    const [yearColumn, monthColumn, dateColumn] = wrapper.findAll('.weui-picker__group').wrappers
 
-      expect(wrapper.vm.currentValue.getFullYear()).toEqual(testDate.getFullYear() + 1)
-      expect(wrapper.vm.currentValue.getMonth()).toEqual(testDate.getMonth() + 1)
-      expect(wrapper.vm.currentValue.getDate()).toEqual(testDate.getDate() + 1)
-    })
+    // slowVerticalDrag(yearColumn, 0, -34)
+    // slowVerticalDrag(monthColumn, 0, -34)
+    // slowVerticalDrag(date, 0, -34)
+
+    expect(wrapper.vm.currentValue.getFullYear()).toEqual(testDate.getFullYear() + 1)
+    expect(wrapper.vm.currentValue.getMonth()).toEqual(testDate.getMonth() + 1)
+    expect(wrapper.vm.currentValue.getDate()).toEqual(testDate.getDate() + 1)
   })
 
   test('watch value change', () => {

@@ -128,7 +128,7 @@ export default create({
       let result = []
       for (let rangeKey in this.ranges) {
         result.push({
-          values: this.fillSlotValues(rangeKey, this.ranges[rangeKey][0], this.ranges[rangeKey][1])
+          values: this.fillColumnValues(rangeKey, this.ranges[rangeKey][0], this.ranges[rangeKey][1])
         })
       }
 
@@ -229,7 +229,7 @@ export default create({
       this.$emit('input', value)
     },
 
-    fillSlotValues (type, start, end) {
+    fillColumnValues (type, start, end) {
       let values = []
       for (let i = start; i <= end; i++) {
         if (i < 10) {
@@ -278,7 +278,7 @@ export default create({
       }
     },
 
-    updateSlotValue (value) {
+    updateColumnValue (value) {
       let values = []
       if (this.type === 'time') {
         const currentValue = value.split(':')
@@ -301,11 +301,11 @@ export default create({
       }
 
       this.$nextTick(() => {
-        this.setSlotByValues(values)
+        this.setColumnByValues(values)
       })
     },
 
-    setSlotByValues (values) {
+    setColumnByValues (values) {
       this.$refs.picker.setValues(values)
     },
 
@@ -327,7 +327,7 @@ export default create({
       this.currentValue = this.value
     }
 
-    this.updateSlotValue(this.currentValue)
+    this.updateColumnValue(this.currentValue)
   },
 
   watch: {
@@ -341,7 +341,7 @@ export default create({
     },
 
     currentValue (val) {
-      this.updateSlotValue(val)
+      this.updateColumnValue(val)
       this.$emit('input', val)
     }
   }
