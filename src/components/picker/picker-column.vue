@@ -58,7 +58,10 @@ export default create({
       type: Boolean,
       default: false
     },
-    content: {}
+    content: {
+      type: String,
+      default: ''
+    }
   },
 
   data () {
