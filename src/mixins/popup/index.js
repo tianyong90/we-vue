@@ -58,6 +58,7 @@ export default {
 
   methods: {
     move () {
+      /* istanbul ignore else */
       if (this.getContainer) {
         this.getContainer().appendChild(this.$el)
       } else if (this.$parent) {
