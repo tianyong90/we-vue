@@ -27,5 +27,10 @@ module.exports = {
     'src/**/*.{js,vue}',
     // '!src/index.js',
     '!**/node_modules/**'
-  ]
+  ],
+  testEnvironmentOptions: {
+    beforeParse (window) {
+      window.scrollTo = () => {}
+    }
+  }
 }

@@ -30,30 +30,28 @@ describe('infinite-scroll', () => {
   })
 
   // TODO:
-  test('test loadMore function', () => {
-    // const loadMore = sinon.spy(function () {
-    //   wrapper.vm.list = wrapper.vm.list.concat([{id: 1}, {id: 2}, {id: 3}])
-    //   wrapper.vm.disabled = true
-    // })
-    // wrapper = mount(InfiniteScrollComponent, {
-    //   attachToDocument: true,
-    //   propsData: {
-    //     disabled: false,
-    //     list: [{id: 10}],
-    //     onLoadMore: loadMore
-    //   }
-    // })
+  test('test loadMore function', (done) => {
+    const loadMore = jest.fn()
+    wrapper = mount(InfiniteScrollComponent, {
+      attachToDocument: true,
+      propsData: {
+        disabled: false,
+        list: [{id: 10}],
+        onLoadMore: loadMore
+      }
+    })
 
-    // setTimeout(() => {
-    //   const item = wrapper.findAll('.list-item')
-    //   expect(loadMore).toHaveBeenCalledTimes(1)
-    //   expect(item.length).toEqual(4)
+    setTimeout(() => {
+      const item = wrapper.findAll('.list-item')
+      expect(loadMore).toHaveBeenCalledTimes(1)
+      // expect(item.length).toEqual(4)
 
-    //   // TODO: SCROLL
+      // TODO: SCROLL
+      window.scrollTo(0, -10000)
 
-    //   expect(loadMore).toHaveBeenCalledTimes(1)
-    //   done()
-    // }, 500)
+      expect(loadMore).toHaveBeenCalledTimes(1)
+      done()
+    }, 500)
   })
 
   test('test disabled', (done) => {
