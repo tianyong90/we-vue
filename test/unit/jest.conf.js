@@ -25,12 +25,6 @@ module.exports = {
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'src/**/*.{js,vue}',
-    // '!src/index.js',
     '!**/node_modules/**'
-  ],
-  testEnvironmentOptions: {
-    beforeParse (window) {
-      window.scrollTo = () => {}
-    }
-  }
+  ]
 }
