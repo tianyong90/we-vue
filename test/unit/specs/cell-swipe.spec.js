@@ -5,8 +5,24 @@ import { horizontalDrag } from '../utils'
 
 describe('cell-swipe', () => {
   let wrapper
+
+  const getRightBtnsWidth = () => wrapper.vm.$refs.rightBtns.clientWidth
+
+  beforeEach(() => {
+    // to MOCK the clientWidth properfy
+    Object.defineProperty(HTMLDivElement.prototype, 'clientWidth', {
+      value: 20,
+      writable: true
+    })
+  })
+
   afterEach(() => {
     wrapper && wrapper.destroy()
+
+    Object.defineProperty(HTMLDivElement.prototype, 'clientWidth', {
+      value: 0,
+      writable: true
+    })
   })
 
   test('create', () => {
@@ -26,16 +42,9 @@ describe('cell-swipe', () => {
       }
     })
 
-    // mock rightBtns clientWidth
-    wrapper.vm.$refs.rightBtns = jest.fn(() => {
-      return { clientWidth: 20 }
-    })
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -getRightBtnsWidth())
 
-    const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
-
-    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -rightWidth)
-
-    expect(wrapper.vm.offset).toBe(-rightWidth)
+    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth())
   })
 
   test('drag to left with a small distance', () => {
@@ -59,16 +68,9 @@ describe('cell-swipe', () => {
       }
     })
 
-    // mock rightBtns clientWidth
-    wrapper.vm.$refs.rightBtns = jest.fn(() => {
-      return { clientWidth: 20 }
-    })
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -(getRightBtnsWidth() + 20))
 
-    const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
-
-    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, -(rightWidth + 20))
-
-    expect(wrapper.vm.offset).toBe(-rightWidth)
+    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth())
   })
 
   test('drag to right and close right buttons', () => {
@@ -79,14 +81,12 @@ describe('cell-swipe', () => {
       }
     })
 
-    const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
-
     // set offset to show the right buttons before drag
     wrapper.setData({
-      offset: -rightWidth
+      offset: -getRightBtnsWidth()
     })
 
-    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, rightWidth)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, getRightBtnsWidth())
 
     expect(wrapper.vm.offset).toBe(0)
   })
@@ -99,21 +99,14 @@ describe('cell-swipe', () => {
       }
     })
 
-    // mock rightBtns clientWidth
-    wrapper.vm.$refs.rightBtns = jest.fn(() => {
-      return { clientWidth: 20 }
-    })
-
-    const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
-
     // set offset to show the right buttons before drag
     wrapper.setData({
-      offset: -rightWidth
+      offset: -getRightBtnsWidth()
     })
 
     horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, 10)
 
-    expect(wrapper.vm.offset).toBe(-rightWidth)
+    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth())
   })
 
   test('drag to right with a distance out of range', () => {
@@ -124,14 +117,12 @@ describe('cell-swipe', () => {
       }
     })
 
-    const rightWidth = wrapper.vm.$refs.rightBtns.clientWidth
-
     // set offset to show the right buttons before drag
     wrapper.setData({
-      offset: -rightWidth
+      offset: -getRightBtnsWidth()
     })
 
-    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, rightWidth + 10)
+    horizontalDrag(wrapper.find({ref: 'cellBd'}), 0, getRightBtnsWidth() + 10)
 
     expect(wrapper.vm.offset).toBe(0)
   })
