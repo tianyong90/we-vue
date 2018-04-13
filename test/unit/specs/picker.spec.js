@@ -285,6 +285,32 @@ describe('picker', () => {
 
     expect(wrapper.emitted().change).toBeTruthy()
   })
+
+  test('value watcher', () => {
+    const slotValues = [1, 2, 3]
+
+    wrapper = mount(Picker, {
+      attachToDocument: true,
+      propsData: {
+        visible: true,
+        columns: [{
+          values: slotValues,
+          default: 0
+        }]
+      }
+    })
+
+    const spy = jest.spyOn(wrapper.vm, 'setValues')
+
+    wrapper.setProps({
+      value: [2]
+    })
+
+    setTimeout(() => {
+      expect(wrapper.vm.currentValue).toEqual([2])
+      expect(spy).toHaveBeenCalled()
+    }, 500)
+  })
 })
 
 describe('picker-column', () => {
