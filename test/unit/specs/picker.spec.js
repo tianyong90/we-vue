@@ -54,7 +54,7 @@ describe('picker', () => {
     }, 50)
   })
 
-  test('create a nulti-column picker', (done) => {
+  test('create a multi-column picker', (done) => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -267,7 +267,7 @@ describe('picker', () => {
     expect(wrapper.emitted().confirm).toBeTruthy()
   })
 
-  test('when slot value changed, change event should be emitted', () => {
+  test('when column value changed, change event should be emitted', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
