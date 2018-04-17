@@ -63,8 +63,11 @@
     "chalk": "^2.0.1",
     "china-area-data": "^4.0.0",
     "codecov": "^3.0.0",
+    "commitizen": "^2.9.6",
+    "conventional-changelog": "^1.1.24",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.8",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.19.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-friendly-formatter": "^4.0.0",
@@ -131,5 +134,10 @@
     "iOS >= 7",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
