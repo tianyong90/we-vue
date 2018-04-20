@@ -1,5 +1,5 @@
 /**
- * 运行单个测试文件
+ * 构建并发布
  */
 
 const execa = require('execa')

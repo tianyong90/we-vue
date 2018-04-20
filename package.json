@@ -113,7 +113,7 @@
     "url-loader": "^1.0.1",
     "vue": "^2.5.9",
     "vue-jest": "^2.5.0",
-    "vue-loader": "^14.0.0",
+    "vue-loader": "^15.0.0-rc.2",
     "vue-markdown-loader": "^2.3.0",
     "vue-router": "^3.0.1",
     "vue-style-loader": "^4.0.2",
