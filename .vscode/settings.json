@@ -4,8 +4,7 @@
   ],
   "files.exclude": {
     "**/.git": true,
-    "**/node_modules": true,
-    "**/build": true
+    "**/node_modules": true
   },
   "editor.formatOnSave": false,
   "flow.useNPMPackagedFlow": true,
