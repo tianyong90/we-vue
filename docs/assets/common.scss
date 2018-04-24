@@ -1,4 +1,4 @@
-@import "~normalize.css";
+//@import "~normalize.css";
 
 html,
 body {
@@ -8,10 +8,8 @@ body {
 }
 
 pre {
-  display: block;
-  padding: .5em;
-  overflow-y: hidden;
-  font-size: 1.2em;
+  padding: 1.5em !important;
+  border-radius: 5px;
 }
 
 code {
@@ -75,11 +73,27 @@ tr:nth-child(2n) {
 }
 
 .doc-content {
+  .header-anchor {
+    font-size: 0.85em;
+    float: left;
+    margin-left: -0.8em;
+    padding-right: 0.23em;
+    margin-top: 0.125em;
+    opacity: 0;
+    text-decoration: none;
+    color: #3eaf7c;
+    cursor: pointer;
+  }
+
   h1,
   h2,
   h3,
   h4 {
     color: #444;
+
+    &:hover .header-anchor {
+      opacity: 1;
+    }
   }
 
   p {

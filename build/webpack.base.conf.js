@@ -55,10 +55,7 @@ module.exports = {
             }
           },
           {
-            loader: require.resolve('./markdownLoader'),
-            options: {
-              sourceDir: ''
-            }
+            loader: require.resolve('./markdownLoader')
           }
         ]
       },
