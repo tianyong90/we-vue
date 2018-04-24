@@ -45,12 +45,22 @@ module.exports = {
       },
       {
         test: /\.md$/,
-        loader: 'vue-markdown-loader',
-        options: {
-          preset: 'default',
-          breaks: true,
-          preventExtract: true
-        }
+        use: [
+          {
+            loader: 'vue-loader',
+            options: {
+              compilerOptions: {
+                preserveWhitespace: false
+              }
+            }
+          },
+          {
+            loader: require.resolve('./markdownLoader'),
+            options: {
+              sourceDir: ''
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -38,10 +38,12 @@ Vue.component(GridItem.name, GridItem)
 </wv-grid>
 
 <script>
-methods: {
-  onClick () {
-    console.log('click')
-  }
+export default {
+  methods: {
+    onClick () {
+      console.log('click')
+    }
+  } 
 }
 </script>
 ```
