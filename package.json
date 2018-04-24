@@ -114,7 +114,6 @@
     "shelljs": "^0.8.0",
     "sinon": "^4.4.6",
     "style-loader": "^0.21.0",
-    "toml": "^2.3.3",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "uppercamelcase": "3.0.0",
     "url-loader": "^1.0.1",

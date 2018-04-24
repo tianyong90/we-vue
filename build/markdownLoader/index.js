@@ -6,7 +6,25 @@ const { getOptions } = require('loader-utils')
 const { inferTitle, extractHeaders, parseFrontmatter } = require('./util')
 const LRU = require('lru-cache')
 
-const md = require('markdown-it')()
+const emoji = require('markdown-it-emoji')
+const anchor = require('markdown-it-anchor')
+const toc = require('markdown-it-table-of-contents')
+
+const md = require('markdown-it')({
+  html: true
+})
+  .use(emoji)
+  // TODO: anchor
+  .use(anchor, Object.assign({
+    permalink: true,
+    permalinkBefore: true,
+    permalinkSymbol: '#'
+  }, {}))
+
+  .use(toc, {
+    includeLevel: [2, 3]
+  })
+
 
 const cache = LRU({ max: 1000 })
 const devCache = LRU({ max: 1000 })
@@ -88,23 +106,23 @@ module.exports = function (src) {
   //   (hoistedTags || []).join('\n')
   // )
 
-  const fuck = md.render(src)
+  const html = md.render(src)
 
   const res = (
     `<template>\n` +
-    `<div class="content">${fuck}</div>\n` +
+    `<div class="content">${html}</div>\n` +
     `</template>\n`
   )
   // cache.set(key, res)
   return res
 }
 
-function headersChanged (a, b) {
-  if (a.length !== b.length) return true
-  return a.some((h, i) => (
-    h.title !== b[i].title ||
-    h.level !== b[i].level
-  ))
-}
-
-module.exports.frontmatterEmitter = new EventEmitter()
+// function headersChanged (a, b) {
+//   if (a.length !== b.length) return true
+//   return a.some((h, i) => (
+//     h.title !== b[i].title ||
+//     h.level !== b[i].level
+//   ))
+// }
+//
+// module.exports.frontmatterEmitter = new EventEmitter()
