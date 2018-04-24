@@ -5,7 +5,7 @@
 
 1. 创建一个 vue.js 项目，我们使用 Vue 官方肢手架工具 vue-cli
 
-```shell
+```bash
 npm install -g vue-cli
 vue init webpack <your_projectname>
 ```
@@ -36,13 +36,13 @@ new Vue({
 可以借助 babel-plugin-component实现按需引入，以减小项目体积。
 首先，安装 babel-plugin-component:
 
-```shell
+```bash
 npm install babel-plugin-component -D
 ```
 
 然后修改 .babelrc:
 
-```
+```json
 {
   "presets": [
     ["es2015", { "modules": false }]
