@@ -5,7 +5,7 @@
 
 1. 创建一个 vue.js 项目，我们使用 Vue 官方肢手架工具 vue-cli
 
-```bash
+```shell
 npm install -g vue-cli
 vue init webpack <your_projectname>
 ```

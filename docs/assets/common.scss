@@ -8,68 +8,44 @@ body {
 }
 
 pre {
-  padding: 1.5em !important;
+  padding: 1.2em !important;
   border-radius: 5px;
 }
 
 code {
-  font-family: Monaco, "Source Code Pro", Menlo, Consolas, monospace !important;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace !important;
+  line-height: 1.4;
+}
+
+p,
+ul,
+ol {
+  line-height: 1.7;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #dfdfdf;
 }
 
 table {
-  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
   max-width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
 
-  thead {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-family: inherit;
-    font-size: 100%;
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
+  tr {
+    border-top: 1px solid #dfe2e5;
 
-    tr {
-      margin: 0;
-      padding: 0;
-      outline: 0;
-      font-weight: inherit;
-      font-style: inherit;
-      font-family: inherit;
-      font-size: 100%;
-      display: table-row;
-      vertical-align: inherit;
-      border-color: inherit;
-    }
-
-    th {
-      text-align: center;
-      padding: .5em 0;
-      font-weight: bold;
-      background-color: #d3d3d3;
-      vertical-align: middle;
+    &:nth-child(2n) {
+      background-color: #f6f8fa;
     }
   }
 
+  th,
   td {
-    padding: .5em;
+    border: 1px solid #dfe2e5;
+    padding: 0.6em 1em;
   }
-}
-
-tr:nth-child(2n) {
-  background-color: #eee;
 }
 
 .doc-content {
