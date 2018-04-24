@@ -78,9 +78,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ],
   performance: {
     maxEntrypointSize: 4000000,
     maxAssetSize: 6000000
@@ -98,6 +95,7 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
+    new VueLoaderPlugin(),
     new WebpackBar()
   ]
 }
