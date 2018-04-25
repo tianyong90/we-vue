@@ -8,6 +8,7 @@ const hljs = require('highlight.js')
 const emoji = require('markdown-it-emoji')
 const anchor = require('markdown-it-anchor')
 const toc = require('markdown-it-table-of-contents')
+const containers = require('./containers')
 
 const md = require('markdown-it')({
   html: true,
@@ -24,7 +25,6 @@ const md = require('markdown-it')({
   }
 })
   .use(emoji)
-  // TODO: anchor
   .use(anchor, {
     permalink: true,
     permalinkBefore: true,
@@ -33,6 +33,7 @@ const md = require('markdown-it')({
   .use(toc, {
     includeLevel: [2, 3]
   })
+  .use(containers)
 
 const cache = LRU({ max: 1000 })
 
