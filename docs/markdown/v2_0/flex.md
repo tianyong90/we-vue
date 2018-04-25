@@ -10,7 +10,9 @@ import { Flex, FlexItem } from 'we-vue'
 Vue.use(Flex)
 Vue.use(FlexItem)
 ```
-> **flex 需要与 flex-item 配合使用**
+:::warning
+flex 需要与 flex-item 配合使用
+:::
 
 ## 例子
 

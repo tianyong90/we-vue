@@ -11,7 +11,9 @@ Vue.use(Panel)
 Vue.use(MediaBox)
 ```
 
-> **media-box 仅与 panel 结合使用**
+:::warning
+media-box 仅与 panel 结合使用
+:::
 
 ## 例子
 

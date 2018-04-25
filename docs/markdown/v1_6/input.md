@@ -9,7 +9,9 @@ import { Input } from 'we-vue'
 Vue.component(Input.name, Input)
 ```
 
-> **input 只能在 group 中使用。**
+:::warning
+input 只能在 group 中使用。
+:::
 
 ## 例子
 
@@ -87,7 +89,9 @@ Vue.component(Input.name, Input)
 | validate-mode | Object | 验证触发条件 |      | {onFocus: true, onBlur: true, onChange: true, onInput: true} |
 | pattern | String | 验证规则（正则表达式） |      |  |
 
-> validate-mode 中 onInput 模式为 v1.4.15 新增
+:::warning
+validate-mode 中 onInput 模式为 v1.4.15 新增
+:::
 
 ## Slots
 

@@ -9,7 +9,9 @@ import { Cell } from 'we-vue'
 
 Vue.use(Cell)
 ```
-> **cell 只能在 group 中使用。**
+:::warning
+cell 只能在 group 中使用。
+:::
 
 ## 例子
 
@@ -76,7 +78,9 @@ Vue.use(Cell)
 | url  | String  |  跳转 url，与 is-link 配合使用   |      |       |
 | is-link | Boolean | 是否为链接 |      | false |
 
-> 从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
+:::tip
+从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
+:::
 
 ## Slots
 

@@ -10,7 +10,9 @@ import { CellSwipe, CellSwipeButton } from 'we-vue'
 Vue.use(CellSwipe)
 Vue.use(CellSwipeButton)
 ```
-> **cell-swipe 只能在 group 中使用。cell-swipe-button 仅与 cell-swipe 结合使用**
+:::warning
+cell-swipe 只能在 group 中使用。cell-swipe-button 仅与 cell-swipe 结合使用
+:::
 
 ## 例子
 
@@ -75,7 +77,9 @@ Vue.use(CellSwipeButton)
 | url  | String  |  跳转 url，与 is-link 配合使用   |      |       |
 | is-link | Boolean | 是否为链接 |      | false |
 
-> 从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
+:::tip
+从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
+:::
 
 - cell-swipe-button
 

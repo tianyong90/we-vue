@@ -10,7 +10,9 @@ import { Grid, GridItem } from 'we-vue'
 Vue.use(Grid)
 Vue.use(GridItem)
 ```
-> **grid 需要与 grid-item 配合使用**
+:::warning
+grid 需要与 grid-item 配合使用
+:::
 
 ## 例子
 
@@ -58,7 +60,9 @@ export default {
 |    to    | String 或 Object  |   vue-router 跳转目标    |  |  |
 |    url    | String  |   url 跳转目标    |  |  |
 
-> 从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
+:::tip
+从 v1.6.0 开始，使用 to 定义 vue-router 跳转目标，使用 url 定义普通跳转。
+:::
 
 ## Slots
 

@@ -9,7 +9,9 @@ import { Textarea } from 'we-vue'
 Vue.component(Textarea.name, Textarea)
 ```
 
-> **textarea 只能在 group 中使用。**
+:::warning
+textarea 只能在 group 中使用。
+:::
 
 ## 例子
 
