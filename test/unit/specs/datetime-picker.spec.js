@@ -115,7 +115,7 @@ describe('datetime-picker', () => {
       propsData: {}
     })
 
-    setTimeout(() => {
+    wrapper.vm.$nextTick(() => {
       wrapper
         .findAll('.weui-picker__action')
         .at(1)
@@ -124,7 +124,7 @@ describe('datetime-picker', () => {
       expect(wrapper.vm.visible).toBe(false)
       expect(wrapper.emitted().confirm).toBeTruthy()
       done()
-    }, 500)
+    })
   })
 
   test('onCancel', done => {
@@ -132,7 +132,7 @@ describe('datetime-picker', () => {
       propsData: {}
     })
 
-    setTimeout(() => {
+    wrapper.vm.$nextTick(() => {
       wrapper
         .findAll('.weui-picker__action')
         .at(0)
@@ -141,7 +141,7 @@ describe('datetime-picker', () => {
       expect(wrapper.vm.visible).toBe(false)
       expect(wrapper.emitted().cancel).toBeTruthy()
       done()
-    }, 500)
+    })
   })
 
   test('drag time picker', (done) => {
