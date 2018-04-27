@@ -7,7 +7,8 @@
   <a href="https://npmjs.org/package/we-vue"><img src="https://circleci.com/gh/tianyong90/we-vue/tree/master.png?style=shield"></a>
   <a href="https://github.com/standard/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"></a>
   <a href="https://codecov.io/github/tianyong90/we-vue?branch=master"><img src="https://img.shields.io/codecov/c/github/tianyong90/we-vue/master.svg"></a>
-  <a href="http://opensource.org/licenses/MIT"><img src="http://img.shields.io/badge/License-MIT-blue.svg"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
+  <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square"></a>
 </p>
 
 we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui.css 样式库，封装了一系列组件，非常适于微信公众号等移动端开发。
