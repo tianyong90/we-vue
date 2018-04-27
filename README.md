@@ -34,7 +34,7 @@ we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui.css 样式库�
 // npm
 $ npm install we-vue -S
 
-// yarn
+// yarn 推荐
 $ yarn add we-vue -S
 ```
 
@@ -46,7 +46,7 @@ $ yarn add we-vue -S
 // GitHub
 $ git clone https://github.com/tianyong90/we-vue.git
 
-// 码云
+// 码云（为方便国内用户，本项目也托管到码云，码云仅作定期同步，不保证代码为最新）
 $ git clone https://gitee.com/tianyong/we-vue.git
 ```
 
