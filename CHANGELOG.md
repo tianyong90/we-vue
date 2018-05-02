@@ -1,3 +1,13 @@
+## v2.1.1 (2018-5-2)
+
+### 优化
+
+- 加入 typescript 描述文件
+
+### 构建
+
+- 使用 commitzen 及 conventional-changelog
+
 ## v2.1.0 (2018-4-6)
 
 ### 优化
