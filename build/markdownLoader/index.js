@@ -1,5 +1,3 @@
-const fs = require('fs')
-const path = require('path')
 const hash = require('hash-sum')
 const LRU = require('lru-cache')
 const hljs = require('highlight.js')
