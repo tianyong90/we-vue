@@ -137,7 +137,6 @@ export default {
         }
 
         .sub-tree {
-
           li {
             display: block;
           }
@@ -153,12 +152,14 @@ export default {
           padding: .5em;
 
           &:hover {
-            color: #2196f3;
-            background-color: #efefef;
+            color: darken(#41b883, 20%);
+            background-color: lighten(#41b883, 45%);
           }
 
           &.current {
-            background-color: #ededed;
+            color: darken(#41b883, 20%);
+            background-color: lighten(#41b883, 40%);
+            border-right: 3px solid #41b883;
           }
         }
       }
