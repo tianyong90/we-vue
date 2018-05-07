@@ -161,10 +161,10 @@ describe('datetime-picker', () => {
       // TODO:
       // slowVerticalDrag(hourColumn, 0, -34)
       // expect(wrapper.vm.currentValue).toEqual('13:00')
-
+      //
       // slowVerticalDrag(minuteColumn, 0, -34)
       // expect(wrapper.vm.currentValue).toEqual('13:01')
-
+      //
       // slowVerticalDrag(hourColumn, 0, -34 * 5)
       // expect(wrapper.vm.currentValue).toEqual('18:01')
       //
