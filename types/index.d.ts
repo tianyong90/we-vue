@@ -3,6 +3,7 @@ import { WvComponent } from './component';
 
 import { Toast } from './toast';
 import { Dialog } from './dialog';
+import { TopTips } from './top-tips';
 import { Lazyload } from './lazyload';
 
 export const version: string
@@ -50,5 +51,6 @@ export class Textarea extends WvComponent {}
 export {
   Toast,
   Dialog,
+  TopTips,
   Lazyload
 }
