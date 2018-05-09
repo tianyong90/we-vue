@@ -1,9 +1,15 @@
 <template>
   <div>
-    <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+    <transition
+      enter-active-class="weui-animate-fade-in"
+      leave-active-class="weui-animate-fade-out"
+    >
       <div class="weui-mask" v-show="visible"/>
     </transition>
-    <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
+    <transition
+      enter-active-class="weui-animate-slide-up"
+      leave-active-class="weui-animate-slide-down"
+    >
       <div class="weui-picker" v-show="visible">
         <div class="weui-picker__hd">
           <div

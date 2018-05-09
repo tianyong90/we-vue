@@ -9,7 +9,11 @@
     @click="onClick"
   >
     <div class="weui-picker__mask" :style="pickerMaskStyle"/>
-    <div class="weui-picker__indicator" ref="indicator" :style="pickerIndicatorStyle"/>
+    <div
+      class="weui-picker__indicator"
+      ref="indicator"
+      :style="pickerIndicatorStyle"
+    />
     <div class="weui-picker__content" :style="wrapperStyle">
       <div
         class="weui-picker__item"
@@ -24,7 +28,7 @@
 </template>
 
 <script>
-import { create, getTouch } from '../../utils'
+import { create } from '../../utils'
 
 const range = (num, min, max) => Math.min(Math.max(num, min), max)
 
@@ -146,27 +150,23 @@ export default create({
     },
 
     onTouchstart (event) {
-      const touch = getTouch(event)
-
       this.startOffset = this.offset
-      this.startY = touch.clientY
-      this.prevY = touch.clientY
+      this.startY = event.touches[0].clientY
+      this.prevY = event.touches[0].clientY
       this.prevTime = new Date()
       this.transition = ''
     },
 
     onTouchmove (event) {
-      const touch = getTouch(event)
-
       const currentTime = +new Date()
-      const currentY = touch.clientY
+      const currentY = event.touches[0].clientY
 
       const distance = currentY - this.startY
 
       this.offset = this.startOffset + distance
 
       // compute velocity
-      this.velocity = (touch.clientY - this.prevY) / (currentTime - this.prevTime)
+      this.velocity = (event.touches[0].clientY - this.prevY) / (currentTime - this.prevTime)
       this.prevY = currentY
       this.prevTime = currentTime
     },
