@@ -364,7 +364,7 @@ describe('picker-column', () => {
     expect(wrapper.text()).toBe('-')
   })
 
-  test('drag slot', (done) => {
+  test('drag slot', async () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -375,27 +375,23 @@ describe('picker-column', () => {
 
     const columnWrapper = wrapper.find(PickerColumn)
 
-    setTimeout(() => {
-      slowVerticalDrag(columnWrapper, 0, -34)
-      expect(columnWrapper.vm.currentIndex).toBe(1)
+    await slowVerticalDrag(columnWrapper, 0, -34)
+    expect(columnWrapper.vm.currentIndex).toBe(1)
 
-      slowVerticalDrag(columnWrapper, 0, -34)
-      expect(columnWrapper.vm.currentIndex).toBe(2)
+    await slowVerticalDrag(columnWrapper, 0, -34)
+    expect(columnWrapper.vm.currentIndex).toBe(2)
 
-      // this will out of range
-      slowVerticalDrag(columnWrapper, 0, -34)
-      expect(columnWrapper.vm.currentIndex).toBe(2)
+    // this will out of range
+    await slowVerticalDrag(columnWrapper, 0, -34)
+    expect(columnWrapper.vm.currentIndex).toBe(2)
 
-      slowVerticalDrag(columnWrapper, 0, 34)
-      expect(columnWrapper.vm.currentIndex).toBe(1)
+    await slowVerticalDrag(columnWrapper, 0, 34)
+    expect(columnWrapper.vm.currentIndex).toBe(1)
 
-      // this will out of range
-      slowVerticalDrag(columnWrapper, 0, 100)
-      expect(columnWrapper.vm.currentIndex).toBe(0)
-
-      done()
-    }, 50)
-  })
+    // this will out of range
+    await slowVerticalDrag(columnWrapper, 0, 100)
+    expect(columnWrapper.vm.currentIndex).toBe(0)
+  }, 15000)
 
   test('click slot to change the current-value', (done) => {
     wrapper = mount(Picker, {
