@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Input from '@/components/input'
 
 describe('input', () => {
@@ -8,7 +8,7 @@ describe('input', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {}
     })
 
@@ -20,7 +20,7 @@ describe('input', () => {
     const validateSpy = jest.fn()
 
     // use with maxlength
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         value: '',
         maxlength: 2
@@ -37,7 +37,7 @@ describe('input', () => {
     expect(validateSpy).toHaveBeenCalled()
 
     // use with maxlength
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         value: ''
       },
@@ -56,7 +56,7 @@ describe('input', () => {
     validateSpy.mockClear()
 
     // do not validate on input
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
           onInput: false
@@ -74,7 +74,7 @@ describe('input', () => {
   })
 
   test('render with label', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         label: 'test-label',
         labelWidth: 100
@@ -90,7 +90,7 @@ describe('input', () => {
   })
 
   test('default validateMode', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {}
     })
 
@@ -104,7 +104,7 @@ describe('input', () => {
 
   test('focus event', () => {
     const mockValidateMethod = jest.fn()
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
           onFocus: false
@@ -138,7 +138,7 @@ describe('input', () => {
 
   test('blur event', () => {
     const mockValidateMethod = jest.fn()
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
           onBlur: false
@@ -172,7 +172,7 @@ describe('input', () => {
 
   test('change event', () => {
     const mockValidateMethod = jest.fn()
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
           onChange: false
@@ -203,7 +203,7 @@ describe('input', () => {
   })
 
   test('validate with pattern', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         pattern: '^test$',
         value: 'test'
@@ -222,7 +222,7 @@ describe('input', () => {
   })
 
   test('validate required', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         required: true,
         value: ''
@@ -239,7 +239,7 @@ describe('input', () => {
   })
 
   test('validate minlength', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {
         minlength: 5,
         value: 'test'
@@ -256,7 +256,7 @@ describe('input', () => {
   })
 
   test('focus method', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {}
     })
 
@@ -265,7 +265,7 @@ describe('input', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {}
     })
 
@@ -277,7 +277,7 @@ describe('input', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallow(Input, {
+    wrapper = shallowMount(Input, {
       propsData: {}
     })
 

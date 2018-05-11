@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Button from '@/components/button'
 
 describe('button', () => {
@@ -8,7 +8,7 @@ describe('button', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Button, {
+    wrapper = shallowMount(Button, {
       propsData: {
         type: 'primary'
       }
@@ -19,7 +19,7 @@ describe('button', () => {
   })
 
   test('is-loading', () => {
-    wrapper = shallow(Button, {
+    wrapper = shallowMount(Button, {
       propsData: {
         isLoading: true
       }
@@ -29,7 +29,7 @@ describe('button', () => {
   })
 
   test('disabled', () => {
-    wrapper = shallow(Button, {
+    wrapper = shallowMount(Button, {
       propsData: {
         disabled: true
       }
@@ -40,7 +40,7 @@ describe('button', () => {
   })
 
   test('mini', () => {
-    wrapper = shallow(Button, {
+    wrapper = shallowMount(Button, {
       propsData: {
         mini: true
       }
@@ -49,7 +49,7 @@ describe('button', () => {
   })
 
   test('plain', () => {
-    wrapper = shallow(Button, {
+    wrapper = shallowMount(Button, {
       propsData: {
         type: 'primary',
         plain: true
@@ -60,7 +60,7 @@ describe('button', () => {
   })
 
   test('click', () => {
-    wrapper = shallow(Button, {
+    wrapper = shallowMount(Button, {
       propsData: {}
     })
 

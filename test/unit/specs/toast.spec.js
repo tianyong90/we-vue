@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
 
@@ -73,7 +73,7 @@ describe('toast', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Toast, {
+    wrapper = shallowMount(Toast, {
       propsData: {}
     })
 
@@ -82,7 +82,7 @@ describe('toast', () => {
   })
 
   test('text toast', () => {
-    wrapper = shallow(Toast, {
+    wrapper = shallowMount(Toast, {
       attachToDocument: true,
       propsData: {
         type: 'text',

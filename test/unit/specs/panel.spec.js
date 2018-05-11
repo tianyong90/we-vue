@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Panel from '@/components/panel'
 
 describe('panel', () => {
@@ -8,7 +8,7 @@ describe('panel', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Panel, {
+    wrapper = shallowMount(Panel, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('panel', () => {
   })
 
   test('render with title', () => {
-    wrapper = shallow(Panel, {
+    wrapper = shallowMount(Panel, {
       propsData: {
         title: 'test-title'
       }

@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import FormPreview from '@/components/form-preview'
 
 describe('preview', () => {
@@ -8,7 +8,7 @@ describe('preview', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(FormPreview, {
+    wrapper = shallowMount(FormPreview, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('preview', () => {
   })
 
   test('render title and value', () => {
-    wrapper = shallow(FormPreview, {
+    wrapper = shallowMount(FormPreview, {
       propsData: {
         title: 'test-title',
         value: 'test-value'

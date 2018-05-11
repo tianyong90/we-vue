@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Radio from '@/components/radio'
 
 const testOptions = [
@@ -14,7 +14,7 @@ describe('radio', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Radio, {
+    wrapper = shallowMount(Radio, {
       propsData: {
         options: testOptions
       }
@@ -24,7 +24,7 @@ describe('radio', () => {
     expect(wrapper.contains('.weui-cells_radio')).toBeTruthy()
 
     // create with 'title'
-    wrapper = shallow(Radio, {
+    wrapper = shallowMount(Radio, {
       propsData: {
         title: 'test title',
         options: testOptions
@@ -36,7 +36,7 @@ describe('radio', () => {
   })
 
   test('options', () => {
-    wrapper = shallow(Radio, {
+    wrapper = shallowMount(Radio, {
       propsData: {
         value: 'value2',
         options: testOptions
@@ -55,7 +55,7 @@ describe('radio', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallow(Radio, {
+    wrapper = shallowMount(Radio, {
       propsData: {
         options: testOptions
       }
@@ -70,7 +70,7 @@ describe('radio', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallow(Radio, {
+    wrapper = shallowMount(Radio, {
       propsData: {
         options: testOptions
       }

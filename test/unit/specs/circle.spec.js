@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Circle from '@/components/circle'
 
 describe('circle', () => {
@@ -8,7 +8,7 @@ describe('circle', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Circle, {
+    wrapper = shallowMount(Circle, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('circle', () => {
   })
 
   test('what value change', () => {
-    wrapper = shallow(Circle, {
+    wrapper = shallowMount(Circle, {
       propsData: {
         value: 0
       }
@@ -31,7 +31,7 @@ describe('circle', () => {
   })
 
   test('what currentValue change', () => {
-    wrapper = shallow(Circle, {
+    wrapper = shallowMount(Circle, {
       propsData: {
         value: 0
       }

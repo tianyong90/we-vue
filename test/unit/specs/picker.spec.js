@@ -1,4 +1,4 @@
-import { mount, shallow } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Picker from '@/components/picker'
 import PickerColumn from '@/components/picker/picker-column.vue'
 import { slowVerticalDrag } from '../utils'
@@ -25,7 +25,7 @@ describe('picker', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Picker, {
+    wrapper = shallowMount(Picker, {
       propsData: {
         visible: true,
         columns: []
@@ -354,7 +354,7 @@ describe('picker-column', () => {
   })
 
   test('render a divider slot', () => {
-    wrapper = shallow(PickerColumn, {
+    wrapper = shallowMount(PickerColumn, {
       propsData: {
         divider: true,
         content: '-'

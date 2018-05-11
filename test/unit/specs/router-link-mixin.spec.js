@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import EmptyComponent from '../components/empty.vue'
 import RouterLink from '@/mixins/router-link'
 
@@ -9,7 +9,7 @@ describe('textarea', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(EmptyComponent, {
+    wrapper = shallowMount(EmptyComponent, {
       mixins: [RouterLink]
     })
 
@@ -22,7 +22,7 @@ describe('textarea', () => {
     const pushSpy = jest.fn()
     const replaceSpy = jest.fn()
 
-    wrapper = shallow(EmptyComponent, {
+    wrapper = shallowMount(EmptyComponent, {
       propsData: {
         to: 'test'
       },
@@ -52,7 +52,7 @@ describe('textarea', () => {
   })
 
   test('routerLink method without $router', () => {
-    wrapper = shallow(EmptyComponent, {
+    wrapper = shallowMount(EmptyComponent, {
       propsData: {
         url: '#test',
         replace: false

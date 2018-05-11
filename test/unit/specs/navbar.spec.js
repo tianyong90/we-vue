@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Navbar from '@/components/navbar'
 
 describe('navbar', () => {
@@ -8,7 +8,7 @@ describe('navbar', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Navbar, {
+    wrapper = shallowMount(Navbar, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('navbar', () => {
   })
 
   test('fixed navbar', () => {
-    wrapper = shallow(Navbar, {
+    wrapper = shallowMount(Navbar, {
       propsData: {
         fixed: true
       }
@@ -30,7 +30,7 @@ describe('navbar', () => {
   })
 
   test('render with animate', () => {
-    wrapper = shallow(Navbar, {
+    wrapper = shallowMount(Navbar, {
       propsData: {
         animate: true
       }
@@ -40,7 +40,7 @@ describe('navbar', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallow(Navbar, {
+    wrapper = shallowMount(Navbar, {
       propsData: {}
     })
 

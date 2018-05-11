@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Group from '@/components/group'
 
 describe('group', () => {
@@ -8,7 +8,7 @@ describe('group', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Group, {
+    wrapper = shallowMount(Group, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('group', () => {
   })
 
   test('create with title', () => {
-    wrapper = shallow(Group, {
+    wrapper = shallowMount(Group, {
       propsData: {
         title: 'test'
       }

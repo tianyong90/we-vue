@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Loadmore from '@/components/loadmore'
 
 describe('loadmore', () => {
@@ -8,7 +8,7 @@ describe('loadmore', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Loadmore, {
+    wrapper = shallowMount(Loadmore, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('loadmore', () => {
   })
 
   test('text', () => {
-    wrapper = shallow(Loadmore, {
+    wrapper = shallowMount(Loadmore, {
       propsData: {
         text: 'test'
       }

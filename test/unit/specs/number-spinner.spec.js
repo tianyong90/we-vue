@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import NumberSpinner from '@/components/number-spinner'
 
 describe('number-spinner', () => {
@@ -8,7 +8,7 @@ describe('number-spinner', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('number-spinner', () => {
   })
 
   test('blur event', () => {
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {},
       data: {
         currentValue: ''
@@ -30,7 +30,7 @@ describe('number-spinner', () => {
   })
 
   test('onChange method', () => {
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1
       }
@@ -46,7 +46,7 @@ describe('number-spinner', () => {
   test('onPaste method', () => {
     const spy = jest.fn()
 
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1
       }
@@ -67,7 +67,7 @@ describe('number-spinner', () => {
   test('onKeypress method when fillable is false', () => {
     const spy = jest.fn()
 
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1,
         fillable: false
@@ -84,7 +84,7 @@ describe('number-spinner', () => {
   })
 
   test('click minus button', () => {
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 5
       }
@@ -94,7 +94,7 @@ describe('number-spinner', () => {
     expect(wrapper.vm.currentValue).toBe(5 - wrapper.vm.step)
 
     // when the initial value is NaN
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: NaN
       }
@@ -105,7 +105,7 @@ describe('number-spinner', () => {
   })
 
   test('click plus button', () => {
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1
       }
@@ -115,7 +115,7 @@ describe('number-spinner', () => {
     expect(wrapper.vm.currentValue).toBe(1 + wrapper.vm.step)
 
     // when the initial value is NaN
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: NaN
       }
@@ -126,7 +126,7 @@ describe('number-spinner', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {}
     })
 
@@ -139,7 +139,7 @@ describe('number-spinner', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallow(NumberSpinner, {
+    wrapper = shallowMount(NumberSpinner, {
       propsData: {
         min: 1,
         max: 10

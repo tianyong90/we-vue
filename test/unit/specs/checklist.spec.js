@@ -1,4 +1,4 @@
-import { shallow, mount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Checklist from '@/components/checklist'
 
 const options = [
@@ -14,7 +14,7 @@ describe('checklist', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Checklist, {
+    wrapper = shallowMount(Checklist, {
       propsData: {
         options: options
       }
@@ -24,7 +24,7 @@ describe('checklist', () => {
     expect(wrapper.contains('.weui-cells_checkbox')).toBeTruthy()
 
     // create with 'title'
-    wrapper = shallow(Checklist, {
+    wrapper = shallowMount(Checklist, {
       propsData: {
         title: 'test title',
         options: options
@@ -68,7 +68,7 @@ describe('checklist', () => {
     expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
 
     // create a fresh wrapper
-    wrapper = shallow(Checklist, {
+    wrapper = shallowMount(Checklist, {
       propsData: {
         max: 1,
         options: options,
@@ -81,7 +81,7 @@ describe('checklist', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallow(Checklist, {
+    wrapper = shallowMount(Checklist, {
       propsData: {
         max: 2,
         options: options
@@ -102,7 +102,7 @@ describe('checklist', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallow(Checklist, {
+    wrapper = shallowMount(Checklist, {
       propsData: {
         options: options
       }

@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import CellSwipeButtom from '@/components/cell-swipe-button'
 
 describe('cell-swipe-button', () => {
@@ -8,7 +8,7 @@ describe('cell-swipe-button', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(CellSwipeButtom, {
+    wrapper = shallowMount(CellSwipeButtom, {
       propsData: {}
     })
 
@@ -16,7 +16,7 @@ describe('cell-swipe-button', () => {
     expect(wrapper.classes()).toContain('weui-swiped-btn')
 
     // create with type
-    wrapper = shallow(CellSwipeButtom, {
+    wrapper = shallowMount(CellSwipeButtom, {
       propsData: {
         type: 'test'
       }
@@ -24,7 +24,7 @@ describe('cell-swipe-button', () => {
 
     expect(wrapper.classes()).toContain('weui-swiped-btn_test')
 
-    wrapper = shallow(CellSwipeButtom, {
+    wrapper = shallowMount(CellSwipeButtom, {
       slots: {
         default: 'test'
       }

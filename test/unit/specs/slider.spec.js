@@ -1,4 +1,4 @@
-import { mount, shallow, createLocalVue } from '@vue/test-utils'
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
 import Slider from '@/components/slider'
 import { horizontalDrag } from '../utils'
 import faker from 'faker'
@@ -10,7 +10,7 @@ describe('slider', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Slider, {
+    wrapper = shallowMount(Slider, {
       propsData: {}
     })
 
@@ -20,7 +20,7 @@ describe('slider', () => {
     // set the min be bigger than max
     const localVue = createLocalVue()
     expect(() => {
-      shallow(Slider, {
+      shallowMount(Slider, {
         propsData: {
           min: 10,
           max: 1
@@ -31,7 +31,7 @@ describe('slider', () => {
 
   test('compute percent', () => {
     const fakeValue = faker.random.number({min: 0, max: 100})
-    wrapper = shallow(Slider, {
+    wrapper = shallowMount(Slider, {
       propsData: {
         value: fakeValue
       }
@@ -43,7 +43,7 @@ describe('slider', () => {
   })
 
   test('show-value', () => {
-    wrapper = shallow(Slider, {
+    wrapper = shallowMount(Slider, {
       propsData: {
         showValue: true
       }
@@ -58,7 +58,7 @@ describe('slider', () => {
   })
 
   test('disabled', () => {
-    wrapper = shallow(Slider, {
+    wrapper = shallowMount(Slider, {
       propsData: {
         value: 0,
         disabled: true
@@ -75,7 +75,7 @@ describe('slider', () => {
   })
 
   test('drag the handler', () => {
-    wrapper = shallow(Slider, {
+    wrapper = shallowMount(Slider, {
       propsData: {
         value: 0
       }

@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Tabbar from '@/components/tabbar'
 
 describe('tabbar', () => {
@@ -8,7 +8,7 @@ describe('tabbar', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Tabbar, {
+    wrapper = shallowMount(Tabbar, {
       propsData: {}
     })
 
@@ -18,13 +18,13 @@ describe('tabbar', () => {
 
   test('fixed tabbar', () => {
     // is not fixed by default
-    wrapper = shallow(Tabbar, {
+    wrapper = shallowMount(Tabbar, {
       propsData: {}
     })
 
     expect(wrapper.element.style.position).toBe('absolute')
 
-    wrapper = shallow(Tabbar, {
+    wrapper = shallowMount(Tabbar, {
       propsData: {
         fixed: true
       }

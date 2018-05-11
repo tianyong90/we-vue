@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import MediaBox from '@/components/media-box'
 
 describe('media-box', () => {
@@ -8,7 +8,7 @@ describe('media-box', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(MediaBox, {
+    wrapper = shallowMount(MediaBox, {
       propsData: {}
     })
 
@@ -18,7 +18,7 @@ describe('media-box', () => {
 
   test('handle click', () => {
     const routerLinkSpy = jest.fn()
-    wrapper = shallow(MediaBox, {
+    wrapper = shallowMount(MediaBox, {
       propsData: {},
       methods: {
         routerLink: routerLinkSpy

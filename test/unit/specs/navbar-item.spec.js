@@ -1,4 +1,4 @@
-import { shallow, mount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Navbar from '@/components/navbar'
 import NavbarItem from '@/components/navbar-item'
 
@@ -17,7 +17,7 @@ describe('navbar-item', () => {
       }
     })
 
-    let wrapper = shallow(NavbarItem, {
+    let wrapper = shallowMount(NavbarItem, {
       parent: parentWrapper.vm
     })
 
@@ -29,7 +29,7 @@ describe('navbar-item', () => {
       propsData: {}
     })
 
-    let wrapper = shallow(NavbarItem, {
+    let wrapper = shallowMount(NavbarItem, {
       parent: parentWrapper.vm
     })
 
@@ -43,7 +43,7 @@ describe('navbar-item', () => {
       propsData: {}
     })
 
-    let wrapper = shallow(NavbarItem, {
+    let wrapper = shallowMount(NavbarItem, {
       parent: parentWrapper.vm
     })
 
@@ -63,7 +63,7 @@ describe('navbar-item', () => {
       }
     })
 
-    let wrapper = shallow(NavbarItem, {
+    let wrapper = shallowMount(NavbarItem, {
       propsData: {},
       parent: parentWrapper.vm
     })
@@ -83,7 +83,7 @@ describe('navbar-item', () => {
       }
     })
 
-    let wrapper = shallow(NavbarItem, {
+    let wrapper = shallowMount(NavbarItem, {
       propsData: {
         disabled: true
       },

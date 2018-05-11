@@ -1,4 +1,4 @@
-import { shallow, mount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Flex from '@/components/flex'
 import FlexItem from '@/components/flex-item'
 
@@ -17,7 +17,7 @@ describe('flex-item', () => {
       }
     })
 
-    let wrapper = shallow(FlexItem, {
+    let wrapper = shallowMount(FlexItem, {
       parent: parentWrapper.vm
     })
 
@@ -32,7 +32,7 @@ describe('flex-item', () => {
       }
     })
 
-    let wrapper = shallow(FlexItem, {
+    let wrapper = shallowMount(FlexItem, {
       parent: parentWrapper.vm
     })
 
@@ -44,7 +44,7 @@ describe('flex-item', () => {
       propsData: {}
     })
 
-    let wrapper = shallow(FlexItem, {
+    let wrapper = shallowMount(FlexItem, {
       parent: parentWrapper.vm
     })
 

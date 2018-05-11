@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Grid from '@/components/grid'
 
 describe('grid', () => {
@@ -8,7 +8,7 @@ describe('grid', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Grid, {
+    wrapper = shallowMount(Grid, {
       propsData: {}
     })
 

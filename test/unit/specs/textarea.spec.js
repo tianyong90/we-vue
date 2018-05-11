@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Textarea from '@/components/textarea'
 
 describe('textarea', () => {
@@ -8,7 +8,7 @@ describe('textarea', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Textarea, {
+    wrapper = shallowMount(Textarea, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('textarea', () => {
   })
 
   test('show counter', () => {
-    wrapper = shallow(Textarea, {
+    wrapper = shallowMount(Textarea, {
       propsData: {
         showCounter: true
       }
@@ -33,7 +33,7 @@ describe('textarea', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallow(Textarea, {
+    wrapper = shallowMount(Textarea, {
       propsData: {}
     })
 
@@ -45,7 +45,7 @@ describe('textarea', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallow(Textarea, {
+    wrapper = shallowMount(Textarea, {
       propsData: {
         maxLength: 10
       }
@@ -66,7 +66,7 @@ describe('textarea', () => {
   })
 
   test('check max-length', () => {
-    wrapper = shallow(Textarea, {
+    wrapper = shallowMount(Textarea, {
       propsData: {
         maxLength: 2,
         value: 'test'
@@ -78,7 +78,7 @@ describe('textarea', () => {
   })
 
   test('focus event', () => {
-    wrapper = shallow(Textarea, {
+    wrapper = shallowMount(Textarea, {
       propsData: {}
     })
 
@@ -88,7 +88,7 @@ describe('textarea', () => {
   })
 
   test('blur event', () => {
-    wrapper = shallow(Textarea, {
+    wrapper = shallowMount(Textarea, {
       propsData: {}
     })
 

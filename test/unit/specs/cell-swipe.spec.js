@@ -1,4 +1,4 @@
-import { shallow, mount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import CellSwipe from '@/components/cell-swipe'
 import CellSwipeButtonComponent from '../components/cell-swipe-button'
 import { horizontalDrag } from '../utils'
@@ -26,7 +26,7 @@ describe('cell-swipe', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(CellSwipe, {
+    wrapper = shallowMount(CellSwipe, {
       propsData: {}
     })
 

@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Footer from '@/components/footer'
 
 describe('footer', () => {
@@ -8,7 +8,7 @@ describe('footer', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Footer, {
+    wrapper = shallowMount(Footer, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('footer', () => {
   })
 
   test('text', () => {
-    wrapper = shallow(Footer, {
+    wrapper = shallowMount(Footer, {
       propsData: {
         text: 'test'
       }

@@ -1,4 +1,4 @@
-import { shallow, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import TopTipsApi from '@/components/top-tips'
 import TopTips from '@/components/top-tips/top-tips.vue'
 
@@ -67,7 +67,7 @@ describe('top-tips component', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(TopTips, {
+    wrapper = shallowMount(TopTips, {
       propsData: {
         visible: true
       }
@@ -78,7 +78,7 @@ describe('top-tips component', () => {
   })
 
   test('render message correctlly', () => {
-    wrapper = shallow(TopTips, {
+    wrapper = shallowMount(TopTips, {
       propsData: {
         message: 'test',
         visible: true

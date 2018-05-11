@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Badge from '@/components/badge'
 
 describe('badge', () => {
@@ -8,7 +8,7 @@ describe('badge', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Badge, {
+    wrapper = shallowMount(Badge, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('badge', () => {
   })
 
   test('is-dot', () => {
-    wrapper = shallow(Badge, {
+    wrapper = shallowMount(Badge, {
       propsData: {
         isDot: true
       }

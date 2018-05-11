@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import FooterLink from '@/components/footer/footer-link.vue'
 
 describe('footer-link', () => {
@@ -8,7 +8,7 @@ describe('footer-link', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(FooterLink, {
+    wrapper = shallowMount(FooterLink, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('footer-link', () => {
   })
 
   test('text', () => {
-    wrapper = shallow(FooterLink, {
+    wrapper = shallowMount(FooterLink, {
       propsData: {
         text: 'test'
       }
@@ -28,7 +28,7 @@ describe('footer-link', () => {
 
   test('handle click', () => {
     const routerLinkSpy = jest.fn()
-    wrapper = shallow(FooterLink, {
+    wrapper = shallowMount(FooterLink, {
       propsData: {},
       methods: {
         routerLink: routerLinkSpy

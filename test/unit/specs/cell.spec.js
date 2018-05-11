@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Cell from '@/components/cell'
 
 describe('cell', () => {
@@ -8,7 +8,7 @@ describe('cell', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Cell, {
+    wrapper = shallowMount(Cell, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('cell', () => {
   })
 
   test('is-link', () => {
-    wrapper = shallow(Cell, {
+    wrapper = shallowMount(Cell, {
       propsData: {
         isLink: true
       }
@@ -28,7 +28,7 @@ describe('cell', () => {
 
   test('handle click', () => {
     const routerLinkSpy = jest.fn()
-    wrapper = shallow(Cell, {
+    wrapper = shallowMount(Cell, {
       propsData: {},
       methods: {
         routerLink: routerLinkSpy

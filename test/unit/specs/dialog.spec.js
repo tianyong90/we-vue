@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import DialogApi from '@/components/dialog'
 import Dialog from '@/components/dialog/dialog.vue'
 
@@ -68,7 +68,7 @@ describe('dialog component', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Dialog, {
+    wrapper = shallowMount(Dialog, {
       propsData: {}
     })
 
@@ -79,7 +79,7 @@ describe('dialog component', () => {
   test('click cancel button', () => {
     const callbackSpy = jest.fn()
 
-    wrapper = shallow(Dialog, {
+    wrapper = shallowMount(Dialog, {
       propsData: {
         'visible.sync': true,
         callback: callbackSpy
@@ -95,7 +95,7 @@ describe('dialog component', () => {
   test('click confirm button', () => {
     const callbackSpy = jest.fn()
 
-    wrapper = shallow(Dialog, {
+    wrapper = shallowMount(Dialog, {
       propsData: {
         'visible.sync': true,
         callback: callbackSpy

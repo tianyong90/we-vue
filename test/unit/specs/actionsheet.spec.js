@@ -1,4 +1,4 @@
-import { mount, shallow } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Actionsheet from '@/components/actionsheet'
 
 describe('actionsheet', () => {
@@ -32,7 +32,7 @@ describe('actionsheet', () => {
   })
 
   test('watch value change', () => {
-    wrapper = shallow(Actionsheet, {
+    wrapper = shallowMount(Actionsheet, {
       propsData: {}
     })
 
@@ -44,7 +44,7 @@ describe('actionsheet', () => {
   })
 
   test('watch currentValue change', () => {
-    wrapper = shallow(Actionsheet, {
+    wrapper = shallowMount(Actionsheet, {
       propsData: {
         value: false
       }
@@ -66,7 +66,7 @@ describe('actionsheet', () => {
       }
     ]
 
-    wrapper = shallow(Actionsheet, {
+    wrapper = shallowMount(Actionsheet, {
       propsData: {
         actions: actions
       }
@@ -87,7 +87,7 @@ describe('actionsheet', () => {
       }
     ]
 
-    wrapper = shallow(Actionsheet, {
+    wrapper = shallowMount(Actionsheet, {
       propsData: {
         actions: actions
       }

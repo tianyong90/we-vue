@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Icon from '@/components/icon'
 
 describe('icon', () => {
@@ -8,7 +8,7 @@ describe('icon', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(Icon, {
+    wrapper = shallowMount(Icon, {
       propsData: {
         type: 'info'
       }
@@ -21,7 +21,7 @@ describe('icon', () => {
   })
 
   test('element class should be computed correctly', () => {
-    wrapper = shallow(Icon, {
+    wrapper = shallowMount(Icon, {
       propsData: {
         type: 'info',
         large: true

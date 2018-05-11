@@ -1,4 +1,4 @@
-import { shallow, mount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Flex from '@/components/flex'
 // import FlexCompponent from '../components/flex.vue'
 
@@ -18,7 +18,7 @@ describe('flex', () => {
   })
 
   test('style should be computed correctly', () => {
-    wrapper = shallow(Flex, {
+    wrapper = shallowMount(Flex, {
       propsData: {
       }
     })

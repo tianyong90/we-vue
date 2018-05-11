@@ -1,4 +1,4 @@
-import { shallow, mount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import SearchBar from '@/components/search-bar'
 import Cell from '@/components/cell'
 
@@ -9,7 +9,7 @@ describe('search', () => {
   })
 
   test('create', () => {
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {}
     })
 
@@ -18,7 +18,7 @@ describe('search', () => {
   })
 
   test('autofocus', () => {
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {
         autofocus: true
       }
@@ -27,7 +27,7 @@ describe('search', () => {
     expect(wrapper.find({ ref: 'input' }).attributes().autofocus).toBe('autofocus')
     expect(wrapper.vm.isActive).toBeTruthy()
 
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {
         autofocus: false
       }
@@ -38,7 +38,7 @@ describe('search', () => {
   })
 
   test('method textClick', () => {
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {}
     })
 
@@ -48,7 +48,7 @@ describe('search', () => {
   })
 
   test('method clear', () => {
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {}
     })
 
@@ -59,7 +59,7 @@ describe('search', () => {
 
   test('method cancel', () => {
     const spySearchBarClear = jest.fn()
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {}
     })
 
@@ -74,7 +74,7 @@ describe('search', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {}
     })
 
@@ -86,7 +86,7 @@ describe('search', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallow(SearchBar, {
+    wrapper = shallowMount(SearchBar, {
       propsData: {}
     })
 

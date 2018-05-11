@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import ClickoutsideComponent from '../components/clickoutside-component'
 
 describe('clickoutside', () => {
@@ -11,7 +11,7 @@ describe('clickoutside', () => {
     const onClickoutside1Spy = jest.fn()
     const onClickoutside2Spy = jest.fn()
 
-    wrapper = shallow(ClickoutsideComponent, {
+    wrapper = shallowMount(ClickoutsideComponent, {
       attachToDocument: true,
       methods: {
         onClickoutside1: onClickoutside1Spy,

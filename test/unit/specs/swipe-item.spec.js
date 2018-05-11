@@ -1,4 +1,4 @@
-import { mount, shallow } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
 
@@ -15,7 +15,7 @@ describe('swipe', () => {
       propsData: {}
     })
 
-    wrapper = shallow(SwipeItem, {
+    wrapper = shallowMount(SwipeItem, {
       parent: parentWrapper.vm
     })
 
