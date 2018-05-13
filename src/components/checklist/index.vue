@@ -64,9 +64,19 @@ export default create({
     }
   },
 
-  data () {
-    return {
-      currentValue: this.value
+  computed: {
+    currentValue: {
+      get () {
+        return this.value
+      },
+
+      set (val) {
+        if (this.max && val.length > this.max) {
+          val = val.slice(0, this.max)
+        }
+
+        this.$emit('input', val)
+      }
     }
   },
 
@@ -79,15 +89,6 @@ export default create({
   },
 
   watch: {
-    currentValue (val) {
-      if (this.max && val.length > this.max) {
-        this.currentValue = val.slice(0, this.max)
-        return
-      }
-
-      this.$emit('input', val)
-    },
-
     value (val, oldValue) {
       if (JSON.stringify(val) !== JSON.stringify(oldValue)) {
         this.$emit('change', val)
