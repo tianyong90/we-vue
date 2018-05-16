@@ -6,7 +6,8 @@
         v-for="option in options"
         :key="option.label || option"
         class="weui-cell weui-check__label"
-        :class="{ 'weui-check__label-disabled': option.disabled }">
+        :class="{ 'weui-check__label-disabled': option.disabled }"
+      >
         <div class="weui-cell__hd" v-if="align === 'left'">
           <input
             type="checkbox"
@@ -81,11 +82,7 @@ export default create({
   },
 
   created () {
-    if (this.max && this.value.length > this.max) {
-      this.currentValue = this.value.slice(0, this.max)
-    } else {
-      this.currentValue = this.value
-    }
+    this.currentValue = this.value
   },
 
   watch: {

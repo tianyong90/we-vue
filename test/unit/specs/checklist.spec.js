@@ -64,8 +64,7 @@ describe('checklist', () => {
       }
     })
 
-    expect(wrapper.vm.currentValue.length).toBe(2)
-    expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
+    expect(wrapper.emitted().input[0]).toEqual([['value1', 'value2']])
 
     // create a fresh wrapper
     wrapper = shallowMount(Checklist, {
@@ -76,8 +75,7 @@ describe('checklist', () => {
       }
     })
 
-    expect(wrapper.vm.currentValue.length).toBe(1)
-    expect(wrapper.vm.currentValue).toEqual(['value1'])
+    expect(wrapper.emitted().input[0]).toEqual([['value1']])
   })
 
   test('watch currentValue', () => {
@@ -92,13 +90,13 @@ describe('checklist', () => {
       currentValue: ['value1']
     })
 
-    expect(wrapper.emitted().input).toBeTruthy()
+    expect(wrapper.emitted().input.length).toBe(2)
 
     wrapper.setData({
       currentValue: options
     })
 
-    expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
+    expect(wrapper.emitted().input[2]).toEqual([['value1', 'value2']])
   })
 
   test('watch value', () => {
