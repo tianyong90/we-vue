@@ -19,7 +19,7 @@ function createContainer (klass, defaultTitle) {
       const token = tokens[idx]
       const info = token.info.trim().slice(klass.length).trim()
       if (token.nesting === 1) {
-        return `<div class="${klass} custom-block"><p class="custom-block-title">${info || defaultTitle}</p>\n`
+        return `<div class="${klass} custom-block"><p class="custom-block-title"></p>\n`
       } else {
         return `</div>\n`
       }

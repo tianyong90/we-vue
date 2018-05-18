@@ -7,6 +7,9 @@
 </template>
 
 <script>
+import 'docsearch.js/dist/cdn/docsearch.min.css'
+import docsearch from 'docsearch.js'
+
 export default {
   name: 'docsearch-box',
 
@@ -23,19 +26,12 @@ export default {
 
   methods: {
     initialize () {
-      Promise.all([
-        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
-        import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
-      ]).then(([docsearch]) => {
-        docsearch = docsearch.default
-
-        docsearch(Object.assign(this.options, {
-          apiKey: 'feb33c2506cdece7f0267859a856767a',
-          indexName: 'wevue',
-          inputSelector: '#algolia-search-input',
-          debug: true // Set debug to true if you want to inspect the dropdown
-        }))
-      })
+      docsearch(Object.assign(this.options, {
+        apiKey: 'feb33c2506cdece7f0267859a856767a',
+        indexName: 'wevue',
+        inputSelector: '#algolia-search-input',
+        debug: true // Set debug to true if you want to inspect the dropdown
+      }))
     }
   },
 

@@ -29,15 +29,26 @@ hr {
 }
 
 .custom-block {
-  .custom-block-title {
-    font-weight: 600;
+  position: relative;
+
+  &:before {
+    content: "!";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: -15px;
+    top: 15px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 50%;
+    color: #fff;
   }
 
   &.tip,
   &.warning,
   &.danger {
     padding: 0.1rem 1.5rem;
-    border-left-width: 0.5rem;
+    border-left-width: 0.3rem;
     border-left-style: solid;
     margin: 1rem 0;
   }
@@ -45,6 +56,10 @@ hr {
   &.tip {
     background-color: #f3f5f7;
     border-color: #42b983;
+
+    &:before {
+      background-color: #42b983;
+    }
   }
 
   &.warning {
@@ -52,8 +67,8 @@ hr {
     border-color: darken(#ffe564, 35%);
     color: darken(#ffe564, 70%);
 
-    .custom-block-title {
-      color: darken(#ffe564, 40%);
+    &:before {
+      background-color: darken(#ffe564, 35%);
     }
   }
 
@@ -62,8 +77,8 @@ hr {
     border-color: darken(red, 20%);
     color: darken(red, 70%);
 
-    .custom-block-title {
-      color: darken(red, 40%);
+    &:before {
+      background-color: darken(red, 20%);
     }
   }
 }

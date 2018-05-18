@@ -24,8 +24,8 @@
 
       <div
         class="dropdown col-1 ml-auto version-picker"
-        @mouseenter="onMouseenterVersion"
-        @mouseleave="onMouseleaveVersion"
+        @mouseenter="dropDownVisible = true"
+        @mouseleave="dropDownVisible = false"
         v-if="versionPickerVisible"
       >
 
@@ -71,14 +71,6 @@ export default {
   },
 
   methods: {
-    onMouseenterVersion () {
-      this.dropDownVisible = true
-    },
-
-    onMouseleaveVersion () {
-      this.dropDownVisible = false
-    },
-
     changeVersion (version) {
       this.version = version
       this.$router.push(`/doc/${version}/index`)
@@ -157,7 +149,7 @@ export default {
       text-align: right;
       position: relative;
       cursor: pointer;
-      padding-right: 30px;
+      padding: 10px 30px 10px 0;
 
       .version-number::after {
         content: '';
@@ -175,6 +167,10 @@ export default {
           top: 7px;
           border-color:  #fff #fff #666 #fff;
         }
+      }
+
+      .dropdown-menu {
+        top: 90%;
       }
     }
   }
