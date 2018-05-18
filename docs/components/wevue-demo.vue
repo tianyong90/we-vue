@@ -46,7 +46,7 @@ export default {
     overflow: hidden;
     width: 375px;
     min-width: 375px;
-    z-index: 100;
+    z-index: 50;
     border-radius: 6px;
     background: #f2f2f2;
     box-sizing: border-box;

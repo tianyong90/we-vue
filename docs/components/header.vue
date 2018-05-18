@@ -1,41 +1,51 @@
 <template>
-  <div class="header" :class="[theme]">
-    <div class="header-main">
-      <router-link to="/" exact>
-        <img class="logo" src="../assets/logo.png" alt="">
+  <header class="navbar flex-column " :class="[theme]">
+    <div class="container-fluid justify-content-start">
+      <router-link class="navbar-brand mr-0" to="/" exact>
+        <img class="d-block logo" src="../assets/logo.png" alt="">
       </router-link>
-      <ul class="nav">
-        <li>
+
+      <ul class="navbar-nav flex-row ml-4">
+        <li class="nav-item">
           <router-link to="/" exact>首页</router-link>
         </li>
-        <li>
+        <li class="nav-item">
           <router-link to="/doc/v2_0/index">文档</router-link>
         </li>
-        <li>
+        <li class="nav-item">
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
         </li>
       </ul>
 
+      <docsearch-box
+        v-if="$route.path.indexOf('/doc') > -1"
+        :options="searchBoxOptions"
+      />
+
       <div
-        class="version-picker"
+        class="dropdown col-1 ml-auto version-picker"
         @mouseenter="onMouseenterVersion"
         @mouseleave="onMouseleaveVersion"
         v-if="versionPickerVisible"
       >
 
         <span class="version-number">{{ version | versionText }}</span>
-        <ul class="dropdown" v-show="dropDownVisible">
-          <li class="dropdown-item" @click="changeVersion('v1_6')">v1.6</li>
-          <li class="dropdown-item" @click="changeVersion('v2_0')">v2.0</li>
-        </ul>
+        <div class="dropdown-menu" :class="{ 'd-block': dropDownVisible }">
+          <div class="dropdown-item" @click="changeVersion('v1_6')">v1.6</div>
+          <div class="dropdown-item" @click="changeVersion('v2_0')">v2.0</div>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
 export default {
   name: 'doc-header',
+
+  components: {
+    'docsearch-box': () => import('./docsearch-box.vue')
+  },
 
   props: {
     versionPickerVisible: Boolean,
@@ -49,6 +59,14 @@ export default {
     return {
       dropDownVisible: false,
       version: this.$route.meta.version
+    }
+  },
+
+  computed: {
+    searchBoxOptions () {
+      return {
+        algoliaOptions: { 'facetFilters': [`version:${this.version}`] }
+      }
     }
   },
 
@@ -90,54 +108,30 @@ export default {
     position: relative;
   }
 
-  .header {
-    display: block;
-    overflow: visible;
-    top: 0;
-    left: 0;
-    width: 100%;
+  .navbar {
     height: $header-height;
     background-color: $header-background-color;
     z-index: 100;
     border-bottom: 1px solid #dfdfdf;
 
-    .header-main {
-      display: block;
-      margin: 0 auto;
-      width: 90vw;
-    }
-
     .logo {
-      display: block;
-      float: left;
       width: 60px;
       height: 60px;
-      margin: 5px 0;
     }
 
-    .nav {
-      display: block;
-      padding: 0;
-      float: left;
-      margin: 0 0 0 100px;
-
-      li {
+    .navbar-nav {
+      a {
+        color: #333;
+        text-decoration: none;
         display: inline-block;
+        padding: 0 1em;
 
-        a {
-          color: #333;
-          text-decoration: none;
-          display: inline-block;
-          padding: 0 1em;
-          line-height: $header-height;
+        &:hover {
+          color: #41b883;
+        }
 
-          &:hover {
-            color: #41b883;
-          }
-
-          &.router-link-active {
-            color: #41b883;
-          }
+        &.router-link-active {
+          color: #41b883;
         }
       }
     }
@@ -160,56 +154,26 @@ export default {
     }
 
     .version-picker {
-      display: block;
-      padding: 0 2em;
-      line-height: $header-height;
+      text-align: right;
       position: relative;
       cursor: pointer;
-      float: right;
+      padding-right: 30px;
 
       .version-number::after {
         content: '';
         width: 0;
         height: 0;
         position: absolute;
-        right: 8px;
-        top: 45%;
+        right: 0;
+        top: 10px;
         border: 7px solid;
-        border-color:  #666 #fff #fff #fff;
+        border-color:  #888 #fff #fff #fff;
       }
 
       &:hover {
         .version-number::after {
-          top: 38%;
+          top: 7px;
           border-color:  #fff #fff #666 #fff;
-        }
-      }
-
-      .dropdown {
-        display: block;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        position: absolute;
-        background-color: #fafafa;
-        top: $header-height;
-        left: 0;
-        z-index: 2000;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-
-        &-item {
-          display: block;
-          padding: 0;
-          margin: 0;
-          text-align: center;
-          line-height: 30px;
-          height: 30px;
-          cursor: pointer;
-
-          &:hover {
-            background-color: #bbb;
-          }
         }
       }
     }
