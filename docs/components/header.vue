@@ -5,28 +5,28 @@
         <img class="d-block logo" src="../assets/logo.png" alt="">
       </router-link>
 
-      <ul class="navbar-nav flex-row ml-4">
-        <li class="nav-item">
-          <router-link to="/" exact>首页</router-link>
-        </li>
+      <docsearch-box
+        v-if="$route.path.indexOf('/doc') > -1"
+        :options="searchBoxOptions"
+      />
+
+      <ul class="navbar-nav flex-row ml-3">
         <li class="nav-item">
           <router-link to="/doc/v2_0/index">文档</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/doc/v2_0/changelog">变更记录</router-link>
         </li>
         <li class="nav-item">
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
         </li>
       </ul>
 
-      <docsearch-box
-        v-if="$route.path.indexOf('/doc') > -1"
-        :options="searchBoxOptions"
-      />
-
       <div
-        class="dropdown col-1 ml-auto version-picker"
+        class="dropdown col-1 ml-3 version-picker"
         @mouseenter="dropDownVisible = true"
         @mouseleave="dropDownVisible = false"
-        v-if="versionPickerVisible"
+        v-if="$route.name !== 'home'"
       >
 
         <span class="version-number">{{ version | versionText }}</span>
@@ -157,15 +157,17 @@ export default {
         height: 0;
         position: absolute;
         right: 0;
-        top: 10px;
+        top: 50%;
         border: 7px solid;
         border-color:  #888 #fff #fff #fff;
       }
 
       &:hover {
+        color: #41b883;
+
         .version-number::after {
-          top: 7px;
-          border-color:  #fff #fff #666 #fff;
+          top: calc(50% - 7px);
+          border-color:  #fff #fff #888 #fff;
         }
       }
 

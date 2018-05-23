@@ -28,7 +28,7 @@ export default {
 
   mounted () {
     // 右侧 DEMO 区实在 sticky 效果
-    document.addEventListener('scroll', (e) => {
+    document.addEventListener('scroll', () => {
       const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
       if (scrollDistance >= this.stickyTop - 20) {
         this.positionTop = scrollDistance + 20

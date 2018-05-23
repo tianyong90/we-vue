@@ -1,42 +1,39 @@
 <template>
-  <div>
-    <doc-header :version-picker-visible="true"/>
-    <div class="doc-wrap">
-      <div class="sidebar-wrapper" id="sidebar" :style="{ top: sidebarTop + 'px' }">
-        <ul>
-          <li
-            class="doc-nav__item"
-            v-for="navItem in nav[version]"
-            :key="navItem.title"
+  <div class="doc-wrap">
+    <div class="sidebar-wrapper" id="sidebar" :style="{ top: sidebarTop + 'px' }">
+      <ul>
+        <li
+          class="doc-nav__item"
+          v-for="navItem in nav[version]"
+          :key="navItem.title"
+        >
+          <h2 class="title" v-html="navItem.title"/>
+
+          <div
+            v-for="(group, index) in navItem.groups"
+            :key="index"
           >
-            <h2 class="title" v-html="navItem.title"/>
-
-            <div
-              v-for="(group, index) in navItem.groups"
-              :key="index"
-            >
-              <div class="group-name" v-text="group.groupName" v-if="group.groupName"/>
-              <ul class="sub-tree">
-                <li>
-                  <router-link
-                    :to="subItem.path"
-                    v-for="subItem in group.list"
-                    :key="subItem.title"
-                    v-text="subItem.title"
-                    active-class="current"
-                  />
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="doc-content">
-        <router-view/>
-      </div>
-
-      <wevue-demo :url.sync="demoUrl" :sticky-top="90"/>
+            <div class="group-name" v-text="group.groupName" v-if="group.groupName"/>
+            <ul class="sub-tree">
+              <li>
+                <router-link
+                  :to="subItem.path"
+                  v-for="subItem in group.list"
+                  :key="subItem.title"
+                  v-text="subItem.title"
+                  active-class="current"
+                />
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </div>
+    <div class="doc-content">
+      <router-view/>
+    </div>
+
+    <wevue-demo :url.sync="demoUrl" :sticky-top="90"/>
   </div>
 </template>
 

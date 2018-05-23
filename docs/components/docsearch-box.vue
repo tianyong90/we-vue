@@ -1,9 +1,11 @@
 <template>
-  <input
-    class="form-control d-flex ml-2 mr-auto algolia-search-input search-query"
-    id="algolia-search-input"
-    placeholder="搜索文档"
-  >
+  <form class="form-inline ml-auto mr-2">
+    <input
+      class="form-control algolia-search-input search-query"
+      id="algolia-search-input"
+      placeholder="搜索文档"
+    >
+  </form>
 </template>
 
 <script>
@@ -47,6 +49,11 @@ export default {
 
 <style scoped lang="scss">
   .algolia-search-input {
+    background-image: url(../assets/icon_search.svg);
+    background-repeat: no-repeat;
+    background-size: 1.4em;
+    background-position: 98% 50%;
+
     &:focus {
       outline: none;
       border-color: #41b883;

@@ -33,11 +33,11 @@ new Vue({
 如此即完成了 WeVue 的引入。
 
 - 按需引入
-可以借助 babel-plugin-component实现按需引入，以减小项目体积。
-首先，安装 babel-plugin-component:
+可以借助 babel-plugin-import 实现按需引入，以减小项目体积。
+首先，安装 babel-plugin-import:
 
-```bash
-npm install babel-plugin-component -D
+```shell
+npm install babel-plugin-import -D
 ```
 
 然后修改 .babelrc:
@@ -47,7 +47,7 @@ npm install babel-plugin-component -D
   "presets": [
     ["es2015", { "modules": false }]
   ],
-  "plugins": [["component", [
+  "plugins": [["import", [
     {
       "libraryName": "we-vue",
       "style": true

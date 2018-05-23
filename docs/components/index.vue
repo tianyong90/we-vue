@@ -1,212 +1,121 @@
 <template>
   <div>
-    <doc-header theme="dark"/>
-    <div class="main">
-      <div id="particles-js"/>
-      <div class="title">WE-VUE</div>
-      <div class="slogan">简单易用的 Vue.js 组件</div>
-      <div class="btns">
-        <router-link to="/doc/v1_6/index" class="btn btn-quickstart">文档</router-link>
-        <a href="https://demo.wevue.org" class="btn btn-flat">示例</a>
-        <a href="https://github.com/tianyong90/we-vue" class="btn btn-flat">GitHub</a>
+    <div class="banner">
+      <div class="container p-5">
+        <div class="row justify-content-center flex-column">
+          <h1 class="d-block text-center mt-5 text-light title">WE-VUE</h1>
+          <div class="slogan text-center mt-2 text-light sub-title">简单易用的 Vue.js 组件</div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+          <router-link
+            to="/doc/v2_0/index"
+            class="btn btn-primary ml-2 mr-2
+          btn-quickstart"
+          >文档
+          </router-link>
+          <a
+            href="https://demo.wevue.org"
+            class="btn btn-primary ml-2 mr-2"
+          >示例</a>
+          <a
+            href="https://github.com/tianyong90/we-vue"
+            class="btn btn-primary ml-2 mr-2"
+          >GitHub</a>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <img class="qrcode" width="120" height="120" src="../assets/demo_qrcode.png">
+        </div>
       </div>
-      <img class="qrcode" src="../assets/demo_qrcode.png" alt="">
     </div>
+
+    <section class="mt-4 mt-4">
+      <div class="container">
+        <h2 class="text-center mt-5 mb-4 title-feature">特性</h2>
+        <div class="row justify-content-between">
+          <div class="card shadow">
+            <img src="" alt="" class="card-img">
+            <div class="card-body">
+              <div class="card-title">
+                简单易用
+              </div>
+              <p>we-vue 组件使用简单，配置很容易。支持多种引入方式。对于对 vue 有一定了解的开发者，一定能很快上手。</p>
+            </div>
+          </div>
+          <div class="card shadow">
+            <div class="card-body">
+              <div class="card-title">
+                文档完善
+              </div>
+              <p>我们为不同版本分别编写了详细的文档。这些文档能使开发更加高效，同时在线文档网站也是你在使用过程中遇到问题时最可能得到帮助的地方。</p>
+            </div>
+          </div>
+          <div class="card shadow">
+            <div class="card-body">
+              <div class="card-title">
+                在线示例
+              </div>
+              <p>针对最新版本的组件，我们为每一个组件都编写了示例。查看示例可以随时了解 we-vue 组件的最新特性及细节。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer w-100 mt-4">
+      <div class="container pt-3 pb-3">
+        <div class="row justify-content-center">
+          <a class="text-light m-2" href="https://github.com/tianyong90/we-vue">GitHub</a>
+          <a class="text-light m-2" href="https://gitee.com/tianyong/we-vue">Gitee</a>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+          <p class="text-light">Copyright © 2016-2018 粤ICP备17009332号-1</p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import 'particles.js'
-
 export default {
   data () {
     return {}
-  },
-
-  mounted () {
-    /* eslint-disable no-undef */
-    particlesJS('particles-js', {
-      'particles': {
-        'number': {
-          'value': 50,
-          'density': {
-            'enable': true,
-            'value_area': 800
-          }
-        },
-        'color': {
-          'value': '#ffffff'
-        },
-        'shape': {
-          'type': 'circle',
-          'stroke': {
-            'width': 0,
-            'color': '#000000'
-          },
-          'polygon': {
-            'nb_sides': 5
-          }
-        },
-        'opacity': {
-          'value': 0.5,
-          'random': true,
-          'anim': {
-            'enable': false,
-            'speed': 1,
-            'opacity_min': 0.1,
-            'sync': false
-          }
-        },
-        'size': {
-          'value': 4,
-          'random': true,
-          'anim': {
-            'enable': false,
-            'speed': 40,
-            'size_min': 0.1,
-            'sync': false
-          }
-        },
-        'line_linked': {
-          'enable': true,
-          'distance': 100,
-          'color': '#ffffff',
-          'opacity': 0.4,
-          'width': 1
-        },
-        'move': {
-          'enable': true,
-          'speed': 6,
-          'direction': 'none',
-          'random': false,
-          'straight': false,
-          'out_mode': 'out',
-          'bounce': false,
-          'attract': {
-            'enable': false,
-            'rotateX': 600,
-            'rotateY': 1200
-          }
-        }
-      },
-      'interactivity': {
-        'detect_on': 'canvas',
-        'events': {
-          'onhover': {
-            'enable': true,
-            'mode': 'grab'
-          },
-          'onclick': {
-            'enable': true,
-            'mode': 'push'
-          },
-          'resize': true
-        },
-        'modes': {
-          'grab': {
-            'distance': 140,
-            'line_linked': {
-              'opacity': 1
-            }
-          },
-          'bubble': {
-            'distance': 400,
-            'size': 40,
-            'duration': 2,
-            'opacity': 8,
-            'speed': 3
-          },
-          'repulse': {
-            'distance': 200,
-            'duration': 0.4
-          },
-          'push': {
-            'particles_nb': 4
-          },
-          'remove': {
-            'particles_nb': 2
-          }
-        }
-      },
-      'retina_detect': true
-    })
   }
 }
 </script>
 
 <style scoped lang="scss">
-  $qrcode-size: 120px;
-
-  #particles-js {
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
-    position: absolute;
-  }
-
-  .main {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    width: 100%;
-    height: calc(100vh - 70px);
+  .banner {
+    min-height: 85vh;
+    background-image: url(../assets/banner.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
     .title {
-      color: #fff;
-      font-size: 5em;
-      font-weight: 200;
-      text-shadow: #333 3px 3px 6px;
-      z-index: 100;
+      font-size: 5rem;
+      font-weight: 300;
     }
+  }
 
-    .slogan {
-      color: #fff;
-      font-size: 1.3em;
-      font-weight: 100;
-      text-shadow: #333 2px 2px 0px;
-      margin-top: 20px;
-      z-index: 100;
+  .title-feature {
+    color: #666;
+  }
+
+  .card {
+    width: 30% !important;
+
+    .card-title {
+      text-align: center;
+      color: #1aad19;
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1.5em;
     }
+  }
 
-    .btns {
-      margin: 50px 0;
-      z-index: 100;
-
-      .btn {
-        display: block;
-        padding: .5em 1em;
-        background-color: #329368;
-        border: 2px solid #329368;
-        margin: 0 10px;
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 500;
-        float: left;
-        transition: transform .2s ease-in-out;
-
-        &:hover {
-          transform: scale(1.2);
-        }
-      }
-
-      .btn-flat {
-        background: none;
-        border: 2px solid #329368;
-        color: #fff;
-      }
-    }
-
-    .qrcode {
-      display: block;
-      width: $qrcode-size;
-      height: $qrcode-size;
-      background-color: #fff;
-      margin-top: 30px;
-      z-index: 100;
-    }
+  .footer {
+    background-color: darken(#1aad19, 35%);
   }
 </style>

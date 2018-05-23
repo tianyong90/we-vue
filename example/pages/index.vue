@@ -19,7 +19,7 @@
       </wv-cell>
     </wv-group>
 
-    <wv-footer class="footer-copyright" text="Copyright © 2017 粤ICP备17009332号-1"/>
+    <wv-footer class="footer-copyright" text="Copyright © 2016 - 2018 粤ICP备17009332号-1"/>
   </div>
 </template>
 

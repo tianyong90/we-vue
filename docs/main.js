@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './app.vue'
 import router from './router'
-import './assets/common.scss'
+import './assets/docs.scss'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true

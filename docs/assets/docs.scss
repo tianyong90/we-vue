@@ -4,7 +4,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #ddd;
 }
 
 pre {
@@ -47,10 +46,9 @@ hr {
   &.tip,
   &.warning,
   &.danger {
-    padding: 0.1rem 1.5rem;
-    border-left-width: 0.3rem;
-    border-left-style: solid;
+    padding: .1rem 1.5rem;
     margin: 1rem 0;
+    border-left: .3rem solid;
   }
 
   &.tip {
@@ -121,6 +119,7 @@ table {
   h3,
   h4 {
     color: #444;
+    margin: .65em 0;
 
     &:hover .header-anchor {
       opacity: 1;

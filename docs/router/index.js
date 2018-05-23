@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import routes_v1_6 from './v1_6'
 import routes_v2_0 from './v2_0'
+import Header from '../components/header'
 
 Vue.use(Router)
 
@@ -16,12 +17,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import('../components/index')
+      components: {
+        default: () => import('../components/index')
+      }
     },
     {
       path: '/doc',
       name: 'doc',
-      component: () => import('../components/doc'),
+      components: {
+        header: Header,
+        default: () => import('../components/doc')
+      },
       children: [
         ...routes_v1_6,
         ...routes_v2_0
