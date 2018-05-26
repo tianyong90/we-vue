@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, TransitionStub } from '@vue/test-utils'
 import PopupMixinComponent from '../components/popup-mixin-component'
 import { verticalDrag } from '../utils'
 
@@ -33,10 +33,6 @@ describe('mixins/popup', () => {
 
     expect(wrapper.emitted('update:visible').length).toBe(1)
     expect(wrapper.emitted('update:visible')[0]).toEqual([true])
-
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.isVisible()).toBe(true)
-    })
   })
 
   test('method move() should have been called when property getContainer is set', () => {
@@ -58,18 +54,14 @@ describe('mixins/popup', () => {
 
   test('close popup via close method', () => {
     wrapper = mount(PopupMixinComponent, {
-      data: {
+      propsData: {
         visible: true
       }
     })
 
     wrapper.vm.close()
 
-    expect(wrapper.emitted('update:visible')[0]).toEqual([false])
-
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.isVisible()).toBe(false)
-    })
+    expect(wrapper.emitted('update:visible')[1]).toEqual([false])
   })
 
   test('close popup via click mask', () => {
@@ -80,40 +72,35 @@ describe('mixins/popup', () => {
         visible: true,
         mask: true,
         closeOnClickMask: true
+      },
+      stubs: {
+        transition: TransitionStub
       }
     })
 
     wrapper.vm.open()
 
-    wrapper.vm.$nextTick(() => {
-      const spy = jest.spyOn(wrapper.vm, 'close')
+    const spy = jest.spyOn(wrapper.vm, 'close')
 
-      // trigger click on the mask element
-      wrapper.find('.wv-modal').trigger('click')
+    // trigger click on the mask element
+    document.querySelector('.wv-modal').click()
 
-      expect(spy).shouldHaveBeenCalledOnce()
-    })
+    expect(spy).toHaveBeenCalled()
+
+    spy.mockReset()
+    spy.mockRestore()
 
     // closeOnClick is false
-    wrapper = mount(PopupMixinComponent, {
-      attachToDocument: true,
-      propsData: {
-        visible: true,
-        mask: true,
-        closeOnClickMask: false
-      }
+    wrapper.setProps({
+      closeOnClickMask: false
     })
 
     wrapper.vm.open()
 
-    wrapper.vm.$nextTick(() => {
-      const spy = jest.spyOn(wrapper.vm, 'close')
+    // trigger click on the mask element
+    document.querySelector('.wv-modal').click()
 
-      // trigger click on the mask element
-      wrapper.find('.wv-modal').trigger('click')
-
-      expect(spy).not.toHaveBeenCalled()
-    })
+    expect(spy).not.toHaveBeenCalled()
   })
 
   test('lockOnScroll', () => {
@@ -163,13 +150,17 @@ describe('mixins/popup', () => {
   test('getContainer watcher', () => {
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
-      propsData: {}
+      propsData: {
+        visible: true
+      }
     })
 
     const spy = jest.spyOn(wrapper.vm, 'move')
 
     wrapper.setProps({
-      getContainer: jest.fn()
+      getContainer: function () {
+        return document.createElement('div')
+      }
     })
 
     expect(spy).toHaveBeenCalled()
