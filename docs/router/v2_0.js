@@ -297,21 +297,21 @@ let v2_0 = [
     }
   },
   {
-    path: 'v2_0/troubleshooting',
-    component: () => import('../markdown/v2_0/troubleshooting.md'),
+    path: 'troubleshooting',
+    component: () => import('../markdown/troubleshooting.md'),
     meta: {
       title: '问题解答'
     }
   },
   {
-    path: 'v2_0/contributing',
-    component: () => import('../markdown/v2_0/contributing.md'),
+    path: 'contributing',
+    component: () => import('../markdown/contributing.md'),
     meta: {
       title: '贡献'
     }
   },
   {
-    path: 'v2_0/changelog',
+    path: 'changelog',
     component: () => import('../../CHANGELOG.md'),
     meta: {
       title: '变更记录'
