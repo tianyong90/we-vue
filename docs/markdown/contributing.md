@@ -1,7 +1,7 @@
 贡献指南
 ---
 
-我们非常欢迎您加入 WE-VUE 的开发，这份文件将帮助您了解开发流程。
+非常欢迎你加入 WE-VUE 的开发，这份文件将帮助你了解开发流程。
 
 ---
 
@@ -49,9 +49,9 @@
 
 ## 反馈问题
 
-当您在使用 WE-VUE 遇到问题时，您可以尝试在 [问题解答](http://wevue.org/doc/troubleshooting) 中寻找解答，或是在 [GitHub](https://github.com/tianyong90/we-vue/issues) 上进行反馈。
+当你在使用 WE-VUE 遇到问题时，你可以尝试在 [问题解答](http://wevue.org/doc/troubleshooting) 中寻找解答，或是在 [GitHub](https://github.com/tianyong90/we-vue/issues) 上进行反馈。
 
 1. 描述具体问题及重现步骤。
 3. 附上相关代码及调试信息。
 
-[we-vue 项目](https://github.com/tianyong90/we-vue)
+[we-vue 项目地址](https://github.com/tianyong90/we-vue)

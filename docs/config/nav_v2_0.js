@@ -14,7 +14,7 @@ export default [
           },
           {
             title: '变更记录',
-            path: '/doc/v2_0/changelog'
+            path: '/doc/changelog'
           }
         ]
       }
@@ -202,11 +202,11 @@ export default [
         list: [
           {
             title: '问题解答',
-            path: '/doc/v2_0/troubleshooting'
+            path: '/doc/troubleshooting'
           },
           {
             title: '贡献指南',
-            path: '/doc/v2_0/contributing'
+            path: '/doc/contributing'
           }
         ]
       }
