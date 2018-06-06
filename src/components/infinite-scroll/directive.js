@@ -1,4 +1,5 @@
-import scrollUtil from '../../utils/scroll'
+import Utils from '../../utils/scroll'
+import { on, off } from '../../utils/event'
 
 const CONTEXT = '@@InfiniteScroll'
 const DISTANCE = 300
@@ -10,13 +11,11 @@ function doBindEvent () {
   }
   this.el[CONTEXT].binded = true
 
-  this.scrollEventTarget = scrollUtil.getScrollEventTarget(this.el)
-  this.scrollEventListener = scrollUtil.debounce(handleScrollEvent.bind(this), 200)
-  this.scrollEventTarget.addEventListener('scroll', this.scrollEventListener, true)
+  this.scrollEventListener = Utils.debounce(handleScrollEvent.bind(this), 200)
+  this.scrollEventTarget = Utils.getScrollEventTarget(this.el)
 
   const disabledExpr = this.el.getAttribute('infinite-scroll-disabled')
   let disabled = false
-
   if (disabledExpr) {
     this.vm.$watch(disabledExpr, (value) => {
       this.disabled = value
@@ -29,12 +28,11 @@ function doBindEvent () {
   let distance = this.el.getAttribute('infinite-scroll-distance')
   this.distance = Number(distance) || DISTANCE
 
+  on(this.scrollEventTarget, 'scroll', this.scrollEventListener, true)
+
   const immediateCheckExpr = this.el.getAttribute('infinite-scroll-immediate-check')
-  let immediateCheck = true
-  if (immediateCheckExpr) {
-    immediateCheck = Boolean(this.vm[immediateCheckExpr])
-  }
-  this.immediateCheck = immediateCheck
+
+  let immediateCheck = immediateCheckExpr ? Boolean(this.vm[immediateCheckExpr]) : true
 
   if (immediateCheck) {
     this.scrollEventListener()
@@ -52,9 +50,9 @@ function handleScrollEvent () {
     return
   }
 
-  const targetScrollTop = scrollUtil.getScrollTop(scrollEventTarget)
-  const targetBottom = targetScrollTop + scrollUtil.getVisibleHeight(scrollEventTarget)
-  const targetVisibleHeight = scrollUtil.getVisibleHeight(scrollEventTarget)
+  const targetScrollTop = Utils.getScrollTop(scrollEventTarget)
+  const targetBottom = targetScrollTop + Utils.getVisibleHeight(scrollEventTarget)
+  const targetVisibleHeight = Utils.getVisibleHeight(scrollEventTarget)
 
   // return when the targetElement has no height (treat as hidden)
   if (!targetVisibleHeight) {
@@ -65,7 +63,7 @@ function handleScrollEvent () {
   if (scrollEventTarget === element) {
     needLoadMore = scrollEventTarget.scrollHeight - targetBottom < this.distance
   } else {
-    const elementBottom = scrollUtil.getElementTop(element) - scrollUtil.getElementTop(scrollEventTarget) + scrollUtil.getVisibleHeight(element)
+    const elementBottom = Utils.getElementTop(element) - Utils.getElementTop(scrollEventTarget) + Utils.getVisibleHeight(element)
 
     needLoadMore = elementBottom - targetVisibleHeight < this.distance
   }
@@ -79,7 +77,7 @@ function startBind (el) {
   const context = el[CONTEXT]
 
   context.vm.$nextTick(function () {
-    if (scrollUtil.isAttached(el)) {
+    if (Utils.isAttached(el)) {
       doBindEvent.call(el[CONTEXT])
     }
   })
@@ -118,8 +116,9 @@ export default {
   },
 
   unbind (el) {
-    if (el[CONTEXT] && el[CONTEXT].scrollEventTarget) {
-      el[CONTEXT].scrollEventTarget.removeEventListener('scroll', el[CONTEXT].scrollEventListener)
+    const context = el[CONTEXT]
+    if (context.scrollEventTarget) {
+      off(context.scrollEventTarget, 'scroll', context.scrollEventListener)
     }
   }
 }

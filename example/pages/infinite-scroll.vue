@@ -1,16 +1,31 @@
 <template>
   <div class="page">
-    <div class="page-infinite-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+    <div
+      class="page-infinite-wrapper"
+      ref="wrapper"
+      :style="{ height: wrapperHeight + 'px' }"
+    >
       <wv-group
         title="无限滚动加载"
         v-infinite-scroll="loadMore"
         infinite-scroll-disabled="loading"
         infinite-scroll-distance="50"
+        infinite-scroll-immediate-check="true"
       >
-        <wv-cell title="条目" v-for="item in list" :key="item" :value="item"/>
+        <wv-cell
+          v-for="item in list"
+          :key="item"
+          title="条目"
+          :value="item"
+          to="/"
+        />
       </wv-group>
       <p v-show="loading" class="loading-tips">
-        <wv-spinner type="snake" color="#444" :size="24"/>
+        <wv-spinner
+          type="snake"
+          color="#444"
+          :size="24"
+        />
       </p>
     </div>
   </div>
@@ -29,8 +44,8 @@ export default {
 
   methods: {
     loadMore () {
-      console.log('loading more')
       this.loading = true
+      console.log('loading more')
       setTimeout(() => {
         let last = this.list[this.list.length - 1]
         for (let i = 1; i <= 5; i++) {
@@ -39,7 +54,7 @@ export default {
         this.$nextTick(() => {
           this.loading = false
         })
-      }, 2000)
+      }, 1000)
     }
   },
 
