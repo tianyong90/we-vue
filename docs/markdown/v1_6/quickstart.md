@@ -50,7 +50,7 @@ npm install babel-plugin-import -D
   "plugins": [["import", [
     {
       "libraryName": "we-vue",
-      "style": true
+      "style": "style.css"
     }
   ]]]
 }
