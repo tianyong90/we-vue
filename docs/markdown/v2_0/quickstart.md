@@ -3,10 +3,11 @@
 
 本文将介绍如果在项目中使用 WeVue。
 
-1. 创建一个 vue.js 项目，我们使用 Vue 官方肢手架工具 vue-cli
+1. 创建一个 vue.js 项目，我们使用 Vue 官方脚手架工具 vue-cli
 
 ```bash
 npm install -g vue-cli
+// 以下命令以 vue-cli v2.9 版本为例，若使用新版本 vue-cli 工具请查阅期官方文档
 vue init webpack <your_projectname>
 ```
 
@@ -33,6 +34,7 @@ new Vue({
 如此即完成了 WeVue 的引入。
 
 - 按需引入
+
 可以借助 babel-plugin-import 实现按需引入，以减小项目体积。
 首先，安装 babel-plugin-import:
 
@@ -65,10 +67,6 @@ import App from './App.vue'
 
 Vue.use(Group)
 Vue.use(Cell)
-/* 或写为
- * Vue.use(Group)
- * Vue.use(Cell)
- */
 
 new Vue({
   el: '#app',
