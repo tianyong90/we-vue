@@ -51,3 +51,26 @@ img {
   opacity: 0;
   transform: translateX(100%);
 }
+
+.qrcode {
+  display: block;
+  overflow: hidden;
+  position: fixed;
+  z-index: 1000;
+  bottom: 20px;
+  right: 10px;
+  padding: 3px;
+  background-color: #eee;
+
+  img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+
+    &.qrcode-big {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
