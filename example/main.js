@@ -6,7 +6,6 @@ import './assets/iconfont/iconfont.css'
 import router from './router'
 import QRCode from 'qrcode'
 import store from './store'
-import { mapState } from 'vuex'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
