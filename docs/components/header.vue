@@ -15,7 +15,7 @@
           <router-link to="/doc/v2_0/index">文档</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/doc/v2_0/changelog">变更记录</router-link>
+          <router-link to="/doc/changelog">变更记录</router-link>
         </li>
         <li class="nav-item">
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
