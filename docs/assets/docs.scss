@@ -1,0 +1,156 @@
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  padding: 1.2em !important;
+  border-radius: 5px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace !important;
+  line-height: 1.4;
+}
+
+p,
+ul,
+ol {
+  line-height: 1.7;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #dfdfdf;
+}
+
+.custom-block {
+  position: relative;
+
+  &:before {
+    content: "!";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: -15px;
+    top: 15px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 50%;
+    color: #fff;
+  }
+
+  &.tip,
+  &.warning,
+  &.danger {
+    padding: .1rem 1.5rem;
+    margin: 1rem 0;
+    border-left: .3rem solid;
+  }
+
+  &.tip {
+    background-color: #f3f5f7;
+    border-color: #42b983;
+
+    &:before {
+      background-color: #42b983;
+    }
+  }
+
+  &.warning {
+    background-color: rgba(255, 229, 100, 0.3);
+    border-color: darken(#ffe564, 35%);
+    color: darken(#ffe564, 70%);
+
+    &:before {
+      background-color: darken(#ffe564, 35%);
+    }
+  }
+
+  &.danger {
+    background-color: #ffe6e6;
+    border-color: darken(red, 20%);
+    color: darken(red, 70%);
+
+    &:before {
+      background-color: darken(red, 20%);
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  max-width: 100%;
+
+  tr {
+    border-top: 1px solid #dfe2e5;
+
+    &:nth-child(2n) {
+      background-color: #f6f8fa;
+    }
+  }
+
+  th,
+  td {
+    border: 1px solid #dfe2e5;
+    padding: 0.6em 1em;
+  }
+}
+
+.doc-content {
+  .header-anchor {
+    font-size: 0.85em;
+    float: left;
+    margin-left: -0.8em;
+    padding-right: 0.23em;
+    margin-top: 0.125em;
+    opacity: 0;
+    text-decoration: none;
+    color: #3eaf7c;
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #444;
+    margin: .65em 0;
+
+    &:hover .header-anchor {
+      opacity: 1;
+    }
+  }
+
+  p {
+    line-height: 1.65;
+  }
+
+  ul {
+    li {
+      line-height: 1.65;
+    }
+  }
+
+  ol {
+    li {
+      line-height: 1.65;
+    }
+  }
+}
+
+/*过渡效果*/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .2s
+}
+
+.fade-enter,
+.fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
+  opacity: 0
+}

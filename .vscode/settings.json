@@ -1,0 +1,14 @@
+{
+  "editor.rulers": [
+    80
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true
+  },
+  "editor.formatOnSave": false,
+  "flow.useNPMPackagedFlow": true,
+  "javascript.validate.enable": false,
+  "jest.pathToJest": "yarn jest --",
+  "prettier.eslintIntegration": true
+}
