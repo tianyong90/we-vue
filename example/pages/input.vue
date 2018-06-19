@@ -5,6 +5,11 @@
       <wv-input label="数字类型" placeholder="请输入数字" type="number" v-model="valueNumber"/>
     </wv-group>
 
+    <wv-group title="限制长度">
+      <wv-input label="最大长度10" placeholder="请输入内容" type="number" :maxlength="10" v-model="maxlengthValue"/>
+      <wv-input label="最小长度4" placeholder="请输入内容" :minlength="4" v-model="minlengthValue"/>
+    </wv-group>
+
     <wv-group title="带验证">
       <wv-input label="请输入 abc" placeholder="请输入 abc" v-model="valueText" pattern="^abc$" :validate-mode="{onFocus: false}"/>
       <wv-input label="必填字段" placeholder="请输入内容" v-model="valueRequired" required/>
@@ -42,6 +47,8 @@ export default {
     return {
       valueText: 'hello we-vue',
       valueNumber: '',
+      maxlengthValue: '',
+      minlengthValue: '',
       valueReadonly: '内容是只读的',
       valueRequired: '',
       valueOnBlur: '',

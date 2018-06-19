@@ -19,6 +19,8 @@
         :value="currentValue"
         :readonly="readonly"
         :number="type === 'number'"
+        :maxlength="maxlength"
+        :minlength="minlength"
         @focus="onFocus"
         @blur="onBlur"
         @change="onChange"
@@ -94,6 +96,7 @@ export default create({
     handleInput (event) {
       // 当有最大长度属性时，限制过长的输入
       if (this.maxlength && event.target.value.length >= this.maxlength) {
+        this.currentValue = ''
         this.currentValue = event.target.value.substr(0, this.maxlength)
       } else {
         this.currentValue = event.target.value
