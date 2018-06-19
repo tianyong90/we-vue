@@ -130,7 +130,7 @@ export default create({
     },
 
     onChange () {
-      // this.$emit('change', this.currentValue)
+      this.$emit('change', this.currentValue)
 
       if (typeof this.validateMode === 'undefined' || this.validateMode.onChange !== false) {
         this.validate()
