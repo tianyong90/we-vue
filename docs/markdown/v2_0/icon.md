@@ -9,7 +9,7 @@ import { Icon } from 'we-vue'
 
 Vue.use(Icon)
 
-// or
+// 或
 Vue.use(Icon)
 ```
 
