@@ -38,6 +38,7 @@ import Spinner from './components/spinner'
 import Swipe from './components/swipe'
 import SwipeItem from './components/swipe-item'
 import Switch from './components/switch'
+import TabContainer from './components/tab-container'
 import Tabbar from './components/tabbar'
 import TabbarItem from './components/tabbar-item'
 import Textarea from './components/textarea'
@@ -81,6 +82,7 @@ const components = [
   Swipe,
   SwipeItem,
   Switch,
+  TabContainer,
   Tabbar,
   TabbarItem,
   Textarea
@@ -149,6 +151,7 @@ export {
   Swipe,
   SwipeItem,
   Switch,
+  TabContainer,
   Tabbar,
   TabbarItem,
   Textarea,
