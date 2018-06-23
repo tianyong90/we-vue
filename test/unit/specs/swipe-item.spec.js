@@ -1,25 +1,22 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
 
-describe('swipe', () => {
-  let parentWrapper
+describe('swipe item', () => {
   let wrapper
   afterEach(() => {
     wrapper && wrapper.destroy()
-    parentWrapper && parentWrapper.destroy()
   })
 
   test('create', () => {
-    parentWrapper = mount(Swipe, {
-      propsData: {}
+    wrapper = mount(Swipe, {
+      attachToDocument: true,
+      slots: {
+        default: [SwipeItem, SwipeItem]
+      }
     })
 
-    wrapper = shallowMount(SwipeItem, {
-      parent: parentWrapper.vm
-    })
-
-    expect(wrapper.name()).toBe('wv-swipe-item')
-    expect(wrapper.classes()).toContain('wv-swipe-item')
+    expect(wrapper.findAll(SwipeItem).length).toBe(2)
+    expect(wrapper.find(SwipeItem).classes()).toContain('wv-swipe-item')
   })
 })
