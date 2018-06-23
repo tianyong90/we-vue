@@ -31,7 +31,7 @@ describe('infinite-scroll', () => {
 
   test('loadMore function', (done) => {
     const loadMore = jest.fn(() => {
-      wrapper.vm.list = wrapper.vm.list.concat([{ id: 1}, { id: 2}, { id: 3}])
+      wrapper.vm.list = wrapper.vm.list.concat([{ id: 1 }, { id: 2 }, { id: 3 }])
 
       wrapper.vm.disabled = true
     })
