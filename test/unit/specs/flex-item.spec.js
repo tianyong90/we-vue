@@ -26,17 +26,17 @@ describe('flex-item', () => {
   })
 
   test('comput gutter', () => {
-    parentWrapper = mount(Flex, {
+    wrapper = mount(Flex, {
+      attachToDocument: true,
       propsData: {
         gutter: 10
+      },
+      slots: {
+        default: FlexItem
       }
     })
 
-    let wrapper = shallowMount(FlexItem, {
-      parent: parentWrapper.vm
-    })
-
-    expect(wrapper.vm.gutter).toBe(wrapper.vm.$parent.gutter)
+    expect(wrapper.find(FlexItem).vm.gutter).toBe(wrapper.vm.gutter)
   })
 
   test('comput style', () => {
