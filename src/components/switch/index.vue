@@ -1,28 +1,19 @@
 <template>
-  <wv-cell :title="title" v-if="isInCell">
-    <div
-      class="wv-switch"
-      :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }"
-      @click="onClick"
+  <cell :title="title" v-if="isInCell">
+    <wv-switch
+      :is-in-cell="false"
       slot="ft"
-    >
-      <div class="background"/>
-      <div
-        class="thumb"
-        :style="thumbStyle"
-        @touchstart="onTouchstart"
-        @touchmove="onTouchmove"
-        @touchend="onTouchend"
-        @touchcancel="onTouchend"
-      />
-    </div>
-  </wv-cell>
+      v-model="currentValue"
+      :disabled="disabled"
+    />
+  </cell>
 
   <div
     class="wv-switch"
     :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }"
     @click="onClick"
-    v-else>
+    v-else
+  >
     <div class="background"/>
     <div
       class="thumb"
@@ -39,13 +30,14 @@
 import Cell from '../cell/index'
 import { create, getTouch } from '../../utils'
 
-const THUMB_STROKE = 20 // 开关的行程
+// 开关的行程
+const THUMB_STROKE = 20
 
 export default create({
   name: 'wv-switch',
 
   components: {
-    'wv-cell': Cell
+    Cell
   },
 
   props: {
@@ -172,10 +164,6 @@ export default create({
     box-sizing: border-box;
     background-color: #DFDFDF;
     transition: background-color .1s, border .1s;
-
-    input {
-      display: none;
-    }
 
     .background {
       content: " ";

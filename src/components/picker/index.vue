@@ -24,7 +24,7 @@
           />
         </div>
         <div class="weui-picker__bd" :style="pickerBodyStyle">
-          <wv-picker-column
+          <picker-column
             v-for="(column, index) in columns"
             :key="index"
             :options="column.values || []"
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import WvPickerColumn from './picker-column.vue'
+import PickerColumn from './picker-column'
 import { create } from '../../utils'
 
 // height of th option item
@@ -52,7 +52,7 @@ export default create({
   name: 'wv-picker',
 
   components: {
-    WvPickerColumn
+    PickerColumn
   },
 
   props: {
@@ -67,7 +67,7 @@ export default create({
     },
     columns: {
       type: Array,
-      required: true
+      default: () => []
     },
     valueKey: String,
     visibleItemCount: {
@@ -86,7 +86,7 @@ export default create({
   data () {
     return {
       children: [],
-      currentSlots: [],
+      currentColumns: [],
       currentValue: this.value
     }
   },

@@ -319,50 +319,50 @@ describe('picker-column', () => {
     wrapper && wrapper.destroy()
   })
 
-  test('create', () => {
-    wrapper = mount(PickerColumn, {
-      propsData: {}
-    })
+  // test('create', () => {
+  //   wrapper = shallowMount(PickerColumn, {
+  //     propsData: {}
+  //   })
+  //
+  //   expect(wrapper.name()).toBe('wv-picker-column')
+  // })
 
-    expect(wrapper.name()).toBe('wv-picker-column')
-  })
-
-  test('create using object-array values', () => {
-    const options = [
-      {
-        label: 'label1',
-        value: 'value1'
-      },
-      {
-        label: 'label2',
-        value: 'value2'
-      },
-      {
-        label: 'label3',
-        value: 'value3'
-      }
-    ]
-
-    wrapper = mount(PickerColumn, {
-      propsData: {
-        options: options,
-        valueKey: 'value'
-      }
-    })
-
-    expect(wrapper.findAll('.weui-picker__item').length).toBe(3)
-  })
-
-  test('render a divider slot', () => {
-    wrapper = shallowMount(PickerColumn, {
-      propsData: {
-        divider: true,
-        content: '-'
-      }
-    })
-
-    expect(wrapper.text()).toBe('-')
-  })
+  // test('create using object-array values', () => {
+  //   const options = [
+  //     {
+  //       label: 'label1',
+  //       value: 'value1'
+  //     },
+  //     {
+  //       label: 'label2',
+  //       value: 'value2'
+  //     },
+  //     {
+  //       label: 'label3',
+  //       value: 'value3'
+  //     }
+  //   ]
+  //
+  //   wrapper = mount(PickerColumn, {
+  //     propsData: {
+  //       options: options,
+  //       valueKey: 'value'
+  //     }
+  //   })
+  //
+  //   expect(wrapper.findAll('.weui-picker__item').length).toBe(3)
+  // })
+  //
+  // test('render a divider slot', () => {
+  //   wrapper = shallowMount(PickerColumn, {
+  //     propsData: {
+  //       divider: true,
+  //       content: '-'
+  //     }
+  //   })
+  //
+  //   expect(wrapper.text()).toBe('-')
+  // })
 
   test('drag slot', async () => {
     wrapper = mount(Picker, {
