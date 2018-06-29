@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="page__hd">
-      <img :src="logoImg" alt="" class="logo">
+      <img :src="logoImg" class="logo">
       <h1 class="page__title">WE-VUE</h1>
     </div>
     <wv-search-bar placeholder="搜索组件" v-model="keyword" :result="filterResult">

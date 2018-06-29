@@ -26,10 +26,10 @@
 
     <wv-group title="带图标、说明、跳转的列表项">
       <wv-cell title="vue-router 链接" value="to='/'" is-link to="/">
-        <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
+        <img :src="imgIcon" slot="icon" class="cell-icon">
       </wv-cell>
       <wv-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org">
-        <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
+        <img :src="imgIcon" slot="icon" class="cell-icon">
       </wv-cell>
     </wv-group>
   </div>
