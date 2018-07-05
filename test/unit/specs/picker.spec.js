@@ -35,7 +35,7 @@ describe('picker', () => {
     expect(wrapper.name()).toBe('wv-picker')
   })
 
-  test('create a single-column picker', (done) => {
+  test('create a single-column picker', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -44,17 +44,13 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      expect(wrapper.findAll(PickerColumn).length).toBe(1)
+    expect(wrapper.findAll(PickerColumn).length).toBe(1)
 
-      expect(wrapper.vm.getColumnValues(0).length).toBe(3)
-      expect(wrapper.vm.getValues()).toEqual([1])
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getColumnValues(0).length).toBe(3)
+    expect(wrapper.vm.getValues()).toEqual([1])
   })
 
-  test('create a multi-column picker', (done) => {
+  test('create a multi-column picker', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -63,18 +59,14 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      expect(wrapper.findAll(PickerColumn).length).toBe(2)
+    expect(wrapper.findAll(PickerColumn).length).toBe(2)
 
-      expect(wrapper.vm.getColumnValues(0).length).toBe(3)
-      expect(wrapper.vm.getColumnValues(1).length).toBe(2)
-      expect(wrapper.vm.getValues()).toEqual([1, 'yes'])
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getColumnValues(0).length).toBe(3)
+    expect(wrapper.vm.getColumnValues(1).length).toBe(2)
+    expect(wrapper.vm.getValues()).toEqual([1, 'yes'])
   })
 
-  test('getColumnValue method', (done) => {
+  test('getColumnValue method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -83,14 +75,10 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      expect(wrapper.vm.getColumnValue(0)).toEqual(1)
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getColumnValue(0)).toEqual(1)
   })
 
-  test('getColumnValues method', (done) => {
+  test('getColumnValues method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -99,15 +87,11 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
-      expect(wrapper.vm.getColumnValues(1)).toEqual(['yes', 'no'])
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
+    expect(wrapper.vm.getColumnValues(1)).toEqual(['yes', 'no'])
   })
 
-  test('test setColumnValue method', (done) => {
+  test('test setColumnValue method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -116,16 +100,12 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      wrapper.vm.setColumnValues(0, [1, 2, 3])
+    wrapper.vm.setColumnValues(0, [1, 2, 3])
 
-      expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
   })
 
-  test('test getValues method', (done) => {
+  test('test getValues method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -134,14 +114,10 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      expect(wrapper.vm.getValues()).toEqual([1])
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getValues()).toEqual([1])
   })
 
-  test('test setValues method', (done) => {
+  test('test setValues method', () => {
     const slotValues = [1, 2, 3]
 
     wrapper = mount(Picker, {
@@ -162,16 +138,12 @@ describe('picker', () => {
       expect(e.message).toEqual('Length values is not equal to columns count.')
     }
 
-    setTimeout(() => {
-      wrapper.vm.setValues([2])
+    wrapper.vm.setValues([2])
 
-      expect(wrapper.vm.getValues()).toEqual([2])
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getValues()).toEqual([2])
   })
 
-  test('test getColumnIndex method', (done) => {
+  test('test getColumnIndex method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -180,15 +152,11 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      expect(wrapper.vm.getColumnIndex(0)).toBe(0)
-      expect(wrapper.vm.getColumnIndex(1)).toBe(0)
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getColumnIndex(0)).toBe(0)
+    expect(wrapper.vm.getColumnIndex(1)).toBe(0)
   })
 
-  test('test setColumnIndex method', (done) => {
+  test('test setColumnIndex method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -197,17 +165,13 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      wrapper.vm.setColumnIndex(0, 1)
-      wrapper.vm.setColumnIndex(1, 1)
+    wrapper.vm.setColumnIndex(0, 1)
+    wrapper.vm.setColumnIndex(1, 1)
 
-      expect(wrapper.vm.getIndexes()).toEqual([1, 1])
-
-      done()
-    }, 50)
+    expect(wrapper.vm.getIndexes()).toEqual([1, 1])
   })
 
-  test('test getIndexes method', (done) => {
+  test('test getIndexes method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -216,13 +180,10 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      expect(wrapper.vm.getIndexes()).toEqual([0, 0])
-      done()
-    }, 50)
+    expect(wrapper.vm.getIndexes()).toEqual([0, 0])
   })
 
-  test('test setIndexes method', (done) => {
+  test('test setIndexes method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -231,12 +192,9 @@ describe('picker', () => {
       }
     })
 
-    setTimeout(() => {
-      wrapper.vm.setIndexes([1, 1])
+    wrapper.vm.setIndexes([1, 1])
 
-      expect(wrapper.vm.getIndexes()).toEqual([1, 1])
-      done()
-    }, 50)
+    expect(wrapper.vm.getIndexes()).toEqual([1, 1])
   })
 
   test('click cancel button', () => {
@@ -309,7 +267,7 @@ describe('picker', () => {
     setTimeout(() => {
       expect(wrapper.vm.currentValue).toEqual([2])
       expect(spy).toHaveBeenCalled()
-    }, 500)
+    }, 50)
   })
 })
 
@@ -319,9 +277,9 @@ describe('picker-column', () => {
     wrapper && wrapper.destroy()
   })
 
+  // TODO: bugs
   // test('create', () => {
   //   wrapper = shallowMount(PickerColumn, {
-  //     propsData: {}
   //   })
   //
   //   expect(wrapper.name()).toBe('wv-picker-column')
@@ -393,7 +351,7 @@ describe('picker-column', () => {
     expect(columnWrapper.vm.currentIndex).toBe(0)
   }, 15000)
 
-  test('click slot to change the current-value', (done) => {
+  test('click slot to change the current-value', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -409,19 +367,16 @@ describe('picker-column', () => {
 
     const columnWrapper = wrapper.find(PickerColumn)
 
-    setTimeout(() => {
-      const indicator = wrapper.find('.weui-picker__indicator').element
+    const indicator = wrapper.find('.weui-picker__indicator').element
 
-      const indicatorRect = indicator.getBoundingClientRect()
+    const indicatorRect = indicator.getBoundingClientRect()
 
-      columnWrapper.trigger('click', { clientX: 0, clientY: indicatorRect.top + 35 })
+    columnWrapper.trigger('click', { clientX: 0, clientY: indicatorRect.top + 35 })
 
-      expect(columnWrapper.vm.currentIndex).toBe(1)
-      done()
-    }, 50)
+    expect(columnWrapper.vm.currentIndex).toBe(1)
   })
 
-  test('divider pickerSlot', (done) => {
+  test('divider pickerSlot', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -436,18 +391,15 @@ describe('picker-column', () => {
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
 
-    setTimeout(() => {
-      pickerColumnWrapper.setData({
-        currentIndex: 1
-      })
+    pickerColumnWrapper.setData({
+      currentIndex: 1
+    })
 
-      // divider should not emit change event when currentIndex changed
-      expect(pickerColumnWrapper.emitted().change).toBeFalsy()
-      done()
-    }, 50)
+    // divider should not emit change event when currentIndex changed
+    expect(pickerColumnWrapper.emitted().change).toBeFalsy()
   })
 
-  test('index should be adjust to a suitable value when it is exceeded ot disabled', (done) => {
+  test('index should be adjust to a suitable value when it is exceeded ot disabled', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -474,16 +426,13 @@ describe('picker-column', () => {
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
 
-    setTimeout(() => {
-      pickerColumnWrapper.vm.setIndex(4)
+    pickerColumnWrapper.vm.setIndex(4)
 
-      // divider should not emit change event when currentIndex changed
-      expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
-      done()
-    }, 50)
+    // divider should not emit change event when currentIndex changed
+    expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
   })
 
-  test('watch defaultIndex', (done) => {
+  test('watch defaultIndex', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -499,17 +448,14 @@ describe('picker-column', () => {
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
 
-    setTimeout(() => {
-      pickerColumnWrapper.setProps({
-        defaultIndex: 1
-      })
+    pickerColumnWrapper.setProps({
+      defaultIndex: 1
+    })
 
-      expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
-      done()
-    }, 50)
+    expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
   })
 
-  test('watch options', (done) => {
+  test('watch options', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -527,17 +473,14 @@ describe('picker-column', () => {
 
     const setIndexSpy = jest.spyOn(pickerColumnWrapper.vm, 'setIndex')
 
-    setTimeout(() => {
-      pickerColumnWrapper.setProps({
-        options: [1, 2]
-      })
+    pickerColumnWrapper.setProps({
+      options: [1, 2]
+    })
 
-      expect(setIndexSpy).toHaveBeenCalledWith(0)
-      done()
-    }, 50)
+    expect(setIndexSpy).toHaveBeenCalledWith(0)
   })
 
-  test('test setValue method', (done) => {
+  test('test setValue method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -553,12 +496,9 @@ describe('picker-column', () => {
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
 
-    setTimeout(() => {
-      pickerColumnWrapper.vm.setValue(3)
+    pickerColumnWrapper.vm.setValue(3)
 
-      expect(pickerColumnWrapper.vm.currentValue).toBe(3)
-      expect(pickerColumnWrapper.vm.currentIndex).toBe(2)
-      done()
-    }, 50)
+    expect(pickerColumnWrapper.vm.currentValue).toBe(3)
+    expect(pickerColumnWrapper.vm.currentIndex).toBe(2)
   })
 })

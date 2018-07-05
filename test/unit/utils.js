@@ -83,7 +83,7 @@ export function slowVerticalDrag (el, startY, endY) {
       triggerTouch(el, 'touchend', 0, endY)
 
       resolve()
-    }, 2000)
+    }, 1000)
   })
 }
 
