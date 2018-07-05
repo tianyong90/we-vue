@@ -18,9 +18,10 @@ describe('number-spinner', () => {
 
   test('blur event', () => {
     wrapper = shallowMount(NumberSpinner, {
-      propsData: {},
-      data: {
-        currentValue: ''
+      data: function () {
+        return {
+          currentValue: ''
+        }
       }
     })
 

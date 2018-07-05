@@ -134,8 +134,10 @@ describe('cell-swipe', () => {
 
     const anOtherWrapper = mount(CellSwipe, {
       attachToDocument: true,
-      data: {
-        offset: 10
+      data: function () {
+        return {
+          offset: 10
+        }
       }
     })
 
