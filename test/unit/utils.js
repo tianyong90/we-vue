@@ -66,6 +66,8 @@ export function horizontalDrag (el, startX = 0, endX) {
  * vertical drag slowly
  *
  * because it hard to test PICKER component when the velocity is too big.
+ * 使最后两次 touchmove 事件间移动距离为一个十分小的值，并为这两次事件加入一个间隔
+ * 实现慢速拖动释放的效果
  *
  * @param el
  * @param startY
@@ -73,8 +75,8 @@ export function horizontalDrag (el, startX = 0, endX) {
  */
 export function slowVerticalDrag (el, startY, endY) {
   triggerTouch(el, 'touchstart', 0, startY)
-  triggerTouch(el, 'touchmove', 0, startY + (endY - startY) / 3)
-  triggerTouch(el, 'touchmove', 0, startY + (endY - startY) * 2 / 3)
+  triggerTouch(el, 'touchmove', 0, startY + (endY - startY) / 2)
+  triggerTouch(el, 'touchmove', 0, endY - 2)
 
   // in order to simulate the slowly drag, we add a time interval between the second and the third touchmove event.
   return new Promise((resolve) => {
@@ -83,7 +85,7 @@ export function slowVerticalDrag (el, startY, endY) {
       triggerTouch(el, 'touchend', 0, endY)
 
       resolve()
-    }, 1000)
+    }, 50)
   })
 }
 
