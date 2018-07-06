@@ -1,13 +1,15 @@
 <template>
   <div>
     <wv-tab-container>
-      tab1
-    </wv-tab-container>
-    <wv-tab-container>
-      tab1
-    </wv-tab-container>
-    <wv-tab-container>
-      tab1
+      <wv-tab-container-item>
+        asdf
+      </wv-tab-container-item>
+      <wv-tab-container-item>
+        asdf
+      </wv-tab-container-item>
+      <wv-tab-container-item>
+        asdf
+      </wv-tab-container-item>
     </wv-tab-container>
 
     <wv-tabbar>

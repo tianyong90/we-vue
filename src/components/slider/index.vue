@@ -1,8 +1,18 @@
 <template>
   <div class="weui-slider-box">
-    <div class="weui-slider">
-      <div class="weui-slider__inner" ref="inner" @click.prevent="onClick">
-        <div :style="{width: percent + '%'}" class="weui-slider__track"/>
+    <div
+      class="weui-slider"
+      :class="{ 'wv-slider--disabled': disabled }"
+    >
+      <div
+        class="weui-slider__inner"
+        ref="inner"
+        @click.prevent="onClick"
+      >
+        <div
+          :style="{ width: percent + '%' }"
+          class="weui-slider__track"
+        />
         <div
           :style="{left: percent + '%'}"
           class="weui-slider__handler"
@@ -110,6 +120,7 @@ export default create({
 
     onTouchstart () {
       if (this.disabled) return
+
       this.handlerStartPos = this.getHandlerStartPos()
     },
 
@@ -132,4 +143,7 @@ export default create({
 </script>
 
 <style scoped lang="scss">
+  .wv-slider--disabled {
+    opacity: .5;
+  }
 </style>

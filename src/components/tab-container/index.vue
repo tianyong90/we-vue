@@ -39,16 +39,16 @@ export default create({
   },
 
   methods: {
-    onTouchstart () {
-
+    onTouchstart (e) {
+      console.log(e)
     },
 
-    onTouchmove () {
-
+    onTouchmove (e) {
+      console.log(e)
     },
 
-    onTouchend () {
-
+    onTouchend (e) {
+      console.log(e)
     }
   },
 
