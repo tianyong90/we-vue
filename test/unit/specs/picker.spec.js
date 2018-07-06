@@ -27,8 +27,7 @@ describe('picker', () => {
   test('create', () => {
     wrapper = shallowMount(Picker, {
       propsData: {
-        visible: true,
-        columns: []
+        visible: true
       }
     })
 
