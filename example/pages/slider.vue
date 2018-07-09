@@ -37,7 +37,7 @@ export default {
 <style scoped lang="scss">
   .page {
     padding-top: 5em;
-    background-color: white;
+    background-color: #fff;
 
     .tips {
       margin-top: 2em;
