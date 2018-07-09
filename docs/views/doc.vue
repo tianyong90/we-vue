@@ -13,7 +13,11 @@
             v-for="(group, index) in navItem.groups"
             :key="index"
           >
-            <div class="group-name" v-text="group.groupName" v-if="group.groupName"/>
+            <div
+              class="group-name"
+              v-text="group.groupName"
+              v-if="group.groupName"
+            />
             <ul class="sub-tree">
               <li>
                 <router-link
@@ -45,7 +49,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 
 export default {
   components: {
-    'wevue-demo': () => import('./wevue-demo.vue')
+    'wevue-demo': () => import('../components/wevue-demo.vue')
   },
 
   data () {
