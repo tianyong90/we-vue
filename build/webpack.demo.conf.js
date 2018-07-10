@@ -29,21 +29,6 @@ const webpackConfig = merge(baseWebpackConfig, {
   optimization: {
     splitChunks: {
       minSize: 0
-      // cacheGroups: {
-      //   commons: {
-      //     chunks: "initial",
-      //     minChunks: 2,
-      //     maxInitialRequests: 5, // The default limit is too small to showcase the effect
-      //     minSize: 0 // This is example is too small to create commons chunks
-      //   },
-      //   vendor: {
-      //     test: /node_modules/,
-      //     chunks: "initial",
-      //     name: "vendor",
-      //     priority: 10,
-      //     enforce: true
-      //   }
-      // }
     },
     runtimeChunk: {
       name: 'manifest'
@@ -87,26 +72,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
-    // // split vendor js into its own file
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor',
-    //   minChunks: function (module) {
-    //     // any required modules inside node_modules are extracted to vendor
-    //     return (
-    //       module.resource &&
-    //       /\.js$/.test(module.resource) &&
-    //       module.resource.indexOf(
-    //         path.join(__dirname, '../node_modules')
-    //       ) === 0
-    //     )
-    //   }
-    // }),
-    // // extract webpack runtime and module manifest to its own file in order to
-    // // prevent vendor hash from being updated whenever app bundle is updated
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'manifest',
-    //   chunks: ['vendor']
-    // }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
