@@ -1,14 +1,16 @@
 <template>
   <div>
-    <wv-tab-container>
+    <wv-tab-container
+      swipeable
+    >
       <wv-tab-container-item>
-        asdf
+        <div class="tab-page-content">1</div>
       </wv-tab-container-item>
       <wv-tab-container-item>
-        asdf
+        <div class="tab-page-content">2</div>
       </wv-tab-container-item>
       <wv-tab-container-item>
-        asdf
+        <div class="tab-page-content">3</div>
       </wv-tab-container-item>
     </wv-tab-container>
 
@@ -48,3 +50,14 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .tab-page-content {
+    /*display: block;*/
+    overflow: hidden;
+    width: 100%;
+    padding: 30px 0;
+    /*text-align: center;*/
+    color: #000;
+  }
+</style>

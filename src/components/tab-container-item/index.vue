@@ -20,4 +20,8 @@ export default create({
 </script>
 
 <style scoped lang="scss">
+  .wv-tab-container-item {
+    flex-shrink: 0;
+    width: 100%;
+  }
 </style>
