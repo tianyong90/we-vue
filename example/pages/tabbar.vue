@@ -4,19 +4,19 @@
       swipeable
     >
       <wv-tab-container-item>
-        <div class="tab-page-content">1</div>
+        <div class="tab-page-content bg1">1</div>
       </wv-tab-container-item>
       <wv-tab-container-item>
-        <div class="tab-page-content">2</div>
+        <div class="tab-page-content bg2">2</div>
       </wv-tab-container-item>
       <wv-tab-container-item>
-        <div class="tab-page-content">3</div>
+        <div class="tab-page-content bg3">3</div>
       </wv-tab-container-item>
     </wv-tab-container>
 
     <wv-tabbar>
       <wv-tabbar-item to="/" is-on>
-        <span slot="icon" style="display: inline-block; position: relative;">
+        <span slot="icon" class="tab-icon">
           <img
             class="weui-tabbar__icon"
             src="../assets/images/icon_tabbar.png"
@@ -34,7 +34,7 @@
         > 通讯录
       </wv-tabbar-item>
       <wv-tabbar-item to="/">
-        <span slot="icon" style="display: inline-block; position: relative;">
+        <span slot="icon" class="tab-icon">
           <img
             class="weui-tabbar__icon"
             src="../assets/images/icon_tabbar.png"
@@ -65,6 +65,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .tab-icon {
+    display: inline-block;
+    position: relative;
+  }
+
   .tab-page-content {
     /*display: block;*/
     overflow: hidden;
@@ -72,5 +77,17 @@ export default {
     padding: 30px 0;
     /*text-align: center;*/
     color: #000;
+  }
+
+  .bg1 {
+    background-color: #f00;
+  }
+
+  .bg2 {
+    background-color: #ff0;
+  }
+
+  .bg3 {
+    background-color: #f0f;
   }
 </style>

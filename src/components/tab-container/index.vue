@@ -50,8 +50,6 @@ export default create({
 
   methods: {
     onTransitionend () {
-      console.log('fuck')
-
       this.wrap.classList.add('swipe-transition')
       this.swipeMove(-this.index * this.pageWidth)
 
@@ -98,8 +96,6 @@ export default create({
       const len = this.$children.length - 1
       const index = this.$children.findIndex(child => child.id === this.currentActive)
 
-      console.log(index)
-
       const currentPageOffset = index * this.pageWidth
       const offset = offsetLeft - currentPageOffset
       const absOffset = Math.abs(offset)
@@ -111,7 +107,6 @@ export default create({
       this.offsetLeft = offsetLeft
       this.index = index
 
-      console.log(offset)
       this.swipeMove(offset)
     },
 
