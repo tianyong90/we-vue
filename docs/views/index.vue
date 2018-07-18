@@ -69,7 +69,7 @@
         </div>
 
         <div class="row justify-content-center mt-2">
-          <p class="text-light">Copyright © 2016-2018 粤ICP备17009332号-1</p>
+          <p class="text-light">Copyright © 2016-2018 <a class="text-light" href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a></p>
         </div>
       </div>
     </footer>
