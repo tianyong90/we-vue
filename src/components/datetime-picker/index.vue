@@ -41,16 +41,12 @@ export default create({
     },
     startDate: {
       type: Date,
-      default () {
-        return new Date(new Date().getFullYear() - 10, 0, 1)
-      },
+      default: () => new Date(new Date().getFullYear() - 10, 0, 1),
       validator: isValidDate
     },
     endDate: {
       type: Date,
-      default () {
-        return new Date(new Date().getFullYear() + 10, 11, 31)
-      },
+      default: () => new Date(new Date().getFullYear() + 10, 11, 31),
       validator: isValidDate
     },
     startHour: {
@@ -283,8 +279,8 @@ export default create({
       if (this.type === 'time') {
         const currentValue = value.split(':')
         values = [
-          currentValue[0],
-          currentValue[1]
+          `0${currentValue[0]}`.slice(-2),
+          `0${currentValue[1]}`.slice(-2)
         ]
       } else {
         values = [
