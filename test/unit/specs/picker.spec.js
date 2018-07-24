@@ -276,14 +276,14 @@ describe('picker-column', () => {
     wrapper && wrapper.destroy()
   })
 
-  // TODO: bugs
   // test('create', () => {
   //   wrapper = shallowMount(PickerColumn, {
+  //     parentComponent: Picker
   //   })
   //
   //   expect(wrapper.name()).toBe('wv-picker-column')
   // })
-
+  //
   // test('create using object-array values', () => {
   //   const options = [
   //     {
@@ -301,6 +301,7 @@ describe('picker-column', () => {
   //   ]
   //
   //   wrapper = mount(PickerColumn, {
+  //     parentComponent: Picker,
   //     propsData: {
   //       options: options,
   //       valueKey: 'value'
@@ -312,6 +313,7 @@ describe('picker-column', () => {
   //
   // test('render a divider slot', () => {
   //   wrapper = shallowMount(PickerColumn, {
+  //     parentComponent: Picker,
   //     propsData: {
   //       divider: true,
   //       content: '-'

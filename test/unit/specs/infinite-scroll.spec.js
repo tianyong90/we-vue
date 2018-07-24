@@ -33,21 +33,22 @@ describe('infinite-scroll', () => {
     const loadMore = jest.fn(() => {
       wrapper.vm.list = wrapper.vm.list.concat([{ id: 1 }, { id: 2 }, { id: 3 }])
 
-      wrapper.vm.disabled = true
+      wrapper.setProps({
+        disabled: true
+      })
     })
 
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
-        list: [{id: 10}],
         onLoadMore: loadMore
       }
     })
 
     setTimeout(() => {
       const item = wrapper.findAll('.list-item')
-      expect(item.length).toEqual(4)
+      expect(item.length).toEqual(3)
 
       expect(loadMore).toHaveBeenCalledTimes(1)
       done()
