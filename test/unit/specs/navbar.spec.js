@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import Navbar from '@/components/navbar'
+import NavbarItem from '@/components/navbar-item'
 
 describe('navbar', () => {
   let wrapper
@@ -14,6 +15,16 @@ describe('navbar', () => {
 
     expect(wrapper.name()).toBe('wv-navbar')
     expect(wrapper.classes()).toContain('wv-navbar')
+  })
+
+  test('create with 3 navbar items', () => {
+    wrapper = shallowMount(Navbar, {
+      slots: {
+        default: [NavbarItem, NavbarItem, NavbarItem]
+      }
+    })
+
+    expect(wrapper.findAll(NavbarItem).length).toBe(3)
   })
 
   test('fixed navbar', () => {
