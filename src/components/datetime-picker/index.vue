@@ -302,7 +302,6 @@ export default create({
     },
 
     setColumnByValues (values) {
-      console.log(values)
       this.$refs.picker.setValues(values)
     },
 
