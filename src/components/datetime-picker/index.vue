@@ -279,19 +279,19 @@ export default create({
       if (this.type === 'time') {
         const currentValue = value.split(':')
         values = [
-          `0${currentValue[0]}`.slice(-2),
-          `0${currentValue[1]}`.slice(-2)
+          this.hourFormat.replace('{value}', `0${currentValue[0]}`.slice(-2)),
+          this.minuteFormat.replace('{value}', `0${currentValue[1]}`.slice(-2))
         ]
       } else {
         values = [
-          `${value.getFullYear()}`,
-          `0${value.getMonth() + 1}`.slice(-2),
-          `0${value.getDate()}`.slice(-2)
+          this.yearFormat.replace('{value}', `${value.getFullYear()}`),
+          this.monthFormat.replace('{value}', `0${value.getMonth() + 1}`.slice(-2)),
+          this.dateFormat.replace('{value}', `0${value.getDate()}`.slice(-2))
         ]
         if (this.type === 'datetime') {
           values.push(
-            `0${value.getHours()}`.slice(-2),
-            `0${value.getMinutes()}`.slice(-2)
+            this.hourFormat.replace('{value}', `0${value.getHours()}`.slice(-2)),
+            this.minuteFormat.replace('{value}', `0${value.getMinutes()}`.slice(-2))
           )
         }
       }
