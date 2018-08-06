@@ -36,7 +36,7 @@
     "dev": "npm run build:entry && webpack-dev-server --inline --config build/webpack.dev.conf.js",
     "dev:docs": "webpack-dev-server --inline --config build/webpack.docsdev.conf.js",
     "lint": "eslint --ext .js,.vue src example docs test/unit/specs",
-    "unit": "jest --config=test/unit/jest.conf.js --coverage",
+    "unit": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=5",
     "test": "npm run unit",
     "test:watch": "jest --config=test/unit/jest.conf.js --coverage --watchAll",
     "test:ci": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=1",
