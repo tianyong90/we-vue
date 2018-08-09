@@ -7,6 +7,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const componentsEntry = require('./bin/components-helpers').getComponentsEntry()
+const safeParser = require('postcss-safe-parser')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -54,7 +55,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
-        safe: true
+        parser: safeParser
       }
     })
   ]

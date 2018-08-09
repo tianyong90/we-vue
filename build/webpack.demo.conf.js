@@ -8,6 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const safeParser = require('postcss-safe-parser')
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -50,7 +51,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
-        safe: true
+        parser: safeParser
       }
     }),
     // generate dist index.html with correct asset hash for caching.
