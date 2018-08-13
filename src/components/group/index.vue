@@ -11,7 +11,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-group',
+  name: 'group',
 
   props: {
     title: String,

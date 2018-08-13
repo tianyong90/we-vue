@@ -8,7 +8,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-tabbar',
+  name: 'tabbar',
 
   props: {
     fixed: Boolean

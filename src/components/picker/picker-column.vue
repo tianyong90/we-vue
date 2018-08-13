@@ -38,7 +38,7 @@ const ITEM_HEIGHT = 34
 const DEFAULT_TRANSITION = 'all 150ms ease'
 
 export default create({
-  name: 'wv-picker-column',
+  name: 'picker-column',
 
   props: {
     options: {
@@ -248,6 +248,6 @@ export default create({
 
 <style scoped lang="scss">
   .wv-picker-column-divider {
-    transform: translateY(106px);
+    transform: translate3d(0, 106px, 0);
   }
 </style>

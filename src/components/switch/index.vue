@@ -34,7 +34,7 @@ import { create, getTouch } from '../../utils'
 const THUMB_STROKE = 20
 
 export default create({
-  name: 'wv-switch',
+  name: 'switch',
 
   components: {
     Cell
@@ -198,7 +198,7 @@ export default create({
       }
 
       .thumb {
-        transform: translateX(20px);
+        transform: translate3d(20px, 0, 0);
       }
     }
   }

@@ -12,7 +12,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-loadmore',
+  name: 'loadmore',
 
   props: {
     type: {

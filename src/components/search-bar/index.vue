@@ -47,7 +47,7 @@ import { create } from '../../utils'
 import WvCell from '../cell/index'
 
 export default create({
-  name: 'wv-search-bar',
+  name: 'search-bar',
 
   components: {
     WvCell

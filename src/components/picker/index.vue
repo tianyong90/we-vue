@@ -49,7 +49,7 @@ import { create } from '../../utils'
 const ITEM_HEIGHT = 34
 
 export default create({
-  name: 'wv-picker',
+  name: 'picker',
 
   components: {
     PickerColumn

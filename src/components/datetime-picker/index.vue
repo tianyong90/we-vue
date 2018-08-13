@@ -19,7 +19,7 @@ import WvPicker from '../picker'
 const isValidDate = date => Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())
 
 export default create({
-  name: 'wv-datetime-picker',
+  name: 'datetime-picker',
 
   components: {
     WvPicker

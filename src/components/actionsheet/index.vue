@@ -67,7 +67,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-actionsheet',
+  name: 'actionsheet',
 
   props: {
     type: {

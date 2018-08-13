@@ -71,12 +71,13 @@ export default {
   }
 
   .tab-page-content {
-    /*display: block;*/
     overflow: hidden;
-    width: 100%;
+    /*width: 100%;*/
     padding: 30px 0;
-    /*text-align: center;*/
+    text-align: center;
     color: #000;
+    font-size: 2rem;
+    font-weight: bold;
   }
 
   .bg1 {

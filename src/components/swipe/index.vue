@@ -26,7 +26,7 @@
 import { create, getTouch } from '../../utils'
 
 export default create({
-  name: 'wv-swipe',
+  name: 'swipe',
 
   props: {
     height: Number,

@@ -36,7 +36,7 @@ import { create } from '../../utils'
 const isNaN = Number.isNaN || window.isNaN
 
 export default create({
-  name: 'wv-number-spinner',
+  name: 'number-spinner',
 
   props: {
     min: {

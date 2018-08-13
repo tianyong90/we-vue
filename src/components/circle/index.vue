@@ -26,7 +26,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-circle',
+  name: 'circle',
 
   props: {
     diameter: {

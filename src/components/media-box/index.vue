@@ -31,7 +31,7 @@ import RouterLink from '../../mixins/router-link'
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-media-box',
+  name: 'media-box',
 
   mixins: [RouterLink],
 

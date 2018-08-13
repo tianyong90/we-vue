@@ -32,7 +32,7 @@
 import { create, getTouch } from '../../utils'
 
 export default create({
-  name: 'wv-slider',
+  name: 'slider',
 
   props: {
     min: {

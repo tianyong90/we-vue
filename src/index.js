@@ -38,10 +38,10 @@ import Spinner from './components/spinner'
 import Swipe from './components/swipe'
 import SwipeItem from './components/swipe-item'
 import Switch from './components/switch'
-import TabContainer from './components/tab-container'
-import TabContainerItem from './components/tab-container-item'
+import Tab from './components/tab'
 import Tabbar from './components/tabbar'
 import TabbarItem from './components/tabbar-item'
+import Tabs from './components/tabs'
 import Textarea from './components/textarea'
 import Toast from './components/toast'
 import TopTips from './components/top-tips'
@@ -83,10 +83,10 @@ const components = [
   Swipe,
   SwipeItem,
   Switch,
-  TabContainer,
-  TabContainerItem,
+  Tab,
   Tabbar,
   TabbarItem,
+  Tabs,
   Textarea
 ]
 
@@ -153,10 +153,10 @@ export {
   Swipe,
   SwipeItem,
   Switch,
-  TabContainer,
-  TabContainerItem,
+  Tab,
   Tabbar,
   TabbarItem,
+  Tabs,
   Textarea,
   Toast,
   TopTips

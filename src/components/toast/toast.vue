@@ -29,7 +29,7 @@ import { create } from '../../utils'
 import PopupMixin from '../../mixins/popup'
 
 export default create({
-  name: 'wv-toast',
+  name: 'toast',
 
   components: {
     WvIcon,
