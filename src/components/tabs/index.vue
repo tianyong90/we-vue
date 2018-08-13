@@ -33,6 +33,10 @@
 </template>
 
 <script>
+/**
+ * tabs 及 tab 组件代码移植自 youzan/vant
+ */
+
 import create from '../../utils/create'
 import { raf } from '../../utils/raf'
 import { on, off } from '../../utils/event'

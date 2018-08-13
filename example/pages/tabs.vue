@@ -1,6 +1,6 @@
 <template>
   <div>
-    <wv-tabs v-model="activeIndex" @change="changed" fixed>
+    <wv-tabs v-model="activeIndex1" @change="changed" fixed>
       <wv-tab title="tab1">
         内容1
       </wv-tab>
@@ -12,7 +12,7 @@
       </wv-tab>
     </wv-tabs>
 
-    <wv-tabs v-model="activeIndex" @change="changed" type="card">
+    <wv-tabs v-model="activeIndex2" @change="changed" type="card">
       <wv-tab title="tab1">
         内容1
       </wv-tab>
@@ -31,13 +31,15 @@
 export default {
   data () {
     return {
-      activeIndex: 0
+      activeIndex1: 0,
+      activeIndex2: 1,
+      activeIndex3: 0
     }
   },
 
   methods: {
-    changed (e) {
-      console.log(e)
+    changed (index) {
+      console.log(index)
     }
   }
 }
