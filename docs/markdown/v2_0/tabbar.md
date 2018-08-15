@@ -7,8 +7,7 @@ Tabbar
 ```js
 import { Tabbar, TabbarItem } from 'we-vue'
 
-Vue.use(Tabbar)
-Vue.use(TabbarItem)
+Vue.use(Tabbar).use(TabbarItem)
 ```
 
 ## 例子

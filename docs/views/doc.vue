@@ -33,7 +33,7 @@
         </li>
       </ul>
     </div>
-    <div class="doc-content">
+    <div class="doc-content markdown-body">
       <router-view/>
     </div>
 

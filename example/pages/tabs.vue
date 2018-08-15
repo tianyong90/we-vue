@@ -1,16 +1,19 @@
 <template>
   <div>
-    <wv-tabs v-model="activeIndex1" @change="changed" fixed>
-      <wv-tab title="tab1">
-        内容1
-      </wv-tab>
-      <wv-tab title="tab2">
-        内容2
-      </wv-tab>
-      <wv-tab title="tab3">
-        内容3
-      </wv-tab>
-    </wv-tabs>
+    <div class="demo-tabs-wrap">
+      <div class="tips">asdfas</div>
+      <wv-tabs v-model="activeIndex1" @change="changed" fixed>
+        <wv-tab title="tab1">
+          内容1
+        </wv-tab>
+        <wv-tab title="tab2">
+          内容2
+        </wv-tab>
+        <wv-tab title="tab3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
 
     <wv-tabs v-model="activeIndex2" @change="changed" type="card">
       <wv-tab title="tab1">

@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~github-markdown-css";
 
 html,
 body {
@@ -118,8 +119,8 @@ table {
   h2,
   h3,
   h4 {
-    color: #444;
-    margin: .65em 0;
+    color: #666;
+    //margin: .65em 0;
 
     &:hover .header-anchor {
       opacity: 1;

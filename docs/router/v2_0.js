@@ -217,6 +217,14 @@ let v2_0 = [
     }
   },
   {
+    path: 'v2_0/tabs',
+    component: () => import('../markdown/v2_0/tabs.md'),
+    meta: {
+      title: 'Tabs',
+      demo_url: `${demoUrlBase}/tabs`
+    }
+  },
+  {
     path: 'v2_0/tabbar',
     component: () => import('../markdown/v2_0/tabbar.md'),
     meta: {
