@@ -123,7 +123,7 @@ export default create({
       }
     },
 
-    tabs (tabs) {
+    tabs () {
       this.correctActive(this.currentActive || this.active)
       this.scrollIntoView()
       this.setLine()
@@ -331,7 +331,7 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  $wv-tabs-line-height: 44px;
+  $wv-tabs-line-height: 35px;
   $wv-tabs-card-height: 30px;
 
   .wv-tabs {
@@ -387,12 +387,12 @@ export default create({
         margin: 0 15px;
         border-radius: 2px;
         box-sizing: border-box;
-        border: 1px solid #f44; // todo
+        border: 1px solid #1aad19;
         height: $wv-tabs-card-height;
 
         .wv-tab {
-          color: red;
-          border-right: 1px solid red;
+          color: #1aad19;
+          border-right: 1px solid #1aad19;
           line-height: calc(#{$wv-tabs-card-height} - 2px);
 
           &:last-child {
@@ -400,8 +400,8 @@ export default create({
           }
 
           &.wv-tab--active {
-            color: #fff; //todo
-            background-color: red;
+            color: #fff;
+            background-color: #1aad19;
           }
         }
       }
@@ -413,7 +413,7 @@ export default create({
       bottom: 15px;
       height: 2px;
       position: absolute;
-      background-color: #f44;
+      background-color: #1aad19;
     }
 
     &--line {
@@ -454,15 +454,15 @@ export default create({
     }
 
     &:active {
-      background-color: yellow;
+      /*background-color: lighten(#1aad19, 85%);*/
     }
 
     &--active {
-      color: #red;
+      color: #1aad19;
     }
 
     &--disabled {
-      color: gray; // TODO
+      color: gray;
 
       &:hover {
         background-color: #fff;
