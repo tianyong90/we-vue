@@ -5,10 +5,9 @@ Panel
 ## 引入
 
 ```js
-import { Panel， MediaBox } from 'we-vue'
+import { Panel, MediaBox } from 'we-vue'
 
-Vue.use(Panel)
-Vue.use(MediaBox)
+Vue.use(Panel).use(MediaBox)
 ```
 
 :::warning
