@@ -1,32 +1,124 @@
 <template>
   <div>
     <div class="demo-tabs-wrap">
-      <div class="tips">asdfas</div>
+      <div class="tips">基本示例</div>
       <wv-tabs v-model="activeIndex1" @change="changed" fixed>
-        <wv-tab title="tab1">
+        <wv-tab title="标签1">
           内容1
         </wv-tab>
-        <wv-tab title="tab2">
+        <wv-tab title="标签2">
           内容2
         </wv-tab>
-        <wv-tab title="tab3">
+        <wv-tab title="标签3">
           内容3
         </wv-tab>
       </wv-tabs>
     </div>
 
-    <wv-tabs v-model="activeIndex2" @change="changed" type="card">
-      <wv-tab title="tab1">
-        内容1
-      </wv-tab>
-      <wv-tab title="tab2">
-        内容2
-      </wv-tab>
-      <wv-tab title="tab3">
-        内容3
-      </wv-tab>
-    </wv-tabs>
+    <div class="demo-tabs-wrap">
+      <div class="tips">可滚动</div>
+      <wv-tabs v-model="activeIndex1" @change="changed" fixed>
+        <wv-tab title="标签1">
+          内容1
+        </wv-tab>
+        <wv-tab title="标签2">
+          内容2
+        </wv-tab>
+        <wv-tab title="标签3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
 
+    <div class="demo-tabs-wrap">
+      <div class="tips">禁用标签</div>
+      <wv-tabs v-model="activeIndex1" @change="changed" fixed>
+        <wv-tab title="标签1">
+          内容1
+        </wv-tab>
+        <wv-tab title="标签2">
+          内容2
+        </wv-tab>
+        <wv-tab title="标签3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
+
+    <div class="demo-tabs-wrap">
+      <div class="tips">卡片式标签</div>
+      <wv-tabs v-model="activeIndex2" @change="changed" type="card">
+        <wv-tab title="标签1">
+          内容1
+        </wv-tab>
+        <wv-tab title="标签2">
+          内容2
+        </wv-tab>
+        <wv-tab title="标签3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
+
+    <div class="demo-tabs-wrap">
+      <div class="tips">点击事件</div>
+      <wv-tabs v-model="activeIndex1" @change="changed" fixed>
+        <wv-tab title="标签1">
+          内容1
+        </wv-tab>
+        <wv-tab title="标签2">
+          内容2
+        </wv-tab>
+        <wv-tab title="标签3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
+
+    <div class="demo-tabs-wrap">
+      <div class="tips">sticky</div>
+      <wv-tabs v-model="activeIndex1" @change="changed" fixed>
+        <wv-tab title="标签1">
+          内容1
+        </wv-tab>
+        <wv-tab title="标签2">
+          内容2
+        </wv-tab>
+        <wv-tab title="标签3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
+
+    <div class="demo-tabs-wrap">
+      <div class="tips">滑动切换</div>
+      <wv-tabs v-model="activeIndex1" @change="changed" fixed>
+        <wv-tab title="标签1">
+          内容1
+        </wv-tab>
+        <wv-tab title="标签2">
+          内容2
+        </wv-tab>
+        <wv-tab title="标签3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
+
+    <div class="demo-tabs-wrap">
+      <div class="tips">自定义标签</div>
+      <wv-tabs v-model="activeIndex1" @change="changed" fixed>
+        <wv-tab title="标签1">
+          内容1
+        </wv-tab>
+        <wv-tab title="标签2">
+          内容2
+        </wv-tab>
+        <wv-tab title="标签3">
+          内容3
+        </wv-tab>
+      </wv-tabs>
+    </div>
   </div>
 </template>
 
@@ -48,18 +140,22 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-  .demo-wrapper {
+<style module lang="scss">
+  .demo-tabs-wrap {
     display: block;
     overflow: hidden;
-    margin: 100px 0 50px;
+    margin-bottom: 30px;
 
-    .demo-label {
+    .tips {
       display: block;
-      font-size: 13px;
+      font-size: .825rem;
       color: #555;
-      margin-bottom: .5em;
-      text-align: center;
+      padding: .5em 1em;
+    }
+
+    .wv-tabs__content {
+      padding: 1rem;
+      background-color: #fff;
     }
   }
 </style>
