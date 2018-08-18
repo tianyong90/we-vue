@@ -68,6 +68,11 @@ export default {
     this.demoUrl = this.$route.meta.demo_url
     this.version = this.$route.meta.version
 
+    // 侧栏菜单当前项自动滚动到可见区
+    const containerSidebar = document.getElementById('sidebar')
+    const sidebarActiveItem = document.querySelector('#sidebar .current')
+    containerSidebar.scrollTop = sidebarActiveItem.offsetTop
+
     // 右侧 DEMO 区实在 sticky 效果
     document.addEventListener('scroll', () => {
       const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
