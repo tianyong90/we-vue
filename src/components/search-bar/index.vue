@@ -6,6 +6,7 @@
           <i class="weui-icon-search"/>
           <input
             class="weui-search-bar__input"
+            type="search"
             :placeholder="placeholder"
             :autofocus="autofocus"
             v-model="currentValue"
