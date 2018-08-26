@@ -69,6 +69,7 @@
     "css-loader": "^1.0.0",
     "cz-conventional-changelog": "^2.1.0",
     "docsearch.js": "^2.5.2",
+    "dotenv": "^6.0.0",
     "eslint": "^5.0.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-friendly-formatter": "^4.0.0",
