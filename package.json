@@ -99,7 +99,6 @@
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.0",
     "mini-css-extract-plugin": "^0.4.0",
-    "my-local-ip": "^1.0.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.9.0",
     "normalize.css": "^8.0.0",

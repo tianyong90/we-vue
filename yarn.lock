@@ -5946,10 +5946,6 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "http://registry.npm.taobao.org/mute-stream/download/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-my-local-ip@^1.0.0:
-  version "1.0.0"
-  resolved "http://registry.npm.taobao.org/my-local-ip/download/my-local-ip-1.0.0.tgz#37585555a4ff1985309edac7c2a045a466be6c32"
-
 nan@^2.10.0, nan@^2.9.2:
   version "2.10.0"
   resolved "http://registry.npm.taobao.org/nan/download/nan-2.10.0.tgz#96d0cd610ebd58d4b4de9cc0c6828cda99c7548f"
