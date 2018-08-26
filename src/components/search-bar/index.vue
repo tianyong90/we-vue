@@ -4,14 +4,16 @@
       <div class="weui-search-bar__form">
         <div class="weui-search-bar__box">
           <i class="weui-icon-search"/>
-          <input
-            class="weui-search-bar__input"
-            type="search"
-            :placeholder="placeholder"
-            :autofocus="autofocus"
-            v-model="currentValue"
-            ref="input"
-          >
+          <form action="javascript:" @submit="$emit('search', currentValue)">
+            <input
+              class="weui-search-bar__input"
+              type="search"
+              :placeholder="placeholder"
+              :autofocus="autofocus"
+              v-model="currentValue"
+              ref="input"
+            >
+          </form>
           <div class="weui-icon-clear" @click="clear"/>
         </div>
         <label class="weui-search-bar__label" @click="textClick" v-show="!isActive">
