@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Popup from '@/components/popup'
+import Popup from '@/popup'
 
 describe('popup', () => {
   let wrapper

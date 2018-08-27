@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import GridItem from '@/components/grid-item'
+import GridItem from '@/grid-item'
 
 describe('grid-item', () => {
   let wrapper

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import InfiniteScroll from '@/components/infinite-scroll'
+import InfiniteScroll from '@/infinite-scroll'
 
 export default {
   directives: {

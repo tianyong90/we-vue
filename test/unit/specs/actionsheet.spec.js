@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Actionsheet from '@/components/actionsheet'
+import Actionsheet from '@/actionsheet'
 
 describe('actionsheet', () => {
   let wrapper

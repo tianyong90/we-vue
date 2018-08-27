@@ -1,6 +1,6 @@
 import { shallowMount, mount } from '@vue/test-utils'
-import Flex from '@/components/flex'
-import FlexItem from '@/components/flex-item'
+import Flex from '@/flex'
+import FlexItem from '@/flex-item'
 
 describe('flex-item', () => {
   let parentWrapper

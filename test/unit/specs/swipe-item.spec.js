@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import Swipe from '@/components/swipe'
-import SwipeItem from '@/components/swipe-item'
+import Swipe from '@/swipe'
+import SwipeItem from '@/swipe-item'
 
 describe('swipe item', () => {
   let wrapper

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Icon from '@/components/icon'
+import Icon from '@/icon'
 
 describe('icon', () => {
   let wrapper

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import WeVue from '../src/index.js'
+import WeVue from '../packages/index.js'
 import App from './app.vue'
 import './assets/style/demo.scss'
 import './assets/iconfont/iconfont.css'

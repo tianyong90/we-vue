@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import NumberSpinner from '@/components/number-spinner'
+import NumberSpinner from '@/number-spinner'
 
 describe('number-spinner', () => {
   let wrapper

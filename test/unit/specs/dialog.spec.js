@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
-import DialogApi from '@/components/dialog'
-import Dialog from '@/components/dialog/dialog.vue'
+import DialogApi from '@/dialog'
+import Dialog from '@/dialog/dialog.vue'
 
 describe('test dialog api', () => {
   afterEach(() => {

@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
-import Navbar from '@/components/navbar'
-import NavbarItem from '@/components/navbar-item'
+import Navbar from '@/navbar'
+import NavbarItem from '@/navbar-item'
 
 describe('navbar', () => {
   let wrapper

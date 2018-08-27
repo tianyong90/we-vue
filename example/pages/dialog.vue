@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Dialog from '../../src/components/dialog'
+import Dialog from '../../packages/dialog'
 
 export default {
   methods: {

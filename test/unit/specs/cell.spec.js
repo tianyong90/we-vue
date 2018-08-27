@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Cell from '@/components/cell'
+import Cell from '@/cell'
 
 describe('cell', () => {
   let wrapper

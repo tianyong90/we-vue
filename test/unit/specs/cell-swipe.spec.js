@@ -1,5 +1,5 @@
 import { shallowMount, mount } from '@vue/test-utils'
-import CellSwipe from '@/components/cell-swipe'
+import CellSwipe from '@/cell-swipe'
 import CellSwipeButtonComponent from '../components/cell-swipe-button'
 import { horizontalDrag } from '../utils'
 

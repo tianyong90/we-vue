@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Circle from '@/components/circle'
+import Circle from '@/circle'
 
 describe('circle', () => {
   let wrapper

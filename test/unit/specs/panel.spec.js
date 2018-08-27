@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Panel from '@/components/panel'
+import Panel from '@/panel'
 
 describe('panel', () => {
   let wrapper

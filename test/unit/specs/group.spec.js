@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Group from '@/components/group'
+import Group from '@/group'
 
 describe('group', () => {
   let wrapper

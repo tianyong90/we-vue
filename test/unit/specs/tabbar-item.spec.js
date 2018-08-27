@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import TabbarItem from '@/components/tabbar-item'
+import TabbarItem from '@/tabbar-item'
 
 describe('tabbar-item', () => {
   let wrapper

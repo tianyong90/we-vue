@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import MediaBox from '@/components/media-box'
+import MediaBox from '@/media-box'
 
 describe('media-box', () => {
   let wrapper

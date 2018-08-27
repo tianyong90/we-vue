@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import FooterLink from '@/components/footer/footer-link.vue'
+import FooterLink from '@/footer/footer-link.vue'
 
 describe('footer-link', () => {
   let wrapper

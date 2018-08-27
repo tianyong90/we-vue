@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Toast from '../../src/components/toast'
+import Toast from '../../packages/toast'
 
 export default {
   methods: {

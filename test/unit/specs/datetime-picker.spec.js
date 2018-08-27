@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import DatetimePicker from '@/components/datetime-picker'
+import DatetimePicker from '@/datetime-picker'
 import { slowVerticalDrag } from '../utils'
 
 const testTime = '12:00'

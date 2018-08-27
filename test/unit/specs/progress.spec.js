@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Input from '@/components/progress'
+import Input from '@/progress'
 
 describe('progress', () => {
   let wrapper

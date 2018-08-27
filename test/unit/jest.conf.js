@@ -9,7 +9,7 @@ module.exports = {
   ],
   testURL: 'http://localhost/',
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$': '<rootDir>/packages/$1',
     '\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
         '<rootDir>/__mocks__/fileMock.js'
@@ -25,7 +25,7 @@ module.exports = {
   setupFiles: ['<rootDir>/test/unit/setup'],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
-    'src/**/*.{js,vue}',
+    'packages/**/*.{js,vue}',
     '!**/node_modules/**'
   ]
 }

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TopTips from '../../src/components/top-tips'
+import TopTips from '../../packages/top-tips'
 
 export default {
   methods: {

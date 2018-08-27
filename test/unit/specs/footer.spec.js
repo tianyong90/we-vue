@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Footer from '@/components/footer'
+import Footer from '@/footer'
 
 describe('footer', () => {
   let wrapper

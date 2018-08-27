@@ -1,6 +1,6 @@
 import { shallowMount, mount } from '@vue/test-utils'
-import SearchBar from '@/components/search-bar'
-import Cell from '@/components/cell'
+import SearchBar from '@/search-bar'
+import Cell from '@/cell'
 
 describe('search', () => {
   let wrapper
