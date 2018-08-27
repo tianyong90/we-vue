@@ -257,7 +257,7 @@ export default create({
         if (value.getMonth() + 1 === month) {
           date = boundary.getDate()
           if (value.getDate() === date) {
-            hour = value.getHours()
+            hour = boundary.getHours()
             if (value.getHours() === hour) {
               minute = boundary.getMinutes()
             }
