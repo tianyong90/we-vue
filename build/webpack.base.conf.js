@@ -30,6 +30,11 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  stats: {
+    modules: false,
+    children: false,
+    entrypoints: false
+  },
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),

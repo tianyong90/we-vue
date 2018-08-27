@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "build": "node build/build.js",
-    "build:component": "node build/build-component.js",
+    "build:component": "rimraf dist && webpack --config build/webpack.component.conf.js --color",
     "build:demo": "node build/build-demo.js",
     "build:docs": "node build/build-docs.js",
     "build:entry": "node build/bin/build-entry.js",
