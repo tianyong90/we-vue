@@ -8,7 +8,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const componentsEntry = require('./bin/components-helpers').getComponentsEntry()
 const safeParser = require('postcss-safe-parser')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -41,15 +40,6 @@ const webpackConfig = merge(baseWebpackConfig, {
 
   },
   plugins: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: false,
-      parallel: true
-    }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: '[name]/style.css'
