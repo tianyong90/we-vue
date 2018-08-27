@@ -98,6 +98,19 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@tianyong90/vue-markdown-loader@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@tianyong90/vue-markdown-loader/-/vue-markdown-loader-0.0.1.tgz#c5cf65291d7a739813aa315c820b3f86fea1ebc7"
+  dependencies:
+    hash-sum "^1.0.2"
+    highlight.js "^9.12.0"
+    lru-cache "^4.1.3"
+    markdown-it "^8.4.2"
+    markdown-it-anchor "^5.0.2"
+    markdown-it-container "^2.0.0"
+    markdown-it-emoji "^1.4.0"
+    markdown-it-table-of-contents "^0.4.3"
+
 "@types/strip-bom@^3.0.0":
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/@types/strip-bom/download/@types/strip-bom-3.0.0.tgz#14a8ec3956c2e81edb7520790aecf21c290aebd2"
@@ -5638,7 +5651,7 @@ lru-cache@^3.2.0:
   dependencies:
     pseudomap "^1.0.1"
 
-lru-cache@^4.0.1, lru-cache@^4.1.1, lru-cache@^4.1.2:
+lru-cache@^4.0.1, lru-cache@^4.1.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
   version "4.1.3"
   resolved "http://registry.npm.taobao.org/lru-cache/download/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
   dependencies:
@@ -5679,7 +5692,7 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-it-anchor@^5.0.0:
+markdown-it-anchor@^5.0.2:
   version "5.0.2"
   resolved "http://registry.npm.taobao.org/markdown-it-anchor/download/markdown-it-anchor-5.0.2.tgz#cdd917a05b7bf92fb736a6dae3385c6d0d0fa552"
 
@@ -5691,11 +5704,11 @@ markdown-it-emoji@^1.4.0:
   version "1.4.0"
   resolved "http://registry.npm.taobao.org/markdown-it-emoji/download/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
 
-markdown-it-table-of-contents@^0.4.0:
+markdown-it-table-of-contents@^0.4.3:
   version "0.4.3"
   resolved "http://registry.npm.taobao.org/markdown-it-table-of-contents/download/markdown-it-table-of-contents-0.4.3.tgz#6453925a76e49b9b3d9569a0d89f1c2168b46982"
 
-markdown-it@^8.4.1:
+markdown-it@^8.4.2:
   version "8.4.2"
   resolved "http://registry.npm.taobao.org/markdown-it/download/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
   dependencies:

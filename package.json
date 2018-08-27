@@ -47,6 +47,7 @@
     "weui": "^1.1.3"
   },
   "devDependencies": {
+    "@tianyong90/vue-markdown-loader": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.24",
     "autoprefixer": "^9.0.0",
     "babel-core": "^6.22.1",
@@ -83,7 +84,6 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "git-branch": "^2.0.1",
-    "highlight.js": "^9.12.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.6",
     "inject-loader": "^4.0.0",
@@ -93,12 +93,6 @@
     "jest-serializer-vue": "^2.0.0",
     "listr": "^0.14.0",
     "lodash": "^4.17.5",
-    "lru-cache": "^4.1.2",
-    "markdown-it": "^8.4.1",
-    "markdown-it-anchor": "^5.0.0",
-    "markdown-it-container": "^2.0.0",
-    "markdown-it-emoji": "^1.4.0",
-    "markdown-it-table-of-contents": "^0.4.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.9.0",

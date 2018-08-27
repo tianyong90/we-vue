@@ -60,7 +60,7 @@ module.exports = {
             }
           },
           {
-            loader: require.resolve('./markdownLoader')
+            loader: require.resolve('@tianyong90/vue-markdown-loader')
           }
         ]
       },
