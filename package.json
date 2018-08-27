@@ -27,21 +27,20 @@
     "types"
   ],
   "scripts": {
-    "build": "node build/build.js",
-    "build:component": "rimraf dist && webpack --config build/webpack.component.conf.js --color",
-    "build:demo": "node build/build-demo.js",
-    "build:docs": "node build/build-docs.js",
+    "lint": "eslint --ext .js,.vue src example docs test/unit/specs",
+    "build:lib": "node build/build-lib.js",
+    "build:component": "rimraf lib && cross-env NODE_ENV=production webpack --config build/webpack.component.conf.js --color",
+    "build:demo": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.demo.conf.js --color",
+    "build:docs": "rimraf docs-dist && cross-env NODE_ENV=production webpack --config build/webpack.docsprod.conf.js --color",
     "build:entry": "node build/bin/build-entry.js",
-    "build:release": "npm run build:entry && npm run build:component && npm run build",
+    "build:release": "npm run build:entry && npm run build:component && npm run build:lib",
     "dev": "npm run build:entry && webpack-dev-server --inline --config build/webpack.dev.conf.js",
     "dev:docs": "webpack-dev-server --inline --config build/webpack.docsdev.conf.js",
-    "lint": "eslint --ext .js,.vue src example docs test/unit/specs",
-    "unit": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=5",
-    "test": "npm run unit",
+    "test": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=5",
     "test:watch": "jest --config=test/unit/jest.conf.js --coverage --watchAll",
     "test:ci": "jest --config=test/unit/jest.conf.js --coverage --maxWorkers=1",
     "coverage": "opener test/unit/coverage/lcov-report/index.html",
-    "pub": "node build/release.js"
+    "release": "node build/release.js"
   },
   "dependencies": {
     "vue-lazyload": "^1.2.0",
@@ -66,6 +65,7 @@
     "commitizen": "^2.10.1",
     "conventional-changelog": "^2.0.0",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "cz-conventional-changelog": "^2.1.0",
     "docsearch.js": "^2.5.2",
