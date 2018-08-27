@@ -13,7 +13,7 @@ const safeParser = require('postcss-safe-parser')
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   entry: {
-    example: './example/main.js'
+    demo: './demo/main.js'
   },
   module: {
     rules: utils.styleLoaders({
@@ -54,7 +54,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
-      template: 'example/index.html',
+      template: 'demo/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -69,7 +69,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../example/static'),
+        from: path.resolve(__dirname, '../demo/static'),
         to: path.resolve(__dirname, '../dist/static'),
         ignore: ['.*']
       }

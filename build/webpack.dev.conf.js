@@ -16,7 +16,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   entry: {
-    example: './example/main.js'
+    demo: './demo/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -57,13 +57,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'example/index.html',
+      template: 'demo/index.html',
       inject: true
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../example/static'),
+        from: path.resolve(__dirname, '../demo/static'),
         to: path.resolve(__dirname, '../dist/static'),
         ignore: ['.*']
       }

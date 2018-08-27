@@ -1,5 +1,5 @@
 // This file is auto gererated by build/bin/build-entry.js
-import 'weui/dist/style/weui.min.css'
+//import 'weui/dist/style/weui.min.css'
 import Actionsheet from './actionsheet'
 import Badge from './badge'
 import Button from './button'
@@ -24,8 +24,6 @@ import Input from './input'
 import Lazyload from './lazyload'
 import Loadmore from './loadmore'
 import MediaBox from './media-box'
-import Navbar from './navbar'
-import NavbarItem from './navbar-item'
 import NumberSpinner from './number-spinner'
 import Panel from './panel'
 import Picker from './picker'
@@ -69,8 +67,6 @@ const components = [
   Input,
   Loadmore,
   MediaBox,
-  Navbar,
-  NavbarItem,
   NumberSpinner,
   Panel,
   Picker,
@@ -139,8 +135,6 @@ export {
   Lazyload,
   Loadmore,
   MediaBox,
-  Navbar,
-  NavbarItem,
   NumberSpinner,
   Panel,
   Picker,
