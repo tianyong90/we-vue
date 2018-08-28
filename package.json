@@ -43,6 +43,7 @@
     "release": "node build/release.js"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "vue-lazyload": "^1.2.0",
     "weui": "^1.1.3"
   },

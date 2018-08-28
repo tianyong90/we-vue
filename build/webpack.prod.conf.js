@@ -12,7 +12,7 @@ const safeParser = require('postcss-safe-parser')
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   entry: {
-    index: './src/index.js'
+    index: './packages/index.js'
   },
   module: {
     rules: utils.styleLoaders({

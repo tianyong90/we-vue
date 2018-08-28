@@ -6,16 +6,17 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const componentsEntry = require('./bin/components-helpers').getComponentsEntry()
+const components = require('./get-components')()
 const safeParser = require('postcss-safe-parser')
 
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : config.build.env
+let componentEntries = {}
+components.forEach((component) => {
+  componentEntries[component] = `./packages/${component}/`
+})
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  entry: componentsEntry,
+  entry: componentEntries,
   module: {
     rules: utils.styleLoaders({
       sourceMap: false,
