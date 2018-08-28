@@ -19,6 +19,8 @@ Vue.use(SearchBar)
       :autofocus="false" 
       v-model="value" 
       :result="filterResult"
+      @search="onSearch"
+      @cancel="onCancel"
     />
   </div>
 </template>
@@ -53,6 +55,16 @@ export default {
     filterResult () {
       return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value))
     }
+  },
+
+  methods: {
+    onSearch (val) {
+      // 自定义搜索处理
+    },
+
+    onCancel () {
+      // 自定义取消事件处理
+    }
   }
 }
 </script>
@@ -82,3 +94,4 @@ export default {
 | :----: | :-----: | :----: |
 | click-result  | 点击搜索结果项事件  |  所点击的搜索结果项   |
 | search  | 点击搜索按钮时触发  |  当前搜索框值   |
+| cancel  | 点击取消时触发  |    |
