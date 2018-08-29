@@ -50,6 +50,7 @@
   "devDependencies": {
     "@tianyong90/vue-markdown-loader": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.24",
+    "address": "^1.0.3",
     "autoprefixer": "^9.0.0",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.2",
