@@ -1,8 +1,6 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const webpack = require('webpack')
-const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
@@ -47,9 +45,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
-      cssProcessorOptions: config.build.productionSourceMap
-      ? { parser: safeParser, map: { inline: false } }
-      : { parser: safeParser }
+      cssProcessorOptions: { parser: safeParser }
     })
   ]
 })

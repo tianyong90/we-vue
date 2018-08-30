@@ -4,19 +4,31 @@ module.exports = function (api) {
 
   api && api.cache(false)
 
+  console.log('fuck')
+
   return {
     presets: [
       [
         '@babel/preset-env',
         {
           loose: true,
-          'modules': useESModules ? false : 'commonjs'
+          modules: useESModules ? false : 'commonjs'
         }
       ]
     ],
-    'plugins': [
-      // TODO
-      'transform-runtime'
+    plugins: [
+      [
+        '@babel/plugin-transform-runtime',
+        {
+          corejs: false,
+          helpers: true,
+          regenerator: false,
+          useESModules
+        }
+      ],
+      '@babel/plugin-syntax-dynamic-import',
+      '@babel/plugin-transform-object-assign',
+      '@babel/plugin-proposal-object-rest-spread'
     ]
   }
 }

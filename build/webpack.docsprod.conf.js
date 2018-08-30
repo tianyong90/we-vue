@@ -1,7 +1,6 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -17,11 +16,11 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
+      sourceMap: false,
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: false,
   output: {
     path: path.resolve(__dirname, '../docs-dist'),
     publicPath: '/',
@@ -75,28 +74,5 @@ const webpackConfig = merge(baseWebpackConfig, {
     ])
   ]
 })
-
-if (config.build.productionGzip) {
-  const CompressionWebpackPlugin = require('compression-webpack-plugin')
-
-  webpackConfig.plugins.push(
-    new CompressionWebpackPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: new RegExp(
-        '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
-        ')$'
-      ),
-      threshold: 10240,
-      minRatio: 0.8
-    })
-  )
-}
-
-if (config.build.bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-}
 
 module.exports = webpackConfig
