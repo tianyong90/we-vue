@@ -43,24 +43,24 @@
     "release": "node build/release.js"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
+    "@babel/runtime": "^7.0.0",
     "vue-lazyload": "^1.2.0",
     "weui": "^1.1.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-object-assign": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "@tianyong90/vue-markdown-loader": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.24",
     "address": "^1.0.3",
     "autoprefixer": "^9.0.0",
-    "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^23.0.0",
     "babel-loader": "^7.1.1",
-    "babel-plugin-dynamic-import-node": "^2.0.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-2": "^6.22.0",
     "bootstrap": "^4.1.1",
     "chalk": "^2.4.1",
     "china-area-data": "^4.0.0",
@@ -84,6 +84,7 @@
     "faker": "^4.1.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "fs-extra": "^7.0.0",
     "git-branch": "^2.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.6",
@@ -92,13 +93,11 @@
     "jest": "^23.0.0",
     "jest-css-modules": "^1.1.0",
     "jest-serializer-vue": "^2.0.0",
-    "less-loader": "^4.1.0",
     "listr": "^0.14.0",
     "lodash": "^4.17.5",
     "mini-css-extract-plugin": "^0.4.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.9.0",
-    "normalize.css": "^8.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "perfect-scrollbar": "^1.4.0",
     "portfinder": "^1.0.13",
@@ -119,6 +118,7 @@
     "vue-jest": "^2.5.0",
     "vue-loader": "^15.2.0",
     "vue-router": "^3.0.1",
+    "vue-sfc-compiler": "^0.1.3",
     "vue-style-loader": "^4.0.2",
     "vue-template-compiler": "^2.5.9",
     "vuex": "^3.0.1",
@@ -133,12 +133,6 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": [
-    "Android >= 4.0",
-    "iOS >= 7",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

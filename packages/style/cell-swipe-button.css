@@ -1,0 +1,12 @@
+.weui-swiped-btn{
+  display:block;
+  padding:10px 1em;
+  line-height:1.47058824;
+  color:inherit;
+}
+.weui-swiped-btn_default{
+  background-color:#C7C7CC;
+}
+.weui-swiped-btn_warn{
+  background-color:#FF3B30;
+}

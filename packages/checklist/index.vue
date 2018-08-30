@@ -96,6 +96,8 @@ export default create({
 </script>
 
 <style scoped lang="scss">
+  @import "../style/checklist.css";
+
   .weui-check__label-disabled {
     background-color: rgba(0, 0, 0, 0.1)
   }

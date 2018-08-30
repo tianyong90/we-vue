@@ -1,0 +1,48 @@
+.weui-footer{
+  color:#999999;
+  font-size:14px;
+  text-align:center;
+}
+.weui-footer a{
+  color:#586C94;
+}
+.weui-footer_fixed-bottom{
+  position:fixed;
+  bottom:0.52em;
+  left:0;
+  right:0;
+}
+.weui-footer__links{
+  font-size:0;
+}
+.weui-footer__link{
+  display:inline-block;
+  vertical-align:top;
+  margin:0 0.62em;
+  position:relative;
+  font-size:14px;
+}
+.weui-footer__link:before{
+  content:" ";
+  position:absolute;
+  left:0;
+  top:0;
+  width:1px;
+  bottom:0;
+  border-left:1px solid #C7C7C7;
+  color:#C7C7C7;
+  -webkit-transform-origin:0 0;
+  transform-origin:0 0;
+  -webkit-transform:scaleX(0.5);
+  transform:scaleX(0.5);
+  left:-0.65em;
+  top:0.36em;
+  bottom:0.36em;
+}
+.weui-footer__link:first-child:before{
+  display:none;
+}
+.weui-footer__text{
+  padding:0 0.34em;
+  font-size:12px;
+}

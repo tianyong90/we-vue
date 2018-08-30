@@ -51,4 +51,5 @@ export default create({
 </script>
 
 <style scoped lang="scss">
+  @import "../style/button.css";
 </style>

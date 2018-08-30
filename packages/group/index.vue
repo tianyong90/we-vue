@@ -20,5 +20,6 @@ export default create({
 })
 </script>
 
-<style scoped lang="scss">
+<style module lang="scss">
+  @import "../style/group.css";
 </style>

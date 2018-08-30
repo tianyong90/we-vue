@@ -1,0 +1,37 @@
+
+.weui-loadmore{
+  width:65%;
+  margin:1.5em auto;
+  line-height:1.6em;
+  font-size:14px;
+  text-align:center;
+}
+.weui-loadmore__tips{
+  display:inline-block;
+  vertical-align:middle;
+}
+.weui-loadmore_line{
+  border-top:1px solid #E5E5E5;
+  margin-top:2.4em;
+}
+.weui-loadmore_line .weui-loadmore__tips{
+  position:relative;
+  top:-0.9em;
+  padding:0 0.55em;
+  background-color:#FFFFFF;
+  color:#999999;
+}
+.weui-loadmore_dot .weui-loadmore__tips{
+  padding:0 0.16em;
+}
+.weui-loadmore_dot .weui-loadmore__tips:before{
+  content:" ";
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background-color:#E5E5E5;
+  display:inline-block;
+  position:relative;
+  vertical-align:0;
+  top:-0.16em;
+}
