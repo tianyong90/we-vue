@@ -4,8 +4,6 @@ module.exports = function (api) {
 
   api && api.cache(false)
 
-  console.log('fuck')
-
   return {
     presets: [
       [

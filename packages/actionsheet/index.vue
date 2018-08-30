@@ -114,12 +114,6 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  .a {
-    .b {
-      background-color: #fff;
-    }
-  }
-
   .weui-actionsheet {
     position: fixed;
     left: 0;

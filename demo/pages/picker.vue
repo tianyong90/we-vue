@@ -90,7 +90,7 @@ export default {
       ticket: ['汽车票'],
       dayAndTime: [],
       address: [],
-      fruit: [{name: 'Apple', age: 1}],
+      fruit: [{ name: 'Apple', age: 1 }],
       fruitColumns: [
         {
           values: [
