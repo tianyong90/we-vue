@@ -11,10 +11,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const address = require('address')
 
-// load configs from .env file
-require('dotenv').config()
-
-const HOST = process.env.DEV_SERVER_HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
