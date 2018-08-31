@@ -18,7 +18,7 @@ module.exports = {
     'node_modules/(?!weui)'
   ],
   transform: {
-    '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.js$': '<rootDir>/test/unit/jest.transform.js',
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
   },
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
@@ -26,6 +26,7 @@ module.exports = {
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'packages/**/*.{js,vue}',
-    '!**/node_modules/**'
+    '!**/node_modules/**',
+    '!**/lazyload/**'
   ]
 }

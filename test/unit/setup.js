@@ -1,3 +1,4 @@
+require('@babel/polyfill')
 import Vue from 'vue'
 import VueTestUtils from '@vue/test-utils'
 

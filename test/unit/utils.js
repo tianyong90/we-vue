@@ -1,3 +1,7 @@
+import Vue from 'vue'
+
+Vue.config.silent = true
+
 /**
  * 触发一个 touch 事件
  *
