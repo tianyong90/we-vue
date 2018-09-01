@@ -177,7 +177,7 @@ export default create({
     },
 
     move (move = 0, offset = 0) {
-      const {active, count, swipes, deltaX, width} = this
+      const { active, count, swipes, deltaX, width } = this
 
       if (move) {
         if (active === -1) {
@@ -197,7 +197,7 @@ export default create({
     },
 
     autoPlay () {
-      const {autoplay} = this
+      const { autoplay } = this
       if (autoplay && this.count > 1) {
         clearTimeout(this.timer)
         this.timer = setTimeout(() => {

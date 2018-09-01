@@ -30,7 +30,7 @@ const TopTips = (options = {}) => {
 
   clearTimeout(instance.timer)
 
-  Object.assign(instance, {...options})
+  Object.assign(instance, { ...options })
 
   if (options.duration > 0) {
     instance.timer = setTimeout(() => {

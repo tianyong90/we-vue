@@ -79,7 +79,7 @@ export default {
       const dy = e.touches[0].clientY - pos.y
       const direction = dy > 0 ? '10' : '01'
       const el = scrollUtils.getScrollEventTarget(e.target, this.$el)
-      const {scrollHeight, offsetHeight, scrollTop} = el
+      const { scrollHeight, offsetHeight, scrollTop } = el
       const isVertical = Math.abs(dx) < Math.abs(dy)
 
       let status = '11'

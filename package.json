@@ -27,7 +27,7 @@
     "types"
   ],
   "scripts": {
-    "lint": "eslint --ext .js,.vue packages example docs test/unit/specs",
+    "lint": "eslint --ext .js,.vue packages demo docs test/unit/specs",
     "build:lib": "node build/build-lib.js",
     "build:component": "rimraf lib && cross-env NODE_ENV=production webpack --config build/webpack.component.conf.js --color",
     "build:demo": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.demo.conf.js --color",
