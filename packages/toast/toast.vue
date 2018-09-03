@@ -68,24 +68,5 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  .weui-icon_toast {
-    font-size: 40px;
-  }
-
-  .weui-toast_text {
-    width: auto;
-    min-width: 0;
-    max-width: 85%;
-    min-height: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-left: 0;
-    text-align: center;
-    word-break: break-all;
-
-    .weui-toast__content {
-      margin: 0;
-      padding: .5em 1em;
-    }
-  }
+  @import "../style/toast.scss";
 </style>

@@ -33,5 +33,5 @@ export default create({
 </script>
 
 <style module lang="scss">
-  @import "../style/footer.css";
+  @import "../style/footer.scss";
 </style>

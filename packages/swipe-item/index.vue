@@ -36,8 +36,4 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  .wv-swipe-item {
-    float: left;
-    height: 100%;
-  }
 </style>

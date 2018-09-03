@@ -118,7 +118,7 @@ export default create({
 </script>
 
 <style module lang="scss">
-  @import "../style/search-bar.css";
+  @import "../style/search-bar.scss";
 
   .weui-search-bar__label {
     transform-origin: 0px 0px 0px;

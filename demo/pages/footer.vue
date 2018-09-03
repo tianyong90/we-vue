@@ -13,17 +13,17 @@ export default {
     return {
       links1: [
         {
-          text: '底部链接',
+          text: '底部链接1',
           link: '/'
         }
       ],
       links2: [
         {
-          text: '底部链接',
+          text: '底部链接2',
           link: '/footer'
         },
         {
-          text: '底部链接',
+          text: '底部链接3',
           link: '/footer'
         }
       ],

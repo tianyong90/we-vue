@@ -1,0 +1,189 @@
+@import "./base/fn";
+
+// global
+.weui-btn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: $weuiBtnFontSize;
+  text-align: center;
+  text-decoration: none;
+  color: $weuiBtnFontColor;
+  line-height: $weuiBtnHeight / $weuiBtnFontSize;
+  border-radius: $weuiBtnBorderRadius;
+  @include setTapColor();
+  overflow: hidden;
+  &:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(0, 0, 0, .2);
+    transform: scale(.5);
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: $weuiBtnBorderRadius * 2;
+  }
+}
+
+.weui-btn_inline {
+  display: inline-block;
+}
+
+// default
+.weui-btn_default {
+  color: $weuiBtnDefaultFontColor;
+  background-color: $weuiBtnDefaultBg;
+  &:not(.weui-btn_disabled):visited {
+    color: $weuiBtnDefaultFontColor;
+  }
+  &:not(.weui-btn_disabled):active {
+    color: $weuiBtnDefaultActiveFontColor;
+    background-color: $weuiBtnDefaultActiveBg;
+  }
+}
+
+// primary
+.weui-btn_primary {
+  background-color: $weuiBtnPrimaryBg;
+  &:not(.weui-btn_disabled):visited {
+    color: $weuiBtnFontColor;
+  }
+  &:not(.weui-btn_disabled):active {
+    color: $weuiBtnActiveFontColor;
+    background-color: $weuiBtnPrimaryActiveBg;
+  }
+}
+
+// warn
+.weui-btn_warn {
+  background-color: $weuiBtnWarnBg;
+  &:not(.weui-btn_disabled):visited {
+    color: $weuiBtnFontColor;
+  }
+  &:not(.weui-btn_disabled):active {
+    color: $weuiBtnActiveFontColor;
+    background-color: $weuiBtnWarnActiveBg;
+  }
+}
+
+// disabled
+.weui-btn_disabled {
+  color: $weuiBtnDisabledFontColor;
+  &.weui-btn_default {
+    color: $weuiBtnDefaultDisabledFontColor;
+    background-color: $weuiBtnDefaultDisabledBg;
+  }
+  &.weui-btn_primary {
+    background-color: $weuiBtnPrimaryDisabledBg;
+  }
+  &.weui-btn_warn {
+    background-color: $weuiBtnwarnDisabledBg;
+  }
+}
+
+// TODO: loading
+.weui-btn_loading {
+  .weui-loading {
+    margin: -.2em .34em 0 0;
+  }
+  &.weui-btn_primary, &.weui-btn_warn {
+    color: $weuiBtnActiveFontColor;
+  }
+  &.weui-btn_primary {
+    background-color: $weuiBtnPrimaryActiveBg;
+  }
+  &.weui-btn_warn {
+    background-color: $weuiBtnWarnActiveBg;
+  }
+}
+
+// plain
+.weui-btn_plain-primary {
+  color: $weuiBtnPlainPrimaryColor;
+  border: 1px solid $weuiBtnPlainPrimaryBorderColor;
+  &:not(.weui-btn_plain-disabled):active {
+    color: $weuiBtnPlainPrimaryActiveColor;
+    border-color: $weuiBtnPlainPrimaryActiveBorderColor;
+  }
+  &:after {
+    border-width: 0;
+  }
+}
+
+.weui-btn_plain-default {
+  color: $weuiBtnPlainDefaultColor;
+  border: 1px solid $weuiBtnPlainDefaultBorderColor;
+  &:not(.weui-btn_plain-disabled):active {
+    color: $weuiBtnPlainDefaultActiveColor;
+    border-color: $weuiBtnPlainDefaultActiveBorderColor;
+  }
+  &:after {
+    border-width: 0;
+  }
+}
+
+.weui-btn_plain-disabled {
+  color: rgba(0, 0, 0, .2);
+  border-color: rgba(0, 0, 0, .2);
+}
+
+
+button, input {
+  &.weui-btn {
+    width: 100%;
+    border-width: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    &:focus {
+      outline: 0;
+    }
+  }
+  &.weui-btn_inline,&.weui-btn_mini {
+    width: auto;
+  }
+  &.weui-btn_plain-primary,&.weui-btn_plain-default{
+    border-width: 1px;
+    background-color: transparent;
+  }
+}
+
+.weui-btn_mini {
+  display: inline-block;
+  padding: 0 1.32em;
+  line-height: $weuiBtnMiniHeight;
+  font-size: $weuiBtnMiniFontSize;
+}
+
+
+/*gap between btn*/
+.weui-btn + .weui-btn {
+  margin-top: $weuiBtnDefaultGap;
+}
+
+.weui-btn.weui-btn_inline + .weui-btn.weui-btn_inline {
+  margin-top: auto;
+  margin-left: $weuiBtnDefaultGap;
+}
+
+.weui-btn-area {
+  margin: $weuiCellsMarginTop $weuiBtnDefaultGap .3em;
+}
+.weui-btn-area_inline {
+  display: flex;
+  .weui-btn {
+    margin-top: auto;
+    margin-right: $weuiBtnDefaultGap;
+    width: 100%;
+    flex: 1;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -143,7 +143,5 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  .wv-slider--disabled {
-    opacity: .5;
-  }
+  @import "../style/slider.scss";
 </style>

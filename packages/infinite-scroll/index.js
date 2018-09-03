@@ -1,4 +1,3 @@
-import '../style/empty.css'
 import InfiniteScroll from './directive'
 import Vue from 'vue'
 

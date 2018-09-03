@@ -113,4 +113,5 @@ export default create({
 </script>
 
 <style scoped lang="scss">
+  @import "../style/circle.scss";
 </style>

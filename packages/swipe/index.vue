@@ -223,44 +223,6 @@ export default create({
 })
 </script>
 
-<style scoped lang="scss">
-  $wv-swipe-indicator: 6px;
-
-  .wv-swipe {
-    overflow: hidden;
-    position: relative;
-    user-select: none;
-
-    &__wrapper {
-      height: 100%;
-      overflow: hidden;
-    }
-
-    &__indicators {
-      left: 50%;
-      bottom: 10px;
-      position: absolute;
-      height: $wv-swipe-indicator;
-      transform: translate3d(-50%, 0, 0);
-
-      > i {
-        border-radius: 100%;
-        vertical-align: top;
-        display: inline-block;
-        background-color: gray;
-        width: $wv-swipe-indicator;
-        height: $wv-swipe-indicator;
-
-        &:not(:last-child) {
-          margin-right: $wv-swipe-indicator;
-        }
-      }
-
-      .wv-swipe__indicator {
-        &--active {
-          background-color: white;
-        }
-      }
-    }
-  }
+<style module lang="scss">
+  @import "../style/swipe.scss";
 </style>
