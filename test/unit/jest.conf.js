@@ -26,6 +26,7 @@ module.exports = {
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'packages/**/*.{js,vue}',
+    '!packages/mixins/**/*.js',
     '!**/node_modules/**',
     '!**/lazyload/**'
   ]
