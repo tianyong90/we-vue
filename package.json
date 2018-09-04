@@ -57,7 +57,7 @@
     "@tianyong90/vue-markdown-loader": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.24",
     "address": "^1.0.3",
-    "autoprefixer": "^9.0.0",
+    "autoprefixer": "^9.1.5",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.0.0",
