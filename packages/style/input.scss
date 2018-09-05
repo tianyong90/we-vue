@@ -1,1 +1,20 @@
 @import "./base/fn";
+@import "./cell";
+
+.weui-input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  height: $weuiCellLineHeight + em;
+  line-height: $weuiCellLineHeight;
+
+  // hides the spin-button
+  &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

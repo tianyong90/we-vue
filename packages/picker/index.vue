@@ -201,8 +201,6 @@ export default create({
 })
 </script>
 
-<style scoped lang="scss">
-  .weui-picker {
-    transform: none;
-  }
+<style module lang="scss">
+  @import "../style/picker.scss";
 </style>

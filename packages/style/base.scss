@@ -1,3 +1,5 @@
+@import "./base/fn";
+
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -95,4 +97,11 @@ a {
 
 .weui-animate-fade-out {
   animation: fadeOut ease .3s forwards;
+}
+
+// weui label
+.weui-label{
+  display:block;
+  width: $weuiCellLabelWidth;
+  @include text_wrap();
 }

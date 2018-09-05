@@ -53,22 +53,5 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  @import "../assets/iconfont/iconfont.css";
-
-  .wv-spinner {
-    display: inline-block;
-    overflow: hidden;
-    -webkit-animation: circle 1.2s infinite linear;
-    -o-animation: circle 1.2s infinite linear;
-    animation: circle 1.2s infinite linear;
-  }
-
-  @keyframes circle {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+  @import "../style/spinner.scss";
 </style>

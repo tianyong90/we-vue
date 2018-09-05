@@ -63,7 +63,5 @@ export default create({
 </script>
 
 <style scoped lang="scss">
-  .weui-check__label-disabled {
-    background-color: rgba(0, 0, 0, 0.1)
-  }
+  @import "../style/radio.scss";
 </style>

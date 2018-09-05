@@ -1,12 +1,43 @@
+@import "./base/fn";
+@import "./icon";
+
 .weui-check__label {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @include setTapColor();
+  &:active {
+    background-color: #ECECEC;
+  }
 }
 
-.weui-check__label:active {
-  background-color: #ECECEC;
-}
-
-.weui-check {
+.weui-check{
   position: absolute;
   left: -9999em;
+}
+
+.weui-cells_checkbox {
+  .weui-cell__hd {
+    padding-right: $weuiCellInnerGapH;
+  }
+  .weui-icon-checked {
+    &:before {
+      content: '\EA01';
+      color: #C9C9C9;
+      font-size: 23px;
+      display: block;
+    }
+  }
+}
+
+// method2 accessbility
+.weui-check {
+  // checkbox
+  .weui-cells_checkbox & {
+    &:checked {
+      & + .weui-icon-checked {
+        &:before {
+          content: '\EA06';
+          color: #09BB07;
+        }
+      }
+    }
+  }
 }
