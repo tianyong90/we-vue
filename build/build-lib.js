@@ -1,6 +1,4 @@
 'use strict'
-require('./check-versions')()
-
 process.env.NODE_ENV = 'production'
 
 const rm = require('rimraf')

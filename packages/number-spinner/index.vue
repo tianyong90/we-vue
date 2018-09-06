@@ -184,7 +184,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  @import "../style/number-spinner.scss";
-</style>

@@ -19,7 +19,3 @@ export default create({
   }
 })
 </script>
-
-<style module lang="scss">
-  @import "../style/group.scss";
-</style>

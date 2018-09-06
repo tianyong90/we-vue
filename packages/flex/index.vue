@@ -29,7 +29,3 @@ export default create({
   }
 })
 </script>
-
-<style module lang="scss">
-  @import "../style/flex.scss";
-</style>

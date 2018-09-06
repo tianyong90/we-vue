@@ -16,3 +16,4 @@ es
 *.sln
 
 /.env
+/packages/style/lib/

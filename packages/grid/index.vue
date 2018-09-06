@@ -11,7 +11,3 @@ export default create({
   name: 'grid'
 })
 </script>
-
-<style module lang="scss">
-  @import "../style/grid.scss";
-</style>

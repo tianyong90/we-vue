@@ -53,7 +53,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  @import "../style/media-box.scss";
-</style>

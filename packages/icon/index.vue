@@ -28,7 +28,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  @import "../style/icon.scss";
-</style>

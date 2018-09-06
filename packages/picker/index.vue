@@ -200,7 +200,3 @@ export default create({
   }
 })
 </script>
-
-<style module lang="scss">
-  @import "../style/picker.scss";
-</style>

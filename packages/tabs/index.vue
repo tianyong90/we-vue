@@ -329,7 +329,3 @@ export default create({
   }
 })
 </script>
-
-<style module lang="scss">
-  @import "../style/tabs.scss";
-</style>

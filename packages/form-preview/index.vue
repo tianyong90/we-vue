@@ -43,7 +43,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  @import "../style/form-preview.scss";
-</style>

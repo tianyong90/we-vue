@@ -21,7 +21,3 @@ export default create({
   }
 })
 </script>
-
-<style scoped lang="scss">
-  @import "../style/panel.scss";
-</style>

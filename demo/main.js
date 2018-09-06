@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import WeVue from '../packages/index.js'
 import App from './app.vue'
+import '../packages/style/index.scss'
 import './assets/style/demo.scss'
 import './assets/iconfont/iconfont.css'
 import router from './router'

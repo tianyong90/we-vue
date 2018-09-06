@@ -45,7 +45,3 @@ export default create({
   }
 })
 </script>
-
-<style module lang="scss">
-  @import "../style/cell.scss";
-</style>
