@@ -105,3 +105,66 @@ a {
   width: $weuiCellLabelWidth;
   @include text_wrap();
 }
+
+// poopup
+@keyframes wv-slide-bottom-enter {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes wv-slide-bottom-leave {
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes wv-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wv-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes wv-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wv-fade {
+  &-enter-active {
+    animation: .3s wv-fade-in;
+  }
+
+  &-leave-active {
+    animation: .3s wv-fade-out;
+  }
+}
+
+.wv-slide-bottom {
+  &-enter-active {
+    animation: wv-slide-bottom-enter .3s both ease;
+  }
+
+  &-leave-active {
+    animation: wv-slide-bottom-leave .3s both ease;
+  }
+}

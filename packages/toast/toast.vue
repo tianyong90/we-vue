@@ -22,9 +22,9 @@
 </template>
 
 <script>
+import { create } from '../utils'
 import WvIcon from '../icon/index'
 import WvSpinner from '../spinner/index'
-import { create } from '../utils'
 import PopupMixin from '../mixins/popup'
 
 export default create({
