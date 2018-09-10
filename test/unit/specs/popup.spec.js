@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Popup from '@/popup'
 
 describe('popup', () => {
@@ -8,7 +8,7 @@ describe('popup', () => {
   })
 
   test('create', () => {
-    wrapper = shallowMount(Popup, {
+    wrapper = mount(Popup, {
       propsData: {}
     })
 
@@ -17,7 +17,7 @@ describe('popup', () => {
   })
 
   test('create a popup that is visible', () => {
-    wrapper = shallowMount(Popup, {
+    wrapper = mount(Popup, {
       attachToDocument: true,
       propsData: {
         visible: true

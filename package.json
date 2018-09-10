@@ -37,8 +37,8 @@
     "build:release": "npm run build:entry && npm run build:component && npm run build:lib",
     "dev": "npm run build:entry && webpack-dev-server --inline --config build/webpack.dev.conf.js",
     "dev:docs": "webpack-dev-server --inline --config build/webpack.docsdev.conf.js",
-    "test": "jest --config=test/unit/jest.conf.js --coverage --runInBand",
-    "test:watch": "jest --config=test/unit/jest.conf.js --coverage --watchAll",
+    "test": "jest --config=test/unit/jest.conf.js --runInBand",
+    "test:watch": "jest --config=test/unit/jest.conf.js --watchAll",
     "coverage": "opener test/unit/coverage/lcov-report/index.html",
     "release": "node build/release.js"
   },

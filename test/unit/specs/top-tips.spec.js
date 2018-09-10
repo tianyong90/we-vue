@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
 import TopTipsApi from '@/top-tips'
 import TopTips from '@/top-tips/top-tips.vue'
 
@@ -66,21 +66,16 @@ describe('top-tips component', () => {
     wrapper && wrapper.destroy()
   })
 
-  test('create', (done) => {
-    wrapper = shallowMount(TopTips, {
+  test('create', () => {
+    wrapper = mount(TopTips, {
       attachToDocument: true,
       propsData: {
         visible: true
       }
     })
 
-    // TODO
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.name()).toBe('wv-top-tips')
-      // expect(wrapper.classes()).toContain('weui-toptips')
-
-      done()
-    })
+    expect(wrapper.name()).toBe('wv-top-tips')
+    expect(wrapper.classes()).toContain('weui-toptips')
   })
 
   test('render message correctlly', () => {

@@ -27,6 +27,7 @@ module.exports = {
   collectCoverageFrom: [
     'packages/**/*.{js,vue}',
     '!packages/mixins/**/*.js',
+    '!**/packages/style/**',
     '!**/node_modules/**',
     '!**/lazyload/**'
   ]
