@@ -19,9 +19,11 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
-  "style": "lib/style.css",
+  "module": "es/index.js",
+  "style": "lib/we-vue-css/index.css",
   "typings": "types/indes.d.ts",
   "files": [
+    "es",
     "lib",
     "packages",
     "types"
@@ -29,7 +31,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue packages demo docs test/unit/specs",
     "build:lib": "node build/build-lib.js",
-    "build:component": "rimraf lib && cross-env NODE_ENV=production webpack --config build/webpack.component.conf.js --color",
+    "build:components": "node build/build-components.js --color",
     "build:demo": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.demo.conf.js --color",
     "build:docs": "rimraf docs-dist && cross-env NODE_ENV=production webpack --config build/webpack.docsprod.conf.js --color",
     "build:entry": "node build/build-entry.js",
@@ -115,6 +117,7 @@
     "sass-loader": "^7.0.0",
     "semver": "^5.3.0",
     "shelljs": "^0.8.0",
+    "signale": "^1.3.0",
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "uppercamelcase": "3.0.0",
@@ -128,7 +131,6 @@
     "vue-template-compiler": "^2.5.9",
     "vuex": "^3.0.1",
     "webpack": "^4.16.0",
-    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-cli": "^3.0.1",
     "webpack-dev-server": "^3.1.1",
     "webpack-merge": "^4.1.0",
