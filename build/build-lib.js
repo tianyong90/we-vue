@@ -5,8 +5,6 @@ const shell = require('shelljs');
 const signale = require('signale');
 const { Signale } = signale;
 const tasks = [
-  'bootstrap',
-  'lint',
   'build:entry',
   'build:components',
   'build:we-vue-css',
