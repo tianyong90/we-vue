@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import ToastComponent from './toast.vue'
+import ToastComponent from './toast'
 
 let instance
 const defaultOptions = {

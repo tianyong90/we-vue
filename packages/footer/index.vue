@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import FooterLink from './footer-link.vue'
+import FooterLink from './footer-link'
 import { create } from '../utils'
 
 export default create({

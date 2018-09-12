@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import TopTipsComponent from './top-tips.vue'
+import TopTipsComponent from './top-tips'
 
 let instance
 

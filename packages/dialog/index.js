@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import DialogComponent from './dialog.vue'
+import DialogComponent from './dialog'
 
 let instance
 

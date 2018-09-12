@@ -1,5 +1,4 @@
 // This file is auto gererated by build/bin/build-entry.js
-import './style/base.scss'
 import Actionsheet from './actionsheet'
 import Badge from './badge'
 import Button from './button'
