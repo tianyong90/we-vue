@@ -19,7 +19,7 @@ const release = function (version) {
     },
     {
       title: 'Build release.',
-      task: () => execa.shell('npm run build:release')
+      task: () => execa.shell('npm run build:lib')
     },
     {
       title: 'Git',
@@ -81,7 +81,7 @@ async function enterAndConfirmVersion () {
     message: '[we-vue] Enter release version:',
     validate: function(value) {
       const pass = value.match(
-        /^1|2\.\d\.\d+(\-(alpha|beta)\.\d+)?$/
+        /^2|3\.\d\.\d+(\-(alpha|beta)\.\d+)?$/
       )
       if (pass) {
         return true
