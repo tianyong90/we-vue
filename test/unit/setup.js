@@ -1,9 +1,10 @@
-require('@babel/polyfill')
+import '@babel/polyfill'
 import Vue from 'vue'
-import VueTestUtils from '@vue/test-utils'
+import { config } from '@vue/test-utils'
 
 Vue.config.productionTip = false
 
 // IMPORTANT: DO NOT use vue-test-utils transitionStub
-VueTestUtils.config.stubs.transition =
+config.stubs.transition =
+config.stubs['transition-group'] =
 false

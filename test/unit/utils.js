@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { TransitionStub, TransitionGroupStub } from '@vue/test-utils'
 
 Vue.config.silent = true
 
@@ -106,4 +107,24 @@ export function dragAndHoldHelper (el, x, y) {
   triggerTouch(el, 'touchmove', x / 3, y / 3)
   triggerTouch(el, 'touchmove', x / 2, y / 2)
   triggerTouch(el, 'touchmove', x, y)
+}
+
+export function transitionStub () {
+  Vue.component(TransitionStub)
+}
+
+export function transitionGroupStub () {
+  Vue.component(TransitionGroupStub)
+}
+
+/**
+ * promisify setTimeout
+ *
+ * @param delay
+ * @returns {Promise<any>}
+ */
+export function later (delay) {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay)
+  })
 }
