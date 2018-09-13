@@ -43,7 +43,7 @@ import Textarea from './textarea'
 import Toast from './toast'
 import TopTips from './top-tips'
 
-const version = '2.2.6'
+const version = '3.0.0-alpha.1'
 const components = [
   Actionsheet,
   Badge,
