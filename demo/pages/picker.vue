@@ -4,7 +4,7 @@
       <wv-cell title="单列(对象数组)" is-link :value="fruit.name" @click.native="fruitPickerShow = true" />
       <wv-cell title="单列" is-link :value="ticket | pickerValueFilter" @click.native="ticketPickerShow = true" />
       <wv-cell title="多列" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true" />
-      <wv-cell title="联动" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true" />
+      <wv-cell title="地址联动" is-link :value="address | pickerValueFilter" @click.native="addressPickerShow = true" />
     </wv-group>
 
     <wv-picker
@@ -37,45 +37,18 @@
 </template>
 
 <script>
-import chinaAreaData from 'china-area-data'
+import pca from '../assets/data/pca'
 
-const provinces = Object.values(chinaAreaData[86])
+const provinces = Object.keys(pca)
 
 // 获取某一省下的市
 const getCities = (province) => {
-  let provinceCode
-  for (let i in chinaAreaData[86]) {
-    if (province === chinaAreaData[86][i]) {
-      provinceCode = i
-      break
-    }
-  }
-  return typeof chinaAreaData[provinceCode] === 'object' ? Object.values(chinaAreaData[provinceCode]) : []
+  return Object.keys(pca[province])
 }
 
 // 获取某一市下的区/县
 function getAreas (province, city) {
-  let provinceCode, cityCode
-  for (let i in chinaAreaData[86]) {
-    if (province === chinaAreaData[86][i]) {
-      provinceCode = i
-      break
-    }
-  }
-
-  for (let i in chinaAreaData[provinceCode]) {
-    if (city === chinaAreaData[provinceCode][i]) {
-      cityCode = i
-      break
-    }
-  }
-
-  if (chinaAreaData[cityCode]) {
-    return typeof chinaAreaData[cityCode] === 'object' ? Object.values(chinaAreaData[cityCode]) : []
-  } else {
-    // 只有两级的情况
-    return []
-  }
+  return Object.values(pca[province][city])
 }
 
 export default {

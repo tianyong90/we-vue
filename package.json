@@ -70,7 +70,6 @@
     "babel-loader": "^8.0.0",
     "bootstrap": "^4.1.1",
     "chalk": "^2.4.1",
-    "china-area-data": "^4.0.0",
     "codecov": "^3.0.0",
     "commitizen": "^2.10.1",
     "conventional-changelog": "^2.0.0",
