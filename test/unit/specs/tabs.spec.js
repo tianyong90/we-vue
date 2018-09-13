@@ -36,8 +36,11 @@ describe('tabs', () => {
 //     wrapper && wrapper.destroy()
 //   })
 //
+//   // const parentWrapper = mount(Tabs)
+//
 //   test('create', () => {
-//     wrapper = shallowMount(Tab, {
+//     wrapper = mount(Tab, {
+//       parent: parentWrapper,
 //       propsData: {}
 //     })
 //

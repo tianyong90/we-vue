@@ -42,7 +42,7 @@
     "dev:docs": "webpack-dev-server --inline --config build/webpack.docsdev.conf.js",
     "test": "jest --config=test/unit/jest.conf.js --runInBand",
     "test:watch": "jest --config=test/unit/jest.conf.js --watchAll",
-    "coverage": "opener test/unit/coverage/lcov-report/index.html",
+    "coverage": "start test/unit/coverage/lcov-report/index.html",
     "release": "node build/release.js"
   },
   "dependencies": {
@@ -69,7 +69,6 @@
     "babel-jest": "^23.0.0",
     "babel-loader": "^8.0.0",
     "bootstrap": "^4.1.1",
-    "chalk": "^2.4.1",
     "codecov": "^3.0.0",
     "commitizen": "^2.10.1",
     "conventional-changelog": "^2.0.0",

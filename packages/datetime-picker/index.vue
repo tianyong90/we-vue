@@ -141,22 +141,9 @@ export default create({
       this.currentVisible = false
     },
 
-    isLeapYear (year) {
-      return (year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0)
-    },
-
-    isShortMonth (month) {
-      return [4, 6, 9, 11].indexOf(month) > -1
-    },
-
     getMonthEndDay (year, month) {
-      if (this.isShortMonth(month)) {
-        return 30
-      } else if (month === 2) {
-        return this.isLeapYear(year) ? 29 : 28
-      } else {
-        return 31
-      }
+      // Date() 第三参数为 0，实际返回上一个月最后一天，注意 Date 对象中 month 实际从 0 开始，而形参 month 表示实际月份
+      return new Date(year, month, 0).getDate()
     },
 
     getTrueValue (formattedValue) {

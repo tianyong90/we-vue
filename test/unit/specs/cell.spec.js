@@ -14,6 +14,8 @@ describe('cell', () => {
 
     expect(wrapper.name()).toBe('wv-cell')
     expect(wrapper.classes()).toContain('weui-cell')
+
+    expect(wrapper).toMatchSnapshot()
   })
 
   test('is-link', () => {
@@ -24,6 +26,8 @@ describe('cell', () => {
     })
 
     expect(wrapper.classes()).toContain('weui-cell_access')
+
+    expect(wrapper).toMatchSnapshot()
   })
 
   test('handle click', () => {
@@ -38,5 +42,7 @@ describe('cell', () => {
     wrapper.trigger('click')
     expect(wrapper.emitted().click).toBeTruthy()
     expect(routerLinkSpy).toHaveBeenCalled()
+
+    expect(wrapper).toMatchSnapshot()
   })
 })

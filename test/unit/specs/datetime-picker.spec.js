@@ -65,29 +65,8 @@ describe('datetime-picker', () => {
     })
   })
 
-  test('test isLeapyear method', () => {
-    wrapper = mount(DatetimePicker, {
-      propsData: {}
-    })
-
-    expect(wrapper.vm.isLeapYear(2012)).toBe(true)
-    expect(wrapper.vm.isLeapYear(2000)).toBe(true)
-    expect(wrapper.vm.isLeapYear(2001)).toBe(false)
-  })
-
-  test('test isShortMonth method', () => {
-    wrapper = mount(DatetimePicker, {
-      propsData: {}
-    })
-
-    expect(wrapper.vm.isShortMonth(4)).toBe(true)
-    expect(wrapper.vm.isShortMonth(1)).toBe(false)
-  })
-
   test('test getMonthEndDay method', () => {
-    wrapper = mount(DatetimePicker, {
-      propsData: {}
-    })
+    wrapper = mount(DatetimePicker)
 
     expect(wrapper.vm.getMonthEndDay(2018, 1)).toBe(31)
     expect(wrapper.vm.getMonthEndDay(2016, 1)).toBe(31)
@@ -98,9 +77,7 @@ describe('datetime-picker', () => {
   })
 
   test('test getTrueValue method', () => {
-    wrapper = mount(DatetimePicker, {
-      propsData: {}
-    })
+    wrapper = mount(DatetimePicker)
 
     expect(wrapper.vm.getTrueValue()).toBe(undefined)
     expect(wrapper.vm.getTrueValue('1')).toBe(1)
