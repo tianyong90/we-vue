@@ -1,17 +1,14 @@
+const fs = require('fs-extra')
 const Components = require('./get-components')()
-const fs = require('fs')
 const uppercamelcase = require('uppercamelcase')
 const path = require('path')
 const version = process.env.VERSION || require('../package.json').version
-const tips = '// This file is auto gererated by build/bin/build-entry.js'
+const tips = '// This file is auto gererated by build/build-entry.js'
 
 function buildWevueEntry () {
   const uninstallComponents = [
     'Lazyload',
-    'InfiniteScroll',
-    'Dialog',
-    'Toast',
-    'TopTips'
+    'InfiniteScroll'
   ]
 
   const importList = Components.map(name => `import ${uppercamelcase(name)} from './${name}'`)
@@ -26,21 +23,10 @@ const components = [
   ${intallList.join(',\n  ')}
 ]
 
-const install = (Vue, config = {}) => {
+const install = Vue => {
   components.forEach(Component => {
     Vue.use(Component)
   })
-
-  Vue.use(InfiniteScroll)
-  Vue.use(Lazyload, {
-    loading: require('./assets/loading-spin.svg'),
-    attempt: 3,
-    ...config.lazyload
-  })
-
-  Vue.$dialog = Vue.prototype.$dialog = Dialog
-  Vue.$toast = Vue.prototype.$toast = Toast
-  Vue.$toptips = Vue.prototype.$toptips = TopTips
 }
 
 /* istanbul ignore if */
@@ -59,10 +45,7 @@ export default {
   version
 }
 `
-  const OUTPUT_PATH = path.join(__dirname, '../packages/index.js')
-
-  fs.writeFileSync(OUTPUT_PATH, content)
-  console.log('[build entry] DONE:', OUTPUT_PATH)
+  fs.writeFileSync(path.join(__dirname, '../packages/index.js'), content)
 }
 
 buildWevueEntry()

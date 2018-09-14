@@ -1,33 +1,40 @@
 import Vue from 'vue'
 import TopTipsComponent from './top-tips'
-
-let instance
+import { isObj } from '../utils'
 
 const defaultOptions = {
   visible: true,
   duration: 3000
 }
 
-const initInstance = () => {
-  const TopTipsConstructor = Vue.extend(TopTipsComponent)
+let instance
+let currentOptions = { ...defaultOptions }
 
-  instance = new TopTipsConstructor({
+const parseOptions = message => isObj(message) ? message : { message }
+
+const createInstance = () => {
+  instance = new (Vue.extend(TopTipsComponent))({
     el: document.createElement('div')
+  })
+
+  instance.$on('update:visible', visible => {
+    instance.visible = visible
   })
 
   document.body.appendChild(instance.$el)
 }
 
-const TopTips = (options = {}) => {
-  if (typeof options === 'string') {
-    options = { message: options }
+const TopTips = options => {
+  options = {
+    ...currentOptions,
+    ...parseOptions(options)
   }
-  options = { ...defaultOptions, ...options }
 
   if (!instance) {
-    initInstance()
+    createInstance()
   }
 
+  Object.assign(instance, options)
   clearTimeout(instance.timer)
 
   Object.assign(instance, { ...options })
@@ -47,9 +54,18 @@ TopTips.close = () => {
   }
 }
 
+TopTips.setDefaultOptions = options => {
+  Object.assign(TopTips.currentOptions, options)
+}
+
+TopTips.resetDefaultOptions = () => {
+  TopTips.currentOptions = { ...defaultOptions }
+}
+
+TopTips.install = () => {
+  Vue.use(TopTipsComponent)
+}
+
 Vue.prototype.$toptips = TopTips
 
 export default TopTips
-export {
-  TopTipsComponent as TopTips
-}

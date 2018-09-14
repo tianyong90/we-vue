@@ -8,30 +8,32 @@
 </template>
 
 <script>
+import { Toast } from '../../packages'
+
 export default {
   methods: {
     showSuccess () {
-      this.$toast.success('操作成功')
+      Toast.success('操作成功')
     },
 
     showError () {
-      this.$toast.fail({
+      Toast.fail({
         duration: 1000,
         message: '操作失败'
       })
     },
 
     showText () {
-      this.$toast.text({
+      Toast.text({
         duration: 1000,
         message: 'hello'
       })
     },
 
     showLoading () {
-      this.$toast.loading({
+      Toast.loading({
         message: 'Loaidng',
-        duration: 500000
+        duration: 2000
       })
     }
   }

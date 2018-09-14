@@ -3,7 +3,11 @@
     enter-active-class="weui-animate-fade-in"
     leave-active-class="weui-animate-fade-out"
   >
-    <div class="weui-toptips weui-toptips_warn" v-show="visible" v-html="message" />
+    <div
+      class="weui-toptips weui-toptips_warn"
+      v-show="visible"
+      v-html="message"
+    />
   </transition>
 </template>
 

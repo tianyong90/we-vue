@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
 import DialogApi from '@/dialog'
-import Dialog from '@/dialog/dialog.vue'
+import Dialog from '@/dialog/dialog'
 import { transitionGroupStub, later } from '../utils'
 
-// transitionGroupStub()
+transitionGroupStub()
 
 describe('test dialog api', () => {
   afterEach(() => {

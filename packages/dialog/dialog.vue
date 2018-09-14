@@ -1,5 +1,8 @@
 <template>
-  <transition-group enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+  <transition-group
+    enter-active-class="weui-animate-fade-in"
+    leave-active-class="weui-animate-fade-out"
+  >
     <div class="weui-mask" v-show="visible" key="mask"/>
     <div
       class="weui-dialog"
@@ -64,12 +67,24 @@ export default create({
       type: Boolean,
       default: true
     },
-    callback: Function
+    beforeClose: Function
   },
 
   methods: {
     handleAction (action) {
-      this.visible = false
+      if (this.beforeClose) {
+        this.beforeClose(action, state => {
+          if (state !== false) {
+            this.onClose(action)
+          }
+        })
+      } else {
+        this.onClose(action)
+      }
+    },
+
+    onClose (action) {
+      this.$emit('update:visible', false)
       this.$emit(action)
       this.callback && this.callback(action)
     }

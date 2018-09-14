@@ -3,31 +3,13 @@ import DialogComponent from './dialog'
 
 let instance
 
-let CONFIRM_TEXT = '确定'
-let CANCEL_TEXT = '取消'
-
-let defaultOptions = {
-  visible: true,
-  title: '提示',
-  message: '',
-  type: '',
-  modalFade: false,
-  lockScroll: false,
-  closeOnClickModal: true,
-  showConfirmButton: true,
-  showCancelButton: false,
-  confirmButtonText: CONFIRM_TEXT,
-  cancelButtonText: CANCEL_TEXT,
-  callback: action => {
-    instance[action === 'confirm' ? 'resolve' : 'reject'](action)
-  }
-}
-
-const initInstance = () => {
-  const DialogConstructor = Vue.extend(DialogComponent)
-
-  instance = new DialogConstructor({
+const createInstance = () => {
+  instance = new (Vue.extend(DialogComponent))({
     el: document.createElement('div')
+  })
+
+  instance.$on('update:visible', visible => {
+    instance.visible = visible
   })
 
   document.body.appendChild(instance.$el)
@@ -36,36 +18,64 @@ const initInstance = () => {
 const Dialog = options => {
   return new Promise((resolve, reject) => {
     if (!instance) {
-      initInstance()
+      createInstance()
     }
 
     Object.assign(instance, {
       resolve,
       reject,
-      ...defaultOptions,
       ...options
     })
   })
 }
 
+Dialog.defaultOptions = {
+  visible: true,
+  title: '',
+  message: '',
+  type: '',
+  modalFade: false,
+  lockScroll: false,
+  closeOnClickModal: true,
+  showConfirmButton: true,
+  showCancelButton: false,
+  confirmButtonText: '确定',
+  cancelButtonText: '取消',
+  callback: action => {
+    instance[action === 'confirm' ? 'resolve' : 'reject'](action)
+  }
+}
+
 Dialog.alert = options => Dialog({
-  ...defaultOptions,
+  ...Dialog.currentOptions,
   ...options
 })
 
 Dialog.confirm = options => Dialog({
-  ...defaultOptions,
+  ...Dialog.currentOptions,
   showCancelButton: true,
   ...options
 })
 
 Dialog.close = () => {
-  instance.visible = false
+  if (instance) {
+    instance.visible = false
+  }
+}
+
+Dialog.setDefaultOptions = options => {
+  Object.assign(Dialog.currentOptions, options)
+}
+
+Dialog.resetDefaultOptions = () => {
+  Dialog.currentOptions = { ...Dialog.defaultOptions }
+}
+
+Dialog.install = () => {
+  Vue.use(DialogComponent)
 }
 
 Vue.prototype.$dialog = Dialog
+Dialog.resetDefaultOptions()
 
 export default Dialog
-export {
-  DialogComponent as Dialog
-}

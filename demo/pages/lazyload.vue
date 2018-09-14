@@ -9,6 +9,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Lazyload } from '../../packages'
+
+Vue.use(Lazyload)
+
 export default {
   data () {
     return {

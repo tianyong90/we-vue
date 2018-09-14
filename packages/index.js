@@ -1,4 +1,4 @@
-// This file is auto gererated by build/bin/build-entry.js
+// This file is auto gererated by build/build-entry.js
 import Actionsheet from './actionsheet'
 import Badge from './badge'
 import Button from './button'
@@ -54,6 +54,7 @@ const components = [
   Checklist,
   Circle,
   DatetimePicker,
+  Dialog,
   Flex,
   FlexItem,
   Footer,
@@ -82,24 +83,15 @@ const components = [
   Tabbar,
   TabbarItem,
   Tabs,
-  Textarea
+  Textarea,
+  Toast,
+  TopTips
 ]
 
-const install = (Vue, config = {}) => {
+const install = Vue => {
   components.forEach(Component => {
     Vue.use(Component)
   })
-
-  Vue.use(InfiniteScroll)
-  Vue.use(Lazyload, {
-    loading: require('./assets/loading-spin.svg'),
-    attempt: 3,
-    ...config.lazyload
-  })
-
-  Vue.$dialog = Vue.prototype.$dialog = Dialog
-  Vue.$toast = Vue.prototype.$toast = Toast
-  Vue.$toptips = Vue.prototype.$toptips = TopTips
 }
 
 /* istanbul ignore if */

@@ -1,20 +1,24 @@
 <template>
-  <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+  <transition
+    enter-active-class="weui-animate-fade-in"
+    leave-active-class="weui-animate-fade-out"
+  >
     <div
-      v-show="visible"
-      class="weui-toast"
       :class="{ 'weui-toast_text': type === 'text' }"
-      ref="toast">
+      class="weui-toast"
+      ref="toast"
+      v-show="visible"
+    >
       <wv-icon
         :type="icon"
         class="weui-icon_toast"
         v-if="type !== 'text' && type !== 'loading'"
       />
       <wv-spinner
+        :size="25"
+        :type="spinnerType"
         class="weui-icon_toast"
         v-if="type === 'loading' && spinnerType !=='none'"
-        :type="spinnerType"
-        :size="25"
       />
       <p class="weui-toast__content" v-text="message"/>
     </div>
