@@ -1,6 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
 import ToastApi from '@/toast'
 import Toast from '@/toast/toast.vue'
+import { later, transitionStub } from '../utils'
+
+// transitionStub()
 
 describe('toast api', () => {
   beforeEach(() => {
@@ -82,6 +85,27 @@ describe('toast api', () => {
 
     expect(ToastApi.currentOptions).toEqual(ToastApi.defaultOptions)
   })
+
+  // TODO
+  // test('multiple toast', async () => {
+  //   ToastApi.allowMultiple()
+  //   // close all
+  //   ToastApi.close(true)
+  //
+  //   // await later(500)
+  //
+  //   const toast1 = ToastApi.success('1')
+  //   const toast2 = ToastApi.success('2')
+  //   ToastApi.close()
+  //   // await later(500)
+  //   expect(toast1.visible).toBeFalsy()
+  //   expect(toast2.visible).toBeTruthy()
+  //   ToastApi.close()
+  //   ToastApi.close()
+  //   // await later(500)
+  //   expect(toast2.visible).toBeFalsy()
+  //   ToastApi.allowMultiple(false)
+  // })
 })
 
 describe('toast', () => {

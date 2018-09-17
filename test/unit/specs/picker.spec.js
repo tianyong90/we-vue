@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Picker from '@/picker'
 import PickerColumn from '@/picker/picker-column.vue'
 import { slowVerticalDrag } from '../utils'
@@ -25,7 +25,7 @@ describe('picker', () => {
   })
 
   test('create', () => {
-    wrapper = shallowMount(Picker, {
+    wrapper = mount(Picker, {
       propsData: {
         visible: true
       }
@@ -129,13 +129,6 @@ describe('picker', () => {
         }]
       }
     })
-
-    // it should throw an error when value length does not math the slot count
-    try {
-      wrapper.vm.setValues([])
-    } catch (e) {
-      expect(e.message).toEqual('Length values is not equal to columns count.')
-    }
 
     wrapper.vm.setValues([2])
 
@@ -263,10 +256,7 @@ describe('picker', () => {
       value: [2]
     })
 
-    setTimeout(() => {
-      expect(wrapper.vm.currentValue).toEqual([2])
-      expect(spy).toHaveBeenCalled()
-    }, 50)
+    expect(spy).toHaveBeenCalled()
   })
 })
 
@@ -277,13 +267,13 @@ describe('picker-column', () => {
   })
 
   // test('create', () => {
-  //   wrapper = shallowMount(PickerColumn, {
+  //   wrapper = mount(PickerColumn, {
   //     parentComponent: Picker
   //   })
   //
   //   expect(wrapper.name()).toBe('wv-picker-column')
   // })
-  //
+
   // test('create using object-array values', () => {
   //   const options = [
   //     {
@@ -310,9 +300,9 @@ describe('picker-column', () => {
   //
   //   expect(wrapper.findAll('.weui-picker__item').length).toBe(3)
   // })
-  //
+
   // test('render a divider slot', () => {
-  //   wrapper = shallowMount(PickerColumn, {
+  //   wrapper = mount(PickerColumn, {
   //     parentComponent: Picker,
   //     propsData: {
   //       divider: true,
