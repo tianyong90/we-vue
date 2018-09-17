@@ -368,11 +368,8 @@ describe('picker-column', () => {
 
     const columnWrapper = wrapper.find(PickerColumn)
 
-    const indicator = wrapper.find('.weui-picker__indicator').element
-
-    const indicatorRect = indicator.getBoundingClientRect()
-
-    columnWrapper.trigger('click', { clientX: 0, clientY: indicatorRect.top + 35 })
+    const option1 = wrapper.findAll('.weui-picker__item').at(1)
+    option1.trigger('click')
 
     expect(columnWrapper.vm.currentIndex).toBe(1)
   })
@@ -456,31 +453,6 @@ describe('picker-column', () => {
     expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
   })
 
-  test('watch options', () => {
-    wrapper = mount(Picker, {
-      attachToDocument: true,
-      propsData: {
-        visible: true,
-        columns: [
-          {
-            values: [1, 2, 3],
-            defaultIndex: 0
-          }
-        ]
-      }
-    })
-
-    const pickerColumnWrapper = wrapper.find(PickerColumn)
-
-    const setIndexSpy = jest.spyOn(pickerColumnWrapper.vm, 'setIndex')
-
-    pickerColumnWrapper.setProps({
-      options: [1, 2]
-    })
-
-    expect(setIndexSpy).toHaveBeenCalledWith(0)
-  })
-
   test('test setValue method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
@@ -497,9 +469,10 @@ describe('picker-column', () => {
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
 
+    const spy = jest.spyOn(pickerColumnWrapper.vm, 'setIndex')
+
     pickerColumnWrapper.vm.setValue(3)
 
-    expect(pickerColumnWrapper.vm.currentValue).toBe(3)
-    expect(pickerColumnWrapper.vm.currentIndex).toBe(2)
+    expect(spy).toHaveBeenCalledWith(2)
   })
 })

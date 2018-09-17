@@ -64,6 +64,24 @@ describe('toast api', () => {
     expect(document.querySelector('.weui-toast')).toBeTruthy()
     expect(instance.type).toBe('loading')
   })
+
+  test('setDefaultOptions method', () => {
+    ToastApi.setDefaultOptions({
+      duration: 1000
+    })
+
+    expect(ToastApi.currentOptions.duration).toBe(1000)
+  })
+
+  test('resetDefaultOptions method', () => {
+    ToastApi.setDefaultOptions({
+      duration: 1000
+    })
+
+    ToastApi.resetDefaultOptions()
+
+    expect(ToastApi.currentOptions).toEqual(ToastApi.defaultOptions)
+  })
 })
 
 describe('toast', () => {

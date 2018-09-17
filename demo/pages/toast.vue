@@ -11,6 +11,12 @@
 import { Toast } from '../../packages'
 
 export default {
+  mounted () {
+    Toast.setDefaultOptions({
+      duration: 1000
+    })
+  },
+
   methods: {
     showSuccess () {
       Toast.success('操作成功')

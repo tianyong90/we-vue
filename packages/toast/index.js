@@ -2,22 +2,12 @@ import Vue from 'vue'
 import ToastComponent from './toast'
 import { isObj } from '../utils'
 
-const defaultOptions = {
-  visible: true,
-  duration: 2000,
-  mask: true,
-  message: '',
-  type: 'success',
-  icon: 'success-no-circle'
-}
-
 const parseOptions = message => isObj(message) ? message : { message }
 
 let queue = []
 let singleton = true
-let currentOptions = { ...defaultOptions }
 
-const initInstance = () => {
+const createInstance = () => {
   if (!queue.length || !singleton) {
     const toast = new (Vue.extend(ToastComponent))({
       el: document.createElement('div')
@@ -30,10 +20,10 @@ const initInstance = () => {
 }
 
 const Toast = (options = {}) => {
-  const toast = initInstance()
+  const toast = createInstance()
 
   options = {
-    ...currentOptions,
+    ...Toast.currentOptions,
     ...parseOptions(options),
     clear () {
       toast.visible = false
@@ -56,6 +46,15 @@ const Toast = (options = {}) => {
   return toast
 }
 
+Toast.defaultOptions = {
+  visible: true,
+  duration: 2000,
+  mask: true,
+  message: '',
+  type: 'success',
+  icon: 'success-no-circle'
+}
+
 const createMethod = type => options => Toast({
   type,
   ...parseOptions(options)
@@ -66,17 +65,17 @@ methods.forEach(method => {
   Toast[method] = createMethod(method)
 })
 
-Toast.clear = all => {
+Toast.close = all => {
   if (queue.length) {
     if (all) {
       queue.forEach(toast => {
-        toast.clear()
+        toast.close()
       })
       queue = []
     } else if (singleton) {
-      queue[0].clear()
+      queue[0].close()
     } else {
-      queue.shift().clear()
+      queue.shift().close()
     }
   }
 }
@@ -86,7 +85,7 @@ Toast.setDefaultOptions = options => {
 }
 
 Toast.resetDefaultOptions = () => {
-  Toast.resetDefaultOptions = { ...defaultOptions }
+  Toast.currentOptions = { ...Toast.defaultOptions }
 }
 
 Toast.allowMultiple = (allow = true) => {
@@ -98,5 +97,6 @@ Toast.install = () => {
 }
 
 Vue.prototype.$toast = Toast
+Toast.resetDefaultOptions()
 
 export default Toast

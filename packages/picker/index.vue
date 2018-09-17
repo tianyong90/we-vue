@@ -91,10 +91,6 @@ export default create({
   },
 
   computed: {
-    columnCount () {
-      return this.columns.filter(column => !column.divider).length
-    },
-
     pickerBodyStyle () {
       return {
         height: this.visibleItemCount * ITEM_HEIGHT + 'px'
@@ -146,7 +142,8 @@ export default create({
 
     // get column value by index
     getColumnValue (columnIndex) {
-      return (this.getColumn(columnIndex) || {}).currentValue
+      const column = this.getColumn(columnIndex)
+      return column && column.getValue()
     },
 
     // set column value by index
@@ -175,7 +172,6 @@ export default create({
 
     // set values of all columns
     setValues (values) {
-      console.log(values)
       values.forEach((value, index) => {
         this.setColumnValue(index, value)
       })

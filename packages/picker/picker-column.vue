@@ -84,14 +84,6 @@ export default create({
   },
 
   computed: {
-    minTranslateY () {
-      return ITEM_HEIGHT * (Math.ceil(this.visibleItemCount / 2) - this.currentOptions.length)
-    },
-
-    maxTranslateY () {
-      return ITEM_HEIGHT * Math.floor(this.visibleItemCount / 2)
-    },
-
     wrapperStyle () {
       return {
         transition: this.transition,

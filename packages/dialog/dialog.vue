@@ -67,6 +67,7 @@ export default create({
       type: Boolean,
       default: true
     },
+    callback: Function,
     beforeClose: Function
   },
 
