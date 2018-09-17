@@ -4,7 +4,7 @@
       enter-active-class="weui-animate-fade-in"
       leave-active-class="weui-animate-fade-out"
     >
-      <div class="weui-mask" v-show="visible"/>
+      <div v-show="visible" class="weui-mask"/>
     </transition>
     <transition
       enter-active-class="weui-animate-slide-up"
@@ -25,9 +25,9 @@
         </div>
         <div class="weui-picker__bd" :style="pickerBodyStyle">
           <picker-column
-            v-for="(column, index) in columns"
+            v-for="(column, index) in (simple ? [columns] : columns)"
             :key="index"
-            :options="column.values || []"
+            :options="simple ? column : column.values"
             :value-key="valueKey"
             :divider="column.divider"
             :content="column.content"
@@ -44,6 +44,7 @@
 <script>
 import PickerColumn from './picker-column'
 import { create } from '../utils'
+import deepClone from '../utils/deep-clone'
 
 // height of th option item
 const ITEM_HEIGHT = 34
@@ -85,9 +86,7 @@ export default create({
 
   data () {
     return {
-      children: [],
-      currentColumns: [],
-      currentValue: this.value
+      children: []
     }
   },
 
@@ -100,102 +99,122 @@ export default create({
       return {
         height: this.visibleItemCount * ITEM_HEIGHT + 'px'
       }
+    },
+
+    simple () {
+      return this.columns.length && !this.columns[0].values
     }
   },
 
-  created () {
-    this.initialize()
+  watch: {
+    columns () {
+      this.setColumns()
+    },
+
+    value (val) {
+      this.setValues(val)
+    }
+  },
+
+  mounted () {
+    this.setValues(this.value)
   },
 
   methods: {
-    initialize () {
-      this.currentColumns = this.columns
+    setColumns () {
+      const columns = this.columns
+      columns.forEach((column, index) => {
+        this.setColumnValues(index, deepClone(column.values))
+      })
     },
 
     columnValueChange (columnIndex) {
-      this.currentValue = this.getValues()
-      this.$emit('change', this, this.getValues(), columnIndex)
+      if (this.simple) {
+        this.$emit('change', this, this.getColumnValue(0), this.getColumnIndex(0))
+      } else {
+        this.$emit('change', this, this.getValues(), columnIndex)
+      }
     },
 
+    // get column instance
     getColumn (columnIndex) {
-      let children = this.children
+      let { children } = this
       return children.find((child, index) => {
         return (child.$options.name === 'wv-picker-column' && !child.divider && index === columnIndex)
       })
     },
 
+    // get column value by index
     getColumnValue (columnIndex) {
       return (this.getColumn(columnIndex) || {}).currentValue
     },
 
+    // set column value by index
     setColumnValue (columnIndex, value) {
       const column = this.getColumn(columnIndex)
       column && column.setValue(value)
     },
 
-    getColumnValues (columnIndex) {
-      return (this.currentColumns[columnIndex] || {}).values
-    },
-
+    // set options of column by index
     setColumnValues (columnIndex, values) {
-      const column = this.currentColumns[columnIndex]
+      const column = this.columns[columnIndex]
       if (column) {
         column.values = values
       }
     },
 
-    getValues () {
-      return this.children.map(child => child.currentValue)
+    // get options of column by index
+    getColumnValues (columnIndex) {
+      return (this.columns[columnIndex] || {}).values
     },
 
-    setValues (values) {
-      if (this.columnCount !== values.length) {
-        throw new Error('Length values is not equal to columns count.')
-      }
+    // get values of all columns
+    getValues () {
+      return this.children.map(child => child.getValue())
+    },
 
+    // set values of all columns
+    setValues (values) {
+      console.log(values)
       values.forEach((value, index) => {
         this.setColumnValue(index, value)
       })
     },
 
+    // get column option index by column index
     getColumnIndex (columnIndex) {
       return (this.getColumn(columnIndex) || {}).currentIndex
     },
 
+    // set column option index by column index
     setColumnIndex (columnIndex, index) {
       const column = this.getColumn(columnIndex)
       column && column.setIndex(index)
     },
 
+    // get indexes of all columns
     getIndexes () {
       return this.children.map(child => child.currentIndex)
     },
 
+    // set indexes of all columns
     setIndexes (indexes) {
       indexes.forEach((optionIndex, columnIndex) => {
         this.setColumnIndex(columnIndex, optionIndex)
       })
     },
 
+    // cancel event handler
     onCancel () {
       this.$emit('cancel', this)
       this.$emit('update:visible', false)
     },
 
+    // confirm event handler
     onConfirm () {
+      this.$emit('input', this.getValues())
       this.$emit('confirm', this)
       this.$emit('update:visible', false)
-    }
-  },
-
-  watch: {
-    value (val) {
-      this.setValues(val)
-      this.currentValue = val
-    },
-
-    currentValue (val) {
-      this.$emit('input', val)
     }
   }
 })

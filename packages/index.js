@@ -1,5 +1,6 @@
 // This file is auto gererated by build/build-entry.js
 import Actionsheet from './actionsheet'
+import Area from './area'
 import Badge from './badge'
 import Button from './button'
 import Cell from './cell'
@@ -46,6 +47,7 @@ import TopTips from './top-tips'
 const version = '3.0.0-alpha.2'
 const components = [
   Actionsheet,
+  Area,
   Badge,
   Button,
   Cell,
@@ -103,6 +105,7 @@ export {
   install,
   version,
   Actionsheet,
+  Area,
   Badge,
   Button,
   Cell,

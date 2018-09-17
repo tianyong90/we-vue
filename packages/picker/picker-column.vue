@@ -1,12 +1,11 @@
 <template>
   <div
-    class="weui-picker__group"
     v-if="!divider"
+    class="weui-picker__group"
     @touchstart="onTouchstart"
     @touchmove.prevent="onTouchmove"
     @touchend="onTouchend"
     @touchcancel="onTouchend"
-    @click="onClick"
   >
     <div class="weui-picker__mask" :style="pickerMaskStyle"/>
     <div
@@ -16,11 +15,12 @@
     />
     <div class="weui-picker__content" :style="wrapperStyle">
       <div
-        class="weui-picker__item"
-        :class="{ 'weui-picker__item_disabled': isDisabled(option) }"
         v-for="(option, index) in options"
         :key="index"
-        v-text="getOptionText(option)"
+        class="weui-picker__item"
+        :class="{ 'weui-picker__item_disabled': isDisabled(option) }"
+        v-html="getOptionText(option)"
+        @click="setIndex(index, true)"
       />
     </div>
   </div>
@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import { create } from '../utils'
+import { create, isObj } from '../utils'
+import deepClone from '../utils/deep-clone'
 
 const range = (num, min, max) => Math.min(Math.max(num, min), max)
 
@@ -77,13 +78,14 @@ export default create({
       prevTime: null,
       velocity: 0, // moving velocity
       transition: '',
+      currentOptions: deepClone(this.options),
       currentIndex: this.defaultIndex
     }
   },
 
   computed: {
     minTranslateY () {
-      return ITEM_HEIGHT * (Math.ceil(this.visibleItemCount / 2) - this.options.length)
+      return ITEM_HEIGHT * (Math.ceil(this.visibleItemCount / 2) - this.currentOptions.length)
     },
 
     maxTranslateY () {
@@ -110,33 +112,33 @@ export default create({
     },
 
     count () {
-      return this.options.length
-    },
+      return this.currentOptions.length
+    }
+  },
 
-    currentValue () {
-      return this.options[this.currentIndex]
+  watch: {
+    defaultIndex (value) {
+      this.setIndex(value)
     }
   },
 
   created () {
-    this.$parent && this.$parent.children.push(this)
-  },
-
-  mounted () {
+    this.$parent.children && this.$parent.children.push(this)
     this.setIndex(this.currentIndex)
   },
 
   destroyed () {
-    this.$parent && this.$parent.children.splice(this.$parent.children.indexOf(this), 1)
+    const { children } = this.$parent
+    children && children.splice(children.indexOf(this), 1)
   },
 
   methods: {
-    getOptionText (item) {
-      return typeof item === 'object' ? item[this.valueKey] : item
+    getOptionText (option) {
+      return isObj(option) && this.valueKey in option ? option[this.valueKey] : option
     },
 
-    isDisabled (item) {
-      return typeof item === 'object' && item.disabled
+    isDisabled (option) {
+      return isObj(option) && option.disabled
     },
 
     indexToOffset (index) {
@@ -160,9 +162,7 @@ export default create({
     onTouchmove (event) {
       const currentTime = +new Date()
       const currentY = event.touches[0].clientY
-
       const distance = currentY - this.startY
-
       this.offset = this.startOffset + distance
 
       // compute velocity
@@ -173,30 +173,8 @@ export default create({
 
     onTouchend () {
       this.transition = DEFAULT_TRANSITION
-
       const endOffset = this.offset + this.velocity * 150
-
       const index = this.offsetToIndex(endOffset)
-
-      this.setIndex(index, true)
-    },
-
-    onClick (event) {
-      const indicator = this.$refs.indicator
-
-      this.transition = DEFAULT_TRANSITION
-
-      // treat the event as 'click' when the moving distance is shorter than 10px
-      const indicatorRect = indicator.getBoundingClientRect()
-      const clickOffset = Math.floor((event.clientY - indicatorRect.top) / ITEM_HEIGHT) * ITEM_HEIGHT
-
-      const targetOffset = this.offset - clickOffset
-
-      // offset should be within the range
-      this.offset = range(targetOffset, this.minTranslateY, this.maxTranslateY)
-
-      const index = this.offsetToIndex(this.offset)
-
       this.setIndex(index, true)
     },
 
@@ -204,15 +182,15 @@ export default create({
     adjustIndex (index) {
       index = range(index, 0, this.count)
       for (let i = index; i < this.count; i++) {
-        if (!this.isDisabled(this.options[i])) return i
+        if (!this.isDisabled(this.currentOptions[i])) return i
       }
       for (let i = index - 1; i >= 0; i--) {
-        if (!this.isDisabled(this.options[i])) return i
+        if (!this.isDisabled(this.currentOptions[i])) return i
       }
     },
 
     setIndex (index, userAction = false) {
-      index = this.adjustIndex(index)
+      index = this.adjustIndex(index) || 0
       this.offset = this.indexToOffset(index)
 
       if (index !== this.currentIndex) {
@@ -221,26 +199,20 @@ export default create({
       }
     },
 
+    getValue () {
+      return this.currentOptions[this.currentIndex]
+    },
+
     setValue (value) {
       const { options } = this
       const valueIndex = options.findIndex(option => {
-        return this.getOptionText(option) === value
+        if (isObj(value)) {
+          return this.getOptionText(option) === value[this.valueKey]
+        } else {
+          return this.getOptionText(option) === value
+        }
       })
-      if (valueIndex > -1) {
-        this.setIndex(valueIndex)
-      }
-    }
-  },
-
-  watch: {
-    defaultIndex (index) {
-      this.setIndex(index)
-    },
-
-    options (val, oldValue) {
-      if (JSON.stringify(val) !== JSON.stringify(oldValue)) {
-        this.setIndex(0)
-      }
+      this.setIndex(valueIndex > -1 ? valueIndex : 0)
     }
   }
 })

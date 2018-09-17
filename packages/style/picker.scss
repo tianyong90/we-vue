@@ -51,7 +51,6 @@ $pickerItemHeight: 34px;
   flex: 1;
   position: relative;
   height: 100%;
-  //-webkit-mask-box-image: -webkit-linear-gradient(bottom,transparent,transparent 5%,#fff 50%,#fff 50%,transparent 95%,transparent);
 }
 
 .weui-picker__mask {
@@ -67,6 +66,7 @@ $pickerItemHeight: 34px;
   background-size: 100% 102px;
   background-repeat: no-repeat;
   transform: translateZ(0);
+  pointer-events: none; // IE 10 以上
 }
 
 .weui-picker__indicator {

@@ -115,6 +115,12 @@
         "icon": "actionsort"
       },
       {
+        "path": "/area",
+        "name": "Area",
+        "description": "省市区选择",
+        "icon": "actionsort"
+      },
+      {
         "path": "/dialog",
         "name": "Dialog",
         "description": "对话框",
