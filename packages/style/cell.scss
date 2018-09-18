@@ -1,90 +1,71 @@
+@import "./base/fn";
+
+.weui-cells__tips {
+  margin-top: .3em; // 8px - 行高
+  color: $weuiTextColorGray;
+  padding-left: $weuiCellGapH;
+  padding-right: $weuiCellGapH;
+  font-size: $weuiCellTipsFontSize;
+}
 
 .weui-cell {
-  padding: 10px 15px;
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
+  padding: $weuiCellGapV $weuiCellGapH;
+  position: relative; //这个是为了兼容cells容器onepx方案被before挡住而做的
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
   align-items: center;
-}
-
-.weui-cell:before {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  height: 1px;
-  border-top: 1px solid #e5e5e5;
-  color: #e5e5e5;
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  left: 15px;
-  z-index: 2;
-}
-
-.weui-cell:first-child:before {
-  display: none;
+  &:before {
+    @include setTopLine($weuiCellBorderColor);
+    left: $weuiCellGapH;
+    z-index: 2;
+  }
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
 }
 
 .weui-cell_primary {
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
   align-items: flex-start;
 }
 
 .weui-cell__bd {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
   flex: 1;
 }
 
 .weui-cell__ft {
   text-align: right;
-  color: #999999;
+  color: $weuiTextColorGray;
 }
 
 .weui-cell_access {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @include setTapColor();
   color: inherit;
-}
-
-.weui-cell_access:active {
-  background-color: #ECECEC;
-}
-
-.weui-cell_access .weui-cell__ft {
-  padding-right: 13px;
-  position: relative;
-}
-
-.weui-cell_access .weui-cell__ft:after {
-  content: " ";
-  display: inline-block;
-  height: 6px;
-  width: 6px;
-  border-width: 2px 2px 0 0;
-  border-color: #C8C8CD;
-  border-style: solid;
-  -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  position: relative;
-  top: -2px;
-  position: absolute;
-  top: 50%;
-  margin-top: -4px;
-  right: 2px;
+  &:active {
+    background-color: #ececec;
+  }
+  .weui-cell__ft {
+    padding-right: 13px;
+    position: relative;
+    &:after {
+      content: " ";
+      @include setArrow(right, 6px, #c8c8cd, 2px);
+      position: absolute;
+      top: 50%;
+      margin-top: -4px;
+      right: 2px;
+    }
+  }
 }
 
 .weui-cell_link {
-  color: #586C94;
+  color: $weuiLinkColorDefault;
   font-size: 14px;
-}
 
-.weui-cell_link:first-child:before {
-  display: block;
+  // 由于weui-cell:first-child的:before为隐藏，所以这里要重新显示出来
+  &:first-child {
+    &:before {
+      display: block;
+    }
+  }
 }

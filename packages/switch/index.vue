@@ -146,4 +146,3 @@ export default create({
   }
 })
 </script>
-

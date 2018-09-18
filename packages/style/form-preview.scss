@@ -2,7 +2,7 @@
 
 .weui-form-preview {
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   &:before {
     @include setTopLine($weuiCellBorderColor);
   }
@@ -95,5 +95,5 @@
 }
 
 .weui-form-preview__btn_primary {
-  color: #0BB20C;
+  color: #0bb20c;
 }

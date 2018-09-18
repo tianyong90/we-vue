@@ -1,61 +1,34 @@
+@import "./base/fn";
+
 .weui-cells {
-  margin-top: 1.17647059em;
-  background-color: #FFFFFF;
-  line-height: 1.47058824;
-  font-size: 17px;
-  overflow: hidden;
+  margin-top: $weuiCellsMarginTop;
+  background-color: $weuiCellBg;
+  line-height: $weuiCellLineHeight;
+  font-size: $weuiCellFontSize; //cell中间有效高度23px，跟客户端默认图标尺寸一致
+
+  overflow: hidden; //因为每个cell的border使用before元素left搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
+
+  // onepx
   position: relative;
-}
-
-.weui-cells:before {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  height: 1px;
-  border-top: 1px solid #e5e5e5;
-  color: #e5e5e5;
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  z-index: 2;
-}
-
-.weui-cells:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 1px;
-  border-bottom: 1px solid #e5e5e5;
-  color: #e5e5e5;
-  -webkit-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-  -webkit-transform: scaleY(0.5);
-  transform: scaleY(0.5);
-  z-index: 2;
+  &:before {
+    @include setTopLine($weuiCellBorderColor);
+    z-index: 2;
+  }
+  &:after {
+    @include setBottomLine($weuiCellBorderColor);
+    z-index: 2;
+  }
 }
 
 .weui-cells__title {
-  margin-top: 0.77em;
-  margin-bottom: 0.3em;
-  padding-left: 15px;
-  padding-right: 15px;
-  color: #999999;
-  font-size: 14px;
-}
+  margin-top: .77em; // 15px - 行高
+  margin-bottom: .3em; // 8px - 行高
+  padding-left: $weuiCellGapH;
+  padding-right: $weuiCellGapH;
+  color: $weuiTextColorGray;
+  font-size: $weuiCellTipsFontSize;
 
-.weui-cells__title + .weui-cells {
-  margin-top: 0;
-}
-
-.weui-cells__tips {
-  margin-top: 0.3em;
-  color: #999999;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 14px;
+  & + .weui-cells {
+    margin-top: 0;
+  }
 }

@@ -11,10 +11,10 @@
   outline: 0;
 }
 
-.weui-textarea-counter{
+.weui-textarea-counter {
   color: $weuiTextColorTips;
   text-align: right;
-  .weui-cell_warn &{
+  .weui-cell_warn & {
     color: $weuiTextColorWarn;
   }
 }

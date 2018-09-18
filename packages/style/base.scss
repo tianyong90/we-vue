@@ -100,8 +100,8 @@ a {
 }
 
 // weui label
-.weui-label{
-  display:block;
+.weui-label {
+  display: block;
   width: $weuiCellLabelWidth;
   @include text_wrap();
 }

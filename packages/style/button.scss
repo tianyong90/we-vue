@@ -134,7 +134,6 @@
   border-color: rgba(0, 0, 0, .2);
 }
 
-
 button, input {
   &.weui-btn {
     width: 100%;
@@ -145,10 +144,10 @@ button, input {
       outline: 0;
     }
   }
-  &.weui-btn_inline,&.weui-btn_mini {
+  &.weui-btn_inline, &.weui-btn_mini {
     width: auto;
   }
-  &.weui-btn_plain-primary,&.weui-btn_plain-default{
+  &.weui-btn_plain-primary, &.weui-btn_plain-default {
     border-width: 1px;
     background-color: transparent;
   }
@@ -160,7 +159,6 @@ button, input {
   line-height: $weuiBtnMiniHeight;
   font-size: $weuiBtnMiniFontSize;
 }
-
 
 /*gap between btn*/
 .weui-btn + .weui-btn {
@@ -175,6 +173,7 @@ button, input {
 .weui-btn-area {
   margin: $weuiCellsMarginTop $weuiBtnDefaultGap .3em;
 }
+
 .weui-btn-area_inline {
   display: flex;
   .weui-btn {

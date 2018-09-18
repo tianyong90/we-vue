@@ -6,10 +6,10 @@
   z-index: 500;
   bottom: 0;
   width: 100%;
-  background-color: #F7F7FA;
+  background-color: #f7f7fa;
 
   &:before {
-    @include setTopLine(#C0BFC4);
+    @include setTopLine(#c0bfc4);
   }
 }
 
@@ -26,7 +26,7 @@
     .weui-tabbar__icon,
     .weui-tabbar__icon > i,
     .weui-tabbar__label {
-      color: #09BB07;
+      color: #09bb07;
     }
   }
 }

@@ -14,6 +14,7 @@ $weuiActionSheetAndroidBorderRadius: 2px;
   //slide up animation
   transition: transform .3s;
 }
+
 .weui-actionsheet__title {
   position: relative;
   height: 65px;
@@ -21,11 +22,12 @@ $weuiActionSheetAndroidBorderRadius: 2px;
   line-height: 1.4;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   text-align: center;
   font-size: 14px;
   color: #888;
-  background: #FCFCFD;
+  background: #fcfcfd;
   &:before {
     @include setBottomLine($weuiCellBorderColor);
   }
@@ -33,13 +35,16 @@ $weuiActionSheetAndroidBorderRadius: 2px;
     @include ellipsisLn(2);
   }
 }
-.weui-actionsheet__menu{
-  background-color: #FCFCFD;
+
+.weui-actionsheet__menu {
+  background-color: #fcfcfd;
 }
+
 .weui-actionsheet__action {
   margin-top: 6px;
-  background-color: #FCFCFD;;
+  background-color: #fcfcfd;;
 }
+
 .weui-actionsheet__cell {
   position: relative;
   padding: 10px 0;
@@ -48,19 +53,18 @@ $weuiActionSheetAndroidBorderRadius: 2px;
   &:before {
     @include setTopLine($weuiCellBorderColor);
   }
-  &:active{
+  &:active {
     background-color: $weuiBgColorActive;
   }
-  &:first-child{
-    &:before{
+  &:first-child {
+    &:before {
       display: none;
     }
   }
 }
 
-
 //android actionSheet
-.weui-skin_android{
+.weui-skin_android {
   .weui-actionsheet {
     position: fixed;
     left: 50%;
@@ -75,12 +79,12 @@ $weuiActionSheetAndroidBorderRadius: 2px;
     //slide up animation
     transition: transform .3s;
   }
-  .weui-actionsheet__action{
+  .weui-actionsheet__action {
     display: none;
   }
   .weui-actionsheet__menu {
     border-radius: $weuiActionSheetAndroidBorderRadius;
-    box-shadow: 0 6px 30px 0 rgba(0,0,0,.1);
+    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
   }
   .weui-actionsheet__cell {
     padding: 13px 24px;
@@ -99,6 +103,6 @@ $weuiActionSheetAndroidBorderRadius: 2px;
 }
 
 //actionSheet aniamtion
-.weui-actionsheet_toggle{
+.weui-actionsheet_toggle {
   transform: translate(0, 0);
 }

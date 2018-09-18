@@ -1,18 +1,18 @@
 $wv-switch-height: 32px;
 $thumb-background-color: #fff;
-$on-color: #04BE02;
-$off-color: #FDFDFD;
+$on-color: #04be02;
+$off-color: #fdfdfd;
 $thumb-color: #fff;
 
 .wv-switch {
   position: relative;
   width: 52px;
   height: $wv-switch-height;
-  border: 1px solid #DFDFDF;
+  border: 1px solid #dfdfdf;
   outline: 0;
   border-radius: 16px;
   box-sizing: border-box;
-  background-color: #DFDFDF;
+  background-color: #dfdfdf;
   transition: background-color .1s, border .1s;
 
   .background {
@@ -23,7 +23,7 @@ $thumb-color: #fff;
     width: 50px;
     height: $wv-switch-height - 2;
     border-radius: 15px;
-    background-color: #FDFDFD;
+    background-color: #fdfdfd;
     transition: transform .35s cubic-bezier(0.45, 1, 0.4, 1);
   }
 

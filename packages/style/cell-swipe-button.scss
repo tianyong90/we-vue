@@ -1,12 +1,16 @@
-.weui-swiped-btn{
-  display:block;
-  padding:10px 1em;
-  line-height:1.47058824;
-  color:inherit;
+@import "./base/fn";
+
+.weui-swiped-btn {
+  display: block;
+  padding: $weuiCellGapV 1em;
+  line-height: $weuiCellLineHeight;
+  color: inherit;
 }
-.weui-swiped-btn_default{
-  background-color:#C7C7CC;
+
+.weui-swiped-btn_default {
+  background-color: #c7c7cc;
 }
-.weui-swiped-btn_warn{
-  background-color:#FF3B30;
+
+.weui-swiped-btn_warn {
+  background-color: #ff3b30;
 }

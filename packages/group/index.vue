@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div class="weui-cells__title" v-if="title" :style="{ color: titleColor }" v-html="title" />
+    <div
+      :style="{ color: titleColor }"
+      class="weui-cells__title"
+      v-html="title"
+      v-if="title"
+    />
     <div class="weui-cells">
-      <slot />
+      <slot/>
     </div>
   </div>
 </template>

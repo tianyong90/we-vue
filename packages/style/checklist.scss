@@ -4,11 +4,11 @@
 .weui-check__label {
   @include setTapColor();
   &:active {
-    background-color: #ECECEC;
+    background-color: #ececec;
   }
 }
 
-.weui-check{
+.weui-check {
   position: absolute;
   left: -9999em;
 }
@@ -20,7 +20,7 @@
   .weui-icon-checked {
     &:before {
       content: '\EA01';
-      color: #C9C9C9;
+      color: #c9c9c9;
       font-size: 23px;
       display: block;
     }
@@ -35,7 +35,7 @@
       & + .weui-icon-checked {
         &:before {
           content: '\EA06';
-          color: #09BB07;
+          color: #09bb07;
         }
       }
     }

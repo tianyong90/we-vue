@@ -17,7 +17,7 @@
     color: #000000;
     @include setTapColor();
     &:active {
-      background-color: #ECECEC;
+      background-color: #ececec;
     }
   }
 }
@@ -41,7 +41,7 @@
   margin-top: 15px;
   padding-bottom: 5px;
   font-size: 13px;
-  color: #CECECE;
+  color: #cecece;
   line-height: 1em;
   list-style: none;
   overflow: hidden;
@@ -54,7 +54,7 @@
 
 .weui-media-box__info__meta_extra {
   padding-left: 1em;
-  border-left: 1px solid #CECECE;
+  border-left: 1px solid #cecece;
 }
 
 .weui-media-box_text {

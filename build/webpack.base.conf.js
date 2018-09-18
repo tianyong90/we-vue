@@ -29,7 +29,7 @@ module.exports = {
         loader: 'eslint-loader',
         enforce: 'pre',
         include: [
-          resolve('src'),
+          resolve('packages'),
           resolve('test'),
           resolve('demo'),
           resolve('docs')
