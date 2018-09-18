@@ -42,9 +42,12 @@ export default create({
       type: Number,
       default: 7
     },
-    columnsNum: {
+    columnsCount: {
       type: [String, Number],
-      default: 3
+      default: 3,
+      validator: value => {
+        return value > 0 && value <= 3
+      }
     },
     value: String
   },
@@ -71,8 +74,26 @@ export default create({
     },
 
     displayColumns () {
-      return this.columns.slice(0, +this.columnsNum)
+      return this.columns.slice(0, +this.columnsCount)
     }
+  },
+
+  watch: {
+    value () {
+      this.code = this.value
+      this.setValues()
+    },
+
+    areaList: {
+      deep: true,
+      handler () {
+        this.setValues()
+      }
+    }
+  },
+
+  mounted () {
+    this.setValues()
   },
 
   methods: {
@@ -110,6 +131,7 @@ export default create({
     },
 
     onChange (picker, values, index) {
+      console.log('haha')
       this.code = values[index].code
       this.setValues()
       this.$emit('change', picker, values, index)
@@ -124,8 +146,6 @@ export default create({
       if (!picker) {
         return
       }
-
-      console.log(province)
 
       picker.setColumnValues(0, province)
       picker.setColumnValues(1, city)
@@ -149,24 +169,6 @@ export default create({
     reset () {
       this.code = ''
       this.stValues()
-    }
-  },
-
-  mounted () {
-    this.setValues()
-  },
-
-  watch: {
-    value () {
-      this.code = this.value
-      this.setValues()
-    },
-
-    areaList: {
-      deep: true,
-      handler () {
-        this.setValues()
-      }
     }
   }
 })

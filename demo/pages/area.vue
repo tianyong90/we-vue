@@ -9,33 +9,19 @@
       :area-list="area"
       value-key="name"
       @confirm="confirmArea"
-      value="110101"
-    />
+`    />
   </div>
 </template>
 
 <script>
 import area from '../assets/data/area'
-// import pca from '../assets/data/pca'
-//
-// const provinces = Object.keys(pca)
-//
-// // 获取某一省下的市
-// const getCities = (province) => {
-//   return Object.keys(pca[province])
-// }
-//
-// // 获取某一市下的区/县
-// function getAreas (province, city) {
-//   return Object.values(pca[province][city])
-// }
 
 export default {
   data () {
     return {
       pickerShow: true,
-      address: [],
-      area: area
+      area: area,
+      code: '110101'
     }
   },
 
