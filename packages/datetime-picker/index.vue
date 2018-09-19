@@ -2,7 +2,7 @@
   <wv-picker
     ref="picker"
     :visible.sync="currentVisible"
-    :columns="pickerColumns"
+    :columns="columns"
     @change="onChange"
     @confirm="onConfirm"
     @cancel="onCancel"
@@ -14,15 +14,16 @@
 
 <script>
 import { create } from '../utils'
-import WvPicker from '../picker'
+import Picker from '../picker'
 
+const currentYear = new Date().getFullYear()
 const isValidDate = date => Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())
 
 export default create({
   name: 'datetime-picker',
 
   components: {
-    WvPicker
+    Picker
   },
 
   props: {
@@ -41,12 +42,12 @@ export default create({
     },
     startDate: {
       type: Date,
-      default: () => new Date(new Date().getFullYear() - 10, 0, 1),
+      default: () => new Date(currentYear - 10, 0, 1),
       validator: isValidDate
     },
     endDate: {
       type: Date,
-      default: () => new Date(new Date().getFullYear() + 10, 11, 31),
+      default: () => new Date(currentYear + 10, 11, 31),
       validator: isValidDate
     },
     startHour: {
@@ -120,7 +121,7 @@ export default create({
       }
     },
 
-    pickerColumns () {
+    columns () {
       let result = []
       for (let rangeKey in this.ranges) {
         result.push({
@@ -130,6 +131,32 @@ export default create({
 
       return result
     }
+  },
+
+  watch: {
+    value (val) {
+      val = this.correctValue(val)
+      const isEqual = this.type === 'time' ? val === this.currentValue : val.valueOf() === this.currentValue.valueOf()
+
+      if (!isEqual) {
+        this.currentValue = val
+      }
+    },
+
+    currentValue (val) {
+      this.updateColumnValue(val)
+      this.$emit('input', val)
+    }
+  },
+
+  mounted () {
+    if (!this.value) {
+      this.currentValue = this.type.indexOf('date') > -1 ? this.startDate : `${('0' + this.startHour).slice(-2)}:00`
+    } else {
+      this.currentValue = this.value
+    }
+
+    this.updateColumnValue(this.currentValue)
   },
 
   methods: {
@@ -300,32 +327,6 @@ export default create({
     onCancel () {
       this.visible = false
       this.$emit('cancel')
-    }
-  },
-
-  mounted () {
-    if (!this.value) {
-      this.currentValue = this.type.indexOf('date') > -1 ? this.startDate : `${('0' + this.startHour).slice(-2)}:00`
-    } else {
-      this.currentValue = this.value
-    }
-
-    this.updateColumnValue(this.currentValue)
-  },
-
-  watch: {
-    value (val) {
-      val = this.correctValue(val)
-      const isEqual = this.type === 'time' ? val === this.currentValue : val.valueOf() === this.currentValue.valueOf()
-
-      if (!isEqual) {
-        this.currentValue = val
-      }
-    },
-
-    currentValue (val) {
-      this.updateColumnValue(val)
-      this.$emit('input', val)
     }
   }
 })

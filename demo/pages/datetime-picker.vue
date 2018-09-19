@@ -29,7 +29,7 @@
         @click="openPicker('formatDatetimePicker')"
       />
       <wv-cell
-        title="自定义起止范围"
+        title="自定义范围"
         :value="demoDatetime3 | datetimeFilter('datetime')"
         is-link
         @click="openPicker('rangeDatetimePicker')"

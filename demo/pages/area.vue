@@ -9,7 +9,7 @@
       :area-list="area"
       value-key="name"
       @confirm="confirmArea"
-`    />
+    />
   </div>
 </template>
 
@@ -30,7 +30,8 @@ export default {
 
   methods: {
     showPicker () {
-      console.log()
+      console.log('fuck')
+      this.pickerShow = true
     },
 
     confirmArea () {

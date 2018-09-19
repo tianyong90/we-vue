@@ -3,13 +3,13 @@
     ref="picker"
     :visible.sync="currentVisible"
     :columns="displayColumns"
-    value-key="name"
-    @change="onChange"
-    @confirm="$emit('confirm', $event)"
-    @cancel="$emit('cancel', $event)"
-    :confirm-text="confirmText"
     :cancel-text="cancelText"
+    :confirm-text="confirmText"
     :visible-item-count="visibleItemCount"
+    @cancel="$emit('cancel', $event)"
+    @confirm="$emit('confirm', $event)"
+    @change="onChange"
+    value-key="name"
   />
 </template>
 
@@ -46,7 +46,7 @@ export default create({
       type: [String, Number],
       default: 3,
       validator: value => {
-        return value > 0 && value <= 3
+        return value >= 1 && value <= 3
       }
     },
     value: String
@@ -97,6 +97,14 @@ export default create({
   },
 
   methods: {
+    open () {
+      this.visible = true
+    },
+
+    close () {
+      this.visible = false
+    },
+
     getList (type, code) {
       let result = []
       if (type !== 'province' && !code) {
@@ -116,6 +124,7 @@ export default create({
       return result
     },
 
+    // get index for column
     getIndex (type, code) {
       const compareNum = type === 'province' ? 2 : type === 'city' ? 4 : 6
       const list = this.getList(type, code.slice(0, compareNum - 2))
@@ -130,15 +139,10 @@ export default create({
       return 0
     },
 
-    onChange (picker, values, index) {
-      console.log('haha')
-      this.code = values[index].code
-      this.setValues()
-      this.$emit('change', picker, values, index)
-    },
-
+    // set column values
     setValues () {
       let code = this.code || Object.keys(this.county)[0] || ''
+      console.log(code)
       const { picker } = this.$refs
       const province = this.getList('province')
       const city = this.getList('city', code.slice(0, 2))
@@ -162,8 +166,16 @@ export default create({
       ])
     },
 
+    // get current selected values of all columns
     getValues () {
       return this.$refs.picker ? this.$refs.picker.getValues() : []
+    },
+
+    onChange (picker, values, index) {
+      console.log('haha')
+      this.code = values[index].code
+      this.setValues()
+      this.$emit('change', picker, values, index)
     },
 
     reset () {

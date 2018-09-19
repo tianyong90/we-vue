@@ -10,7 +10,7 @@
       enter-active-class="weui-animate-slide-up"
       leave-active-class="weui-animate-slide-down"
     >
-      <div class="weui-picker" v-show="visible">
+      <div v-show="visible" class="weui-picker">
         <div class="weui-picker__hd">
           <div
             class="weui-picker__action"
