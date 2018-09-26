@@ -88,6 +88,7 @@
     "eslint-plugin-vue": "^4.3.0",
     "faker": "^4.1.0",
     "file-loader": "^2.0.0",
+    "firacode": "^1.205.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "fs-extra": "^7.0.0",
     "git-branch": "^2.0.1",
