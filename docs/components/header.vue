@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar flex-column " :class="[theme]">
+  <header class="navbar flex-column" :class="[theme]">
     <div class="container-fluid justify-content-start">
       <router-link class="navbar-brand mr-0" to="/" exact>
         <img class="d-block logo" src="../assets/logo.png" alt="">

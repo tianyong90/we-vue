@@ -1,5 +1,8 @@
 <template>
-  <div class="demo-wrap" :style="{ top: positionTop + 'px' }">
+  <div
+    class="demo-wrap"
+    :style="{ top: positionTop + 'px' }"
+  >
     <div class="mobile-top"/>
     <iframe id="iframe-demo" :src="url" frameborder="0"/>
   </div>
@@ -48,9 +51,8 @@ export default {
     min-width: 375px;
     z-index: 50;
     border-radius: 6px;
-    background: #f2f2f2;
     box-sizing: border-box;
-    right: 15px;
+    right: 20px;
     position: absolute;
     box-shadow: #999 -3px 3px 20px;
 
