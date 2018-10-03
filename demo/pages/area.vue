@@ -30,7 +30,6 @@ export default {
 
   methods: {
     showPicker () {
-      console.log('fuck')
       this.pickerShow = true
     },
 

@@ -172,7 +172,7 @@ export default create({
     },
 
     onChange (picker, values, index) {
-      console.log('haha')
+      console.log('change')
       this.code = values[index].code
       this.setValues()
       this.$emit('change', picker, values, index)
