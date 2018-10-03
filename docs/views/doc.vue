@@ -1,7 +1,8 @@
 <template>
   <div class="row doc-wrap">
-    <div class="sidebar-wrapper col"
-         id="sidebar"
+    <div
+      class="sidebar-wrapper col"
+      id="sidebar"
     >
       <ul>
         <li
