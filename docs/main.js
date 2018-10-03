@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './app.vue'
 import router from './router'
 import './assets/docs.scss'
+import 'firacode/distr/fira_code.css'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
