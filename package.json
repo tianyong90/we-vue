@@ -51,7 +51,7 @@
     }
   },
   "lint-staged": {
-    "*.(js|vue)": ["eslint --fix", "git add"]
+    "*.{js,vue}": ["eslint --fix", "git add"]
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
