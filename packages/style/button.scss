@@ -24,8 +24,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    border: 1px solid rgba(0, 0, 0, .2);
-    transform: scale(.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transform: scale(0.5);
     transform-origin: 0 0;
     box-sizing: border-box;
     border-radius: $weuiBtnBorderRadius * 2;
@@ -91,9 +91,10 @@
 // TODO: loading
 .weui-btn_loading {
   .weui-loading {
-    margin: -.2em .34em 0 0;
+    margin: -0.2em 0.34em 0 0;
   }
-  &.weui-btn_primary, &.weui-btn_warn {
+  &.weui-btn_primary,
+  &.weui-btn_warn {
     color: $weuiBtnActiveFontColor;
   }
   &.weui-btn_primary {
@@ -130,11 +131,12 @@
 }
 
 .weui-btn_plain-disabled {
-  color: rgba(0, 0, 0, .2);
-  border-color: rgba(0, 0, 0, .2);
+  color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
-button, input {
+button,
+input {
   &.weui-btn {
     width: 100%;
     border-width: 0;
@@ -144,10 +146,12 @@ button, input {
       outline: 0;
     }
   }
-  &.weui-btn_inline, &.weui-btn_mini {
+  &.weui-btn_inline,
+  &.weui-btn_mini {
     width: auto;
   }
-  &.weui-btn_plain-primary, &.weui-btn_plain-default {
+  &.weui-btn_plain-primary,
+  &.weui-btn_plain-default {
     border-width: 1px;
     background-color: transparent;
   }
@@ -171,7 +175,7 @@ button, input {
 }
 
 .weui-btn-area {
-  margin: $weuiCellsMarginTop $weuiBtnDefaultGap .3em;
+  margin: $weuiCellsMarginTop $weuiBtnDefaultGap 0.3em;
 }
 
 .weui-btn-area_inline {

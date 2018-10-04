@@ -27,7 +27,7 @@
   margin-top: -14px;
   border-radius: 50%;
   background-color: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .weui-slider-box {
@@ -39,7 +39,7 @@
 }
 
 .weui-slider-box__value {
-  margin-left: .5em;
+  margin-left: 0.5em;
   min-width: 24px;
   color: #888888;
   text-align: center;
@@ -47,5 +47,5 @@
 }
 
 .wv-slider--disabled {
-  opacity: .5;
+  opacity: 0.5;
 }

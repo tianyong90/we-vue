@@ -32,7 +32,7 @@ a {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .weui-mask_transparent {
@@ -56,7 +56,7 @@ a {
 }
 
 .weui-animate-slide-up {
-  animation: slideUp ease .3s forwards;
+  animation: slideUp ease 0.3s forwards;
 }
 
 @keyframes slideDown {
@@ -70,7 +70,7 @@ a {
 }
 
 .weui-animate-slide-down {
-  animation: slideDown ease .3s forwards;
+  animation: slideDown ease 0.3s forwards;
 }
 
 @keyframes fadeIn {
@@ -83,7 +83,7 @@ a {
 }
 
 .weui-animate-fade-in {
-  animation: fadeIn ease .3s forwards;
+  animation: fadeIn ease 0.3s forwards;
 }
 
 @keyframes fadeOut {
@@ -96,7 +96,7 @@ a {
 }
 
 .weui-animate-fade-out {
-  animation: fadeOut ease .3s forwards;
+  animation: fadeOut ease 0.3s forwards;
 }
 
 // weui label
@@ -151,20 +151,20 @@ a {
 
 .wv-fade {
   &-enter-active {
-    animation: .3s wv-fade-in;
+    animation: 0.3s wv-fade-in;
   }
 
   &-leave-active {
-    animation: .3s wv-fade-out;
+    animation: 0.3s wv-fade-out;
   }
 }
 
 .wv-slide-bottom {
   &-enter-active {
-    animation: wv-slide-bottom-enter .3s both ease;
+    animation: wv-slide-bottom-enter 0.3s both ease;
   }
 
   &-leave-active {
-    animation: wv-slide-bottom-leave .3s both ease;
+    animation: wv-slide-bottom-leave 0.3s both ease;
   }
 }

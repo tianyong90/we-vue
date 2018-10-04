@@ -10,7 +10,7 @@ $pickerItemHeight: 34px;
   backface-visibility: hidden;
   transform: none;
   //slide up animation
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
 .weui-picker__hd {
@@ -61,7 +61,12 @@ $pickerItemHeight: 34px;
   height: 100%;
   margin: 0 auto;
   z-index: 3;
-  background: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6));
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.95),
+      hsla(0, 0%, 100%, 0.6)
+    ),
+    linear-gradient(0deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6));
   background-position: top, bottom;
   background-size: 100% 102px;
   background-repeat: no-repeat;

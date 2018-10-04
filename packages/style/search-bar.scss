@@ -29,13 +29,13 @@
   flex: auto;
   background-color: #efeff4;
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
     width: 200%;
     height: 200%;
-    transform: scale(.5);
+    transform: scale(0.5);
     transform-origin: 0 0;
     border-radius: 10px;
     border: 1px solid #e6e6ea;

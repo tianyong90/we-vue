@@ -11,7 +11,7 @@
 
 .weui-footer_fixed-bottom {
   position: fixed;
-  bottom: .52em;
+  bottom: 0.52em;
   left: 0;
   right: 0;
 }
@@ -23,14 +23,14 @@
 .weui-footer__link {
   display: inline-block;
   vertical-align: top;
-  margin: 0 .62em;
+  margin: 0 0.62em;
   position: relative;
   font-size: 14px;
   &:before {
     @include setLeftLine();
-    left: -.65em;
-    top: .36em;
-    bottom: .36em;
+    left: -0.65em;
+    top: 0.36em;
+    bottom: 0.36em;
   }
   &:first-child {
     &:before {
@@ -40,6 +40,6 @@
 }
 
 .weui-footer__text {
-  padding: 0 .34em;
+  padding: 0 0.34em;
   font-size: 12px;
 }

@@ -12,7 +12,7 @@ $weuiActionSheetAndroidBorderRadius: 2px;
   width: 100%;
   background-color: $weuiBgColorDefault;
   //slide up animation
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
 .weui-actionsheet__title {
@@ -42,7 +42,7 @@ $weuiActionSheetAndroidBorderRadius: 2px;
 
 .weui-actionsheet__action {
   margin-top: 6px;
-  background-color: #fcfcfd;;
+  background-color: #fcfcfd;
 }
 
 .weui-actionsheet__cell {
@@ -77,14 +77,14 @@ $weuiActionSheetAndroidBorderRadius: 2px;
     backface-visibility: hidden;
     background: transparent;
     //slide up animation
-    transition: transform .3s;
+    transition: transform 0.3s;
   }
   .weui-actionsheet__action {
     display: none;
   }
   .weui-actionsheet__menu {
     border-radius: $weuiActionSheetAndroidBorderRadius;
-    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.1);
   }
   .weui-actionsheet__cell {
     padding: 13px 24px;

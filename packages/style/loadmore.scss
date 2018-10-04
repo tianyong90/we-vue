@@ -18,8 +18,8 @@
   margin-top: 2.4em;
   .weui-loadmore__tips {
     position: relative;
-    top: -.9em;
-    padding: 0 .55em;
+    top: -0.9em;
+    padding: 0 0.55em;
     background-color: #ffffff;
     color: $weuiTextColorGray;
   }
@@ -27,7 +27,7 @@
 
 .weui-loadmore_dot {
   .weui-loadmore__tips {
-    padding: 0 .16em;
+    padding: 0 0.16em;
     &:before {
       content: " ";
       width: 4px;
@@ -37,7 +37,7 @@
       display: inline-block;
       position: relative;
       vertical-align: 0;
-      top: -.16em;
+      top: -0.16em;
     }
   }
 }

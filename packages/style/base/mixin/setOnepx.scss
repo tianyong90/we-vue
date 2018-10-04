@@ -1,4 +1,4 @@
-@mixin setTopLine($c: #C7C7C7) {
+@mixin setTopLine($c: #c7c7c7) {
   content: " ";
   position: absolute;
   left: 0;
@@ -11,7 +11,7 @@
   transform: scaleY(0.5);
 }
 
-@mixin setBottomLine($c: #C7C7C7) {
+@mixin setBottomLine($c: #c7c7c7) {
   content: " ";
   position: absolute;
   left: 0;
@@ -24,7 +24,7 @@
   transform: scaleY(0.5);
 }
 
-@mixin setLeftLine($c: #C7C7C7) {
+@mixin setLeftLine($c: #c7c7c7) {
   content: " ";
   position: absolute;
   left: 0;
@@ -37,7 +37,7 @@
   transform: scaleX(0.5);
 }
 
-@mixin setRightLine($c: #C7C7C7) {
+@mixin setRightLine($c: #c7c7c7) {
   content: " ";
   position: absolute;
   right: 0;

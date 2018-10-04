@@ -16,7 +16,7 @@
 }
 
 .weui-dialog__hd {
-  padding: 1.3em $weuiDialogGapWidth .5em;
+  padding: 1.3em $weuiDialogGapWidth 0.5em;
 }
 
 .weui-dialog__title {
@@ -25,7 +25,7 @@
 }
 
 .weui-dialog__bd {
-  padding: 0 $weuiDialogGapWidth .8em;
+  padding: 0 $weuiDialogGapWidth 0.8em;
   min-height: 40px;
   font-size: 15px;
   line-height: 1.3;
@@ -82,7 +82,7 @@
 .weui-skin_android {
   .weui-dialog {
     text-align: left;
-    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.1);
   }
   .weui-dialog__title {
     font-size: 21px;
@@ -92,7 +92,7 @@
   }
   .weui-dialog__bd {
     color: $weuiTextColorGray;
-    padding: .25em $weuiDialogGapWidth 2em;
+    padding: 0.25em $weuiDialogGapWidth 2em;
     font-size: 17px;
     text-align: left;
     &:first-child {
@@ -105,7 +105,7 @@
     text-align: right;
     line-height: 42px;
     font-size: 16px;
-    padding: 0 $weuiDialogGapWidth .7em;
+    padding: 0 $weuiDialogGapWidth 0.7em;
     &:after {
       display: none;
     }
@@ -113,19 +113,19 @@
   .weui-dialog__btn {
     display: inline-block;
     vertical-align: top;
-    padding: 0 .8em;
+    padding: 0 0.8em;
     &:after {
       display: none;
     }
 
     &:active {
-      background-color: rgba(0, 0, 0, .06);
+      background-color: rgba(0, 0, 0, 0.06);
     }
     &:visited {
-      background-color: rgba(0, 0, 0, .06);
+      background-color: rgba(0, 0, 0, 0.06);
     }
     &:last-child {
-      margin-right: -.8em;
+      margin-right: -0.8em;
     }
   }
   .weui-dialog__btn_default {

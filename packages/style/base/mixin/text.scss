@@ -1,4 +1,4 @@
-@mixin ellipsis($w:auto) {
+@mixin ellipsis($w: auto) {
   width: $w;
   overflow: hidden;
   text-overflow: ellipsis;

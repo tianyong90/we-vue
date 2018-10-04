@@ -19,7 +19,7 @@
   }
   .weui-icon-checked {
     &:before {
-      content: '\EA01';
+      content: "\EA01";
       color: #c9c9c9;
       font-size: 23px;
       display: block;
@@ -34,7 +34,7 @@
     &:checked {
       & + .weui-icon-checked {
         &:before {
-          content: '\EA06';
+          content: "\EA06";
           color: #09bb07;
         }
       }
