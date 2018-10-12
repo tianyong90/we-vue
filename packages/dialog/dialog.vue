@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { create } from '../utils'
+import create from '../utils/create'
 import PopupMixin from '../mixins/popup'
 
 const CONFIRM_TEXT = '确定'

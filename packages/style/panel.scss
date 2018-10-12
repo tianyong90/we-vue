@@ -10,20 +10,20 @@
   position: relative;
   overflow: hidden;
   &:before {
-    @include setTopLine($weuiLineColorLight);
+    @include setTopLine($weui-line-color-light);
   }
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include setBottomLine($weui-line-color-light);
   }
 }
 
 .weui-panel__hd {
   padding: 14px 15px 10px;
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
   font-size: 13px;
   position: relative;
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include setBottomLine($weui-line-color-light);
     left: 15px;
   }
 }

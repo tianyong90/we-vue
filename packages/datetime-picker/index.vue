@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { create } from '../utils'
+import create from '../utils/create'
 import Picker from '../picker'
 
 const currentYear = new Date().getFullYear()

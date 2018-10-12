@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import { create, isObj } from '../utils'
+import create from '../utils/create'
+import { isObj } from '../utils'
 import deepClone from '../utils/deep-clone'
 
 const range = (num, min, max) => Math.min(Math.max(num, min), max)
@@ -70,6 +71,8 @@ export default create({
   },
 
   data () {
+    console.log('haha')
+    console.log(this.options)
     return {
       startY: 0,
       startOffset: 0,
@@ -78,7 +81,7 @@ export default create({
       prevTime: null,
       velocity: 0, // moving velocity
       transition: '',
-      currentOptions: deepClone(this.options),
+      currentOptions: this.options,
       currentIndex: this.defaultIndex
     }
   },
@@ -115,6 +118,9 @@ export default create({
   },
 
   created () {
+    console.log('options')
+    console.log(this.options)
+
     this.$parent.children && this.$parent.children.push(this)
     this.setIndex(this.currentIndex)
   },
@@ -182,7 +188,10 @@ export default create({
     },
 
     setIndex (index, userAction = false) {
+      // TODO:
+      // console.log('original index ', index)
       index = this.adjustIndex(index) || 0
+      // console.log('adjusted index ', index)
       this.offset = this.indexToOffset(index)
 
       if (index !== this.currentIndex) {

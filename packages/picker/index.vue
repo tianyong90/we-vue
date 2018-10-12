@@ -42,8 +42,8 @@
 </template>
 
 <script>
+import create from '../utils/create'
 import PickerColumn from './picker-column'
-import { create } from '../utils'
 import deepClone from '../utils/deep-clone'
 
 // height of th option item

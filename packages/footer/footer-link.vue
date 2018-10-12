@@ -4,7 +4,7 @@
 
 <script>
 import RouterLink from '../mixins/router-link'
-import { create } from '../utils'
+import create from '../utils/create'
 
 export default create({
   name: 'footer-link',

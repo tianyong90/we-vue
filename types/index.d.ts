@@ -30,8 +30,6 @@ export class InfiniteScroll extends WvComponent {}
 export class Input extends WvComponent {}
 export class Loadmore extends WvComponent {}
 export class MediaBox extends WvComponent {}
-export class Navbar extends WvComponent {}
-export class NavbarItem extends WvComponent {}
 export class NumberSpinner extends WvComponent {}
 export class Panel extends WvComponent {}
 export class Picker extends WvComponent {}
@@ -46,6 +44,8 @@ export class SwipeItem extends WvComponent {}
 export class Switch extends WvComponent {}
 export class Tabbar extends WvComponent {}
 export class TabbarItem extends WvComponent {}
+export class Tabs extends WvComponent {}
+export class Tab extends WvComponent {}
 export class Textarea extends WvComponent {}
 
 export {

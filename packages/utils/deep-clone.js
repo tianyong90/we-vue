@@ -1,6 +1,8 @@
 import deepAssign from './deep-assign'
 
 export default function deepClone (obj) {
+  console.log('obj')
+  console.log(obj)
   if (Array.isArray(obj)) {
     return obj.map(item => deepClone(item))
   } else if (typeof obj === 'object') {

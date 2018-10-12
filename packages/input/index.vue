@@ -35,7 +35,7 @@
 
 <script>
 import icon from '../icon/index'
-import { create } from '../utils'
+import create from '../utils/create'
 
 export default create({
   components: {

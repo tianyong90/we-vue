@@ -14,14 +14,14 @@
 }
 
 .weui-loadmore_line {
-  border-top: 1px solid $weuiLineColorLight;
+  border-top: 1px solid $weui-line-color-light;
   margin-top: 2.4em;
   .weui-loadmore__tips {
     position: relative;
     top: -0.9em;
     padding: 0 0.55em;
     background-color: #ffffff;
-    color: $weuiTextColorGray;
+    color: $weui-text-color-gray;
   }
 }
 
@@ -33,7 +33,7 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background-color: $weuiLineColorLight;
+      background-color: $weui-line-color-light;
       display: inline-block;
       position: relative;
       vertical-align: 0;

@@ -18,7 +18,7 @@
   flex: 1;
   padding: 5px 0 0;
   font-size: 0;
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
   text-align: center;
   @include setTapColor();
 
@@ -39,7 +39,7 @@
   &i,
   > i {
     font-size: 24px;
-    color: $weuiTextColorGray;
+    color: $weui-text-color-gray;
   }
 
   img {
@@ -50,7 +50,7 @@
 
 .weui-tabbar__label {
   text-align: center;
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
   font-size: 10px;
   line-height: 1.8;
 }

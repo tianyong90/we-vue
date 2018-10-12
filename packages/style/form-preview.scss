@@ -4,21 +4,21 @@
   position: relative;
   background-color: #ffffff;
   &:before {
-    @include setTopLine($weuiCellBorderColor);
+    @include setTopLine($weui-cell-border-color);
   }
   &:after {
-    @include setBottomLine($weuiCellBorderColor);
+    @include setBottomLine($weui-cell-border-color);
   }
 }
 
 .weui-form-preview__hd {
   position: relative;
-  padding: $weuiCellGapV $weuiCellGapH;
+  padding: $weui-cell-gap-v $weui-cell-gap-h;
   text-align: right;
   line-height: 2.5em;
   &:after {
-    @include setBottomLine($weuiCellBorderColor);
-    left: $weuiCellGapH;
+    @include setBottomLine($weui-cell-border-color);
+    left: $weui-cell-gap-h;
   }
   .weui-form-preview__value {
     font-style: normal;
@@ -27,10 +27,10 @@
 }
 
 .weui-form-preview__bd {
-  padding: $weuiCellGapV $weuiCellGapH;
+  padding: $weui-cell-gap-v $weui-cell-gap-h;
   font-size: 0.9em;
   text-align: right;
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
   line-height: 2;
 }
 
@@ -39,7 +39,7 @@
   line-height: 50px;
   display: flex;
   &:before {
-    @include setTopLine($weuiDialogLineColor);
+    @include setTopLine($weui-dialog-line-color);
   }
 }
 
@@ -51,7 +51,7 @@
   float: left;
   margin-right: 1em;
   min-width: 4em;
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
   text-align: justify;
   text-align-last: justify;
 }
@@ -67,7 +67,7 @@
   position: relative;
   display: block;
   flex: 1;
-  color: $weuiDialogLinkColor;
+  color: $weui-dialog-link-color;
   text-align: center;
   @include setTapColor();
   &button {
@@ -78,10 +78,10 @@
     font-size: inherit;
   }
   &:active {
-    background-color: $weuiDialogLinkActiveBc;
+    background-color: $weui-dialog-link-active-bc;
   }
   &:after {
-    @include setLeftLine($weuiDialogLineColor);
+    @include setLeftLine($weui-dialog-line-color);
   }
   &:first-child {
     &:after {
@@ -91,7 +91,7 @@
 }
 
 .weui-form-preview__btn_default {
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
 }
 
 .weui-form-preview__btn_primary {

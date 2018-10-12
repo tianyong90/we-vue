@@ -1,22 +1,22 @@
-$weuiCellBg: #ffffff;
-$weuiCellBorderColor: #e5e5e5;
-$weuiCellGapV: 10px;
-$weuiCellGapH: 15px;
-$weuiCellInnerGapH: 0.35em;
-$weuiCellHeight: 45px;
-$weuiCellFontSize: 17px;
-$weuiCellTipsFontSize: 14px;
-$weuiCellLabelWidth: 105px;
+$weui-cell-bg: #ffffff;
+$weui-cell-border-color: #e5e5e5;
+$weui-cell-gap-v: 10px;
+$weui-cell-gap-h: 15px;
+$weui-cell-inner-gap-h: 0.35em;
+$weui-cell-height: 45px;
+$weui-cell-font-size: 17px;
+$weui-cell-tips-font-size: 14px;
+$weui-cell-label-width: 105px;
 
-$weuiCellLineHeight: ($weuiCellHeight - 2 * $weuiCellGapV) / $weuiCellFontSize; // 高度减去上下padding的行高
-$weuiCellsMarginTop: (20px / $weuiCellFontSize) + em;
+$weui-cell-line-height: ($weui-cell-height - 2 * $weui-cell-gap-v) / $weui-cell-font-size; // 高度减去上下padding的行高
+$weui-cells-margin-top: (20px / $weui-cell-font-size) + em;
 
 // weui switch
-$weuiSwitchHeight: 32px;
+$weui-switch-height: 32px;
 
 // weui uploader
-$weuiUploaderBorderColor: #d9d9d9;
-$weuiUploaderActiveBorderColor: #999999;
-$weuiUploaderFileSpacing: 9px;
-$weuiUploaderSize: 79px;
-$weuiUploaderBorderWidth: 1px;
+$weui-uploader-border-color: #d9d9d9;
+$weui-uploader-active-border-color: #999999;
+$weui-uploader-file-spacing: 9px;
+$weui-uploader-size: 79px;
+$weui-uploader-border-width: 1px;

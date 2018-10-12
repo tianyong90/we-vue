@@ -9,8 +9,8 @@
   background-color: transparent;
   font-size: inherit;
   color: inherit;
-  height: $weuiCellLineHeight + em;
-  line-height: $weuiCellLineHeight;
+  height: $weui-cell-line-height + em;
+  line-height: $weui-cell-line-height;
 
   // hides the spin-button
   &::-webkit-outer-spin-button,

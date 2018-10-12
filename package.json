@@ -30,6 +30,7 @@
   ],
   "scripts": {
     "lint": "eslint --ext .js,.vue packages demo docs test/unit/specs",
+    "lint:fix": "npm run lint -- --fix",
     "build:lib": "node build/build-lib.js",
     "build:components": "node build/build-components.js --color",
     "build:demo": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.demo.conf.js --color",
@@ -51,7 +52,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": ["eslint --fix", "git add"]
+    "*.{js,vue}": [
+      "npm run lint:fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { create } from '../utils'
+import create from '../utils/create'
 import WvIcon from '../icon/index'
 import WvSpinner from '../spinner/index'
 import PopupMixin from '../mixins/popup'

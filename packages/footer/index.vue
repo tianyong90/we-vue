@@ -13,7 +13,7 @@
 
 <script>
 import FooterLink from './footer-link'
-import { create } from '../utils'
+import create from '../utils/create'
 
 export default create({
   name: 'footer',

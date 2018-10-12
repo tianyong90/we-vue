@@ -9,12 +9,12 @@
   padding-left: 14px;
   padding-right: 14px;
   box-sizing: border-box;
-  font-size: $weuiBtnFontSize;
+  font-size: $weui-btn-font-size;
   text-align: center;
   text-decoration: none;
-  color: $weuiBtnFontColor;
-  line-height: $weuiBtnHeight / $weuiBtnFontSize;
-  border-radius: $weuiBtnBorderRadius;
+  color: $weui-btn-font-color;
+  line-height: $weui-btn-height / $weui-btn-font-size;
+  border-radius: $weui-btn-border-radius;
   @include setTapColor();
   overflow: hidden;
   &:after {
@@ -28,7 +28,7 @@
     transform: scale(0.5);
     transform-origin: 0 0;
     box-sizing: border-box;
-    border-radius: $weuiBtnBorderRadius * 2;
+    border-radius: $weui-btn-border-radius * 2;
   }
 }
 
@@ -38,53 +38,53 @@
 
 // default
 .weui-btn_default {
-  color: $weuiBtnDefaultFontColor;
-  background-color: $weuiBtnDefaultBg;
+  color: $weui-btn-default-font-color;
+  background-color: $weui-btn-default-bg;
   &:not(.weui-btn_disabled):visited {
-    color: $weuiBtnDefaultFontColor;
+    color: $weui-btn-default-font-color;
   }
   &:not(.weui-btn_disabled):active {
-    color: $weuiBtnDefaultActiveFontColor;
-    background-color: $weuiBtnDefaultActiveBg;
+    color: $weui-btn-default-active-font-color;
+    background-color: $weui-btn-default-active-bg;
   }
 }
 
 // primary
 .weui-btn_primary {
-  background-color: $weuiBtnPrimaryBg;
+  background-color: $weui-btn-primary-bg;
   &:not(.weui-btn_disabled):visited {
-    color: $weuiBtnFontColor;
+    color: $weui-btn-font-color;
   }
   &:not(.weui-btn_disabled):active {
-    color: $weuiBtnActiveFontColor;
-    background-color: $weuiBtnPrimaryActiveBg;
+    color: $weui-btn-active-font-color;
+    background-color: $weui-btn-primary-active-bg;
   }
 }
 
 // warn
 .weui-btn_warn {
-  background-color: $weuiBtnWarnBg;
+  background-color: $weui-btn-warn-bg;
   &:not(.weui-btn_disabled):visited {
-    color: $weuiBtnFontColor;
+    color: $weui-btn-font-color;
   }
   &:not(.weui-btn_disabled):active {
-    color: $weuiBtnActiveFontColor;
-    background-color: $weuiBtnWarnActiveBg;
+    color: $weui-btn-active-font-color;
+    background-color: $weui-btn-warn-active-bg;
   }
 }
 
 // disabled
 .weui-btn_disabled {
-  color: $weuiBtnDisabledFontColor;
+  color: $weui-btn-disabled-font-color;
   &.weui-btn_default {
-    color: $weuiBtnDefaultDisabledFontColor;
-    background-color: $weuiBtnDefaultDisabledBg;
+    color: $weui-btn-default-disabled-font-color;
+    background-color: $weui-btn-default-disabled-bg;
   }
   &.weui-btn_primary {
-    background-color: $weuiBtnPrimaryDisabledBg;
+    background-color: $weui-btn-primary-disabled-bg;
   }
   &.weui-btn_warn {
-    background-color: $weuiBtnwarnDisabledBg;
+    background-color: $weui-btnwarn-disabled-bg;
   }
 }
 
@@ -95,23 +95,23 @@
   }
   &.weui-btn_primary,
   &.weui-btn_warn {
-    color: $weuiBtnActiveFontColor;
+    color: $weui-btn-active-font-color;
   }
   &.weui-btn_primary {
-    background-color: $weuiBtnPrimaryActiveBg;
+    background-color: $weui-btn-primary-active-bg;
   }
   &.weui-btn_warn {
-    background-color: $weuiBtnWarnActiveBg;
+    background-color: $weui-btn-warn-active-bg;
   }
 }
 
 // plain
 .weui-btn_plain-primary {
-  color: $weuiBtnPlainPrimaryColor;
-  border: 1px solid $weuiBtnPlainPrimaryBorderColor;
+  color: $weui-btn-plain-primary-color;
+  border: 1px solid $weui-btn-plain-primary-border-color;
   &:not(.weui-btn_plain-disabled):active {
-    color: $weuiBtnPlainPrimaryActiveColor;
-    border-color: $weuiBtnPlainPrimaryActiveBorderColor;
+    color: $weui-btn-plain-primary-active-color;
+    border-color: $weui-btn-plain-primary-active-border-color;
   }
   &:after {
     border-width: 0;
@@ -119,11 +119,11 @@
 }
 
 .weui-btn_plain-default {
-  color: $weuiBtnPlainDefaultColor;
-  border: 1px solid $weuiBtnPlainDefaultBorderColor;
+  color: $weui-btn-plain-default-color;
+  border: 1px solid $weui-btn-plain-default-border-color;
   &:not(.weui-btn_plain-disabled):active {
-    color: $weuiBtnPlainDefaultActiveColor;
-    border-color: $weuiBtnPlainDefaultActiveBorderColor;
+    color: $weui-btn-plain-default-active-color;
+    border-color: $weui-btn-plain-default-active-border-color;
   }
   &:after {
     border-width: 0;
@@ -160,29 +160,29 @@ input {
 .weui-btn_mini {
   display: inline-block;
   padding: 0 1.32em;
-  line-height: $weuiBtnMiniHeight;
-  font-size: $weuiBtnMiniFontSize;
+  line-height: $weui-btn-mini-height;
+  font-size: $weui-btn-mini-font-size;
 }
 
 /*gap between btn*/
 .weui-btn + .weui-btn {
-  margin-top: $weuiBtnDefaultGap;
+  margin-top: $weui-btn-default-gap;
 }
 
 .weui-btn.weui-btn_inline + .weui-btn.weui-btn_inline {
   margin-top: auto;
-  margin-left: $weuiBtnDefaultGap;
+  margin-left: $weui-btn-default-gap;
 }
 
 .weui-btn-area {
-  margin: $weuiCellsMarginTop $weuiBtnDefaultGap 0.3em;
+  margin: $weui-cells-margin-top $weui-btn-default-gap 0.3em;
 }
 
 .weui-btn-area_inline {
   display: flex;
   .weui-btn {
     margin-top: auto;
-    margin-right: $weuiBtnDefaultGap;
+    margin-right: $weui-btn-default-gap;
     width: 100%;
     flex: 1;
     &:last-child {

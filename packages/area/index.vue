@@ -6,15 +6,15 @@
     :cancel-text="cancelText"
     :confirm-text="confirmText"
     :visible-item-count="visibleItemCount"
+    value-key="name"
     @cancel="$emit('cancel', $event)"
     @confirm="$emit('confirm', $event)"
     @change="onChange"
-    value-key="name"
   />
 </template>
 
 <script>
-import { create } from '../utils'
+import create from '../utils/create'
 import Picker from '../picker'
 
 export default create({
@@ -74,6 +74,8 @@ export default create({
     },
 
     displayColumns () {
+      console.log(this.columns.slice(0, +this.columnsCount))
+
       return this.columns.slice(0, +this.columnsCount)
     }
   },
@@ -142,7 +144,6 @@ export default create({
     // set column values
     setValues () {
       let code = this.code || Object.keys(this.county)[0] || ''
-      console.log(code)
       const { picker } = this.$refs
       const province = this.getList('province')
       const city = this.getList('city', code.slice(0, 2))
@@ -172,7 +173,6 @@ export default create({
     },
 
     onChange (picker, values, index) {
-      console.log('change')
       this.code = values[index].code
       this.setValues()
       this.$emit('change', picker, values, index)

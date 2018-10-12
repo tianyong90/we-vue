@@ -4,7 +4,7 @@
   padding: 15px;
   position: relative;
   &:before {
-    @include setTopLine($weuiLineColorLight);
+    @include setTopLine($weui-line-color-light);
     left: 15px;
   }
   &:first-child {
@@ -31,7 +31,7 @@
 }
 
 .weui-media-box__desc {
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
   font-size: 13px;
   line-height: 1.2;
   @include ellipsisLn(2);

@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import { create, getTouch } from '../utils'
+import create from '../utils/create'
+import { getTouch } from '../utils'
 
 export default create({
   name: 'slider',

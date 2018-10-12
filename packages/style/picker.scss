@@ -21,14 +21,14 @@ $pickerItemHeight: 34px;
   text-align: center;
   font-size: 17px;
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include setBottomLine($weui-line-color-light);
   }
 }
 
 .weui-picker__action {
   display: block;
   flex: 1;
-  color: $weuiColorPrimary;
+  color: $weui-color-primary;
 
   &:first-child {
     text-align: left;
@@ -82,10 +82,10 @@ $pickerItemHeight: 34px;
   top: 102px;
   z-index: 3;
   &:before {
-    @include setTopLine($weuiLineColorLight);
+    @include setTopLine($weui-line-color-light);
   }
   &:after {
-    @include setBottomLine($weuiLineColorLight);
+    @include setBottomLine($weui-line-color-light);
   }
 }
 
@@ -108,7 +108,7 @@ $pickerItemHeight: 34px;
 }
 
 .weui-picker__item_disabled {
-  color: $weuiTextColorGray;
+  color: $weui-text-color-gray;
 }
 
 .wv-picker-column-divider {

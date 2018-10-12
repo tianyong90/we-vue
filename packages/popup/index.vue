@@ -8,7 +8,7 @@
 
 <script>
 import PopupMixin from '../mixins/popup'
-import { create } from '../utils'
+import create from '../utils/create'
 
 export default create({
   name: 'popup',

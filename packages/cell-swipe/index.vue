@@ -38,7 +38,8 @@
 </template>
 
 <script>
-import { create, getTouch } from '../utils'
+import create from '../utils/create'
+import { getTouch } from '../utils'
 import Cell from '../cell/index'
 import RouterLink from '../mixins/router-link'
 import Clickoutside from '../utils/clickoutside'
