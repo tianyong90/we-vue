@@ -643,14 +643,12 @@
     markdown-it-emoji "^1.4.0"
     markdown-it-table-of-contents "^0.4.3"
 
-"@types/commander@^2.11.0":
-  version "2.12.2"
-  resolved "http://registry.npm.taobao.org/@types/commander/download/@types/commander-2.12.2.tgz#183041a23842d4281478fa5d23c5ca78e6fd08ae"
-  integrity sha1-GDBBojhC1CgUePpdI8XKeOb9CK4=
-  dependencies:
-    commander "*"
+"@types/node@^10.11.7":
+  version "10.11.7"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.11.7.tgz#0e75ca9357d646ca754016ca1d68a127ad7e7300"
+  integrity sha1-DnXKk1fWRsp1QBbKHWihJ61+cwA=
 
-"@types/semver@^5.4.0":
+"@types/semver@^5.5.0":
   version "5.5.0"
   resolved "http://registry.npm.taobao.org/@types/semver/download/@types/semver-5.5.0.tgz#146c2a29ee7d3bae4bf2fcb274636e264c813c45"
   integrity sha1-FGwqKe59O65L8vyydGNuJkyBPEU=
@@ -1830,26 +1828,6 @@ cacache@^10.0.4:
     unique-filename "^1.1.0"
     y18n "^4.0.0"
 
-cacache@^11.2.0:
-  version "11.2.0"
-  resolved "http://registry.npm.taobao.org/cacache/download/cacache-11.2.0.tgz#617bdc0b02844af56310e411c0878941d5739965"
-  integrity sha1-YXvcCwKESvVjEOQRwIeJQdVzmWU=
-  dependencies:
-    bluebird "^3.5.1"
-    chownr "^1.0.1"
-    figgy-pudding "^3.1.0"
-    glob "^7.1.2"
-    graceful-fs "^4.1.11"
-    lru-cache "^4.1.3"
-    mississippi "^3.0.0"
-    mkdirp "^0.5.1"
-    move-concurrently "^1.0.1"
-    promise-inflight "^1.0.1"
-    rimraf "^2.6.2"
-    ssri "^6.0.0"
-    unique-filename "^1.1.0"
-    y18n "^4.0.0"
-
 cache-base@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/cache-base/download/cache-base-1.0.1.tgz#0a7f46416831c8b662ee36fe4e7c59d76f666ab2"
@@ -2226,15 +2204,15 @@ combined-stream@~1.0.5, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@*, commander@^2.11.0, commander@^2.13.0, commander@^2.14.1, commander@^2.16.0, commander@^2.17.0, commander@^2.17.1, commander@^2.8.1, commander@^2.9.0:
-  version "2.19.0"
-  resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
-  integrity sha1-9hmKqE5bg8RgVLlN3tv+1e6f8So=
-
 commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "http://registry.npm.taobao.org/commander/download/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha1-vXerfebelCBc6sxy8XFtKfIKd78=
+
+commander@^2.13.0, commander@^2.14.1, commander@^2.16.0, commander@^2.17.0, commander@^2.17.1, commander@^2.19.0, commander@^2.8.1, commander@^2.9.0:
+  version "2.19.0"
+  resolved "http://registry.npm.taobao.org/commander/download/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+  integrity sha1-9hmKqE5bg8RgVLlN3tv+1e6f8So=
 
 commander@~2.13.0:
   version "2.13.0"
@@ -2336,9 +2314,9 @@ connect-history-api-fallback@^1.3.0:
   integrity sha1-sGhzk0vF40T+9hGhlqb6rgruAVo=
 
 consola@^1.4.3:
-  version "1.4.3"
-  resolved "http://registry.npm.taobao.org/consola/download/consola-1.4.3.tgz#945e967e05430ddabd3608b37f5fa37fcfacd9dd"
-  integrity sha1-lF6WfgVDDdq9Ngizf1+jf8+s2d0=
+  version "1.4.4"
+  resolved "http://registry.npm.taobao.org/consola/download/consola-1.4.4.tgz#cf5eda375c0e99df8970cc8f5e98be023da24ce0"
+  integrity sha1-z17aN1wOmd+JcMyPXpi+Aj2iTOA=
   dependencies:
     chalk "^2.3.2"
     figures "^2.0.0"
@@ -3458,15 +3436,15 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 editorconfig@^0.15.0:
-  version "0.15.0"
-  resolved "http://registry.npm.taobao.org/editorconfig/download/editorconfig-0.15.0.tgz#b6dd4a0b6b9e76ce48e066bdc15381aebb8804fd"
-  integrity sha1-tt1KC2ueds5I4Ga9wVOBrruIBP0=
+  version "0.15.1"
+  resolved "http://registry.npm.taobao.org/editorconfig/download/editorconfig-0.15.1.tgz#aafad4a109f7de55952016edb59280dd1bfdec2d"
+  integrity sha1-qvrUoQn33lWVIBbttZKA3Rv97C0=
   dependencies:
-    "@types/commander" "^2.11.0"
-    "@types/semver" "^5.4.0"
-    commander "^2.11.0"
-    lru-cache "^4.1.1"
-    semver "^5.4.1"
+    "@types/node" "^10.11.7"
+    "@types/semver" "^5.5.0"
+    commander "^2.19.0"
+    lru-cache "^4.1.3"
+    semver "^5.6.0"
     sigmund "^1.0.1"
 
 ee-first@1.1.1:
@@ -3475,9 +3453,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.73:
-  version "1.3.78"
-  resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.78.tgz#ecb72b5b166ba6598efb384461d63cad74678ebf"
-  integrity sha1-7LcrWxZrplmO+zhEYdY8rXRnjr8=
+  version "1.3.79"
+  resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.79.tgz#774718f06284a4bf8f578ac67e74508fe659f13a"
+  integrity sha1-d0cY8GKEpL+PV4rGfnRQj+ZZ8To=
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -3751,9 +3729,9 @@ eslint-visitor-keys@^1.0.0:
   integrity sha1-PzGA+y4pEBdxastMnW1bXDSmqB0=
 
 eslint@^5.5.0:
-  version "5.6.1"
-  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.6.1.tgz#348134e32ccc09abb2df1bf282b3f6eed8c7b480"
-  integrity sha1-NIE04yzMCauy3xvygrP27tjHtIA=
+  version "5.7.0"
+  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.7.0.tgz#55c326d6fb2ad45fcbd0ce17c3846f025d1d819c"
+  integrity sha1-VcMm1vsq1F/L0M4Xw4RvAl0dgZw=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.5.3"
@@ -3786,12 +3764,12 @@ eslint@^5.5.0:
     path-is-inside "^1.0.2"
     pluralize "^7.0.0"
     progress "^2.0.0"
-    regexpp "^2.0.0"
+    regexpp "^2.0.1"
     require-uncached "^1.0.3"
     semver "^5.5.1"
     strip-ansi "^4.0.0"
     strip-json-comments "^2.0.1"
-    table "^4.0.3"
+    table "^5.0.2"
     text-table "^0.2.0"
 
 espree@^3.5.2:
@@ -4146,11 +4124,6 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-figgy-pudding@^3.1.0, figgy-pudding@^3.5.1:
-  version "3.5.1"
-  resolved "http://registry.npm.taobao.org/figgy-pudding/download/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
-  integrity sha1-hiRwESkBxyeg5JWoB0S9W6odZ5A=
-
 figures@^1.7.0:
   version "1.7.0"
   resolved "http://registry.npm.taobao.org/figures/download/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
@@ -4277,15 +4250,6 @@ find-cache-dir@^1.0.0:
     commondir "^1.0.1"
     make-dir "^1.0.0"
     pkg-dir "^2.0.0"
-
-find-cache-dir@^2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/find-cache-dir/download/find-cache-dir-2.0.0.tgz#4c1faed59f45184530fb9d7fa123a4d04a98472d"
-  integrity sha1-TB+u1Z9FGEUw+51/oSOk0EqYRy0=
-  dependencies:
-    commondir "^1.0.1"
-    make-dir "^1.0.0"
-    pkg-dir "^3.0.0"
 
 find-index@^0.1.1:
   version "0.1.1"
@@ -5151,9 +5115,9 @@ hex-color-regex@^1.1.0:
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
 highlight.js@^9.12.0:
-  version "9.12.0"
-  resolved "http://registry.npm.taobao.org/highlight.js/download/highlight.js-9.12.0.tgz#e6d9dbe57cbefe60751f02af336195870c90c01e"
-  integrity sha1-5tnb5Xy+/mB1HwKvM2GVhwyQwB4=
+  version "9.13.0"
+  resolved "http://registry.npm.taobao.org/highlight.js/download/highlight.js-9.13.0.tgz#ee96d5c5f4c456e440f2dbdb2752211dff56f671"
+  integrity sha1-7pbVxfTEVuRA8tvbJ1IhHf9W9nE=
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -7417,22 +7381,6 @@ mississippi@^2.0.0:
     stream-each "^1.1.0"
     through2 "^2.0.0"
 
-mississippi@^3.0.0:
-  version "3.0.0"
-  resolved "http://registry.npm.taobao.org/mississippi/download/mississippi-3.0.0.tgz#ea0a3291f97e0b5e8776b363d5f0a12d94c67022"
-  integrity sha1-6goykfl+C16HdrNj1fChLZTGcCI=
-  dependencies:
-    concat-stream "^1.5.0"
-    duplexify "^3.4.2"
-    end-of-stream "^1.1.0"
-    flush-write-stream "^1.0.0"
-    from2 "^2.1.0"
-    parallel-transform "^1.1.0"
-    pump "^3.0.0"
-    pumpify "^1.3.3"
-    stream-each "^1.1.0"
-    through2 "^2.0.0"
-
 mixin-deep@^1.2.0:
   version "1.3.1"
   resolved "http://registry.npm.taobao.org/mixin-deep/download/mixin-deep-1.3.1.tgz#a49e7268dce1a0d9698e45326c5626df3543d0fe"
@@ -7688,9 +7636,9 @@ node-pre-gyp@^0.10.0:
     tar "^4"
 
 node-releases@^1.0.0-alpha.12:
-  version "1.0.0-alpha.12"
-  resolved "http://registry.npm.taobao.org/node-releases/download/node-releases-1.0.0-alpha.12.tgz#32e461b879ea76ac674e511d9832cf29da345268"
-  integrity sha1-MuRhuHnqdqxnTlEdmDLPKdo0Umg=
+  version "1.0.0-alpha.14"
+  resolved "http://registry.npm.taobao.org/node-releases/download/node-releases-1.0.0-alpha.14.tgz#da9e2780add4bbb59ad890af9e2018a1d9c0034b"
+  integrity sha1-2p4ngK3Uu7Wa2JCvniAYodnAA0s=
   dependencies:
     semver "^5.3.0"
 
@@ -8772,9 +8720,9 @@ postcss-url@^8.0.0:
     xxhashjs "^0.2.1"
 
 postcss-value-parser@^3.0.0, postcss-value-parser@^3.2.3, postcss-value-parser@^3.3.0:
-  version "3.3.0"
-  resolved "http://registry.npm.taobao.org/postcss-value-parser/download/postcss-value-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
-  integrity sha1-h/OPnxj3dKSrTIojL1xc6IcqnRU=
+  version "3.3.1"
+  resolved "http://registry.npm.taobao.org/postcss-value-parser/download/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
+  integrity sha1-n/giVH4okyE88cMO+lGsX9G6goE=
 
 postcss-values-parser@^1.5.0:
   version "1.5.0"
@@ -8954,14 +8902,6 @@ pump@^2.0.0, pump@^2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/pump/download/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"
   integrity sha1-Ejma3W5M91Jtlzy8i1zi4pCLOQk=
-  dependencies:
-    end-of-stream "^1.1.0"
-    once "^1.3.1"
-
-pump@^3.0.0:
-  version "3.0.0"
-  resolved "http://registry.npm.taobao.org/pump/download/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
-  integrity sha1-tKIRaBW94vTh6mAjVOjHVWUQemQ=
   dependencies:
     end-of-stream "^1.1.0"
     once "^1.3.1"
@@ -9288,7 +9228,7 @@ regex-not@^1.0.0, regex-not@^1.0.2:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
 
-regexpp@^2.0.0:
+regexpp@^2.0.0, regexpp@^2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/regexpp/download/regexpp-2.0.1.tgz#8d19d31cf632482b589049f8281f93dbcba4d07f"
   integrity sha1-jRnTHPYySCtYkEn4KB+T28uk0H8=
@@ -9742,7 +9682,7 @@ semver-compare@^1.0.0:
   resolved "http://registry.npm.taobao.org/semver-compare/download/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
   integrity sha1-De4hahyUGrN+nvsXiPavxf9VN/w=
 
-"semver@2 || 3 || 4 || 5", semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1:
+"semver@2 || 3 || 4 || 5", semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0:
   version "5.6.0"
   resolved "http://registry.npm.taobao.org/semver/download/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha1-fnQlb7qknHWqfHogXMInmcrIAAQ=
@@ -10152,13 +10092,6 @@ ssri@^5.2.4:
   dependencies:
     safe-buffer "^5.1.1"
 
-ssri@^6.0.0:
-  version "6.0.1"
-  resolved "http://registry.npm.taobao.org/ssri/download/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha1-KjxBso3UW2K2Nnbst0ABJlrp7dg=
-  dependencies:
-    figgy-pudding "^3.5.1"
-
 stable@~0.1.6:
   version "0.1.8"
   resolved "http://registry.npm.taobao.org/stable/download/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
@@ -10443,6 +10376,16 @@ table@^4.0.3:
     ajv-keywords "^3.0.0"
     chalk "^2.1.0"
     lodash "^4.17.4"
+    slice-ansi "1.0.0"
+    string-width "^2.1.1"
+
+table@^5.0.2:
+  version "5.1.0"
+  resolved "http://registry.npm.taobao.org/table/download/table-5.1.0.tgz#69a54644f6f01ad1628f8178715b408dc6bf11f7"
+  integrity sha1-aaVGRPbwGtFij4F4cVtAjca/Efc=
+  dependencies:
+    ajv "^6.5.3"
+    lodash "^4.17.10"
     slice-ansi "1.0.0"
     string-width "^2.1.1"
 
@@ -10754,7 +10697,7 @@ uglify-es@^3.3.4:
     commander "~2.13.0"
     source-map "~0.6.1"
 
-uglify-js@3.4.x, uglify-js@^3.0.0, uglify-js@^3.1.4:
+uglify-js@3.4.x, uglify-js@^3.1.4:
   version "3.4.9"
   resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-3.4.9.tgz#af02f180c1207d76432e473ed24a28f4a782bae3"
   integrity sha1-rwLxgMEgfXZDLkc+0koo9KeCuuM=
@@ -10773,20 +10716,6 @@ uglifyjs-webpack-plugin@^1.2.4:
     serialize-javascript "^1.4.0"
     source-map "^0.6.1"
     uglify-es "^3.3.4"
-    webpack-sources "^1.1.0"
-    worker-farm "^1.5.2"
-
-uglifyjs-webpack-plugin@^2.0.0:
-  version "2.0.1"
-  resolved "http://registry.npm.taobao.org/uglifyjs-webpack-plugin/download/uglifyjs-webpack-plugin-2.0.1.tgz#f346af53ed496ce72fef462517d417f62bec3010"
-  integrity sha1-80avU+1JbOcv70YlF9QX9ivsMBA=
-  dependencies:
-    cacache "^11.2.0"
-    find-cache-dir "^2.0.0"
-    schema-utils "^1.0.0"
-    serialize-javascript "^1.4.0"
-    source-map "^0.6.1"
-    uglify-js "^3.0.0"
     webpack-sources "^1.1.0"
     worker-farm "^1.5.2"
 
