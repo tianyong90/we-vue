@@ -137,7 +137,7 @@
     "uppercamelcase": "3.0.0",
     "url-loader": "^1.0.1",
     "vue": "^2.5.9",
-    "vue-jest": "^2.5.0",
+    "vue-jest": "^3.0.0",
     "vue-loader": "^15.2.0",
     "vue-router": "^3.0.1",
     "vue-sfc-compiler": "^0.1.3",
