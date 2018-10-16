@@ -43,7 +43,7 @@ export default create({
   props: {
     max: {
       type: Number,
-      validator: (val) => {
+      validator: val => {
         return val >= 0
       }
     },
@@ -51,7 +51,7 @@ export default create({
     align: {
       type: String,
       default: 'left',
-      validator: (val) => {
+      validator: val => {
         return val === 'left' || val === 'right'
       }
     },

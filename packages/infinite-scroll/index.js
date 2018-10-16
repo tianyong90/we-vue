@@ -1,7 +1,7 @@
 import InfiniteScroll from './directive'
 import Vue from 'vue'
 
-const install = (Vue) => {
+const install = Vue => {
   Vue.directive('InfiniteScroll', InfiniteScroll)
 }
 

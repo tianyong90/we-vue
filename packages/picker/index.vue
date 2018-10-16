@@ -74,7 +74,7 @@ export default create({
     visibleItemCount: {
       type: Number,
       default: 7,
-      validator: (value) => {
+      validator: value => {
         return [3, 5, 7].indexOf(value) > -1
       }
     },
@@ -126,7 +126,12 @@ export default create({
 
     columnValueChange (columnIndex) {
       if (this.simple) {
-        this.$emit('change', this, this.getColumnValue(0), this.getColumnIndex(0))
+        this.$emit(
+          'change',
+          this,
+          this.getColumnValue(0),
+          this.getColumnIndex(0)
+        )
       } else {
         this.$emit('change', this, this.getValues(), columnIndex)
       }
@@ -136,7 +141,11 @@ export default create({
     getColumn (columnIndex) {
       let { children } = this
       return children.find((child, index) => {
-        return (child.$options.name === 'wv-picker-column' && !child.divider && index === columnIndex)
+        return (
+          child.$options.name === 'wv-picker-column' &&
+          !child.divider &&
+          index === columnIndex
+        )
       })
     },
 

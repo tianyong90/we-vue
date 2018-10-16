@@ -14,7 +14,7 @@ export default {
       if (to && $router) {
         $router[replace ? 'replace' : 'push'](to)
       } else if (url) {
-        replace ? location.replace(url) : location.href = url
+        replace ? location.replace(url) : (location.href = url)
       }
     }
   }

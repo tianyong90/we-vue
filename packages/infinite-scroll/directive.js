@@ -17,7 +17,7 @@ function doBindEvent () {
   const disabledExpr = this.el.getAttribute('infinite-scroll-disabled')
   let disabled = false
   if (disabledExpr) {
-    this.vm.$watch(disabledExpr, (value) => {
+    this.vm.$watch(disabledExpr, value => {
       this.disabled = value
       this.scrollEventListener()
     })
@@ -30,9 +30,13 @@ function doBindEvent () {
 
   on(this.scrollEventTarget, 'scroll', this.scrollEventListener, true)
 
-  const immediateCheckExpr = this.el.getAttribute('infinite-scroll-immediate-check')
+  const immediateCheckExpr = this.el.getAttribute(
+    'infinite-scroll-immediate-check'
+  )
 
-  let immediateCheck = immediateCheckExpr ? Boolean(this.vm[immediateCheckExpr]) : true
+  let immediateCheck = immediateCheckExpr
+    ? Boolean(this.vm[immediateCheckExpr])
+    : true
 
   if (immediateCheck) {
     this.scrollEventListener()
@@ -51,7 +55,8 @@ function handleScrollEvent () {
   }
 
   const targetScrollTop = Utils.getScrollTop(scrollEventTarget)
-  const targetBottom = targetScrollTop + Utils.getVisibleHeight(scrollEventTarget)
+  const targetBottom =
+    targetScrollTop + Utils.getVisibleHeight(scrollEventTarget)
   const targetVisibleHeight = Utils.getVisibleHeight(scrollEventTarget)
 
   // return when the targetElement has no height (treat as hidden)
@@ -63,7 +68,10 @@ function handleScrollEvent () {
   if (scrollEventTarget === element) {
     needLoadMore = scrollEventTarget.scrollHeight - targetBottom < this.distance
   } else {
-    const elementBottom = Utils.getElementTop(element) - Utils.getElementTop(scrollEventTarget) + Utils.getVisibleHeight(element)
+    const elementBottom =
+      Utils.getElementTop(element) -
+      Utils.getElementTop(scrollEventTarget) +
+      Utils.getVisibleHeight(element)
 
     needLoadMore = elementBottom - targetVisibleHeight < this.distance
   }

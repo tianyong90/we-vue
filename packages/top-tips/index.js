@@ -10,7 +10,7 @@ const defaultOptions = {
 let instance
 let currentOptions = { ...defaultOptions }
 
-const parseOptions = message => isObj(message) ? message : { message }
+const parseOptions = message => (isObj(message) ? message : { message })
 
 const createInstance = () => {
   instance = new (Vue.extend(TopTipsComponent))({

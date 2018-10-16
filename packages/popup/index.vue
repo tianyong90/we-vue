@@ -19,7 +19,7 @@ export default create({
     height: {
       type: [String, Number],
       default: 'auto',
-      validator: (val) => {
+      validator: val => {
         return /^(auto)|(\d+(px|vh|%)?)$/.test(val)
       }
     },

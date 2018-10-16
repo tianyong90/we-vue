@@ -182,15 +182,16 @@ export default create({
 
       // listen to window resize event
       if (events.resize !== bind) {
-        events.resize = bind;
-        (bind ? on : off)(window, 'resize', this.setLine, true)
+        events.resize = bind
+        ;(bind ? on : off)(window, 'resize', this.setLine, true)
       }
 
       // listen to scroll event
       if (events.sticky !== sticky) {
         events.sticky = sticky
-        this.scrollEl = this.scrollEl || scrollUtils.getScrollEventTarget(this.$el);
-        (sticky ? on : off)(this.scrollEl, 'scroll', this.onScroll, true)
+        this.scrollEl =
+          this.scrollEl || scrollUtils.getScrollEventTarget(this.$el)
+        ;(sticky ? on : off)(this.scrollEl, 'scroll', this.onScroll, true)
         this.onScroll()
       }
 
@@ -227,7 +228,8 @@ export default create({
     onScroll () {
       const scrollTop = scrollUtils.getScrollTop(window) + this.offsetTop
       const elTopToPageTop = scrollUtils.getElementTop(this.$el)
-      const elBottomToPageTop = elTopToPageTop + this.$el.offsetHeight - this.$refs.wrap.offsetHeight
+      const elBottomToPageTop =
+        elTopToPageTop + this.$el.offsetHeight - this.$refs.wrap.offsetHeight
       if (scrollTop > elBottomToPageTop) {
         this.position = 'bottom'
       } else if (scrollTop > elTopToPageTop) {
@@ -297,7 +299,12 @@ export default create({
       const { scrollLeft, offsetWidth: navWidth } = nav
       const { offsetLeft, offsetWidth: tabWidth } = tab
 
-      this.scrollTo(nav, scrollLeft, offsetLeft - (navWidth - tabWidth) / 2, immediate)
+      this.scrollTo(
+        nav,
+        scrollLeft,
+        offsetLeft - (navWidth - tabWidth) / 2,
+        immediate
+      )
     },
 
     // animate the scrollLeft of nav
@@ -308,7 +315,7 @@ export default create({
       }
 
       let count = 0
-      const frames = Math.round(this.duration * 1000 / 16)
+      const frames = Math.round((this.duration * 1000) / 16)
       const animate = () => {
         el.scrollLeft += (to - from) / frames
         /* istanbul ignore next */

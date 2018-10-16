@@ -123,7 +123,9 @@ export default create({
         if (isNaN(currentValue)) {
           currentValue = 0
         }
-        this.setValue(Math.min(this.max, Math.max(this.min, currentValue - this.step)))
+        this.setValue(
+          Math.min(this.max, Math.max(this.min, currentValue - this.step))
+        )
       }
     },
 
@@ -133,7 +135,9 @@ export default create({
         if (isNaN(currentValue)) {
           currentValue = 0
         }
-        this.setValue(Math.min(this.max, Math.max(this.min, currentValue + this.step)))
+        this.setValue(
+          Math.min(this.max, Math.max(this.min, currentValue + this.step))
+        )
       }
     },
 
@@ -142,7 +146,12 @@ export default create({
     },
 
     onPaste (event) {
-      if (!this.fillable || !/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(event.clipboardData.getData('text'))) {
+      if (
+        !this.fillable ||
+        !/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(
+          event.clipboardData.getData('text')
+        )
+      ) {
         event.preventDefault()
       }
     },

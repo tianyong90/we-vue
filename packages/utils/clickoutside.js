@@ -33,7 +33,8 @@ export default {
   },
 
   unbind (el) {
-    !isServer && document.removeEventListener(el[context].arg, el[context].handler)
+    !isServer &&
+      document.removeEventListener(el[context].arg, el[context].handler)
   },
 
   install (Vue) {

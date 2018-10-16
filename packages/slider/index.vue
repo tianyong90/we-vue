@@ -80,11 +80,11 @@ export default create({
     percent () {
       if (typeof this.value === 'undefined' || this.value === null) return 0
 
-      return Math.floor((this.value - this.min) / (this.max - this.min) * 100)
+      return Math.floor(((this.value - this.min) / (this.max - this.min)) * 100)
     },
 
     stepWidth () {
-      return this.sliderLength * this.step / (this.max - this.min)
+      return (this.sliderLength * this.step) / (this.max - this.min)
     }
   },
 
@@ -111,7 +111,9 @@ export default create({
       if (this.disabled || !this.enableClick) return
 
       // 距初始值的目标步数
-      const steps = Math.round((event.clientX - this.sliderLeft) / this.stepWidth)
+      const steps = Math.round(
+        (event.clientX - this.sliderLeft) / this.stepWidth
+      )
 
       const value = this.min + this.step * steps
 
@@ -131,7 +133,9 @@ export default create({
       const touch = getTouch(event)
 
       // 距初始值的目标步数
-      const steps = Math.round((touch.clientX - this.sliderLeft) / this.stepWidth)
+      const steps = Math.round(
+        (touch.clientX - this.sliderLeft) / this.stepWidth
+      )
 
       let value = this.min + this.step * steps
       value = value < this.min ? this.min : value > this.max ? this.max : value

@@ -17,7 +17,9 @@ import create from '../utils/create'
 import Picker from '../picker'
 
 const currentYear = new Date().getFullYear()
-const isValidDate = date => Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())
+const isValidDate = date =>
+  Object.prototype.toString.call(date) === '[object Date]' &&
+  !isNaN(date.getTime())
 
 export default create({
   name: 'datetime-picker',
@@ -101,8 +103,20 @@ export default create({
         }
       }
 
-      const { startYear, startMonth, startDate, startHour, startMinute } = this.getBoundary('start', this.currentValue)
-      const { endYear, endMonth, endDate, endHour, endMinute } = this.getBoundary('end', this.currentValue)
+      const {
+        startYear,
+        startMonth,
+        startDate,
+        startHour,
+        startMinute
+      } = this.getBoundary('start', this.currentValue)
+      const {
+        endYear,
+        endMonth,
+        endDate,
+        endHour,
+        endMinute
+      } = this.getBoundary('end', this.currentValue)
 
       if (this.type === 'datetime') {
         return {
@@ -125,7 +139,11 @@ export default create({
       let result = []
       for (let rangeKey in this.ranges) {
         result.push({
-          values: this.fillColumnValues(rangeKey, this.ranges[rangeKey][0], this.ranges[rangeKey][1])
+          values: this.fillColumnValues(
+            rangeKey,
+            this.ranges[rangeKey][0],
+            this.ranges[rangeKey][1]
+          )
         })
       }
 
@@ -136,7 +154,10 @@ export default create({
   watch: {
     value (val) {
       val = this.correctValue(val)
-      const isEqual = this.type === 'time' ? val === this.currentValue : val.valueOf() === this.currentValue.valueOf()
+      const isEqual =
+        this.type === 'time'
+          ? val === this.currentValue
+          : val.valueOf() === this.currentValue.valueOf()
 
       if (!isEqual) {
         this.currentValue = val
@@ -151,7 +172,10 @@ export default create({
 
   mounted () {
     if (!this.value) {
-      this.currentValue = this.type.indexOf('date') > -1 ? this.startDate : `${('0' + this.startHour).slice(-2)}:00`
+      this.currentValue =
+        this.type.indexOf('date') > -1
+          ? this.startDate
+          : `${('0' + this.startHour).slice(-2)}:00`
     } else {
       this.currentValue = this.value
     }
@@ -201,10 +225,34 @@ export default create({
       }
 
       // date type
-      const { endYear, endDate, endMonth, endHour, endMinute } = this.getBoundary('end', value)
-      const { startYear, startDate, startMonth, startHour, startMinute } = this.getBoundary('start', value)
-      const startDay = new Date(startYear, startMonth - 1, startDate, startHour, startMinute)
-      const endDay = new Date(endYear, endMonth - 1, endDate, endHour, endMinute)
+      const {
+        endYear,
+        endDate,
+        endMonth,
+        endHour,
+        endMinute
+      } = this.getBoundary('end', value)
+      const {
+        startYear,
+        startDate,
+        startMonth,
+        startHour,
+        startMinute
+      } = this.getBoundary('start', value)
+      const startDay = new Date(
+        startYear,
+        startMonth - 1,
+        startDate,
+        startHour,
+        startMinute
+      )
+      const endDay = new Date(
+        endYear,
+        endMonth - 1,
+        endDate,
+        endHour,
+        endMinute
+      )
       value = Math.max(value, startDay)
       value = Math.min(value, endDay)
 
@@ -243,7 +291,9 @@ export default create({
       let values = []
       for (let i = start; i <= end; i++) {
         if (i < 10) {
-          values.push(this[`${type}Format`].replace('{value}', ('0' + i).slice(-2)))
+          values.push(
+            this[`${type}Format`].replace('{value}', ('0' + i).slice(-2))
+          )
         } else {
           values.push(this[`${type}Format`].replace('{value}', i))
         }
@@ -299,13 +349,22 @@ export default create({
       } else {
         values = [
           this.yearFormat.replace('{value}', `${value.getFullYear()}`),
-          this.monthFormat.replace('{value}', `0${value.getMonth() + 1}`.slice(-2)),
+          this.monthFormat.replace(
+            '{value}',
+            `0${value.getMonth() + 1}`.slice(-2)
+          ),
           this.dateFormat.replace('{value}', `0${value.getDate()}`.slice(-2))
         ]
         if (this.type === 'datetime') {
           values.push(
-            this.hourFormat.replace('{value}', `0${value.getHours()}`.slice(-2)),
-            this.minuteFormat.replace('{value}', `0${value.getMinutes()}`.slice(-2))
+            this.hourFormat.replace(
+              '{value}',
+              `0${value.getHours()}`.slice(-2)
+            ),
+            this.minuteFormat.replace(
+              '{value}',
+              `0${value.getMinutes()}`.slice(-2)
+            )
           )
         }
       }

@@ -102,7 +102,12 @@ export default create({
 
       const targetOffset = this.startOffset + this.deltaX
 
-      this.offset = targetOffset > 0 ? 0 : targetOffset < -this.rightWidth ? -this.rightWidth : targetOffset
+      this.offset =
+        targetOffset > 0
+          ? 0
+          : targetOffset < -this.rightWidth
+            ? -this.rightWidth
+            : targetOffset
     },
 
     onTouchend () {

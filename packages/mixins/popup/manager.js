@@ -13,7 +13,10 @@ export default {
 
     if (!exist) {
       const el = vm.$el
-      const targetNode = el && el.parentNode && el.parentNode.nodeType !== 11 ? el.parentNode : document.body
+      const targetNode =
+        el && el.parentNode && el.parentNode.nodeType !== 11
+          ? el.parentNode
+          : document.body
       context.stack.push({ vm, config, targetNode })
       this.update()
     }

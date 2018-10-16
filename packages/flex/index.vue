@@ -14,7 +14,7 @@ export default create({
     gutter: {
       type: [Number, String],
       default: 0,
-      validator: (val) => {
+      validator: val => {
         return Number(val) >= 0
       }
     }

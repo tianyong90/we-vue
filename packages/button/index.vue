@@ -36,8 +36,12 @@ export default create({
     classObject () {
       let ret = {}
 
-      let classType = this.plain ? `weui-btn_plain-${this.type}` : `weui-btn_${this.type}`
-      let classDisabled = this.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
+      let classType = this.plain
+        ? `weui-btn_plain-${this.type}`
+        : `weui-btn_${this.type}`
+      let classDisabled = this.plain
+        ? 'weui-btn_plain-disabled'
+        : 'weui-btn_disabled'
 
       ret[classType] = true
       ret[classDisabled] = this.disabled

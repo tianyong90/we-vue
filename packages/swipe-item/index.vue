@@ -30,7 +30,8 @@ export default create({
   },
 
   destroyed () {
-    this.$parent && this.$parent.swipes.splice(this.$parent.swipes.indexOf(this), 1)
+    this.$parent &&
+      this.$parent.swipes.splice(this.$parent.swipes.indexOf(this), 1)
   }
 })
 </script>

@@ -116,7 +116,8 @@ export default create({
 
       let deltaX = touch.clientX - this.startX
 
-      this.transition = '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
+      this.transition =
+        '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
       if (this.currentValue) {
         if (deltaX < THUMB_STROKE / -2) {
           this.currentValue = false

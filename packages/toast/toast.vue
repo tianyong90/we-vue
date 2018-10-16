@@ -52,8 +52,10 @@ export default create({
     type: {
       type: String,
       default: 'success',
-      validator: (value) => {
-        return ['success', 'fail', 'loading', 'text', 'html'].indexOf(value) !== -1
+      validator: value => {
+        return (
+          ['success', 'fail', 'loading', 'text', 'html'].indexOf(value) !== -1
+        )
       }
     },
     spinnerType: {

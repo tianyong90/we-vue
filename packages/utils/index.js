@@ -12,9 +12,4 @@ function isObj (x) {
   return x !== null && (type === 'object' || type === 'function')
 }
 
-export {
-  isServer,
-  getTouch,
-  isDef,
-  isObj
-}
+export { isServer, getTouch, isDef, isObj }

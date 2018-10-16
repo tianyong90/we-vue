@@ -102,7 +102,10 @@ export default create({
         this.currentValue = event.target.value
       }
 
-      if (typeof this.validateMode === 'undefined' || this.validateMode.onInput !== false) {
+      if (
+        typeof this.validateMode === 'undefined' ||
+        this.validateMode.onInput !== false
+      ) {
         this.validate()
       }
     },
@@ -115,7 +118,10 @@ export default create({
       this.active = true
       this.$emit('focus')
 
-      if (typeof this.validateMode === 'undefined' || this.validateMode.onFocus !== false) {
+      if (
+        typeof this.validateMode === 'undefined' ||
+        this.validateMode.onFocus !== false
+      ) {
         this.validate()
       }
     },
@@ -124,7 +130,10 @@ export default create({
       this.active = false
       this.$emit('blur')
 
-      if (typeof this.validateMode === 'undefined' || this.validateMode.onBlur !== false) {
+      if (
+        typeof this.validateMode === 'undefined' ||
+        this.validateMode.onBlur !== false
+      ) {
         this.validate()
       }
     },
@@ -132,7 +141,10 @@ export default create({
     onChange () {
       this.$emit('change', this.currentValue)
 
-      if (typeof this.validateMode === 'undefined' || this.validateMode.onChange !== false) {
+      if (
+        typeof this.validateMode === 'undefined' ||
+        this.validateMode.onChange !== false
+      ) {
         this.validate()
       }
     },

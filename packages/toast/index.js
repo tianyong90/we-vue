@@ -2,7 +2,7 @@ import Vue from 'vue'
 import ToastComponent from './toast'
 import { isObj } from '../utils'
 
-const parseOptions = message => isObj(message) ? message : { message }
+const parseOptions = message => (isObj(message) ? message : { message })
 
 let queue = []
 let singleton = true
@@ -55,10 +55,11 @@ Toast.defaultOptions = {
   icon: 'success-no-circle'
 }
 
-const createMethod = type => options => Toast({
-  type,
-  ...parseOptions(options)
-})
+const createMethod = type => options =>
+  Toast({
+    type,
+    ...parseOptions(options)
+  })
 
 const methods = ['text', 'success', 'fail', 'loading']
 methods.forEach(method => {

@@ -52,7 +52,7 @@ export default create({
     visibleItemCount: {
       type: Number,
       default: 7,
-      validator: (value) => {
+      validator: value => {
         return [3, 5, 7].indexOf(value) > -1
       }
     },
@@ -102,7 +102,8 @@ export default create({
 
     pickerMaskStyle () {
       return {
-        backgroundSize: '100% ' + Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT + 'px'
+        backgroundSize:
+          '100% ' + Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT + 'px'
       }
     },
 
@@ -132,7 +133,9 @@ export default create({
 
   methods: {
     getOptionText (option) {
-      return isObj(option) && this.valueKey in option ? option[this.valueKey] : option
+      return isObj(option) && this.valueKey in option
+        ? option[this.valueKey]
+        : option
     },
 
     isDisabled (option) {
@@ -146,7 +149,10 @@ export default create({
 
     offsetToIndex (offset) {
       offset = Math.round(offset / ITEM_HEIGHT) * ITEM_HEIGHT
-      return -(offset - Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
+      return (
+        -(offset - Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT) /
+        ITEM_HEIGHT
+      )
     },
 
     onTouchstart (event) {
@@ -164,7 +170,8 @@ export default create({
       this.offset = this.startOffset + distance
 
       // compute velocity
-      this.velocity = (event.touches[0].clientY - this.prevY) / (currentTime - this.prevTime)
+      this.velocity =
+        (event.touches[0].clientY - this.prevY) / (currentTime - this.prevTime)
       this.prevY = currentY
       this.prevTime = currentTime
     },

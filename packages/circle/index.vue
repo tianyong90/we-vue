@@ -94,8 +94,11 @@ export default create({
     pathStyle () {
       return {
         'stroke-dasharray': `${this.len}px ${this.len}px`,
-        'stroke-dashoffset': `${((100 - this.currentValue) / 100 * this.len)}px`,
-        'transition': `stroke-dashoffset ${this.speed}ms ease 0s, stroke ${this.speed}ms ease`
+        'stroke-dashoffset': `${((100 - this.currentValue) / 100) *
+          this.len}px`,
+        transition: `stroke-dashoffset ${this.speed}ms ease 0s, stroke ${
+          this.speed
+        }ms ease`
       }
     }
   },

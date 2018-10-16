@@ -46,16 +46,18 @@ Dialog.defaultOptions = {
   }
 }
 
-Dialog.alert = options => Dialog({
-  ...Dialog.currentOptions,
-  ...options
-})
+Dialog.alert = options =>
+  Dialog({
+    ...Dialog.currentOptions,
+    ...options
+  })
 
-Dialog.confirm = options => Dialog({
-  ...Dialog.currentOptions,
-  showCancelButton: true,
-  ...options
-})
+Dialog.confirm = options =>
+  Dialog({
+    ...Dialog.currentOptions,
+    showCancelButton: true,
+    ...options
+  })
 
 Dialog.close = () => {
   if (instance) {
