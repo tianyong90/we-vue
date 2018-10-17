@@ -53,8 +53,8 @@
   },
   "lint-staged": {
     "*.{js,vue}": [
-      "prettier packages/**/*./{scss,js,vue} demo/**/*./{scss,js,vue} docs/**/*./{scss,js,vue} --write",
-      "npm run lint:fix",
+      "prettier --write",
+      "eslint --fix",
       "git add"
     ]
   },
