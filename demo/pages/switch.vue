@@ -30,17 +30,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .tips {
-    padding: .2rem .5rem;
-    font-size: 13px;
-    color: #555;
-  }
+.tips {
+  padding: 0.2rem 0.5rem;
+  font-size: 13px;
+  color: #555;
+}
 
-  .standalone-switches {
-    margin: 20px 0;
+.standalone-switches {
+  margin: 20px 0;
 
-    .wv-switch {
-      margin: 10px auto;
-    }
+  .wv-switch {
+    margin: 10px auto;
   }
+}
 </style>

@@ -211,6 +211,5 @@ export default [
         ]
       }
     ]
-
   }
 ]

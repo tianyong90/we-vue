@@ -131,7 +131,9 @@ export default {
         let hour = value.getHours()
         let minute = value.getMinutes()
 
-        return type === 'date' ? `${year}-${month}-${date}` : `${year}-${month}-${date} ${hour}:${minute}`
+        return type === 'date'
+          ? `${year}-${month}-${date}`
+          : `${year}-${month}-${date} ${hour}:${minute}`
       } else {
         return value
       }

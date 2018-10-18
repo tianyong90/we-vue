@@ -7,7 +7,7 @@
 </template>
 
 <style scoped lang="scss">
-  .page {
-    background-color: white;
-  }
+.page {
+  background-color: white;
+}
 </style>

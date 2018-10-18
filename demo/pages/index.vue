@@ -47,44 +47,46 @@ export default {
 
   computed: {
     filterResult () {
-      return this.componentList.filter(value => new RegExp(this.keyword, 'i').test(value.name))
+      return this.componentList.filter(value =>
+        new RegExp(this.keyword, 'i').test(value.name)
+      )
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .logo {
-    display: block;
-    margin: 0 auto;
-    width: 75px;
-  }
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 75px;
+}
 
-  .page__hd {
-    padding: 40px;
+.page__hd {
+  padding: 40px;
 
-    .page__title {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 400;
-    }
-  }
-
-  .page {
-    margin-bottom: 0;
-  }
-
-  .cell-icon {
-    display: block;
-    margin-right: 5px;
-    color: #2196f3;
-    overflow: hidden;
-    font-size: 20px;
-    width: 25px;
+  .page__title {
     text-align: center;
+    font-size: 20px;
+    font-weight: 400;
   }
+}
 
-  .footer-copyright {
-    margin: 40px 0 20px;
-  }
+.page {
+  margin-bottom: 0;
+}
+
+.cell-icon {
+  display: block;
+  margin-right: 5px;
+  color: #2196f3;
+  overflow: hidden;
+  font-size: 20px;
+  width: 25px;
+  text-align: center;
+}
+
+.footer-copyright {
+  margin: 40px 0 20px;
+}
 </style>

@@ -327,7 +327,7 @@ let v2_0 = [
   }
 ]
 
-v2_0 = v2_0.map((route) => {
+v2_0 = v2_0.map(route => {
   route.meta.version = 'v2_0'
 
   return route

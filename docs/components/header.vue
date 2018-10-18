@@ -65,7 +65,7 @@ export default {
   computed: {
     searchBoxOptions () {
       return {
-        algoliaOptions: { 'facetFilters': [`version:${this.version}`] }
+        algoliaOptions: { facetFilters: [`version:${this.version}`] }
       }
     }
   },
@@ -84,7 +84,7 @@ export default {
   },
 
   filters: {
-    versionText: (value) => {
+    versionText: value => {
       return value.replace('_', '.')
     }
   }
@@ -92,88 +92,88 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  $header-height: 70px;
-  $header-background-color: #fff;
-  $header-home-background-color: #040f23;
+$header-height: 70px;
+$header-background-color: #fff;
+$header-home-background-color: #040f23;
 
-  body {
-    position: relative;
+body {
+  position: relative;
+}
+
+.navbar {
+  height: $header-height;
+  background-color: $header-background-color;
+  z-index: 100;
+  border-bottom: 1px solid #dfdfdf;
+
+  .logo {
+    width: 60px;
+    height: 60px;
   }
 
-  .navbar {
-    height: $header-height;
-    background-color: $header-background-color;
-    z-index: 100;
-    border-bottom: 1px solid #dfdfdf;
-
-    .logo {
-      width: 60px;
-      height: 60px;
-    }
-
-    .navbar-nav {
-      a {
-        color: #333;
-        text-decoration: none;
-        display: inline-block;
-        padding: 0 1em;
-
-        &:hover {
-          color: #41b883;
-        }
-
-        &.router-link-active {
-          color: #41b883;
-        }
-      }
-    }
-
-    &.dark {
-      background-color: #01061a;
-      border-bottom: none;
-
-      a {
-        color: #fff !important;
-
-        &:hover {
-          color: #41b883 !important;
-        }
-
-        &.router-link-active {
-          color: #41b883 !important;
-        }
-      }
-    }
-
-    .version-picker {
-      text-align: right;
-      position: relative;
-      cursor: pointer;
-      padding: 10px 30px 10px 0;
-
-      .version-number::after {
-        content: '';
-        width: 0;
-        height: 0;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        border: 7px solid;
-        border-color:  #888 #fff #fff #fff;
-      }
+  .navbar-nav {
+    a {
+      color: #333;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0 1em;
 
       &:hover {
         color: #41b883;
-
-        .version-number::after {
-          top: calc(50% - 7px);
-          border-color:  #fff #fff #888 #fff;
-        }
       }
 
-      .dropdown-menu {
-        top: 90%;
+      &.router-link-active {
+        color: #41b883;
       }
     }
   }
+
+  &.dark {
+    background-color: #01061a;
+    border-bottom: none;
+
+    a {
+      color: #fff !important;
+
+      &:hover {
+        color: #41b883 !important;
+      }
+
+      &.router-link-active {
+        color: #41b883 !important;
+      }
+    }
+  }
+
+  .version-picker {
+    text-align: right;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 30px 10px 0;
+
+    .version-number::after {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      border: 7px solid;
+      border-color: #888 #fff #fff #fff;
+    }
+
+    &:hover {
+      color: #41b883;
+
+      .version-number::after {
+        top: calc(50% - 7px);
+        border-color: #fff #fff #888 #fff;
+      }
+    }
+
+    .dropdown-menu {
+      top: 90%;
+    }
+  }
+}
 </style>

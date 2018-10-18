@@ -36,13 +36,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .circle-1 {
-    display: block;
-    margin: 0 auto 40px;
-  }
+.circle-1 {
+  display: block;
+  margin: 0 auto 40px;
+}
 
-  .circle-2 {
-    display: block;
-    margin: 20px auto;
-  }
+.circle-2 {
+  display: block;
+  margin: 20px auto;
+}
 </style>

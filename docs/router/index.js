@@ -28,10 +28,7 @@ export default new Router({
         header: Header,
         default: () => import('../views/doc')
       },
-      children: [
-        ...routes_v1_6,
-        ...routes_v2_0
-      ]
+      children: [...routes_v1_6, ...routes_v2_0]
     },
     {
       path: '*',

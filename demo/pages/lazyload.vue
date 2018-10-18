@@ -32,29 +32,29 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .lazyload-list {
+.lazyload-list {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  list-style: none;
+
+  .lazyload-list-item {
+    width: 300px;
+    margin: 5px auto;
+  }
+
+  img {
     display: block;
-    overflow: hidden;
     width: 100%;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    list-style: none;
 
-    .lazyload-list-item {
-      width: 300px;
-      margin: 5px auto;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-
-      &[lazy=loading] {
-        width: 40px;
-        height: 300px;
-        margin: auto;
-      }
+    &[lazy='loading'] {
+      width: 40px;
+      height: 300px;
+      margin: auto;
     }
   }
+}
 </style>

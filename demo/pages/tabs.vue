@@ -98,21 +98,21 @@ export default {
 </script>
 
 <style module lang="scss">
-  .demo-tabs-wrap {
+.demo-tabs-wrap {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 30px;
+
+  .tips {
     display: block;
-    overflow: hidden;
-    margin-bottom: 30px;
-
-    .tips {
-      display: block;
-      font-size: .825rem;
-      color: #555;
-      padding: .5em 1em;
-    }
-
-    .wv-tabs__content {
-      padding: 1rem;
-      background-color: #fff;
-    }
+    font-size: 0.825rem;
+    color: #555;
+    padding: 0.5em 1em;
   }
+
+  .wv-tabs__content {
+    padding: 1rem;
+    background-color: #fff;
+  }
+}
 </style>

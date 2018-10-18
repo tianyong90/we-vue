@@ -35,15 +35,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .page {
-    padding-top: 5em;
-    background-color: #fff;
+.page {
+  padding-top: 5em;
+  background-color: #fff;
 
-    .tips {
-      margin-top: 2em;
-      font-size: 14px;
-      color: #666;
-      margin-left: 1em;
-    }
+  .tips {
+    margin-top: 2em;
+    font-size: 14px;
+    color: #666;
+    margin-left: 1em;
   }
+}
 </style>

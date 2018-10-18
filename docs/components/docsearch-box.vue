@@ -28,18 +28,21 @@ export default {
 
   methods: {
     initialize () {
-      docsearch(Object.assign(this.options, {
-        apiKey: 'feb33c2506cdece7f0267859a856767a',
-        indexName: 'wevue',
-        inputSelector: '#algolia-search-input',
-        debug: true // Set debug to true if you want to inspect the dropdown
-      }))
+      docsearch(
+        Object.assign(this.options, {
+          apiKey: 'feb33c2506cdece7f0267859a856767a',
+          indexName: 'wevue',
+          inputSelector: '#algolia-search-input',
+          debug: true // Set debug to true if you want to inspect the dropdown
+        })
+      )
     }
   },
 
   watch: {
     options (newValue) {
-      this.$el.innerHTML = '<input class="form-control d-flex ml-2 mr-auto algolia-search-input search-query" id="asalgolia-search-input" placeholder="搜索文档">'
+      this.$el.innerHTML =
+        '<input class="form-control d-flex ml-2 mr-auto algolia-search-input search-query" id="asalgolia-search-input" placeholder="搜索文档">'
 
       this.initialize(newValue)
     }
@@ -48,20 +51,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .algolia-search-input {
-    background-image: url(../assets/icon_search.svg);
-    background-repeat: no-repeat;
-    background-size: 1.4em;
-    background-position: 98% 50%;
+.algolia-search-input {
+  background-image: url(../assets/icon_search.svg);
+  background-repeat: no-repeat;
+  background-size: 1.4em;
+  background-position: 98% 50%;
 
-    &:focus {
-      outline: none;
-      border-color: #41b883;
-      box-shadow: 0 0 0 1px #41b883, 0 0 0 0.2rem rgba(41, 184, 83, 0.25);
-    }
-
-    &::placeholder {
-      color: #999;
-    }
+  &:focus {
+    outline: none;
+    border-color: #41b883;
+    box-shadow: 0 0 0 1px #41b883, 0 0 0 0.2rem rgba(41, 184, 83, 0.25);
   }
+
+  &::placeholder {
+    color: #999;
+  }
+}
 </style>

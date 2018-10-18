@@ -32,7 +32,8 @@ export default {
         },
         {
           label: '标题标题',
-          value: '很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字'
+          value:
+            '很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字'
         }
       ],
       buttons1: [
@@ -66,7 +67,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .preview-item {
-    margin-bottom: 20px;
-  }
+.preview-item {
+  margin-bottom: 20px;
+}
 </style>

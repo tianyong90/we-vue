@@ -75,13 +75,7 @@ export default {
       ],
       ticketColumns: [
         {
-          values: [
-            '汽车票',
-            '飞机票',
-            '火车票',
-            '轮船票',
-            '其它'
-          ],
+          values: ['汽车票', '飞机票', '火车票', '轮船票', '其它'],
           defaultIndex: 2
         }
       ],
@@ -98,17 +92,13 @@ export default {
           ]
         },
         {
-          values: [
-            '上午',
-            '下午'
-          ]
+          values: ['上午', '下午']
         }
       ]
     }
   },
 
-  mounted () {
-  },
+  mounted () {},
 
   methods: {
     onChange (picker, value) {

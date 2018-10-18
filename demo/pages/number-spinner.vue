@@ -58,14 +58,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .page {
-    background-color: #f2f2f2;
-  }
+.page {
+  background-color: #f2f2f2;
+}
 
-  .independent-spinner {
-    display: block;
-    background-color: #fff;
-    margin-top: 20px;
-    padding: 1em;
-  }
+.independent-spinner {
+  display: block;
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 1em;
+}
 </style>

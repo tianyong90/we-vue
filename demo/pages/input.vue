@@ -116,7 +116,6 @@ export default {
     }
   },
 
-  mounted () {
-  }
+  mounted () {}
 }
 </script>

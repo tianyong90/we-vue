@@ -101,81 +101,81 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .sidebar-wrapper {
-    display: flex;
-    bottom: 0;
-    width: 220px;
-    flex: 0 0 220px;
-    border-right: 1px solid #ececec;
-    background-color: #fff;
+.sidebar-wrapper {
+  display: flex;
+  bottom: 0;
+  width: 220px;
+  flex: 0 0 220px;
+  border-right: 1px solid #ececec;
+  background-color: #fff;
+  padding: 0;
+
+  ul {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
     padding: 0;
+    list-style: none;
+  }
 
-    ul {
-      width: 100%;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+  .doc-nav__item {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #333;
+      display: block;
+      text-indent: 1em;
     }
 
-    .doc-nav__item {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .group-name {
+      display: block;
+      padding: 0.5em 0 0.5em 1.5em;
+    }
 
-      .title {
-        font-size: 18px;
-        font-weight: 500;
-        color: #333;
+    .sub-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      display: block;
+      text-indent: 1em;
+      margin: 0.2em 0;
+    }
+
+    .sub-tree {
+      li {
         display: block;
-        text-indent: 1em;
+      }
+    }
+
+    a {
+      font-size: 14px;
+      display: block;
+      color: #444;
+      text-decoration: none;
+      background-color: #fff;
+      text-indent: 2em;
+      padding: 0.5em;
+
+      &:hover {
+        color: darken(#41b883, 20%);
+        background-color: lighten(#41b883, 45%);
       }
 
-      .group-name {
-        display: block;
-        padding: .5em 0 .5em 1.5em;
-      }
-
-      .sub-title {
-        font-size: 15px;
-        font-weight: 500;
-        color: #333;
-        display: block;
-        text-indent: 1em;
-        margin: .2em 0;
-      }
-
-      .sub-tree {
-        li {
-          display: block;
-        }
-      }
-
-      a {
-        font-size: 14px;
-        display: block;
-        color: #444;
-        text-decoration: none;
-        background-color: #fff;
-        text-indent: 2em;
-        padding: .5em;
-
-        &:hover {
-          color: darken(#41b883, 20%);
-          background-color: lighten(#41b883, 45%);
-        }
-
-        &.current {
-          color: darken(#41b883, 20%);
-          background-color: lighten(#41b883, 40%);
-          border-right: 3px solid #41b883;
-        }
+      &.current {
+        color: darken(#41b883, 20%);
+        background-color: lighten(#41b883, 40%);
+        border-right: 3px solid #41b883;
       }
     }
   }
+}
 
-  .demo-column {
-    flex: 0 0 410px;
-    justify-content: center;
-  }
+.demo-column {
+  flex: 0 0 410px;
+  justify-content: center;
+}
 </style>

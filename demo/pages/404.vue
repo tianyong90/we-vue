@@ -5,11 +5,11 @@
 </template>
 
 <style scoped lang="scss">
-  .error-code {
-    display: block;
-    color: #666;
-    font-size: 4rem;
-    font-weight: 200;
-    text-align: center;
-  }
+.error-code {
+  display: block;
+  color: #666;
+  font-size: 4rem;
+  font-weight: 200;
+  text-align: center;
+}
 </style>

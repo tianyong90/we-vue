@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .page {
-    margin-top: 50px
-  }
+.page {
+  margin-top: 50px;
+}
 </style>

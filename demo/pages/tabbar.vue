@@ -44,15 +44,14 @@
 <script>
 export default {
   data () {
-    return {
-    }
+    return {}
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .tab-icon {
-    display: inline-block;
-    position: relative;
-  }
+.tab-icon {
+  display: inline-block;
+  position: relative;
+}
 </style>

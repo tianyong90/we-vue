@@ -31,11 +31,13 @@ export default {
       Dialog.confirm({
         title: '确认窗口',
         message: '你确定吗？'
-      }).then(() => {
-        this.$toast.text('confirmed')
-      }).catch(() => {
-        this.$toast.text('canceled')
       })
+        .then(() => {
+          this.$toast.text('confirmed')
+        })
+        .catch(() => {
+          this.$toast.text('canceled')
+        })
     }
   },
 
@@ -50,8 +52,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .buttons {
-    width: 80%;
-    margin: 20px auto;
-  }
+.buttons {
+  width: 80%;
+  margin: 20px auto;
+}
 </style>

@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .weui-progress {
-    height: 50px;
-  }
+.weui-progress {
+  height: 50px;
+}
 </style>

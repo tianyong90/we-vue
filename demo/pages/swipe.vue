@@ -21,15 +21,15 @@
 </template>
 
 <style scoped lang="scss">
-  .demo-swipe {
-    margin-bottom: 50px;
+.demo-swipe {
+  margin-bottom: 50px;
 
-    .tips {
-      display: flex;
-      height: 100%;
-      color: white;
-      justify-content: center;
-      align-items: center;
-    }
+  .tips {
+    display: flex;
+    height: 100%;
+    color: white;
+    justify-content: center;
+    align-items: center;
   }
+}
 </style>

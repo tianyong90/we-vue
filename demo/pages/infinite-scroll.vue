@@ -59,7 +59,9 @@ export default {
   },
 
   mounted () {
-    this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top
+    this.wrapperHeight =
+      document.documentElement.clientHeight -
+      this.$refs.wrapper.getBoundingClientRect().top
     for (let i = 1; i <= 15; i++) {
       this.list.push(i)
     }
@@ -68,8 +70,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .loading-tips {
-    color: #222;
-    text-align: center;
-  }
+.loading-tips {
+  color: #222;
+  text-align: center;
+}
 </style>

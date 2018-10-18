@@ -85,37 +85,37 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .banner {
-    min-height: 85vh;
-    background-image: url(../assets/banner.jpg);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+.banner {
+  min-height: 85vh;
+  background-image: url(../assets/banner.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-    .title {
-      font-size: 5rem;
-      font-weight: 300;
-    }
+  .title {
+    font-size: 5rem;
+    font-weight: 300;
   }
+}
 
-  .title-feature {
-    color: #666;
+.title-feature {
+  color: #666;
+}
+
+.card {
+  width: 30% !important;
+
+  .card-title {
+    text-align: center;
+    color: #1aad19;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1.5em;
   }
+}
 
-  .card {
-    width: 30% !important;
-
-    .card-title {
-      text-align: center;
-      color: #1aad19;
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin-bottom: 1.5em;
-    }
-  }
-
-  .footer {
-    background-color: darken(#1aad19, 35%);
-  }
+.footer {
+  background-color: darken(#1aad19, 35%);
+}
 </style>

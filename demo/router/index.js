@@ -5,7 +5,7 @@ export const navs = Navs
 
 Vue.use(VueRouter)
 
-const registerRoute = (groups) => {
+const registerRoute = groups => {
   let routes = []
 
   groups.map(group => {

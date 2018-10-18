@@ -44,30 +44,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .demo-wrap {
+.demo-wrap {
+  display: block;
+  overflow: hidden;
+  width: 375px;
+  min-width: 375px;
+  z-index: 50;
+  border-radius: 6px;
+  box-sizing: border-box;
+  right: 20px;
+  position: absolute;
+  box-shadow: #999 -3px 3px 20px;
+
+  .mobile-top {
     display: block;
     overflow: hidden;
-    width: 375px;
-    min-width: 375px;
-    z-index: 50;
-    border-radius: 6px;
-    box-sizing: border-box;
-    right: 20px;
-    position: absolute;
-    box-shadow: #999 -3px 3px 20px;
-
-    .mobile-top {
-      display: block;
-      overflow: hidden;
-      width: 100%;
-      height: 42px;
-      background: url(../assets/mobile_top.jpg) left top no-repeat;
-      background-size: contain;
-    }
-
-    iframe {
-      width: 100%;
-      height: 555px;
-    }
+    width: 100%;
+    height: 42px;
+    background: url(../assets/mobile_top.jpg) left top no-repeat;
+    background-size: contain;
   }
+
+  iframe {
+    width: 100%;
+    height: 555px;
+  }
+}
 </style>

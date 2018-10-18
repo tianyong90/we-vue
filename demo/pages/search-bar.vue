@@ -113,11 +113,15 @@ export default {
 
   computed: {
     filterResult () {
-      return this.defaultResult.filter(value => new RegExp(this.value1, 'i').test(value))
+      return this.defaultResult.filter(value =>
+        new RegExp(this.value1, 'i').test(value)
+      )
     },
 
     filterObjectResult () {
-      return this.defaultObjectResult.filter(value => new RegExp(this.value2, 'i').test(value.name))
+      return this.defaultObjectResult.filter(value =>
+        new RegExp(this.value2, 'i').test(value.name)
+      )
     }
   },
 
@@ -134,7 +138,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .search-bar-2 {
-    margin-top: 100px;
-  }
+.search-bar-2 {
+  margin-top: 100px;
+}
 </style>

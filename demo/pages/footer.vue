@@ -39,11 +39,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .page {
-    padding: 5em 0;
+.page {
+  padding: 5em 0;
 
-    .footer-demo {
-      margin-bottom: 40px;
-    }
+  .footer-demo {
+    margin-bottom: 40px;
   }
+}
 </style>

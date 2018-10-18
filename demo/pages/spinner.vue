@@ -21,7 +21,13 @@
 </template>
 
 <script>
-const SPINNER_TYPES = ['default', 'snake', 'double-snake', 'dot-circle', 'bar-circle']
+const SPINNER_TYPES = [
+  'default',
+  'snake',
+  'double-snake',
+  'dot-circle',
+  'bar-circle'
+]
 
 export default {
   data () {

@@ -55,8 +55,7 @@
 
 <script>
 export default {
-  mounted () {
-  },
+  mounted () {},
 
   data () {
     return {}
@@ -67,15 +66,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .demo-flex {
-    margin: 15px 0;
-  }
+.demo-flex {
+  margin: 15px 0;
+}
 
-  .placeholder {
-    background-color: #c0c0c0;
-    height: 2.3em;
-    line-height: 2.3em;
-    text-align: center;
-    color: #fff;
-  }
+.placeholder {
+  background-color: #c0c0c0;
+  height: 2.3em;
+  line-height: 2.3em;
+  text-align: center;
+  color: #fff;
+}
 </style>

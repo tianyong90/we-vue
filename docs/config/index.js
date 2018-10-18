@@ -8,6 +8,4 @@ const nav = {
   v2_0: nav_v2_0
 }
 
-export {
-  nav
-}
+export { nav }

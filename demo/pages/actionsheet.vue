@@ -71,9 +71,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .buttons {
-    display: block;
-    padding: 0 20px;
-    margin: 20px auto;
-  }
+.buttons {
+  display: block;
+  padding: 0 20px;
+  margin: 20px auto;
+}
 </style>

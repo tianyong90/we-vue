@@ -30,13 +30,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .demo-header1 {
-    position: absolute;
-    top: 100px;
-  }
+.demo-header1 {
+  position: absolute;
+  top: 100px;
+}
 
-  .demo-header2 {
-    position: absolute;
-    top: 150px;
-  }
+.demo-header2 {
+  position: absolute;
+  top: 150px;
+}
 </style>

@@ -22,10 +22,10 @@ router.afterEach((to, from) => {
   const currentUrl = `${protocol}//${host}${to.fullPath}`
 
   QRCode.toDataURL(currentUrl)
-    .then((url) => {
+    .then(url => {
       store.commit('UPDATE_QRCODE_URL', url)
     })
-    .catch((error) => {
+    .catch(error => {
       console.error(error)
     })
 })
@@ -53,7 +53,7 @@ new Vue({
   },
 
   watch: {
-    '$route' (to, from) {
+    $route (to, from) {
       this.transitionName = from.name === 'index' ? 'slide-left' : 'slide-right'
     }
   }

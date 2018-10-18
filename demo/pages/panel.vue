@@ -76,9 +76,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .cell-icon {
-    display: block;
-    width: 20px;
-    margin-right: 5px;
-  }
+.cell-icon {
+  display: block;
+  width: 20px;
+  margin-right: 5px;
+}
 </style>

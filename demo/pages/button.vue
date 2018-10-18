@@ -28,20 +28,20 @@
 </template>
 
 <style scoped lang="scss">
-  .buttons-big {
-    display: block;
-    margin: 10px auto;
-  }
+.buttons-big {
+  display: block;
+  margin: 10px auto;
+}
 
-  .buttons-plain {
-    display: block;
-    width: 60%;
-    margin: 10px auto;
-  }
+.buttons-plain {
+  display: block;
+  width: 60%;
+  margin: 10px auto;
+}
 
-  .buttons-mini {
-    display: block;
-    width: 60%;
-    margin: 10px auto;
-  }
+.buttons-mini {
+  display: block;
+  width: 60%;
+  margin: 10px auto;
+}
 </style>

@@ -70,16 +70,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .demo-grid-item {
-    background-color: white;
-  }
+.demo-grid-item {
+  background-color: white;
+}
 
-  .custom-content {
-    display: block;
-    overflow: hidden;
-    color: #555;
-    font-size: 13px;
-    text-align: center;
-    height: 50px;
-  }
+.custom-content {
+  display: block;
+  overflow: hidden;
+  color: #555;
+  font-size: 13px;
+  text-align: center;
+  height: 50px;
+}
 </style>
