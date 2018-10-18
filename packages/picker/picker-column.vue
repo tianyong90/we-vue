@@ -71,8 +71,6 @@ export default create({
   },
 
   data () {
-    console.log('haha')
-    console.log(this.options)
     return {
       startY: 0,
       startOffset: 0,
@@ -119,9 +117,6 @@ export default create({
   },
 
   created () {
-    console.log('options')
-    console.log(this.options)
-
     this.$parent.children && this.$parent.children.push(this)
     this.setIndex(this.currentIndex)
   },
@@ -196,9 +191,7 @@ export default create({
 
     setIndex (index, userAction = false) {
       // TODO:
-      // console.log('original index ', index)
       index = this.adjustIndex(index) || 0
-      // console.log('adjusted index ', index)
       this.offset = this.indexToOffset(index)
 
       if (index !== this.currentIndex) {

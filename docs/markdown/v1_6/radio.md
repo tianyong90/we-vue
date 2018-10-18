@@ -41,7 +41,7 @@ Vue.component(Radio.name, Radio)
 
     methods: {
       onChange (val) {
-        console.log(val)
+        // do something
       }
     }
   }

@@ -43,7 +43,7 @@ grid 需要与 grid-item 配合使用
 export default {
   methods: {
     onClick () {
-      console.log('click')
+      // do something
     }
   } 
 }
