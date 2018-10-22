@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="!divider"
     class="weui-picker__group"
     @touchstart="onTouchstart"
     @touchmove.prevent="onTouchmove"
@@ -24,7 +23,6 @@
       />
     </div>
   </div>
-  <div class="wv-picker-column-divider" v-else v-html="content"/>
 </template>
 
 <script>
@@ -59,14 +57,6 @@ export default create({
     defaultIndex: {
       type: Number,
       default: 0
-    },
-    divider: {
-      type: Boolean,
-      default: false
-    },
-    content: {
-      type: String,
-      default: ''
     }
   },
 
@@ -79,7 +69,7 @@ export default create({
       prevTime: null,
       velocity: 0, // moving velocity
       transition: '',
-      currentOptions: this.options,
+      currentOptions: deepClone(this.options),
       currentIndex: this.defaultIndex
     }
   },
@@ -190,7 +180,6 @@ export default create({
     },
 
     setIndex (index, userAction = false) {
-      // TODO:
       index = this.adjustIndex(index) || 0
       this.offset = this.indexToOffset(index)
 

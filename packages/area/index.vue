@@ -74,8 +74,6 @@ export default create({
     },
 
     displayColumns () {
-      console.log(this.columns.slice(0, +this.columnsCount))
-
       return this.columns.slice(0, +this.columnsCount)
     }
   },

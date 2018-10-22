@@ -24,7 +24,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     rules: utils.styleLoaders({ sourceMap: true, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
@@ -40,7 +40,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     proxy: {},
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: false,
+      poll: false
     }
   },
   plugins: [
@@ -75,12 +75,18 @@ module.exports = new Promise((resolve, reject) => {
       devWebpackConfig.devServer.port = port
 
       // Add FriendlyErrorsPlugin
-      devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-        compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
-        },
-        onErrors: utils.createNotifierCallback()
-      }))
+      devWebpackConfig.plugins.push(
+        new FriendlyErrorsPlugin({
+          compilationSuccessInfo: {
+            messages: [
+              `Your application is running here: http://${
+                devWebpackConfig.devServer.host
+              }:${port}`
+            ]
+          },
+          onErrors: utils.createNotifierCallback()
+        })
+      )
 
       resolve(devWebpackConfig)
     }
