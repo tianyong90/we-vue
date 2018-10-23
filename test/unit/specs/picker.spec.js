@@ -123,10 +123,12 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: [{
-          values: slotValues,
-          default: 0
-        }]
+        columns: [
+          {
+            values: slotValues,
+            default: 0
+          }
+        ]
       }
     })
 
@@ -198,7 +200,10 @@ describe('picker', () => {
       }
     })
 
-    wrapper.findAll('.weui-picker__action').at(0).trigger('click')
+    wrapper
+      .findAll('.weui-picker__action')
+      .at(0)
+      .trigger('click')
     expect(wrapper.vm.visible).toBe(false)
     expect(wrapper.emitted().cancel).toBeTruthy()
   })
@@ -212,7 +217,10 @@ describe('picker', () => {
       }
     })
 
-    wrapper.findAll('.weui-picker__action').at(1).trigger('click')
+    wrapper
+      .findAll('.weui-picker__action')
+      .at(1)
+      .trigger('click')
     expect(wrapper.vm.visible).toBe(false)
     expect(wrapper.emitted().confirm).toBeTruthy()
   })
@@ -224,14 +232,19 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: [{
-          values: slotValues,
-          default: 0
-        }]
+        columns: [
+          {
+            values: slotValues,
+            default: 0
+          }
+        ]
       }
     })
 
-    wrapper.findAll(PickerColumn).at(0).vm.$emit('change', 0)
+    wrapper
+      .findAll(PickerColumn)
+      .at(0)
+      .vm.$emit('change', 0)
 
     expect(wrapper.emitted().change).toBeTruthy()
   })
@@ -243,10 +256,12 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: [{
-          values: slotValues,
-          default: 0
-        }]
+        columns: [
+          {
+            values: slotValues,
+            default: 0
+          }
+        ]
       }
     })
 
@@ -313,34 +328,38 @@ describe('picker-column', () => {
   //   expect(wrapper.text()).toBe('-')
   // })
 
-  test('drag slot', async () => {
-    wrapper = mount(Picker, {
-      attachToDocument: true,
-      propsData: {
-        visible: true,
-        columns: testSingleColumn
-      }
-    })
+  test(
+    'drag slot',
+    () => {
+      wrapper = mount(Picker, {
+        attachToDocument: true,
+        propsData: {
+          visible: true,
+          columns: testSingleColumn
+        }
+      })
 
-    const columnWrapper = wrapper.find(PickerColumn)
+      const columnWrapper = wrapper.find(PickerColumn)
 
-    await slowVerticalDrag(columnWrapper, 0, -34)
-    expect(columnWrapper.vm.currentIndex).toBe(1)
+      slowVerticalDrag(columnWrapper, 0, -34)
+      expect(columnWrapper.vm.currentIndex).toBe(1)
 
-    await slowVerticalDrag(columnWrapper, 0, -34)
-    expect(columnWrapper.vm.currentIndex).toBe(2)
+      slowVerticalDrag(columnWrapper, 0, -34)
+      expect(columnWrapper.vm.currentIndex).toBe(2)
 
-    // this will out of range
-    await slowVerticalDrag(columnWrapper, 0, -34)
-    expect(columnWrapper.vm.currentIndex).toBe(2)
+      // this will out of range
+      slowVerticalDrag(columnWrapper, 0, -34)
+      expect(columnWrapper.vm.currentIndex).toBe(2)
 
-    await slowVerticalDrag(columnWrapper, 0, 34)
-    expect(columnWrapper.vm.currentIndex).toBe(1)
+      slowVerticalDrag(columnWrapper, 0, 34)
+      expect(columnWrapper.vm.currentIndex).toBe(1)
 
-    // this will out of range
-    await slowVerticalDrag(columnWrapper, 0, 100)
-    expect(columnWrapper.vm.currentIndex).toBe(0)
-  }, 15000)
+      // this will out of range
+      slowVerticalDrag(columnWrapper, 0, 100)
+      expect(columnWrapper.vm.currentIndex).toBe(0)
+    },
+    15000
+  )
 
   test('click slot to change the current-value', () => {
     wrapper = mount(Picker, {

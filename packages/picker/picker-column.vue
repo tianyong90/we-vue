@@ -158,6 +158,9 @@ export default create({
       this.velocity =
         (event.touches[0].clientY - this.prevY) / (currentTime - this.prevTime)
       this.prevY = currentY
+
+      const t = currentTime - this.prevTime
+
       this.prevTime = currentTime
     },
 

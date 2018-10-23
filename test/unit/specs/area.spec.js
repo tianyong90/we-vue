@@ -8,4 +8,10 @@ describe('datetime-picker', () => {
   afterEach(() => {
     wrapper && wrapper.destroy()
   })
+
+  test('create', () => {
+    wrapper = mount(Area)
+
+    expect(wrapper.name()).toBe('wv-area')
+  })
 })
