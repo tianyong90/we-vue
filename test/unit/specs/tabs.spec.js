@@ -17,7 +17,7 @@ describe('tabs', () => {
     expect(wrapper.classes()).toContain('wv-tabs')
   })
 
-  test('create', () => {
+  test('create with tab items', () => {
     wrapper = mount(Tabs, {
       propsData: {},
       slots: {
@@ -28,23 +28,55 @@ describe('tabs', () => {
     expect(wrapper.name()).toBe('wv-tabs')
     expect(wrapper.classes()).toContain('wv-tabs')
   })
+
+  test('click tab items', () => {
+    wrapper = mount(Tabs, {
+      propsData: {},
+      slots: {
+        default: [Tab, Tab, Tab]
+      }
+    })
+
+    wrapper
+      .findAll(Tab)
+      .at(1)
+      .trigger('click')
+  })
 })
 
-// describe('tab', () => {
-//   let wrapper
-//   afterEach(() => {
-//     wrapper && wrapper.destroy()
-//   })
-//
-//   // const parentWrapper = mount(Tabs)
-//
-//   test('create', () => {
-//     wrapper = mount(Tab, {
-//       parent: parentWrapper,
-//       propsData: {}
-//     })
-//
-//     expect(wrapper.name()).toBe('wv-tab')
-//     expect(wrapper.classes()).toContain('wv-tab')
-//   })
-// })
+describe('tab', () => {
+  let wrapper
+
+  afterEach(() => {
+    wrapper && wrapper.destroy()
+  })
+
+  test('create', () => {
+    wrapper = mount(Tabs, {
+      propsData: {},
+      slots: {
+        default: [Tab, Tab, Tab]
+      }
+    })
+
+    const tabItem = wrapper.find(Tab)
+
+    expect(tabItem.name()).toBe('wv-tab')
+  })
+
+  // TODO
+  test('title', () => {
+    wrapper = mount(Tabs, {
+      attachToDocument: true,
+      propsData: {},
+      slots: {
+        default: [
+          '<wv-tab title="title1">1</wv-tab>',
+          '<wv-tab title="title2">2</wv-tab>'
+        ]
+      }
+    })
+
+    const tabItem = wrapper.find(Tab)
+  })
+})
