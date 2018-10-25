@@ -52,10 +52,8 @@ export default {
 
 <style scoped lang="scss">
 .algolia-search-input {
-  background-image: url(../assets/icon_search.svg);
-  background-repeat: no-repeat;
-  background-size: 1.4em;
-  background-position: 98% 50%;
+  background: url(../assets/svg/icon_search.svg) no-repeat 98% 50%;
+  background-size: 1.4rem;
 
   &:focus {
     outline: none;

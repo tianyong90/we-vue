@@ -61,7 +61,7 @@ export default {
     overflow: hidden;
     width: 100%;
     height: 42px;
-    background: url(../assets/mobile_top.jpg) left top no-repeat;
+    background: url(../assets/image/mobile_top.jpg) left top no-repeat;
     background-size: contain;
   }
 

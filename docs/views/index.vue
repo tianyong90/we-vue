@@ -23,7 +23,7 @@
           >GitHub</a>
         </div>
         <div class="row justify-content-center mt-5">
-          <img class="qrcode" width="120" height="120" src="../assets/demo_qrcode.png">
+          <img class="qrcode" width="120" height="120" src="../assets/image/demo_qrcode.png">
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@ export default {
 <style scoped lang="scss">
 .banner {
   min-height: 85vh;
-  background-image: url(../assets/banner.jpg);
+  background-image: url(../assets/image/banner.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
