@@ -1,0 +1,7 @@
+/node_modules/
+/build/
+/dist/
+/es5
+/lib
+/*.js
+/test/unit/coverage/

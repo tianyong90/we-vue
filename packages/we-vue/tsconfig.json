@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "tsc-compiled",
+    "target": "esnext",
+    "module": "esnext",
+    "allowJs": false,
+    "strict": false, // todo
+    "importHelpers": true,
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "declaration": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "reflect-metadata",
+      "node"
+    ],
+    "lib": ["es2017", "dom"]
+  },
+  "files": [
+    "src/vue-shims.d.ts"
+  ],
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
