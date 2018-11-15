@@ -9,14 +9,14 @@ const currentBranch = require('git-branch').sync()
 
 const release = function (version) {
   const tasks = new Listr([
-    {
-      title: 'Check current branch',
-      task: () => {
-        if (currentBranch !== 'master') {
-          throw Error('is not on the master branch')
-        }
-      }
-    },
+    // {
+    //   title: 'Check current branch',
+    //   task: () => {
+    //     if (currentBranch !== 'master') {
+    //       throw Error('is not on the master branch')
+    //     }
+    //   }
+    // },
     {
       title: 'Build release.',
       task: () => execa.shell('npm run build:release')
