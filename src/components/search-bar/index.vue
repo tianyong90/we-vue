@@ -99,6 +99,7 @@ export default create({
 
     // 取消搜索
     cancel () {
+      this.$emit('cancel')
       this.clear()
       this.isActive = false
     }
