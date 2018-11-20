@@ -72,14 +72,14 @@ declare module 'vue/types/vue' {
   export type OptionsVue<Instance extends Vue, Data, Methods, Computed, Props, Options = {}> = VueConstructor<
     CombinedVueInstance<Instance, Data, Methods, Computed, Props> & Vue,
     Options
-  >
+    >
 
   export interface Vue {
     _uid: number
     _isDestroyed: boolean
 
     /** bindObjectListeners */
-     _g (data: VNodeData, value: {}): VNodeData
+    _g (data: VNodeData, value: {}): VNodeData
   }
 
   export interface RawComponentOptions<
@@ -88,7 +88,7 @@ declare module 'vue/types/vue' {
     Methods = {} | undefined,
     Computed = {} | undefined,
     Props = {} | undefined
-  > {
+    > {
     name?: string
     data: Data
     methods: Methods
@@ -101,7 +101,7 @@ declare module 'vue/types/vue' {
   interface VueConstructor<
     V extends Vue = Vue,
     Options = Record<string, any>
-  > {
+    > {
     version: string
     /* eslint-disable-next-line camelcase */
     $_vuetify_subcomponents?: Record<string, VueConstructor>

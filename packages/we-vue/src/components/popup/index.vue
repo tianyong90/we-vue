@@ -14,6 +14,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/popup.scss'
+
 import PopupMixin from '../../mixins/popup'
 
 import mixins from '../../utils/mixins'

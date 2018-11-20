@@ -37,6 +37,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-typescript": "^0.13.0",
     "eslint-plugin-vue": "^4.3.0",
+    "fork-ts-checker-webpack-plugin": "^0.4.15",
     "git-branch": "^2.0.1",
     "husky": "^1.1.0",
     "inquirer": "^6.0.0",

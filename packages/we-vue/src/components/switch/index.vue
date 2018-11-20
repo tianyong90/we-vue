@@ -27,6 +27,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/switch.scss'
+
 import { getTouch } from '../../utils'
 import Cell from '../cell/index'
 import Themeable from '../../mixins/themeable'

@@ -1,12 +1,12 @@
 export default {
-  data () {
+  data (): object {
     return {
       parent: null
     }
   },
 
   methods: {
-    findParent (name) {
+    findParent (name: string) {
       let parent = this.$parent
       while (parent) {
         if (parent.$options.name === name) {

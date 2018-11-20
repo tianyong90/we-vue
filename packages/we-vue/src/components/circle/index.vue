@@ -23,6 +23,7 @@
 </template>
 
 <script lang="ts">
+import '../../scss/circle.scss'
 
 import Vue from 'vue'
 

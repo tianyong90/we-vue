@@ -25,6 +25,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/radio.scss'
+
 import { PropValidator } from 'vue/types/options'
 
 import Themeable from '../../mixins/themeable'

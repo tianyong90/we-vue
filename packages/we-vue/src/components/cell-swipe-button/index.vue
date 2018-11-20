@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+import '../../scss/cell-swipe-button.scss'
 
 import Vue from 'vue'
 

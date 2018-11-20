@@ -3,7 +3,11 @@ declare module 'we-vue/lib' {
   import { WeVue } from 'we-vue'
 
   const WeVue: WeVue
-  // TODO: directives
+
+  const directives: {
+    ClickOutside: DirectiveOptions,
+    InfiniteScroll: DirectiveOptions
+  }
 
   const WvActionsheet: Component
   const WvArea: Component

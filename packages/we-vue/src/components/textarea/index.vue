@@ -21,6 +21,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/textarea.scss'
+
 import Vue from 'vue'
 
 export default Vue.extend({

@@ -23,6 +23,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/swipe.scss'
+
 import Vue from 'vue'
 import { getTouch } from '../../utils'
 

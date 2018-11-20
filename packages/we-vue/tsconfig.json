@@ -7,7 +7,7 @@
     "allowJs": false,
     "strict": false, // todo
     "importHelpers": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "moduleResolution": "node",
     "declaration": false,
     "experimentalDecorators": true,
@@ -15,16 +15,22 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "types": [
-      "reflect-metadata",
-      "node"
+      "webpack-env",
+      "jest"
     ],
-    "lib": ["es2017", "dom"]
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "files": [
     "src/vue-shims.d.ts"
   ],
   "include": [
-    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.vue",
     "test/**/*"
   ],
   "exclude": [

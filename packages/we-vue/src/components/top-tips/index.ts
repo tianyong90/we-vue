@@ -1,18 +1,39 @@
 import Vue from 'vue'
 import TopTipsComponent from './top-tips.vue'
-import { isObj } from '@/utils'
+import { isObj } from '../../utils'
+import { CombinedVueInstance, OptionsVue } from 'vue/types/vue'
 
-const defaultOptions = {
+type TopTipsOptions = {
+  message: string,
+  visible?: boolean,
+  duration?: number
+}
+
+type TopTipsType = CombinedVueInstance<Vue, {}, {}, {}, {
+  visible: boolean,
+  timer: any
+}>
+// {
+//   defaultOptions: TopTipsOptions,
+//   currentOptions: TopTipsOptions,
+//   close: Function,
+//   setDefaultOptions: Function,
+//   resetDefaultOptions: Function,
+//   [key: string]: any
+// }
+
+const defaultOptions: TopTipsOptions = {
+  message: '',
   visible: true,
   duration: 3000
 }
 
-let instance
-let currentOptions = { ...defaultOptions }
+let instance: any
+let currentOptions: TopTipsOptions = { ...defaultOptions }
 
-const parseOptions = message => (isObj(message) ? message : { message })
+const parseOptions: (message: string | object) => object = message => (isObj(message) ? <object>message : { message })
 
-const createInstance = () => {
+const createInstance: () => void = () => {
   instance = new (Vue.extend(TopTipsComponent))({
     el: document.createElement('div')
   })
@@ -24,47 +45,43 @@ const createInstance = () => {
   document.body.appendChild(instance.$el)
 }
 
-const TopTips = options => {
+const TopTips: (options: TopTipsOptions | string) => TopTipsType = options => {
   options = {
     ...currentOptions,
     ...parseOptions(options)
   }
 
-  if (!instance) {
-    createInstance()
-  }
-
-  Object.assign(instance, options)
-  clearTimeout(instance.timer)
-
-  Object.assign(instance, { ...options })
-
-  if (options.duration > 0) {
-    instance.timer = setTimeout(() => {
-      instance.visible = false
-    }, options.duration)
-  }
-
-  return instance
+  // if (!instance) {
+  //   createInstance()
+  // }
+  //
+  // Object.assign(instance, options)
+  // clearTimeout(instance.timer)
+  //
+  // Object.assign(instance, { ...options })
+  //
+  // if (options.duration > 0) {
+  //   instance.timer = setTimeout(() => {
+  //     instance.visible = false
+  //   }, options.duration)
+  // }
+  //
+  // return instance
 }
 
-TopTips.close = () => {
-  if (instance) {
-    instance.visible = false
-  }
-}
-
-TopTips.setDefaultOptions = options => {
-  Object.assign(TopTips.currentOptions, options)
-}
-
-TopTips.resetDefaultOptions = () => {
-  TopTips.currentOptions = { ...defaultOptions }
-}
-
-TopTips.install = () => {
-  Vue.use(TopTipsComponent)
-}
+// TopTips.close = () => {
+//   if (instance) {
+//     instance.visible = false
+//   }
+// }
+//
+// TopTips.setDefaultOptions = options => {
+//   Object.assign(TopTips.currentOptions, options)
+// }
+//
+// TopTips.resetDefaultOptions = () => {
+//   TopTips.currentOptions = { ...defaultOptions }
+// }
 
 Vue.prototype.$toptips = TopTips
 

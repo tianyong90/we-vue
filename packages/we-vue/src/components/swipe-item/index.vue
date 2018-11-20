@@ -5,6 +5,9 @@
 </template>
 
 <script lang="ts">
+// TODO
+// import '../../scss/swipe.scss'
+
 import Vue from 'vue'
 
 // parent swipe

@@ -31,6 +31,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/number-spinner.scss'
+
 import Vue from 'vue'
 
 export default Vue.extend({

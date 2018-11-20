@@ -38,6 +38,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/cell-swipe.scss'
+
 import Routeable from '../../mixins/routable'
 import { getTouch } from '../../utils'
 import Cell from '../cell/index'

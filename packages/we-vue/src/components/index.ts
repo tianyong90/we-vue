@@ -1,44 +1,91 @@
-// export * from './actionsheet'
-// export * from './area'
-export * from './badge'
-export * from './button'
-export * from './cell'
-export * from './cell-swipe'
-export * from './cell-swipe-button'
-export * from './checklist'
-export * from './circle'
-// export * from './datetime-picker'
-// export * from './dialog'
-export * from './flex'
-export * from './flex-item'
-export * from './footer'
-export * from './form-preview'
-export * from './grid'
-export * from './grid-item'
-export * from './group'
-export * from './header'
-export * from './icon'
-export * from './infinite-scroll'
-export * from './input'
-export * from './lazyload'
-export * from './loadmore'
-export * from './media-box'
-export * from './number-spinner'
-export * from './panel'
-// export * from './picker'
-export * from './popup'
-export * from './progress'
-export * from './radio'
-export * from './search-bar'
-export * from './slider'
-export * from './spinner'
-export * from './swipe'
-export * from './swipe-item'
-export * from './switch'
-export * from './tab'
-export * from './tabbar'
-export * from './tabbar-item'
-export * from './tabs'
-export * from './textarea'
-// export * from './toast'
-// export * from './top-tips'
+// import WvActionsheet from './actionsheet'
+// import WvArea from './area'
+import WvBadge from './badge'
+import WvButton from './button'
+import WvCell from './cell'
+import WvCellSwipe from './cell-swipe'
+import WvCellSwipeButton from './cell-swipe-button'
+import WvChecklist from './checklist'
+import WvCircle from './circle'
+// import WvDatetimePicker from './datetime-picker'
+// import WvDialog from './dialog'
+import WvFlex from './flex'
+import WvFlexItem from './flex-item'
+import WvFooter from './footer'
+import WvFormPreview from './form-preview'
+import WvGrid from './grid'
+import WvGridItem from './grid-item'
+import WvGroup from './group'
+import WvHeader from './header'
+import WvIcon from './icon'
+import WvInfiniteScroll from './infinite-scroll'
+import WvInput from './input'
+import WvLazyload from './lazyload'
+import WvLoadmore from './loadmore'
+import WvMediaBox from './media-box'
+import WvNumberSpinner from './number-spinner'
+import WvPanel from './panel'
+// import WvPicker from './picker'
+import WvPopup from './popup'
+import WvProgress from './progress'
+import WvRadio from './radio'
+import WvSearchBar from './search-bar'
+import WvSlider from './slider'
+import WvSpinner from './spinner'
+import WvSwipe from './swipe'
+import WvSwipeItem from './swipe-item'
+import WvSwitch from './switch'
+// import WvTab from './tab'
+import WvTabbar from './tabbar'
+import WvTabbarItem from './tabbar-item'
+// import WvTabs from './tabs'
+import WvTextarea from './textarea'
+// import WvToast from './toast'
+import WvTopTips from './top-tips'
+
+export {
+  // WvActionsheet,
+  // WvArea,
+  WvBadge,
+  WvButton,
+  WvCell,
+  WvCellSwipe,
+  WvCellSwipeButton,
+  WvChecklist,
+  WvCircle,
+  // WvDatetimePicker,
+  // WvDialog,
+  WvFlex,
+  WvFlexItem,
+  WvFooter,
+  WvFormPreview,
+  WvGrid,
+  WvGridItem,
+  WvGroup,
+  WvHeader,
+  WvIcon,
+  WvInfiniteScroll,
+  WvInput,
+  WvLazyload,
+  WvLoadmore,
+  WvMediaBox,
+  WvNumberSpinner,
+  WvPanel,
+  // WvPicker,
+  WvPopup,
+  WvProgress,
+  WvRadio,
+  WvSearchBar,
+  WvSlider,
+  WvSpinner,
+  WvSwipe,
+  WvSwipeItem,
+  WvSwitch,
+  // WvTab,
+  WvTabbar,
+  WvTabbarItem,
+  // WvTabs,
+  WvTextarea,
+  // WvToast,
+  WvTopTips
+}

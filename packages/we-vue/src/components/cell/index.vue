@@ -19,6 +19,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/cell.scss'
+
 import Routeable from '../../mixins/routable'
 import Themeable from '../../mixins/themeable'
 

@@ -6,6 +6,7 @@
 </template>
 
 <script lang="ts">
+import '../../scss/spinner.scss'
 
 import Vue from 'vue'
 

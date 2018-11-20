@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/grid.scss'
+
 import Themeable from '../../mixins/themeable'
 
 import mixins from '../../utils/mixins'

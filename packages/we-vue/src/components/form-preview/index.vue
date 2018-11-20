@@ -24,6 +24,7 @@
 </template>
 
 <script lang="ts">
+import '../../scss/form-preview.scss'
 
 import Vue from 'vue'
 

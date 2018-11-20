@@ -35,6 +35,7 @@
 </template>
 
 <script lang="ts">
+import '../../scss/checklist.scss'
 
 import Vue from 'vue'
 

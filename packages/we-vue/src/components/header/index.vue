@@ -15,6 +15,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/header.scss'
+
 import Themeable from '../../mixins/themeable'
 
 import mixins from '../../utils/mixins'

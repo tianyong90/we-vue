@@ -10,6 +10,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/button.scss'
+
 import Themeable from '../../mixins/themeable'
 
 import mixins from '../../utils/mixins'

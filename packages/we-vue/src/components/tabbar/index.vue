@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+import '../../scss/tabbar.scss'
 
 import Vue from 'vue'
 

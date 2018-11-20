@@ -9,6 +9,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/loadmore.scss'
+
 import Themeable from '../../mixins/themeable'
 
 import mixins from '../../utils/mixins'

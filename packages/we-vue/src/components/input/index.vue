@@ -34,6 +34,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/input.scss'
+
 import Themeable from '../../mixins/themeable'
 
 import icon from '../icon/index'

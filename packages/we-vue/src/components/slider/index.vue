@@ -29,6 +29,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/slider.scss'
+
 import { getTouch } from '../../utils'
 
 import Vue from 'vue'

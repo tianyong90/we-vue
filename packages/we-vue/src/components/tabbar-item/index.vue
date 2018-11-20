@@ -8,6 +8,9 @@
 </template>
 
 <script lang="ts">
+// TODO
+// import '../../scss/tabbar.scss'
+
 import Routeable from '../../mixins/routable'
 
 import Vue from 'vue'

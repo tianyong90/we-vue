@@ -11,6 +11,9 @@
 </template>
 
 <script lang="ts">
+// TODO
+// import '../../scss/grid-item.scss'
+
 import Routeable from '../../mixins/routable'
 
 import Themeable from '../../mixins/themeable'

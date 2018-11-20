@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts">
+import '../../scss/progress.scss'
 
 import Vue from 'vue'
 

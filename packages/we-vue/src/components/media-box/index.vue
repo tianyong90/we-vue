@@ -27,6 +27,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/media-box.scss'
+
 import Routeable from '../../mixins/routable'
 import Themeable from '../../mixins/themeable'
 

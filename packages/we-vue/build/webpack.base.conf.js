@@ -1,9 +1,9 @@
 'use strict'
-const path = require('path')
 const utils = require('./utils')
 const vueLoaderConfig = require('./vue-loader.conf')
 const { VueLoaderPlugin } = require('vue-loader')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -56,7 +56,9 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/]
+          transpileOnly: true,
+          appendTsSuffixTo: [/\.vue$/],
+          happyPackMode: isProd
         }
       },
       {
@@ -79,6 +81,11 @@ module.exports = {
   },
   plugins: [
     new ProgressBarPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ForkTsChecker({
+      vue: true,
+      tslint: false, // TODO
+      checkSyntacticErrors: isProd
+    })
   ]
 }

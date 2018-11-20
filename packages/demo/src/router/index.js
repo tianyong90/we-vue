@@ -13,7 +13,7 @@ const registerRoute = groups => {
       try {
         routes.push({
           path: `${nav.path}`,
-          component: resolve => require([`../views${nav.path}.vue`], resolve),
+          component: () => import(`../views${nav.path}.vue`),
           name: nav.title || nav.name,
           meta: {
             title: nav.title || nav.name,
@@ -33,7 +33,7 @@ const routes = registerRoute(Navs)
 
 routes.push({
   path: '/',
-  component: resolve => require(['../views/index.vue'], resolve),
+  component: () => import(/* webpackChunkName: "index" */ '../views/index.vue'),
   name: 'index',
   meta: {
     title: 'WE-VUE',
@@ -43,7 +43,7 @@ routes.push({
 
 routes.push({
   path: '*',
-  component: resolve => require(['../views/404.vue'], resolve),
+  component: () => import(/* webpackChunkName: "404" */ '../views/404.vue'),
   name: '404',
   meta: {
     title: '404 Not Found',

@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts">
+import '../../scss/panel.scss'
+
 import Themeable from '../../mixins/themeable'
 
 import mixins from '../../utils/mixins'

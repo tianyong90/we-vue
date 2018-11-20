@@ -50,13 +50,9 @@
 </template>
 
 <script lang="ts">
+import '../../scss/search-bar.scss'
+
 import WvCell from '../cell/index'
-
-import { PropValidator } from 'vue/types/options'
-
-import Themeable from '../../mixins/themeable'
-
-import mixins from '../../utils/mixins'
 
 import Vue from 'vue'
 
