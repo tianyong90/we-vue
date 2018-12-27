@@ -7,8 +7,7 @@ CellSwipe
 ```js
 import { CellSwipe, CellSwipeButton } from 'we-vue'
 
-Vue.use(CellSwipe)
-Vue.use(CellSwipeButton)
+Vue.use(CellSwipe).use(CellSwipeButton)
 ```
 :::warning
 cell-swipe 只能在 group 中使用。cell-swipe-button 仅与 cell-swipe 结合使用

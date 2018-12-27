@@ -111,8 +111,10 @@ describe('switch', () => {
   test('watch currentValue', () => {
     wrapper = mount(Switch, {
       attachToDocument: true,
-      data: {
-        currentValue: false
+      data: function () {
+        return {
+          currentValue: false
+        }
       }
     })
 

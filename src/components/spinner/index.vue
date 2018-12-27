@@ -9,7 +9,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-spinner',
+  name: 'spinner',
 
   props: {
     type: {

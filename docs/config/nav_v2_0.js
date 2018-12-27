@@ -144,6 +144,10 @@ export default [
           {
             title: 'Tabbar',
             path: '/doc/v2_0/tabbar'
+          },
+          {
+            title: 'Tabs',
+            path: '/doc/v2_0/tabs'
           }
         ]
       },

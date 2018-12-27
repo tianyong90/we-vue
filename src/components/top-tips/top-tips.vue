@@ -9,7 +9,7 @@ import { create } from '../../utils'
 import PopupMixin from '../../mixins/popup'
 
 export default create({
-  name: 'wv-top-tips',
+  name: 'top-tips',
 
   mixins: [PopupMixin],
 

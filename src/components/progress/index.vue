@@ -13,7 +13,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-progress',
+  name: 'progress',
 
   props: {
     percent: {

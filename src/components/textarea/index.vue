@@ -24,7 +24,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-textarea',
+  name: 'textarea',
 
   props: {
     placeholder: String,

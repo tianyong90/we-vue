@@ -8,7 +8,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-cell-swipe-button',
+  name: 'cell-swipe-button',
 
   props: {
     type: {

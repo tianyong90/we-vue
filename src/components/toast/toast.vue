@@ -1,23 +1,22 @@
 <template>
   <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
-    <div v-show="visible">
-      <div
-        class="weui-toast"
-        :class="{ 'weui-toast_text': type === 'text' }"
-        ref="toast">
-        <wv-icon
-          :type="icon"
-          class="weui-icon_toast"
-          v-if="type !== 'text' && type !== 'loading'"
-        />
-        <wv-spinner
-          class="weui-icon_toast"
-          v-if="type === 'loading' && spinnerType !=='none'"
-          :type="spinnerType"
-          :size="25"
-        />
-        <p class="weui-toast__content" v-text="message"/>
-      </div>
+    <div
+      v-show="visible"
+      class="weui-toast"
+      :class="{ 'weui-toast_text': type === 'text' }"
+      ref="toast">
+      <wv-icon
+        :type="icon"
+        class="weui-icon_toast"
+        v-if="type !== 'text' && type !== 'loading'"
+      />
+      <wv-spinner
+        class="weui-icon_toast"
+        v-if="type === 'loading' && spinnerType !=='none'"
+        :type="spinnerType"
+        :size="25"
+      />
+      <p class="weui-toast__content" v-text="message"/>
     </div>
   </transition>
 </template>
@@ -29,7 +28,7 @@ import { create } from '../../utils'
 import PopupMixin from '../../mixins/popup'
 
 export default create({
-  name: 'wv-toast',
+  name: 'toast',
 
   components: {
     WvIcon,

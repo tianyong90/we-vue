@@ -12,7 +12,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-navbar-item',
+  name: 'navbar-item',
 
   props: {
     id: String,

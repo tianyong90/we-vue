@@ -42,7 +42,7 @@ export default create({
     [icon.name]: icon
   },
 
-  name: 'wv-input',
+  name: 'input',
 
   props: {
     type: {

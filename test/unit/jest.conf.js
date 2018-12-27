@@ -7,6 +7,7 @@ module.exports = {
     'json',
     'vue'
   ],
+  testURL: 'http://localhost/',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js',

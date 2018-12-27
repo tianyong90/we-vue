@@ -18,7 +18,7 @@
             class="btn btn-primary ml-2 mr-2"
           >示例</a>
           <a
-            href="https://github.com/tianyong90/we-vue"
+            href="https://github.com/tianyong90/WE-VUE"
             class="btn btn-primary ml-2 mr-2"
           >GitHub</a>
         </div>
@@ -38,7 +38,7 @@
               <div class="card-title">
                 简单易用
               </div>
-              <p>we-vue 组件使用简单，配置很容易。支持多种引入方式。对于对 vue 有一定了解的开发者，一定能很快上手。</p>
+              <p>WE-VUE 组件使用简单，配置很容易。支持多种引入方式。对于对 Vue.js 有一定了解的开发者，一定能很快上手。</p>
             </div>
           </div>
           <div class="card shadow">
@@ -54,7 +54,7 @@
               <div class="card-title">
                 在线示例
               </div>
-              <p>针对最新版本的组件，我们为每一个组件都编写了示例。查看示例可以随时了解 we-vue 组件的最新特性及细节。</p>
+              <p>针对最新版本，我们为每一个组件都编写了示例。查看示例可以随时了解 WE-VUE 组件的最新特性及细节。</p>
             </div>
           </div>
         </div>
@@ -64,12 +64,12 @@
     <footer class="footer w-100 mt-4">
       <div class="container pt-3 pb-3">
         <div class="row justify-content-center">
-          <a class="text-light m-2" href="https://github.com/tianyong90/we-vue">GitHub</a>
-          <a class="text-light m-2" href="https://gitee.com/tianyong/we-vue">Gitee</a>
+          <a class="text-light m-2" href="https://github.com/tianyong90/WE-VUE">GitHub</a>
+          <a class="text-light m-2" href="https://gitee.com/tianyong/WE-VUE">Gitee</a>
         </div>
 
         <div class="row justify-content-center mt-2">
-          <p class="text-light">Copyright © 2016-2018 粤ICP备17009332号-1</p>
+          <p class="text-light">Copyright © 2016-2018 <a class="text-light" href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a></p>
         </div>
       </div>
     </footer>

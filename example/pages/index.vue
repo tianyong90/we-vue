@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="page__hd">
-      <img :src="logoImg" alt="" class="logo">
+      <img :src="logoImg" class="logo">
       <h1 class="page__title">WE-VUE</h1>
     </div>
     <wv-search-bar placeholder="搜索组件" v-model="keyword" :result="filterResult">
@@ -19,7 +19,9 @@
       </wv-cell>
     </wv-group>
 
-    <wv-footer class="footer-copyright" text="Copyright © 2016 - 2018 粤ICP备17009332号-1"/>
+    <div class="weui-footer footer-copyright">
+      <p data-v-62fe346e="" class="weui-footer__text">Copyright © 2016 - 2018 <a href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a></p>
+    </div>
   </div>
 </template>
 

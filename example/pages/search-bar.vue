@@ -5,6 +5,7 @@
       v-model="value1"
       :result="filterResult"
       @click-result="onClickResult"
+      @search="onSearch"
     />
 
     <wv-search-bar
@@ -121,6 +122,10 @@ export default {
   },
 
   methods: {
+    onSearch (val) {
+      this.$toast.text('提交搜索：' + val)
+    },
+
     onClickResult (item) {
       console.log(item)
     }

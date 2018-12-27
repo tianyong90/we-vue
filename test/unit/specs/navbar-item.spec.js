@@ -11,26 +11,16 @@ describe('navbar-item', () => {
   })
 
   test('create', () => {
-    parentWrapper = mount(Navbar, {
-      propsData: {
-        animate: true
-      }
-    })
-
     let wrapper = shallowMount(NavbarItem, {
-      parent: parentWrapper.vm
+      parentComponent: Navbar
     })
 
     expect(wrapper.name()).toBe('wv-navbar-item')
   })
 
   test('comput isSelected', () => {
-    parentWrapper = mount(Navbar, {
-      propsData: {}
-    })
-
     let wrapper = shallowMount(NavbarItem, {
-      parent: parentWrapper.vm
+      parentComponent: Navbar
     })
 
     const isSelected = wrapper.vm.id === wrapper.vm.$parent.value
@@ -39,12 +29,8 @@ describe('navbar-item', () => {
   })
 
   test('comput style', () => {
-    parentWrapper = mount(Navbar, {
-      propsData: {}
-    })
-
     let wrapper = shallowMount(NavbarItem, {
-      parent: parentWrapper.vm
+      parentComponent: Navbar
     })
 
     const computedStyle = {

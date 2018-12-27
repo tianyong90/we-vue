@@ -39,13 +39,15 @@ import Spinner from './components/spinner'
 import Swipe from './components/swipe'
 import SwipeItem from './components/swipe-item'
 import Switch from './components/switch'
+import Tab from './components/tab'
 import Tabbar from './components/tabbar'
 import TabbarItem from './components/tabbar-item'
+import Tabs from './components/tabs'
 import Textarea from './components/textarea'
 import Toast from './components/toast'
 import TopTips from './components/top-tips'
 
-const version = '2.1.3'
+const version = '2.2.5'
 const components = [
   Actionsheet,
   Badge,
@@ -83,8 +85,10 @@ const components = [
   Swipe,
   SwipeItem,
   Switch,
+  Tab,
   Tabbar,
   TabbarItem,
+  Tabs,
   Textarea
 ]
 
@@ -152,8 +156,10 @@ export {
   Swipe,
   SwipeItem,
   Switch,
+  Tab,
   Tabbar,
   TabbarItem,
+  Tabs,
   Textarea,
   Toast,
   TopTips

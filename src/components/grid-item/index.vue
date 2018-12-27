@@ -15,7 +15,7 @@ import RouterLink from '../../mixins/router-link'
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-grid-item',
+  name: 'grid-item',
 
   mixins: [RouterLink],
 

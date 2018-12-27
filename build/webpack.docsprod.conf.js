@@ -8,6 +8,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const safeParser = require('postcss-safe-parser')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -36,6 +38,15 @@ const webpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        }
+      },
+      sourceMap: false,
+      parallel: true
+    }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
@@ -44,7 +55,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
-        safe: true
+        parser: safeParser
       }
     }),
     // generate dist index.html with correct asset hash for caching.

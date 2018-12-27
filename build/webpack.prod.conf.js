@@ -8,6 +8,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const safeParser = require('postcss-safe-parser')
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -36,15 +37,15 @@ const webpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
-    // new UglifyJsPlugin({
-    //   uglifyOptions: {
-    //     compress: {
-    //       warnings: false
-    //     }
-    //   },
-    //   sourceMap: false,
-    //   parallel: true
-    // }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        }
+      },
+      sourceMap: false,
+      parallel: true
+    }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: 'style.css',
@@ -57,8 +58,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: config.build.productionSourceMap
-      ? { safe: true, map: { inline: false } }
-      : { safe: true }
+      ? { parser: safeParser, map: { inline: false } }
+      : { parser: safeParser }
     }),
     // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin()

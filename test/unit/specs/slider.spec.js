@@ -1,4 +1,4 @@
-import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Slider from '@/components/slider'
 import { horizontalDrag } from '../utils'
 import faker from 'faker'
@@ -17,8 +17,11 @@ describe('slider', () => {
     expect(wrapper.name()).toBe('wv-slider')
     expect(wrapper.classes()).toContain('weui-slider-box')
 
+    // vue 默认会将异常转为 console.eeror 输出，为此通过 mock console.error 和 console.warn，避免这一机制，方便测试
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+    jest.spyOn(console, 'warn').mockImplementation(() => {})
+
     // set the min be bigger than max
-    const localVue = createLocalVue()
     expect(() => {
       shallowMount(Slider, {
         propsData: {
@@ -26,7 +29,7 @@ describe('slider', () => {
           max: 1
         }
       })
-    }).toThrow()
+    }).toThrow('property:max must be bigger than property:min')
   })
 
   test('compute percent', () => {

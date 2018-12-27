@@ -38,7 +38,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-checklist',
+  name: 'checklist',
 
   props: {
     max: {
