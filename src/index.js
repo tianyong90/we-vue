@@ -31,6 +31,7 @@ import Panel from './components/panel'
 import Picker from './components/picker'
 import Popup from './components/popup'
 import Progress from './components/progress'
+import PullRefresh from './components/pull-refresh'
 import Radio from './components/radio'
 import SearchBar from './components/search-bar'
 import Slider from './components/slider'
@@ -74,6 +75,7 @@ const components = [
   Picker,
   Popup,
   Progress,
+  PullRefresh,
   Radio,
   SearchBar,
   Slider,
@@ -142,6 +144,7 @@ export {
   Picker,
   Popup,
   Progress,
+  PullRefresh,
   Radio,
   SearchBar,
   Slider,
