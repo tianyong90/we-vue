@@ -17,7 +17,7 @@ import { create } from '../../utils'
 import { off, on } from '../../utils/event'
 
 export default create({
-  name: 'wv-pull-refresh',
+  name: 'pull-refresh',
   data () {
     return {
       startY: '',
@@ -55,18 +55,24 @@ export default create({
       on(el, 'touchend', this.touchEnd)
     },
     touchStart (e) {
+      this.moveDistance = 0
       this.startY = e.targetTouches[0].clientY
     },
     touchMove (e) {
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      if (scrollTop > 0) return
       let move = e.targetTouches[0].clientY - this.startY
-      this.isMove = true
-      if (this.$refs.scrollBox.scrollTop === 0 && move > 0) {
+      if (move > 0) {
+        e.preventDefault()
+        this.isMove = true
         let diff = e.targetTouches[0].clientY - this.startY
         this.moveDistance = Math.pow(diff, 0.8)
         this.$refs.scrollBox.style.transform = `translate3d(0, ${this.moveDistance}px, 0)`
         if (this.moveDistance > 50) {
+          if (this.tipText === '释放即可刷新...') return
           this.tipText = '释放即可刷新...'
         } else {
+          if (this.tipText === '下拉即可刷新...') return
           this.tipText = '下拉即可刷新...'
         }
       }
@@ -81,9 +87,6 @@ export default create({
       } else {
         this.$refs.scrollBox.style.transform = `translate3d(0, 0px, 0)`
       }
-    },
-    animateEnd () {
-      this.$refs.scrollBox.style.transition = null
     }
   },
   watch: {
