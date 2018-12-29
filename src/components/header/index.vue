@@ -18,7 +18,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-header',
+  name: 'header',
 
   props: {
     title: String,

@@ -15,7 +15,11 @@ Vue.use(SearchBar)
 ```html
 <template>
   <div>
-    <wv-search-bar :autofocus="false" v-model="value" :result="filterResult"></wv-search-bar>
+    <wv-search-bar 
+      :autofocus="false" 
+      v-model="value" 
+      :result="filterResult"
+    />
   </div>
 </template>
 
@@ -77,3 +81,4 @@ export default {
 |   事件名   |   说明    |   参数   |
 | :----: | :-----: | :----: |
 | click-result  | 点击搜索结果项事件  |  所点击的搜索结果项   |
+| search  | 点击搜索按钮时触发  |  当前搜索框值   |

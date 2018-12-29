@@ -1,5 +1,9 @@
 <template>
   <div class="page">
+    <div class="tips">
+      switch 支持左右滑动和点击进行开关操作
+    </div>
+
     <wv-group>
       <wv-switch title="开关1" v-model="switchValue1"/>
       <wv-switch title="开关2（禁用）" disabled v-model="switchValue2"/>
@@ -26,6 +30,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .tips {
+    padding: .2rem .5rem;
+    font-size: 13px;
+    color: #555;
+  }
+
   .standalone-switches {
     margin: 20px 0;
 

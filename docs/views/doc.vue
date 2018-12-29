@@ -13,7 +13,11 @@
             v-for="(group, index) in navItem.groups"
             :key="index"
           >
-            <div class="group-name" v-text="group.groupName" v-if="group.groupName"/>
+            <div
+              class="group-name"
+              v-text="group.groupName"
+              v-if="group.groupName"
+            />
             <ul class="sub-tree">
               <li>
                 <router-link
@@ -45,7 +49,7 @@ import 'highlight.js/styles/atom-one-dark.css'
 
 export default {
   components: {
-    'wevue-demo': () => import('./wevue-demo.vue')
+    'wevue-demo': () => import('../components/wevue-demo.vue')
   },
 
   data () {
@@ -63,6 +67,11 @@ export default {
 
     this.demoUrl = this.$route.meta.demo_url
     this.version = this.$route.meta.version
+
+    // 侧栏菜单当前项自动滚动到可见区
+    const containerSidebar = document.getElementById('sidebar')
+    const sidebarActiveItem = document.querySelector('#sidebar .current')
+    containerSidebar.scrollTop = sidebarActiveItem.offsetTop
 
     // 右侧 DEMO 区实在 sticky 效果
     document.addEventListener('scroll', () => {

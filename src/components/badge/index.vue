@@ -12,7 +12,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-badge',
+  name: 'badge',
 
   props: {
     color: String,

@@ -5,6 +5,7 @@
 const execa = require('execa')
 const inquirer = require('inquirer')
 const Listr = require('listr')
+const currentBranch = require('git-branch').sync()
 
 const release = function (version) {
   const tasks = new Listr([

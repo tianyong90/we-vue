@@ -33,7 +33,7 @@ we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui.css 样式库�
 
 ```shell
 // yarn 推荐
-$ yarn add we-vue -S
+$ yarn add we-vue
 
 // npm
 $ npm install we-vue -S

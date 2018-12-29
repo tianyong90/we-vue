@@ -7,8 +7,7 @@ Grid
 ```js
 import { Grid, GridItem } from 'we-vue'
 
-Vue.use(Grid)
-Vue.use(GridItem)
+Vue.use(Grid).use(GridItem)
 ```
 :::warning
 grid 需要与 grid-item 配合使用

@@ -28,7 +28,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-radio',
+  name: 'radio',
 
   props: {
     title: String,

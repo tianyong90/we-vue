@@ -14,7 +14,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-panel',
+  name: 'panel',
 
   props: {
     title: String

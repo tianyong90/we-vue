@@ -8,7 +8,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-flex-item',
+  name: 'flex-item',
 
   props: {
     flex: {

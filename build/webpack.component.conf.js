@@ -7,6 +7,8 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const componentsEntry = require('./bin/components-helpers').getComponentsEntry()
+const safeParser = require('postcss-safe-parser')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -39,13 +41,15 @@ const webpackConfig = merge(baseWebpackConfig, {
 
   },
   plugins: [
-    // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false
-    //   },
-    //   sourceMap: false
-    // }),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        }
+      },
+      sourceMap: false,
+      parallel: true
+    }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: '[name]/style.css'
@@ -54,7 +58,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
-        safe: true
+        parser: safeParser
       }
     })
   ]

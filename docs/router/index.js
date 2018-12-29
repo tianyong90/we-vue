@@ -18,7 +18,7 @@ export default new Router({
       path: '/',
       name: 'home',
       components: {
-        default: () => import('../components/index')
+        default: () => import('../views/index')
       }
     },
     {
@@ -26,7 +26,7 @@ export default new Router({
       name: 'doc',
       components: {
         header: Header,
-        default: () => import('../components/doc')
+        default: () => import('../views/doc')
       },
       children: [
         ...routes_v1_6,

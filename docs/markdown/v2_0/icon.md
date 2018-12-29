@@ -8,9 +8,6 @@ Icon
 import { Icon } from 'we-vue'
 
 Vue.use(Icon)
-
-// or
-Vue.use(Icon)
 ```
 
 ## 例子

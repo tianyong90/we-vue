@@ -13,7 +13,7 @@ import RouterLink from '../../mixins/router-link'
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-tabbar-item',
+  name: 'tabbar-item',
 
   mixins: [RouterLink],
 

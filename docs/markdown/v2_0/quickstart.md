@@ -3,16 +3,15 @@
 
 本文将介绍如果在项目中使用 WeVue。
 
-1. 创建一个 vue.js 项目，我们使用 Vue 官方脚手架工具 vue-cli
+1. 创建一个 vue.js 项目，推荐引用最新版本的 vue-cli 工具来创建。
 
 ```bash
-npm install -g vue-cli
-// 以下命令以 vue-cli v2.9 版本为例，若使用新版本 vue-cli 工具请查阅期官方文档
-vue init webpack <your_projectname>
+npm install -g @vue/cli @vue/cli-service-global
+
+vue create <your_projectname>
 ```
 
 2. 引入 WeVue
-
 
 - 完整引入
 
@@ -42,31 +41,31 @@ new Vue({
 npm install babel-plugin-import -D
 ```
 
-然后修改 .babelrc:
+然后修改 babel.config.js:
 
-```json
-{
-  "presets": [
-    ["es2015", { "modules": false }]
+**注意 plugins 项**
+
+```js
+module.exports = {
+  presets: [
+    '@vue/app'
   ],
-  "plugins": [["import", [
-    {
-      "libraryName": "we-vue",
-      "style": "style.css"
-    }
-  ]]]
+  plugins: [
+    ["import", { "libraryName": "we-vue", "style": "style.css" }, "we-vue"]
+  ]
 }
+
 ```
 
 配置完成之后便可以按需引入需要的组件，例如引入 Group 和 Cell，代码如下:
 
 ```js
 import Vue from 'vue'
+import 'we-vue/lib/style.css' // 按需引入时也需要引入此样式
 import { Group, Cell } from 'we-vue'
 import App from './App.vue'
 
-Vue.use(Group)
-Vue.use(Cell)
+Vue.use(Group).use(Cell)
 
 new Vue({
   el: '#app',
@@ -76,6 +75,6 @@ new Vue({
 
 3. 开始使用
 
-运行 `npm run dev` 启动本地服务器进行开发。
+运行 `npm run serve` 启动本地服务器进行开发。
 
 运行 `npm run build` 进行编译。

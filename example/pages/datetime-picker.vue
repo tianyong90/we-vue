@@ -5,19 +5,19 @@
         title="时间"
         :value="demoTime | datetimeFilter('time')"
         is-link
-        @click.native="$refs.timePicker.open()"
+        @click="openPicker('timePicker')"
       />
       <wv-cell
         title="日期"
         :value="demoDate | datetimeFilter('date')"
         is-link
-        @click.native="$refs.datePicker.open()"
+        @click="openPicker('datePicker')"
       />
       <wv-cell
         title="日期时间"
         :value="demoDatetime1 | datetimeFilter('datetime')"
         is-link
-        @click.native="$refs.datetimePicker.open()"
+        @click="openPicker('datetimePicker')"
       />
     </wv-group>
 
@@ -26,13 +26,13 @@
         title="自定义模板"
         :value="demoDatetime2 | datetimeFilter('datetime')"
         is-link
-        @click.native="$refs.formatDatetimePicker.open()"
+        @click="openPicker('formatDatetimePicker')"
       />
       <wv-cell
         title="自定义起止范围"
         :value="demoDatetime3 | datetimeFilter('datetime')"
         is-link
-        @click.native="$refs.rangeDatetimePicker.open()"
+        @click="openPicker('rangeDatetimePicker')"
       />
     </wv-group>
 
@@ -87,7 +87,7 @@ export default {
   data () {
     return {
       demoTime: '12:23',
-      demoDatetime1: new Date(),
+      demoDatetime1: new Date(2016, 11, 1, 12, 0, 0),
       demoDatetime2: new Date(),
       demoDatetime3: new Date(),
       demoDate: new Date()
@@ -95,6 +95,10 @@ export default {
   },
 
   methods: {
+    openPicker (ref) {
+      this.$refs[ref].open()
+    },
+
     onConfirm (value) {
       let message = ''
 

@@ -7,8 +7,7 @@ Swipe
 ```js
 import { Swipe, SwipeItem } from 'we-vue'=
 
-Vue.use(Swipe)
-Vue.use(SwipeItem)
+Vue.use(Swipe).use(SwipeItem)
 ```
 
 ## 例子

@@ -44,7 +44,7 @@ import RouterLink from '../../mixins/router-link'
 import Clickoutside from '../../utils/clickoutside'
 
 export default create({
-  name: 'wv-cell-swipe',
+  name: 'cell-swipe',
 
   components: {
     [Cell.name]: Cell

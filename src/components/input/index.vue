@@ -42,7 +42,7 @@ export default create({
     [icon.name]: icon
   },
 
-  name: 'wv-input',
+  name: 'input',
 
   props: {
     type: {
@@ -130,7 +130,7 @@ export default create({
     },
 
     onChange () {
-      // this.$emit('change', this.currentValue)
+      this.$emit('change', this.currentValue)
 
       if (typeof this.validateMode === 'undefined' || this.validateMode.onChange !== false) {
         this.validate()

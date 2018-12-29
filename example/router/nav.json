@@ -162,8 +162,8 @@
         "icon": "header"
       },
       {
-        "path": "/navbar",
-        "name": "Navbar",
+        "path": "/tabs",
+        "name": "Tabs",
         "description": "选项卡",
         "icon": "tab"
       },

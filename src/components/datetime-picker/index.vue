@@ -19,7 +19,7 @@ import WvPicker from '../picker'
 const isValidDate = date => Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())
 
 export default create({
-  name: 'wv-datetime-picker',
+  name: 'datetime-picker',
 
   components: {
     WvPicker
@@ -41,16 +41,12 @@ export default create({
     },
     startDate: {
       type: Date,
-      default () {
-        return new Date(new Date().getFullYear() - 10, 0, 1)
-      },
+      default: () => new Date(new Date().getFullYear() - 10, 0, 1),
       validator: isValidDate
     },
     endDate: {
       type: Date,
-      default () {
-        return new Date(new Date().getFullYear() + 10, 11, 31)
-      },
+      default: () => new Date(new Date().getFullYear() + 10, 11, 31),
       validator: isValidDate
     },
     startHour: {
@@ -261,7 +257,7 @@ export default create({
         if (value.getMonth() + 1 === month) {
           date = boundary.getDate()
           if (value.getDate() === date) {
-            hour = value.getHours()
+            hour = boundary.getHours()
             if (value.getHours() === hour) {
               minute = boundary.getMinutes()
             }
@@ -283,19 +279,19 @@ export default create({
       if (this.type === 'time') {
         const currentValue = value.split(':')
         values = [
-          currentValue[0],
-          currentValue[1]
+          this.hourFormat.replace('{value}', `0${currentValue[0]}`.slice(-2)),
+          this.minuteFormat.replace('{value}', `0${currentValue[1]}`.slice(-2))
         ]
       } else {
         values = [
-          `${value.getFullYear()}`,
-          `0${value.getMonth() + 1}`.slice(-2),
-          `0${value.getDate()}`.slice(-2)
+          this.yearFormat.replace('{value}', `${value.getFullYear()}`),
+          this.monthFormat.replace('{value}', `0${value.getMonth() + 1}`.slice(-2)),
+          this.dateFormat.replace('{value}', `0${value.getDate()}`.slice(-2))
         ]
         if (this.type === 'datetime') {
           values.push(
-            `0${value.getHours()}`.slice(-2),
-            `0${value.getMinutes()}`.slice(-2)
+            this.hourFormat.replace('{value}', `0${value.getHours()}`.slice(-2)),
+            this.minuteFormat.replace('{value}', `0${value.getMinutes()}`.slice(-2))
           )
         }
       }

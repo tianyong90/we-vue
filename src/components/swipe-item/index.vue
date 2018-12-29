@@ -8,7 +8,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-swipe-item',
+  name: 'swipe-item',
 
   data () {
     return {

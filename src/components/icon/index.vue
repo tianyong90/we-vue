@@ -6,7 +6,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-icon',
+  name: 'icon',
 
   props: {
     type: {

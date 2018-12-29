@@ -7,7 +7,7 @@ import RouterLink from '../../mixins/router-link'
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-footer-link',
+  name: 'footer-link',
 
   mixins: [RouterLink],
 

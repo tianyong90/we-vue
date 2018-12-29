@@ -1,25 +1,47 @@
 <template>
   <div class="page">
     <wv-panel title="图文组合列表">
-      <wv-media-box :thumb="thumb" title="标题一" :description="descriptionRouterLink" to="/"/>
-      <wv-media-box :thumb="thumb" title="标题二" :description="descriptionUrl" url="/"/>
+      <wv-media-box
+        :thumb="thumb"
+        title="标题一"
+        :description="descriptionRouterLink"
+        to="/"
+      />
+      <wv-media-box
+        :thumb="thumb"
+        title="标题二"
+        :description="descriptionUrl"
+        url="/"
+      />
 
       <wv-cell title="查看更多" is-link slot="ft"/>
     </wv-panel>
 
     <wv-panel title="文字组合列表">
-      <wv-media-box :thumb="thumb" title="标题一" :description="descriptionRouterLink" to="/" type="text"/>
-      <wv-media-box :thumb="thumb" title="标题二" :description="descriptionUrl" url="/" type="text"/>
+      <wv-media-box
+        :thumb="thumb"
+        title="标题一"
+        :description="descriptionRouterLink"
+        to="/"
+        type="text"
+      />
+      <wv-media-box
+        :thumb="thumb"
+        title="标题二"
+        :description="descriptionUrl"
+        url="/"
+        type="text"
+      />
 
       <wv-cell title="查看更多" is-link slot="ft"/>
     </wv-panel>
 
     <wv-panel title="小图文组合列表">
       <wv-cell title="文字标题" is-link to="/">
-        <img :src="thumbSmall" alt="" slot="icon" class="cell-icon">
+        <img :src="thumbSmall" slot="icon" class="cell-icon">
       </wv-cell>
       <wv-cell title="文字标题" is-link to="/">
-        <img :src="thumbSmall" alt="" slot="icon" class="cell-icon">
+        <img :src="thumbSmall" slot="icon" class="cell-icon">
       </wv-cell>
     </wv-panel>
 

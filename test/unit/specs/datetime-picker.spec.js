@@ -175,8 +175,9 @@ describe('datetime-picker', () => {
     await slowVerticalDrag(hourColumn, 0, 34 * 24)
     await slowVerticalDrag(minuteColumn, 0, 34 * 10)
     expect(wrapper.vm.currentValue).toEqual('0:00')
-  }, 15000)
+  })
 
+  // TODO:
   test('drag datetime picker', async () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -203,8 +204,9 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.currentValue.getDate()).toBe(testDate.getDate() + 1)
     expect(wrapper.vm.currentValue.getHours()).toBe(testDate.getHours() + 1)
     expect(wrapper.vm.currentValue.getMinutes()).toBe(testDate.getMinutes() + 1)
-  }, 15000)
+  })
 
+  // TODO:
   test('drag date picker', async () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -227,7 +229,7 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.currentValue.getFullYear()).toEqual(testDate.getFullYear() + 1)
     expect(wrapper.vm.currentValue.getMonth()).toEqual(testDate.getMonth() + 1)
     expect(wrapper.vm.currentValue.getDate()).toEqual(testDate.getDate() + 1)
-  }, 10000)
+  })
 
   test('watch value change', () => {
     wrapper = mount(DatetimePicker, {

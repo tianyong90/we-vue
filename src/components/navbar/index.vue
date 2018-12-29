@@ -1,7 +1,11 @@
 <template>
   <div class="wv-navbar" :style="style">
     <slot />
-    <div class="wv-navbar-underline" v-if="animate" :style="lineStyle" />
+    <div
+      class="wv-navbar-underline"
+      v-if="animate"
+      :style="lineStyle"
+    />
   </div>
 </template>
 
@@ -9,7 +13,7 @@
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-navbar',
+  name: 'navbar',
 
   props: {
     fixed: Boolean,

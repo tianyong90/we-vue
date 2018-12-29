@@ -11,7 +11,7 @@ import PopupMixin from '../../mixins/popup'
 import { create } from '../../utils'
 
 export default create({
-  name: 'wv-popup',
+  name: 'popup',
 
   mixins: [PopupMixin],
 
