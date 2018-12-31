@@ -281,6 +281,14 @@ let v2_0 = [
     }
   },
   {
+    path: 'v2_0/pull_refresh',
+    component: () => import('../markdown/v2_0/pull_refresh.md'),
+    meta: {
+      title: 'pull_refresh',
+      demo_url: `${demoUrlBase}/pull_refresh`
+    }
+  },
+  {
     path: 'v2_0/loadmore',
     component: () => import('../markdown/v2_0/loadmore.md'),
     meta: {
