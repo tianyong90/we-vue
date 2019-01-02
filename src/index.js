@@ -31,6 +31,7 @@ import Panel from './components/panel'
 import Picker from './components/picker'
 import Popup from './components/popup'
 import Progress from './components/progress'
+import PullRefresh from './components/pull-refresh'
 import Radio from './components/radio'
 import SearchBar from './components/search-bar'
 import Slider from './components/slider'
@@ -46,7 +47,7 @@ import Textarea from './components/textarea'
 import Toast from './components/toast'
 import TopTips from './components/top-tips'
 
-const version = '2.2.5'
+const version = '2.2.7'
 const components = [
   Actionsheet,
   Badge,
@@ -76,6 +77,7 @@ const components = [
   Picker,
   Popup,
   Progress,
+  PullRefresh,
   Radio,
   SearchBar,
   Slider,
@@ -146,6 +148,7 @@ export {
   Picker,
   Popup,
   Progress,
+  PullRefresh,
   Radio,
   SearchBar,
   Slider,

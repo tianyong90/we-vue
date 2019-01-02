@@ -4,7 +4,7 @@
       enter-active-class="weui-animate-fade-in"
       leave-active-class="weui-animate-fade-out"
     >
-      <div class="weui-mask" v-show="visible"/>
+      <div class="weui-mask" @click="onCancel" v-show="visible"/>
     </transition>
     <transition
       enter-active-class="weui-animate-slide-up"

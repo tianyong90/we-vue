@@ -184,6 +184,10 @@ export default [
             path: '/doc/v2_0/grid'
           },
           {
+            title: 'PullRefresh',
+            path: '/doc/v2_0/pull_refresh'
+          },
+          {
             title: 'Loadmore',
             path: '/doc/v2_0/loadmore'
           },

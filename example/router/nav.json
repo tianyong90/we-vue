@@ -220,6 +220,12 @@
         "icon": "grid"
       },
       {
+        "path": "/pull-refresh",
+        "name": "PullRefresh",
+        "description": "下拉加载",
+        "icon": "spinner"
+      },
+      {
         "path": "/loadmore",
         "name": "Loadmore",
         "description": "加载更多",
