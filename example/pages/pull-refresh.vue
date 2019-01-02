@@ -1,29 +1,30 @@
 <template>
-  <wv-pull-refresh v-model="isLoading" @refresh="refresh">
+  <wv-pull-refresh @refresh="refresh">
     <div class="content">
       <p class="text">基础用法</p>
       刷新次数：{{ num }}
     </div>
   </wv-pull-refresh>
 </template>
+
 <script>
 export default {
   data () {
     return {
-      isLoading: false,
       num: 0
     }
   },
   methods: {
-    refresh () {
+    refresh (done) {
       setTimeout(() => {
-        this.isLoading = false
         this.num++
+        done()
       }, 500)
     }
   }
 }
 </script>
+
 <style scoped lang="scss">
 .content{
   padding:0 15px;

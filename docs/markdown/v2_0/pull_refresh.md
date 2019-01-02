@@ -14,31 +14,32 @@ Vue.use(PullRefresh)
 
 ```html
 <template>
-  <wv-pull-refresh v-model="isLoading" @refresh="refresh">
+  <wv-pull-refresh @refresh="refresh">
     <div class="content">
       <p class="text">基础用法</p>
       刷新次数：{{ num }}
     </div>
   </wv-pull-refresh>
 </template>
+
 <script>
 export default {
   data () {
     return {
-      isLoading: false,
       num: 0
     }
   },
   methods: {
-    refresh () {
+    refresh (done) {
       setTimeout(() => {
-        this.isLoading = false
         this.num++
+        done()
       }, 500)
     }
   }
 }
 </script>
+
 <style scoped lang="scss">
 .content{
   padding:0 15px;
@@ -49,16 +50,8 @@ export default {
 }
 </style>
 ```
-
-## API
-
-|   参数   |   类型    |   说明   | 可选值  |  默认值  |
-| :----: | :-----: | :----: | :--: | :---: |
-| v-model  | Boolean |  数据加载完毕后关闭加载动画   |      | false  |
-
-
 ## Events
 
 |   事件名   |   说明    |   参数   |
 | :----: | :-----: | :----: |
-| refresh  | 下拉成功后的回调函数  |     |
+| refresh  | 下拉刷新时触发  |  结束加载动画   |
