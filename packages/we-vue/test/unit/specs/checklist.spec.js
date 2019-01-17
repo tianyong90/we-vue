@@ -4,7 +4,7 @@ import Checklist from '@/checklist'
 const options = [
   'value1',
   'value2',
-  'value3'
+  'value3',
 ]
 
 describe('checklist', () => {
@@ -16,8 +16,8 @@ describe('checklist', () => {
   test('create', () => {
     wrapper = shallowMount(Checklist, {
       propsData: {
-        options: options
-      }
+        options: options,
+      },
     })
 
     expect(wrapper.name()).toBe('wv-checklist')
@@ -27,8 +27,8 @@ describe('checklist', () => {
     wrapper = shallowMount(Checklist, {
       propsData: {
         title: 'test title',
-        options: options
-      }
+        options: options,
+      },
     })
 
     expect(wrapper.contains('.weui-cells__title')).toBeTruthy()
@@ -39,8 +39,8 @@ describe('checklist', () => {
     wrapper = mount(Checklist, {
       propsData: {
         value: ['value2'],
-        options: options
-      }
+        options: options,
+      },
     })
 
     expect(wrapper.findAll('.weui-check__label').length).toBe(3)
@@ -60,8 +60,8 @@ describe('checklist', () => {
       propsData: {
         max: 2,
         options: options,
-        value: options
-      }
+        value: options,
+      },
     })
 
     expect(wrapper.emitted().input[0]).toEqual([['value1', 'value2']])
@@ -71,8 +71,8 @@ describe('checklist', () => {
       propsData: {
         max: 1,
         options: options,
-        value: options
-      }
+        value: options,
+      },
     })
 
     expect(wrapper.emitted().input[0]).toEqual([['value1']])
@@ -82,18 +82,18 @@ describe('checklist', () => {
     wrapper = shallowMount(Checklist, {
       propsData: {
         max: 2,
-        options: options
-      }
+        options: options,
+      },
     })
 
     wrapper.setData({
-      currentValue: ['value1']
+      currentValue: ['value1'],
     })
 
     expect(wrapper.emitted().input.length).toBe(2)
 
     wrapper.setData({
-      currentValue: options
+      currentValue: options,
     })
 
     expect(wrapper.emitted().input[2]).toEqual([['value1', 'value2']])
@@ -102,12 +102,12 @@ describe('checklist', () => {
   test('watch value', () => {
     wrapper = shallowMount(Checklist, {
       propsData: {
-        options: options
-      }
+        options: options,
+      },
     })
 
     wrapper.setProps({
-      value: ['new-value']
+      value: ['new-value'],
     })
 
     expect(wrapper.emitted().change).toEqual([[['new-value']]])

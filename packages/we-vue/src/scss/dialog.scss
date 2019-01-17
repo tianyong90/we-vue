@@ -32,6 +32,7 @@
   word-wrap: break-word;
   word-break: break-all;
   color: $weui-text-color-gray;
+
   &:first-child {
     padding: 2.7em 20px 1.7em;
     color: #353535;
@@ -43,6 +44,7 @@
   line-height: 48px;
   font-size: 18px;
   display: flex;
+
   &:after {
     content: " ";
     @include setTopLine($weui-dialog-line-color);
@@ -55,15 +57,18 @@
   color: $weui-dialog-link-color;
   text-decoration: none;
   @include setTapColor();
+
   &:active {
     background-color: $weui-dialog-link-active-bc;
   }
 
   position: relative;
+
   &:after {
     content: " ";
     @include setLeftLine($weui-dialog-line-color);
   }
+
   &:first-child {
     &:after {
       display: none;
@@ -84,36 +89,44 @@
     text-align: left;
     box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.1);
   }
+
   .weui-dialog__title {
     font-size: 21px;
   }
+
   .weui-dialog__hd {
     text-align: left;
   }
+
   .weui-dialog__bd {
     color: $weui-text-color-gray;
     padding: 0.25em $weui-dialog-gap-width 2em;
     font-size: 17px;
     text-align: left;
+
     &:first-child {
       padding: 1.6em $weui-dialog-gap-width 2em;
       color: #353535;
     }
   }
+
   .weui-dialog__ft {
     display: block;
     text-align: right;
     line-height: 42px;
     font-size: 16px;
     padding: 0 $weui-dialog-gap-width 0.7em;
+
     &:after {
       display: none;
     }
   }
+
   .weui-dialog__btn {
     display: inline-block;
     vertical-align: top;
     padding: 0 0.8em;
+
     &:after {
       display: none;
     }
@@ -121,13 +134,16 @@
     &:active {
       background-color: rgba(0, 0, 0, 0.06);
     }
+
     &:visited {
       background-color: rgba(0, 0, 0, 0.06);
     }
+
     &:last-child {
       margin-right: -0.8em;
     }
   }
+
   .weui-dialog__btn_default {
     color: #808080;
   }

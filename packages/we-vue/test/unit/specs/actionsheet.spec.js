@@ -10,7 +10,7 @@ describe('actionsheet', () => {
   test('create', () => {
     wrapper = mount(Actionsheet, {
       attachToDocument: true,
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-actionsheet')
@@ -21,8 +21,8 @@ describe('actionsheet', () => {
     wrapper = mount(Actionsheet, {
       attachToDocument: true,
       propsData: {
-        type: 'android'
-      }
+        type: 'android',
+      },
     })
 
     wrapper.vm.$nextTick(() => {
@@ -33,11 +33,11 @@ describe('actionsheet', () => {
 
   test('watch value change', () => {
     wrapper = shallowMount(Actionsheet, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setProps({
-      value: true
+      value: true,
     })
 
     expect(wrapper.vm.currentValue).toEqual(true)
@@ -46,12 +46,12 @@ describe('actionsheet', () => {
   test('watch currentValue change', () => {
     wrapper = shallowMount(Actionsheet, {
       propsData: {
-        value: false
-      }
+        value: false,
+      },
     })
 
     wrapper.setData({
-      currentValue: true
+      currentValue: true,
     })
 
     // 'input' event should have be emitted
@@ -62,14 +62,14 @@ describe('actionsheet', () => {
     const actions = [
       {
         name: 'test-name',
-        key: 'test-key'
-      }
+        key: 'test-key',
+      },
     ]
 
     wrapper = shallowMount(Actionsheet, {
       propsData: {
-        actions: actions
-      }
+        actions: actions,
+      },
     })
 
     expect(wrapper.contains('.weui-actionsheet__cell')).toBeTruthy()
@@ -83,14 +83,14 @@ describe('actionsheet', () => {
       {
         name: 'test-name',
         key: 'test-key',
-        method: itemClickMethodSpy
-      }
+        method: itemClickMethodSpy,
+      },
     ]
 
     wrapper = shallowMount(Actionsheet, {
       propsData: {
-        actions: actions
-      }
+        actions: actions,
+      },
     })
 
     wrapper.find('.weui-actionsheet__cell').trigger('click')

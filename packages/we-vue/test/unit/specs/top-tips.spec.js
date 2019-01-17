@@ -15,7 +15,7 @@ describe('test top-tips api', () => {
   test('open a top-tips and then close it', () => {
     const instance = TopTipsApi({
       message: 'test',
-      duration: 3000
+      duration: 3000,
     })
 
     jest.advanceTimersByTime(1000)
@@ -39,7 +39,7 @@ describe('test top-tips api', () => {
 
   test('create a toast with duration', () => {
     let instance = TopTipsApi({
-      duration: 2000
+      duration: 2000,
     })
 
     jest.advanceTimersByTime(2001)
@@ -70,8 +70,8 @@ describe('top-tips component', () => {
     wrapper = mount(TopTips, {
       attachToDocument: true,
       propsData: {
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     expect(wrapper.name()).toBe('wv-top-tips')
@@ -82,8 +82,8 @@ describe('top-tips component', () => {
     wrapper = shallowMount(TopTips, {
       propsData: {
         message: 'test',
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     expect(wrapper.text()).toContain('test')

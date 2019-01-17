@@ -9,7 +9,7 @@ describe('badge', () => {
 
   test('create', () => {
     wrapper = shallowMount(Badge, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-badge')
@@ -19,8 +19,8 @@ describe('badge', () => {
   test('is-dot', () => {
     wrapper = shallowMount(Badge, {
       propsData: {
-        isDot: true
-      }
+        isDot: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('weui-badge_dot')

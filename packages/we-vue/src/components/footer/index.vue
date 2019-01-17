@@ -1,40 +1,36 @@
 <template>
   <div class="weui-footer">
     <p class="weui-footer__links" v-if="links.length > 0">
-      <FooterLink
+      <footer-link
         v-for="item in links"
         :key="item.text"
         :text="item.text"
-        :to="item.link"/>
+        :to="item.link"
+      />
     </p>
-    <p class="weui-footer__text" v-html="text"/>
+    <p class="weui-footer__text" v-html="text" />
   </div>
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import '../../scss/footer.scss'
 
 import FooterLink from './footer-link.vue'
-import Themeable from '../../mixins/themeable'
 
-import mixins from '../../utils/mixins'
-
-export default mixins(
-  Themeable
-  /* @vue/component */
-).extend({
+export default Vue.extend({
   name: 'wv-footer',
 
   components: {
-    FooterLink
+    FooterLink,
   },
 
   props: {
     text: String,
     links: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 })
 </script>

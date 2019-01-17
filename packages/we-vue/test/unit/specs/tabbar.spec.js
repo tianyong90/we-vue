@@ -9,7 +9,7 @@ describe('tabbar', () => {
 
   test('create', () => {
     wrapper = shallowMount(Tabbar, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-tabbar')
@@ -19,15 +19,15 @@ describe('tabbar', () => {
   test('fixed tabbar', () => {
     // is not fixed by default
     wrapper = shallowMount(Tabbar, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.element.style.position).toBe('absolute')
 
     wrapper = shallowMount(Tabbar, {
       propsData: {
-        fixed: true
-      }
+        fixed: true,
+      },
     })
 
     expect(wrapper.element.style.position).toBe('fixed')

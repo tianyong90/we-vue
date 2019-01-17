@@ -18,7 +18,7 @@ describe('swipe', () => {
 
   test('create', () => {
     wrapper = mount(Swipe, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-swipe')
@@ -29,11 +29,11 @@ describe('swipe', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
-        height: 120
+        height: 120,
       },
       slots: {
-        default: [SwipeItem]
-      }
+        default: [SwipeItem],
+      },
     })
 
     expect(wrapper.findAll(SwipeItem).length).toBe(1)
@@ -44,11 +44,11 @@ describe('swipe', () => {
     wrapper = mount(Swipe, {
       propsData: {
         height: 120,
-        showIndicators: true
+        showIndicators: true,
       },
       slots: {
-        default: [SwipeItem, SwipeItem, SwipeItem]
-      }
+        default: [SwipeItem, SwipeItem, SwipeItem],
+      },
     })
 
     expect(wrapper.vm.count).toBe(3)
@@ -59,11 +59,11 @@ describe('swipe', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
-        height: 120
+        height: 120,
       },
       slots: {
-        default: [SwipeItem, SwipeItem, SwipeItem]
-      }
+        default: [SwipeItem, SwipeItem, SwipeItem],
+      },
     })
 
     horizontalDrag(wrapper, 0, 100)
@@ -78,11 +78,11 @@ describe('swipe', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
-        height: 120
+        height: 120,
       },
       slots: {
-        default: [SwipeItem, SwipeItem, SwipeItem]
-      }
+        default: [SwipeItem, SwipeItem, SwipeItem],
+      },
     })
 
     horizontalDrag(wrapper, 0, -100)
@@ -99,11 +99,11 @@ describe('swipe', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
-        height: 120
+        height: 120,
       },
       slots: {
-        default: [SwipeItem]
-      }
+        default: [SwipeItem],
+      },
     })
 
     const distance = faker.random.number()
@@ -120,11 +120,11 @@ describe('swipe', () => {
       attachToDocument: true,
       propsData: {
         height: 120,
-        noDragWhenSingle: false
+        noDragWhenSingle: false,
       },
       slots: {
-        default: [SwipeItem]
-      }
+        default: [SwipeItem],
+      },
     })
 
     const distance = faker.random.number()
@@ -147,15 +147,15 @@ describe('swipe', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
-        height: 120
+        height: 120,
       },
       methods: {
-        initialize: initializeSpy
-      }
+        initialize: initializeSpy,
+      },
     })
 
     wrapper.setData({
-      swipes: []
+      swipes: [],
     })
 
     expect(initializeSpy).toHaveBeenCalled()
@@ -165,15 +165,15 @@ describe('swipe', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
-        height: 120
+        height: 120,
       },
       slots: {
-        default: [SwipeItem, SwipeItem, SwipeItem]
-      }
+        default: [SwipeItem, SwipeItem, SwipeItem],
+      },
     })
 
     wrapper.setProps({
-      defaultIndex: 1
+      defaultIndex: 1,
     })
 
     expect(wrapper.vm.active).toBe(1)
@@ -184,11 +184,11 @@ describe('swipe', () => {
       attachToDocument: true,
       propsData: {
         height: 120,
-        autoplay: 3000
+        autoplay: 3000,
       },
       slots: {
-        default: [SwipeItem, SwipeItem, SwipeItem]
-      }
+        default: [SwipeItem, SwipeItem, SwipeItem],
+      },
     })
 
     jest.advanceTimersByTime(3030)
@@ -206,11 +206,11 @@ describe('swipe', () => {
       attachToDocument: true,
       propsData: {
         height: 120,
-        prevent: true
+        prevent: true,
       },
       slots: {
-        default: [SwipeItem, SwipeItem, SwipeItem]
-      }
+        default: [SwipeItem, SwipeItem, SwipeItem],
+      },
     })
 
     verticalDrag(wrapper, 0, 100)

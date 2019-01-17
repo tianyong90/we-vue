@@ -15,8 +15,8 @@ describe('clickoutside', () => {
       attachToDocument: true,
       methods: {
         onClickoutside1: onClickoutside1Spy,
-        onClickoutside2: onClickoutside2Spy
-      }
+        onClickoutside2: onClickoutside2Spy,
+      },
     })
 
     // onClickoutside2Spy should be called when click .item-1

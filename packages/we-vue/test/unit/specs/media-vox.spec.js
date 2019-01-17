@@ -9,7 +9,7 @@ describe('media-box', () => {
 
   test('create', () => {
     wrapper = shallowMount(MediaBox, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-media-box')
@@ -21,8 +21,8 @@ describe('media-box', () => {
     wrapper = shallowMount(MediaBox, {
       propsData: {},
       methods: {
-        routerLink: routerLinkSpy
-      }
+        routerLink: routerLinkSpy,
+      },
     })
 
     wrapper.trigger('click')

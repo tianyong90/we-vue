@@ -9,7 +9,7 @@ describe('input', () => {
 
   test('create', () => {
     wrapper = shallowMount(Input, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-input')
@@ -23,11 +23,11 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         value: '',
-        maxlength: 2
+        maxlength: 2,
       },
       methods: {
-        validate: validateSpy
-      }
+        validate: validateSpy,
+      },
     })
 
     wrapper.find('input').element.value = 'test'
@@ -39,11 +39,11 @@ describe('input', () => {
     // use with maxlength
     wrapper = shallowMount(Input, {
       propsData: {
-        value: ''
+        value: '',
       },
       methods: {
-        validate: validateSpy
-      }
+        validate: validateSpy,
+      },
     })
 
     wrapper.find('input').element.value = 'test'
@@ -59,12 +59,12 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
-          onInput: false
-        }
+          onInput: false,
+        },
       },
       methods: {
-        validate: validateSpy
-      }
+        validate: validateSpy,
+      },
     })
 
     wrapper.find('input').element.value = 'test'
@@ -77,8 +77,8 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         label: 'test-label',
-        labelWidth: 100
-      }
+        labelWidth: 100,
+      },
     })
 
     expect(wrapper.contains('label.weui-label')).toBeTruthy()
@@ -91,14 +91,14 @@ describe('input', () => {
 
   test('default validateMode', () => {
     wrapper = shallowMount(Input, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.vm.validateMode).toEqual({
       onFocus: true,
       onBlur: true,
       onChange: true,
-      onInput: true
+      onInput: true,
     })
   })
 
@@ -107,9 +107,9 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
-          onFocus: false
-        }
-      }
+          onFocus: false,
+        },
+      },
     })
 
     // set the validate method
@@ -124,8 +124,8 @@ describe('input', () => {
     // set validateMode.onFocus to true
     wrapper.setProps({
       validateMode: {
-        onFocus: true
-      }
+        onFocus: true,
+      },
     })
 
     wrapper.find('input').trigger('focus')
@@ -141,9 +141,9 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
-          onBlur: false
-        }
-      }
+          onBlur: false,
+        },
+      },
     })
 
     // set the validate method
@@ -158,8 +158,8 @@ describe('input', () => {
     // set validateMode.onBlur to true
     wrapper.setProps({
       validateMode: {
-        onBlur: true
-      }
+        onBlur: true,
+      },
     })
 
     wrapper.find('input').trigger('blur')
@@ -175,9 +175,9 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         validateMode: {
-          onChange: false
-        }
-      }
+          onChange: false,
+        },
+      },
     })
 
     // set the validate method
@@ -192,8 +192,8 @@ describe('input', () => {
     // set validateMode.onChange to true
     wrapper.setProps({
       validateMode: {
-        onChange: true
-      }
+        onChange: true,
+      },
     })
 
     wrapper.find('input').trigger('change')
@@ -206,15 +206,15 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         pattern: '^test$',
-        value: 'test'
-      }
+        value: 'test',
+      },
     })
 
     wrapper.vm.validate()
     expect(wrapper.vm.valid).toBeTruthy()
 
     wrapper.setProps({
-      value: 'hello'
+      value: 'hello',
     })
 
     wrapper.vm.validate()
@@ -225,14 +225,14 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         required: true,
-        value: ''
-      }
+        value: '',
+      },
     })
     wrapper.vm.validate()
     expect(wrapper.vm.valid).toBeFalsy()
 
     wrapper.setProps({
-      value: 'test'
+      value: 'test',
     })
     wrapper.vm.validate()
     expect(wrapper.vm.valid).toBeTruthy()
@@ -242,14 +242,14 @@ describe('input', () => {
     wrapper = shallowMount(Input, {
       propsData: {
         minlength: 5,
-        value: 'test'
-      }
+        value: 'test',
+      },
     })
     wrapper.vm.validate()
     expect(wrapper.vm.valid).toBeFalsy()
 
     wrapper.setProps({
-      value: 'test-hello'
+      value: 'test-hello',
     })
     wrapper.vm.validate()
     expect(wrapper.vm.valid).toBeTruthy()
@@ -257,7 +257,7 @@ describe('input', () => {
 
   test('focus method', () => {
     wrapper = shallowMount(Input, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.vm.focus()
@@ -266,11 +266,11 @@ describe('input', () => {
 
   test('watch currentValue', () => {
     wrapper = shallowMount(Input, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setData({
-      currentValue: 'current-value'
+      currentValue: 'current-value',
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -278,11 +278,11 @@ describe('input', () => {
 
   test('watch value', () => {
     wrapper = shallowMount(Input, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setProps({
-      value: 'new-value'
+      value: 'new-value',
     })
 
     expect(wrapper.vm.currentValue).toBe('new-value')

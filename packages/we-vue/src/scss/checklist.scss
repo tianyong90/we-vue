@@ -3,6 +3,7 @@
 
 .weui-check__label {
   @include setTapColor();
+
   &:active {
     background-color: #ececec;
   }
@@ -17,6 +18,7 @@
   .weui-cell__hd {
     padding-right: $weui-cell-inner-gap-h;
   }
+
   .weui-icon-checked {
     &:before {
       content: "\EA01";

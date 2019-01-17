@@ -28,9 +28,11 @@ $weui-action-sheet-android-border-radius: 2px;
   font-size: 14px;
   color: #888;
   background: #fcfcfd;
+
   &:before {
     @include setBottomLine($weui-cell-border-color);
   }
+
   .weui-actionsheet__title-text {
     @include ellipsisLn(2);
   }
@@ -50,12 +52,15 @@ $weui-action-sheet-android-border-radius: 2px;
   padding: 10px 0;
   text-align: center;
   font-size: 18px;
+
   &:before {
     @include setTopLine($weui-cell-border-color);
   }
+
   &:active {
     background-color: $weui-bg-color-active;
   }
+
   &:first-child {
     &:before {
       display: none;
@@ -79,22 +84,27 @@ $weui-action-sheet-android-border-radius: 2px;
     //slide up animation
     transition: transform 0.3s;
   }
+
   .weui-actionsheet__action {
     display: none;
   }
+
   .weui-actionsheet__menu {
     border-radius: $weui-action-sheet-android-border-radius;
     box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.1);
   }
+
   .weui-actionsheet__cell {
     padding: 13px 24px;
     font-size: 16px;
     line-height: 1.4;
     text-align: left;
+
     &:first-child {
       border-top-left-radius: $weui-action-sheet-android-border-radius;
       border-top-right-radius: $weui-action-sheet-android-border-radius;
     }
+
     &:last-child {
       border-bottom-left-radius: $weui-action-sheet-android-border-radius;
       border-bottom-right-radius: $weui-action-sheet-android-border-radius;

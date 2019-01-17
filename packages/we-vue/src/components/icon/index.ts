@@ -1,4 +1,4 @@
-import Icon from './index.vue'
+import Icon from './icon'
 
 export { Icon }
 export default Icon

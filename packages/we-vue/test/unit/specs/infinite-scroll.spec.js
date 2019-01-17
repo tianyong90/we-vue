@@ -15,11 +15,11 @@ describe('infinite-scroll', () => {
       propsData: {
         disabled: false,
         list: [],
-        onLoadMore: loadMoreSpy
+        onLoadMore: loadMoreSpy,
       },
       methods: {
-        loadMore: loadMoreSpy
-      }
+        loadMore: loadMoreSpy,
+      },
     })
 
     setTimeout(() => {
@@ -34,7 +34,7 @@ describe('infinite-scroll', () => {
       wrapper.vm.list = wrapper.vm.list.concat([{ id: 1 }, { id: 2 }, { id: 3 }])
 
       wrapper.setProps({
-        disabled: true
+        disabled: true,
       })
     })
 
@@ -42,8 +42,8 @@ describe('infinite-scroll', () => {
       attachToDocument: true,
       propsData: {
         disabled: false,
-        onLoadMore: loadMore
-      }
+        onLoadMore: loadMore,
+      },
     })
 
     setTimeout(() => {
@@ -62,8 +62,8 @@ describe('infinite-scroll', () => {
       propsData: {
         disabled: true,
         list: [],
-        onLoadMore: loadMoreSpy
-      }
+        onLoadMore: loadMoreSpy,
+      },
     })
 
     setTimeout(() => {
@@ -72,7 +72,7 @@ describe('infinite-scroll', () => {
 
     setTimeout(() => {
       wrapper.setProps({
-        disabled: false
+        disabled: false,
       })
 
       setTimeout(() => {
@@ -90,8 +90,8 @@ describe('infinite-scroll', () => {
         disabled: false,
         hidden: true,
         list: [],
-        onLoadMore: loadMoreSpy
-      }
+        onLoadMore: loadMoreSpy,
+      },
     })
 
     expect(loadMoreSpy).not.toHaveBeenCalled()
@@ -104,8 +104,8 @@ describe('infinite-scroll', () => {
       propsData: {
         immediateCheck: false,
         list: [],
-        onLoadMore: loadMoreSpy
-      }
+        onLoadMore: loadMoreSpy,
+      },
     })
 
     setTimeout(() => {

@@ -12,9 +12,7 @@ export default function mixins (...args: VueConstructor[]): VueConstructor {
  * Useful for adding types when using mixins().extend()
  */
 export type ExtractVue<T extends VueConstructor | VueConstructor[]> = T extends (infer U)[]
-  ? UnionToIntersection<
-    U extends VueConstructor<infer V> ? V : never
-  >
+  ? UnionToIntersection<U extends VueConstructor<infer V> ? V : never>
   : T extends VueConstructor<infer V> ? V : never
 
 type UnionToIntersection<U> =

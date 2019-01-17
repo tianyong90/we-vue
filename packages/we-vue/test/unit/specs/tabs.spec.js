@@ -10,7 +10,7 @@ describe('tabs', () => {
 
   test('create', () => {
     wrapper = shallowMount(Tabs, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-tabs')
@@ -21,8 +21,8 @@ describe('tabs', () => {
     wrapper = mount(Tabs, {
       propsData: {},
       slots: {
-        default: [Tab, Tab, Tab]
-      }
+        default: [Tab, Tab, Tab],
+      },
     })
 
     expect(wrapper.name()).toBe('wv-tabs')
@@ -33,8 +33,8 @@ describe('tabs', () => {
     wrapper = mount(Tabs, {
       propsData: {},
       slots: {
-        default: [Tab, Tab, Tab]
-      }
+        default: [Tab, Tab, Tab],
+      },
     })
 
     wrapper
@@ -55,8 +55,8 @@ describe('tab', () => {
     wrapper = mount(Tabs, {
       propsData: {},
       slots: {
-        default: [Tab, Tab, Tab]
-      }
+        default: [Tab, Tab, Tab],
+      },
     })
 
     const tabItem = wrapper.find(Tab)
@@ -72,9 +72,9 @@ describe('tab', () => {
       slots: {
         default: [
           '<wv-tab title="title1">1</wv-tab>',
-          '<wv-tab title="title2">2</wv-tab>'
-        ]
-      }
+          '<wv-tab title="title2">2</wv-tab>',
+        ],
+      },
     })
 
     const tabItem = wrapper.find(Tab)

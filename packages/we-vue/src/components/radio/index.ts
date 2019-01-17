@@ -1,4 +1,4 @@
-import Radio from './index.vue'
+import Radio from './radio.vue'
 
 export { Radio }
 export default Radio

@@ -5,17 +5,17 @@ import { slowVerticalDrag } from '../utils'
 
 const testSingleColumn = [
   {
-    values: [1, 2, 3]
-  }
+    values: [1, 2, 3],
+  },
 ]
 
 const testMultiColumn = [
   {
-    values: [1, 2, 3]
+    values: [1, 2, 3],
   },
   {
-    values: ['yes', 'no']
-  }
+    values: ['yes', 'no'],
+  },
 ]
 
 describe('picker', () => {
@@ -27,8 +27,8 @@ describe('picker', () => {
   test('create', () => {
     wrapper = mount(Picker, {
       propsData: {
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     expect(wrapper.name()).toBe('wv-picker')
@@ -39,8 +39,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testSingleColumn
-      }
+        columns: testSingleColumn,
+      },
     })
 
     expect(wrapper.findAll(PickerColumn).length).toBe(1)
@@ -54,8 +54,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testMultiColumn
-      }
+        columns: testMultiColumn,
+      },
     })
 
     expect(wrapper.findAll(PickerColumn).length).toBe(2)
@@ -70,8 +70,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testSingleColumn
-      }
+        columns: testSingleColumn,
+      },
     })
 
     expect(wrapper.vm.getColumnValue(0)).toEqual(1)
@@ -82,8 +82,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testMultiColumn
-      }
+        columns: testMultiColumn,
+      },
     })
 
     expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
@@ -95,8 +95,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testMultiColumn
-      }
+        columns: testMultiColumn,
+      },
     })
 
     wrapper.vm.setColumnValues(0, [1, 2, 3])
@@ -109,8 +109,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testSingleColumn
-      }
+        columns: testSingleColumn,
+      },
     })
 
     expect(wrapper.vm.getValues()).toEqual([1])
@@ -126,10 +126,10 @@ describe('picker', () => {
         columns: [
           {
             values: slotValues,
-            default: 0
-          }
-        ]
-      }
+            default: 0,
+          },
+        ],
+      },
     })
 
     wrapper.vm.setValues([2])
@@ -142,8 +142,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testMultiColumn
-      }
+        columns: testMultiColumn,
+      },
     })
 
     expect(wrapper.vm.getColumnIndex(0)).toBe(0)
@@ -155,8 +155,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testMultiColumn
-      }
+        columns: testMultiColumn,
+      },
     })
 
     wrapper.vm.setColumnIndex(0, 1)
@@ -170,8 +170,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testMultiColumn
-      }
+        columns: testMultiColumn,
+      },
     })
 
     expect(wrapper.vm.getIndexes()).toEqual([0, 0])
@@ -182,8 +182,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        columns: testMultiColumn
-      }
+        columns: testMultiColumn,
+      },
     })
 
     wrapper.vm.setIndexes([1, 1])
@@ -196,8 +196,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         'visible.sync': true,
-        columns: []
-      }
+        columns: [],
+      },
     })
 
     wrapper
@@ -213,8 +213,8 @@ describe('picker', () => {
       attachToDocument: true,
       propsData: {
         'visible.sync': true,
-        columns: []
-      }
+        columns: [],
+      },
     })
 
     wrapper
@@ -235,10 +235,10 @@ describe('picker', () => {
         columns: [
           {
             values: slotValues,
-            default: 0
-          }
-        ]
-      }
+            default: 0,
+          },
+        ],
+      },
     })
 
     wrapper
@@ -259,16 +259,16 @@ describe('picker', () => {
         columns: [
           {
             values: slotValues,
-            default: 0
-          }
-        ]
-      }
+            default: 0,
+          },
+        ],
+      },
     })
 
     const spy = jest.spyOn(wrapper.vm, 'setValues')
 
     wrapper.setProps({
-      value: [2]
+      value: [2],
     })
 
     expect(spy).toHaveBeenCalled()
@@ -335,8 +335,8 @@ describe('picker-column', () => {
         attachToDocument: true,
         propsData: {
           visible: true,
-          columns: testSingleColumn
-        }
+          columns: testSingleColumn,
+        },
       })
 
       const columnWrapper = wrapper.find(PickerColumn)
@@ -369,10 +369,10 @@ describe('picker-column', () => {
         columns: [
           {
             values: [1, 2, 3],
-            defaultIndex: 0
-          }
-        ]
-      }
+            defaultIndex: 0,
+          },
+        ],
+      },
     })
 
     const columnWrapper = wrapper.find(PickerColumn)
@@ -390,16 +390,16 @@ describe('picker-column', () => {
         visible: true,
         columns: [
           {
-            divider: true
-          }
-        ]
-      }
+            divider: true,
+          },
+        ],
+      },
     })
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
 
     pickerColumnWrapper.setData({
-      currentIndex: 1
+      currentIndex: 1,
     })
 
     // divider should not emit change event when currentIndex changed
@@ -415,20 +415,20 @@ describe('picker-column', () => {
           {
             values: [
               {
-                text: 1
+                text: 1,
               },
               {
-                text: 2
+                text: 2,
               },
               {
                 text: 3,
-                disabled: true
-              }
+                disabled: true,
+              },
             ],
-            defaultIndex: 0
-          }
-        ]
-      }
+            defaultIndex: 0,
+          },
+        ],
+      },
     })
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
@@ -447,16 +447,16 @@ describe('picker-column', () => {
         columns: [
           {
             values: [1, 2, 3],
-            defaultIndex: 0
-          }
-        ]
-      }
+            defaultIndex: 0,
+          },
+        ],
+      },
     })
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)
 
     pickerColumnWrapper.setProps({
-      defaultIndex: 1
+      defaultIndex: 1,
     })
 
     expect(pickerColumnWrapper.vm.currentIndex).toBe(1)
@@ -470,10 +470,10 @@ describe('picker-column', () => {
         columns: [
           {
             values: [1, 2, 3],
-            defaultIndex: 0
-          }
-        ]
-      }
+            defaultIndex: 0,
+          },
+        ],
+      },
     })
 
     const pickerColumnWrapper = wrapper.find(PickerColumn)

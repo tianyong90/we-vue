@@ -1,4 +1,4 @@
-import Actionsheet from './index.vue'
+import Actionsheet from './actionsheet.vue'
 
 export { Actionsheet }
 export default Actionsheet

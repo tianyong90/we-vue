@@ -10,8 +10,8 @@ describe('button', () => {
   test('create', () => {
     wrapper = shallowMount(Button, {
       propsData: {
-        type: 'primary'
-      }
+        type: 'primary',
+      },
     })
 
     expect(wrapper.name()).toBe('wv-button')
@@ -21,8 +21,8 @@ describe('button', () => {
   test('is-loading', () => {
     wrapper = shallowMount(Button, {
       propsData: {
-        isLoading: true
-      }
+        isLoading: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('weui-btn_loading')
@@ -31,8 +31,8 @@ describe('button', () => {
   test('disabled', () => {
     wrapper = shallowMount(Button, {
       propsData: {
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     const classDisabled = wrapper.vm.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
@@ -42,8 +42,8 @@ describe('button', () => {
   test('mini', () => {
     wrapper = shallowMount(Button, {
       propsData: {
-        mini: true
-      }
+        mini: true,
+      },
     })
     expect(wrapper.classes()).toContain('weui-btn_mini')
   })
@@ -52,8 +52,8 @@ describe('button', () => {
     wrapper = shallowMount(Button, {
       propsData: {
         type: 'primary',
-        plain: true
-      }
+        plain: true,
+      },
     })
     const classType = wrapper.vm.plain ? `weui-btn_plain-${wrapper.vm.type}` : `weui-btn_${wrapper.vm.type}`
     expect(wrapper.classes()).toContain(classType)
@@ -61,7 +61,7 @@ describe('button', () => {
 
   test('click', () => {
     wrapper = shallowMount(Button, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.trigger('click')

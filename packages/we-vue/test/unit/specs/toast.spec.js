@@ -32,7 +32,7 @@ describe('toast api', () => {
 
   test('create a toast with duration', () => {
     const instance = ToastApi({
-      duration: 2000
+      duration: 2000,
     })
 
     jest.advanceTimersByTime(2001)
@@ -70,7 +70,7 @@ describe('toast api', () => {
 
   test('setDefaultOptions method', () => {
     ToastApi.setDefaultOptions({
-      duration: 1000
+      duration: 1000,
     })
 
     expect(ToastApi.currentOptions.duration).toBe(1000)
@@ -78,7 +78,7 @@ describe('toast api', () => {
 
   test('resetDefaultOptions method', () => {
     ToastApi.setDefaultOptions({
-      duration: 1000
+      duration: 1000,
     })
 
     ToastApi.resetDefaultOptions()
@@ -116,7 +116,7 @@ describe('toast', () => {
 
   test('create', () => {
     wrapper = shallowMount(Toast, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-toast')
@@ -128,8 +128,8 @@ describe('toast', () => {
       attachToDocument: true,
       propsData: {
         type: 'text',
-        message: 'hello'
-      }
+        message: 'hello',
+      },
     })
 
     wrapper.vm.$nextTick(() => {

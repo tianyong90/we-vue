@@ -9,7 +9,7 @@ describe('group', () => {
 
   test('create', () => {
     wrapper = shallowMount(Group, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-group')
@@ -19,8 +19,8 @@ describe('group', () => {
   test('create with title', () => {
     wrapper = shallowMount(Group, {
       propsData: {
-        title: 'test'
-      }
+        title: 'test',
+      },
     })
 
     expect(wrapper.contains('.weui-cells__title')).toBeTruthy()

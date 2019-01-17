@@ -9,7 +9,7 @@ describe('panel', () => {
 
   test('create', () => {
     wrapper = shallowMount(Panel, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-panel')
@@ -19,8 +19,8 @@ describe('panel', () => {
   test('render with title', () => {
     wrapper = shallowMount(Panel, {
       propsData: {
-        title: 'test-title'
-      }
+        title: 'test-title',
+      },
     })
 
     expect(wrapper.contains('.weui-panel__hd')).toBeTruthy()

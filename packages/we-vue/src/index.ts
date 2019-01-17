@@ -1,31 +1,24 @@
-import Vue, {VueConstructor} from 'vue'
+import './scss/index.scss'
+import { VueConstructor } from 'vue'
 import * as components from './components'
+import directives from './directives'
+import WeVueComponent from './components/we-vue'
+import { WeVue as WeVuePlugin, WeVueUseOptions } from 'we-vue/types'
 
-import WeVue from './components/we-vue'
-
-if (components) {
-  for (const key in components) {
-    const component = components[key]
-    if (component) {
-      Object.assign(component, {
-        install: (Vue: VueConstructor): void => {
-          // TODO
-          Vue.component(key, component as typeof Vue)
-        }
-      })
-    }
-
-    // todo
-    Vue.use(component)
-  }
+const WeVue: WeVuePlugin = {
+  install (Vue: VueConstructor, opts?: WeVueUseOptions): void {
+    Vue.use(WeVueComponent, {
+      components,
+      directives,
+      ...opts,
+    })
+  },
+  // TODO:
+  version: __WE_VUE_VERSION__,
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(WeVue)
 }
-
-import TopTips from './components/top-tips'
-
-export * from './components'
 
 export default WeVue

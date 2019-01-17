@@ -3,6 +3,7 @@
 
 .weui-check__label {
   @include setTapColor();
+
   &:active {
     background-color: #ececec;
   }
@@ -26,6 +27,7 @@
     & + .weui-icon-checked {
       min-width: 16px;
     }
+
     &:checked {
       & + .weui-icon-checked {
         &:before {

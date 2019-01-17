@@ -9,7 +9,7 @@ describe('number-spinner', () => {
 
   test('create', () => {
     wrapper = shallowMount(NumberSpinner, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-number-spinner')
@@ -20,9 +20,9 @@ describe('number-spinner', () => {
     wrapper = shallowMount(NumberSpinner, {
       data: function () {
         return {
-          currentValue: ''
+          currentValue: '',
         }
-      }
+      },
     })
 
     wrapper.find('input').trigger('blur')
@@ -33,8 +33,8 @@ describe('number-spinner', () => {
   test('onChange method', () => {
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
-        value: 1
-      }
+        value: 1,
+      },
     })
 
     wrapper.vm.$refs.input.value = 2
@@ -49,15 +49,15 @@ describe('number-spinner', () => {
 
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
-        value: 1
-      }
+        value: 1,
+      },
     })
 
     const mockEvent = {
       clipboardData: {
-        getData: jest.fn()
+        getData: jest.fn(),
       },
-      preventDefault: spy
+      preventDefault: spy,
     }
 
     wrapper.find('input').trigger('paste', mockEvent)
@@ -71,12 +71,12 @@ describe('number-spinner', () => {
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1,
-        fillable: false
-      }
+        fillable: false,
+      },
     })
 
     const mockEvent = {
-      preventDefault: spy
+      preventDefault: spy,
     }
 
     wrapper.find('input').trigger('keypress', mockEvent)
@@ -87,8 +87,8 @@ describe('number-spinner', () => {
   test('click minus button', () => {
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
-        value: 5
-      }
+        value: 5,
+      },
     })
 
     wrapper.find('.btn-minus').trigger('click')
@@ -97,8 +97,8 @@ describe('number-spinner', () => {
     // when the initial value is NaN
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
-        value: NaN
-      }
+        value: NaN,
+      },
     })
 
     wrapper.find('.btn-minus').trigger('click')
@@ -108,8 +108,8 @@ describe('number-spinner', () => {
   test('click plus button', () => {
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
-        value: 1
-      }
+        value: 1,
+      },
     })
 
     wrapper.find('.btn-plus').trigger('click')
@@ -118,8 +118,8 @@ describe('number-spinner', () => {
     // when the initial value is NaN
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
-        value: NaN
-      }
+        value: NaN,
+      },
     })
 
     wrapper.find('.btn-plus').trigger('click')
@@ -128,11 +128,11 @@ describe('number-spinner', () => {
 
   test('watch currentValue', () => {
     wrapper = shallowMount(NumberSpinner, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setData({
-      currentValue: 'current-value'
+      currentValue: 'current-value',
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -143,33 +143,33 @@ describe('number-spinner', () => {
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
         min: 1,
-        max: 10
-      }
+        max: 10,
+      },
     })
 
     wrapper.setProps({
-      value: 2
+      value: 2,
     })
 
     expect(wrapper.vm.currentValue).toBe(2)
 
     // set a value bigger than max
     wrapper.setProps({
-      value: 11
+      value: 11,
     })
 
     expect(wrapper.vm.currentValue).toBe(10)
 
     // set a value smaller than min
     wrapper.setProps({
-      value: 0
+      value: 0,
     })
 
     expect(wrapper.vm.currentValue).toBe(1)
 
     // set an empty string
     wrapper.setProps({
-      value: ''
+      value: '',
     })
 
     expect(wrapper.vm.currentValue).toBe('')

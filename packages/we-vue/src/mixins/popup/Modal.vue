@@ -21,16 +21,16 @@ export default Vue.extend({
     visible: Boolean,
     zIndex: Number,
     className: String,
-    customStyle: Object
+    customStyle: Object,
   },
 
   computed: {
     style (): object {
       return {
         zIndex: this.zIndex,
-        ...this.customStyle
+        ...this.customStyle,
       }
-    }
-  }
+    },
+  },
 })
 </script>

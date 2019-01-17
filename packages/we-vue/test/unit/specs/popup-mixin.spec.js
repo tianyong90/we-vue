@@ -10,7 +10,7 @@ describe('mixins/popup', () => {
 
   test('mixed props', () => {
     wrapper = mount(PopupMixinComponent, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.vm.$options.props).toHaveProperty('visible')
@@ -25,8 +25,8 @@ describe('mixins/popup', () => {
   test('open popup via open method', () => {
     wrapper = mount(PopupMixinComponent, {
       propsData: {
-        zIndex: 1
-      }
+        zIndex: 1,
+      },
     })
 
     wrapper.vm.open()
@@ -40,11 +40,11 @@ describe('mixins/popup', () => {
 
     wrapper = mount(PopupMixinComponent, {
       propsData: {
-        getContainer: () => {}
+        getContainer: () => {},
       },
       methods: {
-        move: spyMove
-      }
+        move: spyMove,
+      },
     })
 
     wrapper.vm.$nextTick(() => {
@@ -55,8 +55,8 @@ describe('mixins/popup', () => {
   test('close popup via close method', () => {
     wrapper = mount(PopupMixinComponent, {
       propsData: {
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     wrapper.vm.close()
@@ -71,11 +71,11 @@ describe('mixins/popup', () => {
       propsData: {
         visible: true,
         mask: true,
-        closeOnClickMask: true
+        closeOnClickMask: true,
       },
       stubs: {
-        transition: TransitionStub
-      }
+        transition: TransitionStub,
+      },
     })
 
     wrapper.vm.open()
@@ -92,7 +92,7 @@ describe('mixins/popup', () => {
 
     // closeOnClick is false
     wrapper.setProps({
-      closeOnClickMask: false
+      closeOnClickMask: false,
     })
 
     wrapper.vm.open()
@@ -108,8 +108,8 @@ describe('mixins/popup', () => {
       attachToDocument: true,
       propsData: {
         visible: true,
-        lockOnScroll: true
-      }
+        lockOnScroll: true,
+      },
     })
 
     wrapper.vm.open()
@@ -130,18 +130,18 @@ describe('mixins/popup', () => {
       attachToDocument: true,
       methods: {
         open: openSpy,
-        close: closeSpy
-      }
+        close: closeSpy,
+      },
     })
 
     wrapper.setProps({
-      visible: true
+      visible: true,
     })
 
     expect(openSpy).toHaveBeenCalled()
 
     wrapper.setProps({
-      visible: false
+      visible: false,
     })
 
     expect(closeSpy).toHaveBeenCalled()
@@ -151,8 +151,8 @@ describe('mixins/popup', () => {
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
       propsData: {
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     const spy = jest.spyOn(wrapper.vm, 'move')
@@ -160,7 +160,7 @@ describe('mixins/popup', () => {
     wrapper.setProps({
       getContainer: function () {
         return document.createElement('div')
-      }
+      },
     })
 
     expect(spy).toHaveBeenCalled()
@@ -172,15 +172,15 @@ describe('mixins/popup', () => {
     wrapper = mount(PopupMixinComponent, {
       attachToDocument: true,
       propsData: {
-        mask: true
+        mask: true,
       },
       methods: {
-        renderMask: renderMaskSpy
-      }
+        renderMask: renderMaskSpy,
+      },
     })
 
     wrapper.setProps({
-      mask: false
+      mask: false,
     })
 
     expect(renderMaskSpy).toHaveBeenCalled()

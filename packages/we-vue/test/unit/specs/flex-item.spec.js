@@ -13,12 +13,12 @@ describe('flex-item', () => {
   test('create', () => {
     parentWrapper = mount(Flex, {
       propsData: {
-        animate: true
-      }
+        animate: true,
+      },
     })
 
     let wrapper = shallowMount(FlexItem, {
-      parent: parentWrapper.vm
+      parent: parentWrapper.vm,
     })
 
     expect(wrapper.name()).toBe('wv-flex-item')
@@ -29,11 +29,11 @@ describe('flex-item', () => {
     wrapper = mount(Flex, {
       attachToDocument: true,
       propsData: {
-        gutter: 10
+        gutter: 10,
       },
       slots: {
-        default: FlexItem
-      }
+        default: FlexItem,
+      },
     })
 
     expect(wrapper.find(FlexItem).vm.gutter).toBe(wrapper.vm.gutter)
@@ -41,16 +41,16 @@ describe('flex-item', () => {
 
   test('comput style', () => {
     parentWrapper = mount(Flex, {
-      propsData: {}
+      propsData: {},
     })
 
     let wrapper = shallowMount(FlexItem, {
-      parent: parentWrapper.vm
+      parent: parentWrapper.vm,
     })
 
     let computedStyle = {
       flex: wrapper.vm.flex,
-      marginLeft: wrapper.vm.offset
+      marginLeft: wrapper.vm.offset,
     }
 
     if (wrapper.vm.gutter) {

@@ -53,7 +53,7 @@ export default {
       dayValue: ['星期二', '下午'],
       fruitColumns: [
         {
-          values: [
+          options: [
             {
               name: 'Apple',
               price: 1.3
@@ -75,13 +75,13 @@ export default {
       ],
       ticketColumns: [
         {
-          values: ['汽车票', '飞机票', '火车票', '轮船票', '其它'],
+          options: ['汽车票', '飞机票', '火车票', '轮船票', '其它'],
           defaultIndex: 2
         }
       ],
       dayColumns: [
         {
-          values: [
+          options: [
             '星期一',
             '星期二',
             '星期三',
@@ -92,7 +92,7 @@ export default {
           ]
         },
         {
-          values: ['上午', '下午']
+          options: ['上午', '下午']
         }
       ]
     }

@@ -9,7 +9,7 @@ describe('footer', () => {
 
   test('create', () => {
     wrapper = shallowMount(Footer, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-footer')
@@ -19,8 +19,8 @@ describe('footer', () => {
   test('text', () => {
     wrapper = shallowMount(Footer, {
       propsData: {
-        text: 'test'
-      }
+        text: 'test',
+      },
     })
 
     expect(wrapper.contains('p.weui-footer__text')).toBeTruthy()

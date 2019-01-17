@@ -4,6 +4,7 @@
   color: $weui-text-color-gray;
   font-size: 14px;
   text-align: center;
+
   a {
     color: $weui-link-color-default;
   }
@@ -26,12 +27,14 @@
   margin: 0 0.62em;
   position: relative;
   font-size: 14px;
+
   &:before {
     @include setLeftLine();
     left: -0.65em;
     top: 0.36em;
     bottom: 0.36em;
   }
+
   &:first-child {
     &:before {
       display: none;

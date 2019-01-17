@@ -1,4 +1,4 @@
-import CellSwipeButton from './index.vue'
+import CellSwipeButton from './cell-swipe-button'
 
 export { CellSwipeButton }
 export default CellSwipeButton

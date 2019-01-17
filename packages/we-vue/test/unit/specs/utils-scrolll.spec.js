@@ -21,8 +21,8 @@ describe('utils scroll', () => {
     // create a mockElement
     const mockElement = {
       parentNode: {
-        nodeType: 11
-      }
+        nodeType: 11,
+      },
     }
     expect(ScrollUtil.isAttached(mockElement)).toBe(false)
   })
@@ -89,7 +89,7 @@ describe('utils scroll', () => {
     const scrollToSpy = jest.fn()
     element = {
       scrollX: 0,
-      scrollTo: scrollToSpy
+      scrollTo: scrollToSpy,
     }
 
     ScrollUtil.setScrollTop(element, 10)

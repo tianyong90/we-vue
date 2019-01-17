@@ -17,7 +17,7 @@ describe('test dialog api', () => {
       title: 'title',
       message: 'test message',
       skin: 'ios',
-      showCancelBtn: true
+      showCancelBtn: true,
     }, callback)
 
     await later()
@@ -56,7 +56,7 @@ describe('test dialog api', () => {
     DialogApi.confirm({
       callback: action => {
         expect(action).toBe('confirm')
-      }
+      },
     })
 
     expect(document.querySelector('.weui-dialog')).toBeTruthy()
@@ -65,7 +65,7 @@ describe('test dialog api', () => {
 
   test('setDefaultOptions method', () => {
     DialogApi.setDefaultOptions({
-      duration: 1000
+      duration: 1000,
     })
 
     expect(DialogApi.currentOptions.duration).toBe(1000)
@@ -73,7 +73,7 @@ describe('test dialog api', () => {
 
   test('resetDefaultOptions method', () => {
     DialogApi.setDefaultOptions({
-      duration: 1000
+      duration: 1000,
     })
 
     DialogApi.resetDefaultOptions()
@@ -91,7 +91,7 @@ describe('dialog component', () => {
 
   test('create', () => {
     wrapper = mount(Dialog, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-dialog')
@@ -104,8 +104,8 @@ describe('dialog component', () => {
     wrapper = mount(Dialog, {
       propsData: {
         'visible.sync': true,
-        callback: callback
-      }
+        callback: callback,
+      },
     })
 
     wrapper.findAll('.weui-dialog__btn').at(0).trigger('click')
@@ -120,8 +120,8 @@ describe('dialog component', () => {
     wrapper = mount(Dialog, {
       propsData: {
         'visible.sync': true,
-        callback: callback
-      }
+        callback: callback,
+      },
     })
 
     wrapper.findAll('.weui-dialog__btn').at(1).trigger('click')

@@ -7,6 +7,7 @@
   &:before {
     @include setTopLine($weui-grid-border-color);
   }
+
   &:after {
     @include setLeftLine($weui-grid-border-color);
   }
@@ -22,6 +23,7 @@
   &:before {
     @include setRightLine($weui-grid-border-color);
   }
+
   &:after {
     @include setBottomLine($weui-grid-border-color);
   }

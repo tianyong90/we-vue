@@ -10,7 +10,7 @@ describe('flex', () => {
 
   test('create', () => {
     wrapper = mount(Flex, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-flex')
@@ -20,7 +20,7 @@ describe('flex', () => {
   test('style should be computed correctly', () => {
     wrapper = shallowMount(Flex, {
       propsData: {
-      }
+      },
     })
 
     expect(wrapper.vm.style).toEqual({})
@@ -28,12 +28,12 @@ describe('flex', () => {
     const gutterValue = 10
 
     wrapper.setProps({
-      gutter: gutterValue
+      gutter: gutterValue,
     })
 
     expect(wrapper.vm.style).toEqual({
       marginLeft: `-${gutterValue / 2}px`,
-      marginRight: `-${gutterValue / 2}px`
+      marginRight: `-${gutterValue / 2}px`,
     })
   })
 })

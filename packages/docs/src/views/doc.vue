@@ -36,7 +36,7 @@
       </ul>
     </div>
     <div class="doc-content col">
-      <router-view/>
+      <router-view />
     </div>
 
     <div class="col demo-column">

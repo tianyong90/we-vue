@@ -9,7 +9,7 @@ describe('textarea', () => {
 
   test('create', () => {
     wrapper = shallowMount(Textarea, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-textarea')
@@ -19,26 +19,26 @@ describe('textarea', () => {
   test('show counter', () => {
     wrapper = shallowMount(Textarea, {
       propsData: {
-        showCounter: true
-      }
+        showCounter: true,
+      },
     })
 
     expect(wrapper.contains('.weui-textarea-counter')).toBeTruthy()
     expect(wrapper.find('.weui-textarea-counter').text()).toEqual(`${wrapper.vm.length}/${wrapper.vm.maxLength}`)
 
     wrapper.setProps({
-      showCounter: false
+      showCounter: false,
     })
     expect(wrapper.contains('.weui-textarea-counter')).toBeFalsy()
   })
 
   test('watch currentValue', () => {
     wrapper = shallowMount(Textarea, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setData({
-      currentValue: 'current-value'
+      currentValue: 'current-value',
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -47,19 +47,19 @@ describe('textarea', () => {
   test('watch value', () => {
     wrapper = shallowMount(Textarea, {
       propsData: {
-        maxLength: 10
-      }
+        maxLength: 10,
+      },
     })
 
     wrapper.setProps({
-      value: 'new-value'
+      value: 'new-value',
     })
 
     expect(wrapper.vm.currentValue).toBe('new-value')
 
     // set a value longer than maxLength
     wrapper.setProps({
-      value: 'new-value-longer'
+      value: 'new-value-longer',
     })
 
     expect(wrapper.vm.currentValue).toBe('new-value-')
@@ -69,8 +69,8 @@ describe('textarea', () => {
     wrapper = shallowMount(Textarea, {
       propsData: {
         maxLength: 2,
-        value: 'test'
-      }
+        value: 'test',
+      },
     })
 
     expect(wrapper.vm.currentValue.length).toBe(2)
@@ -79,7 +79,7 @@ describe('textarea', () => {
 
   test('focus event', () => {
     wrapper = shallowMount(Textarea, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.find('textarea').trigger('focus')
@@ -89,7 +89,7 @@ describe('textarea', () => {
 
   test('blur event', () => {
     wrapper = shallowMount(Textarea, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.find('textarea').trigger('blur')

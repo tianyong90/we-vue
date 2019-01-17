@@ -7,13 +7,21 @@
     </wv-group>
 
     <wv-group title="指定大小(24px)">
-      <wv-cell :title="type" v-for="type in types" :key="type" v-if="type !== 'default'">
+      <wv-cell
+        :title="type"
+        v-for="type in typesExceptDefault"
+        :key="type"
+      >
         <wv-spinner :type="type" :size="24" slot="ft" />
       </wv-cell>
     </wv-group>
 
     <wv-group title="指定颜色(red)">
-      <wv-cell :title="type" v-for="type in types" :key="type" v-if="type !== 'default'">
+      <wv-cell
+        :title="type"
+        v-for="type in typesExceptDefault"
+        :key="type"
+      >
         <wv-spinner :type="type" color="red" slot="ft" />
       </wv-cell>
     </wv-group>
@@ -33,6 +41,12 @@ export default {
   data () {
     return {
       types: SPINNER_TYPES
+    }
+  },
+
+  computed: {
+    typesExceptDefault () {
+      return this.types.filter(type => type !== 'default')
     }
   }
 }

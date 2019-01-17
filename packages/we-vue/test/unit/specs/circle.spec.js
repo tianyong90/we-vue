@@ -9,7 +9,7 @@ describe('circle', () => {
 
   test('create', () => {
     wrapper = shallowMount(Circle, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-circle')
@@ -19,12 +19,12 @@ describe('circle', () => {
   test('what value change', () => {
     wrapper = shallowMount(Circle, {
       propsData: {
-        value: 0
-      }
+        value: 0,
+      },
     })
 
     wrapper.setProps({
-      value: 100
+      value: 100,
     })
 
     expect(wrapper.vm.currentValue).toBe(100)
@@ -33,12 +33,12 @@ describe('circle', () => {
   test('what currentValue change', () => {
     wrapper = shallowMount(Circle, {
       propsData: {
-        value: 0
-      }
+        value: 0,
+      },
     })
 
     wrapper.setData({
-      currentValue: 100
+      currentValue: 100,
     })
 
     expect(wrapper.emitted().input).toBeTruthy()

@@ -3,9 +3,11 @@
 .weui-form-preview {
   position: relative;
   background-color: #ffffff;
+
   &:before {
     @include setTopLine($weui-cell-border-color);
   }
+
   &:after {
     @include setBottomLine($weui-cell-border-color);
   }
@@ -16,10 +18,12 @@
   padding: $weui-cell-gap-v $weui-cell-gap-h;
   text-align: right;
   line-height: 2.5em;
+
   &:after {
     @include setBottomLine($weui-cell-border-color);
     left: $weui-cell-gap-h;
   }
+
   .weui-form-preview__value {
     font-style: normal;
     font-size: 1.6em;
@@ -38,6 +42,7 @@
   position: relative;
   line-height: 50px;
   display: flex;
+
   &:before {
     @include setTopLine($weui-dialog-line-color);
   }
@@ -70,6 +75,7 @@
   color: $weui-dialog-link-color;
   text-align: center;
   @include setTapColor();
+
   &button {
     background-color: transparent;
     border: 0;
@@ -77,12 +83,15 @@
     line-height: inherit;
     font-size: inherit;
   }
+
   &:active {
     background-color: $weui-dialog-link-active-bc;
   }
+
   &:after {
     @include setLeftLine($weui-dialog-line-color);
   }
+
   &:first-child {
     &:after {
       display: none;

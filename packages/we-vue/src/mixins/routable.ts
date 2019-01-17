@@ -1,5 +1,4 @@
-import Vue, { VNodeData } from 'vue'
-import { PropValidator } from 'vue/types/options'
+import Vue from 'vue'
 
 export default Vue.extend({
   name: 'routable',
@@ -7,7 +6,7 @@ export default Vue.extend({
   props: {
     href: [String, Object],
     to: [String, Object],
-    replace: Boolean
+    replace: Boolean,
   },
 
   methods: {
@@ -15,12 +14,12 @@ export default Vue.extend({
     // click (e: MouseEvent): void {},
 
     routeLink () {
-      const { to, href, $router, replace } = this
+      const { to, href, $router, replace } = this as any
       if (to && $router) {
         $router[replace ? 'replace' : 'push'](to)
       } else if (href) {
         replace ? location.replace(href) : location.href = href
       }
-    }
-  }
+    },
+  },
 })

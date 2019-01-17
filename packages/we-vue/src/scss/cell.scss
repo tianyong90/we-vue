@@ -13,11 +13,13 @@
   position: relative; //这个是为了兼容cells容器onepx方案被before挡住而做的
   display: flex;
   align-items: center;
+
   &:before {
     @include setTopLine($weui-cell-border-color);
     left: $weui-cell-gap-h;
     z-index: 2;
   }
+
   &:first-child {
     &:before {
       display: none;
@@ -41,12 +43,15 @@
 .weui-cell_access {
   @include setTapColor();
   color: inherit;
+
   &:active {
     background-color: #ececec;
   }
+
   .weui-cell__ft {
     padding-right: 13px;
     position: relative;
+
     &:after {
       content: " ";
       @include setArrow(right, 6px, #c8c8cd, 2px);

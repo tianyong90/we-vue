@@ -9,7 +9,7 @@ describe('popup', () => {
 
   test('create', () => {
     wrapper = mount(Popup, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-popup')
@@ -20,8 +20,8 @@ describe('popup', () => {
     wrapper = mount(Popup, {
       attachToDocument: true,
       propsData: {
-        visible: true
-      }
+        visible: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('wv-popup')
@@ -32,13 +32,13 @@ describe('popup', () => {
   test('computed style', () => {
     wrapper = shallowMount(Popup, {
       propsData: {
-        height: 100
-      }
+        height: 100,
+      },
     })
 
     expect(wrapper.vm.style).toEqual({
       backgroundColor: wrapper.vm.backgroundColor,
-      height: '100px'
+      height: '100px',
     })
   })
 })

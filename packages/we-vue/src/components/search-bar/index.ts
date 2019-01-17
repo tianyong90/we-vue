@@ -1,4 +1,4 @@
-import SearchBar from './index.vue'
+import SearchBar from './search-bar.vue'
 
 export { SearchBar }
 export default SearchBar

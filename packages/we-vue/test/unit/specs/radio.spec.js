@@ -4,7 +4,7 @@ import Radio from '@/components/radio'
 const testOptions = [
   'option1',
   'option2',
-  'option3'
+  'option3',
 ]
 
 describe('radio', () => {
@@ -16,8 +16,8 @@ describe('radio', () => {
   test('create', () => {
     wrapper = shallowMount(Radio, {
       propsData: {
-        options: testOptions
-      }
+        options: testOptions,
+      },
     })
 
     // expect(wrapper.name()).toBe('wv-radio')
@@ -27,8 +27,8 @@ describe('radio', () => {
     wrapper = shallowMount(Radio, {
       propsData: {
         title: 'test title',
-        options: testOptions
-      }
+        options: testOptions,
+      },
     })
 
     expect(wrapper.contains('.weui-cells__title')).toBeTruthy()
@@ -39,8 +39,8 @@ describe('radio', () => {
     wrapper = shallowMount(Radio, {
       propsData: {
         value: 'value2',
-        options: testOptions
-      }
+        options: testOptions,
+      },
     })
 
     expect(wrapper.findAll('.weui-check__label').length).toBe(3)
@@ -57,12 +57,12 @@ describe('radio', () => {
   test('watch currentValue', () => {
     wrapper = shallowMount(Radio, {
       propsData: {
-        options: testOptions
-      }
+        options: testOptions,
+      },
     })
 
     wrapper.setData({
-      currentValue: 'option2'
+      currentValue: 'option2',
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -72,12 +72,12 @@ describe('radio', () => {
   test('watch value', () => {
     wrapper = shallowMount(Radio, {
       propsData: {
-        options: testOptions
-      }
+        options: testOptions,
+      },
     })
 
     wrapper.setProps({
-      value: 'option3'
+      value: 'option3',
     })
 
     expect(wrapper.vm.currentValue).toBe('option3')

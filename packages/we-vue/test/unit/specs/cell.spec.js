@@ -9,7 +9,7 @@ describe('cell', () => {
 
   test('create', () => {
     wrapper = shallowMount(Cell, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-cell')
@@ -21,8 +21,8 @@ describe('cell', () => {
   test('is-link', () => {
     wrapper = shallowMount(Cell, {
       propsData: {
-        isLink: true
-      }
+        isLink: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('weui-cell_access')
@@ -35,8 +35,8 @@ describe('cell', () => {
     wrapper = shallowMount(Cell, {
       propsData: {},
       methods: {
-        routerLink: routerLinkSpy
-      }
+        routerLink: routerLinkSpy,
+      },
     })
 
     wrapper.trigger('click')

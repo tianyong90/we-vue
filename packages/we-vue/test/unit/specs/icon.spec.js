@@ -10,8 +10,8 @@ describe('icon', () => {
   test('create', () => {
     wrapper = shallowMount(Icon, {
       propsData: {
-        type: 'info'
-      }
+        type: 'info',
+      },
     })
 
     expect(wrapper.name()).toBe('wv-icon')
@@ -24,8 +24,8 @@ describe('icon', () => {
     wrapper = shallowMount(Icon, {
       propsData: {
         type: 'info',
-        large: true
-      }
+        large: true,
+      },
     })
 
     // large size icon should has class 'weui-icon_msg'

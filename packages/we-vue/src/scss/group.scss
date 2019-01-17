@@ -10,10 +10,12 @@
 
   // onepx
   position: relative;
+
   &:before {
     @include setTopLine($weui-cell-border-color);
     z-index: 2;
   }
+
   &:after {
     @include setBottomLine($weui-cell-border-color);
     z-index: 2;

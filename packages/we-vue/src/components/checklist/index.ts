@@ -1,4 +1,4 @@
-import Checklist from './index.vue'
+import Checklist from './checklist.vue'
 
 export { Checklist }
 export default Checklist

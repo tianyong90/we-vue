@@ -1,13 +1,17 @@
 <template>
   <div class="weui-form-preview">
     <div class="weui-form-preview__hd">
-      <label class="weui-form-preview__label" v-html="title"/>
-      <em class="weui-form-preview__value" v-html="value"/>
+      <label class="weui-form-preview__label" v-html="title" />
+      <em class="weui-form-preview__value" v-html="value" />
     </div>
     <div class="weui-form-preview__bd">
-      <div class="weui-form-preview__item" v-for="(item, key, index) in dataItems" :key="key">
-        <label class="weui-form-preview__label">{{ item.label }}</label>
-        <span class="weui-form-preview__value">{{ item.value }}</span>
+      <div class="weui-form-preview__item" v-for="(item, key) in dataItems" :key="key">
+        <label class="weui-form-preview__label">
+          {{ item.label }}
+        </label>
+        <span class="weui-form-preview__value">
+          {{ item.value }}
+        </span>
       </div>
     </div>
     <div class="weui-form-preview__ft">
@@ -36,12 +40,12 @@ export default Vue.extend({
     value: String,
     dataItems: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     buttons: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 })
 </script>

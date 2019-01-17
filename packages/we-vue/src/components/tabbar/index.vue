@@ -13,7 +13,7 @@ export default Vue.extend({
   name: 'wv-tabbar',
 
   props: {
-    fixed: Boolean
-  }
+    fixed: Boolean,
+  },
 })
 </script>

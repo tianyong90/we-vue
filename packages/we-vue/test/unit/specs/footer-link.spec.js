@@ -9,7 +9,7 @@ describe('footer-link', () => {
 
   test('create', () => {
     wrapper = shallowMount(FooterLink, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-footer-link')
@@ -19,8 +19,8 @@ describe('footer-link', () => {
   test('text', () => {
     wrapper = shallowMount(FooterLink, {
       propsData: {
-        text: 'test'
-      }
+        text: 'test',
+      },
     })
 
     expect(wrapper.text()).toBe('test')
@@ -31,8 +31,8 @@ describe('footer-link', () => {
     wrapper = shallowMount(FooterLink, {
       propsData: {},
       methods: {
-        routerLink: routerLinkSpy
-      }
+        routerLink: routerLinkSpy,
+      },
     })
 
     wrapper.trigger('click')

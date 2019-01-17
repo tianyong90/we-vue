@@ -15,7 +15,7 @@ export function createSimpleFunctional (
       data.staticClass = (`${c} ${data.staticClass || ''}`).trim()
 
       return h(el, data, children)
-    }
+    },
   }
 }
 
@@ -41,24 +41,24 @@ export function createSimpleTransition (
     props: {
       group: {
         type: Boolean,
-        default: false
+        default: false,
       },
       hideOnLeave: {
         type: Boolean,
-        default: false
+        default: false,
       },
       leaveAbsolute: {
         type: Boolean,
-        default: false
+        default: false,
       },
       mode: {
         type: String,
-        default: mode
+        default: mode,
       },
       origin: {
         type: String,
-        default: origin
-      }
+        default: origin,
+      },
     },
 
     render (h, context): VNode {
@@ -66,7 +66,7 @@ export function createSimpleTransition (
       context.data = context.data || {}
       context.data.props = {
         name,
-        mode: context.props.mode
+        mode: context.props.mode,
       }
       context.data.on = context.data.on || {}
       if (!Object.isExtensible(context.data.on)) {
@@ -95,7 +95,7 @@ export function createSimpleTransition (
       context.data.on.leave = mergeTransitions(leave, ourLeave)
 
       return h(tag, context.data, context.children)
-    }
+    },
   }
 }
 
@@ -112,21 +112,21 @@ export function createJavaScriptTransition (
     props: {
       mode: {
         type: String,
-        default: mode
-      }
+        default: mode,
+      },
     },
 
     render (h, context): VNode {
       const data = {
         props: {
           ...context.props,
-          name
+          name,
         },
-        on: functions
+        on: functions,
       }
 
       return h('transition', data, context.children)
-    }
+    },
   }
 }
 
@@ -136,7 +136,7 @@ export function directiveConfig (binding: BindingConfig, defaults = {}): VNodeDi
     ...defaults,
     ...binding.modifiers,
     value: binding.arg,
-    ...(binding.value || {})
+    ...(binding.value || {}),
   }
 }
 
@@ -233,7 +233,7 @@ export function getZIndex (el?: Element | null): number {
 const tagsToReplace = {
   '&': '&amp;',
   '<': '&lt;',
-  '>': '&gt;'
+  '>': '&gt;',
 } as any
 
 export function escapeHTML (str: string): string {
@@ -295,7 +295,7 @@ export const keyCodes = Object.freeze({
   backspace: 8,
   insert: 45,
   pageup: 33,
-  pagedown: 34
+  pagedown: 34,
 })
 
 const ICONS_PREFIX = '$vuetify.icons.'

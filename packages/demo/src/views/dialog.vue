@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import { Dialog } from 'we-vue'
+// TODO
+// import { Dialog } from 'we-vue'
 
 export default {
   data () {
@@ -21,14 +22,14 @@ export default {
 
   methods: {
     showAlert () {
-      Dialog.alert({
+      this.$dialog.alert({
         title: '提示窗口',
         message: 'Hello WE-VUE!'
       })
     },
 
     showConfirm () {
-      Dialog.confirm({
+      this.$dialog.confirm({
         title: '确认窗口',
         message: '你确定吗？'
       })
@@ -43,7 +44,7 @@ export default {
 
   watch: {
     skin (val) {
-      Dialog.setDefaultOptions({
+      this.$dialog.setDefaultOptions({
         skin: val
       })
     }

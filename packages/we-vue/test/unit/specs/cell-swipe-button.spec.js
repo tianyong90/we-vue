@@ -9,7 +9,7 @@ describe('cell-swipe-button', () => {
 
   test('create', () => {
     wrapper = shallowMount(CellSwipeButtom, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-cell-swipe-button')
@@ -18,16 +18,16 @@ describe('cell-swipe-button', () => {
     // create with type
     wrapper = shallowMount(CellSwipeButtom, {
       propsData: {
-        type: 'test'
-      }
+        type: 'test',
+      },
     })
 
     expect(wrapper.classes()).toContain('weui-swiped-btn_test')
 
     wrapper = shallowMount(CellSwipeButtom, {
       slots: {
-        default: 'test'
-      }
+        default: 'test',
+      },
     })
 
     expect(wrapper.text()).toBe('test')

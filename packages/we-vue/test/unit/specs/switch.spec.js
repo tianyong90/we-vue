@@ -12,7 +12,7 @@ describe('switch', () => {
 
   test('create', () => {
     wrapper = mount(Switch, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-switch')
@@ -22,16 +22,16 @@ describe('switch', () => {
   test('is-in-cell', () => {
     wrapper = mount(Switch, {
       propsData: {
-        isInCell: true
-      }
+        isInCell: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('weui-cell')
 
     wrapper = mount(Switch, {
       propsData: {
-        isInCell: false
-      }
+        isInCell: false,
+      },
     })
 
     expect(wrapper.classes()).not.toContain('weui-cell')
@@ -41,8 +41,8 @@ describe('switch', () => {
   test('click', () => {
     wrapper = mount(Switch, {
       propsData: {
-        value: true
-      }
+        value: true,
+      },
     })
 
     // first click
@@ -57,8 +57,8 @@ describe('switch', () => {
     wrapper = mount(Switch, {
       propsData: {
         disabled: true,
-        value: true
-      }
+        value: true,
+      },
     })
 
     wrapper.find('.wv-switch').trigger('click')
@@ -70,8 +70,8 @@ describe('switch', () => {
     wrapper = mount(Switch, {
       propsData: {
         value: false,
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     // the switch can not drag when it's disabled
@@ -80,7 +80,7 @@ describe('switch', () => {
 
     // enable the switch
     wrapper.setProps({
-      disabled: false
+      disabled: false,
     })
 
     // drag to right (distance <= THUMB_STROKE / 2), the value should not change
@@ -113,13 +113,13 @@ describe('switch', () => {
       attachToDocument: true,
       data: function () {
         return {
-          currentValue: false
+          currentValue: false,
         }
-      }
+      },
     })
 
     wrapper.setData({
-      currentValue: true
+      currentValue: true,
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -127,7 +127,7 @@ describe('switch', () => {
     expect(wrapper.vm.offset).toBe(THUMB_STROKE)
 
     wrapper.setData({
-      currentValue: false
+      currentValue: false,
     })
     expect(wrapper.vm.offset).toBe(0)
   })
@@ -135,18 +135,18 @@ describe('switch', () => {
   test('watch value', () => {
     wrapper = mount(Switch, {
       propsData: {
-        value: false
-      }
+        value: false,
+      },
     })
 
     wrapper.setProps({
-      value: false
+      value: false,
     })
 
     expect(wrapper.vm.currentValue).toBe(false)
 
     wrapper.setProps({
-      value: true
+      value: true,
     })
 
     expect(wrapper.vm.currentValue).toBe(true)

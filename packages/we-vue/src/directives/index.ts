@@ -5,11 +5,11 @@ import Touch from './touch'
 export {
   ClickOutside,
   Scroll,
-  Touch
+  Touch,
 }
 
 export default {
   ClickOutside,
   Scroll,
-  Touch
+  Touch,
 }

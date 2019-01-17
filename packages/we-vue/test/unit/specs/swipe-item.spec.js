@@ -12,8 +12,8 @@ describe('swipe item', () => {
     wrapper = mount(Swipe, {
       attachToDocument: true,
       slots: {
-        default: [SwipeItem, SwipeItem]
-      }
+        default: [SwipeItem, SwipeItem],
+      },
     })
 
     expect(wrapper.findAll(SwipeItem).length).toBe(2)

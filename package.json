@@ -1,12 +1,12 @@
 {
   "private": true,
   "workspaces": [
-    "packages/*",
-    "dev"
+    "packages/*"
   ],
   "scripts": {
     "dev": "lerna run serve --ignore docs --stream --parallel",
-    "dev:docs": "lerna run dev --scope wevue.org --stream"
+    "dev:docs": "lerna run dev --scope wevue.org --stream",
+    "lint": "lerna exec lint --scope we-vue --stream"
   },
   "husky": {
     "hooks": {
@@ -15,7 +15,7 @@
   },
   "lint-staged": {
     "*.{js,vue}": [
-      "npm run lint:fix",
+      "yarn run lint",
       "git add"
     ]
   },
@@ -35,16 +35,16 @@
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-typescript": "^0.13.0",
-    "eslint-plugin-vue": "^4.3.0",
-    "fork-ts-checker-webpack-plugin": "^0.4.15",
+    "eslint-plugin-typescript": "^0.14.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "fork-ts-checker-webpack-plugin": "^0.5.0",
     "git-branch": "^2.0.1",
-    "husky": "^1.1.0",
+    "husky": "^1.3.1",
     "inquirer": "^6.0.0",
     "jest": "^23.0.0",
     "jest-css-modules": "^1.1.0",
     "jest-serializer-vue": "^2.0.0",
-    "lerna": "^3.4.3",
+    "lerna": "^3.7.1",
     "lint-staged": "^8.0.0",
     "listr": "^0.14.0",
     "prettier": "^1.14.3",
@@ -56,16 +56,16 @@
     "shelljs": "^0.8.0",
     "ts-loader": "^5.3.0",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.4",
+    "typescript": "^3.2.0",
     "typescript-eslint-parser": "^21.0.0",
     "vue": "^2.5.9",
     "vue-jest": "^3.0.0",
-    "vue-loader": "^15.2.0",
+    "vue-loader": "^15.5.0",
     "vue-style-loader": "^4.0.2",
     "vue-template-compiler": "^2.5.9",
-    "webpack": "^4.16.0",
+    "webpack": "^4.28.0",
     "webpack-cli": "^3.1.2",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.2.1"
   },
   "config": {
     "commitizen": {

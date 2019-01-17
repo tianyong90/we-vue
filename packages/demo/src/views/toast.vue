@@ -8,36 +8,37 @@
 </template>
 
 <script>
-import { Toast } from 'we-vue'
+// TODO
+// import { Toast } from 'we-vue'
 
 export default {
   mounted () {
-    Toast.setDefaultOptions({
+    this.$toast.setDefaultOptions({
       duration: 1000
     })
   },
 
   methods: {
     showSuccess () {
-      Toast.success('操作成功')
+      this.$toast.success('操作成功')
     },
 
     showError () {
-      Toast.fail({
+      this.$toast.fail({
         duration: 1000,
         message: '操作失败'
       })
     },
 
     showText () {
-      Toast.text({
+      this.$toast.text({
         duration: 1000,
         message: 'hello'
       })
     },
 
     showLoading () {
-      Toast.loading({
+      this.$toast.loading({
         message: 'Loaidng',
         duration: 2000
       })

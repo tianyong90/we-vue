@@ -19,8 +19,8 @@ describe('datetime-picker', () => {
       attachToDocument: true,
       propsData: {
         type: 'datetime',
-        value: date
-      }
+        value: date,
+      },
     })
 
     expect(wrapper.name()).toBe('wv-datetime-picker')
@@ -31,8 +31,8 @@ describe('datetime-picker', () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
-        type: 'date'
-      }
+        type: 'date',
+      },
     })
 
     expect(wrapper.name()).toBe('wv-datetime-picker')
@@ -43,8 +43,8 @@ describe('datetime-picker', () => {
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
-        type: 'time'
-      }
+        type: 'time',
+      },
     })
 
     expect(wrapper.name()).toBe('wv-datetime-picker')
@@ -53,7 +53,7 @@ describe('datetime-picker', () => {
 
   test('test open and close method', () => {
     wrapper = mount(DatetimePicker, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.vm.$nextTick(() => {
@@ -89,7 +89,7 @@ describe('datetime-picker', () => {
 
   test('onConfirm', done => {
     wrapper = mount(DatetimePicker, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.vm.$nextTick(() => {
@@ -106,7 +106,7 @@ describe('datetime-picker', () => {
 
   test('onCancel', done => {
     wrapper = mount(DatetimePicker, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.vm.$nextTick(() => {
@@ -127,8 +127,8 @@ describe('datetime-picker', () => {
       propsData: {
         visible: true,
         type: 'time',
-        value: testTime
-      }
+        value: testTime,
+      },
     })
 
     await wrapper.vm.$nextTick()
@@ -162,8 +162,8 @@ describe('datetime-picker', () => {
       attachToDocument: true,
       propsData: {
         type: 'datetime',
-        value: testDate
-      }
+        value: testDate,
+      },
     })
 
     expect(wrapper.vm.currentValue).toEqual(testDate)
@@ -175,7 +175,7 @@ describe('datetime-picker', () => {
       monthColumn,
       dateColumn,
       hourColumn,
-      minuteColumn
+      minuteColumn,
     ] = wrapper.findAll('.weui-picker__group').wrappers
 
     slowVerticalDrag(yearColumn, 0, -34)
@@ -199,8 +199,8 @@ describe('datetime-picker', () => {
       attachToDocument: true,
       propsData: {
         type: 'date',
-        value: testDate
-      }
+        value: testDate,
+      },
     })
 
     expect(wrapper.vm.currentValue).toEqual(testDate)
@@ -226,14 +226,14 @@ describe('datetime-picker', () => {
     wrapper = mount(DatetimePicker, {
       propsData: {
         type: 'date',
-        value: testDate
-      }
+        value: testDate,
+      },
     })
 
     const newValue = new Date()
 
     wrapper.setProps({
-      value: newValue
+      value: newValue,
     })
 
     expect(wrapper.vm.currentValue).toEqual(newValue)

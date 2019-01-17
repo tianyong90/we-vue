@@ -1,4 +1,4 @@
-import Input from './index.vue'
+import Input from './input.vue'
 
 export { Input }
 export default Input

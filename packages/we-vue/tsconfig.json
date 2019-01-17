@@ -1,39 +1,7 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "tsc-compiled",
-    "target": "esnext",
-    "module": "esnext",
-    "allowJs": false,
-    "strict": false, // todo
-    "importHelpers": true,
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "declaration": false,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "types": [
-      "webpack-env",
-      "jest"
-    ],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-  },
-  "files": [
-    "src/vue-shims.d.ts"
-  ],
+  "extends": "../../tsconfig.json",
+  "baseurl": ".",
   "include": [
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "test/**/*"
-  ],
-  "exclude": [
-    "node_modules"
+    "src"
   ]
 }

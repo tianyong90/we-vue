@@ -10,7 +10,7 @@ describe('textarea', () => {
 
   test('create', () => {
     wrapper = shallowMount(EmptyComponent, {
-      mixins: [RouterLink]
+      mixins: [RouterLink],
     })
 
     expect(wrapper.props().to).toBe(undefined)
@@ -24,15 +24,15 @@ describe('textarea', () => {
 
     wrapper = shallowMount(EmptyComponent, {
       propsData: {
-        to: 'test'
+        to: 'test',
       },
       mixins: [RouterLink],
       mocks: {
         $router: {
           push: pushSpy,
-          replace: replaceSpy
-        }
-      }
+          replace: replaceSpy,
+        },
+      },
     })
 
     wrapper.vm.routerLink()
@@ -42,7 +42,7 @@ describe('textarea', () => {
 
     // replace = true
     wrapper.setProps({
-      replace: true
+      replace: true,
     })
 
     wrapper.vm.routerLink()
@@ -55,9 +55,9 @@ describe('textarea', () => {
     wrapper = shallowMount(EmptyComponent, {
       propsData: {
         url: '#test',
-        replace: false
+        replace: false,
       },
-      mixins: [RouterLink]
+      mixins: [RouterLink],
     })
 
     wrapper.vm.routerLink()
@@ -67,7 +67,7 @@ describe('textarea', () => {
 
     // replace = true
     wrapper.setProps({
-      replace: true
+      replace: true,
     })
 
     const length = window.history.length

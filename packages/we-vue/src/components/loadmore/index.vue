@@ -3,39 +3,33 @@
     class="weui-loadmore"
     :class="{'weui-loadmore_line': (type === 'line' || type === 'lineDot'), 'weui-loadmore_dot': type === 'lineDot' }"
   >
-    <wv-spinner type="default" v-if="type === 'default'"/>
-    <span class="weui-loadmore__tips" v-text="type === 'lineDot' ? '' : text"/>
+    <WVSpinner type="default" v-if="type === 'default'" />
+    <span class="weui-loadmore__tips" v-text="type === 'lineDot' ? '' : text" />
   </div>
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import '../../scss/loadmore.scss'
 
-import Themeable from '../../mixins/themeable'
+import WVSpinner from '../spinner'
 
-import mixins from '../../utils/mixins'
-
-import Spinner from '../spinner'
-
-export default mixins(
-  Themeable
-  /* @vue/component */
-).extend({
+export default Vue.extend({
   name: 'wv-loadmore',
 
   components: {
-    'wv-spinner': Spinner
+    WVSpinner,
   },
 
   props: {
     type: {
       type: String,
-      default: 'default'
+      default: 'default',
     },
     text: {
       type: String,
-      default: '正在加载'
-    }
-  }
+      default: '正在加载',
+    },
+  },
 })
 </script>

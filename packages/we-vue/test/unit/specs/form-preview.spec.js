@@ -9,7 +9,7 @@ describe('preview', () => {
 
   test('create', () => {
     wrapper = shallowMount(FormPreview, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-form-preview')
@@ -20,8 +20,8 @@ describe('preview', () => {
     wrapper = shallowMount(FormPreview, {
       propsData: {
         title: 'test-title',
-        value: 'test-value'
-      }
+        value: 'test-value',
+      },
     })
 
     expect(wrapper.find('label.weui-form-preview__label').text()).toBe('test-title')

@@ -59,7 +59,7 @@ function touchstart (event: TouchEvent, wrapper: TouchWrapper) {
   wrapper.touchstartY = touch.clientY
 
   wrapper.start &&
-    wrapper.start(Object.assign(event, wrapper))
+  wrapper.start(Object.assign(event, wrapper))
 }
 
 function touchend (event: TouchEvent, wrapper: TouchWrapper) {
@@ -68,7 +68,7 @@ function touchend (event: TouchEvent, wrapper: TouchWrapper) {
   wrapper.touchendY = touch.clientY
 
   wrapper.end &&
-    wrapper.end(Object.assign(event, wrapper))
+  wrapper.end(Object.assign(event, wrapper))
 
   handleGesture(wrapper)
 }
@@ -97,13 +97,13 @@ function createHandlers (value: TouchHandlers): TouchStoredHandlers {
     down: value.down,
     start: value.start,
     move: value.move,
-    end: value.end
+    end: value.end,
   }
 
   return {
     touchstart: (e: TouchEvent) => touchstart(e, wrapper),
     touchend: (e: TouchEvent) => touchend(e, wrapper),
-    touchmove: (e: TouchEvent) => touchmove(e, wrapper)
+    touchmove: (e: TouchEvent) => touchmove(e, wrapper),
   }
 }
 
@@ -137,5 +137,5 @@ function unbind (el: HTMLElement, binding: TouchVNodeDirective, vnode: VNode) {
 
 export default {
   inserted,
-  unbind
+  unbind,
 }

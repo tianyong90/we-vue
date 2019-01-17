@@ -10,7 +10,7 @@ describe('search', () => {
 
   test('create', () => {
     wrapper = shallowMount(SearchBar, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-search-bar')
@@ -20,8 +20,8 @@ describe('search', () => {
   test('autofocus', () => {
     wrapper = shallowMount(SearchBar, {
       propsData: {
-        autofocus: true
-      }
+        autofocus: true,
+      },
     })
 
     expect(wrapper.find({ ref: 'input' }).attributes().autofocus).toBe('autofocus')
@@ -29,8 +29,8 @@ describe('search', () => {
 
     wrapper = shallowMount(SearchBar, {
       propsData: {
-        autofocus: false
-      }
+        autofocus: false,
+      },
     })
 
     expect(wrapper.find({ ref: 'input' }).attributes()).not.toContain('autofocus')
@@ -39,7 +39,7 @@ describe('search', () => {
 
   test('method textClick', () => {
     wrapper = shallowMount(SearchBar, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.vm.textClick()
@@ -49,7 +49,7 @@ describe('search', () => {
 
   test('method clear', () => {
     wrapper = shallowMount(SearchBar, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.vm.clear()
@@ -60,11 +60,11 @@ describe('search', () => {
   test('method cancel', () => {
     const spySearchBarClear = jest.fn()
     wrapper = shallowMount(SearchBar, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setMethods({
-      clear: spySearchBarClear
+      clear: spySearchBarClear,
     })
 
     wrapper.vm.cancel()
@@ -75,11 +75,11 @@ describe('search', () => {
 
   test('watch currentValue', () => {
     wrapper = shallowMount(SearchBar, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setData({
-      currentValue: 'current-value'
+      currentValue: 'current-value',
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -87,11 +87,11 @@ describe('search', () => {
 
   test('watch value', () => {
     wrapper = shallowMount(SearchBar, {
-      propsData: {}
+      propsData: {},
     })
 
     wrapper.setProps({
-      value: 'new-value'
+      value: 'new-value',
     })
 
     expect(wrapper.vm.currentValue).toBe('new-value')
@@ -101,8 +101,8 @@ describe('search', () => {
     wrapper = mount(SearchBar, {
       attachToDocument: true,
       propsData: {
-        result: [1, 2, 3]
-      }
+        result: [1, 2, 3],
+      },
     })
 
     wrapper.find(Cell).trigger('click')

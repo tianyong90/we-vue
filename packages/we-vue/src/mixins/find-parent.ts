@@ -1,12 +1,14 @@
-export default {
-  data (): object {
+import Vue from 'vue'
+
+export default Vue.extend({
+  data () {
     return {
-      parent: null
+      parent: null as any,
     }
   },
 
   methods: {
-    findParent (name: string) {
+    findParent (name: string): void {
       let parent = this.$parent
       while (parent) {
         if (parent.$options.name === name) {
@@ -15,6 +17,6 @@ export default {
         }
         parent = parent.$parent
       }
-    }
-  }
-}
+    },
+  },
+})

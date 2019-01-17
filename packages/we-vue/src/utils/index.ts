@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { getTouch } from './touches'
 
-const isServer = Vue.prototype.$isServer
+const isServer: boolean = Vue.prototype.$isServer
 
 /**
  * whether the value is defined

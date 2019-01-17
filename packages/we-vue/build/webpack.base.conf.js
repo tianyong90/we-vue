@@ -1,11 +1,39 @@
 'use strict'
-const utils = require('./utils')
-const vueLoaderConfig = require('./vue-loader.conf')
+const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
+const { DefinePlugin } = require('webpack')
+const weVuePackage = require('../package')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
+const extractCSS = isProd || process.env.TARGET === 'development'
+
+const resolve = file => require('path').resolve(__dirname, file)
+
+const cssLoaders = [
+  extractCSS ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+  {
+    loader: 'css-loader',
+    options: {
+      sourceMap: !isProd
+    }
+  },
+  {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: !isProd
+    }
+  },
+  {
+    loader: 'sass-loader',
+    options: {
+      sourceMap: !isProd
+    }
+  }
+]
 
 module.exports = {
   mode: isProd ? 'production' : 'development',
@@ -42,31 +70,81 @@ module.exports = {
       //   }
       // },
       {
+        test: /\.scss$/,
+        use: cssLoaders
+      },
+      {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
+        use: [
+          {
+            loader: 'cache-loader',
+            options: {
+              cacheDirectory: resolve(`../node_modules/.cache/vue-loader`)
+            }
+          },
+          {
+            loader: 'vue-loader',
+            options: {
+              compilerOptions: {
+                preserveWhitespace: false
+              },
+              cacheDirectory: resolve(`../node_modules/.cache/vue-loader`)
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        use: [
+          {
+            loader: 'cache-loader',
+            options: {
+              cacheDirectory: resolve(`../node_modules/.cache/babel-loader`)
+            }
+          },
+          {
+            loader: 'thread-loader',
+            options: {
+              // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+              workers: require('os').cpus().length - 1
+            }
+          },
+          'babel-loader'
+        ],
         exclude: /node_modules/
       },
       {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          transpileOnly: true,
-          appendTsSuffixTo: [/\.vue$/],
-          happyPackMode: isProd
-        }
+        test: /\.ts$/,
+        use: [
+          {
+            loader: 'cache-loader',
+            options: {
+              cacheDirectory: resolve(`../node_modules/.cache/ts-loader`)
+            }
+          },
+          {
+            loader: 'thread-loader'
+          },
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              happyPackMode: true,
+              appendTsSuffixTo: [/\.vue$/]
+            }
+          }
+        ],
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: path.posix.join('static', 'img/[name].[hash:7].[ext]')
         }
       },
       {
@@ -74,18 +152,27 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: path.posix.join('static', 'fonts/[name].[hash:7].[ext]')
         }
       }
     ]
   },
   plugins: [
     new ProgressBarPlugin(),
+    new FriendlyErrorsWebpackPlugin({
+      clearConsole: true
+    }),
     new VueLoaderPlugin(),
     new ForkTsChecker({
+      checkSyntacticErrors: isProd,
       vue: true,
       tslint: false, // TODO
-      checkSyntacticErrors: isProd
+      formatter: 'codeframe',
+      tsconfig: resolve('../tsconfig.json')
+    }),
+    new DefinePlugin({
+      __WE_VUE_VERSION__: JSON.stringify(weVuePackage.version),
+      __REQUIRED_VUE__: JSON.stringify(weVuePackage.peerDependencies.vue),
     })
   ]
 }

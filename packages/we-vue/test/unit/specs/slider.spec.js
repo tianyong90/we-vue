@@ -11,7 +11,7 @@ describe('slider', () => {
 
   test('create', () => {
     wrapper = shallowMount(Slider, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-slider')
@@ -26,8 +26,8 @@ describe('slider', () => {
       shallowMount(Slider, {
         propsData: {
           min: 10,
-          max: 1
-        }
+          max: 1,
+        },
       })
     }).toThrow('property:max must be bigger than property:min')
   })
@@ -36,8 +36,8 @@ describe('slider', () => {
     const fakeValue = faker.random.number({ min: 0, max: 100 })
     wrapper = shallowMount(Slider, {
       propsData: {
-        value: fakeValue
-      }
+        value: fakeValue,
+      },
     })
 
     const correctPercent = Math.floor((wrapper.vm.value - wrapper.vm.min) / (wrapper.vm.max - wrapper.vm.min) * 100)
@@ -48,13 +48,13 @@ describe('slider', () => {
   test('show-value', () => {
     wrapper = shallowMount(Slider, {
       propsData: {
-        showValue: true
-      }
+        showValue: true,
+      },
     })
 
     expect(wrapper.contains('.weui-slider-box__value')).toBeTruthy()
     wrapper.setProps({
-      showValue: false
+      showValue: false,
     })
 
     expect(wrapper.contains('.weui-slider-box__value')).toBeFalsy()
@@ -64,8 +64,8 @@ describe('slider', () => {
     wrapper = shallowMount(Slider, {
       propsData: {
         value: 0,
-        disabled: true
-      }
+        disabled: true,
+      },
     })
 
     // click the inner
@@ -80,8 +80,8 @@ describe('slider', () => {
   test('drag the handler', () => {
     wrapper = shallowMount(Slider, {
       propsData: {
-        value: 0
-      }
+        value: 0,
+      },
     })
 
     const { sliderLeft, min, max, step, stepWidth } = wrapper.vm
@@ -102,8 +102,8 @@ describe('slider', () => {
     wrapper = mount(Slider, {
       attachToDocument: true,
       propsData: {
-        value: 0
-      }
+        value: 0,
+      },
     })
 
     const { min, step, sliderLeft, stepWidth } = wrapper.vm

@@ -9,7 +9,7 @@ describe('grid', () => {
 
   test('create', () => {
     wrapper = shallowMount(Grid, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-grid')

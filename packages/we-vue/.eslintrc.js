@@ -1,25 +1,21 @@
-// https://eslint.org/docs/user-guide/configuring
-
 module.exports = {
-  root: true,
+  root: false,
   parserOptions: {
-    parser: 'babel-eslint',
-    ecmaVersion: 2018,
+    parser: 'typescript-eslint-parser',
+    ecmaVersion: 2017,
     sourceType: 'module'
   },
+  extends: [
+    'standard',
+    'plugin:vue/strongly-recommended'
+  ],
   env: {
     es6: true,
-    node: true
+    browser: true
   },
-  extends: [
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/strongly-recommended',
-    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard'
-  ],
   // required to lint *.vue files
   plugins: [
+    'typescript',
     'vue'
   ],
   // add your custom rules here
@@ -29,15 +25,39 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    "vue/require-default-prop": 'off',
-    "vue/no-unused-vars": 'off',
-    "vue/name-property-casing": ['error', 'kebab-case'],
+    'vue/require-default-prop': 'off',
+    'vue/no-unused-vars': 'off',
+    'vue/name-property-casing': ['error', 'kebab-case'],
     'vue/max-attributes-per-line': ['error', {
-      "singleline": 5,
-      "multiline": {
-        "max": 1,
-        "allowFirstLine": false
+      'singleline': 5,
+      'multiline': {
+        'max': 1,
+        'allowFirstLine': false
       }
-    }]
-  }
+    }],
+    'vue/component-name-in-template-casing': [
+      'error', 'kebab-case', {
+        'ignores': [],
+      }],
+    'comma-dangle': ['warn', 'always-multiline'],
+  },
+  overrides: [
+    {
+      files: '**/*.ts',
+      rules: {
+        'no-undef': 'off',
+        'space-infix-ops': 'off',
+        'import/export': 'off',
+        'no-unused-vars': 'off',
+        'no-inner-declarations': 'off',
+        'no-redeclare': 'off', // TODO
+        'typescript/adjacent-overload-signatures': 'error',
+        'typescript/member-delimiter-style': ['error', {
+          delimiter: 'none'
+        }],
+        'typescript/member-ordering': 'error',
+        'typescript/type-annotation-spacing': 'error'
+      }
+    }
+  ]
 }

@@ -9,7 +9,7 @@ describe('progress', () => {
 
   test('create', () => {
     wrapper = shallowMount(Input, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-progress')
@@ -22,8 +22,8 @@ describe('progress', () => {
 
     wrapper = shallowMount(Input, {
       propsData: {
-        percent: percent
-      }
+        percent: percent,
+      },
     })
 
     const innerBarEl = wrapper.find('.weui-progress__inner-bar')
@@ -33,8 +33,8 @@ describe('progress', () => {
   test('clearBtn action', () => {
     wrapper = shallowMount(Input, {
       propsData: {
-        showClear: true
-      }
+        showClear: true,
+      },
     })
 
     expect(wrapper.contains('i.weui-icon-cancel')).toBeTruthy()
@@ -44,7 +44,7 @@ describe('progress', () => {
     expect(wrapper.emitted().cancel).toBeTruthy()
 
     wrapper.setProps({
-      showClear: false
+      showClear: false,
     })
 
     expect(wrapper.contains('weui-progress__opr')).toBeFalsy()

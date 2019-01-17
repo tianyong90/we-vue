@@ -17,7 +17,7 @@ function inserted (el: HTMLElement, binding: ScrollVNodeDirective) {
   el._onScroll = {
     callback,
     options,
-    target
+    target,
   }
 }
 
@@ -32,5 +32,5 @@ function unbind (el: HTMLElement) {
 
 export default {
   inserted,
-  unbind
+  unbind,
 }

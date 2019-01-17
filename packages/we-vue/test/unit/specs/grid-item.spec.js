@@ -9,7 +9,7 @@ describe('grid-item', () => {
 
   test('create', () => {
     wrapper = shallowMount(GridItem, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-grid-item')
@@ -21,8 +21,8 @@ describe('grid-item', () => {
     wrapper = shallowMount(GridItem, {
       propsData: {},
       methods: {
-        routerLink: routerLinkSpy
-      }
+        routerLink: routerLinkSpy,
+      },
     })
 
     wrapper.trigger('click')

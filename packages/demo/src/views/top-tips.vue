@@ -12,21 +12,17 @@
 </template>
 
 <script>
-import { TopTips } from 'we-vue'
-
-console.log(TopTips)
-
 export default {
   methods: {
     openTips () {
-      TopTips({
+      this.$toptips({
         message: '提示信息',
         duration: 3000
       })
     },
 
     closeTips () {
-      TopTips.close()
+      this.$toptips.close()
     }
   }
 }

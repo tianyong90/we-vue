@@ -9,7 +9,7 @@ describe('tabbar-item', () => {
 
   test('create', () => {
     wrapper = shallowMount(TabbarItem, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-tabbar-item')
@@ -19,8 +19,8 @@ describe('tabbar-item', () => {
   test('text', () => {
     wrapper = shallowMount(TabbarItem, {
       slots: {
-        default: 'test'
-      }
+        default: 'test',
+      },
     })
 
     expect(wrapper.find('p.weui-tabbar__label').text()).toBe('test')
@@ -29,8 +29,8 @@ describe('tabbar-item', () => {
   test('isOn', () => {
     wrapper = shallowMount(TabbarItem, {
       propsData: {
-        isOn: true
-      }
+        isOn: true,
+      },
     })
 
     expect(wrapper.classes()).toContain('weui-bar__item_on')
@@ -41,8 +41,8 @@ describe('tabbar-item', () => {
     wrapper = shallowMount(TabbarItem, {
       propsData: {},
       methods: {
-        routerLink: routerLinkSpy
-      }
+        routerLink: routerLinkSpy,
+      },
     })
 
     wrapper.trigger('click')

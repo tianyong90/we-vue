@@ -9,7 +9,7 @@ describe('loadmore', () => {
 
   test('create', () => {
     wrapper = shallowMount(Loadmore, {
-      propsData: {}
+      propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-loadmore')
@@ -19,8 +19,8 @@ describe('loadmore', () => {
   test('text', () => {
     wrapper = shallowMount(Loadmore, {
       propsData: {
-        text: 'test'
-      }
+        text: 'test',
+      },
     })
 
     expect(wrapper.find('.weui-loadmore__tips').text()).toBe('test')

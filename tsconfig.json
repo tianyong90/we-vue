@@ -1,26 +1,35 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
-    "lib": ["es2017", "es2018", "dom", "dom.iterable"],
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "es2018",
+      "dom",
+      "dom.iterable"
+    ],
     "allowJs": true,
     "sourceMap": true,
     "outDir": "./dist",
     "downlevelIteration": true,
-    "strict": false, // TODO
+    "strict": true,
+    "jsx": "preserve",
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "noImplicitThis": true,
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "types": [
+      "jest"
+    ]
   },
   "exclude": [
+    "node_modules",
     "**/*.spec.ts",
-    "**/*.spec.js",
-    "node_modules"
+    "**/*.spec.js"
   ]
 }

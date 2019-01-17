@@ -3,10 +3,12 @@
 .weui-media-box {
   padding: 15px;
   position: relative;
+
   &:before {
     @include setTopLine($weui-line-color-light);
     left: 15px;
   }
+
   &:first-child {
     &:before {
       display: none;
@@ -16,6 +18,7 @@
   &a {
     color: #000000;
     @include setTapColor();
+
     &:active {
       background-color: #ececec;
     }
@@ -66,6 +69,7 @@
 .weui-media-box_appmsg {
   display: flex;
   align-items: center;
+
   .weui-media-box__hd {
     margin-right: 0.8em;
     width: 60px;
@@ -73,11 +77,13 @@
     line-height: 60px;
     text-align: center;
   }
+
   .weui-media-box__thumb {
     width: 100%;
     max-height: 100%;
     vertical-align: top;
   }
+
   .weui-media-box__bd {
     flex: 1;
     min-width: 0;
@@ -86,8 +92,10 @@
 
 .weui-media-box_small-appmsg {
   padding: 0;
+
   .weui-cells {
     margin-top: 0;
+
     &:before {
       display: none;
     }
