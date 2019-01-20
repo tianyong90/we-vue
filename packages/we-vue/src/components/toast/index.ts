@@ -59,15 +59,6 @@ function Toast (options: TypeToastOptions | string) {
   return toast
 }
 
-const defaultOptions: TypeToastOptions = {
-  visible: true,
-  duration: 2000,
-  mask: true,
-  message: '',
-  type: 'success',
-  icon: 'success-no-circle',
-}
-
 const createMethod = (type: string) => (options: TypeToastOptions | string) =>
   Toast({
     type,
@@ -75,6 +66,15 @@ const createMethod = (type: string) => (options: TypeToastOptions | string) =>
   })
 
 namespace Toast {
+  export const defaultOptions: TypeToastOptions = {
+    visible: true,
+    duration: 2000,
+    mask: true,
+    message: '',
+    type: 'success',
+    icon: 'success-no-circle',
+  }
+
   export let currentOptions: TypeToastOptions = defaultOptions
 
   export const text = createMethod('text')

@@ -1,4 +1,4 @@
-import FormPreview from './index.vue'
+import FormPreview from './form-preview.vue'
 
 export { FormPreview }
 export default FormPreview

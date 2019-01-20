@@ -4,15 +4,12 @@ export default Vue.extend({
   name: 'routable',
 
   props: {
-    href: [String, Object],
-    to: [String, Object],
+    href: String,
     replace: Boolean,
+    to: [String, Object],
   },
 
   methods: {
-    // TODO
-    // click (e: MouseEvent): void {},
-
     routeLink () {
       const { to, href, $router, replace } = this as any
       if (to && $router) {

@@ -32,8 +32,9 @@
     "build:we-vue-css": "gulp build --gulpfile packages/style/gulpfile.js --color --silent",
     "build:style-entry": "node build/build-style-entry.js",
     "build:we-vue": "cross-env NODE_ENV=production webpack --color --config build/webpack.build.conf.js && cross-env NODE_ENV=production webpack -p --color --config build/webpack.build.conf.js",
-    "test": "jest --config=test/unit/jest.conf.js --runInBand",
-    "test:watch": "jest --config=test/unit/jest.conf.js --watchAll",
+    "test": "jest --config=jest.config.js --colors --runInBand",
+    "test:watch": "jest --config=jest.config.js --colors --watchAll",
+    "test:coverage": "jest --config=jest.config.js --colors --coverage",
     "coverage": "start test/unit/coverage/lcov-report/index.html",
     "release": "node build/release.js"
   },

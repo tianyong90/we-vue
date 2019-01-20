@@ -1,4 +1,4 @@
-import FlexItem from './flex-item.vue'
+import FlexItem from './flex-item'
 
 export { FlexItem }
 export default FlexItem

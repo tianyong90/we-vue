@@ -11,26 +11,7 @@
   </transition>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'wv-modal',
-
-  props: {
-    visible: Boolean,
-    zIndex: Number,
-    className: String,
-    customStyle: Object,
-  },
-
-  computed: {
-    style (): object {
-      return {
-        zIndex: this.zIndex,
-        ...this.customStyle,
-      }
-    },
-  },
-})
+<script>
+import modal from './Modal.vue.ts'
+export default modal
 </script>

@@ -1,4 +1,4 @@
-import Flex from './flex.vue'
+import Flex from './flex'
 
 export { Flex }
 export default Flex

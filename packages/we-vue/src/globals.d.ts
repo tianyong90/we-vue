@@ -117,3 +117,7 @@ declare module 'vue/types/vue' {
 declare type classesObject = {
   [key: string]: boolean
 }
+
+declare type styleObject = {
+  [key: string]: string | number
+}

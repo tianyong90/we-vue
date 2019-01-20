@@ -6,3 +6,5 @@ node_modules/
 /lib/
 /lib-temp/
 /dist/
+
+/test/unit/coverage/

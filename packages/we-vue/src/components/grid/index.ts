@@ -1,4 +1,4 @@
-import Grid from './index.vue'
+import Grid from './grid'
 
 export { Grid }
 export default Grid

@@ -1,4 +1,4 @@
-import Tabbar from './index.vue'
+import Tabbar from './tabbar'
 
 export { Tabbar }
 export default Tabbar

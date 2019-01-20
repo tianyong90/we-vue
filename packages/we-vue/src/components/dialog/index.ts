@@ -15,23 +15,6 @@ type action = 'cancel' | 'confirm'
 
 let instance: DialogType
 
-const defaultOptions = {
-  visible: true,
-  title: '',
-  message: '',
-  type: '',
-  modalFade: false,
-  lockScroll: false,
-  closeOnClickModal: true,
-  showConfirmButton: true,
-  showCancelButton: false,
-  confirmButtonText: '确定',
-  cancelButtonText: '取消',
-  callback: (action: action) => {
-    instance[action === 'confirm' ? 'resolve' : 'reject'](action)
-  },
-}
-
 const createInstance = () => {
   instance = new (Vue.extend(DialogComponent))({
     el: document.createElement('div'),
@@ -59,6 +42,23 @@ function Dialog (options: DialogOptions) {
 }
 
 namespace Dialog {
+  export const defaultOptions: DialogOptions = {
+    visible: true,
+    title: '',
+    message: '',
+    type: '',
+    modalFade: false,
+    lockScroll: false,
+    closeOnClickModal: true,
+    showConfirmButton: true,
+    showCancelButton: false,
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    callback: (action: action) => {
+      instance[action === 'confirm' ? 'resolve' : 'reject'](action)
+    },
+  }
+
   export let currentOptions: DialogOptions = defaultOptions
 
   export function alert (options: DialogOptions) {

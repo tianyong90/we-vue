@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { isObj } from '../../utils'
-import deepClone from '../../utils/deep-clone'
+import cloneDeep from 'lodash/cloneDeep'
 // Mixins
 import Colorable from '../../mixins/colorable'
 // Utils
@@ -62,7 +62,7 @@ export default mixins<options>(
       prevTime: null as any,
       velocity: 0, // moving velocity
       transition: '',
-      currentOptions: deepClone(this.options) as Array<any>,
+      currentOptions: cloneDeep(this.options) as Array<any>,
       currentIndex: this.defaultIndex,
     }
   },

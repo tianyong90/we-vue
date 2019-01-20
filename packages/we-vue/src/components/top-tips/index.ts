@@ -59,6 +59,8 @@ function TopTips (options: TopTipsOptions | string) {
       instance.visible = false
     }, (options as TopTipsOptions).duration)
   }
+
+  return instance
 }
 
 namespace TopTips {

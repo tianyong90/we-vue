@@ -1,12 +1,12 @@
 <template>
   <div class="page page-with-padding">
-    <wv-flex :gutter="10" class="demo-flex">
+    <wv-flex class="demo-flex">
       <wv-flex-item>
         <div class="placeholder"/>
       </wv-flex-item>
     </wv-flex>
 
-    <wv-flex :gutter="0" class="demo-flex">
+    <wv-flex class="demo-flex">
       <wv-flex-item>
         <div class="placeholder" style="background-color: #bbb">1/2</div>
       </wv-flex-item>
