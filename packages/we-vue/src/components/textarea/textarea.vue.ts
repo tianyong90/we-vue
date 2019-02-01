@@ -1,14 +1,7 @@
+import Vue from 'vue'
 import '../../scss/textarea.scss'
 
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
-
-export default mixins(
-  Colorable
-).extend({
+export default Vue.extend({
   name: 'wv-textarea',
 
   props: {

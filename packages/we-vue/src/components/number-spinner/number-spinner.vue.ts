@@ -2,21 +2,13 @@ import '../../scss/number-spinner.scss'
 
 import Vue from 'vue'
 
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
-
 interface options extends Vue {
   $refs: {
     input: HTMLInputElement
   }
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-number-spinner',
 
   props: {

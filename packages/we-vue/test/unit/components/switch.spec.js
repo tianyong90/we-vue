@@ -47,11 +47,11 @@ describe('switch', () => {
 
     // first click
     wrapper.find('.wv-switch').trigger('click')
-    expect(wrapper.vm.currentValue).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
 
     // second click
     wrapper.find('.wv-switch').trigger('click')
-    expect(wrapper.vm.currentValue).toBe(true)
+    expect(wrapper.vm.isActive).toBe(true)
 
     // click a disabled switch
     wrapper = mount(Switch, {
@@ -63,7 +63,7 @@ describe('switch', () => {
 
     wrapper.find('.wv-switch').trigger('click')
 
-    expect(wrapper.vm.currentValue).toBe(true)
+    expect(wrapper.vm.isActive).toBe(true)
   })
 
   test('drag the thumb', () => {
@@ -76,7 +76,7 @@ describe('switch', () => {
 
     // the switch can not drag when it's disabled
     horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE)
-    expect(wrapper.vm.currentValue).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
 
     // enable the switch
     wrapper.setProps({
@@ -85,41 +85,41 @@ describe('switch', () => {
 
     // drag to right (distance <= THUMB_STROKE / 2), the value should not change
     horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE / 2)
-    expect(wrapper.vm.currentValue).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
 
     // drag to right (distance >= THUMB_STROKE / 2), the value should change
     horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE / 2 + 5)
-    expect(wrapper.vm.currentValue).toBe(true)
+    expect(wrapper.vm.isActive).toBe(true)
 
     // drag to left (distance <= THUMB_STROKE / 2), the value should not change
     horizontalDrag(wrapper.find('.thumb'), 0, -(THUMB_STROKE / 2))
-    expect(wrapper.vm.currentValue).toBe(true)
+    expect(wrapper.vm.isActive).toBe(true)
 
     // drag to left (distance >= THUMB_STROKE / 2), the value should change
     horizontalDrag(wrapper.find('.thumb'), 0, -(THUMB_STROKE / 2 + 5))
-    expect(wrapper.vm.currentValue).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
 
     // drag to right with a distance bigger than THUMB_STROKE
     horizontalDrag(wrapper.find('.thumb'), 0, THUMB_STROKE + 5)
-    expect(wrapper.vm.currentValue).toBe(true)
+    expect(wrapper.vm.isActive).toBe(true)
 
     // drag to left with a distance bigger than THUMB_STROKE
     horizontalDrag(wrapper.find('.thumb'), 0, -(THUMB_STROKE + 5))
-    expect(wrapper.vm.currentValue).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
   })
 
-  test('watch currentValue', () => {
+  test('watch isActive', () => {
     wrapper = mount(Switch, {
       attachToDocument: true,
       data: function () {
         return {
-          currentValue: false,
+          isActive: false,
         }
       },
     })
 
     wrapper.setData({
-      currentValue: true,
+      isActive: true,
     })
 
     expect(wrapper.emitted().input).toBeTruthy()
@@ -127,7 +127,7 @@ describe('switch', () => {
     expect(wrapper.vm.offset).toBe(THUMB_STROKE)
 
     wrapper.setData({
-      currentValue: false,
+      isActive: false,
     })
     expect(wrapper.vm.offset).toBe(0)
   })
@@ -143,12 +143,12 @@ describe('switch', () => {
       value: false,
     })
 
-    expect(wrapper.vm.currentValue).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
 
     wrapper.setProps({
       value: true,
     })
 
-    expect(wrapper.vm.currentValue).toBe(true)
+    expect(wrapper.vm.isActive).toBe(true)
   })
 })

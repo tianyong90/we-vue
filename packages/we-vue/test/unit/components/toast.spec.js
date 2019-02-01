@@ -1,9 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import ToastApi from '@/components/toast'
 import Toast from '@/components/toast/toast.vue'
-import { later, transitionStub } from '../utils'
-
-// transitionStub()
 
 describe('toast api', () => {
   beforeEach(() => {

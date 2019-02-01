@@ -1,16 +1,15 @@
 import '../../scss/cell-swipe.scss'
 
 import { getTouch } from '../../utils'
-import WvCell from '../cell/index'
-import Clickoutside from '../../utils/clickoutside'
+import WVCell from '../cell/index'
+import ClickOutside from '../../directives/click-outside'
 
 import Vue from 'vue'
-
 // Utils
 import mixins from '../../utils/mixins'
-
 // Mixins
 import Routable from '../../mixins/routable'
+import { styleObject } from '../../globals'
 
 interface options extends Vue {
   $refs: {
@@ -24,14 +23,10 @@ export default mixins<options>(
   name: 'wv-cell-swipe',
 
   components: {
-    WvCell,
+    WVCell,
   },
 
-  directives: {
-    Clickoutside,
-  },
-
-  mixins: [Routable],
+  directives: { ClickOutside },
 
   props: {
     title: [String, Number],
@@ -51,7 +46,7 @@ export default mixins<options>(
   },
 
   computed: {
-    style (): object {
+    style (): styleObject {
       return {
         transition: this.transition,
         transform: `translate3d(${this.offset}px, 0px, 0px)`,
@@ -103,7 +98,7 @@ export default mixins<options>(
       }
     },
 
-    onClickoutside (): void {
+    onClickOutside (): void {
       this.offset = 0
     },
   },

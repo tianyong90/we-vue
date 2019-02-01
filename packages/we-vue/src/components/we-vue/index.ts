@@ -15,6 +15,12 @@ const WeVue: WeVuePlugin = {
       console.error('Muntiply instance of Vue detected.')
     }
 
+    if (opts.directives) {
+      for (const name in opts.directives) {
+        Vue.directive(name, opts.directives[name])
+      }
+    }
+
     // @ts-ignore
     (function registerComponents (components: WeVueUseOptions['components']) {
       if (components) {

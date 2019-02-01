@@ -1,16 +1,16 @@
 <template>
-  <cell :title="title" v-if="isInCell">
+  <WVCell :title="title" v-if="isInCell">
     <wv-switch
       :is-in-cell="false"
       slot="ft"
-      v-model="currentValue"
+      v-model="isActive"
       :disabled="disabled"
     />
-  </cell>
+  </WVCell>
 
   <div
     class="wv-switch"
-    :class="{ 'wv-switch-on': currentValue, 'wv-switch-disabled': disabled }"
+    :class="{ 'wv-switch-on': isActive, 'wv-switch-disabled': disabled }"
     @click="onClick"
     v-else
   >

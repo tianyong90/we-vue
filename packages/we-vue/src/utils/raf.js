@@ -2,8 +2,6 @@
  * requestAnimationFrame polyfill
  */
 
-import { isServer } from './index'
-
 let prev = Date.now()
 
 /* istanbul ignore next */

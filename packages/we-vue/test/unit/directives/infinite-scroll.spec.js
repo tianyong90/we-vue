@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import InfiniteScrollComponent from '../components/infinite-scroll-component'
+import InfiniteScrollComponent from '../component-mocks/infinite-scroll-component'
 import { verticalDrag } from '../utils'
 
 describe('infinite-scroll', () => {
@@ -97,7 +97,7 @@ describe('infinite-scroll', () => {
     expect(loadMoreSpy).not.toHaveBeenCalled()
   })
 
-  test('don not loadmore when mounted, immedialateCheck === false', (done) => {
+  test('do not loadmore when mounted, immedialateCheck === false', (done) => {
     const loadMoreSpy = jest.fn()
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,

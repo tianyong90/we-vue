@@ -45,24 +45,20 @@ describe('number-spinner', () => {
   })
 
   test('onPaste method', () => {
-    const spy = jest.fn()
-
     wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1,
+        fillable: false,
       },
     })
 
     const mockEvent = {
-      clipboardData: {
-        getData: jest.fn(),
-      },
-      preventDefault: spy,
+      preventDefault: jest.fn(),
     }
 
-    wrapper.find('input').trigger('paste', mockEvent)
+    wrapper.vm.onPaste(mockEvent)
 
-    expect(spy).toHaveBeenCalled()
+    expect(mockEvent.preventDefault).toHaveBeenCalled()
   })
 
   test('onKeypress method when fillable is false', () => {
@@ -172,6 +168,6 @@ describe('number-spinner', () => {
       value: '',
     })
 
-    expect(wrapper.vm.currentValue).toBe('')
+    expect(wrapper.vm.currentValue).toBe(1)
   })
 })

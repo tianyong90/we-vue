@@ -4,10 +4,10 @@
       ref="wrap"
       :style="wrapStyle"
       class="wv-tabs__wrap"
-      :class="[
-        { 'wv-tabs__wrap--scrollable': scrollable },
-        { 'wv-hairline--top-bottom': type === 'line' }
-      ]"
+      :class="{
+        'wv-tabs__wrap--scrollable': scrollable,
+        'wv-hairline--top-bottom': type === 'line' }
+      "
     >
       <div class="wv-tabs__nav" :class="`wv-tabs__nav--${type}`" ref="nav">
         <div v-if="type === 'line'" class="wv-tabs__line" :style="lineStyle" />

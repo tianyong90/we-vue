@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import '../../scss/search-bar.scss'
-import WvCell from '../cell/index'
+import WVCell from '../cell/index'
 
 import { PropValidator } from 'vue/types/options'
 
@@ -8,7 +8,6 @@ import { PropValidator } from 'vue/types/options'
 import mixins, { ExtractVue } from '../../utils/mixins'
 
 // Mixins
-import Colorable from '../../mixins/colorable'
 import Validatable from '../../mixins/validatable'
 
 interface options extends Vue {
@@ -22,14 +21,13 @@ export default mixins<options &
    typeof Validatable
   ]>
 >(
-  Colorable,
   Validatable
   /* @vue/component */
 ).extend({
   name: 'wv-search-bar',
 
   components: {
-    WvCell,
+    WVCell,
   },
 
   props: {

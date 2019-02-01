@@ -1,5 +1,5 @@
 import { mount, TransitionStub } from '@vue/test-utils'
-import PopupMixinComponent from '../component-mocks/popup-mixin-component'
+import PopupMixin from '@/mixins/popup'
 import { verticalDrag } from '../utils'
 
 describe('mixins/popup', () => {
@@ -9,7 +9,19 @@ describe('mixins/popup', () => {
   })
 
   test('mixed props', () => {
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       propsData: {},
     })
 
@@ -23,7 +35,19 @@ describe('mixins/popup', () => {
   })
 
   test('open popup via open method', () => {
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       propsData: {
         zIndex: 1,
       },
@@ -38,7 +62,19 @@ describe('mixins/popup', () => {
   test('method move() should have been called when property getContainer is set', () => {
     const spyMove = jest.fn()
 
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       propsData: {
         getContainer: () => {},
       },
@@ -53,7 +89,19 @@ describe('mixins/popup', () => {
   })
 
   test('close popup via close method', () => {
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       propsData: {
         visible: true,
       },
@@ -66,7 +114,19 @@ describe('mixins/popup', () => {
 
   test('close popup via click mask', () => {
     // closeOnClick is true
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -104,7 +164,19 @@ describe('mixins/popup', () => {
   })
 
   test('lockScroll', () => {
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -126,7 +198,19 @@ describe('mixins/popup', () => {
     const openSpy = jest.fn()
     const closeSpy = jest.fn()
 
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       attachToDocument: true,
       methods: {
         open: openSpy,
@@ -148,7 +232,19 @@ describe('mixins/popup', () => {
   })
 
   test('getContainer watcher', () => {
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -169,7 +265,19 @@ describe('mixins/popup', () => {
   test('mask watcher', () => {
     const renderMaskSpy = jest.fn()
 
-    wrapper = mount(PopupMixinComponent, {
+    wrapper = mount({
+      mixins: [PopupMixin],
+      render (h) {
+        return h('div', {
+          directives: [
+            {
+              name: 'show',
+              value: this.visible,
+            },
+          ],
+        })
+      },
+    }, {
       attachToDocument: true,
       propsData: {
         mask: true,

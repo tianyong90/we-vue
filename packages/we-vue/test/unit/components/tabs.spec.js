@@ -62,9 +62,9 @@ describe('tab', () => {
     const tabItem = wrapper.find(Tab)
 
     expect(tabItem.name()).toBe('wv-tab')
+    expect(wrapper).toMatchSnapshot()
   })
 
-  // TODO
   test('title', () => {
     wrapper = mount(Tabs, {
       attachToDocument: true,

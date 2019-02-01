@@ -1,5 +1,5 @@
 <template>
-  <wv-picker
+  <WVPicker
     ref="picker"
     :visible.sync="currentVisible"
     :columns="columns"

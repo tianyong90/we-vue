@@ -1,15 +1,15 @@
 <template>
-  <wv-cell-swipe-button>test</wv-cell-swipe-button>
+  <WVCellSwipeButton>test</WVCellSwipeButton>
 </template>
 
 <script>
-import CellSwipeButton from '@/components/cell-swipe-button'
+import WVCellSwipeButton from '@/components/cell-swipe-button'
 
 export default {
   name: 'cell-swipe-button-conponent',
 
   components: {
-    [CellSwipeButton.name]: CellSwipeButton
-  }
+    WVCellSwipeButton,
+  },
 }
 </script>

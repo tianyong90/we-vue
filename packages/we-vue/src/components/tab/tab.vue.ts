@@ -40,7 +40,6 @@ export default mixins(
     tabs.splice(index === -1 ? tabs.length : index, 0, this)
 
     if (this.$slots.title) {
-      console.log(this.$refs.title)
       this.parent.renderTitle(this.$refs.title, this.index)
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <transition name="wv-fade">
+  <Transition name="wv-fade">
     <div
       v-show="visible"
       class="wv-modal"
@@ -8,7 +8,7 @@
       @touchmove.prevent.stop
       @click="$emit('click', $event)"
     />
-  </transition>
+  </Transition>
 </template>
 
 <script>

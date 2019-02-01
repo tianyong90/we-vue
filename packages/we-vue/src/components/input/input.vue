@@ -28,7 +28,7 @@
       >
     </div>
     <div class="weui-cell__ft">
-      <wv-icon type="warn" v-if="!valid" />
+      <WVIcon type="warn" v-if="!valid" />
       <slot name="ft" />
     </div>
   </div>

@@ -1,17 +1,9 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import '../../scss/radio.scss'
-
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
 
 import { PropValidator } from 'vue/types/options'
 
-export default mixins(
-  Colorable
-).extend({
+export default Vue.extend({
   name: 'wv-radio',
 
   props: {

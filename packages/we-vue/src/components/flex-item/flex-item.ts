@@ -2,23 +2,13 @@ import Vue, { VNode } from 'vue'
 
 import WVFlex from '../flex'
 
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
-
 type WVFlexInstance = InstanceType<typeof WVFlex>
 
 interface options extends Vue {
   flexComponent: WVFlexInstance
 }
 
-export default mixins<options>(
-  // TODO
-  Colorable
-  /* @vue/component */
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-flex-item',
 
   inject: {

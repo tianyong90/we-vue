@@ -1,13 +1,7 @@
 import Vue from 'vue'
 import '../../scss/input.scss'
 
-import WvIcon from '../icon/index'
-
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
+import WVIcon from '../icon/index'
 
 interface options extends Vue {
   $refs: {
@@ -15,13 +9,11 @@ interface options extends Vue {
   }
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-input',
 
   components: {
-    WvIcon,
+    WVIcon,
   },
 
   props: {

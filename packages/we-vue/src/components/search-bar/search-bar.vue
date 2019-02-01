@@ -38,7 +38,7 @@
         class="weui-cells searchbar-result"
         v-show="show || currentValue"
       >
-        <wv-cell
+        <WVCell
           v-for="(item, index) in result"
           :key="index"
           :title="typeof item === 'object' ? item[resultTextKey] : item"

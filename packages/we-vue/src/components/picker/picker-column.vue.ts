@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import { isObj } from '../../utils'
 import cloneDeep from 'lodash/cloneDeep'
-// Mixins
-import Colorable from '../../mixins/colorable'
-// Utils
-import mixins from '../../utils/mixins'
 
 // Types
 import { PropValidator } from 'vue/types/options'
@@ -18,9 +14,9 @@ type optionsType = Array<objectOptionType | string | number>
 const range: (num: number, min: number, max: number) => number = (num, min, max) => Math.min(Math.max(num, min), max)
 
 // height of th option item
-const ITEM_HEIGHT = 34
+const ITEM_HEIGHT: number = 34
 // default transition
-const DEFAULT_TRANSITION = 'all 150ms ease'
+const DEFAULT_TRANSITION: string = 'all 150ms ease'
 
 interface options extends Vue {
   $parent: {
@@ -28,9 +24,7 @@ interface options extends Vue {
   } & Vue
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-picker-column',
 
   props: {
@@ -127,9 +121,9 @@ export default mixins<options>(
 
     offsetToIndex (offset: number): number {
       offset = Math.round(offset / ITEM_HEIGHT) * ITEM_HEIGHT
+
       return (
-        -(offset - Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT) /
-        ITEM_HEIGHT
+        -(offset - Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT) / ITEM_HEIGHT
       )
     },
 

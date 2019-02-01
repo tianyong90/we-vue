@@ -24,10 +24,11 @@ describe('routable mixin', () => {
 
     wrapper = shallowMount({
       mixins: [Routable],
+      render: h => h('div'),
+    }, {
       propsData: {
         to: 'test',
       },
-      render: h => h('div'),
       mocks: {
         $router: {
           push: pushSpy,
@@ -37,8 +38,6 @@ describe('routable mixin', () => {
     })
 
     wrapper.vm.routeLink()
-
-    const to = wrapper.vm.to
 
     expect(pushSpy).toHaveBeenCalled()
     expect(pushSpy).toHaveBeenCalledWith('test')
@@ -58,8 +57,10 @@ describe('routable mixin', () => {
     wrapper = mount({
       mixins: [Routable],
       render: h => h('div'),
+    },
+    {
       propsData: {
-        url: '#test',
+        href: '#test',
         replace: false,
       },
     })

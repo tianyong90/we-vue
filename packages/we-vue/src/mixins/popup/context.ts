@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { styleObject } from '../../globals';
+import { styleObject } from '../../globals'
 
 export interface PopupableVue extends Vue {
   closeOnClickMask: boolean

@@ -39,9 +39,10 @@ module.exports = {
     '!**/gulpfile.js',
   ],
   globals: {
-    'ts-jest': {
-      'babelConfig': true
-    },
+    // TODO: ts-jest 配置
+    // 'ts-jest': {
+    //   'babelConfig': true
+    // },
     __WE_VUE_VERSION__: '3.0.0', // version variable
   }
 }

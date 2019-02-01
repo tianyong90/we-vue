@@ -1,6 +1,6 @@
 import Vue, { VNode } from 'vue'
-import { PropValidator } from 'vue/types/options';
-import { styleObject } from '../../globals';
+import { PropValidator } from 'vue/types/options'
+import { styleObject } from '../../globals'
 
 interface options extends Vue {
   style?: styleObject

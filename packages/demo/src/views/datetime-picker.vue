@@ -81,8 +81,6 @@
 </template>
 
 <script>
-import { Toast } from 'we-vue'
-
 export default {
   data () {
     return {
@@ -114,7 +112,7 @@ export default {
         message = value
       }
 
-      Toast({
+      this.$toast({
         duration: 3000,
         message: message,
         type: 'text'

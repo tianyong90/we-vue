@@ -39,19 +39,19 @@ export default mixins<options &
     lazyRender: {
       type: Boolean,
       default: true,
-    }
+    },
   },
 
   data () {
     return {
-      inited: this.visible
+      inited: this.visible,
     }
   },
 
   computed: {
     shouldRender (): boolean {
       return this.inited || !this.lazyRender
-    }
+    },
   },
 
   watch: {
@@ -127,7 +127,7 @@ export default mixins<options &
 
       if (this.lockScroll) {
         on(document, 'touchstart', this.onTouchstart as EventListener)
-        on(document, 'touchmove', this.onTouchmove as EventListener)
+        on(document, 'touchmove', this.onThisTouchmove as EventListener)
       }
 
       if (!context.lockCount) {
@@ -148,7 +148,7 @@ export default mixins<options &
         context.lockCount--
 
         off(document, 'touchstart', this.onTouchstart as EventListener)
-        off(document, 'touchmove', this.onTouchmove as EventListener)
+        off(document, 'touchmove', this.onThisTouchmove as EventListener)
 
         if (!context.lockCount) {
           document.body.classList.remove('wv-overflow-hidden')
@@ -160,8 +160,7 @@ export default mixins<options &
       this.$emit('update:visible', false)
     },
 
-    onTouchmove (e: TouchEvent): void {
-      // TODO
+    onThisTouchmove (e: TouchEvent): void {
       this.onTouchmove(e)
 
       const direction = this.deltaY > 0 ? '10' : '01'

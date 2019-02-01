@@ -2,20 +2,12 @@ import '../../scss/checklist.scss'
 
 import Vue from 'vue'
 
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
-
 import { PropValidator } from 'vue/types/options'
 
 interface options extends Vue {
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-checklist',
 
   props: {

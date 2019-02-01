@@ -9,12 +9,12 @@
       ref="toast"
       v-show="visible"
     >
-      <wv-icon
+      <wvIcon
         :type="icon"
         class="weui-icon_toast"
         v-if="type !== 'text' && type !== 'loading'"
       />
-      <wv-spinner
+      <WVSpinner
         :size="25"
         :type="spinnerType"
         class="weui-icon_toast"

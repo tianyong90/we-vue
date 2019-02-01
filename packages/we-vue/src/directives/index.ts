@@ -1,12 +1,12 @@
-import Scroll from './scroll'
-import Touch from './touch'
+import ClickOutside from './click-outside'
+import InfiniteScroll from './infinite-scroll'
 
 export {
-  Scroll,
-  Touch,
+  ClickOutside,
+  InfiniteScroll,
 }
 
 export default {
-  Scroll,
-  Touch,
+  ClickOutside,
+  InfiniteScroll,
 }

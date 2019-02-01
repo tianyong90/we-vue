@@ -127,12 +127,8 @@ describe('cell-swipe', () => {
     expect(wrapper.vm.offset).toBe(0)
   })
 
-  test('clickoutside', () => {
-    wrapper = mount(CellSwipe, {
-      attachToDocument: true,
-    })
-
-    const anOtherWrapper = mount(CellSwipe, {
+  test('click outside', () => {
+    const wrapper = mount(CellSwipe, {
       attachToDocument: true,
       data: function () {
         return {
@@ -141,9 +137,8 @@ describe('cell-swipe', () => {
       },
     })
 
-    // click warpper, the other cell-swipe's offset should be reset to 0
-    wrapper.trigger('touchstart')
+    wrapper.vm.onClickOutside()
 
-    expect(anOtherWrapper.vm.offset).toBe(0)
+    expect(wrapper.vm.offset).toBe(0)
   })
 })

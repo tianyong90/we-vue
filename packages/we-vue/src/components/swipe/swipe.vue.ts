@@ -5,12 +5,6 @@ import { getTouch } from '../../utils'
 
 import SwipeItem from '../swipe-item'
 
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
-
 // Types
 type SwipeItemInstance = InstanceType<typeof SwipeItem>
 
@@ -18,9 +12,7 @@ interface options extends Vue {
   timer: any
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-swipe',
 
   props: {

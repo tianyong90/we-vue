@@ -1,5 +1,5 @@
-import WvIcon from '../icon/index'
-import WvSpinner from '../spinner/index'
+import WVIcon from '../icon/index'
+import WVSpinner from '../spinner/index'
 import PopupMixin from '../../mixins/popup'
 
 import Vue from 'vue'
@@ -8,8 +8,8 @@ export default Vue.extend({
   name: 'wv-toast',
 
   components: {
-    WvIcon,
-    WvSpinner,
+    WVIcon,
+    WVSpinner,
   },
 
   mixins: [PopupMixin],

@@ -1,7 +1,7 @@
 <template>
   <div
     class="weui-cell weui-cell_swiped"
-    v-clickoutside:touchstart="onClickoutside"
+    v-click-outside:touchstart="onClickOutside"
   >
     <div
       class="weui-cell__bd"
@@ -12,7 +12,7 @@
       @touchcancel="onTouchend"
       :style="style"
     >
-      <WvCell
+      <WVCell
         :title="title"
         :value="value"
         :is-link="isLink"
@@ -29,7 +29,7 @@
         <template slot="ft" v-if="typeof value === 'undefined'">
           <slot name="ft" />
         </template>
-      </WvCell>
+      </WVCell>
     </div>
     <div class="weui-cell__ft" ref="rightBtns">
       <slot name="right" />

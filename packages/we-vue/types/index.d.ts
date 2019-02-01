@@ -1,6 +1,5 @@
 import Vue, { Component, DirectiveOptions, PluginFunction, VueConstructor } from 'vue'
 
-// TODO
 import './lib'
 
 declare const WeVue: WeVue
@@ -13,14 +12,12 @@ export interface WeVue {
 export type ComponentOrPack = Component & { $_we_vue_subcomponents?: Record<string, ComponentOrPack> }
 
 export interface WeVueUseOptions {
-  transitions?: Record<string, VueConstructor>
   directives?: Record<string, DirectiveOptions>
   components?: Record<string, ComponentOrPack>
   options?: Partial<WeVueOptions>
 }
 
 export interface WeVueObject extends Vue {
-  readonly dard: boolean
   options?: WeVueOptions
 }
 

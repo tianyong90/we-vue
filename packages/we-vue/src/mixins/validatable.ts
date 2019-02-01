@@ -1,15 +1,6 @@
-// Mixins
-import Colorable from './colorable'
+import Vue from 'vue'
 
-// Types
-// import { PropValidator } from 'vue/types/options'
-
-// Utils
-import mixins from '../utils/mixins'
-
-export default mixins(
-  Colorable
-).extend({
+export default Vue.extend({
   name: 'validatable',
 
   props: {

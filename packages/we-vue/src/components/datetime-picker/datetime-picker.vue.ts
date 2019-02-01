@@ -2,12 +2,6 @@ import Vue from 'vue'
 import { PropValidator } from 'vue/types/options';
 import WVPicker from '../picker'
 
-// Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
-
 type startBoundary = {
   startYear: number
   startMonth: number
@@ -45,13 +39,7 @@ const isValidDate = (date: any) =>
   Object.prototype.toString.call(date) === '[object Date]' &&
   !isNaN(date.getTime())
 
-export default mixins<options &
-  ExtractVue<[
-    typeof Colorable
-  ]>
->(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-datetime-picker',
 
   components: {
@@ -172,7 +160,7 @@ export default mixins<options &
           options: this.fillColumnOptions(
             rangeKey,
             (this.ranges as any)[rangeKey][0],
-            (this.ranges as any).ranges[rangeKey][1]
+            (this.ranges as any)[rangeKey][1]
           ),
         })
       }
@@ -199,6 +187,10 @@ export default mixins<options &
     },
   },
 
+  created () {
+    this.currentValue = this.correctValue(this.value)
+  },
+
   mounted () {
     if (!this.value) {
       this.currentValue =
@@ -206,7 +198,7 @@ export default mixins<options &
           ? this.startDate
           : `${('0' + this.startHour).slice(-2)}:00`
     } else {
-      this.currentValue = this.value
+      this.currentValue = this.correctValue(this.value)
     }
 
     this.updateColumnValue(this.currentValue)

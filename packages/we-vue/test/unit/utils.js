@@ -24,7 +24,7 @@ export function triggerTouch (wrapper, eventName, x, y) {
     radiusX: 2.5,
     radiusY: 2.5,
     rotationAngle: 10,
-    force: 0.5
+    force: 0.5,
   }
 
   const event = document.createEvent('CustomEvent')
@@ -81,7 +81,7 @@ export function horizontalDrag (el, startX = 0, endX) {
  */
 export function slowVerticalDrag (el, startY, endY) {
   let clock = lolex.install({
-    shouldAdvanceTime: true
+    shouldAdvanceTime: true,
   })
 
   triggerTouch(el, 'touchstart', 0, startY)

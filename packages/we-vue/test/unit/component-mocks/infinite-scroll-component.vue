@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import InfiniteScroll from '@/components/infinite-scroll'
+import InfiniteScroll from '@/directives/infinite-scroll'
 
 export default {
   directives: {
-    InfiniteScroll
+    InfiniteScroll,
   },
 
   props: {
@@ -29,28 +29,28 @@ export default {
     distance: Number,
     immediateCheck: {
       type: Boolean,
-      default: true
+      default: true,
     },
     onLoadMore: {
       type: Function,
       default () {
         return function () {}
-      }
+      },
     },
-    hidden: Boolean
+    hidden: Boolean,
   },
 
   data () {
     return {
-      list: []
+      list: [],
     }
   },
 
   methods: {
     triggerLoadMore () {
       this.onLoadMore()
-    }
-  }
+    },
+  },
 }
 </script>
 

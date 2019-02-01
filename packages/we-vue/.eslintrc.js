@@ -35,10 +35,11 @@ module.exports = {
         'allowFirstLine': false
       }
     }],
-    'vue/component-name-in-template-casing': [
-      'error', 'kebab-case', {
-        'ignores': [],
-      }],
+    'vue/component-name-in-template-casing': ['error', 'PascalCase', {
+      // TODO
+      // 'registeredComponentsOnly': true,
+      'ignores': []
+    }],
     'comma-dangle': ['warn', 'always-multiline'],
   },
   overrides: [

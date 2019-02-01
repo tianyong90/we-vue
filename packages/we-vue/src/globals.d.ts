@@ -12,7 +12,6 @@ import {
   ThisTypedComponentOptionsWithArrayProps,
   ThisTypedComponentOptionsWithRecordProps,
 } from 'vue/types/options'
-import { TouchStoredHandlers } from './directives/touch'
 
 declare global {
   interface Window {
@@ -29,23 +28,16 @@ declare global {
 
   interface HTMLElement {
     _clickOutside?: EventListenerOrEventListenerObject
-    _onResize?: {
-      callback: () => void
-      options?: boolean | AddEventListenerOptions
-    }
-    _ripple?: {
-      enabled?: boolean
-      centered?: boolean
-      class?: string
-      circle?: boolean
+    _onInfiniteScroll?: {
+      listener: EventListenerOrEventListenerObject
+      target: EventTarget
+      disabled: boolean
+      distance: number
     }
     _onScroll?: {
       callback: EventListenerOrEventListenerObject
       options: boolean | AddEventListenerOptions
       target: EventTarget
-    }
-    _touchHandlers?: {
-      [_uid: number]: TouchStoredHandlers
     }
   }
 

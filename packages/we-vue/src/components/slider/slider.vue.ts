@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import '../../scss/slider.scss'
-
 // Utils
 import { getTouch } from '../../utils'
-import mixins from '../../utils/mixins'
 
 // Mixins
-import Colorable from '../../mixins/colorable'
 
 interface options extends Vue {
   $refs: {
@@ -15,9 +12,7 @@ interface options extends Vue {
   }
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-slider',
 
   props: {

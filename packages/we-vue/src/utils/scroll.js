@@ -1,28 +1,6 @@
 import { isServer } from './index'
 
 export default {
-  debounce (func, wait, immediate) {
-    let timeout, args, context, timestamp, result
-    return function () {
-      context = this
-      args = arguments
-      timestamp = new Date()
-      const later = () => {
-        const last = Date.now() - timestamp
-        if (last < wait) {
-          timeout = setTimeout(later, wait - last)
-        } else {
-          timeout = null
-          result = func.apply(context, args)
-        }
-      }
-      if (!timeout) {
-        timeout = setTimeout(later, wait)
-      }
-      return result
-    }
-  },
-
   /**
    * 找到最近的触发滚动事件的元素
    * @param {Element} element
@@ -46,21 +24,6 @@ export default {
       currentNode = currentNode.parentNode
     }
     return rootParent
-  },
-
-  // 判断元素是否被加入到页面节点内
-  isAttached (element) {
-    let currentNode = element.parentNode
-    while (currentNode) {
-      if (currentNode.tagName === 'HTML') {
-        return true
-      }
-      if (currentNode.nodeType === 11) {
-        return false
-      }
-      currentNode = currentNode.parentNode
-    }
-    return false
   },
 
   // 获取滚动高度

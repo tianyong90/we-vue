@@ -1,17 +1,24 @@
-import Vue from 'vue'
 import '../../scss/switch.scss'
 
+// Utils
 import { getTouch } from '../../utils'
-import Cell from '../cell/index'
+import mixins from '../../utils/mixins'
+
+import WVCell from '../cell/index'
+
+// Mixins
+import Toggleable from '../../mixins/toggleable'
 
 // 开关的行程
 const THUMB_STROKE = 20
 
-export default Vue.extend({
+export default mixins(
+  Toggleable
+).extend({
   name: 'wv-switch',
 
   components: {
-    Cell,
+    WVCell,
   },
 
   props: {
@@ -21,12 +28,10 @@ export default Vue.extend({
       type: Boolean,
       default: true,
     },
-    value: Boolean,
   },
 
   data () {
     return {
-      currentValue: this.value,
       startX: 0,
       offset: 0,
       startOffset: 0,
@@ -44,7 +49,7 @@ export default Vue.extend({
   },
 
   mounted () {
-    this.offset = this.currentValue ? THUMB_STROKE : 0
+    this.offset = this.isActive ? THUMB_STROKE : 0
   },
 
   methods: {
@@ -52,7 +57,7 @@ export default Vue.extend({
       e.preventDefault()
       if (this.disabled) return
 
-      this.currentValue = !this.currentValue
+      this.isActive = !this.isActive
     },
 
     onTouchstart (e: TouchEvent): void {
@@ -91,15 +96,15 @@ export default Vue.extend({
 
       this.transition =
         '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
-      if (this.currentValue) {
+      if (this.isActive) {
         if (deltaX < THUMB_STROKE / -2) {
-          this.currentValue = false
+          this.isActive = false
         } else {
           this.offset = THUMB_STROKE
         }
       } else {
         if (deltaX > THUMB_STROKE / 2) {
-          this.currentValue = true
+          this.isActive = true
         } else {
           this.offset = 0
         }
@@ -108,11 +113,7 @@ export default Vue.extend({
   },
 
   watch: {
-    value (val) {
-      this.currentValue = val
-    },
-
-    currentValue (val) {
+    isActive (val) {
       this.$emit('input', val)
       this.$emit('change', val)
 

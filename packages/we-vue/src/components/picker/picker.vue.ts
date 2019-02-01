@@ -1,13 +1,11 @@
 import PickerColumn from './picker-column.vue'
 import Vue from 'vue'
-// Mixins
-import Colorable from '../../mixins/colorable'
-// Utils
-import mixins from '../../utils/mixins'
+
 // Types
 import { PropValidator } from 'vue/types/options'
 
 import cloneDeep from 'lodash/cloneDeep'
+import { styleObject } from '../../globals';
 
 // height of th option item
 const ITEM_HEIGHT = 34
@@ -28,9 +26,7 @@ type columns = Array<Array<
 interface options extends Vue {
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-picker',
 
   components: {
@@ -72,7 +68,7 @@ export default mixins<options>(
   },
 
   computed: {
-    pickerBodyStyle (): object {
+    pickerBodyStyle (): styleObject {
       return {
         height: this.visibleItemCount * ITEM_HEIGHT + 'px',
       }
@@ -84,8 +80,8 @@ export default mixins<options>(
   },
 
   watch: {
-    columns () {
-      this.setColumns()
+    columns (val) {
+      this.setColumns(val)
     },
 
     value (val) {
@@ -98,8 +94,7 @@ export default mixins<options>(
   },
 
   methods: {
-    setColumns (): void {
-      const columns = this.columns
+    setColumns (columns: columns | simpleColumns): void {
       columns.forEach((column, index: number) => {
         this.setColumnOptions(index, cloneDeep((<objectColumn>column).options))
       })
@@ -130,7 +125,7 @@ export default mixins<options>(
     },
 
     // get column value by index
-    getColumnOptions (columnIndex: number): any {
+    getColumnValue (columnIndex: number): any {
       const column = this.getColumn(columnIndex)
       return column && column.getValue()
     },
@@ -150,7 +145,7 @@ export default mixins<options>(
     },
 
     // get options of column by index
-    getColumnOptionss (columnIndex: number): Array<string | number> {
+    getColumnOptions (columnIndex: number): Array<string | number> {
       return (<objectColumn>this.columns[columnIndex]).options
     },
 

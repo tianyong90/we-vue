@@ -24,7 +24,7 @@
           />
         </div>
         <div class="weui-picker__bd" :style="pickerBodyStyle">
-          <picker-column
+          <PickerColumn
             v-for="(column, index) in (simple ? [columns] : columns)"
             :key="index"
             :options="simple ? column : column.options"

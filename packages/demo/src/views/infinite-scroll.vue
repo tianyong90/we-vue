@@ -32,6 +32,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -44,6 +45,7 @@ export default {
 
   methods: {
     loadMore () {
+      console.log('load more')
       this.loading = true
       setTimeout(() => {
         let last = this.list[this.list.length - 1]
@@ -64,6 +66,10 @@ export default {
     for (let i = 1; i <= 15; i++) {
       this.list.push(i)
     }
+
+    setInterval(() => {
+      this.loading = !this.loading
+    }, 2000)
   }
 }
 </script>

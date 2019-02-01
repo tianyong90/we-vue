@@ -264,17 +264,14 @@ export default mixins<options &
 
     // emit event when clicked
     onClick (index: number): void {
-      // const { title, disabled } = this.tabs[index]
+      const { title, disabled } = this.tabs[index]
 
-      // TODO
-      console.log(this.tabs)
-
-      // if (disabled) {
-      //   this.$emit('disabled', index, title)
-      // } else {
-      //   this.setCurActive(index)
-      //   this.$emit('click', index, title)
-      // }
+      if (disabled) {
+        this.$emit('disabled', index, title)
+      } else {
+        this.setCurActive(index)
+        this.$emit('click', index, title)
+      }
     },
 
     // scroll active tab into view

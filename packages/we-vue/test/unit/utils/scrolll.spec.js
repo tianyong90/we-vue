@@ -9,48 +9,6 @@ describe('utils scroll', () => {
     jest.clearAllTimers()
   })
 
-  test('isAttached method', () => {
-    const element = document.createElement('div')
-
-    expect(ScrollUtil.isAttached(element)).toBe(false)
-
-    // append element to document
-    document.body.appendChild(element)
-    expect(ScrollUtil.isAttached(element)).toBe(true)
-
-    // create a mockElement
-    const mockElement = {
-      parentNode: {
-        nodeType: 11,
-      },
-    }
-    expect(ScrollUtil.isAttached(mockElement)).toBe(false)
-  })
-
-  test('debounce method', () => {
-    // debounce should be defines as functin
-    expect(typeof ScrollUtil.debounce).toEqual('function')
-
-    // debounce should return a functin
-    expect(typeof ScrollUtil.debounce()).toEqual('function')
-
-    // the callback stub
-    const callback = jest.fn()
-
-    const fn = ScrollUtil.debounce(callback, 100)
-
-    // callback should be called
-
-    setTimeout(fn, 50) // callback should NOT be called
-    setTimeout(fn, 151) // callback should be called
-
-    jest.runAllTimers()
-
-    expect(callback).toHaveBeenCalledTimes(2)
-
-    jest.clearAllTimers()
-  })
-
   test('getScrollEventTarget method', () => {
     const element = document.createElement('div')
 

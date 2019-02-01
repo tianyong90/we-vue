@@ -1,11 +1,5 @@
 import Vue from 'vue'
 
-// Utils
-import mixins from '../../utils/mixins'
-
-// Mixins
-import Colorable from '../../mixins/colorable'
-
 interface options extends Vue {
   $parent: Vue & {
     width: number
@@ -13,9 +7,7 @@ interface options extends Vue {
   }
 }
 
-export default mixins<options>(
-  Colorable
-).extend({
+export default Vue.extend<options>().extend({
   name: 'wv-swipe-item',
 
   data () {

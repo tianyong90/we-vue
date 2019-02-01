@@ -1,7 +1,7 @@
 <template>
   <div class="weui-footer">
     <p class="weui-footer__links" v-if="links.length > 0">
-      <footer-link
+      <FooterLink
         v-for="item in links"
         :key="item.text"
         :text="item.text"

@@ -1,6 +1,5 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import Flex from '@/components/flex'
-// import FlexCompponent from '../component-mocks/flex.vue'
 
 describe('flex', () => {
   let wrapper

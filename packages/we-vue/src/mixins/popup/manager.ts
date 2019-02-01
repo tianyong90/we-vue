@@ -18,8 +18,8 @@ export default {
     if (!context.stack.some(item => item.vm === vm)) {
       const el = vm.$el
       const target = el && el.parentNode
-            ? el.parentNode
-            : document.body
+        ? el.parentNode
+        : document.body
       context.stack.push({ vm, config, target })
       this.update()
     }

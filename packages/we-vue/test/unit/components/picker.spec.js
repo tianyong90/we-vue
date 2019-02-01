@@ -5,16 +5,16 @@ import { slowVerticalDrag } from '../utils'
 
 const testSingleColumn = [
   {
-    values: [1, 2, 3],
+    options: [1, 2, 3],
   },
 ]
 
 const testMultiColumn = [
   {
-    values: [1, 2, 3],
+    options: [1, 2, 3],
   },
   {
-    values: ['yes', 'no'],
+    options: ['yes', 'no'],
   },
 ]
 
@@ -45,7 +45,7 @@ describe('picker', () => {
 
     expect(wrapper.findAll(PickerColumn).length).toBe(1)
 
-    expect(wrapper.vm.getColumnValues(0).length).toBe(3)
+    expect(wrapper.vm.getColumnOptions(0).length).toBe(3)
     expect(wrapper.vm.getValues()).toEqual([1])
   })
 
@@ -60,8 +60,8 @@ describe('picker', () => {
 
     expect(wrapper.findAll(PickerColumn).length).toBe(2)
 
-    expect(wrapper.vm.getColumnValues(0).length).toBe(3)
-    expect(wrapper.vm.getColumnValues(1).length).toBe(2)
+    expect(wrapper.vm.getColumnOptions(0).length).toBe(3)
+    expect(wrapper.vm.getColumnOptions(1).length).toBe(2)
     expect(wrapper.vm.getValues()).toEqual([1, 'yes'])
   })
 
@@ -77,7 +77,7 @@ describe('picker', () => {
     expect(wrapper.vm.getColumnValue(0)).toEqual(1)
   })
 
-  test('getColumnValues method', () => {
+  test('getColumnOptions method', () => {
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
@@ -86,8 +86,8 @@ describe('picker', () => {
       },
     })
 
-    expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
-    expect(wrapper.vm.getColumnValues(1)).toEqual(['yes', 'no'])
+    expect(wrapper.vm.getColumnOptions(0)).toEqual([1, 2, 3])
+    expect(wrapper.vm.getColumnOptions(1)).toEqual(['yes', 'no'])
   })
 
   test('test setColumnValue method', () => {
@@ -99,9 +99,9 @@ describe('picker', () => {
       },
     })
 
-    wrapper.vm.setColumnValues(0, [1, 2, 3])
+    wrapper.vm.setColumnOptions(0, [1, 2, 3])
 
-    expect(wrapper.vm.getColumnValues(0)).toEqual([1, 2, 3])
+    expect(wrapper.vm.getColumnOptions(0)).toEqual([1, 2, 3])
   })
 
   test('test getValues method', () => {
@@ -117,15 +117,13 @@ describe('picker', () => {
   })
 
   test('test setValues method', () => {
-    const slotValues = [1, 2, 3]
-
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
         columns: [
           {
-            values: slotValues,
+            options: [1, 2, 3],
             default: 0,
           },
         ],
@@ -226,15 +224,13 @@ describe('picker', () => {
   })
 
   test('when column value changed, change event should be emitted', () => {
-    const slotValues = [1, 2, 3]
-
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
         columns: [
           {
-            values: slotValues,
+            options: [1, 2, 3],
             default: 0,
           },
         ],
@@ -250,15 +246,13 @@ describe('picker', () => {
   })
 
   test('value watcher', () => {
-    const slotValues = [1, 2, 3]
-
     wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
         columns: [
           {
-            values: slotValues,
+            options: [1, 2, 3],
             default: 0,
           },
         ],
@@ -368,7 +362,7 @@ describe('picker-column', () => {
         visible: true,
         columns: [
           {
-            values: [1, 2, 3],
+            options: [1, 2, 3],
             defaultIndex: 0,
           },
         ],
@@ -413,7 +407,7 @@ describe('picker-column', () => {
         visible: true,
         columns: [
           {
-            values: [
+            options: [
               {
                 text: 1,
               },
@@ -446,7 +440,7 @@ describe('picker-column', () => {
         visible: true,
         columns: [
           {
-            values: [1, 2, 3],
+            options: [1, 2, 3],
             defaultIndex: 0,
           },
         ],
@@ -469,7 +463,7 @@ describe('picker-column', () => {
         visible: true,
         columns: [
           {
-            values: [1, 2, 3],
+            options: [1, 2, 3],
             defaultIndex: 0,
           },
         ],
