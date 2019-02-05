@@ -23,6 +23,7 @@
   "style": "lib/we-vue-css/index.css",
   "types": "types/index.d.ts",
   "scripts": {
+    "haha": "cross-env NODE_ENV=development webpack --config build/webpack.lib.conf.js --progress --hide-modules --colors",
     "serve": "cross-env NODE_ENV=development webpack --config build/webpack.dev.conf.js --progress --hide-modules --colors --watch",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "lint:fix": "yarn run lint -- --fix",

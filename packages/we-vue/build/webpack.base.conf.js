@@ -13,32 +13,20 @@ const extractCSS = isProd || process.env.TARGET === 'development'
 
 const resolve = file => require('path').resolve(__dirname, file)
 
-const cssLoaders = [
-  extractCSS ? MiniCssExtractPlugin.loader : 'vue-style-loader',
-  {
-    loader: 'css-loader',
-    options: {
-      sourceMap: !isProd
-    }
-  },
+const scssLoaders = [
+  extractCSS ? MiniCssExtractPlugin.loader : 'style-loader',
+  { loader: 'css-loader' },
   {
     loader: 'postcss-loader',
-    options: {
-      sourceMap: !isProd
-    }
+    options: { sourceMap: !isProd }
   },
-  {
-    loader: 'sass-loader',
-    options: {
-      sourceMap: !isProd
-    }
-  }
+  { loader: 'sass-loader' }
 ]
 
 module.exports = {
   mode: isProd ? 'production' : 'development',
   resolve: {
-    extensions: ['.js', '.ts', '.vue', '.json'],
+    extensions: ['.js', '.ts', '.tsx', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js'
     }
@@ -71,7 +59,7 @@ module.exports = {
       // },
       {
         test: /\.scss$/,
-        use: cssLoaders
+        use: scssLoaders
       },
       {
         test: /\.vue$/,
@@ -114,7 +102,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: [
           {
             loader: 'cache-loader',
@@ -161,6 +149,9 @@ module.exports = {
     new ProgressBarPlugin(),
     new FriendlyErrorsWebpackPlugin({
       clearConsole: true
+    }),
+    new MiniCssExtractPlugin({
+      filename: `[name].css`
     }),
     new VueLoaderPlugin(),
     new ForkTsChecker({
