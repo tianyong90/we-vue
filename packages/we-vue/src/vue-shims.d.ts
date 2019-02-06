@@ -1,4 +1,13 @@
+import Vue, { CreateElement, VNode } from 'vue'
+
+// interface renderFunWrapper {
+//   render: (h: CreateElement) => VNode
+// }
+//
+// declare module '*.haha.vue' {
+//   export default renderFunWrapper
+// }
+
 declare module '*.vue' {
-  import Vue from 'vue'
   export default Vue
 }

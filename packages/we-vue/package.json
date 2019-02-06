@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0-beta.2",
     "vue-lazyload": "^1.2.0"
   },
   "peerDependencies": {
@@ -71,7 +72,8 @@
     "@types/lodash": "^4.14.119",
     "@types/node": "^10.12.1",
     "@types/webpack-env": "^1.13.6",
-    "@vue/test-utils": "^1.0.0-beta.28",
+    "@vue/babel-preset-jsx": "^1.0.0-beta.2",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.0",
     "cache-loader": "^2.0.0",
@@ -116,11 +118,11 @@
     "ts-jest": "^23.10.4",
     "ts-loader": "^5.3.0",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.4",
+    "typescript": "^3.3.0",
     "uppercamelcase": "3.0.0",
     "url-loader": "^1.0.1",
     "vue": "^2.5.9",
-    "vue-jest": "^3.0.0",
+    "vue-jest": "^4.0.0-beta.1",
     "vue-loader": "^15.5.0",
     "vue-style-loader": "^4.0.2",
     "vue-template-compiler": "^2.5.9"

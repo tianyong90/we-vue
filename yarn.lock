@@ -1594,7 +1594,7 @@
     semver "^5.5.0"
     string.prototype.padstart "^3.0.0"
 
-"@vue/component-compiler-utils@^2.5.1", "@vue/component-compiler-utils@^2.5.2":
+"@vue/component-compiler-utils@^2.4.0", "@vue/component-compiler-utils@^2.5.1", "@vue/component-compiler-utils@^2.5.2":
   version "2.5.2"
   resolved "http://registry.npm.taobao.org/@vue/component-compiler-utils/download/@vue/component-compiler-utils-2.5.2.tgz#a8d57e773354ab10e4742c7d6a8dd86184d4d7be"
   integrity sha1-qNV+dzNUqxDkdCx9ao3YYYTU174=
@@ -1625,7 +1625,7 @@
   resolved "http://registry.npm.taobao.org/@vue/preload-webpack-plugin/download/@vue/preload-webpack-plugin-1.1.0.tgz#d768dba004261c029b53a77c5ea2d5f9ee4f3cce"
   integrity sha1-12jboAQmHAKbU6d8XqLV+e5PPM4=
 
-"@vue/test-utils@^1.0.0-beta.28":
+"@vue/test-utils@^1.0.0-beta.29":
   version "1.0.0-beta.29"
   resolved "http://registry.npm.taobao.org/@vue/test-utils/download/@vue/test-utils-1.0.0-beta.29.tgz#c942cf25e891cf081b6a03332b4ae1ef430726f0"
   integrity sha1-yULPJeiRzwgbagMzK0rh70MHJvA=
@@ -12169,7 +12169,7 @@ tryer@^1.0.0:
   resolved "http://registry.npm.taobao.org/tryer/download/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha1-8shUBoALmw90yfdGW4HqrSQSUvg=
 
-ts-jest@^23.10.4:
+ts-jest@^23.10.4, ts-jest@^23.10.5:
   version "23.10.5"
   resolved "http://registry.npm.taobao.org/ts-jest/download/ts-jest-23.10.5.tgz#cdb550df4466a30489bf70ba867615799f388dd5"
   integrity sha1-zbVQ30RmowSJv3C6hnYVeZ84jdU=
@@ -12289,7 +12289,7 @@ typescript-estree@18.0.0:
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-typescript@^3.1.4, typescript@^3.2.0:
+typescript@^3.2.0, typescript@^3.3.0:
   version "3.3.1"
   resolved "http://registry.npm.taobao.org/typescript/download/typescript-3.3.1.tgz#6de14e1db4b8a006ac535e482c8ba018c55f750b"
   integrity sha1-beFOHbS4oAasU15ILIugGMVfdQs=
@@ -12593,6 +12593,18 @@ vue-jest@^3.0.0:
     source-map "^0.5.6"
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.6.0"
+
+vue-jest@^4.0.0-beta.1:
+  version "4.0.0-beta.1"
+  resolved "http://registry.npm.taobao.org/vue-jest/download/vue-jest-4.0.0-beta.1.tgz#9cc12a366c9fa61079bf994f842258d5709b5a5c"
+  integrity sha1-nMEqNmyfphB5v5lPhCJY1XCbWlw=
+  dependencies:
+    "@babel/plugin-transform-modules-commonjs" "^7.2.0"
+    "@vue/component-compiler-utils" "^2.4.0"
+    chalk "^2.1.0"
+    extract-from-css "^0.4.4"
+    source-map "^0.5.6"
+    ts-jest "^23.10.5"
 
 vue-lazyload@^1.2.0:
   version "1.2.6"
