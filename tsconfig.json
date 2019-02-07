@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "lib": [
       "es2017",
@@ -14,6 +14,7 @@
     "downlevelIteration": true,
     "strict": true,
     "jsx": "preserve",
+    "jsxFactory": "h",
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "moduleResolution": "node",
