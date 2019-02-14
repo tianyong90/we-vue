@@ -87,7 +87,7 @@ export default mixins<options &
   beforeDestroy () {
     this.close()
 
-    if (this.getContainer) {
+    if (this.getContainer && this.$parent && this.$parent.$el) {
       this.$parent.$el.appendChild(this.$el)
     }
   },
@@ -99,14 +99,18 @@ export default mixins<options &
   methods: {
     move () {
       let container
-      /* istanbul ignore else */
-      if (this.getContainer) {
-        container = typeof this.getContainer === 'string' ? document.querySelector(this.getContainer) : this.getContainer()
+      const { getContainer } = this
+      if (getContainer) {
+        if (typeof getContainer === 'string') {
+          container = getContainer === 'body' ? document.body : document.querySelector(getContainer)
+        } else {
+          container = getContainer()
+        }
       } else if (this.$parent) {
         container = this.$parent.$el
       }
 
-      if (container) {
+      if (container && container !== this.$el.parentNode) {
         container.appendChild(this.$el)
       }
     },

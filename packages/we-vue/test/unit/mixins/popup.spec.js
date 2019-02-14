@@ -3,13 +3,8 @@ import PopupMixin from '@/mixins/popup'
 import { verticalDrag } from '../utils'
 
 describe('mixins/popup', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('mixed props', () => {
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -35,7 +30,7 @@ describe('mixins/popup', () => {
   })
 
   test('open popup via open method', () => {
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -62,7 +57,7 @@ describe('mixins/popup', () => {
   test('method move() should have been called when property getContainer is set', () => {
     const spyMove = jest.fn()
 
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -89,7 +84,7 @@ describe('mixins/popup', () => {
   })
 
   test('close popup via close method', () => {
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -114,7 +109,7 @@ describe('mixins/popup', () => {
 
   test('close popup via click mask', () => {
     // closeOnClick is true
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -164,7 +159,7 @@ describe('mixins/popup', () => {
   })
 
   test('lockScroll', () => {
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -198,7 +193,7 @@ describe('mixins/popup', () => {
     const openSpy = jest.fn()
     const closeSpy = jest.fn()
 
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -232,7 +227,7 @@ describe('mixins/popup', () => {
   })
 
   test('getContainer watcher', () => {
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
@@ -254,9 +249,7 @@ describe('mixins/popup', () => {
     const spy = jest.spyOn(wrapper.vm, 'move')
 
     wrapper.setProps({
-      getContainer: function () {
-        return document.createElement('div')
-      },
+      getContainer: 'body',
     })
 
     expect(spy).toHaveBeenCalled()
@@ -265,7 +258,7 @@ describe('mixins/popup', () => {
   test('mask watcher', () => {
     const renderMaskSpy = jest.fn()
 
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [PopupMixin],
       render (h) {
         return h('div', {
