@@ -1,23 +1,20 @@
-import { mount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
 import { horizontalDrag, verticalDrag, dragAndHoldHelper } from '../utils'
 import faker from 'faker'
 
 describe('swipe', () => {
-  let wrapper
-
   beforeEach(() => {
     jest.useFakeTimers()
   })
 
   afterEach(() => {
-    wrapper && wrapper.destroy()
     jest.clearAllTimers()
   })
 
   test('create', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       propsData: {},
     })
 
@@ -26,7 +23,7 @@ describe('swipe', () => {
   })
 
   test('create with single swipe-item', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -41,7 +38,7 @@ describe('swipe', () => {
   })
 
   test('create with swipe-items', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -57,7 +54,7 @@ describe('swipe', () => {
   })
 
   test('drag to right', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -76,7 +73,7 @@ describe('swipe', () => {
   })
 
   test('drag to left', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -97,7 +94,7 @@ describe('swipe', () => {
   })
 
   test('drag single slide while noDragWhenSingle is true', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -117,7 +114,7 @@ describe('swipe', () => {
   })
 
   test('drag single slide while noDragWhenSingle is false', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -145,7 +142,7 @@ describe('swipe', () => {
 
   test('change swipes', () => {
     const initializeSpy = jest.fn()
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -163,7 +160,7 @@ describe('swipe', () => {
   })
 
   test('change defaultIndex', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -178,7 +175,7 @@ describe('swipe', () => {
   })
 
   test('autoplay', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
@@ -200,7 +197,7 @@ describe('swipe', () => {
   })
 
   test('preventScroll', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
         height: 120,
