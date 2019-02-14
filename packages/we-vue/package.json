@@ -23,16 +23,12 @@
   "style": "lib/we-vue-css/index.css",
   "types": "types/index.d.ts",
   "scripts": {
-    "haha": "cross-env NODE_ENV=development webpack --config build/webpack.lib.conf.js --progress --hide-modules --colors",
     "serve": "cross-env NODE_ENV=development webpack --config build/webpack.dev.conf.js --progress --hide-modules --colors --watch",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "lint:fix": "yarn run lint -- --fix",
     "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r",
     "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js --progress --hide-modules",
     "build:lib": "node build/build-lib.js",
-    "build:we-vue-css": "gulp build --gulpfile packages/style/gulpfile.js --color --silent",
-    "build:style-entry": "node build/build-style-entry.js",
-    "build:we-vue": "cross-env NODE_ENV=production webpack --color --config build/webpack.build.conf.js && cross-env NODE_ENV=production webpack -p --color --config build/webpack.build.conf.js",
     "test": "jest --config=jest.config.js --colors --runInBand",
     "test:watch": "jest --config=jest.config.js --colors --watchAll",
     "test:coverage": "jest --config=jest.config.js --colors --coverage",
@@ -45,7 +41,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": [
+    "*.{js,ts,tsx,vue}": [
       "prettier --write",
       "eslint --fix",
       "git add"
@@ -87,7 +83,6 @@
     "cz-conventional-changelog": "^2.1.0",
     "faker": "^4.1.0",
     "file-loader": "^3.0.1",
-    "flush-promises": "^1.0.2",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "fs-extra": "^7.0.0",
     "git-branch": "^2.0.1",
@@ -121,7 +116,6 @@
     "ts-loader": "^5.3.0",
     "tslint": "^5.11.0",
     "typescript": "^3.3.0",
-    "uppercamelcase": "3.0.0",
     "url-loader": "^1.0.1",
     "vue": "^2.5.9",
     "vue-jest": "^3.0.3",

@@ -225,11 +225,13 @@ export default mixins<options &
     // update nav bar style
     setLine (): void {
       this.$nextTick(() => {
-        if (!this.$refs.tabs || this.type !== 'line') {
+        const { tabs } = this.$refs
+
+        if (!tabs || !tabs[this.currentActive] || this.type !== 'line') {
           return
         }
 
-        const tab = this.$refs.tabs[this.currentActive] as HTMLElement
+        const tab = tabs[this.currentActive] as HTMLElement
         const width = this.lineWidth || tab.offsetWidth
         const left = tab.offsetLeft + (tab.offsetWidth - width) / 2
 
@@ -255,7 +257,6 @@ export default mixins<options &
         this.$emit('input', active)
 
         if (this.currentActive !== null) {
-          console.log('c a', this.currentActive)
           this.$emit('change', active, this.tabs[active].title)
         }
         this.currentActive = active

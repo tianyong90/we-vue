@@ -97,7 +97,9 @@ export default Vue.extend<options>().extend({
   methods: {
     initialize (): void {
       clearTimeout(this.timer)
-      this.width = this.$el.getBoundingClientRect().width
+      if (this.$el) {
+        this.width = this.$el.getBoundingClientRect().width
+      }
       this.active = this.defaultIndex
       this.currentDuration = 0
       this.offset = this.count > 1 ? -this.width * (this.active + 1) : 0

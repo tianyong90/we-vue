@@ -16,15 +16,6 @@ export default Vue.extend<options>().extend({
     }
   },
 
-  computed: {
-    style (): object {
-      return {
-        width: this.$parent.width + 'px',
-        transform: `translate3d(${this.offset}px, 0, 0)`,
-      }
-    },
-  },
-
   beforeCreate (): void {
     this.$parent && this.$parent.swipes.push(this)
   },
@@ -35,8 +26,15 @@ export default Vue.extend<options>().extend({
   },
 
   render (h) {
+    const { width } = this.$parent
+
+    const style = {
+      width: width + 'px',
+      transform: `translate3d(${this.offset}px, 0, 0)`,
+    }
+
     return (
-      <div class="wv-swipe-item" style={this.style}>
+      <div class="wv-swipe-item" style={style}>
         {this.$slots.default}
       </div>
     )

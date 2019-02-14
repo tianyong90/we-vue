@@ -42,6 +42,7 @@ describe('swipe', () => {
 
   test('create with swipe-items', () => {
     wrapper = mount(Swipe, {
+      attachToDocument: true,
       propsData: {
         height: 120,
         showIndicators: true,
@@ -166,14 +167,11 @@ describe('swipe', () => {
       attachToDocument: true,
       propsData: {
         height: 120,
+        defaultIndex: 1,
       },
       slots: {
         default: [SwipeItem, SwipeItem, SwipeItem],
       },
-    })
-
-    wrapper.setProps({
-      defaultIndex: 1,
     })
 
     expect(wrapper.vm.active).toBe(1)
