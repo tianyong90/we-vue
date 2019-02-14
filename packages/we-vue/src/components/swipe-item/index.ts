@@ -1,4 +1,4 @@
-import SwipeItem from './swipe-item.vue'
+import SwipeItem from './swipe-item'
 
 export { SwipeItem }
 export default SwipeItem

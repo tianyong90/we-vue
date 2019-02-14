@@ -1,4 +1,4 @@
-import Tabs from './tabs.vue'
+import Tabs from './tabs'
 
 export { Tabs }
 export default Tabs

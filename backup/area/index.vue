@@ -169,7 +169,7 @@ export default Vue.extend({
       ])
     },
 
-    // get current selected values of all columns
+    // get current selected values of all typeColumns
     getValues () {
       return this.$refs.picker ? this.$refs.picker.getValues() : []
     },

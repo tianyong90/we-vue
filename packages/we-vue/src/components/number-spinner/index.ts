@@ -1,4 +1,4 @@
-import NumberSpinner from './number-spinner.vue'
+import NumberSpinner from './number-spinner'
 
 export { NumberSpinner }
 export default NumberSpinner

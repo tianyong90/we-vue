@@ -1,4 +1,4 @@
-import Panel from './panel.vue'
+import Panel from './panel'
 
 export { Panel }
 export default Panel

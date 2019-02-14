@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils'
 import InfiniteScrollComponent from '../component-mocks/infinite-scroll-component'
-import { verticalDrag } from '../utils'
 
 describe('infinite-scroll', () => {
   let wrapper
@@ -30,19 +29,13 @@ describe('infinite-scroll', () => {
   })
 
   test('loadMore function', (done) => {
-    const loadMore = jest.fn(() => {
-      wrapper.vm.list = wrapper.vm.list.concat([{ id: 1 }, { id: 2 }, { id: 3 }])
-
-      wrapper.setProps({
-        disabled: true,
-      })
-    })
-
     wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
-        onLoadMore: loadMore,
+        onLoadMore: jest.fn(() => {
+          wrapper.vm.list = wrapper.vm.list.concat([{ id: 1 }, { id: 2 }, { id: 3 }])
+        }),
       },
     })
 
@@ -50,7 +43,7 @@ describe('infinite-scroll', () => {
       const item = wrapper.findAll('.list-item')
       expect(item.length).toEqual(3)
 
-      expect(loadMore).toHaveBeenCalledTimes(1)
+      expect(wrapper.vm.onLoadMore).toHaveBeenCalledTimes(1)
       done()
     }, 500)
   })

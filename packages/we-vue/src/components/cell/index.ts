@@ -1,4 +1,4 @@
-import Cell from './cell.vue'
+import Cell from './cell'
 
 export { Cell }
 export default Cell

@@ -48,10 +48,6 @@ describe('checklist', () => {
     expect(wrapper.findAll('.weui-cell__bd p').at(0).text()).toBe('value1')
     expect(wrapper.findAll('.weui-cell__bd p').at(1).text()).toBe('value2')
     expect(wrapper.findAll('.weui-cell__bd p').at(2).text()).toBe('value3')
-
-    expect(wrapper.findAll('input').at(0).attributes().value).toBe('value1')
-    expect(wrapper.findAll('input').at(1).attributes().value).toBe('value2')
-    expect(wrapper.findAll('input').at(2).attributes().value).toBe('value3')
   })
 
   test('max selection', () => {

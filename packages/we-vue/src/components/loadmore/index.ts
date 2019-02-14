@@ -1,4 +1,4 @@
-import Loadmore from './loadmore.vue'
+import Loadmore from './loadmore'
 
 export { Loadmore }
 export default Loadmore

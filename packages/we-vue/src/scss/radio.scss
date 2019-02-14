@@ -9,33 +9,17 @@
   }
 }
 
-.weui-check {
-  position: absolute;
-  left: -9999em;
-}
-
 // method2 accessbility
 .weui-cells_radio {
   .weui-cell__ft {
     padding-left: $weui-cell-inner-gap-h;
-  }
-}
 
-.weui-check {
-  // radio
-  .weui-cells_radio & {
-    & + .weui-icon-checked {
-      min-width: 16px;
-    }
-
-    &:checked {
-      & + .weui-icon-checked {
-        &:before {
-          display: block;
-          content: "\EA08";
-          color: #09bb07;
-          font-size: 16px;
-        }
+    .weui-icon-checked {
+      &:before {
+        display: block;
+        content: "\EA08";
+        color: #09bb07;
+        font-size: 16px;
       }
     }
   }

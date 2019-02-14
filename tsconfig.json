@@ -3,10 +3,10 @@
     "target": "esnext",
     "module": "esnext",
     "lib": [
-      "es2017",
-      "es2018",
+      "esnext",
       "dom",
-      "dom.iterable"
+      "dom.iterable",
+      "scripthost"
     ],
     "allowJs": true,
     "sourceMap": true,
@@ -14,7 +14,6 @@
     "downlevelIteration": true,
     "strict": true,
     "jsx": "preserve",
-    "jsxFactory": "h",
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "moduleResolution": "node",

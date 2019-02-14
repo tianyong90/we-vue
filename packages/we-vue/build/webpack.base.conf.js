@@ -1,7 +1,5 @@
 'use strict'
 const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
 const { DefinePlugin } = require('webpack')
 const weVuePackage = require('../package')
@@ -26,7 +24,7 @@ const scssLoaders = [
 module.exports = {
   mode: isProd ? 'production' : 'development',
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.vue', '.json'],
+    extensions: ['.js', '.ts', '.tsx', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js'
     }
@@ -42,44 +40,9 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js|vue)$/,
-      //   loader: 'eslint-loader',
-      //   enforce: 'pre',
-      //   include: [
-      //     resolve('packages'),
-      //     resolve('test'),
-      //     resolve('demo'),
-      //     resolve('docs')
-      //   ],
-      //   options: {
-      //     formatter: require('eslint-friendly-formatter'),
-      //     emitWarning: true
-      //   }
-      // },
       {
         test: /\.scss$/,
         use: scssLoaders
-      },
-      {
-        test: /\.vue$/,
-        use: [
-          {
-            loader: 'cache-loader',
-            options: {
-              cacheDirectory: resolve(`../node_modules/.cache/vue-loader`)
-            }
-          },
-          {
-            loader: 'vue-loader',
-            options: {
-              compilerOptions: {
-                preserveWhitespace: false
-              },
-              cacheDirectory: resolve(`../node_modules/.cache/vue-loader`)
-            }
-          }
-        ]
       },
       {
         test: /\.js$/,
@@ -90,13 +53,9 @@ module.exports = {
               cacheDirectory: resolve(`../node_modules/.cache/babel-loader`)
             }
           },
-          {
-            loader: 'thread-loader',
-            options: {
-              // there should be 1 cpu for the fork-ts-checker-webpack-plugin
-              workers: require('os').cpus().length - 1
-            }
-          },
+          // {
+          //   loader: 'thread-loader',
+          // },
           'babel-loader'
         ],
         exclude: /node_modules/
@@ -110,9 +69,9 @@ module.exports = {
               cacheDirectory: resolve(`../node_modules/.cache/ts-loader`)
             }
           },
-          {
-            loader: 'thread-loader'
-          },
+          // {
+          //   loader: 'thread-loader'
+          // },
           {
             loader: 'babel-loader'
           },
@@ -121,7 +80,6 @@ module.exports = {
             options: {
               transpileOnly: true,
               happyPackMode: true,
-              appendTsSuffixTo: [/\.vue$/]
             }
           }
         ],
@@ -146,14 +104,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new ProgressBarPlugin(),
     new FriendlyErrorsWebpackPlugin({
       clearConsole: true
     }),
     new MiniCssExtractPlugin({
       filename: `[name].css`
     }),
-    new VueLoaderPlugin(),
     new ForkTsChecker({
       checkSyntacticErrors: isProd,
       vue: true,

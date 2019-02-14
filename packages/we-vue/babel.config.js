@@ -18,8 +18,7 @@ module.exports = function(api) {
         {
           functional: false
         }
-      ],
-      '@babel/preset-typescript'
+      ]
     ],
     plugins: [
       [
@@ -35,13 +34,35 @@ module.exports = function(api) {
       '@babel/plugin-transform-object-assign'
     ],
     env: {
-      es5: {
+      test: {
         presets: [
           [
             '@babel/preset-env',
             {
               loose: true,
-              modules: true
+              modules: useESModules ? false : 'commonjs'
+            }
+          ],
+          [
+            '@vue/babel-preset-jsx',
+            {
+              functional: false
+            }
+          ],
+          [
+            '@babel/preset-typescript',
+          ]
+        ],
+      },
+      es5: {
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                browsers: [">0.5%", "last 2 versions", "not dead", "not op_mini all"],
+                node: 8
+              }
             }
           ]
         ]

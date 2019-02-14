@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import DialogComponent from './dialog.vue'
+import DialogComponent from './dialog'
 
 type DialogOptions = {
   // TODO
@@ -41,57 +41,53 @@ function Dialog (options: DialogOptions) {
   })
 }
 
-namespace Dialog {
-  export const defaultOptions: DialogOptions = {
-    visible: true,
-    title: '',
-    message: '',
-    type: '',
-    modalFade: false,
-    lockScroll: false,
-    closeOnClickModal: true,
-    showConfirmButton: true,
-    showCancelButton: false,
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    callback: (action: action) => {
-      instance[action === 'confirm' ? 'resolve' : 'reject'](action)
-    },
-  }
+Dialog.defaultOptions = {
+  visible: true,
+  title: '',
+  message: '',
+  type: '',
+  modalFade: false,
+  lockScroll: false,
+  closeOnClickModal: true,
+  showConfirmButton: true,
+  showCancelButton: false,
+  confirmButtonText: '确定',
+  cancelButtonText: '取消',
+  callback: (action: action) => {
+    instance[action === 'confirm' ? 'resolve' : 'reject'](action)
+  },
+}
 
-  export let currentOptions: DialogOptions = defaultOptions
+Dialog.currentOptions = Dialog.defaultOptions
 
-  export function alert (options: DialogOptions) {
-    return Dialog({
-      ...Dialog.currentOptions,
-      ...options,
-    })
-  }
+Dialog.alert = function (options: DialogOptions) {
+  return Dialog({
+    ...Dialog.currentOptions,
+    ...options,
+  })
+}
 
-  export function confirm (options: DialogOptions) {
-    return Dialog({
-      ...Dialog.currentOptions,
-      showCancelButton: true,
-      ...options,
-    })
-  }
+Dialog.confirm = function (options: DialogOptions) {
+  return Dialog({
+    ...Dialog.currentOptions,
+    showCancelButton: true,
+    ...options,
+  })
+}
 
-  export function close () {
-    if (instance) {
-      instance.visible = false
-    }
-  }
-
-  export function setDefaultOptions (options: DialogOptions) {
-    Object.assign(Dialog.currentOptions, options)
-  }
-
-  export function resetDefaultOptions () {
-    currentOptions = { ...defaultOptions }
+Dialog.close = function () {
+  if (instance) {
+    instance.visible = false
   }
 }
 
-Dialog.resetDefaultOptions()
+Dialog.setDefaultOptions = function (options: DialogOptions) {
+  Object.assign(Dialog.currentOptions, options)
+}
+
+Dialog.resetDefaultOptions = function () {
+  Dialog.currentOptions = { ...Dialog.defaultOptions }
+}
 
 Vue.prototype.$dialog = Dialog
 

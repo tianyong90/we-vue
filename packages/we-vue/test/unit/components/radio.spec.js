@@ -48,10 +48,6 @@ describe('radio', () => {
     expect(wrapper.findAll('.weui-cell__bd p').at(0).text()).toBe('option1')
     expect(wrapper.findAll('.weui-cell__bd p').at(1).text()).toBe('option2')
     expect(wrapper.findAll('.weui-cell__bd p').at(2).text()).toBe('option3')
-
-    expect(wrapper.findAll('input').at(0).attributes().value).toBe('option1')
-    expect(wrapper.findAll('input').at(1).attributes().value).toBe('option2')
-    expect(wrapper.findAll('input').at(2).attributes().value).toBe('option3')
   })
 
   test('watch currentValue', () => {

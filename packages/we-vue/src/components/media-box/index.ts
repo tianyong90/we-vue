@@ -1,4 +1,4 @@
-import MediaBox from './media-box.vue'
+import MediaBox from './media-box'
 
 export { MediaBox }
 export default MediaBox

@@ -1,9 +1,5 @@
 import { VNode } from 'vue/types/vnode'
 
-// <template>
-//   <div class="weui-footer__link" @click="onClick" v-text="text" />
-// </template>
-
 import Routeable from '../../mixins/routable'
 
 import mixins from '../../utils/mixins'

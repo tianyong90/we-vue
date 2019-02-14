@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import ToastComponent from './toast.vue'
+import ToastComponent from './toast'
 import { isObj } from '../../utils'
 
 type TypeToastOptions = {
@@ -65,53 +65,49 @@ const createMethod = (type: string) => (options: TypeToastOptions | string) =>
     ...parseOptions(options),
   })
 
-namespace Toast {
-  export const defaultOptions: TypeToastOptions = {
-    visible: true,
-    duration: 2000,
-    mask: true,
-    message: '',
-    type: 'success',
-    icon: 'success-no-circle',
-  }
+Toast.defaultOptions = {
+  visible: true,
+  duration: 2000,
+  mask: true,
+  message: '',
+  type: 'success',
+  icon: 'success-no-circle',
+}
 
-  export let currentOptions: TypeToastOptions = defaultOptions
+Toast.currentOptions = Toast.defaultOptions
 
-  export const text = createMethod('text')
-  export const success = createMethod('success')
-  export const fail = createMethod('fail')
-  export const loading = createMethod('loading')
+Toast.text = createMethod('text')
+Toast.success = createMethod('success')
+Toast.fail = createMethod('fail')
+Toast.loading = createMethod('loading')
 
-  export function close (all: boolean): void {
-    if (queue.length) {
-      if (all) {
-        queue.forEach(toast => {
-          toast.close()
-        })
-        queue = []
-      } else if (singleton) {
-        queue[0].close()
-      } else {
-        // FIXME
-        queue.shift()!.close()
-      }
+Toast.close = function (all: boolean): void {
+  if (queue.length) {
+    if (all) {
+      queue.forEach(toast => {
+        toast.close()
+      })
+      queue = []
+    } else if (singleton) {
+      queue[0].close()
+    } else {
+      // FIXME
+      queue.shift()!.close()
     }
-  }
-
-  export function setDefaultOptions (options: TypeToastOptions): void {
-    Object.assign(Toast.currentOptions, options)
-  }
-
-  export function resetDefaultOptions (): void {
-    Toast.currentOptions = { ...defaultOptions }
-  }
-
-  export function allowMultiple (allow = true): void {
-    singleton = !allow
   }
 }
 
-Toast.resetDefaultOptions()
+Toast.setDefaultOptions = function (options: TypeToastOptions): void {
+  Object.assign(Toast.currentOptions, options)
+}
+
+Toast.resetDefaultOptions = function (): void {
+  Toast.currentOptions = { ...Toast.defaultOptions }
+}
+
+Toast.allowMultiple = function (allow = true) {
+  singleton = !allow
+}
 
 Vue.prototype.$toast = Toast
 

@@ -1,4 +1,4 @@
-import Group from './group.vue'
+import Group from './group'
 
 export { Group }
 export default Group

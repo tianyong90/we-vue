@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import ToastApi from '@/components/toast'
-import Toast from '@/components/toast/toast.vue'
+import Toast from '@/components/toast/toast'
 
 describe('toast api', () => {
   beforeEach(() => {

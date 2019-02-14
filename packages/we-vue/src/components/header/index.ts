@@ -1,4 +1,4 @@
-import Header from './header.vue'
+import Header from './header'
 
 export { Header }
 export default Header

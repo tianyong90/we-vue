@@ -20,7 +20,7 @@ export default Vue.extend({
           backgroundColor: this.color,
         }}
       >
-        { !this.isDot ? this.$slots.default : '' }
+        { !this.isDot ? this.$slots.default : h() }
       </span>
     )
   },

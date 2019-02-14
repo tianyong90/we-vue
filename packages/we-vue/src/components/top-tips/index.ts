@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import TopTipsComponent from './top-tips.vue'
+import TopTipsComponent from './top-tips'
 import { isObj } from '../../utils'
 
 type TopTipsOptions = {
@@ -63,20 +63,18 @@ function TopTips (options: TopTipsOptions | string) {
   return instance
 }
 
-namespace TopTips {
-  export function close (): void {
-    if (instance) {
-      instance.visible = false
-    }
+TopTips.close = function (): void {
+  if (instance) {
+    instance.visible = false
   }
+}
 
-  export function setDefaultOptions (options: TopTipsOptions): void {
-    Object.assign(currentOptions, options)
-  }
+TopTips.setDefaultOptions = function (options: TopTipsOptions): void {
+  Object.assign(currentOptions, options)
+}
 
-  export function resetDefaultOptions (): void {
-    currentOptions = { ...defaultOptions }
-  }
+TopTips.resetDefaultOptions = function (): void {
+  currentOptions = { ...defaultOptions }
 }
 
 Vue.prototype.$toptips = TopTips

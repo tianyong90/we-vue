@@ -1,4 +1,4 @@
-import Slider from './slider.vue'
+import Slider from './slider'
 
 export { Slider }
 export default Slider

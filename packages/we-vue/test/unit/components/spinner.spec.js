@@ -56,27 +56,27 @@ describe('spinner', () => {
       propsData: {},
     })
 
-    // default fontClassName should be ''
-    expect(wrapper.vm.fontClassName).toBe('')
+    // default fontclass should be ''
+    expect(wrapper.vm.fontclass).toBe('')
 
     wrapper.setProps({
       type: 'snake',
     })
-    expect(wrapper.vm.fontClassName).toBe('icon-spinner-1')
+    expect(wrapper.vm.fontclass).toBe('icon-spinner-1')
 
     wrapper.setProps({
       type: 'double-snake',
     })
-    expect(wrapper.vm.fontClassName).toBe('icon-spinner9')
+    expect(wrapper.vm.fontclass).toBe('icon-spinner9')
 
     wrapper.setProps({
       type: 'bar-circle',
     })
-    expect(wrapper.vm.fontClassName).toBe('icon-spinner2')
+    expect(wrapper.vm.fontclass).toBe('icon-spinner2')
 
     wrapper.setProps({
       type: 'dot-circle',
     })
-    expect(wrapper.vm.fontClassName).toBe('icon-spinner1')
+    expect(wrapper.vm.fontclass).toBe('icon-spinner1')
   })
 })

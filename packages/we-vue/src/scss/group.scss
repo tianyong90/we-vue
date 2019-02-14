@@ -4,9 +4,9 @@
   margin-top: $weui-cells-margin-top;
   background-color: $weui-cell-bg;
   line-height: $weui-cell-line-height;
-  font-size: $weui-cell-font-size; //cell中间有效高度23px，跟客户端默认图标尺寸一致
+  font-size: $weui-cell-font-size; // cell 中间有效高度23px，跟客户端默认图标尺寸一致
 
-  overflow: hidden; //因为每个cell的border使用before元素left搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
+  overflow: hidden; // 因为每个 cell 的 border 使用 before 元素 left 搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
 
   // onepx
   position: relative;
