@@ -1,7 +1,13 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "command": {
+    "publish": {
+      "allowBranch": [
+        "master",
+        "develop"
+      ],
+      "message": "chore(release): publish %s"
+    }
+  },
   "npmClient": "yarn",
   "version": "independent",
   "useWorkspaces": true
