@@ -1,8 +1,6 @@
 'use strict'
 const path = require('path')
 const ForkTsChecker = require('fork-ts-checker-webpack-plugin')
-const { DefinePlugin } = require('webpack')
-const weVuePackage = require('../package')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
@@ -117,9 +115,5 @@ module.exports = {
       formatter: 'codeframe',
       tsconfig: resolve('../tsconfig.json')
     }),
-    new DefinePlugin({
-      __WE_VUE_VERSION__: JSON.stringify(weVuePackage.version),
-      __REQUIRED_VUE__: JSON.stringify(weVuePackage.peerDependencies.vue),
-    })
   ]
 }

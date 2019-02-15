@@ -1,3 +1,10 @@
+const wevuePackage = require('./package.json')
+
+const versions = {
+  __WE_VUE_VERSION__: wevuePackage.version,
+  __REQUIRED_VUE__: wevuePackage.peerDependencies.vue
+}
+
 module.exports = function(api) {
   const { BABEL_MODULE, NODE_ENV } = process.env
   const useESModules = BABEL_MODULE !== 'commonjs' && NODE_ENV !== 'test'
@@ -31,7 +38,10 @@ module.exports = function(api) {
         }
       ],
       '@babel/plugin-syntax-dynamic-import',
-      '@babel/plugin-transform-object-assign'
+      '@babel/plugin-transform-object-assign',
+      [
+        'transform-define', versions
+      ]
     ],
     env: {
       test: {
@@ -65,6 +75,9 @@ module.exports = function(api) {
               }
             }
           ]
+        ],
+        plugins: [
+          './build/babel-transform-scss-paths.js',
         ]
       },
       lib: {
@@ -76,7 +89,11 @@ module.exports = function(api) {
               modules: false
             }
           ]
+        ],
+        plugins: [
+          './build/babel-transform-scss-paths.js',
         ]
+
       }
     }
   }
