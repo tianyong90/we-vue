@@ -122,5 +122,8 @@
     "vue-jest": "^3.0.3",
     "vue-server-renderer": "^2.6.6",
     "vue-tsx-support": "^2.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
