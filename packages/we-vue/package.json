@@ -120,6 +120,7 @@
     "url-loader": "^1.0.1",
     "vue": "^2.5.9",
     "vue-jest": "^3.0.3",
+    "vue-server-renderer": "^2.6.6",
     "vue-tsx-support": "^2.2.2"
   }
 }

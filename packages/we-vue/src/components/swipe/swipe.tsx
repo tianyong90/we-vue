@@ -214,15 +214,15 @@ export default Vue.extend<options>().extend({
     return (
       <div
         class="wv-swipe"
-        onTouchstart={this.onTouchstart}
-        onTouchmove={this.onTouchmove}
-        onTouchend={this.onTouchend}
-        onTouchcancel={this.onTouchend}
+        onTouchstart={(e: TouchEvent) => { this.onTouchstart(e) }}
+        onTouchmove={(e: TouchEvent) => { this.onTouchmove(e) }}
+        onTouchend={() => { this.onTouchend() }}
+        onTouchcancel={() => { this.onTouchend() }}
       >
         <div
           style={this.wrapperStyle}
           class="wv-swipe__wrapper"
-          onTransitionend={this.$emit('change', this.activeIndicator)}
+          onTransitionend={() => { this.$emit('change', this.activeIndicator) }}
         >
           {this.$slots.default}
         </div>

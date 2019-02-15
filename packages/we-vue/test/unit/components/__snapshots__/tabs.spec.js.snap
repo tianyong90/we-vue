@@ -8,15 +8,39 @@ exports[`tab create 1`] = `
     </div>
   </div>
   <div class="wv-tabs__content">
-    <div class="wv-tab__pane" style="display: none;">
+    <div class="wv-tab__pane" style="display:none;">
       <!---->
       <!---->
     </div>
-    <div class="wv-tab__pane" style="display: none;">
+    <div class="wv-tab__pane" style="display:none;">
       <!---->
       <!---->
     </div>
-    <div class="wv-tab__pane" style="display: none;">
+    <div class="wv-tab__pane" style="display:none;">
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`tabs create with tab items 1`] = `
+<div class="wv-tabs wv-tabs--line">
+  <div class="wv-tabs__wrap wv-hairline--top-bottom">
+    <div class="wv-tabs__nav wv-tabs__nav--line">
+      <div class="wv-tabs__line"></div>
+    </div>
+  </div>
+  <div class="wv-tabs__content">
+    <div class="wv-tab__pane" style="display:none;">
+      <!---->
+      <!---->
+    </div>
+    <div class="wv-tab__pane" style="display:none;">
+      <!---->
+      <!---->
+    </div>
+    <div class="wv-tab__pane" style="display:none;">
       <!---->
       <!---->
     </div>

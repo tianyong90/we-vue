@@ -1,15 +1,11 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import Tabs from '@/components/tabs'
 import Tab from '@/components/tab'
+import { render, renderToString } from '@vue/server-test-utils'
 
 describe('tabs', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Tabs, {
+    const wrapper = shallowMount(Tabs, {
       propsData: {},
     })
 
@@ -18,19 +14,22 @@ describe('tabs', () => {
   })
 
   test('create with tab items', () => {
-    wrapper = mount(Tabs, {
+    const wrapper = renderToString(Tabs, {
       propsData: {},
       slots: {
         default: [Tab, Tab, Tab],
       },
     })
 
-    expect(wrapper.name()).toBe('wv-tabs')
-    expect(wrapper.classes()).toContain('wv-tabs')
+    expect(wrapper).toMatchSnapshot()
+
+    // expect(wrapper.name()).toBe('wv-tabs')
+    // expect(wrapper.classes()).toContain('wv-tabs')
   })
 
   test('click tab items', () => {
-    wrapper = mount(Tabs, {
+    const wrapper = mount(Tabs, {
+      attachToDocument: true,
       propsData: {},
       slots: {
         default: [Tab, Tab, Tab],
@@ -45,28 +44,19 @@ describe('tabs', () => {
 })
 
 describe('tab', () => {
-  let wrapper
-
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Tabs, {
+    const wrapper = renderToString(Tabs, {
       propsData: {},
       slots: {
         default: [Tab, Tab, Tab],
       },
     })
 
-    const tabItem = wrapper.find(Tab)
-
-    expect(tabItem.name()).toBe('wv-tab')
     expect(wrapper).toMatchSnapshot()
   })
 
   test('title', () => {
-    wrapper = mount(Tabs, {
+    const wrapper = mount(Tabs, {
       attachToDocument: true,
       propsData: {},
       slots: {

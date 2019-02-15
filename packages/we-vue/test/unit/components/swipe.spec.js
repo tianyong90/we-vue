@@ -3,16 +3,9 @@ import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
 import { horizontalDrag, verticalDrag, dragAndHoldHelper } from '../utils'
 import faker from 'faker'
+import { renderToString } from '@vue/server-test-utils'
 
 describe('swipe', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
-  })
-
-  afterEach(() => {
-    jest.clearAllTimers()
-  })
-
   test('create', () => {
     const wrapper = mount(Swipe, {
       propsData: {},
@@ -38,8 +31,7 @@ describe('swipe', () => {
   })
 
   test('create with swipe-items', () => {
-    const wrapper = mount(Swipe, {
-      attachToDocument: true,
+    const wrapper = renderToString(Swipe, {
       propsData: {
         height: 120,
         showIndicators: true,
@@ -49,8 +41,10 @@ describe('swipe', () => {
       },
     })
 
-    expect(wrapper.vm.count).toBe(3)
-    expect(wrapper.vm.activeIndicator).toBe(0)
+    // TODO
+    // expect(wrapper.vm.count).toBe(3)
+    // expect(wrapper.vm.activeIndicator).toBe(0)
+    expect(wrapper).toMatchSnapshot()
   })
 
   test('drag to right', () => {
@@ -175,6 +169,8 @@ describe('swipe', () => {
   })
 
   test('autoplay', () => {
+    jest.useFakeTimers()
+
     const wrapper = mount(Swipe, {
       attachToDocument: true,
       propsData: {
@@ -194,6 +190,8 @@ describe('swipe', () => {
     expect(wrapper.vm.active).toBe(3)
     jest.advanceTimersByTime(3030)
     expect(wrapper.vm.active).toBe(1)
+
+    jest.clearAllTimers()
   })
 
   test('preventScroll', () => {
