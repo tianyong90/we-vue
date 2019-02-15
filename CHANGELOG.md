@@ -1,3 +1,9 @@
+v3
+
+picker
+
+column.values ==> column.options
+
 ## v2.2.5 (2018-8-27)
 
 ### 优化

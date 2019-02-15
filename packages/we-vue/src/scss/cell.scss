@@ -1,0 +1,76 @@
+@import "./base/fn";
+
+.weui-cells__tips {
+  margin-top: 0.3em; // 8px - 行高
+  color: $weui-text-color-gray;
+  padding-left: $weui-cell-gap-h;
+  padding-right: $weui-cell-gap-h;
+  font-size: $weui-cell-tips-font-size;
+}
+
+.weui-cell {
+  padding: $weui-cell-gap-v $weui-cell-gap-h;
+  position: relative; //这个是为了兼容cells容器onepx方案被before挡住而做的
+  display: flex;
+  align-items: center;
+
+  &:before {
+    @include setTopLine($weui-cell-border-color);
+    left: $weui-cell-gap-h;
+    z-index: 2;
+  }
+
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+.weui-cell_primary {
+  align-items: flex-start;
+}
+
+.weui-cell__bd {
+  flex: 1;
+}
+
+.weui-cell__ft {
+  text-align: right;
+  color: $weui-text-color-gray;
+}
+
+.weui-cell_access {
+  @include setTapColor();
+  color: inherit;
+
+  &:active {
+    background-color: #ececec;
+  }
+
+  .weui-cell__ft {
+    padding-right: 13px;
+    position: relative;
+
+    &:after {
+      content: " ";
+      @include setArrow(right, 6px, #c8c8cd, 2px);
+      position: absolute;
+      top: 50%;
+      margin-top: -4px;
+      right: 2px;
+    }
+  }
+}
+
+.weui-cell_link {
+  color: $weui-link-color-default;
+  font-size: 14px;
+
+  // 由于weui-cell:first-child的:before为隐藏，所以这里要重新显示出来
+  &:first-child {
+    &:before {
+      display: block;
+    }
+  }
+}

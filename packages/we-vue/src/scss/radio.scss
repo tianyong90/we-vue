@@ -1,0 +1,30 @@
+@import "./base/fn";
+@import "./icon";
+
+.weui-check__label {
+  @include setTapColor();
+
+  &:active {
+    background-color: #ececec;
+  }
+}
+
+// method2 accessbility
+.weui-cells_radio {
+  .weui-cell__ft {
+    padding-left: $weui-cell-inner-gap-h;
+
+    .weui-icon-checked {
+      &:before {
+        display: block;
+        content: "\EA08";
+        color: #09bb07;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.weui-check__label-disabled {
+  background-color: rgba(0, 0, 0, 0.1);
+}

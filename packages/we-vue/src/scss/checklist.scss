@@ -1,0 +1,32 @@
+@import "./base/fn";
+@import "./icon";
+
+.weui-check__label {
+  @include setTapColor();
+
+  &:active {
+    background-color: #ececec;
+  }
+}
+
+.weui-cells_checkbox {
+  .weui-cell__hd {
+    padding-right: $weui-cell-inner-gap-h;
+  }
+
+  .weui-icon-checked {
+    &:before {
+      content: "\EA01";
+      color: #c9c9c9;
+      font-size: 23px;
+      display: block;
+    }
+
+    &.checked {
+      &:before {
+        content: "\EA06";
+        color: #09bb07;
+      }
+    }
+  }
+}

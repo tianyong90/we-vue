@@ -1,0 +1,213 @@
+@import "./base/fn";
+
+// global
+.weui-btn {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: $weui-btn-font-size;
+  text-align: center;
+  text-decoration: none;
+  color: $weui-btn-font-color;
+  line-height: $weui-btn-height / $weui-btn-font-size;
+  border-radius: $weui-btn-border-radius;
+  @include setTapColor();
+  overflow: hidden;
+
+  &:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: $weui-btn-border-radius * 2;
+  }
+}
+
+.weui-btn_inline {
+  display: inline-block;
+}
+
+// default
+.weui-btn_default {
+  color: $weui-btn-default-font-color;
+  background-color: $weui-btn-default-bg;
+
+  &:not(.weui-btn_disabled):visited {
+    color: $weui-btn-default-font-color;
+  }
+
+  &:not(.weui-btn_disabled):active {
+    color: $weui-btn-default-active-font-color;
+    background-color: $weui-btn-default-active-bg;
+  }
+}
+
+// primary
+.weui-btn_primary {
+  background-color: $weui-btn-primary-bg;
+
+  &:not(.weui-btn_disabled):visited {
+    color: $weui-btn-font-color;
+  }
+
+  &:not(.weui-btn_disabled):active {
+    color: $weui-btn-active-font-color;
+    background-color: $weui-btn-primary-active-bg;
+  }
+}
+
+// warn
+.weui-btn_warn {
+  background-color: $weui-btn-warn-bg;
+
+  &:not(.weui-btn_disabled):visited {
+    color: $weui-btn-font-color;
+  }
+
+  &:not(.weui-btn_disabled):active {
+    color: $weui-btn-active-font-color;
+    background-color: $weui-btn-warn-active-bg;
+  }
+}
+
+// disabled
+.weui-btn_disabled {
+  color: $weui-btn-disabled-font-color;
+
+  &.weui-btn_default {
+    color: $weui-btn-default-disabled-font-color;
+    background-color: $weui-btn-default-disabled-bg;
+  }
+
+  &.weui-btn_primary {
+    background-color: $weui-btn-primary-disabled-bg;
+  }
+
+  &.weui-btn_warn {
+    background-color: $weui-btnwarn-disabled-bg;
+  }
+}
+
+.weui-btn_loading {
+  .weui-loading {
+    margin: -0.2em 0.34em 0 0;
+  }
+
+  &.weui-btn_primary,
+  &.weui-btn_warn {
+    color: $weui-btn-active-font-color;
+  }
+
+  &.weui-btn_primary {
+    background-color: $weui-btn-primary-active-bg;
+  }
+
+  &.weui-btn_warn {
+    background-color: $weui-btn-warn-active-bg;
+  }
+}
+
+// plain
+.weui-btn_plain-primary {
+  color: $weui-btn-plain-primary-color;
+  border: 1px solid $weui-btn-plain-primary-border-color;
+
+  &:not(.weui-btn_plain-disabled):active {
+    color: $weui-btn-plain-primary-active-color;
+    border-color: $weui-btn-plain-primary-active-border-color;
+  }
+
+  &:after {
+    border-width: 0;
+  }
+}
+
+.weui-btn_plain-default {
+  color: $weui-btn-plain-default-color;
+  border: 1px solid $weui-btn-plain-default-border-color;
+
+  &:not(.weui-btn_plain-disabled):active {
+    color: $weui-btn-plain-default-active-color;
+    border-color: $weui-btn-plain-default-active-border-color;
+  }
+
+  &:after {
+    border-width: 0;
+  }
+}
+
+.weui-btn_plain-disabled {
+  color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+button,
+input {
+  &.weui-btn {
+    width: 100%;
+    border-width: 0;
+    outline: 0;
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &.weui-btn_inline,
+  &.weui-btn_mini {
+    width: auto;
+  }
+
+  &.weui-btn_plain-primary,
+  &.weui-btn_plain-default {
+    border-width: 1px;
+    background-color: transparent;
+  }
+}
+
+.weui-btn_mini {
+  display: inline-block;
+  padding: 0 1.32em;
+  line-height: $weui-btn-mini-height;
+  font-size: $weui-btn-mini-font-size;
+}
+
+/*gap between btn*/
+.weui-btn + .weui-btn {
+  margin-top: $weui-btn-default-gap;
+}
+
+.weui-btn.weui-btn_inline + .weui-btn.weui-btn_inline {
+  margin-top: auto;
+  margin-left: $weui-btn-default-gap;
+}
+
+.weui-btn-area {
+  margin: $weui-cells-margin-top $weui-btn-default-gap 0.3em;
+}
+
+.weui-btn-area_inline {
+  display: flex;
+
+  .weui-btn {
+    margin-top: auto;
+    margin-right: $weui-btn-default-gap;
+    width: 100%;
+    flex: 1;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

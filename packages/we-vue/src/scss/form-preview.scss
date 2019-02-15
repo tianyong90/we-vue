@@ -1,0 +1,108 @@
+@import "./base/fn";
+
+.weui-form-preview {
+  position: relative;
+  background-color: #ffffff;
+
+  &:before {
+    @include setTopLine($weui-cell-border-color);
+  }
+
+  &:after {
+    @include setBottomLine($weui-cell-border-color);
+  }
+}
+
+.weui-form-preview__hd {
+  position: relative;
+  padding: $weui-cell-gap-v $weui-cell-gap-h;
+  text-align: right;
+  line-height: 2.5em;
+
+  &:after {
+    @include setBottomLine($weui-cell-border-color);
+    left: $weui-cell-gap-h;
+  }
+
+  .weui-form-preview__value {
+    font-style: normal;
+    font-size: 1.6em;
+  }
+}
+
+.weui-form-preview__bd {
+  padding: $weui-cell-gap-v $weui-cell-gap-h;
+  font-size: 0.9em;
+  text-align: right;
+  color: $weui-text-color-gray;
+  line-height: 2;
+}
+
+.weui-form-preview__ft {
+  position: relative;
+  line-height: 50px;
+  display: flex;
+
+  &:before {
+    @include setTopLine($weui-dialog-line-color);
+  }
+}
+
+.weui-form-preview__item {
+  overflow: hidden;
+}
+
+.weui-form-preview__label {
+  float: left;
+  margin-right: 1em;
+  min-width: 4em;
+  color: $weui-text-color-gray;
+  text-align: justify;
+  text-align-last: justify;
+}
+
+.weui-form-preview__value {
+  display: block;
+  overflow: hidden;
+  word-break: normal;
+  word-wrap: break-word;
+}
+
+.weui-form-preview__btn {
+  position: relative;
+  display: block;
+  flex: 1;
+  color: $weui-dialog-link-color;
+  text-align: center;
+  @include setTapColor();
+
+  &button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    line-height: inherit;
+    font-size: inherit;
+  }
+
+  &:active {
+    background-color: $weui-dialog-link-active-bc;
+  }
+
+  &:after {
+    @include setLeftLine($weui-dialog-line-color);
+  }
+
+  &:first-child {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.weui-form-preview__btn_default {
+  color: $weui-text-color-gray;
+}
+
+.weui-form-preview__btn_primary {
+  color: #0bb20c;
+}
