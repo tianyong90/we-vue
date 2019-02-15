@@ -2,7 +2,7 @@
   "name": "docs",
   "description": "we-vue official documents.",
   "private": true,
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.3",
   "scripts": {
     "dev": "webpack-dev-server --inline --config build/webpack.dev.conf.js",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js",
