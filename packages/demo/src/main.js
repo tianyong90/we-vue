@@ -6,7 +6,7 @@ import './assets/iconfont/iconfont.css'
 import router from './router'
 import QRCode from 'qrcode'
 import store from './store'
-import 'we-vue/src/scss/index.scss'
+import 'we-vue/dist/we-vue.css'
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
@@ -45,13 +45,6 @@ new Vue({
       transitionName: 'slide-right'
     }
   },
-
-  // TODO
-  // methods: {
-  //   message (msg) {
-  //     this.$toast.text(msg)
-  //   }
-  // },
 
   watch: {
     $route (to, from) {

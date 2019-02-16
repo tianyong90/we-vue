@@ -13,7 +13,6 @@ const WeVue: WeVuePlugin = {
       ...opts,
     })
   },
-  // TODO:
   version: __WE_VUE_VERSION__,
 }
 
