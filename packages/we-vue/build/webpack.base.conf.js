@@ -56,9 +56,9 @@ module.exports = {
               cacheDirectory: resolve(`../node_modules/.cache/babel-loader`)
             }
           },
-          // {
-          //   loader: 'thread-loader',
-          // },
+          {
+            loader: 'thread-loader',
+          },
           'babel-loader'
         ],
         exclude: /node_modules/
@@ -72,9 +72,9 @@ module.exports = {
               cacheDirectory: resolve(`../node_modules/.cache/ts-loader`)
             }
           },
-          // {
-          //   loader: 'thread-loader'
-          // },
+          {
+            loader: 'thread-loader'
+          },
           {
             loader: 'babel-loader'
           },

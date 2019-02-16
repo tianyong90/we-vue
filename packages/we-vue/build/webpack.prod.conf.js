@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 module.exports = merge(baseWebpackConfig, {
+  devtool: 'source-map',
   entry: {
     'we-vue': './src/index.ts'
   },
@@ -21,5 +22,5 @@ module.exports = merge(baseWebpackConfig, {
       commonjs2: 'vue',
       amd: 'vue'
     }
-  }
+  },
 })
