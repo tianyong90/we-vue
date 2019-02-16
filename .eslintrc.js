@@ -3,7 +3,7 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: 'typescript-eslint-parser',
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 2017,
     sourceType: 'module'
   },
@@ -25,7 +25,7 @@ module.exports = {
   },
   // required to lint *.vue files
   plugins: [
-    'typescript'
+    '@typescript-eslint',
   ],
   // add your custom rules here
   rules: {

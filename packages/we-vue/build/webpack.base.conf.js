@@ -16,7 +16,12 @@ const scssLoaders = [
     loader: 'postcss-loader',
     options: { sourceMap: !isProd }
   },
-  { loader: 'sass-loader' }
+  {
+    loader: 'sass-loader',
+    options: {
+      implementation: require('sass')
+    }
+  }
 ]
 
 module.exports = {
