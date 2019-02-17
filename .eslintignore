@@ -1,7 +1,2 @@
-/build/
-/config/
-/dist/
-/es
-/lib
+**/node_modules
 /*.js
-/test/unit/coverage/

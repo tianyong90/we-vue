@@ -76,7 +76,7 @@ const release = async () => {
     'publish',
     version,
     '--force-publish',
-    '--npm-tag',
+    '--dist-tag',
     npmTag,
     '--registry',
     'https://registry.npmjs.org/',

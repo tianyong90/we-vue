@@ -18,8 +18,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": [
-      "yarn run lint",
+    "*.{js,ts,tsx,vue}": [
+      "eslint --fix",
       "git add"
     ]
   },
