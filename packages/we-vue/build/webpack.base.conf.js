@@ -110,9 +110,6 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin({
       clearConsole: true
     }),
-    new MiniCssExtractPlugin({
-      filename: `[name].css`
-    }),
     new ForkTsChecker({
       checkSyntacticErrors: isProd,
       vue: true,

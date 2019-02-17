@@ -1,11 +1,15 @@
-// https://github.com/michael-ciniawsky/postcss-load-config
+const postimport = require('postcss-import')
+const posturl = require('postcss-url')
+const autoprefixer = require('autoprefixer')
+const mqpacker = require('css-mqpacker')
 
-module.exports = {
-  "plugins": {
-    "postcss-import": {},
-    "postcss-url": {},
-    // to edit target browsers: use "browserslist" field in package.json
-    "autoprefixer": {},
-    "cssnano": {}
-  }
-}
+module.exports = (ctx) => ({
+  plugins: [
+    postimport(),
+    posturl(),
+    autoprefixer({
+      browsers: ['>0.5%', 'last 2 versions', 'not dead', 'not op_mini all']
+    }),
+    mqpacker()
+  ]
+})

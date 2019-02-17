@@ -57,8 +57,8 @@ function genConfig (opts) {
     config.plugins = config.plugins.concat([
       new webpack.BannerPlugin({
         banner: `/*!
-* Vuetify v${version}
-* Forged by John Leider
+* we-vue v${version}
+* Forged by Tian Yong
 * Released under the MIT License.
 */     `,
         raw: true,

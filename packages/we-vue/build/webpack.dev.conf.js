@@ -1,6 +1,7 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = merge(baseWebpackConfig, {
   devtool: 'source-map',
@@ -22,5 +23,10 @@ module.exports = merge(baseWebpackConfig, {
       commonjs2: 'vue',
       amd: 'vue'
     }
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'we-vue.css'
+    }),
+  ]
 })
