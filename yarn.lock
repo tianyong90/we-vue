@@ -6085,13 +6085,6 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-git-branch@^2.0.1:
-  version "2.0.1"
-  resolved "http://registry.npm.taobao.org/git-branch/download/git-branch-2.0.1.tgz#442724a97574c66ede4290ded75b7430785da08f"
-  integrity sha1-RCckqXV0xm7eQpDe11t0MHhdoI8=
-  dependencies:
-    findup-sync "^2.0.0"
-
 git-raw-commits@2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/git-raw-commits/download/git-raw-commits-2.0.0.tgz#d92addf74440c14bcc5c83ecce3fb7f8a79118b5"
@@ -8190,7 +8183,7 @@ listr-verbose-renderer@^0.5.0:
     date-fns "^1.27.2"
     figures "^2.0.0"
 
-listr@^0.14.0, listr@^0.14.2:
+listr@^0.14.2:
   version "0.14.3"
   resolved "http://registry.npm.taobao.org/listr/download/listr-0.14.3.tgz#2fea909604e434be464c50bddba0d496928fa586"
   integrity sha1-L+qQlgTkNL5GTFC926DUlpKPpYY=

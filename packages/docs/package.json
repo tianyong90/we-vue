@@ -4,17 +4,29 @@
   "private": true,
   "version": "3.0.0-alpha.6",
   "scripts": {
-    "dev": "webpack-dev-server --inline --config build/webpack.dev.conf.js",
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js",
-    "lint": "eslint --ext .js,.vue packages demo docs test/unit/specs"
+    "dev": "vue-cli-service serve --colors",
+    "build": "vue-cli-service build --colors",
+    "lint": "vue-cli-service lint --colors"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0"
+    "vue": "^2.5.22",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "we-vue": "^3.0.0-alpha.6"
   },
   "peerDependencies": {
     "vue": ">= 2.5.0"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-service": "3.3.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "fibers": "^3.1.1",
+    "node-sass": "^4.11.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-object-assign": "^7.0.0",
