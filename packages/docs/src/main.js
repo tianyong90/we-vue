@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './app.vue'
+import App from './App.vue'
 import router from './router'
 import './assets/style/docs.scss'
 import 'firacode/distr/fira_code.css'
