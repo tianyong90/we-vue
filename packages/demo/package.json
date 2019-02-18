@@ -3,7 +3,7 @@
   "version": "3.0.0-alpha.6",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --colors",
+    "dev": "vue-cli-service serve --colors",
     "build": "vue-cli-service build --colors",
     "lint": "vue-cli-service lint --colors"
   },

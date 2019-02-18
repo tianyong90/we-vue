@@ -4,7 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "lerna run serve --ignore docs --stream --parallel",
+    "dev": "lerna run dev --ignore docs --stream --parallel -- --colors",
     "dev:docs": "lerna run dev --scope docs --stream -- --colors",
     "lint": "lerna run lint --scope we-vue --stream",
     "test": "lerna run test --scope we-vue --stream",

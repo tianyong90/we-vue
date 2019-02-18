@@ -310,13 +310,14 @@ let v1_6 = [
       title: '贡献'
     }
   },
-  {
-    path: 'changelog',
-    component: () => import('PROJECT_ROOT/CHANGELOG.md'),
-    meta: {
-      title: '变更记录'
-    }
-  }
+  // TODO
+  // {
+  //   path: 'changelog',
+  //   component: () => import('PROJECT_ROOT/CHANGELOG.md'),
+  //   meta: {
+  //     title: '变更记录'
+  //   }
+  // }
 ]
 
 v1_6 = v1_6.map(route => {
