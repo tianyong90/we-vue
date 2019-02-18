@@ -27,6 +27,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "fibers": "^3.1.1",
     "firacode": "^1.205.0",
+    "github-markdown-css": "^3.0.1",
     "highlight.js": "^9.13.1",
     "lint-staged": "^8.0.0",
     "node-sass": "^4.11.0",

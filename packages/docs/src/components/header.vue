@@ -1,11 +1,11 @@
 <template>
-  <header class="navbar flex-column" :class="[theme]">
-    <div class="container-fluid justify-content-start">
+  <header class="navbar fixed-top flex-column" :class="[theme]">
+    <div class="container-fluid justify-content-between">
       <router-link class="navbar-brand mr-0" to="/" exact>
-        <img class="d-block logo" src="../assets/image/logo.png" alt="">
+        <img class="d-block logo" src="../assets/image/logo.png" alt="we-vue">
       </router-link>
 
-      <docsearch-box
+      <DocsearchBox
         v-if="$route.path.indexOf('/doc') > -1"
         :options="searchBoxOptions"
       />
@@ -40,11 +40,13 @@
 </template>
 
 <script>
+import DocsearchBox from './docsearch-box'
+
 export default {
   name: 'doc-header',
 
   components: {
-    'docsearch-box': () => import('./docsearch-box.vue')
+    DocsearchBox
   },
 
   props: {

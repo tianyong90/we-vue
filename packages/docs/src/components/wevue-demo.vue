@@ -1,10 +1,13 @@
 <template>
   <div
     class="demo-wrap"
-    :style="{ top: positionTop + 'px' }"
   >
     <div class="mobile-top"/>
-    <iframe id="iframe-demo" :src="url" frameborder="0"/>
+    <iframe
+      id="iframe-demo"
+      :src="url"
+      frameborder="0"
+    />
   </div>
 </template>
 
@@ -30,15 +33,6 @@ export default {
   },
 
   mounted () {
-    // 右侧 DEMO 区实在 sticky 效果
-    document.addEventListener('scroll', () => {
-      const scrollDistance = Math.abs(document.body.getBoundingClientRect().top)
-      if (scrollDistance >= this.stickyTop - 20) {
-        this.positionTop = scrollDistance + 20
-      } else {
-        this.positionTop = this.stickyTop
-      }
-    })
   }
 }
 </script>
@@ -47,13 +41,14 @@ export default {
 .demo-wrap {
   display: block;
   overflow: hidden;
+  position: fixed;
+  top: 100px;
+  right: 20px;
   width: 375px;
   min-width: 375px;
   z-index: 50;
   border-radius: 6px;
   box-sizing: border-box;
-  right: 20px;
-  position: absolute;
   box-shadow: #999 -3px 3px 20px;
 
   .mobile-top {
