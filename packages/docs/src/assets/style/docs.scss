@@ -1,5 +1,4 @@
 @import "~bootstrap/scss/bootstrap";
-@import "~github-markdown-css/github-markdown.css";
 
 /// Mixin to customize scrollbars
 /// Beware, this does not work in all browsers
@@ -34,15 +33,8 @@
 
 @include scrollbars(0.5em, slategray);
 
-pre {
-  padding: 1.2em !important;
-  border-radius: 5px;
-}
-
-p,
-ul,
-ol {
-  line-height: 1.7;
+.markdown-body pre {
+  background: #282c34!important;
 }
 
 .custom-block {

@@ -43,12 +43,10 @@
           <router-view/>
         </div>
 
-        <div class="col demo-column">
-          <WevueDemo
-            :url.sync="demoUrl"
-            :sticky-top="0"
-          />
-        </div>
+        <WevueDemo
+          :url.sync="demoUrl"
+          :sticky-top="0"
+        />
       </div>
     </div>
   </div>
@@ -59,6 +57,7 @@ import { nav } from '../config'
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'highlight.js/styles/atom-one-dark.css'
+import 'github-markdown-css/github-markdown.css'
 import Header from '../components/header'
 import WevueDemo from '../components/wevue-demo'
 
@@ -182,10 +181,5 @@ export default {
       }
     }
   }
-}
-
-.demo-column {
-  flex: 0 0 410px;
-  justify-content: center;
 }
 </style>

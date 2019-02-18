@@ -1,5 +1,8 @@
 <template>
-  <header class="navbar fixed-top flex-column" :class="[theme]">
+  <header
+    class="navbar navbar-dark fixed-top flex-column"
+    :class="[theme]"
+  >
     <div class="container-fluid justify-content-between">
       <router-link class="navbar-brand mr-0" to="/" exact>
         <img class="d-block logo" src="../assets/image/logo.png" alt="we-vue">

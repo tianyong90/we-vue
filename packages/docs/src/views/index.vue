@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header></Header>
     <div class="banner">
       <div class="container p-5">
         <div class="row justify-content-center flex-column">
@@ -77,7 +78,13 @@
 </template>
 
 <script>
+import Header from '../components/header'
+
 export default {
+  components: {
+    Header
+  },
+
   data () {
     return {}
   }
