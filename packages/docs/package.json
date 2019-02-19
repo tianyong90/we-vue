@@ -4,9 +4,9 @@
   "private": true,
   "description": "we-vue official documents.",
   "scripts": {
+    "serve": "vue-cli-service serve --colors",
     "build": "vue-cli-service build --colors",
-    "lint": "vue-cli-service lint --colors",
-    "dev": "vue-cli-service serve --colors"
+    "lint": "vue-cli-service lint --colors"
   },
   "dependencies": {
     "vue": "^2.5.22",
