@@ -32,7 +32,7 @@
     </wv-group>
 
     <div class="weui-footer footer-copyright">
-      <p data-v-62fe346e="" class="weui-footer__text">Copyright © 2016 - 2018 <a href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a></p>
+      <p data-v-62fe346e="" class="weui-footer__text">Copyright © 2016 - 2019 <a href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a></p>
     </div>
   </div>
 </template>

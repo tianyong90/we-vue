@@ -83,17 +83,12 @@ export default {
       position: absolute;
       left: calc(50% - 25px);
     }
-
-    .singal {
-      background-color: #f00;
-    }
   }
 
   .iframe-wrapper {
     display: block;
     position: relative;
     overflow: hidden;
-    background: #f00;
   }
 
   iframe {

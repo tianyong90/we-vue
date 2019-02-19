@@ -1,9 +1,7 @@
 <template>
-  <header
-    class="navbar fixed-top"
-  >
+  <header class="navbar navbar-expand flex-column flex-md-row fixed-top">
     <div class="container-fluid justify-content-between">
-      <router-link class="navbar-brand mr-0" to="/" exact>
+      <router-link class="navbar-brand" to="/" exact>
         <img class="d-block logo" src="../assets/images/logo.png" alt="we-vue">
       </router-link>
 
@@ -12,30 +10,30 @@
         :options="searchBoxOptions"
       />
 
-      <ul class="navbar-nav flex-row ml-3">
-        <li class="nav-item">
-          <router-link to="/doc/v2_0/index">文档</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/doc/changelog">变更记录</router-link>
-        </li>
-        <li class="nav-item">
-          <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
-        </li>
-      </ul>
-
-      <div
-        class="dropdown col-1 ml-3 version-picker"
-        @mouseenter="dropDownVisible = true"
-        @mouseleave="dropDownVisible = false"
-        v-if="$route.name !== 'home'"
-      >
-
-        <span class="version-number">{{ version | versionText }}</span>
-        <div class="dropdown-menu" :class="{ 'd-block': dropDownVisible }">
-          <div class="dropdown-item" @click="changeVersion('v1_6')">v1.6</div>
-          <div class="dropdown-item" @click="changeVersion('v2_0')">v2.0</div>
-        </div>
+      <div class="navbar-nav-scroll">
+        <ul class="navbar-nav ml-3">
+          <li class="nav-item">
+            <router-link to="/doc/v2_0/index">文档</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/doc/changelog">变更记录</router-link>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/tianyong90/we-vue/issues/new/choose" target="new">问题反馈</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/tianyong90/we-vue" target="new"><i class="fab fa-github"></i> GitHub</a>
+          </li>
+          <li class="nav-item dropdown" v-if="$route.name !== 'home'">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ version | versionText }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" :class="{ 'active': version === 'v1_6' }" href="#" @click.prevent="changeVersion('v1_6')">v1.6</a>
+              <a class="dropdown-item" :class="{ 'active': version === 'v2_0' }" href="#" @click.prevent="changeVersion('v2_0')">v2.0</a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </header>
@@ -57,7 +55,6 @@ export default {
 
   data () {
     return {
-      dropDownVisible: false,
       version: this.$route.meta.version
     }
   },
@@ -121,37 +118,6 @@ $header-home-background-color: #040f23;
       &.router-link-active {
         color: #41b883;
       }
-    }
-  }
-
-  .version-picker {
-    text-align: right;
-    position: relative;
-    cursor: pointer;
-    padding: 10px 30px 10px 0;
-
-    .version-number::after {
-      content: '';
-      width: 0;
-      height: 0;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      border: 7px solid;
-      border-color: #888 #fff #fff #fff;
-    }
-
-    &:hover {
-      color: #41b883;
-
-      .version-number::after {
-        top: calc(50% - 7px);
-        border-color: #fff #fff #888 #fff;
-      }
-    }
-
-    .dropdown-menu {
-      top: 90%;
     }
   }
 }
