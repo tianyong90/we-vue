@@ -10,17 +10,16 @@
         <div class="row mt-5 justify-content-center">
           <router-link
             to="/doc/v2_0/index"
-            class="btn btn-primary ml-2 mr-2
-          btn-quickstart"
+            class="btn btn-outline-light btn-lg mx-2          btn-quickstart"
           >文档
           </router-link>
           <a
             href="https://demo.wevue.org"
-            class="btn btn-primary ml-2 mr-2"
+            class="btn btn-outline-light btn-lg mx-2"
           >示例</a>
           <a
             href="https://github.com/tianyong90/WE-VUE"
-            class="btn btn-primary ml-2 mr-2"
+            class="btn btn-outline-light btn-lg mx-2"
           >GitHub</a>
         </div>
         <div class="row justify-content-center mt-5">
@@ -62,8 +61,8 @@
       </div>
     </section>
 
-    <footer class="footer w-100 mt-4">
-      <div class="container pt-3 pb-3">
+    <footer class="footer w-100">
+      <div class="container py-4">
         <div class="row justify-content-center">
           <a class="text-light m-2" href="https://github.com/tianyong90/WE-VUE">GitHub</a>
           <a class="text-light m-2" href="https://gitee.com/tianyong/WE-VUE">Gitee</a>
