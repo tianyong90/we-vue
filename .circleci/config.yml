@@ -58,7 +58,7 @@ jobs:
 
       - run: echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-      - run: apt install rsync
+      - run: sudo apt install rsync -y
 
       # deploy demo
       - deploy:
