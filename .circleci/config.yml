@@ -29,6 +29,9 @@ jobs:
       # update codecov stats TODO
       #- run: ./node_modules/.bin/codecov
 
+      # build component lib
+      - run: yarn lerna run build:dist --scope we-vue
+
       # build demo
       - run: yarn lerna run build --scope demo
 
