@@ -39,14 +39,16 @@
             </ul>
           </div>
         </div>
-        <div class="doc-content markdown-body col-md-8 ml-sm-auto col-lg-10 px-4">
+        <div class="doc-content markdown-body col-md-6 col-lg-7 px-4 offset-md-2">
           <router-view/>
         </div>
 
-        <WevueDemo
-          :url.sync="demoUrl"
-          :sticky-top="0"
-        />
+        <div class="col-md-4 col-lg-3">
+          <WevueDemo
+            :url.sync="demoUrl"
+            :sticky-top="0"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -109,7 +111,6 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 100;
-  width: 220px;
   flex: 0 0 220px;
   border-right: 1px solid #e0e0e0;
   background-color: #f00;

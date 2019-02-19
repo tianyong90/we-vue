@@ -29,16 +29,11 @@ export default {
     url: {
       type: String,
       default: '//demo.wevue.org'
-    },
-    stickyTop: {
-      type: Number,
-      default: 0
     }
   },
 
   data () {
     return {
-      positionTop: this.stickyTop
     }
   },
 
@@ -53,11 +48,10 @@ export default {
 .demo-wrap {
   display: block;
   overflow: hidden;
-  position: fixed;
+  position: sticky;
   top: 100px;
   right: 20px;
-  width: 375px;
-  min-width: 375px;
+  width: 100%;
   z-index: 50;
   border-radius: 6px;
   box-sizing: border-box;
@@ -106,7 +100,7 @@ export default {
     display: block;
     overflow: hidden;
     width: 100%;
-    height: 500px;
+    height: 600px;
   }
 }
 </style>

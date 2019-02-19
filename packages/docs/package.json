@@ -1,12 +1,12 @@
 {
   "name": "docs",
-  "description": "we-vue official documents.",
-  "private": true,
   "version": "3.0.0-alpha.6",
+  "private": true,
+  "description": "we-vue official documents.",
   "scripts": {
-    "dev": "vue-cli-service serve --colors",
     "build": "vue-cli-service build --colors",
-    "lint": "vue-cli-service lint --colors"
+    "lint": "vue-cli-service lint --colors",
+    "dev": "vue-cli-service serve --colors"
   },
   "dependencies": {
     "vue": "^2.5.22",
@@ -14,6 +14,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "@tianyong90/vue-markdown-loader": "^0.0.3",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",

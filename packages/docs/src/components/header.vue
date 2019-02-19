@@ -1,11 +1,10 @@
 <template>
   <header
-    class="navbar navbar-dark fixed-top flex-column"
-    :class="[theme]"
+    class="navbar fixed-top"
   >
     <div class="container-fluid justify-content-between">
       <router-link class="navbar-brand mr-0" to="/" exact>
-        <img class="d-block logo" src="../assets/image/logo.png" alt="we-vue">
+        <img class="d-block logo" src="../assets/images/logo.png" alt="we-vue">
       </router-link>
 
       <DocsearchBox
@@ -53,11 +52,7 @@ export default {
   },
 
   props: {
-    versionPickerVisible: Boolean,
-    theme: {
-      type: String,
-      default: 'light'
-    }
+    versionPickerVisible: Boolean
   },
 
   data () {
@@ -101,10 +96,6 @@ $header-height: 70px;
 $header-background-color: #fff;
 $header-home-background-color: #040f23;
 
-body {
-  position: relative;
-}
-
 .navbar {
   height: $header-height;
   background-color: $header-background-color;
@@ -112,8 +103,8 @@ body {
   border-bottom: 1px solid #dfdfdf;
 
   .logo {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
   }
 
   .navbar-nav {
@@ -129,23 +120,6 @@ body {
 
       &.router-link-active {
         color: #41b883;
-      }
-    }
-  }
-
-  &.dark {
-    background-color: #01061a;
-    border-bottom: none;
-
-    a {
-      color: #fff !important;
-
-      &:hover {
-        color: #41b883 !important;
-      }
-
-      &.router-link-active {
-        color: #41b883 !important;
       }
     }
   }
