@@ -31,7 +31,8 @@ describe('swipe', () => {
   })
 
   test('create with swipe-items', () => {
-    const wrapper = renderToString(Swipe, {
+    const wrapper = mount(Swipe, {
+      attachToDocument: true,
       propsData: {
         height: 120,
         showIndicators: true,
@@ -41,10 +42,8 @@ describe('swipe', () => {
       },
     })
 
-    // TODO
-    // expect(wrapper.vm.count).toBe(3)
-    // expect(wrapper.vm.activeIndicator).toBe(0)
-    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.vm.count).toBe(3)
+    expect(wrapper.vm.activeIndicator).toBe(0)
   })
 
   test('drag to right', () => {

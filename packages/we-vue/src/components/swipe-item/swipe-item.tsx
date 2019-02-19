@@ -16,7 +16,7 @@ export default Vue.extend<options>().extend({
     }
   },
 
-  beforeCreate (): void {
+  mounted (): void {
     this.$parent && this.$parent.swipes.push(this)
   },
 
