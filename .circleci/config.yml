@@ -23,11 +23,11 @@ jobs:
           paths:
             - ~/.cache/yarn
 
-      # test packages/we-vue FIXME
-      #- run: yarn test:coverage
+      # test packages/we-vue
+      - run: yarn test:coverage
 
-      # update codecov stats TODO
-      #- run: ./node_modules/.bin/codecov
+      # update codecov stats
+      - run: yarn lerna run coverage --scope we-vue
 
       # build component lib
       - run: yarn lerna run build:dist --scope we-vue

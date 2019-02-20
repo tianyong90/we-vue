@@ -28,11 +28,11 @@
     "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r",
     "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
     "build:lib": "node build/build-lib.js",
-    "test": "jest --config=jest.config.js --colors --runInBand",
+    "test": "jest --config=jest.config.js --colors",
     "test:types": "tsc -p ./types/test/tsconfig.json",
     "test:watch": "jest --config=jest.config.js --colors --watchAll",
     "test:coverage": "jest --config=jest.config.js --colors --coverage",
-    "coverage": "start test/unit/coverage/lcov-report/index.html",
+    "coverage": "yarn codecov",
     "release": "node build/release.js"
   },
   "husky": {

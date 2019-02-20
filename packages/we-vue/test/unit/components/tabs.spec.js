@@ -1,7 +1,7 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import Tabs from '@/components/tabs'
 import Tab from '@/components/tab'
-import { render, renderToString } from '@vue/server-test-utils'
+import { renderToString } from '@vue/server-test-utils'
 
 describe('tabs', () => {
   test('create', () => {
@@ -14,17 +14,18 @@ describe('tabs', () => {
   })
 
   test('create with tab items', () => {
-    const wrapper = renderToString(Tabs, {
+    const wrapper = mount(Tabs, {
+      attachToDocument: true,
       propsData: {},
       slots: {
         default: [Tab, Tab, Tab],
       },
     })
 
-    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
 
-    // expect(wrapper.name()).toBe('wv-tabs')
-    // expect(wrapper.classes()).toContain('wv-tabs')
+    expect(wrapper.name()).toBe('wv-tabs')
+    expect(wrapper.classes()).toContain('wv-tabs')
   })
 
   test('click tab items', () => {

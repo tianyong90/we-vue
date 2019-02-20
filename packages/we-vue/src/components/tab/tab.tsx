@@ -23,7 +23,7 @@ export default mixins(
 
   computed: {
     index (): number {
-      return this.parent.tabs.indexOf(this)
+      return this.parent.tabs.indexOf(this) >= 0 ? this.parent.tabs.indexOf(this) : 0
     },
 
     selected (): boolean {
