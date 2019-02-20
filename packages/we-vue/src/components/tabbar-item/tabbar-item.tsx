@@ -29,9 +29,9 @@ export default mixins(
           'weui-tabbar__item': true,
           'weui-bar__item_on': this.isOn,
         }}
-        onClick={this.onClick}
+        onClick={() => { this.onClick() }}
       >
-        <slot name="icon" />
+        {this.$slots.icon}
         <p class="weui-tabbar__label">
           {this.$slots.default}
         </p>
