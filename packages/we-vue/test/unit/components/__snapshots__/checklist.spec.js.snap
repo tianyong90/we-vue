@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checklist create 1`] = `
+<div>
+  <!---->
+  <div class="weui-cells weui-cells_checkbox"><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value1</p>
+      </div>
+      <!---->
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value2</p>
+      </div>
+      <!---->
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value3</p>
+      </div>
+      <!---->
+    </label></div>
+</div>
+`;
+
+exports[`checklist create 2`] = `
+<div>
+  <div class="weui-cells__title">test title</div>
+  <div class="weui-cells weui-cells_checkbox"><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value1</p>
+      </div>
+      <!---->
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value2</p>
+      </div>
+      <!---->
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value3</p>
+      </div>
+      <!---->
+    </label></div>
+</div>
+`;
+
+exports[`checklist options 1`] = `
+<div>
+  <!---->
+  <div class="weui-cells weui-cells_checkbox"><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value1</p>
+      </div>
+      <!---->
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value2</p>
+      </div>
+      <!---->
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__hd"><i class="weui-icon-checked"></i></div>
+      <div class="weui-cell__bd">
+        <p>value3</p>
+      </div>
+      <!---->
+    </label></div>
+</div>
+`;

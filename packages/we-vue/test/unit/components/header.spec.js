@@ -1,20 +1,25 @@
 import { shallowMount } from '@vue/test-utils'
 import Header from '@/components/header'
 
-describe('badge', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
+describe('header', () => {
   test('create', () => {
-    wrapper = shallowMount(Header, {
+    const wrapper = shallowMount(Header, {
       propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-header')
     expect(wrapper.classes()).toContain('wv-header')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
-  // TODO 更多详细测试
+  test('click header', () => {
+    const wrapper = shallowMount(Header, {
+      propsData: {},
+    })
+
+    wrapper.trigger('click')
+
+    expect(wrapper.emitted('headerClick')).toBeTruthy()
+  })
 })

@@ -28,38 +28,37 @@ export default mixins(
   },
 
   render (h) {
-    if (this.type === 'appmsg') {
-      return (
-        <div
-          class={{
-            'weui-media-box': true,
-            ['weui-media-box_' + this.type]: true,
-          }}
-          onClick={() => { this.onClick() }}
-        >
+    const content = () => {
+      if (this.type === 'appmsg') {
+        return [
           <div class="weui-media-box__hd">
-            <img class="weui-media-box__thumb" src={this.thumb} />>
-          </div>
+            <img class="weui-media-box__thumb" src={this.thumb}/>
+          </div>,
           <div class="weui-media-box__bd">
-            <h4 class="weui-media-box__title" domPropsTextContent={this.title} />
-            <p class="weui-media-box__desc" domPropsTextContent={this.description} />
+            <h4 class="weui-media-box__title" domPropsTextContent={this.title}/>
+            <p class="weui-media-box__desc" domPropsTextContent={this.description}/>
           </div>
-        </div>
-      )
-    } else {
-      return (
-        <div
-          class={{
-            'weui-media-box': true,
-            ['weui-media-box_' + this.type]: true,
-          }}
-          onClick={() => { this.onClick() }}
-        >
-          <h4 class="weui-media-box__title" domPropsTextContent={this.title} />
-          <p class="weui-media-box__desc" domPropsTextContent={this.description} />
-          {this.$slots.box_ft}
-        </div>
-      )
+        ]
+      } else {
+        return [
+          <h4 class="weui-media-box__title" domPropsTextContent={this.title} />,
+          <p class="weui-media-box__desc" domPropsTextContent={this.description} />,
+        ]
+      }
     }
+
+    return (
+      <div
+        class={{
+          'weui-media-box': true,
+          ['weui-media-box_' + this.type]: true,
+        }}
+        onClick={() => { this.onClick() }}
+      >
+        {content()}
+        {this.type !== 'appmsg' && this.$slots.box_ft}
+      </div>
+    )
+
   },
 })

@@ -2,13 +2,8 @@ import { mount, shallowMount } from '@vue/test-utils'
 import Actionsheet from '@/components/actionsheet'
 
 describe('actionsheet', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Actionsheet, {
+    let wrapper = mount(Actionsheet, {
       attachToDocument: true,
       propsData: {},
     })
@@ -32,7 +27,7 @@ describe('actionsheet', () => {
   })
 
   test('watch value change', () => {
-    wrapper = shallowMount(Actionsheet, {
+    const wrapper = shallowMount(Actionsheet, {
       propsData: {},
     })
 
@@ -44,7 +39,7 @@ describe('actionsheet', () => {
   })
 
   test('watch currentValue change', () => {
-    wrapper = shallowMount(Actionsheet, {
+    const wrapper = shallowMount(Actionsheet, {
       propsData: {
         value: false,
       },
@@ -66,7 +61,7 @@ describe('actionsheet', () => {
       },
     ]
 
-    wrapper = shallowMount(Actionsheet, {
+    const wrapper = shallowMount(Actionsheet, {
       propsData: {
         actions: actions,
       },
@@ -87,7 +82,8 @@ describe('actionsheet', () => {
       },
     ]
 
-    wrapper = shallowMount(Actionsheet, {
+    const wrapper = mount(Actionsheet, {
+      attachToDocument: true,
       propsData: {
         actions: actions,
       },
@@ -99,5 +95,41 @@ describe('actionsheet', () => {
 
     // currentValue should be false after action item clicked
     expect(wrapper.vm.currentValue).toBeFalsy()
+  })
+
+  test('click mask to close the actionsheet', () => {
+    const actions = [
+      {
+        name: 'test-name',
+        key: 'test-key',
+      },
+    ]
+
+    // default type = 'ios'
+    let wrapper = mount(Actionsheet, {
+      attachToDocument: true,
+      propsData: {
+        actions: actions,
+      },
+    })
+
+    wrapper.find('.weui-mask').trigger('click')
+
+    expect(wrapper.vm.currentVisible).toBeFalsy()
+
+    jest.resetAllMocks()
+
+    // type = 'android'
+    wrapper = mount(Actionsheet, {
+      attachToDocument: true,
+      propsData: {
+        actions: actions,
+        type: 'android',
+      },
+    })
+
+    wrapper.find('.weui-mask').trigger('click')
+
+    expect(wrapper.vm.currentVisible).toBeFalsy()
   })
 })

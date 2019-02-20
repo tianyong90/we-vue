@@ -139,7 +139,6 @@ export default mixins<options &
       }
       context.lockCount++
 
-      // TODO
       this.$emit('update:visible', true)
     },
 

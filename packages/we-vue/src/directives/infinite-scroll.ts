@@ -89,6 +89,7 @@ export default {
   },
 
   unbind (el: HTMLElement, binding: InfiniteScrollDirective, vnode: VNode, oldVnode: VNode): void {
+    /* istanbul ignore next */
     if (!el._onInfiniteScroll) {
       return
     }

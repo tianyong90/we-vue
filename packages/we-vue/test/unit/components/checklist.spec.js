@@ -22,6 +22,7 @@ describe('checklist', () => {
 
     expect(wrapper.name()).toBe('wv-checklist')
     expect(wrapper.contains('.weui-cells_checkbox')).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
 
     // create with 'title'
     wrapper = shallowMount(Checklist, {
@@ -33,6 +34,7 @@ describe('checklist', () => {
 
     expect(wrapper.contains('.weui-cells__title')).toBeTruthy()
     expect(wrapper.find('.weui-cells__title').text()).toBe('test title')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('options', () => {
@@ -48,6 +50,7 @@ describe('checklist', () => {
     expect(wrapper.findAll('.weui-cell__bd p').at(0).text()).toBe('value1')
     expect(wrapper.findAll('.weui-cell__bd p').at(1).text()).toBe('value2')
     expect(wrapper.findAll('.weui-cell__bd p').at(2).text()).toBe('value3')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('max selection', () => {
@@ -72,6 +75,35 @@ describe('checklist', () => {
     })
 
     expect(wrapper.emitted().input[0]).toEqual([['value1']])
+  })
+
+  test('click option', () => {
+    wrapper = mount(Checklist, {
+      attachToDocument: true,
+      propsData: {
+        options: [
+          'value1',
+          'value2',
+          {
+            label: 'value3',
+            disabled: true,
+          },
+        ],
+        value: [],
+      },
+    })
+
+    // click 'value1'
+    wrapper.findAll('.weui-check__label').at(0).trigger('click')
+    expect(wrapper.vm.currentValue).toEqual(['value1'])
+
+    // click 'value2'
+    wrapper.findAll('.weui-check__label').at(1).trigger('click')
+    expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
+
+    // click 'value3', it is DISABLED
+    wrapper.findAll('.weui-check__label').at(2).trigger('click')
+    expect(wrapper.vm.currentValue).toEqual(['value1', 'value2'])
   })
 
   test('watch currentValue', () => {

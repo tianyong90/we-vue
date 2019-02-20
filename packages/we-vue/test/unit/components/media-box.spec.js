@@ -2,23 +2,27 @@ import { shallowMount } from '@vue/test-utils'
 import MediaBox from '@/components/media-box'
 
 describe('media-box', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(MediaBox, {
+    let wrapper = shallowMount(MediaBox, {
       propsData: {},
     })
 
     expect(wrapper.name()).toBe('wv-media-box')
-    expect(wrapper.classes()).toContain('weui-media-box')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper = shallowMount(MediaBox, {
+      propsData: {
+        type: 'text',
+      },
+    })
+
+    expect(wrapper.name()).toBe('wv-media-box')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('handle click', () => {
     const routeLinkSpy = jest.fn()
-    wrapper = shallowMount(MediaBox, {
+    let wrapper = shallowMount(MediaBox, {
       propsData: {},
       methods: {
         routeLink: routeLinkSpy,
