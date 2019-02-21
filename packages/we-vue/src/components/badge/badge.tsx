@@ -4,23 +4,25 @@ import Vue, { VNode } from 'vue'
 export default Vue.extend({
   name: 'wv-badge',
 
+  functional: true,
+
   props: {
     color: String,
     isDot: Boolean,
   },
 
-  render (h): VNode {
+  render (h, context): VNode {
     return (
       <span
         class={{
           'weui-badge': true,
-          'weui-badge_dot': this.isDot,
+          'weui-badge_dot': context.props.isDot,
         }}
         style={{
-          backgroundColor: this.color,
+          backgroundColor: context.props.color,
         }}
       >
-        { !this.isDot ? this.$slots.default : h() }
+        { !context.props.isDot ? context.children : h() }
       </span>
     )
   },
