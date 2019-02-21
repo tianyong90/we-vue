@@ -1,6 +1,6 @@
 <p align="center">
   <img width="120" height="120" src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/logo.png">
-  <h1 align="center">WeVue, 不止是 Vue.js + weui!</h1>
+  <h2 align="center">WeVue, 不止是 Vue.js + weui!</h2>
 </p>
 
 <p align="center">
@@ -18,8 +18,8 @@ we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui 官方样式�
 
 * 35+ 个组件
 * 完善的单元测试
-* 详细的在线文档
-* 详细的在线示例
+* 详细的在线文档和示例
+* 支持 Typescript
 
 ### [在线文档（https://wevue.org）](https://wevue.org)
 
@@ -41,7 +41,7 @@ $ npm install we-vue -S
 
 ## 开发
 
-**we-vue3.0 版本开始使用 lerna 工具，以 monorepo 模式进行开发，packages 目录下包含了 demo, docs 以及 we-vue 三个包，分别为示例，在线文档和组件库。如果有兴趣参与贡献代码，需要对 lerna 有一定的了解。除此之外，3.0开始使用 Typescript 作为组件库开始的主要语言，并使用了 TSX，因此也需要一定的相关基础。**
+**we-vue3.0 版本开始使用 lerna 工具，以 monorepo 模式进行开发，packages 目录下包含了 demo, docs 以及 we-vue 三个包，分别为示例，在线文档和组件库。如果有兴趣参与贡献代码，需要对 lerna 有一定的了解。除此之外，3.0使用 Typescript 对组件包进行了重构，因此也需要一定的 TS 基础。**
 
 1. 克隆代码
 
