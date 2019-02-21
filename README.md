@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/we-vue"><img src="https://img.shields.io/npm/v/we-vue.svg" alt="npm"></a>
-  <a href="https://npmjs.org/package/we-vue"><img src="https://circleci.com/gh/tianyong90/we-vue/tree/master.png?style=shield"></a>
+  <a href="https://circleci.com/gh/tianyong90/we-vue"><img src="https://circleci.com/gh/tianyong90/we-vue.svg?style=svg"></a>
   <a href="https://github.com/standard/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"></a>
   <a href="https://codecov.io/github/tianyong90/we-vue?branch=master"><img src="https://img.shields.io/codecov/c/github/tianyong90/we-vue/master.svg"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>

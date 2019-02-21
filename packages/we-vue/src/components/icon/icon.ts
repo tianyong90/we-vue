@@ -28,7 +28,7 @@ export default Vue.extend({
   },
 
   render (h): VNode {
-    return h('h1', {
+    return h('span', {
       class: this.classes,
     })
   },

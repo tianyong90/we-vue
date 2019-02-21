@@ -9,6 +9,7 @@
       :area-list="area"
       value-key="name"
       @confirm="confirmArea"
+      v-model="selectedArea"
     />
   </div>
 </template>
@@ -21,7 +22,8 @@ export default {
     return {
       pickerShow: true,
       area: area,
-      code: '110101'
+      code: '110101',
+      selectedArea: '110101'
     }
   },
 

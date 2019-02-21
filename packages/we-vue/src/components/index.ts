@@ -1,5 +1,5 @@
 export * from './actionsheet'
-// export * from './area'
+export * from './area'
 export * from './badge'
 export * from './button'
 export * from './cell'

@@ -1,4 +1,4 @@
-import Area from './index.vue'
+import Area from './area'
 
 export { Area }
 export default Area

@@ -2,22 +2,17 @@ import { shallowMount } from '@vue/test-utils'
 import Group from '@/components/group'
 
 describe('group', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Group, {
+    const wrapper = shallowMount(Group, {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-group')
     expect(wrapper.contains('.weui-cells')).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('create with title', () => {
-    wrapper = shallowMount(Group, {
+    const wrapper = shallowMount(Group, {
       propsData: {
         title: 'test',
       },
@@ -25,5 +20,7 @@ describe('group', () => {
 
     expect(wrapper.contains('.weui-cells__title')).toBeTruthy()
     expect(wrapper.find('.weui-cells__title').text()).toBe('test')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

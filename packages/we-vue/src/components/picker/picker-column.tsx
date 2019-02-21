@@ -56,12 +56,15 @@ export default Vue.extend<options>().extend({
       prevTime: null as any,
       velocity: 0, // moving velocity
       transition: '',
-      currentOptions: cloneDeep(this.options) as Array<any>,
       currentIndex: this.defaultIndex,
     }
   },
 
   computed: {
+    currentOptions (): Array<any> {
+      return cloneDeep(this.options)
+    },
+
     wrapperStyle (): object {
       return {
         transition: this.transition,

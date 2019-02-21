@@ -61,6 +61,12 @@ module.exports = function(api) {
           ],
           [
             '@babel/preset-typescript',
+            // TODO:
+            // {
+            //   isTSX: true,
+            //   jsxPragma: 'h',
+            //   allExtensions: true
+            // }
           ]
         ],
       },
