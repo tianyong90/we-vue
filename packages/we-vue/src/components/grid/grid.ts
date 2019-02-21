@@ -4,9 +4,11 @@ import '../../scss/grid.scss'
 export default Vue.extend({
   name: 'wv-grid',
 
-  render (h): VNode {
+  functional: true,
+
+  render (h, context): VNode {
     return h('div', {
       class: 'weui-grids',
-    }, this.$slots.default)
+    }, context.children)
   },
 })

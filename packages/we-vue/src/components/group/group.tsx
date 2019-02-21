@@ -4,25 +4,27 @@ import '../../scss/group.scss'
 export default Vue.extend({
   name: 'wv-group',
 
+  functional: true,
+
   props: {
     title: String,
     titleColor: String,
   },
 
-  render (h) {
+  render (h, context) {
     return (
       <div>
         {
-          this.title
+          context.props.title
             ? <div
-              style={{ color: this.titleColor }}
+              style={{ color: context.props.titleColor }}
               class="weui-cells__title"
-              domPropsInnerHTML={this.title}
+              domPropsInnerHTML={context.props.title}
             />
             : h()
         }
         <div class="weui-cells">
-          {this.$slots.default}
+          {context.children}
         </div>
       </div>
     )
