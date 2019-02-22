@@ -63,8 +63,6 @@ import 'github-markdown-css/github-markdown.css'
 import Header from '../components/header'
 import WevueDemo from '../components/wevue-demo'
 
-console.log(nav)
-
 export default {
   components: {
     Header,
