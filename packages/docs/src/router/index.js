@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
 import Vue from 'vue'
 import Router from 'vue-router'
-import routes_v1_6 from './v1_6'
-import routes_v2_0 from './v2_0'
-import Header from '../components/header'
+import routes_v2 from './v2'
+import routes_v3 from './v3'
 
 Vue.use(Router)
 
@@ -17,18 +16,13 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      components: {
-        default: () => import('../views/index')
-      }
+      component: () => import('../views/index')
     },
     {
       path: '/doc',
       name: 'doc',
-      components: {
-        header: Header,
-        default: () => import('../views/doc')
-      },
-      children: [...routes_v1_6, ...routes_v2_0]
+      component: () => import('../views/doc'),
+      children: [...routes_v2, ...routes_v3]
     },
     {
       path: '*',

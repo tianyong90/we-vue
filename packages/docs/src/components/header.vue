@@ -13,7 +13,7 @@
       <div class="navbar-nav-scroll">
         <ul class="navbar-nav ml-3">
           <li class="nav-item">
-            <router-link to="/doc/v2_0/index">文档</router-link>
+            <router-link to="/doc/v2/index">文档</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/doc/changelog">变更记录</router-link>
@@ -29,8 +29,8 @@
               {{ version | versionText }}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" :class="{ 'active': version === 'v1_6' }" href="#" @click.prevent="changeVersion('v1_6')">v1.6</a>
-              <a class="dropdown-item" :class="{ 'active': version === 'v2_0' }" href="#" @click.prevent="changeVersion('v2_0')">v2.0</a>
+              <a class="dropdown-item" :class="{ 'active': version === 'v2' }" href="#" @click.prevent="changeVersion('v2')">v2.x</a>
+              <a class="dropdown-item" :class="{ 'active': version === 'v3' }" href="#" @click.prevent="changeVersion('v3')">v3.x</a>
             </div>
           </li>
         </ul>

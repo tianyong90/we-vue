@@ -10,7 +10,7 @@
 
         <div class="row mt-5 justify-content-center">
           <router-link
-            to="/doc/v2_0/index"
+            to="/doc/v2/index"
             class="btn btn-light btn-lg mx-2 btn-quickstart"
           >文档
           </router-link>
