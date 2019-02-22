@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import area from '../assets/data/area'
+import areaList from '../assets/data/area'
 
 export default {
   data () {
     return {
       pickerShow: true,
-      area: area,
+      area: areaList,
       code: '110101',
       selectedArea: '110101'
     }
@@ -32,6 +32,7 @@ export default {
   methods: {
     showPicker () {
       this.pickerShow = true
+      console.log(this.pickerShow)
     },
 
     confirmArea () {

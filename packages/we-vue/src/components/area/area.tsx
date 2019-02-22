@@ -86,6 +86,7 @@ export default Vue.extend<ioptions>().extend({
         return this.lazyValue
       },
       set (val: string): void {
+        console.log('set', val)
         this.lazyValue = val
         this.$emit('input', val)
       }
@@ -110,7 +111,7 @@ export default Vue.extend<ioptions>().extend({
 
   watch: {
     value (val) {
-      this.lazyValue = val
+      this.internalValue = val
       this.setOptions()
     },
 
@@ -246,6 +247,7 @@ export default Vue.extend<ioptions>().extend({
     const on = {
       ...this.$listeners,
       'update:visible': (val: boolean) => {
+        console.log(val)
         this.currentVisible = val
       },
       change: this.onChange,
