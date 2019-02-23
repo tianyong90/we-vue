@@ -419,7 +419,6 @@ export default Vue.extend<options>().extend({
 
   render (h) {
     return (
-      // @ts-ignore
       <WVPicker
         ref="picker"
         visible={this.currentVisible}

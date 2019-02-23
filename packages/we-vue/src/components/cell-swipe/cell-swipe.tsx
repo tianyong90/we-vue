@@ -128,7 +128,6 @@ export default mixins<options &
           onTouchcancel={this.onTouchend}
           style={this.style}
         >
-          // @ts-ignore
           <WVCell
             title={this.title}
             value={this.value}

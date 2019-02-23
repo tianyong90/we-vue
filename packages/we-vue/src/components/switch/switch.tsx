@@ -124,7 +124,6 @@ export default mixins(
   render (h) {
     if (this.isInCell) {
       return (
-        // @ts-ignore
         <WVCell title={this.title}>
           <wv-switch
             is-in-cell={false}

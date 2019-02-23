@@ -231,7 +231,6 @@ export default Vue.extend<ioptions>().extend({
             <div class="weui-picker__bd" style={this.pickerBodyStyle}>
               {
                 (this.simple ? [this.columns] : this.columns).map((column, index) => (
-                  // @ts-ignore
                   <PickerColumn
                     key={index}
                     options={this.simple ? column : (column as any).options}

@@ -20,7 +20,6 @@ export default Vue.extend({
 
   render (h) {
     const footerLinks = this.links.map(item => (
-      // @ts-ignore
       <FooterLink
         key={item.text}
         text={item.text}

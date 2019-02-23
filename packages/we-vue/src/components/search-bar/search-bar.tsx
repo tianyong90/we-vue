@@ -134,7 +134,6 @@ export default mixins<options &
           >
             {
               this.result && this.result.map((item, index) => (
-                // @ts-ignore
                 <WVCell
                   key={index}
                   title={typeof item === 'object' ? item[this.resultTextKey] : item}

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, { VNode } from 'vue'
 import '../../scss/input.scss'
 
 import WVIcon from '../icon/index'
@@ -11,10 +11,6 @@ interface options extends Vue {
 
 export default Vue.extend<options>().extend({
   name: 'wv-input',
-
-  components: {
-    WVIcon,
-  },
 
   props: {
     type: {
@@ -155,7 +151,7 @@ export default Vue.extend<options>().extend({
     },
   },
 
-  render (h) {
+  render (h): VNode {
     return (
       <div
         class={{
@@ -194,8 +190,9 @@ export default Vue.extend<options>().extend({
           />
         </div>
         <div class="weui-cell__ft">
-          // @ts-ignore
-          { !this.valid ? <WVIcon type="warn" /> : h() }
+          { !this.valid
+              ? <WVIcon type="warn" />
+              : h() }
           {this.$slots.ft}
         </div>
       </div>

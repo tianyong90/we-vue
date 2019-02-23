@@ -63,7 +63,6 @@ export default mixins(
         >
           {
             this.type !== 'text' && this.type !== 'loading'
-              // @ts-ignore
               ? <WVIcon
                 type={this.icon}
                 class="weui-icon_toast"
@@ -72,7 +71,6 @@ export default mixins(
           }
           {
             this.type === 'loading' && this.spinnerType !== 'none'
-              // @ts-ignore
               ? <WVSpinner
                 size={25}
                 type={this.spinnerType}

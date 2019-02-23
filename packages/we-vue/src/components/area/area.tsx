@@ -254,7 +254,6 @@ export default Vue.extend<ioptions>().extend({
     }
 
     return (
-      // @ts-ignore
       <WVPicker
         ref="picker"
         visible={this.currentVisible}
