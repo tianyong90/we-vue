@@ -37,7 +37,7 @@ export default mixins(
           <div class="weui-media-box__bd">
             <h4 class="weui-media-box__title" domPropsTextContent={this.title}/>
             <p class="weui-media-box__desc" domPropsTextContent={this.description}/>
-          </div>
+          </div>,
         ]
       } else {
         return [
@@ -59,6 +59,5 @@ export default mixins(
         {this.type !== 'appmsg' && this.$slots.box_ft}
       </div>
     )
-
   },
 })

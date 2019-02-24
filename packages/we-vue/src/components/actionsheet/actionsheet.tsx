@@ -1,7 +1,5 @@
 import '../../scss/actionsheet.scss'
-
-import Vue from 'vue'
-
+import Vue, { CreateElement, VNode } from 'vue'
 import { PropValidator } from 'vue/types/options'
 
 export default Vue.extend({
@@ -49,7 +47,22 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render (h: CreateElement): VNode {
+    const actionsheetMenu = () => (
+      <div class="weui-actionsheet__menu">
+        {
+          this.actions.map(item => (
+            <div
+              key={item.name}
+              class="weui-actionsheet__cell"
+              onClick={() => this.itemClick(item)}
+              domPropsTextContent={item.name}
+            />
+          ))
+        }
+      </div>
+    )
+
     if (this.type === 'ios') {
       return (
         <div>
@@ -80,18 +93,7 @@ export default Vue.extend({
                   </div>
                   : h()
               }
-              <div class="weui-actionsheet__menu">
-                {
-                  this.actions.map(item => (
-                    <div
-                      class="weui-actionsheet__cell"
-                      key={item.name}
-                      onClick={() => this.itemClick(item)}
-                      domPropsTextContent={item.name}
-                    />
-                  ))
-                }
-              </div>
+              {actionsheetMenu()}
               {
                 this.cancelText
                   ? <div class="weui-actionsheet__action">
@@ -124,20 +126,10 @@ export default Vue.extend({
                 class="weui-mask"
                 onClick={() => {
                   this.currentValue = false
-                }} />
+                }}
+              />
               <div class="weui-actionsheet">
-                <div class="weui-actionsheet__menu">
-                  {
-                    this.actions.map(item => (
-                      <div
-                        key={item.name}
-                        class="weui-actionsheet__cell"
-                        onClick={() => this.itemClick(item)}
-                        domPropsTextContent={item.name}
-                      />
-                    ))
-                  }
-                </div>
+                {actionsheetMenu()}
               </div>
             </div>
           </transition>

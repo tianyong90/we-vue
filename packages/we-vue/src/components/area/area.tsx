@@ -12,12 +12,15 @@ enum columnType {
 }
 
 type typeAreaList = {
+  /* eslint-disable camelcase */
   province_list?: {
     [code: string]: string
   }
+  /* eslint-disable camelcase */
   city_list?: {
     [code: string]: string
   }
+  /* eslint-disable camelcase */
   county_list?: {
     [code: string]: string
   }
@@ -38,45 +41,45 @@ export default Vue.extend<ioptions>().extend({
   name: 'wv-area',
 
   components: {
-    WVPicker
+    WVPicker,
   },
 
   props: {
     visible: Boolean,
     areaList: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     } as PropValidator<typeAreaList>,
     confirmText: {
       type: String,
-      default: '确定'
+      default: '确定',
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: '取消',
     },
     visibleItemCount: {
       type: Number,
-      default: 7
+      default: 7,
     },
     columnsCount: {
       type: [String, Number],
       default: 3,
       validator: (value: string | number) => {
         return value >= 1 && value <= 3
-      }
+      },
     },
     value: {
       type: String,
       required: false,
-    }
+    },
   },
 
   data () {
     return {
       lazyValue: this.value as string,
       columns: [{ options: [] }, { options: [] }, { options: [] }],
-      currentVisible: this.visible
+      currentVisible: this.visible,
     }
   },
 
@@ -89,7 +92,7 @@ export default Vue.extend<ioptions>().extend({
         console.log('set', val)
         this.lazyValue = val
         this.$emit('input', val)
-      }
+      },
     },
 
     province (): typeArea {
@@ -106,7 +109,7 @@ export default Vue.extend<ioptions>().extend({
 
     displayColumns (): Array<any> {
       return this.columns.slice(0, +this.columnsCount)
-    }
+    },
   },
 
   watch: {
@@ -119,8 +122,8 @@ export default Vue.extend<ioptions>().extend({
       deep: true,
       handler () {
         this.setOptions()
-      }
-    }
+      },
+    },
   },
 
   mounted () {
@@ -146,7 +149,7 @@ export default Vue.extend<ioptions>().extend({
 
       result = Object.keys(list).map((listCode: string) => ({
         code: listCode,
-        name: list[listCode]
+        name: list[listCode],
       }))
 
       if (code) {
@@ -193,7 +196,7 @@ export default Vue.extend<ioptions>().extend({
       picker.setIndexes([
         this.getIndex(columnType.province, code),
         this.getIndex(columnType.city, code),
-        this.getIndex(columnType.county, code)
+        this.getIndex(columnType.county, code),
       ])
     },
 
@@ -240,19 +243,19 @@ export default Vue.extend<ioptions>().extend({
     reset (): void {
       this.internalValue = ''
       this.setOptions()
-    }
+    },
   },
 
   render (h) {
     const on = {
       ...this.$listeners,
       'update:visible': (val: boolean) => {
-        console.log(val)
+        console.log('hello', val)
         this.currentVisible = val
       },
       change: this.onChange,
-      cancel: (e: Event) => { this.$emit('cancel', e)},
-      confirm: (e: Event) => { this.$emit('confirm', e)},
+      cancel: (e: Event) => { this.$emit('cancel', e) },
+      confirm: (e: Event) => { this.$emit('confirm', e) },
     }
 
     return (
@@ -267,5 +270,5 @@ export default Vue.extend<ioptions>().extend({
         {...{ on }}
       />
     )
-  }
+  },
 })

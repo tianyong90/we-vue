@@ -191,8 +191,8 @@ export default Vue.extend<options>().extend({
         </div>
         <div class="weui-cell__ft">
           { !this.valid
-              ? <WVIcon type="warn" />
-              : h() }
+            ? <WVIcon type="warn" />
+            : h() }
           {this.$slots.ft}
         </div>
       </div>

@@ -13,6 +13,7 @@ const WeVue: WeVuePlugin = {
       ...opts,
     })
   },
+  /* eslint-disable no-undef */
   version: __WE_VUE_VERSION__,
 }
 

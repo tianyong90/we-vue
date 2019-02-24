@@ -5,9 +5,9 @@
   z-index: 5000;
   width: 7.6em;
   min-height: 7.6em;
-  top: 180px;
+  top: 50%;
   left: 50%;
-  margin-left: -3.8em;
+  transform: translate(-50%, -50%) !important;
   background: rgba(17, 17, 17, 0.7);
   text-align: center;
   border-radius: 5px;
@@ -43,8 +43,6 @@
   min-width: 0;
   max-width: 85%;
   min-height: 0;
-  left: 50%;
-  transform: translateX(-50%);
   margin-left: 0;
   text-align: center;
   word-break: break-all;

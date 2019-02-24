@@ -78,7 +78,7 @@ export default mixins(
               />
               : h()
           }
-          <p class="weui-toast__content" domPropsTextContent="message" />
+          <p class="weui-toast__content" domPropsTextContent={this.message} />
         </div>
       </transition>
     )

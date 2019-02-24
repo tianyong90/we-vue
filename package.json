@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "lerna run serve --ignore docs --stream --parallel -- --colors",
     "dev:docs": "lerna run serve --scope docs --stream -- --colors",
-    "lint": "lerna run lint --scope we-vue --stream",
+    "lint": "lerna run lint --parallel",
     "test": "lerna run test --scope we-vue --stream",
     "test:watch": "lerna run test:watch --scope we-vue --stream",
     "test:coverage": "lerna run test:coverage --scope we-vue --stream",
@@ -19,7 +19,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx,vue}": [
-      "eslint --fix",
+      "yarn run lint",
       "git add"
     ]
   },

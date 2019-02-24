@@ -3,7 +3,10 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2017,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    }
   },
   extends: [
     'standard',
@@ -40,24 +43,27 @@ module.exports = {
       // 'registeredComponentsOnly': true,
       'ignores': []
     }],
+    'vue/require-prop-types': 'off',
     'comma-dangle': ['warn', 'always-multiline'],
   },
   overrides: [
     {
-      files: '**/*.ts',
+      files: ['**/*.ts', '**/*.tsx'],
       rules: {
-        'no-undef': 'off',
-        'space-infix-ops': 'off',
         'import/export': 'off',
         'no-unused-vars': 'off',
-        'no-inner-declarations': 'off',
-        'no-redeclare': 'off', // TODO
-        'typescript/adjacent-overload-signatures': 'error',
-        'typescript/member-delimiter-style': ['error', {
-          delimiter: 'none'
+        '@typescript-eslint/prefer-namespace-keyword': 'error',
+        '@typescript-eslint/adjacent-overload-signatures': 'error',
+        '@typescript-eslint/member-delimiter-style': ['error', {
+          multiline: {
+            delimiter: 'none'
+          },
+          singleline: {
+            delimiter: 'comma'
+          }
         }],
-        'typescript/member-ordering': 'error',
-        'typescript/type-annotation-spacing': 'error'
+        '@typescript-eslint/member-ordering': 'error',
+        '@typescript-eslint/type-annotation-spacing': 'error'
       }
     }
   ]

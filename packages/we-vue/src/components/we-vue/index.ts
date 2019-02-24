@@ -36,10 +36,12 @@ const WeVue: WeVuePlugin = {
       return false
     })(opts.components)
   },
+  /* eslint-disable no-undef */
   version: __WE_VUE_VERSION__,
 }
 
 export function checkVueVersion (Vue: VueConstructor, requiredVue?: string) {
+  /* eslint-disable no-undef */
   const vueDep = requiredVue || __REQUIRED_VUE__
 
   const required = vueDep.split('.', 3).map(v => v.replace(/\D/g, '')).map(Number)
