@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`switch create 1`] = `
+<div class="weui-cell">
+  <div class="weui-cell_hd"></div>
+  <div class="weui-cell__bd">
+    <p></p>
+  </div>
+  <div class="weui-cell__ft">
+    <div class="wv-switch">
+      <div class="background"></div>
+      <div class="thumb" style="transform: translate3d(0px, 0, 0);"></div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`switch is-in-cell 1`] = `
+<div class="weui-cell">
+  <div class="weui-cell_hd"></div>
+  <div class="weui-cell__bd">
+    <p></p>
+  </div>
+  <div class="weui-cell__ft">
+    <div class="wv-switch">
+      <div class="background"></div>
+      <div class="thumb" style="transform: translate3d(0px, 0, 0);"></div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`switch is-in-cell 2`] = `
+<div class="wv-switch">
+  <div class="background"></div>
+  <div class="thumb" style="transform: translate3d(0px, 0, 0);"></div>
+</div>
+`;

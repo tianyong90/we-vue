@@ -14,6 +14,7 @@ describe('loadmore', () => {
 
     expect(wrapper.name()).toBe('wv-loadmore')
     expect(wrapper.classes()).toContain('weui-loadmore')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('text', () => {
@@ -24,5 +25,6 @@ describe('loadmore', () => {
     })
 
     expect(wrapper.find('.weui-loadmore__tips').text()).toBe('test')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

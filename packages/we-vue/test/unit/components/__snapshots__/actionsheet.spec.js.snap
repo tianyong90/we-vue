@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actionsheet create 1`] = `
+<div>
+  <div class="weui-mask weui-animate-fade-in" style="display: none;"></div>
+  <div class="weui-actionsheet weui-actionsheet_toggle" style="display: none;">
+    <!---->
+    <div class="weui-actionsheet__menu"></div>
+    <div class="weui-actionsheet__action">
+      <div class="weui-actionsheet__cell">Cancel</div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`actionsheet create 2`] = `
+<div>
+  <div class="weui-skin_android" style="display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-actionsheet">
+      <div class="weui-actionsheet__menu"></div>
+    </div>
+  </div>
+</div>
+`;

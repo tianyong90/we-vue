@@ -15,6 +15,8 @@ describe('cell-swipe-button', () => {
     expect(wrapper.name()).toBe('wv-cell-swipe-button')
     expect(wrapper.classes()).toContain('weui-swiped-btn')
 
+    expect(wrapper.html()).toMatchSnapshot()
+
     // create with type
     wrapper = shallowMount(CellSwipeButtom, {
       propsData: {

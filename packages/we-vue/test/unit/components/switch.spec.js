@@ -17,6 +17,8 @@ describe('switch', () => {
 
     expect(wrapper.name()).toBe('wv-switch')
     expect(wrapper.contains('.wv-switch')).toBeTruthy()
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('is-in-cell', () => {
@@ -28,6 +30,8 @@ describe('switch', () => {
 
     expect(wrapper.classes()).toContain('weui-cell')
 
+    expect(wrapper.html()).toMatchSnapshot()
+
     wrapper = mount(Switch, {
       propsData: {
         isInCell: false,
@@ -36,6 +40,8 @@ describe('switch', () => {
 
     expect(wrapper.classes()).not.toContain('weui-cell')
     expect(wrapper.classes()).toContain('wv-switch')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('click', () => {

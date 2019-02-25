@@ -13,6 +13,7 @@ describe('spinner', () => {
     })
 
     expect(wrapper.name()).toBe('wv-spinner')
+    expect(wrapper.html()).toMatchSnapshot()
 
     // default type
     expect(wrapper.classes()).toContain('weui-loading')
@@ -35,6 +36,7 @@ describe('spinner', () => {
       size: 20,
     })
     expect(wrapper.vm.size).toBe(20)
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('color', () => {
@@ -49,6 +51,7 @@ describe('spinner', () => {
       color: 'red',
     })
     expect(wrapper.vm.color).toBe('red')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('icon font class should be computed correctly', () => {

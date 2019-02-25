@@ -11,6 +11,8 @@ describe('header', () => {
     expect(wrapper.classes()).toContain('wv-header')
 
     expect(wrapper.html()).toMatchSnapshot()
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('click header', () => {

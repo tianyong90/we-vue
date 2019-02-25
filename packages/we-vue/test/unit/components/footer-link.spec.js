@@ -14,6 +14,8 @@ describe('footer-link', () => {
 
     expect(wrapper.name()).toBe('wv-footer-link')
     expect(wrapper.classes()).toContain('weui-footer__link')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('text', () => {
@@ -24,6 +26,8 @@ describe('footer-link', () => {
     })
 
     expect(wrapper.text()).toBe('test')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('handle click', () => {

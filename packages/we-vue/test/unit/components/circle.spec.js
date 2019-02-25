@@ -14,6 +14,8 @@ describe('circle', () => {
 
     expect(wrapper.name()).toBe('wv-circle')
     expect(wrapper.classes()).toContain('wv-circle')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('what value change', () => {

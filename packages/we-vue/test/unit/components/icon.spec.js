@@ -16,6 +16,8 @@ describe('icon', () => {
 
     expect(wrapper.name()).toBe('wv-icon')
 
+    expect(wrapper.html()).toMatchSnapshot()
+
     // is not 'large' by default
     expect(wrapper.vm.large).toBeFalsy()
   })

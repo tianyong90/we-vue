@@ -14,6 +14,8 @@ describe('flex', () => {
 
     expect(wrapper.name()).toBe('wv-flex')
     expect(wrapper.classes()).toContain('weui-flex')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('style should be computed correctly', () => {
@@ -34,5 +36,7 @@ describe('flex', () => {
       marginLeft: `-${gutterValue / 2}px`,
       marginRight: `-${gutterValue / 2}px`,
     })
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

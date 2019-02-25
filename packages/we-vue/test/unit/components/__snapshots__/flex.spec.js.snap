@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`flex create 1`] = `<div class="weui-flex"></div>`;
+
+exports[`flex style should be computed correctly 1`] = `<div class="weui-flex" style="margin-left: -5px; margin-right: -5px;"></div>`;

@@ -17,6 +17,8 @@ describe('slider', () => {
     expect(wrapper.name()).toBe('wv-slider')
     expect(wrapper.classes()).toContain('weui-slider-box')
 
+    expect(wrapper.html()).toMatchSnapshot()
+
     // vue 默认会将异常转为 console.eeror 输出，为此通过 mock console.error 和 console.warn，避免这一机制，方便测试
     jest.spyOn(console, 'error').mockImplementation(() => {})
     jest.spyOn(console, 'warn').mockImplementation(() => {})

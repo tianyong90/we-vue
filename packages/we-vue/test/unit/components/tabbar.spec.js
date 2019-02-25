@@ -14,6 +14,8 @@ describe('tabbar', () => {
 
     expect(wrapper.name()).toBe('wv-tabbar')
     expect(wrapper.classes()).toContain('weui-tabbar')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('fixed tabbar', () => {

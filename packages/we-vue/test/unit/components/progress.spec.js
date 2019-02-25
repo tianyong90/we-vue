@@ -14,6 +14,7 @@ describe('progress', () => {
 
     expect(wrapper.name()).toBe('wv-progress')
     expect(wrapper.classes()).toContain('weui-progress')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('render with percent', () => {
@@ -28,6 +29,7 @@ describe('progress', () => {
 
     const innerBarEl = wrapper.find('.weui-progress__inner-bar')
     expect(innerBarEl.element.style.width).toBe(percent + '%')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('clearBtn action', () => {

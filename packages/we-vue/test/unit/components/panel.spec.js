@@ -14,6 +14,8 @@ describe('panel', () => {
 
     expect(wrapper.name()).toBe('wv-panel')
     expect(wrapper.classes()).toContain('weui-panel')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('render with title', () => {
@@ -25,5 +27,7 @@ describe('panel', () => {
 
     expect(wrapper.contains('.weui-panel__hd')).toBeTruthy()
     expect(wrapper.find('.weui-panel__hd').text()).toBe('test-title')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

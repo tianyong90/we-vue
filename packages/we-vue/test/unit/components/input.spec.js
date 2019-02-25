@@ -14,6 +14,7 @@ describe('input', () => {
 
     expect(wrapper.name()).toBe('wv-input')
     expect(wrapper.classes()).toContain('weui-cell')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('input event', () => {

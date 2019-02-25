@@ -32,6 +32,8 @@ describe('picker', () => {
     })
 
     expect(wrapper.name()).toBe('wv-picker')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('create a single-column picker', () => {
@@ -47,6 +49,8 @@ describe('picker', () => {
 
     expect(wrapper.vm.getColumnOptions(0).length).toBe(3)
     expect(wrapper.vm.getValues()).toEqual([1])
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('create a multi-column picker', () => {
@@ -63,6 +67,7 @@ describe('picker', () => {
     expect(wrapper.vm.getColumnOptions(0).length).toBe(3)
     expect(wrapper.vm.getColumnOptions(1).length).toBe(2)
     expect(wrapper.vm.getValues()).toEqual([1, 'yes'])
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('getColumnValue method', () => {

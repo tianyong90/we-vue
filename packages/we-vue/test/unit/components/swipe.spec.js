@@ -1,9 +1,8 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Swipe from '@/components/swipe'
 import SwipeItem from '@/components/swipe-item'
-import { horizontalDrag, verticalDrag, dragAndHoldHelper } from '../utils'
+import { dragAndHoldHelper, horizontalDrag, verticalDrag } from '../utils'
 import faker from 'faker'
-import { renderToString } from '@vue/server-test-utils'
 
 describe('swipe', () => {
   test('create', () => {
@@ -13,6 +12,8 @@ describe('swipe', () => {
 
     expect(wrapper.name()).toBe('wv-swipe')
     expect(wrapper.classes()).toContain('wv-swipe')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('create with single swipe-item', () => {

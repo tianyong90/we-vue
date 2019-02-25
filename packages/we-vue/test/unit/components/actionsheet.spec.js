@@ -13,12 +13,16 @@ describe('actionsheet', () => {
     // default type == 'ios', check mask element class
     expect(wrapper.contains('.weui-mask')).toBeTruthy()
 
+    expect(wrapper.html()).toMatchSnapshot()
+
     wrapper = mount(Actionsheet, {
       attachToDocument: true,
       propsData: {
         type: 'android',
       },
     })
+
+    expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.vm.$nextTick(() => {
       // check mask element class for android type

@@ -25,6 +25,8 @@ describe('flex-item', () => {
 
     expect(wrapper.name()).toBe('wv-flex-item')
     expect(wrapper.classes()).toContain('weui-flex__item')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('comput gutter', () => {
@@ -39,6 +41,8 @@ describe('flex-item', () => {
     })
 
     expect(wrapper.find(FlexItem).vm.gutter).toBe(wrapper.vm.gutter)
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('comput style', () => {

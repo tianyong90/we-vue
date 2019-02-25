@@ -14,6 +14,8 @@ describe('number-spinner', () => {
 
     expect(wrapper.name()).toBe('wv-number-spinner')
     expect(wrapper.classes()).toContain('wv-number-spinner')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('blur event', () => {

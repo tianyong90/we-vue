@@ -8,5 +8,7 @@ describe('grid', () => {
     })
 
     expect(wrapper.classes()).toContain('weui-grids')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

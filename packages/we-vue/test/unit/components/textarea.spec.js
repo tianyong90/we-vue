@@ -14,6 +14,8 @@ describe('textarea', () => {
 
     expect(wrapper.name()).toBe('wv-textarea')
     expect(wrapper.classes()).toContain('weui-cell')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('show counter', () => {
@@ -26,10 +28,14 @@ describe('textarea', () => {
     expect(wrapper.contains('.weui-textarea-counter')).toBeTruthy()
     expect(wrapper.find('.weui-textarea-counter').text()).toEqual(`${wrapper.vm.length}/${wrapper.vm.maxLength}`)
 
+    expect(wrapper.html()).toMatchSnapshot()
+
     wrapper.setProps({
       showCounter: false,
     })
     expect(wrapper.contains('.weui-textarea-counter')).toBeFalsy()
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('watch currentValue', () => {

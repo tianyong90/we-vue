@@ -14,6 +14,8 @@ describe('tabbar-item', () => {
 
     expect(wrapper.name()).toBe('wv-tabbar-item')
     expect(wrapper.classes()).toContain('weui-tabbar__item')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('text', () => {
@@ -24,6 +26,8 @@ describe('tabbar-item', () => {
     })
 
     expect(wrapper.find('p.weui-tabbar__label').text()).toBe('test')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('isOn', () => {

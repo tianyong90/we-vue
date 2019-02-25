@@ -32,6 +32,8 @@ describe('cell-swipe', () => {
 
     expect(wrapper.name()).toBe('wv-cell-swipe')
     expect(wrapper.classes()).toContain('weui-cell')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('drag to left and show the buttons', () => {

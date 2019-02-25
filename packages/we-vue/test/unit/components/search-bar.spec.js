@@ -15,6 +15,8 @@ describe('search', () => {
 
     expect(wrapper.name()).toBe('wv-search-bar')
     expect(wrapper.contains('.weui-search-bar')).toBeTruthy()
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('autofocus', () => {
