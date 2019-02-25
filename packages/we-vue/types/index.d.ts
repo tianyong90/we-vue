@@ -1,4 +1,4 @@
-import Vue, { Component, DirectiveOptions, PluginFunction, VueConstructor } from 'vue'
+import Vue, { Component, DirectiveOptions, PluginFunction } from 'vue'
 
 import './lib'
 
@@ -28,5 +28,6 @@ declare module 'vue/types/vue' {
 }
 
 export interface WeVueOptions {
-  customProperties: boolean
+  directives?: Record<string, DirectiveOptions>
+  components?: Record<string, ComponentOrPack>
 }

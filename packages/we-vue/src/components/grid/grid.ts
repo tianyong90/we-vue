@@ -8,6 +8,7 @@ export default Vue.extend({
 
   render (h, context): VNode {
     return h('div', {
+      ...context.data,
       class: 'weui-grids',
     }, context.children)
   },

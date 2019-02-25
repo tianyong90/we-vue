@@ -1,24 +1,18 @@
 import './scss/index.scss'
 import { VueConstructor } from 'vue'
-import * as components from './components'
-import directives from './directives'
-import WeVueComponent from './components/we-vue'
-import { WeVue as WeVuePlugin, WeVueUseOptions } from 'we-vue/types'
 
-const WeVue: WeVuePlugin = {
-  install (Vue: VueConstructor, opts?: WeVueUseOptions): void {
-    Vue.use(WeVueComponent, {
-      components,
-      directives,
-      ...opts,
-    })
-  },
-  /* eslint-disable no-undef */
-  version: __WE_VUE_VERSION__,
+import { install } from './install'
+
+export default class WeVue {
+  static install: (Vue: VueConstructor) => void
+  static version: string
+
+  installed: string[] = []
+
+  constructor () {
+    // TODO
+  }
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(WeVue)
-}
-
-export default WeVue
+WeVue.install = install
+WeVue.version = __WE_VUE_VERSION__

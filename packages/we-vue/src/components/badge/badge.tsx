@@ -21,6 +21,7 @@ export default Vue.extend({
         style={{
           backgroundColor: context.props.color,
         }}
+        {...context.data}
       >
         { !context.props.isDot ? context.children : h() }
       </span>

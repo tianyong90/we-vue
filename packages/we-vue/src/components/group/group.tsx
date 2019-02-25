@@ -13,7 +13,7 @@ export default Vue.extend({
 
   render (h, context) {
     return (
-      <div>
+      <div {...context.data}>
         {
           context.props.title
             ? <div
