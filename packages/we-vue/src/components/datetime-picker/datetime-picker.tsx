@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import { PropValidator } from 'vue/types/options'
 import WVPicker from '../picker'
+// Mixins
+import { factory as ToaaleableFactory } from '../../mixins/toggleable'
+// Utils
+import mixins from '../../utils/mixins'
 
 type startBoundary = {
   startYear: number
@@ -39,7 +43,9 @@ const isValidDate = (date: any) =>
   Object.prototype.toString.call(date) === '[object Date]' &&
   !isNaN(date.getTime())
 
-export default Vue.extend<options>().extend({
+export default mixins<options>(
+  ToaaleableFactory('visible', 'update:visible')
+).extend({
   name: 'wv-datetime-picker',
 
   components: {
@@ -47,7 +53,6 @@ export default Vue.extend<options>().extend({
   },
 
   props: {
-    visible: Boolean,
     confirmText: {
       type: String,
       default: '确定',
@@ -107,7 +112,6 @@ export default Vue.extend<options>().extend({
 
   data () {
     return {
-      currentVisible: this.visible,
       currentValue: this.value,
     }
   },
@@ -206,11 +210,11 @@ export default Vue.extend<options>().extend({
 
   methods: {
     open (): void {
-      this.currentVisible = true
+      this.isActive = true
     },
 
     close (): void {
-      this.currentVisible = false
+      this.isActive = false
     },
 
     getMonthEndDay (year: number, month: number): number {
@@ -405,14 +409,12 @@ export default Vue.extend<options>().extend({
     },
 
     onConfirm () {
-      // TODO
-      // this.visible = false
+      this.isActive = false
       this.$emit('confirm', this.currentValue)
     },
 
     onCancel () {
-      // TODO
-      // this.visible = false
+      this.isActive = false
       this.$emit('cancel')
     },
   },
@@ -421,10 +423,7 @@ export default Vue.extend<options>().extend({
     return (
       <WVPicker
         ref="picker"
-        visible={this.currentVisible}
-        {...{
-          on: { 'update:visible': (val: boolean) => { this.currentVisible = val } },
-        }}
+        visible={this.isActive}
         columns={this.columns}
         onChange={() => { this.onChange(this.$refs.picker) }}
         onConfirm={() => { this.onConfirm() }}

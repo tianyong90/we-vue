@@ -3,6 +3,11 @@ import WVPicker from '../picker'
 import Vue from 'vue'
 import { PropValidator } from 'vue/types/options'
 
+// Mixins
+import { factory as ToaaleableFactory } from '../../mixins/toggleable'
+// Utils
+import mixins from '../../utils/mixins'
+
 type PickerInstance = InstanceType<typeof WVPicker>
 
 enum columnType {
@@ -37,7 +42,9 @@ interface ioptions extends Vue {
   }
 }
 
-export default Vue.extend<ioptions>().extend({
+export default mixins<ioptions>(
+  ToaaleableFactory('visible', 'update:visible')
+).extend({
   name: 'wv-area',
 
   components: {
@@ -45,7 +52,6 @@ export default Vue.extend<ioptions>().extend({
   },
 
   props: {
-    visible: Boolean,
     areaList: {
       type: Object,
       default: () => ({}),
@@ -79,7 +85,6 @@ export default Vue.extend<ioptions>().extend({
     return {
       lazyValue: this.value as string,
       columns: [{ options: [] }, { options: [] }, { options: [] }],
-      currentVisible: this.visible,
     }
   },
 
@@ -89,7 +94,6 @@ export default Vue.extend<ioptions>().extend({
         return this.lazyValue
       },
       set (val: string): void {
-        console.log('set', val)
         this.lazyValue = val
         this.$emit('input', val)
       },
@@ -244,24 +248,30 @@ export default Vue.extend<ioptions>().extend({
       this.internalValue = ''
       this.setOptions()
     },
+
+    onConfirm () {
+      this.isActive = false
+      this.$emit('confirm', this.internalValue)
+    },
+
+    onCancel () {
+      this.isActive = false
+      this.$emit('cancel')
+    },
   },
 
   render (h) {
     const on = {
       ...this.$listeners,
-      'update:visible': (val: boolean) => {
-        console.log('hello', val)
-        this.currentVisible = val
-      },
       change: this.onChange,
-      cancel: (e: Event) => { this.$emit('cancel', e) },
-      confirm: (e: Event) => { this.$emit('confirm', e) },
+      cancel: () => { this.onCancel() },
+      confirm: () => { this.onConfirm() },
     }
 
     return (
       <WVPicker
         ref="picker"
-        visible={this.currentVisible}
+        visible={this.isActive}
         columns={this.displayColumns}
         cancelText={this.cancelText}
         confirmText={this.confirmText}

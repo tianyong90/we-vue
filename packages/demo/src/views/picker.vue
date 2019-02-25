@@ -27,17 +27,17 @@
       value-key="name"
       v-model="fruit"
     />
-    <wv-picker
-      :visible.sync="ticketPickerShow"
-      v-model="ticket"
-      :columns="ticketColumns"
-      @confirm="confirmTicket"
-    />
-    <wv-picker
-      :visible.sync="dayPickerShow"
-      :columns="dayColumns"
-      v-model="dayValue"
-    />
+<!--    <wv-picker-->
+<!--      :visible.sync="ticketPickerShow"-->
+<!--      v-model="ticket"-->
+<!--      :columns="ticketColumns"-->
+<!--      @confirm="confirmTicket"-->
+<!--    />-->
+<!--    <wv-picker-->
+<!--      :visible.sync="dayPickerShow"-->
+<!--      :columns="dayColumns"-->
+<!--      v-model="dayValue"-->
+<!--    />-->
   </div>
 </template>
 

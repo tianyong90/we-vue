@@ -1,8 +1,10 @@
 import PickerColumn from './picker-column'
-import Vue from 'vue'
-
 // Types
 import { PropValidator } from 'vue/types/options'
+// Mixins
+import { factory as ToaaleableFactory } from '../../mixins/toggleable'
+// Utils
+import mixins from '../../utils/mixins'
 
 import cloneDeep from 'lodash/cloneDeep'
 import { styleObject } from '../../globals'
@@ -23,10 +25,9 @@ type typeColumns = Array<Array<
   string | number | objectColumn
 >>
 
-interface ioptions extends Vue {
-}
-
-export default Vue.extend<ioptions>().extend({
+export default mixins(
+  ToaaleableFactory('visible', 'update:visible')
+).extend({
   name: 'wv-picker',
 
   components: {
@@ -34,7 +35,6 @@ export default Vue.extend<ioptions>().extend({
   },
 
   props: {
-    visible: Boolean,
     confirmText: {
       type: String,
       default: '确定',
@@ -187,14 +187,14 @@ export default Vue.extend<ioptions>().extend({
     // cancel event hand: Array<number>l: voider
     onCancel (): void {
       this.$emit('cancel', this)
-      this.$emit('update:visible', false)
+      this.isActive = false
     },
 
     // confirm event handler
     onConfirm (): void {
       this.$emit('input', this.getValues())
       this.$emit('confirm', this)
-      this.$emit('update:visible', false)
+      this.isActive = false
     },
   },
 
@@ -205,13 +205,13 @@ export default Vue.extend<ioptions>().extend({
           enter-active-class="weui-animate-fade-in"
           leave-active-class="weui-animate-fade-out"
         >
-          <div vShow={this.visible} class="weui-mask" />
+          <div vShow={this.isActive} class="weui-mask" />
         </transition>
         <transition
           enter-active-class="weui-animate-slide-up"
           leave-active-class="weui-animate-slide-down"
         >
-          <div vShow={this.visible} class="weui-picker">
+          <div vShow={this.isActive} class="weui-picker">
             <div class="weui-picker__hd">
               <div
                 class="weui-picker__action"

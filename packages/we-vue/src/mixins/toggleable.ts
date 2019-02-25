@@ -8,8 +8,6 @@ export function factory (prop = 'value', event = 'input') {
   return Vue.extend({
     name: 'toggleable',
 
-    model: { prop, event },
-
     props: {
       [prop]: { required: false },
     },

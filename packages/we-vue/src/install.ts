@@ -32,8 +32,6 @@ export function install (Vue: VueConstructor, args: WeVueOptions = {}) {
 
   Vue.mixin({
     beforeCreate (): void {
-      console.log('hello, beforeCreate')
-
       // const options = this.$options
       //
       // if (options.wevue) {

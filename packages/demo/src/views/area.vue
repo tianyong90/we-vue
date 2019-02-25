@@ -5,7 +5,7 @@
     </wv-group>
 
     <wv-area
-      :visible="pickerShow"
+      :visible.sync="pickerShow"
       :area-list="area"
       value-key="name"
       @confirm="confirmArea"
