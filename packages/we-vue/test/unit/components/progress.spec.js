@@ -29,7 +29,6 @@ describe('progress', () => {
 
     const innerBarEl = wrapper.find('.weui-progress__inner-bar')
     expect(innerBarEl.element.style.width).toBe(percent + '%')
-    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('clearBtn action', () => {

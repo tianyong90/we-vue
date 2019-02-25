@@ -70,6 +70,7 @@
     />
 
     <wv-datetime-picker
+      :visible.sync="haha"
       type="datetime"
       ref="rangeDatetimePicker"
       v-model="demoDatetime3"
@@ -88,8 +89,13 @@ export default {
       demoDatetime1: new Date(2016, 11, 1, 12, 0, 0),
       demoDatetime2: new Date(),
       demoDatetime3: new Date(),
-      demoDate: new Date()
+      demoDate: new Date(),
+      haha: false
     }
+  },
+
+  mounted () {
+    this.haha = true
   },
 
   methods: {
