@@ -29,16 +29,4 @@ export function install (Vue: VueConstructor, args: WeVueOptions = {}) {
       }
     }
   })(args.components || components)
-
-  Vue.mixin({
-    beforeCreate (): void {
-      // const options = this.$options
-      //
-      // if (options.wevue) {
-      //   // todo
-      // } else {
-      //   // todo
-      // }
-    }
-  })
 }

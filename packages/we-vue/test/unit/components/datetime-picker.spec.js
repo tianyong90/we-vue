@@ -58,10 +58,10 @@ describe('datetime-picker', () => {
 
     wrapper.vm.$nextTick(() => {
       wrapper.vm.open()
-      expect(wrapper.vm.currentVisible).toBe(true)
+      expect(wrapper.vm.isActive).toBe(true)
 
       wrapper.vm.close()
-      expect(wrapper.vm.currentVisible).toBe(false)
+      expect(wrapper.vm.isActive).toBe(false)
     })
   })
 
@@ -97,7 +97,7 @@ describe('datetime-picker', () => {
         .at(1)
         .trigger('click')
 
-      expect(wrapper.vm.visible).toBe(false)
+      expect(wrapper.vm.isActive).toBe(false)
       expect(wrapper.emitted().confirm).toBeTruthy()
       done()
     })
@@ -114,7 +114,7 @@ describe('datetime-picker', () => {
         .at(0)
         .trigger('click')
 
-      expect(wrapper.vm.visible).toBe(false)
+      expect(wrapper.vm.isActive).toBe(false)
       expect(wrapper.emitted().cancel).toBeTruthy()
       done()
     })
@@ -137,22 +137,22 @@ describe('datetime-picker', () => {
     ).wrappers
 
     slowVerticalDrag(hourColumn, 0, -34)
-    expect(wrapper.vm.currentValue).toEqual('13:00')
+    expect(wrapper.vm.internalValue).toEqual('13:00')
 
     slowVerticalDrag(minuteColumn, 0, -34)
-    expect(wrapper.vm.currentValue).toEqual('13:01')
+    expect(wrapper.vm.internalValue).toEqual('13:01')
 
     slowVerticalDrag(hourColumn, 0, -34 * 5)
-    expect(wrapper.vm.currentValue).toEqual('18:01')
+    expect(wrapper.vm.internalValue).toEqual('18:01')
 
     // hour will be 23
     slowVerticalDrag(hourColumn, 0, -34 * 10)
-    expect(wrapper.vm.currentValue).toEqual('23:01')
+    expect(wrapper.vm.internalValue).toEqual('23:01')
 
     // hour will be 0
     slowVerticalDrag(hourColumn, 0, 34 * 24)
     slowVerticalDrag(minuteColumn, 0, 34 * 10)
-    expect(wrapper.vm.currentValue).toEqual('0:00')
+    expect(wrapper.vm.internalValue).toEqual('0:00')
   })
 
   // FIXME:
@@ -165,7 +165,7 @@ describe('datetime-picker', () => {
       },
     })
 
-    expect(wrapper.vm.currentValue).toEqual(testDate)
+    expect(wrapper.vm.internalValue).toEqual(testDate)
 
     await wrapper.vm.$nextTick()
 
@@ -183,13 +183,13 @@ describe('datetime-picker', () => {
     slowVerticalDrag(hourColumn, 0, -34)
     slowVerticalDrag(minuteColumn, 0, -34)
 
-    expect(wrapper.vm.currentValue.getFullYear()).toBe(
+    expect(wrapper.vm.internalValue.getFullYear()).toBe(
       testDate.getFullYear() + 1
     )
-    expect(wrapper.vm.currentValue.getMonth()).toBe(testDate.getMonth() + 1)
-    expect(wrapper.vm.currentValue.getDate()).toBe(testDate.getDate() + 1)
-    expect(wrapper.vm.currentValue.getHours()).toBe(testDate.getHours() + 1)
-    expect(wrapper.vm.currentValue.getMinutes()).toBe(testDate.getMinutes() + 1)
+    expect(wrapper.vm.internalValue.getMonth()).toBe(testDate.getMonth() + 1)
+    expect(wrapper.vm.internalValue.getDate()).toBe(testDate.getDate() + 1)
+    expect(wrapper.vm.internalValue.getHours()).toBe(testDate.getHours() + 1)
+    expect(wrapper.vm.internalValue.getMinutes()).toBe(testDate.getMinutes() + 1)
   })
 
   // FIXME:
@@ -202,7 +202,7 @@ describe('datetime-picker', () => {
       },
     })
 
-    expect(wrapper.vm.currentValue).toEqual(testDate)
+    expect(wrapper.vm.internalValue).toEqual(testDate)
 
     await wrapper.vm.$nextTick()
 
@@ -214,11 +214,11 @@ describe('datetime-picker', () => {
     // slowVerticalDrag(monthColumn, 0, -34)
     // slowVerticalDrag(dateColumn, 0, -34)
 
-    expect(wrapper.vm.currentValue.getFullYear()).toEqual(
+    expect(wrapper.vm.internalValue.getFullYear()).toEqual(
       testDate.getFullYear() + 1
     )
-    // expect(wrapper.vm.currentValue.getMonth()).toEqual(testDate.getMonth() + 1)
-    // expect(wrapper.vm.currentValue.getDate()).toEqual(testDate.getDate() + 1)
+    // expect(wrapper.vm.internalValue.getMonth()).toEqual(testDate.getMonth() + 1)
+    // expect(wrapper.vm.internalValue.getDate()).toEqual(testDate.getDate() + 1)
   })
 
   test('watch value change', () => {
@@ -235,6 +235,6 @@ describe('datetime-picker', () => {
       value: newValue,
     })
 
-    expect(wrapper.vm.currentValue).toEqual(newValue)
+    expect(wrapper.vm.internalValue).toEqual(newValue)
   })
 })

@@ -207,7 +207,7 @@ describe('picker', () => {
       .findAll('.weui-picker__action')
       .at(0)
       .trigger('click')
-    expect(wrapper.vm.visible).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
     expect(wrapper.emitted().cancel).toBeTruthy()
   })
 
@@ -224,7 +224,7 @@ describe('picker', () => {
       .findAll('.weui-picker__action')
       .at(1)
       .trigger('click')
-    expect(wrapper.vm.visible).toBe(false)
+    expect(wrapper.vm.isActive).toBe(false)
     expect(wrapper.emitted().confirm).toBeTruthy()
   })
 

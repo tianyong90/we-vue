@@ -9,10 +9,12 @@ export default class WeVue {
 
   installed: string[] = []
 
-  constructor () {
-    // TODO
-  }
+  // TODO
+  // constructor () {
+  //
+  // }
 }
 
 WeVue.install = install
+/* eslint-disable no-undef */
 WeVue.version = __WE_VUE_VERSION__
