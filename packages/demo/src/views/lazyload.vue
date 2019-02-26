@@ -9,23 +9,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { Lazyload } from 'we-vue'
-
-Vue.use(Lazyload)
+const list = Array.from({ length: 7 }).map((item, index) => {
+  return `/images/lazyload_${index + 1}.jpg?t=` + Math.random()
+})
 
 export default {
   data () {
     return {
-      list: [
-        'https://unsplash.it/640/360/?random&t=' + Math.random(),
-        'https://unsplash.it/640/360/?random&t=' + Math.random(),
-        'https://unsplash.it/640/360/?random&t=' + Math.random(),
-        'https://unsplash.it/640/360/?random&t=' + Math.random(),
-        'https://unsplash.it/640/360/?random&t=' + Math.random(),
-        'https://unsplash.it/640/360/?random&t=' + Math.random(),
-        'https://unsplash.it/640/360/?random&t=' + Math.random()
-      ]
+      list
     }
   }
 }
@@ -42,8 +33,8 @@ export default {
   list-style: none;
 
   .lazyload-list-item {
-    width: 300px;
-    margin: 5px auto;
+    width: 400px;
+    margin: 15px auto;
   }
 
   img {

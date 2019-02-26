@@ -1,9 +1,8 @@
 import Vue, { VNode } from 'vue'
 import { PropValidator } from 'vue/types/options'
-import { styleObject } from '../../globals'
 
 interface options extends Vue {
-  style?: styleObject
+  style?: object
 }
 
 export default Vue.extend<options>().extend({
@@ -13,11 +12,11 @@ export default Vue.extend<options>().extend({
     visible: Boolean,
     zIndex: Number,
     className: String,
-    customStyle: Object as PropValidator<styleObject>,
+    customStyle: Object as PropValidator<object>,
   },
 
   computed: {
-    style (): styleObject {
+    style (): object {
       return {
         zIndex: this.zIndex,
         ...this.customStyle,

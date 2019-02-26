@@ -1,6 +1,6 @@
 import WVPicker from '../picker'
 
-import Vue from 'vue'
+import Vue, { CreateElement, VNode } from 'vue'
 import { PropValidator } from 'vue/types/options'
 // Mixins
 import Picker from '../../mixins/picker'
@@ -235,6 +235,8 @@ export default mixins<ioptions &
     },
 
     onConfirm () {
+      // console.log(this.$listeners)
+
       this.isActive = false
       console.log(this.internalValue)
       this.$emit('confirm', this.internalValue)
@@ -246,7 +248,7 @@ export default mixins<ioptions &
     },
   },
 
-  render (h) {
+  render (h: CreateElement): VNode {
     const on = {
       ...this.$listeners,
       change: this.onChange,

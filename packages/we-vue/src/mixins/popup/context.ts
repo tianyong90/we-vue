@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { styleObject } from '../../globals'
 
 export interface PopupableVue extends Vue {
   closeOnClickMask: boolean
@@ -17,7 +16,7 @@ type stackItem = {
 
 interface ModalInstance extends Vue {
   visible: boolean
-  style?: styleObject
+  style?: object
 }
 
 const PopupContext = {

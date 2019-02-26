@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import '../../scss/button.scss'
-import { classesObject } from '../../globals'
 
 export default Vue.extend({
   name: 'wv-button',
@@ -23,9 +22,11 @@ export default Vue.extend({
   },
 
   computed: {
-    classes (): classesObject {
-      let ret: classesObject = {
+    classes (): object {
+      let ret: any = {
         'weui-btn': true,
+        'weui-btn_loading': this.isLoading,
+        'weui-btn_mini': this.mini,
       }
 
       let classType = this.plain
@@ -37,10 +38,8 @@ export default Vue.extend({
 
       ret[classType] = true
       ret[classDisabled] = this.disabled
-      ret['weui-btn_loading'] = this.isLoading
-      ret['weui-btn_mini'] = this.mini
 
-      return ret
+      return ret as object
     },
   },
 

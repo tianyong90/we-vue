@@ -1,5 +1,7 @@
 import * as _components from './components'
 import * as _directives from './directives'
+// lazyload plugin
+import { Lazyload } from './plugins'
 
 import { WeVueOptions } from 'types'
 
@@ -19,7 +21,10 @@ export function install (Vue: VueConstructor, args: WeVueOptions = {}) {
     Vue.directive(name, directive)
   }
 
-  (function registerComponents (components: any) {
+  // install lazyload plugin
+  Vue.use(Lazyload)
+
+  ;(function registerComponents (components: any) {
     if (components) {
       for (const key in components) {
         const component = components[key]

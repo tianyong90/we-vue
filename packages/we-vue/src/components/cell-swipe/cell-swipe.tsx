@@ -9,7 +9,6 @@ import Vue from 'vue'
 import mixins, { ExtractVue } from '../../utils/mixins'
 // Mixins
 import Routable from '../../mixins/routable'
-import { styleObject } from '../../globals'
 
 interface options extends Vue {
   $refs: {
@@ -48,7 +47,7 @@ export default mixins<options &
   },
 
   computed: {
-    style (): styleObject {
+    style (): object {
       return {
         transition: this.transition,
         transform: `translate3d(${this.offset}px, 0px, 0px)`,

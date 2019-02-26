@@ -7,7 +7,6 @@ import { factory as ToaaleableFactory } from '../../mixins/toggleable'
 import mixins from '../../utils/mixins'
 
 import cloneDeep from 'lodash/cloneDeep'
-import { styleObject } from '../../globals'
 
 // height of th option item
 const ITEM_HEIGHT = 34
@@ -68,7 +67,7 @@ export default mixins(
   },
 
   computed: {
-    pickerBodyStyle (): styleObject {
+    pickerBodyStyle (): object {
       return {
         height: this.visibleItemCount * ITEM_HEIGHT + 'px',
       }
@@ -94,6 +93,14 @@ export default mixins(
   },
 
   methods: {
+    open (): void {
+      this.isActive = true
+    },
+
+    close (): void {
+      this.isActive = false
+    },
+
     setColumns (columns: typeColumns | simpleColumns): void {
       columns.forEach((column, index: number) => {
         this.setColumnOptions(index, cloneDeep((column as objectColumn).options))
@@ -198,7 +205,9 @@ export default mixins(
 
     // confirm event handler
     onConfirm (): void {
-      this.$emit('input', this.getValues())
+      console.log(this.$listeners)
+
+      // this.$emit('input', this.getValues())
       this.$emit('confirm', this)
       this.isActive = false
     },

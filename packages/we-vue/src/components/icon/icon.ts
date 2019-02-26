@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import '../../scss/icon.scss'
-
 // Types
-import { classesObject } from '../../globals'
 import { VNode } from 'vue/types/vnode'
 
 export default Vue.extend({
@@ -17,7 +15,7 @@ export default Vue.extend({
   },
 
   computed: {
-    classes (): classesObject {
+    classes (): object {
       let classType = `weui-icon-${this.type}`
 
       return {
