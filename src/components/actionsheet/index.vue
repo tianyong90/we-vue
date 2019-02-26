@@ -32,7 +32,7 @@
           />
         </div>
         <div class="weui-actionsheet__action" v-if="cancelText">
-          <div class="weui-actionsheet__cell" @click="currentValue = false" v-html="cancelText"/>
+          <div class="weui-actionsheet__cell" @click="onClickCancel" v-html="cancelText"/>
         </div>
       </div>
     </transition>
@@ -103,6 +103,11 @@ export default create({
   },
 
   methods: {
+    onClickCancel () {
+      this.currentValue = false
+      this.$emit('cancel')
+    },
+
     itemClick (item) {
       if (item.method && typeof item.method === 'function') {
         item.method()
