@@ -82,7 +82,6 @@
     "faker": "^4.1.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "git-branch": "^2.0.1",
     "highlight.js": "^9.12.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.6",
