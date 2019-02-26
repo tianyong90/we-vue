@@ -1,13 +1,22 @@
 <template>
   <div class="page">
     <wv-group title="省市区选择示例">
-      <wv-cell title="默认" is-link @click.native="showPicker"/>
+      <wv-cell title="默认" is-link @click.native="showPickerDefault"/>
+      <wv-cell title="两列" is-link @click.native="showPickerTwoColumns"/>
     </wv-group>
 
     <wv-area
-      :visible.sync="pickerShow"
+      :visible.sync="pickerShowDefault"
+      :area-list="area"
+      @confirm="confirmArea"
+      v-model="selectedArea"
+    />
+
+    <wv-area
+      :visible.sync="pickerShowTwoColumns"
       :area-list="area"
       value-key="name"
+      columns-count="2"
       @confirm="confirmArea"
       v-model="selectedArea"
     />
@@ -20,7 +29,8 @@ import areaList from '../assets/data/area'
 export default {
   data () {
     return {
-      pickerShow: true,
+      pickerShowDefault: false,
+      pickerShowTwoColumns: false,
       area: areaList,
       code: '110101',
       selectedArea: '110101'
@@ -30,9 +40,12 @@ export default {
   mounted () {},
 
   methods: {
-    showPicker () {
-      this.pickerShow = true
-      console.log(this.pickerShow)
+    showPickerDefault () {
+      this.pickerShowDefault = true
+    },
+
+    showPickerTwoColumns () {
+      this.pickerShowTwoColumns = true
     },
 
     confirmArea () {

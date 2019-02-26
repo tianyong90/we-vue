@@ -2,11 +2,10 @@ import WVPicker from '../picker'
 
 import Vue from 'vue'
 import { PropValidator } from 'vue/types/options'
-
 // Mixins
-import { factory as ToaaleableFactory } from '../../mixins/toggleable'
+import Picker from '../../mixins/picker'
 // Utils
-import mixins from '../../utils/mixins'
+import mixins, { ExtractVue } from '../../utils/mixins'
 
 type PickerInstance = InstanceType<typeof WVPicker>
 
@@ -42,8 +41,10 @@ interface ioptions extends Vue {
   }
 }
 
-export default mixins<ioptions>(
-  ToaaleableFactory('visible', 'update:visible')
+export default mixins<ioptions &
+  ExtractVue<[typeof Picker]>
+>(
+  Picker
 ).extend({
   name: 'wv-area',
 
@@ -56,14 +57,6 @@ export default mixins<ioptions>(
       type: Object,
       default: () => ({}),
     } as PropValidator<typeAreaList>,
-    confirmText: {
-      type: String,
-      default: '确定',
-    },
-    cancelText: {
-      type: String,
-      default: '取消',
-    },
     visibleItemCount: {
       type: Number,
       default: 7,
@@ -135,14 +128,6 @@ export default mixins<ioptions>(
   },
 
   methods: {
-    open (): void {
-      this.$emit('update: visible', true)
-    },
-
-    close (): void {
-      this.$emit('update: visible', false)
-    },
-
     getList (type: columnType, code: string = ''): Array<typeArea> {
       let result: Array<typeArea> = []
       if (type !== 'province' && !code) {
@@ -251,6 +236,7 @@ export default mixins<ioptions>(
 
     onConfirm () {
       this.isActive = false
+      console.log(this.internalValue)
       this.$emit('confirm', this.internalValue)
     },
 
@@ -275,6 +261,7 @@ export default mixins<ioptions>(
         columns={this.displayColumns}
         cancelText={this.cancelText}
         confirmText={this.confirmText}
+        close-on-click-mask={this.closeOnClickMask}
         visibleItemCount={this.visibleItemCount}
         valueKey="name"
         {...{ on }}

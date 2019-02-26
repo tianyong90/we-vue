@@ -30,10 +30,6 @@ export default mixins(
 ).extend({
   name: 'wv-picker',
 
-  components: {
-    PickerColumn,
-  },
-
   props: {
     confirmText: {
       type: String,
@@ -42,6 +38,10 @@ export default mixins(
     cancelText: {
       type: String,
       default: '取消',
+    },
+    closeOnClickMask: {
+      type: Boolean,
+      default: true,
     },
     columns: {
       type: Array,
@@ -184,6 +184,12 @@ export default mixins(
       })
     },
 
+    onClickMask () {
+      if (!this.closeOnClickMask) return
+
+      this.onCancel()
+    },
+
     // cancel event hand: Array<number>l: voider
     onCancel (): void {
       this.$emit('cancel', this)
@@ -205,7 +211,11 @@ export default mixins(
           enter-active-class="weui-animate-fade-in"
           leave-active-class="weui-animate-fade-out"
         >
-          <div vShow={this.isActive} class="weui-mask" />
+          <div
+            vShow={this.isActive}
+            class="weui-mask"
+            onClick={this.onClickMask}
+          />
         </transition>
         <transition
           enter-active-class="weui-animate-slide-up"
@@ -215,16 +225,12 @@ export default mixins(
             <div class="weui-picker__hd">
               <div
                 class="weui-picker__action"
-                onClick={() => {
-                  this.onCancel()
-                }}
+                onClick={this.onCancel}
                 domPropsTextContent={this.cancelText}
               />
               <div
                 class="weui-picker__action"
-                onClick={() => {
-                  this.onConfirm()
-                }}
+                onClick={this.onConfirm}
                 domPropsTextContent={this.confirmText}
               />
             </div>

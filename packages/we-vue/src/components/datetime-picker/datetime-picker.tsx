@@ -2,9 +2,9 @@ import Vue from 'vue'
 import { PropValidator } from 'vue/types/options'
 import WVPicker from '../picker'
 // Mixins
-import { factory as ToaaleableFactory } from '../../mixins/toggleable'
+import Picker from '../../mixins/picker'
 // Utils
-import mixins from '../../utils/mixins'
+import mixins, { ExtractVue } from '../../utils/mixins'
 
 type startBoundary = {
   startYear: number
@@ -43,8 +43,10 @@ const isValidDate = (date: any) =>
   Object.prototype.toString.call(date) === '[object Date]' &&
   !isNaN(date.getTime())
 
-export default mixins<options>(
-  ToaaleableFactory('visible', 'update:visible')
+export default mixins<options &
+  ExtractVue<[typeof Picker]>
+>(
+  Picker
 ).extend({
   name: 'wv-datetime-picker',
 
@@ -53,14 +55,6 @@ export default mixins<options>(
   },
 
   props: {
-    confirmText: {
-      type: String,
-      default: '确定',
-    },
-    cancelText: {
-      type: String,
-      default: '取消',
-    },
     type: {
       type: String,
       default: 'datetime',
@@ -112,7 +106,7 @@ export default mixins<options>(
 
   data () {
     return {
-      currentValue: this.value,
+      internalValue: this.value,
     }
   },
 
@@ -131,14 +125,14 @@ export default mixins<options>(
         startDate,
         startHour,
         startMinute,
-      } = this.getBoundary('start', this.currentValue as Date) as startBoundary
+      } = this.getBoundary('start', this.internalValue as Date) as startBoundary
       const {
         endYear,
         endMonth,
         endDate,
         endHour,
         endMinute,
-      } = this.getBoundary('end', this.currentValue as Date) as endBoundary
+      } = this.getBoundary('end', this.internalValue as Date) as endBoundary
 
       if (this.type === 'datetime') {
         return {
@@ -177,46 +171,38 @@ export default mixins<options>(
       val = this.correctValue(val)
       const isEqual =
         this.type === 'time'
-          ? val === this.currentValue
-          : val.valueOf() === this.currentValue.valueOf()
+          ? val === this.internalValue
+          : val.valueOf() === this.internalValue.valueOf()
 
       if (!isEqual) {
-        this.currentValue = val
+        this.internalValue = val
       }
     },
 
-    currentValue (val) {
+    internalValue (val) {
       this.updateColumnValue(val)
       this.$emit('input', val)
     },
   },
 
   created () {
-    this.currentValue = this.correctValue(this.value)
+    this.internalValue = this.correctValue(this.value)
   },
 
   mounted () {
     if (!this.value) {
-      this.currentValue =
+      this.internalValue =
         this.type.indexOf('date') > -1
           ? this.startDate
           : `${('0' + this.startHour).slice(-2)}:00`
     } else {
-      this.currentValue = this.correctValue(this.value)
+      this.internalValue = this.correctValue(this.value)
     }
 
-    this.updateColumnValue(this.currentValue)
+    this.updateColumnValue(this.internalValue)
   },
 
   methods: {
-    open (): void {
-      this.isActive = true
-    },
-
-    close (): void {
-      this.isActive = false
-    },
-
     getMonthEndDay (year: number, month: number): number {
       // Date() 第三参数为 0，实际返回上一个月最后一天，注意 Date 对象中 month 实际从 0 开始，而形参 month 表示实际月份
       return new Date(year, month, 0).getDate()
@@ -306,7 +292,7 @@ export default mixins<options>(
       }
 
       value = this.correctValue(value)
-      this.currentValue = value
+      this.internalValue = value
       this.$emit('change', picker)
       this.$emit('input', value)
     },
@@ -371,10 +357,10 @@ export default mixins<options>(
     updateColumnValue (value: string | Date) {
       let values: string[] = []
       if (this.type === 'time') {
-        const currentValue = (value as string).split(':')
+        const internalValue = (value as string).split(':')
         values = [
-          this.hourFormat.replace('{value}', `0${currentValue[0]}`.slice(-2)),
-          this.minuteFormat.replace('{value}', `0${currentValue[1]}`.slice(-2)),
+          this.hourFormat.replace('{value}', `0${internalValue[0]}`.slice(-2)),
+          this.minuteFormat.replace('{value}', `0${internalValue[1]}`.slice(-2)),
         ]
       } else {
         values = [
@@ -410,7 +396,7 @@ export default mixins<options>(
 
     onConfirm () {
       this.isActive = false
-      this.$emit('confirm', this.currentValue)
+      this.$emit('confirm', this.internalValue)
     },
 
     onCancel () {
@@ -430,6 +416,7 @@ export default mixins<options>(
         onCancel={() => { this.onCancel() }}
         confirm-text={this.confirmText}
         cancel-text={this.cancelText}
+        close-on-click-mask={this.closeOnClickMask}
         visible-item-count={this.visibleItemCount}
       />
     )

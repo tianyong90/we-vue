@@ -71,7 +71,6 @@
 
     <wv-datetime-picker
       type="datetime"
-      :visible.sync="haha"
       ref="rangeDatetimePicker"
       v-model="demoDatetime3"
       @confirm="onConfirm"
@@ -89,8 +88,7 @@ export default {
       demoDatetime1: new Date(2016, 11, 1, 12, 0, 0),
       demoDatetime2: new Date(),
       demoDatetime3: new Date(),
-      demoDate: new Date(),
-      haha: false
+      demoDate: new Date()
     }
   },
 
@@ -100,9 +98,7 @@ export default {
 
   methods: {
     openPicker (ref) {
-      this.haha = true
-
-      // this.$refs[ref].open()
+      this.$refs[ref].open()
     },
 
     onConfirm (value) {
