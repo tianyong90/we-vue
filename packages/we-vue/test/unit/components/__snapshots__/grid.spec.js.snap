@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`grid create 1`] = `<div class="weui-grids"></div>`;

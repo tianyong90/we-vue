@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`cell-swipe-button create 1`] = `<div class="weui-swiped-btn weui-swiped-btn_default"></div>`;

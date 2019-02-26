@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`footer-link create 1`] = `<div class="weui-footer__link"></div>`;
-
-exports[`footer-link text 1`] = `<div class="weui-footer__link">test</div>`;

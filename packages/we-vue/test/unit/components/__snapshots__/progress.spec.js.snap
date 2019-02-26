@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`progress create 1`] = `
-<div class="weui-progress">
-  <div class="weui-progress__bar">
-    <div class="weui-progress__inner-bar js_progress"></div>
-  </div><span class="weui-progress__opr"><i class="weui-icon-cancel"></i></span>
-</div>
-`;

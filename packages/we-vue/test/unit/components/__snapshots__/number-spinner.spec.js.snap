@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`number-spinner create 1`] = `<div class="wv-number-spinner"><button disabled="disabled" class="spinner-btn btn-minus"></button><input type="number" min="0" max="100" step="1" style="width: 3em; text-align: center;"><button class="spinner-btn btn-plus"></button></div>`;

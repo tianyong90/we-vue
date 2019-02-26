@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`badge create 1`] = `<span class="weui-badge"></span>`;
-
-exports[`badge is-dot 1`] = `<span class="weui-badge weui-badge_dot"><!----></span>`;
