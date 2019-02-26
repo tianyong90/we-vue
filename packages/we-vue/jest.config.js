@@ -38,11 +38,11 @@ module.exports = {
     'src/**/*.{js,ts,tsx}',
     '!**/*.d.ts',
   ],
-  testMatch: [
-    '**/test/**/*.js',
-    '**/__test__/**/*.spec.js',
-    '**/__test__/**/*.spec.ts',
-  ],
+  // testMatch: [
+  //   '**/test/**/*.js',
+  //   '**/__test__/**/*.spec.js',
+  //   '**/__test__/**/*.spec.ts',
+  // ],
   globals: {
     // TODO: ts-jest 配置
     __WE_VUE_VERSION__: '3.0.0', // version variable
