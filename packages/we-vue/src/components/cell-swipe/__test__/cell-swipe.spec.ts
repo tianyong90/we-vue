@@ -1,12 +1,19 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import Vue, { CreateElement, VNode } from 'vue'
+import { shallowMount, mount, Wrapper } from '@vue/test-utils'
 import CellSwipe from '../cell-swipe'
-import CellSwipeButtonComponent from './cell-swipe-button.vue'
+import WVCellSwipeButton from '../../cell-swipe-button'
 import { horizontalDrag } from '@/test/unit/utils'
 
 describe('cell-swipe', () => {
-  let wrapper
+  const CellSwipeButtonComponent = Vue.extend({
+    render (h: CreateElement): VNode {
+      return h(WVCellSwipeButton, 'test')
+    }
+  })
 
-  const getRightBtnsWidth = () => wrapper.vm.$refs.rightBtns.clientWidth
+  const getRightBtnsWidth = (wrapper: Wrapper<Vue>) => {
+    return (wrapper.vm.$refs.rightBtns as HTMLElement).clientWidth
+  }
 
   beforeEach(() => {
     // to MOCK the clientWidth properfy
@@ -17,8 +24,6 @@ describe('cell-swipe', () => {
   })
 
   afterEach(() => {
-    wrapper && wrapper.destroy()
-
     Object.defineProperty(HTMLDivElement.prototype, 'clientWidth', {
       value: 0,
       writable: true,
@@ -26,8 +31,10 @@ describe('cell-swipe', () => {
   })
 
   test('create', () => {
-    wrapper = shallowMount(CellSwipe, {
-      propsData: {},
+    const wrapper = shallowMount(CellSwipe, {
+      slots: {
+        right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
+      },
     })
 
     expect(wrapper.name()).toBe('wv-cell-swipe')
@@ -37,20 +44,20 @@ describe('cell-swipe', () => {
   })
 
   test('drag to left and show the buttons', () => {
-    wrapper = mount(CellSwipe, {
+    const wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
       },
     })
 
-    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, -getRightBtnsWidth())
+    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, -getRightBtnsWidth(wrapper))
 
-    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth())
+    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth(wrapper))
   })
 
   test('drag to left with a small distance', () => {
-    wrapper = mount(CellSwipe, {
+    const wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -63,20 +70,20 @@ describe('cell-swipe', () => {
   })
 
   test('drag to left with a distance out of range', () => {
-    wrapper = mount(CellSwipe, {
+    const wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
       },
     })
 
-    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, -(getRightBtnsWidth() + 20))
+    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, -(getRightBtnsWidth(wrapper) + 20))
 
-    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth())
+    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth(wrapper))
   })
 
   test('drag to right and close right buttons', () => {
-    wrapper = mount(CellSwipe, {
+    const wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -85,16 +92,16 @@ describe('cell-swipe', () => {
 
     // set offset to show the right buttons before drag
     wrapper.setData({
-      offset: -getRightBtnsWidth(),
+      offset: -getRightBtnsWidth(wrapper),
     })
 
-    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, getRightBtnsWidth())
+    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, getRightBtnsWidth(wrapper))
 
     expect(wrapper.vm.offset).toBe(0)
   })
 
   test('drag to right with a small distance', () => {
-    wrapper = mount(CellSwipe, {
+    const wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -103,16 +110,16 @@ describe('cell-swipe', () => {
 
     // set offset to show the right buttons before drag
     wrapper.setData({
-      offset: -getRightBtnsWidth(),
+      offset: -getRightBtnsWidth(wrapper),
     })
 
     horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, 10)
 
-    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth())
+    expect(wrapper.vm.offset).toBe(-getRightBtnsWidth(wrapper))
   })
 
   test('drag to right with a distance out of range', () => {
-    wrapper = mount(CellSwipe, {
+    const wrapper = mount(CellSwipe, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -121,10 +128,10 @@ describe('cell-swipe', () => {
 
     // set offset to show the right buttons before drag
     wrapper.setData({
-      offset: -getRightBtnsWidth(),
+      offset: -getRightBtnsWidth(wrapper),
     })
 
-    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, getRightBtnsWidth() + 10)
+    horizontalDrag(wrapper.find({ ref: 'cellBd' }), 0, getRightBtnsWidth(wrapper) + 10)
 
     expect(wrapper.vm.offset).toBe(0)
   })

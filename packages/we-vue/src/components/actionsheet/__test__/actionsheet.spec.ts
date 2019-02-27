@@ -1,7 +1,17 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount, shallowMount, Wrapper } from '@vue/test-utils'
 import Actionsheet from '../actionsheet'
+import { ExtractVue } from '@utils/mixins'
 
 describe('actionsheet', () => {
+  type Instance = ExtractVue<typeof Actionsheet>
+  let mountFunction: (options?: object) => Wrapper<Instance>
+
+  beforeEach(() => {
+    mountFunction = (options = {}) => {
+      return mount(Actionsheet, options)
+    }
+  })
+
   test('create', () => {
     let wrapper = mount(Actionsheet, {
       attachToDocument: true,
@@ -110,7 +120,7 @@ describe('actionsheet', () => {
     ]
 
     // default type = 'ios'
-    let wrapper = mount(Actionsheet, {
+    let wrapper = mountFunction({
       attachToDocument: true,
       propsData: {
         actions: actions,

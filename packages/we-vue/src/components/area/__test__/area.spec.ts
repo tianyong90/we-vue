@@ -1,17 +1,13 @@
 import { mount } from '@vue/test-utils'
 import Area from '../area'
-import { slowVerticalDrag } from '@/test/unit/utils'
+// import { slowVerticalDrag } from '@/test/unit/utils'
 
-describe('datetime-picker', () => {
-  let wrapper
-
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
+describe('area picker', () => {
   test('create', () => {
-    wrapper = mount(Area)
+    const wrapper = mount(Area)
 
     expect(wrapper.name()).toBe('wv-area')
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

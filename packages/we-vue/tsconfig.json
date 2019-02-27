@@ -8,6 +8,10 @@
     "paths": {
       "@/test/*": ["test/*"],
       "@*": ["src/*"]
-    }
+    },
+    "types": [
+      "jest",
+      "faker"
+    ]
   }
 }

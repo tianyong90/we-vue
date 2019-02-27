@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import Footer from '../footer'
 
 describe('footer', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Footer, {
+    const wrapper = shallowMount(Footer, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('footer', () => {
   })
 
   test('text', () => {
-    wrapper = shallowMount(Footer, {
+    const wrapper = shallowMount(Footer, {
       propsData: {
         text: 'test',
       },

@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import Input from '../progress'
 
 describe('progress', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Input, {
+    const wrapper = shallowMount(Input, {
       propsData: {},
     })
 
@@ -21,7 +16,7 @@ describe('progress', () => {
     // 0 到 100 的随机数
     const percent = Math.round(Math.random() * 100)
 
-    wrapper = shallowMount(Input, {
+    const wrapper = shallowMount(Input, {
       propsData: {
         percent: percent,
       },
@@ -32,7 +27,7 @@ describe('progress', () => {
   })
 
   test('clearBtn action', () => {
-    wrapper = shallowMount(Input, {
+    const wrapper = shallowMount(Input, {
       propsData: {
         showClear: true,
       },

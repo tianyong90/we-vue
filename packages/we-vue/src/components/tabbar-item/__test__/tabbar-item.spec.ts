@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import TabbarItem from '../tabbar-item'
 
 describe('tabbar-item', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(TabbarItem, {
+    const wrapper = shallowMount(TabbarItem, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('tabbar-item', () => {
   })
 
   test('text', () => {
-    wrapper = shallowMount(TabbarItem, {
+    const wrapper = shallowMount(TabbarItem, {
       slots: {
         default: 'test',
       },
@@ -31,7 +26,7 @@ describe('tabbar-item', () => {
   })
 
   test('isOn', () => {
-    wrapper = shallowMount(TabbarItem, {
+    const wrapper = shallowMount(TabbarItem, {
       propsData: {
         isOn: true,
       },
@@ -42,7 +37,7 @@ describe('tabbar-item', () => {
 
   test('handle click', () => {
     const routeLinkSpy = jest.fn()
-    wrapper = shallowMount(TabbarItem, {
+    const wrapper = shallowMount(TabbarItem, {
       propsData: {},
       methods: {
         routeLink: routeLinkSpy,

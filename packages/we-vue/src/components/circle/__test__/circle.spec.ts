@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import Circle from '../circle'
 
 describe('circle', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Circle, {
+    const wrapper = shallowMount(Circle, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('circle', () => {
   })
 
   test('what value change', () => {
-    wrapper = shallowMount(Circle, {
+    const wrapper = shallowMount(Circle, {
       propsData: {
         value: 0,
       },
@@ -33,7 +28,7 @@ describe('circle', () => {
   })
 
   test('what currentValue change', () => {
-    wrapper = shallowMount(Circle, {
+    const wrapper = shallowMount(Circle, {
       propsData: {
         value: 0,
       },

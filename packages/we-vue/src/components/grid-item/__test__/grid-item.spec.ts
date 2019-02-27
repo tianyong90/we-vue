@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import GridItem from '../grid-item'
 
 describe('grid-item', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(GridItem, {
+    const wrapper = shallowMount(GridItem, {
       propsData: {},
     })
 
@@ -20,7 +15,7 @@ describe('grid-item', () => {
 
   test('handle click', () => {
     const routeLinkSpy = jest.fn()
-    wrapper = shallowMount(GridItem, {
+    const wrapper = shallowMount(GridItem, {
       propsData: {},
       methods: {
         routeLink: routeLinkSpy,

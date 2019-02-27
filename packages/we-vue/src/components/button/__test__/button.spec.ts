@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import Button from '../button'
 
 describe('button', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Button, {
+    const wrapper = shallowMount(Button, {
       propsData: {
         type: 'primary',
       },
@@ -19,7 +14,7 @@ describe('button', () => {
   })
 
   test('is-loading', () => {
-    wrapper = shallowMount(Button, {
+    const wrapper = shallowMount(Button, {
       propsData: {
         isLoading: true,
       },
@@ -29,7 +24,7 @@ describe('button', () => {
   })
 
   test('disabled', () => {
-    wrapper = shallowMount(Button, {
+    const wrapper = shallowMount(Button, {
       propsData: {
         disabled: true,
       },
@@ -40,7 +35,7 @@ describe('button', () => {
   })
 
   test('mini', () => {
-    wrapper = shallowMount(Button, {
+    const wrapper = shallowMount(Button, {
       propsData: {
         mini: true,
       },
@@ -49,7 +44,7 @@ describe('button', () => {
   })
 
   test('plain', () => {
-    wrapper = shallowMount(Button, {
+    const wrapper = shallowMount(Button, {
       propsData: {
         type: 'primary',
         plain: true,
@@ -60,7 +55,7 @@ describe('button', () => {
   })
 
   test('click', () => {
-    wrapper = shallowMount(Button, {
+    const wrapper = shallowMount(Button, {
       propsData: {},
     })
 

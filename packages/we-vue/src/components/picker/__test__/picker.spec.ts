@@ -19,13 +19,8 @@ const testMultiColumn = [
 ]
 
 describe('picker', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       propsData: {
         visible: true,
       },
@@ -37,7 +32,7 @@ describe('picker', () => {
   })
 
   test('create a single-column picker', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -54,7 +49,7 @@ describe('picker', () => {
   })
 
   test('create a multi-column picker', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -71,7 +66,7 @@ describe('picker', () => {
   })
 
   test('getColumnValue method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -83,7 +78,7 @@ describe('picker', () => {
   })
 
   test('getColumnOptions method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -96,7 +91,7 @@ describe('picker', () => {
   })
 
   test('test setColumnValue method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -110,7 +105,7 @@ describe('picker', () => {
   })
 
   test('test getValues method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -122,7 +117,7 @@ describe('picker', () => {
   })
 
   test('test setValues method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -141,7 +136,7 @@ describe('picker', () => {
   })
 
   test('test getColumnIndex method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -154,7 +149,7 @@ describe('picker', () => {
   })
 
   test('test setColumnIndex method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -169,7 +164,7 @@ describe('picker', () => {
   })
 
   test('test getIndexes method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -181,7 +176,7 @@ describe('picker', () => {
   })
 
   test('test setIndexes method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -195,7 +190,7 @@ describe('picker', () => {
   })
 
   test('click cancel button', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         'visible.sync': true,
@@ -212,7 +207,7 @@ describe('picker', () => {
   })
 
   test('click confirm button', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         'visible.sync': true,
@@ -229,7 +224,7 @@ describe('picker', () => {
   })
 
   test('when column value changed, change event should be emitted', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -251,7 +246,7 @@ describe('picker', () => {
   })
 
   test('value watcher', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -275,13 +270,8 @@ describe('picker', () => {
 })
 
 describe('picker-column', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   // test('create', () => {
-  //   wrapper = mount(PickerColumn, {
+  //   const wrapper = mount(PickerColumn, {
   //     parentComponent: Picker
   //   })
   //
@@ -304,7 +294,7 @@ describe('picker-column', () => {
   //     }
   //   ]
   //
-  //   wrapper = mount(PickerColumn, {
+  //   const wrapper = mount(PickerColumn, {
   //     parentComponent: Picker,
   //     propsData: {
   //       options: options,
@@ -316,7 +306,7 @@ describe('picker-column', () => {
   // })
 
   // test('render a divider slot', () => {
-  //   wrapper = mount(PickerColumn, {
+  //   const wrapper = mount(PickerColumn, {
   //     parentComponent: Picker,
   //     propsData: {
   //       divider: true,
@@ -330,7 +320,7 @@ describe('picker-column', () => {
   test(
     'drag slot',
     () => {
-      wrapper = mount(Picker, {
+      const wrapper = mount(Picker, {
         attachToDocument: true,
         propsData: {
           visible: true,
@@ -361,7 +351,7 @@ describe('picker-column', () => {
   )
 
   test('click slot to change the current-value', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -383,7 +373,7 @@ describe('picker-column', () => {
   })
 
   test('divider pickerSlot', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -406,7 +396,7 @@ describe('picker-column', () => {
   })
 
   test('index should be adjust to a suitable value when it is exceeded ot disabled', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -439,7 +429,7 @@ describe('picker-column', () => {
   })
 
   test('watch defaultIndex', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -462,7 +452,7 @@ describe('picker-column', () => {
   })
 
   test('test setValue method', () => {
-    wrapper = mount(Picker, {
+    const wrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,

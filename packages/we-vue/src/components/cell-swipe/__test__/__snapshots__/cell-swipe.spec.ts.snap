@@ -5,6 +5,9 @@ exports[`cell-swipe create 1`] = `
   <div class="weui-cell__bd" style="transform: translate3d(0px, 0px, 0px);">
     <vuecomponent-stub url="function () { [native code] }"><template></template><template></template><template></template></vuecomponent-stub>
   </div>
-  <div class="weui-cell__ft"></div>
+  <div class="weui-cell__ft">
+    <div class="weui-swiped-btn weui-swiped-btn_default">test</div>
+    <div class="weui-swiped-btn weui-swiped-btn_default">test</div>
+  </div>
 </div>
 `;

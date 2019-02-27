@@ -2,13 +2,8 @@ import { mount, shallowMount } from '@vue/test-utils'
 import Cell from '../cell'
 
 describe('cell', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Cell, {
+    const wrapper = shallowMount(Cell, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('cell', () => {
   })
 
   test('is-link', () => {
-    wrapper = shallowMount(Cell, {
+    const wrapper = shallowMount(Cell, {
       propsData: {
         isLink: true,
       },
@@ -32,7 +27,7 @@ describe('cell', () => {
 
   test('handle click', () => {
     const routeLinkSpy = jest.fn()
-    wrapper = mount(Cell, {
+    const wrapper = mount(Cell, {
       propsData: {},
       methods: {
         routeLink: routeLinkSpy,

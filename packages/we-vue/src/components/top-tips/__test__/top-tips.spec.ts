@@ -33,12 +33,13 @@ describe('test top-tips api', () => {
 
     localVue.nextTick(() => {
       expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
-      expect(document.querySelector('.weui-toptips').textContent).toBe('test')
+      expect(document.querySelector('.weui-toptips')!.textContent).toBe('test')
     })
   })
 
   test('create a toast with duration', () => {
     let instance = TopTipsApi({
+      message: 'foo',
       duration: 2000,
     })
 
@@ -49,11 +50,15 @@ describe('test top-tips api', () => {
 
   test('top-tips should be singletom', () => {
     const localVue = createLocalVue()
-    TopTipsApi({})
+    TopTipsApi({
+      message: 'foo',
+    })
 
     localVue.nextTick(() => {
       // try to open another top-tips
-      TopTipsApi({})
+      TopTipsApi({
+        message: 'foo',
+      })
 
       expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
     })
@@ -61,13 +66,8 @@ describe('test top-tips api', () => {
 })
 
 describe('top-tips component', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(TopTips, {
+    const wrapper = mount(TopTips, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -76,10 +76,11 @@ describe('top-tips component', () => {
 
     expect(wrapper.name()).toBe('wv-top-tips')
     expect(wrapper.classes()).toContain('weui-toptips')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
-  test('render message correctlly', () => {
-    wrapper = shallowMount(TopTips, {
+  test('should render message correctlly', () => {
+    const wrapper = shallowMount(TopTips, {
       propsData: {
         message: 'test',
         visible: true,
@@ -87,5 +88,6 @@ describe('top-tips component', () => {
     })
 
     expect(wrapper.text()).toContain('test')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

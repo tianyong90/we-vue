@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import NumberSpinner from '../number-spinner'
 
 describe('number-spinner', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    const wrapper = shallowMount(NumberSpinner, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('number-spinner', () => {
   })
 
   test('blur event', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    const wrapper = shallowMount(NumberSpinner, {
       data: function () {
         return {
           currentValue: '',
@@ -33,7 +28,7 @@ describe('number-spinner', () => {
   })
 
   test('onChange method', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    const wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1,
       },
@@ -47,7 +42,7 @@ describe('number-spinner', () => {
   })
 
   test('onPaste method', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    const wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1,
         fillable: false,
@@ -66,7 +61,7 @@ describe('number-spinner', () => {
   test('onKeypress method when fillable is false', () => {
     const spy = jest.fn()
 
-    wrapper = shallowMount(NumberSpinner, {
+    const wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1,
         fillable: false,
@@ -83,7 +78,7 @@ describe('number-spinner', () => {
   })
 
   test('click minus button', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    let wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 5,
       },
@@ -104,7 +99,7 @@ describe('number-spinner', () => {
   })
 
   test('click plus button', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    let wrapper = shallowMount(NumberSpinner, {
       propsData: {
         value: 1,
       },
@@ -125,7 +120,7 @@ describe('number-spinner', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    const wrapper = shallowMount(NumberSpinner, {
       propsData: {},
     })
 
@@ -138,7 +133,7 @@ describe('number-spinner', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallowMount(NumberSpinner, {
+    const wrapper = shallowMount(NumberSpinner, {
       propsData: {
         min: 1,
         max: 10,

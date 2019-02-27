@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import Spinner from '../spinner'
 
 describe('spinner', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Spinner, {
+    const wrapper = shallowMount(Spinner, {
       propsData: {},
     })
 
@@ -25,7 +20,7 @@ describe('spinner', () => {
   })
 
   test('size', () => {
-    wrapper = shallowMount(Spinner, {
+    const wrapper = shallowMount(Spinner, {
       propsData: {},
     })
 
@@ -40,7 +35,7 @@ describe('spinner', () => {
   })
 
   test('color', () => {
-    wrapper = shallowMount(Spinner, {
+    const wrapper = shallowMount(Spinner, {
       propsData: {},
     })
 
@@ -55,7 +50,7 @@ describe('spinner', () => {
   })
 
   test('icon font class should be computed correctly', () => {
-    wrapper = shallowMount(Spinner, {
+    const wrapper = shallowMount(Spinner, {
       propsData: {},
     })
 

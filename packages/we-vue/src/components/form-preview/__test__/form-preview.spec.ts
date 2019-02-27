@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import FormPreview from '../form-preview'
 
 describe('preview', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(FormPreview, {
+    const wrapper = shallowMount(FormPreview, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('preview', () => {
   })
 
   test('render title and value', () => {
-    wrapper = shallowMount(FormPreview, {
+    const wrapper = shallowMount(FormPreview, {
       propsData: {
         title: 'test-title',
         value: 'test-value',
@@ -33,7 +28,7 @@ describe('preview', () => {
   })
 
   test('render dataItems', () => {
-    wrapper = shallowMount(FormPreview, {
+    const wrapper = shallowMount(FormPreview, {
       propsData: {
         dataItems: [
           {
@@ -60,7 +55,7 @@ describe('preview', () => {
   test('test buttons', () => {
     const actionSpy = jest.fn()
 
-    wrapper = shallowMount(FormPreview, {
+    const wrapper = shallowMount(FormPreview, {
       propsData: {
         buttons: [
           {

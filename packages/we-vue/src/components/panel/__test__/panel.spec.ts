@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import Panel from '../panel'
 
 describe('panel', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Panel, {
+    const wrapper = shallowMount(Panel, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('panel', () => {
   })
 
   test('render with title', () => {
-    wrapper = shallowMount(Panel, {
+    const wrapper = shallowMount(Panel, {
       propsData: {
         title: 'test-title',
       },

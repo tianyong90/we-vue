@@ -2,13 +2,8 @@ import { shallowMount, mount } from '@vue/test-utils'
 import Flex from '../flex'
 
 describe('flex', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Flex, {
+    const wrapper = mount(Flex, {
       propsData: {},
     })
 
@@ -19,7 +14,7 @@ describe('flex', () => {
   })
 
   test('style should be computed correctly', () => {
-    wrapper = shallowMount(Flex, {
+    const wrapper = shallowMount(Flex, {
       propsData: {
       },
     })

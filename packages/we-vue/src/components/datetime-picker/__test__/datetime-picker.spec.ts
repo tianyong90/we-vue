@@ -6,16 +6,10 @@ const testTime = '12:00'
 const testDate = new Date('2018/01/01 19:00')
 
 describe('datetime-picker', () => {
-  let wrapper
-
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create datetime picker', () => {
     let date = new Date()
 
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
         type: 'datetime',
@@ -28,7 +22,7 @@ describe('datetime-picker', () => {
   })
 
   test('create date picker', () => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
         type: 'date',
@@ -40,7 +34,7 @@ describe('datetime-picker', () => {
   })
 
   test('create time picker', () => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
         type: 'time',
@@ -52,7 +46,7 @@ describe('datetime-picker', () => {
   })
 
   test('test open and close method', () => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       propsData: {},
     })
 
@@ -66,7 +60,7 @@ describe('datetime-picker', () => {
   })
 
   test('test getMonthEndDay method', () => {
-    wrapper = mount(DatetimePicker)
+    const wrapper = mount(DatetimePicker)
 
     expect(wrapper.vm.getMonthEndDay(2018, 1)).toBe(31)
     expect(wrapper.vm.getMonthEndDay(2016, 1)).toBe(31)
@@ -77,7 +71,7 @@ describe('datetime-picker', () => {
   })
 
   test('test getTrueValue method', () => {
-    wrapper = mount(DatetimePicker)
+    const wrapper = mount(DatetimePicker)
 
     expect(wrapper.vm.getTrueValue('1')).toBe(1)
     expect(wrapper.vm.getTrueValue('01')).toBe(1)
@@ -87,7 +81,7 @@ describe('datetime-picker', () => {
   })
 
   test('onConfirm', done => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       propsData: {},
     })
 
@@ -104,7 +98,7 @@ describe('datetime-picker', () => {
   })
 
   test('onCancel', done => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       propsData: {},
     })
 
@@ -121,7 +115,7 @@ describe('datetime-picker', () => {
   })
 
   test('drag time picker', async () => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -157,7 +151,7 @@ describe('datetime-picker', () => {
 
   // FIXME:
   test.skip('drag datetime picker', async () => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
         type: 'datetime',
@@ -194,7 +188,7 @@ describe('datetime-picker', () => {
 
   // FIXME:
   test.skip('drag date picker', async () => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
         type: 'date',
@@ -222,7 +216,7 @@ describe('datetime-picker', () => {
   })
 
   test('watch value change', () => {
-    wrapper = mount(DatetimePicker, {
+    const wrapper = mount(DatetimePicker, {
       propsData: {
         type: 'date',
         value: testDate,

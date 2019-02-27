@@ -2,13 +2,8 @@ import { shallowMount, mount } from '@vue/test-utils'
 import Popup from '../popup'
 
 describe('popup', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Popup, {
+    const wrapper = mount(Popup, {
       propsData: {},
     })
 
@@ -17,7 +12,7 @@ describe('popup', () => {
   })
 
   test('create a popup that is visible', () => {
-    wrapper = mount(Popup, {
+    const wrapper = mount(Popup, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -30,7 +25,7 @@ describe('popup', () => {
   })
 
   test('computed style', () => {
-    wrapper = shallowMount(Popup, {
+    const wrapper = shallowMount(Popup, {
       propsData: {
         height: 100,
       },

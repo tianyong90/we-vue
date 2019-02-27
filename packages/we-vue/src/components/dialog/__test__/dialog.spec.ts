@@ -9,8 +9,6 @@ describe('test dialog api', () => {
   })
 
   test('create a dialog', async () => {
-    const callback = jest.fn()
-
     DialogApi.close()
 
     DialogApi({
@@ -18,7 +16,7 @@ describe('test dialog api', () => {
       message: 'test message',
       skin: 'ios',
       showCancelBtn: true,
-    }, callback)
+    })
 
     await later()
 
@@ -83,14 +81,8 @@ describe('test dialog api', () => {
 })
 
 describe('dialog component', () => {
-  let wrapper
-
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Dialog, {
+    const wrapper = mount(Dialog, {
       propsData: {},
     })
 
@@ -101,7 +93,7 @@ describe('dialog component', () => {
   test('click cancel button', () => {
     const callback = jest.fn()
 
-    wrapper = mount(Dialog, {
+    const wrapper = mount(Dialog, {
       propsData: {
         'visible.sync': true,
         callback: callback,
@@ -117,7 +109,7 @@ describe('dialog component', () => {
   test('click confirm button', () => {
     const callback = jest.fn()
 
-    wrapper = mount(Dialog, {
+    const wrapper = mount(Dialog, {
       propsData: {
         'visible.sync': true,
         callback: callback,

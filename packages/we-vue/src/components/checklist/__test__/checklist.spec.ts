@@ -8,13 +8,8 @@ const options = [
 ]
 
 describe('checklist', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Checklist, {
+    let wrapper = shallowMount(Checklist, {
       propsData: {
         options: options,
       },
@@ -38,7 +33,7 @@ describe('checklist', () => {
   })
 
   test('options', () => {
-    wrapper = mount(Checklist, {
+    const wrapper = mount(Checklist, {
       propsData: {
         value: ['value2'],
         options: options,
@@ -54,7 +49,7 @@ describe('checklist', () => {
   })
 
   test('max selection', () => {
-    wrapper = mount(Checklist, {
+    let wrapper = mount(Checklist, {
       attachToDocument: true,
       propsData: {
         max: 2,
@@ -78,7 +73,7 @@ describe('checklist', () => {
   })
 
   test('click option', () => {
-    wrapper = mount(Checklist, {
+    const wrapper = mount(Checklist, {
       attachToDocument: true,
       propsData: {
         options: [
@@ -107,7 +102,7 @@ describe('checklist', () => {
   })
 
   test('watch currentValue', () => {
-    wrapper = shallowMount(Checklist, {
+    const wrapper = shallowMount(Checklist, {
       propsData: {
         max: 2,
         options: options,
@@ -128,7 +123,7 @@ describe('checklist', () => {
   })
 
   test('watch value', () => {
-    wrapper = shallowMount(Checklist, {
+    const wrapper = shallowMount(Checklist, {
       propsData: {
         options: options,
       },

@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import Loadmore from '../loadmore'
 
 describe('loadmore', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Loadmore, {
+    const wrapper = shallowMount(Loadmore, {
       propsData: {},
     })
 
@@ -18,7 +13,7 @@ describe('loadmore', () => {
   })
 
   test('text', () => {
-    wrapper = shallowMount(Loadmore, {
+    const wrapper = shallowMount(Loadmore, {
       propsData: {
         text: 'test',
       },
