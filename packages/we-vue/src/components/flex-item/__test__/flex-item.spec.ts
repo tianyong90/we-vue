@@ -1,10 +1,12 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { shallowMount, mount, Wrapper } from '@vue/test-utils'
 import Flex from '../../flex'
 import FlexItem from '../flex-item'
+import { Vue } from 'vue/types/vue'
+import { ExtractVue } from '../../../utils/mixins'
 
 describe('flex-item', () => {
-  let parentWrapper
-  let wrapper
+  let parentWrapper: Wrapper<Vue>
+  let wrapper: Wrapper<Vue>
   afterEach(() => {
     wrapper && wrapper.destroy()
     parentWrapper && parentWrapper.destroy()
@@ -50,11 +52,11 @@ describe('flex-item', () => {
       propsData: {},
     })
 
-    let wrapper = shallowMount(FlexItem, {
+    let wrapper = mount(FlexItem, {
       provide: {
         flexComponent: parentWrapper.vm,
       },
-    })
+    }) as Wrapper<ExtractVue<[typeof FlexItem]>>
 
     let computedStyle = {
       flex: wrapper.vm.flex,

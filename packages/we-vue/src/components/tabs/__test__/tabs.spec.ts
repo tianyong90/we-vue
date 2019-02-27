@@ -68,6 +68,8 @@ describe('tab', () => {
       },
     })
 
-    const tabItem = wrapper.find(Tab)
+    // TODO
+    const tabItems = wrapper.findAll(Tab)
+    expect(tabItems.length).toBe(2)
   })
 })

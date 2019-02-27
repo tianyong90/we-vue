@@ -23,7 +23,7 @@ describe('toast api', () => {
 
     setTimeout(() => {
       expect(document.querySelector('.weui-toast')).toBeTruthy()
-      expect(document.querySelector('.weui-toast__content').textContent).toBe('test')
+      expect(document.querySelector('.weui-toast__content')!.textContent).toBe('test')
     }, 200)
   })
 
@@ -106,13 +106,8 @@ describe('toast api', () => {
 })
 
 describe('toast', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Toast, {
+    const wrapper = shallowMount(Toast, {
       propsData: {},
     })
 
@@ -121,7 +116,7 @@ describe('toast', () => {
   })
 
   test('text toast', () => {
-    wrapper = shallowMount(Toast, {
+    const wrapper = shallowMount(Toast, {
       attachToDocument: true,
       propsData: {
         type: 'text',
