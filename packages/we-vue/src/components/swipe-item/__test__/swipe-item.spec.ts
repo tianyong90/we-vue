@@ -1,15 +1,10 @@
 import { mount } from '@vue/test-utils'
-import Swipe from '../swipe'
+import Swipe from '../../swipe'
 import SwipeItem from '../swipe-item'
 
 describe('swipe item', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Swipe, {
+    const wrapper = mount(Swipe, {
       attachToDocument: true,
       slots: {
         default: [SwipeItem, SwipeItem],

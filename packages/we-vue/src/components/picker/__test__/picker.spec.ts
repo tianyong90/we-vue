@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import Picker from '../picker'
-import PickerColumn from '../picker/picker-column'
-import { slowVerticalDrag } from '../utils'
+import PickerColumn from '../../picker/picker-column'
+import { slowVerticalDrag } from '@/test/unit/utils'
 
 const testSingleColumn = [
   {

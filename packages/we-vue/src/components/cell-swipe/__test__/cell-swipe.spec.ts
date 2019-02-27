@@ -1,7 +1,7 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import CellSwipe from '../cell-swipe'
-import CellSwipeButtonComponent from '../component-mocks/cell-swipe-button'
-import { horizontalDrag } from '../utils'
+import CellSwipeButtonComponent from './cell-swipe-button.vue'
+import { horizontalDrag } from '@/test/unit/utils'
 
 describe('cell-swipe', () => {
   let wrapper

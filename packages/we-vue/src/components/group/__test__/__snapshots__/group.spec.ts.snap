@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`group create 1`] = `
+<div>
+  <!---->
+  <div class="weui-cells"></div>
+</div>
+`;
+
+exports[`group create with title 1`] = `
+<div>
+  <div class="weui-cells__title">test</div>
+  <div class="weui-cells"></div>
+</div>
+`;

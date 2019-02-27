@@ -1,17 +1,12 @@
 import { mount } from '@vue/test-utils'
 import Switch from '../switch'
-import { horizontalDrag } from '../utils'
+import { horizontalDrag } from '@/test/unit/utils'
 
 const THUMB_STROKE = 20
 
 describe('switch', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = mount(Switch, {
+    const wrapper = mount(Switch, {
       propsData: {},
     })
 
@@ -22,7 +17,7 @@ describe('switch', () => {
   })
 
   test('is-in-cell', () => {
-    wrapper = mount(Switch, {
+    let wrapper = mount(Switch, {
       propsData: {
         isInCell: true,
       },
@@ -45,7 +40,7 @@ describe('switch', () => {
   })
 
   test('click', () => {
-    wrapper = mount(Switch, {
+    let wrapper = mount(Switch, {
       propsData: {
         value: true,
       },
@@ -73,7 +68,7 @@ describe('switch', () => {
   })
 
   test('drag the thumb', () => {
-    wrapper = mount(Switch, {
+    const wrapper = mount(Switch, {
       propsData: {
         value: false,
         disabled: true,
@@ -115,7 +110,7 @@ describe('switch', () => {
   })
 
   test('watch isActive', () => {
-    wrapper = mount(Switch, {
+    const wrapper = mount(Switch, {
       attachToDocument: true,
       data: function () {
         return {
@@ -139,7 +134,7 @@ describe('switch', () => {
   })
 
   test('watch value', () => {
-    wrapper = mount(Switch, {
+    const wrapper = mount(Switch, {
       propsData: {
         value: false,
       },

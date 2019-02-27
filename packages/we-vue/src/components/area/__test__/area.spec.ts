@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import Area from '../area'
-import { slowVerticalDrag } from '../utils'
+import { slowVerticalDrag } from '@/test/unit/utils'
 
 describe('datetime-picker', () => {
   let wrapper

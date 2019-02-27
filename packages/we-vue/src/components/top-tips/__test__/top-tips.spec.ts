@@ -1,6 +1,6 @@
 import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
-import TopTipsApi from '../top-tips'
-import TopTips from '../top-tips/top-tips'
+import TopTipsApi from '../'
+import TopTips from '../top-tips'
 
 describe('test top-tips api', () => {
   beforeEach(() => {

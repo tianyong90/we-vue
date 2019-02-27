@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`spinner color 1`] = `<i class="weui-loading" style="font-size: 17px; color: red;"></i>`;
+
+exports[`spinner create 1`] = `<i class="weui-loading" style="font-size: 17px; color: rgb(170, 170, 170);"></i>`;
+
+exports[`spinner size 1`] = `<i class="weui-loading" style="font-size: 20px; color: rgb(170, 170, 170);"></i>`;

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import Swipe from '../swipe'
-import SwipeItem from '../swipe-item'
-import { dragAndHoldHelper, horizontalDrag, verticalDrag } from '../utils'
+import SwipeItem from '../../swipe-item'
+import { dragAndHoldHelper, horizontalDrag, verticalDrag } from '@/test/unit/utils'
 import faker from 'faker'
 
 describe('swipe', () => {

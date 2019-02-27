@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`radio create 1`] = `
+<div>
+  <!---->
+  <div class="weui-cells weui-cells_radio"><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option1</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option2</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option3</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label></div>
+</div>
+`;
+
+exports[`radio create 2`] = `
+<div>
+  <div class="weui-cells__title">test title</div>
+  <div class="weui-cells weui-cells_radio"><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option1</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option2</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option3</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label></div>
+</div>
+`;
+
+exports[`radio options 1`] = `
+<div>
+  <!---->
+  <div class="weui-cells weui-cells_radio"><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option1</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option2</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label><label class="weui-cell weui-check__label">
+      <div class="weui-cell__bd">
+        <p>option3</p>
+      </div>
+      <div class="weui-cell__ft">
+        <!---->
+      </div>
+    </label></div>
+</div>
+`;

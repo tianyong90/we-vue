@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import DialogApi from '../dialog'
-import Dialog from '../dialog/dialog'
-import { later } from '../utils'
+import DialogApi from '../'
+import Dialog from '../dialog'
+import { later } from '@/test/unit/utils'
 
 describe('test dialog api', () => {
   afterEach(() => {

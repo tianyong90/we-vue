@@ -1,6 +1,6 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import Tabs from '../tabs'
-import Tab from '../tab'
+import Tab from '../../tab'
 import { renderToString } from '@vue/server-test-utils'
 
 describe('tabs', () => {

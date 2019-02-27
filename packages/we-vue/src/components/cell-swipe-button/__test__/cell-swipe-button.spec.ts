@@ -2,13 +2,8 @@ import { shallowMount } from '@vue/test-utils'
 import CellSwipeButtom from '../cell-swipe-button'
 
 describe('cell-swipe-button', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(CellSwipeButtom, {
+    let wrapper = shallowMount(CellSwipeButtom, {
       propsData: {},
     })
 

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tabbar create 1`] = `<div class="weui-tabbar" style="position: absolute;"></div>`;

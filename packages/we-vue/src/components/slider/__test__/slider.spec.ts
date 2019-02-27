@@ -1,16 +1,11 @@
 import { mount, shallowMount } from '@vue/test-utils'
 import Slider from '../slider'
-import { horizontalDrag } from '../utils'
+import { horizontalDrag } from '@/test/unit/utils'
 import faker from 'faker'
 
 describe('slider', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', () => {
-    wrapper = shallowMount(Slider, {
+    const wrapper = shallowMount(Slider, {
       propsData: {},
     })
 
@@ -36,7 +31,7 @@ describe('slider', () => {
 
   test('compute percent', () => {
     const fakeValue = faker.random.number({ min: 0, max: 100 })
-    wrapper = shallowMount(Slider, {
+    const wrapper = shallowMount(Slider, {
       propsData: {
         value: fakeValue,
       },
@@ -48,7 +43,7 @@ describe('slider', () => {
   })
 
   test('show-value', () => {
-    wrapper = shallowMount(Slider, {
+    const wrapper = shallowMount(Slider, {
       propsData: {
         showValue: true,
       },
@@ -63,7 +58,7 @@ describe('slider', () => {
   })
 
   test('disabled', () => {
-    wrapper = shallowMount(Slider, {
+    const wrapper = shallowMount(Slider, {
       propsData: {
         value: 0,
         disabled: true,
@@ -80,7 +75,7 @@ describe('slider', () => {
   })
 
   test('drag the handler', () => {
-    wrapper = shallowMount(Slider, {
+    const wrapper = shallowMount(Slider, {
       propsData: {
         value: 0,
       },
@@ -101,7 +96,7 @@ describe('slider', () => {
   })
 
   test('click the inner', () => {
-    wrapper = mount(Slider, {
+    const wrapper = mount(Slider, {
       attachToDocument: true,
       propsData: {
         value: 0,

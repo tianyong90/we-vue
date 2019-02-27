@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loadmore create 1`] = `
+<div class="weui-loadmore">
+  <vuecomponent-stub type="default" size="17" color="#aaa"></vuecomponent-stub><span class="weui-loadmore__tips">正在加载</span>
+</div>
+`;
+
+exports[`loadmore text 1`] = `
+<div class="weui-loadmore">
+  <vuecomponent-stub type="default" size="17" color="#aaa"></vuecomponent-stub><span class="weui-loadmore__tips">test</span>
+</div>
+`;

@@ -81,7 +81,7 @@ Toast.success = createMethod('success')
 Toast.fail = createMethod('fail')
 Toast.loading = createMethod('loading')
 
-Toast.close = function (all: boolean): void {
+Toast.close = function (all: boolean = true): void {
   if (queue.length) {
     if (all) {
       queue.forEach(toast => {
