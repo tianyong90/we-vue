@@ -13,6 +13,6 @@ describe('toggleable mixin', () => {
       render: h => h('div'),
     })
 
-    expect(wrapper.props().value).toBe(undefined)
+    expect(wrapper.props().value).toBeUndefined()
   })
 })

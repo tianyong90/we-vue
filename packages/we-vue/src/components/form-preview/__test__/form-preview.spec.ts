@@ -47,7 +47,7 @@ describe('preview', () => {
       },
     })
 
-    expect(wrapper.findAll('.weui-form-preview__item').length).toBe(3)
+    expect(wrapper.findAll('.weui-form-preview__item')).toHaveLength(3)
 
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -69,12 +69,12 @@ describe('preview', () => {
       },
     })
 
-    expect(wrapper.findAll('.weui-form-preview__btn').length).toBe(2)
+    expect(wrapper.findAll('.weui-form-preview__btn')).toHaveLength(2)
 
     expect(wrapper.html()).toMatchSnapshot()
 
     // click the 'OK' button
     wrapper.findAll('.weui-form-preview__btn').at(0).trigger('click')
-    expect(actionSpy).toBeCalled()
+    expect(actionSpy).toHaveBeenCalled()
   })
 })

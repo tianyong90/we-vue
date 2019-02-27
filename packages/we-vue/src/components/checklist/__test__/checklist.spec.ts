@@ -40,7 +40,7 @@ describe('checklist', () => {
       },
     })
 
-    expect(wrapper.findAll('.weui-check__label').length).toBe(3)
+    expect(wrapper.findAll('.weui-check__label')).toHaveLength(3)
 
     expect(wrapper.findAll('.weui-cell__bd p').at(0).text()).toBe('value1')
     expect(wrapper.findAll('.weui-cell__bd p').at(1).text()).toBe('value2')
@@ -113,7 +113,7 @@ describe('checklist', () => {
       currentValue: ['value1'],
     })
 
-    expect(wrapper.emitted().input.length).toBe(2)
+    expect(wrapper.emitted().input).toHaveLength(2)
 
     wrapper.setData({
       currentValue: options,

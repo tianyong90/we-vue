@@ -27,7 +27,7 @@ describe('swipe', () => {
       },
     })
 
-    expect(wrapper.findAll(SwipeItem).length).toBe(1)
+    expect(wrapper.findAll(SwipeItem)).toHaveLength(1)
     expect(wrapper.vm.count).toBe(1)
   })
 

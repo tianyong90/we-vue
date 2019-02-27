@@ -61,6 +61,6 @@ describe('button', () => {
 
     wrapper.trigger('click')
     expect(wrapper.emitted('click')).toBeTruthy()
-    expect(wrapper.emitted('click').length).toBe(1)
+    expect(wrapper.emitted('click')).toHaveLength(1)
   })
 })

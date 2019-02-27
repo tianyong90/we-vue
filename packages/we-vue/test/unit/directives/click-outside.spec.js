@@ -9,11 +9,11 @@ function bootstrap () {
     value: jest.fn(),
   }
 
-  global.document.body.addEventListener = jest.fn((eventName, eventHandler, options) => {
+  jest.spyOn(global.document.body, 'addEventListener').mockImplementation((eventName, eventHandler, options) => {
     registeredHandler = eventHandler
   })
 
-  global.document.body.removeEventListener = jest.fn()
+  jest.spyOn(global.document.body, 'removeEventListener')
 
   ClickOutside.inserted(el, binding)
 
@@ -35,10 +35,10 @@ describe('click-outside', () => {
   test('should register and unregister handler', () => {
     const { registeredHandler, el } = bootstrap()
 
-    expect(global.document.body.addEventListener).toBeCalledWith('click', registeredHandler, true)
+    expect(global.document.body.addEventListener).toHaveBeenCalledWith('click', registeredHandler, true)
 
     ClickOutside.unbind(el)
-    expect(global.document.body.removeEventListener).toBeCalledWith('click', registeredHandler, true)
+    expect(global.document.body.removeEventListener).toHaveBeenCalledWith('click', registeredHandler, true)
   })
 
   test('callback should be called when click outside', () => {
@@ -52,6 +52,6 @@ describe('click-outside', () => {
 
     registeredHandler(event)
 
-    expect(callback).toBeCalled()
+    expect(callback).toHaveBeenCalled()
   })
 })

@@ -40,7 +40,7 @@ describe('radio', () => {
       },
     })
 
-    expect(wrapper.findAll('.weui-check__label').length).toBe(3)
+    expect(wrapper.findAll('.weui-check__label')).toHaveLength(3)
 
     expect(wrapper.findAll('.weui-cell__bd p').at(0).text()).toBe('option1')
     expect(wrapper.findAll('.weui-cell__bd p').at(1).text()).toBe('option2')

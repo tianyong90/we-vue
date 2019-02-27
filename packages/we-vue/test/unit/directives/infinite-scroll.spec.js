@@ -41,7 +41,7 @@ describe('infinite-scroll', () => {
 
     setTimeout(() => {
       const item = wrapper.findAll('.list-item')
-      expect(item.length).toEqual(3)
+      expect(item).toHaveLength(3)
 
       expect(wrapper.vm.onLoadMore).toHaveBeenCalledTimes(1)
       done()

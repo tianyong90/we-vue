@@ -11,7 +11,7 @@ describe('swipe item', () => {
       },
     })
 
-    expect(wrapper.findAll(SwipeItem).length).toBe(2)
+    expect(wrapper.findAll(SwipeItem)).toHaveLength(2)
     expect(wrapper.find(SwipeItem).classes()).toContain('wv-swipe-item')
 
     expect(wrapper.html()).toMatchSnapshot()

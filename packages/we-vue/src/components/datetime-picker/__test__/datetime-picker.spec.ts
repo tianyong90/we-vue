@@ -18,7 +18,7 @@ describe('datetime-picker', () => {
     })
 
     expect(wrapper.name()).toBe('wv-datetime-picker')
-    expect(wrapper.findAll('.weui-picker__group').length).toBe(5)
+    expect(wrapper.findAll('.weui-picker__group')).toHaveLength(5)
   })
 
   test('create date picker', () => {
@@ -30,7 +30,7 @@ describe('datetime-picker', () => {
     })
 
     expect(wrapper.name()).toBe('wv-datetime-picker')
-    expect(wrapper.findAll('.weui-picker__group').length).toBe(3)
+    expect(wrapper.findAll('.weui-picker__group')).toHaveLength(3)
   })
 
   test('create time picker', () => {
@@ -42,7 +42,7 @@ describe('datetime-picker', () => {
     })
 
     expect(wrapper.name()).toBe('wv-datetime-picker')
-    expect(wrapper.findAll('.weui-picker__group').length).toBe(2)
+    expect(wrapper.findAll('.weui-picker__group')).toHaveLength(2)
   })
 
   test('test open and close method', () => {

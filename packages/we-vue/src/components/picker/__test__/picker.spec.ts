@@ -40,9 +40,9 @@ describe('picker', () => {
       },
     })
 
-    expect(wrapper.findAll(PickerColumn).length).toBe(1)
+    expect(wrapper.findAll(PickerColumn)).toHaveLength(1)
 
-    expect(wrapper.vm.getColumnOptions(0).length).toBe(3)
+    expect(wrapper.vm.getColumnOptions(0)).toHaveLength(3)
     expect(wrapper.vm.getValues()).toEqual([1])
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -57,10 +57,10 @@ describe('picker', () => {
       },
     })
 
-    expect(wrapper.findAll(PickerColumn).length).toBe(2)
+    expect(wrapper.findAll(PickerColumn)).toHaveLength(2)
 
-    expect(wrapper.vm.getColumnOptions(0).length).toBe(3)
-    expect(wrapper.vm.getColumnOptions(1).length).toBe(2)
+    expect(wrapper.vm.getColumnOptions(0)).toHaveLength(3)
+    expect(wrapper.vm.getColumnOptions(1)).toHaveLength(2)
     expect(wrapper.vm.getValues()).toEqual([1, 'yes'])
     expect(wrapper.html()).toMatchSnapshot()
   })

@@ -74,7 +74,7 @@ describe('textarea', () => {
       },
     })
 
-    expect(wrapper.vm.internalValue.length).toBe(2)
+    expect(wrapper.vm.internalValue).toHaveLength(2)
     expect(wrapper.vm.internalValue).toBe('te')
   })
 

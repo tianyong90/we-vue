@@ -8,7 +8,7 @@ describe('cell-swipe', () => {
   const CellSwipeButtonComponent = Vue.extend({
     render (h: CreateElement): VNode {
       return h(WVCellSwipeButton, 'test')
-    }
+    },
   })
 
   const getRightBtnsWidth = (wrapper: Wrapper<Vue>) => {

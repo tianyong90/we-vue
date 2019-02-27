@@ -32,7 +32,7 @@ describe('test top-tips api', () => {
     expect(instance.visible).toBe(true)
 
     localVue.nextTick(() => {
-      expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
+      expect(document.querySelectorAll('.weui-toptips')).toHaveLength(1)
       expect(document.querySelector('.weui-toptips')!.textContent).toBe('test')
     })
   })
@@ -60,7 +60,7 @@ describe('test top-tips api', () => {
         message: 'foo',
       })
 
-      expect(document.querySelectorAll('.weui-toptips').length).toBe(1)
+      expect(document.querySelectorAll('.weui-toptips')).toHaveLength(1)
     })
   })
 })

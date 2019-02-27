@@ -13,8 +13,8 @@ describe('routable mixin', () => {
       render: h => h('div'),
     })
 
-    expect(wrapper.props().to).toBe(undefined)
-    expect(wrapper.props().url).toBe(undefined)
+    expect(wrapper.props().to).toBeUndefined()
+    expect(wrapper.props().url).toBeUndefined()
     expect(wrapper.props().replace).toBe(false)
   })
 
@@ -79,7 +79,7 @@ describe('routable mixin', () => {
     wrapper.vm.routeLink()
 
     expect(window.location.hash).toBe('#test')
-    expect(window.history.length).toBe(length)
+    expect(window.history).toHaveLength(length)
     window.location.hash = ''
   })
 })

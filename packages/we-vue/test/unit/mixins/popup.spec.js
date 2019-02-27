@@ -50,7 +50,7 @@ describe('mixins/popup', () => {
 
     wrapper.vm.open()
 
-    expect(wrapper.emitted('update:visible').length).toBe(1)
+    expect(wrapper.emitted('update:visible')).toHaveLength(1)
     expect(wrapper.emitted('update:visible')[0]).toEqual([true])
   })
 
