@@ -1,5 +1,8 @@
 module.exports = {
   root: false,
+  globals: {
+    '__WE_VUE_VERSION__': true
+  },
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2017,
@@ -10,14 +13,17 @@ module.exports = {
   },
   extends: [
     'standard',
-    'plugin:vue/strongly-recommended'
+    'plugin:vue/strongly-recommended',
+    'plugin:jest/recommended'
   ],
   env: {
     es6: true,
-    browser: true
+    browser: true,
+    'jest/globals': true
   },
   // required to lint *.vue files
   plugins: [
+    'jest',
     '@typescript-eslint',
     'vue'
   ],
@@ -45,6 +51,12 @@ module.exports = {
     }],
     'vue/require-prop-types': 'off',
     'comma-dangle': ['warn', 'always-multiline'],
+    'jest/no-large-snapshots': 'warn',
+    'jest/prefer-spy-on': 'warn',
+    'jest/prefer-to-be-null': 'warn',
+    'jest/prefer-to-be-undefined': 'warn',
+    'jest/prefer-to-contain': 'warn',
+    'jest/prefer-to-have-length': 'warn',
   },
   overrides: [
     {

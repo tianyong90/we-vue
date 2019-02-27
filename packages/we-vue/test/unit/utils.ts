@@ -1,8 +1,14 @@
 import Vue from 'vue'
-import { TransitionStub, TransitionGroupStub } from '@vue/test-utils'
+import { Wrapper } from '@vue/test-utils'
 import lolex from 'lolex'
 
 Vue.config.silent = true
+
+type MyTouchEvent = CustomEvent & {
+  touches?: Array<any>
+  targetTouches?: Array<any>
+  changedTouches?: Array<any>
+}
 
 /**
  * 触发一个 touch 事件
@@ -12,7 +18,7 @@ Vue.config.silent = true
  * @param x
  * @param y
  */
-export function triggerTouch (wrapper, eventName, x, y) {
+export function triggerTouch (wrapper: any, eventName: string, x: number, y: number): void {
   const el = wrapper.element ? wrapper.element : wrapper
   const touch = {
     identifier: Date.now(),
@@ -27,7 +33,7 @@ export function triggerTouch (wrapper, eventName, x, y) {
     force: 0.5,
   }
 
-  const event = document.createEvent('CustomEvent')
+  const event: MyTouchEvent = document.createEvent('CustomEvent')
   event.initCustomEvent(eventName, true, true, {})
   event.touches = [touch]
   event.targetTouches = [touch]
@@ -43,7 +49,7 @@ export function triggerTouch (wrapper, eventName, x, y) {
  * @param startY
  * @param endY
  */
-export function verticalDrag (el, startY = 0, endY) {
+export function verticalDrag (el: HTMLElement, startY = 0, endY: number): void {
   triggerTouch(el, 'touchstart', 0, startY)
   triggerTouch(el, 'touchmove', 0, (startY + endY) / 4)
   triggerTouch(el, 'touchmove', 0, (startY + endY) / 3)
@@ -59,7 +65,7 @@ export function verticalDrag (el, startY = 0, endY) {
  * @param startX
  * @param endX
  */
-export function horizontalDrag (el, startX = 0, endX) {
+export function horizontalDrag (el: HTMLElement|Wrapper<Vue>, startX = 0, endX: number): void {
   triggerTouch(el, 'touchstart', startX, 0)
   triggerTouch(el, 'touchmove', (startX + endX) / 4, 0)
   triggerTouch(el, 'touchmove', (startX + endX) / 3, 0)
@@ -79,7 +85,7 @@ export function horizontalDrag (el, startX = 0, endX) {
  * @param startY
  * @param endY
  */
-export function slowVerticalDrag (el, startY, endY) {
+export function slowVerticalDrag (el: HTMLElement|Wrapper<Vue>, startY: number, endY: number): void {
   let clock = lolex.install({
     shouldAdvanceTime: true,
   })
@@ -104,20 +110,12 @@ export function slowVerticalDrag (el, startY, endY) {
  * @param x
  * @param y
  */
-export function dragAndHoldHelper (el, x, y) {
+export function dragAndHoldHelper (el: HTMLElement|Wrapper<Vue>, x: number, y: number): void {
   triggerTouch(el, 'touchstart', 0, 0)
   triggerTouch(el, 'touchmove', x / 4, y / 4)
   triggerTouch(el, 'touchmove', x / 3, y / 3)
   triggerTouch(el, 'touchmove', x / 2, y / 2)
   triggerTouch(el, 'touchmove', x, y)
-}
-
-export function transitionStub () {
-  Vue.component(TransitionStub)
-}
-
-export function transitionGroupStub () {
-  Vue.component(TransitionGroupStub)
 }
 
 /**
@@ -126,7 +124,7 @@ export function transitionGroupStub () {
  * @param delay
  * @returns {Promise<any>}
  */
-export function later (delay) {
+export function later (delay: number): Promise<any> {
   return new Promise(resolve => {
     setTimeout(resolve, delay)
   })

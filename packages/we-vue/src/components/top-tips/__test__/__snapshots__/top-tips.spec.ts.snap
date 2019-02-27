@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`top-tips component create 1`] = `<div class="weui-toptips weui-toptips_warn"></div>`;
+
+exports[`top-tips component should render message correctlly 1`] = `
+<transition-stub enteractiveclass="weui-animate-fade-in" leaveactiveclass="weui-animate-fade-out">
+  <div class="weui-toptips weui-toptips_warn">test</div>
+</transition-stub>
+`;
