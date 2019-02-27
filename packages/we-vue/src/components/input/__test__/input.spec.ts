@@ -1,7 +1,19 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, mount, Wrapper } from '@vue/test-utils'
 import Input from '../input'
+import { ExtractVue } from '@utils/mixins';
 
 describe('input', () => {
+  type Instance = ExtractVue<typeof Input>
+  let mountFunction: (options: object) => Wrapper<Instance>
+
+  beforeEach(() => {
+    mountFunction = (options = {}) => {
+      return mount(Input, {
+        ...options
+      })
+    }
+  })
+
   test('create', () => {
     const wrapper = shallowMount(Input, {
       propsData: {},
@@ -16,7 +28,7 @@ describe('input', () => {
     const validateSpy = jest.fn()
 
     // use with maxlength
-    let wrapper = shallowMount(Input, {
+    let wrapper = mountFunction({
       propsData: {
         value: '',
         maxlength: 2,
@@ -26,14 +38,14 @@ describe('input', () => {
       },
     })
 
-    wrapper.find('input').element.value = 'test'
+    wrapper.vm.$refs.input.value = 'test'
     wrapper.find('input').trigger('input')
 
     expect(wrapper.vm.currentValue).toBe('te')
     expect(validateSpy).toHaveBeenCalled()
 
     // use with maxlength
-    wrapper = shallowMount(Input, {
+    wrapper = mountFunction({
       propsData: {
         value: '',
       },
@@ -42,7 +54,7 @@ describe('input', () => {
       },
     })
 
-    wrapper.find('input').element.value = 'test'
+    wrapper.vm.$refs.input.value = 'test'
     wrapper.find('input').trigger('input')
 
     expect(wrapper.vm.currentValue).toBe('test')
@@ -52,7 +64,7 @@ describe('input', () => {
     validateSpy.mockClear()
 
     // do not validate on input
-    wrapper = shallowMount(Input, {
+    wrapper = mountFunction({
       propsData: {
         validateMode: {
           onInput: false,
@@ -63,7 +75,7 @@ describe('input', () => {
       },
     })
 
-    wrapper.find('input').element.value = 'test'
+    wrapper.vm.$refs.input.value = 'test'
     wrapper.find('input').trigger('input')
 
     expect(validateSpy).not.toHaveBeenCalled()

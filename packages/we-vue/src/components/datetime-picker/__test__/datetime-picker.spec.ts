@@ -200,6 +200,7 @@ describe('datetime-picker', () => {
 
     await wrapper.vm.$nextTick()
 
+    // @ts-ignore
     const [yearColumn, monthColumn, dateColumn] = wrapper.findAll(
       '.weui-picker__group'
     ).wrappers

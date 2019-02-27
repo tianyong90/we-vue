@@ -49,7 +49,7 @@ export function triggerTouch (wrapper: any, eventName: string, x: number, y: num
  * @param startY
  * @param endY
  */
-export function verticalDrag (el: HTMLElement, startY = 0, endY: number): void {
+export function verticalDrag (el: HTMLElement|Wrapper<Vue>, startY = 0, endY: number): void {
   triggerTouch(el, 'touchstart', 0, startY)
   triggerTouch(el, 'touchmove', 0, (startY + endY) / 4)
   triggerTouch(el, 'touchmove', 0, (startY + endY) / 3)

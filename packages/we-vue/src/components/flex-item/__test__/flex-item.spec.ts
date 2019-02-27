@@ -1,25 +1,20 @@
 import { shallowMount, mount, Wrapper } from '@vue/test-utils'
 import Flex from '../../flex'
 import FlexItem from '../flex-item'
-import { Vue } from 'vue/types/vue'
 import { ExtractVue } from '../../../utils/mixins'
 
 describe('flex-item', () => {
-  let parentWrapper: Wrapper<Vue>
-  let wrapper: Wrapper<Vue>
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-    parentWrapper && parentWrapper.destroy()
-  })
+  type FlexWrapper = Wrapper<ExtractVue<typeof Flex>>
+  type FlexItemWrapper = Wrapper<ExtractVue<typeof FlexItem>>
 
   test('create', () => {
-    parentWrapper = mount(Flex, {
+    const parentWrapper = mount(Flex, {
       propsData: {
         animate: true,
       },
     })
 
-    let wrapper = shallowMount(FlexItem, {
+    const wrapper = shallowMount(FlexItem, {
       provide: {
         flexComponent: parentWrapper.vm,
       },
@@ -32,7 +27,7 @@ describe('flex-item', () => {
   })
 
   test('comput gutter', () => {
-    wrapper = mount(Flex, {
+    const wrapper = mount(Flex, {
       attachToDocument: true,
       propsData: {
         gutter: 10,
@@ -40,25 +35,27 @@ describe('flex-item', () => {
       slots: {
         default: FlexItem,
       },
-    })
+    }) as FlexWrapper
 
-    expect(wrapper.find(FlexItem).vm.gutter).toBe(wrapper.vm.gutter)
+    const _flexItem = wrapper.find(FlexItem) as FlexItemWrapper
+
+    expect(_flexItem.vm.gutter).toBe(wrapper.vm.gutter)
 
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('comput style', () => {
-    parentWrapper = mount(Flex, {
+    const parentWrapper = mount(Flex, {
       propsData: {},
     })
 
-    let wrapper = mount(FlexItem, {
+    const wrapper = mount(FlexItem, {
       provide: {
         flexComponent: parentWrapper.vm,
       },
     }) as Wrapper<ExtractVue<[typeof FlexItem]>>
 
-    let computedStyle = {
+    let computedStyle: {[key: string]: any} = {
       flex: wrapper.vm.flex,
       marginLeft: wrapper.vm.offset,
     }

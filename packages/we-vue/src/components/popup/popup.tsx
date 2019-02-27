@@ -42,11 +42,13 @@ export default mixins<options &
       type: String,
       default: 'weui-mask',
     },
+    backgroundColor: String
   },
 
   computed: {
     style (): object {
       return {
+        backgroundColor: this.backgroundColor,
         height: /^\d+$/.test(this.height.toString()) ? parseInt((this as any).height) + 'px' : (this as any).height,
       }
     },

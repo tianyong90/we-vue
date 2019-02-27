@@ -18,7 +18,7 @@ describe('test dialog api', () => {
       showCancelBtn: true,
     })
 
-    await later()
+    await later(500)
 
     expect(document.querySelector('.weui-dialog')).toBeTruthy()
   })
@@ -29,7 +29,7 @@ describe('test dialog api', () => {
     })
 
     expect(document.querySelector('.weui-dialog')).toBeTruthy()
-    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
+    ;(document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary') as HTMLElement).click()
   })
 
   test('open a confirm dialog, and confirm it', () => {
@@ -38,7 +38,7 @@ describe('test dialog api', () => {
     })
 
     expect(document.querySelector('.weui-dialog')).toBeTruthy()
-    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
+    ;(document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary') as HTMLElement).click()
   })
 
   test('open a confirm dialog, and cancle it', () => {
@@ -47,26 +47,26 @@ describe('test dialog api', () => {
     })
 
     expect(document.querySelector('.weui-dialog')).toBeTruthy()
-    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_default').click()
+    ;(document.querySelector('.weui-dialog__ft>.weui-dialog__btn_default') as HTMLElement).click()
   })
 
   test('open a confirm dialog with callback', () => {
     DialogApi.confirm({
-      callback: action => {
+      callback: (action: string) => {
         expect(action).toBe('confirm')
       },
     })
 
     expect(document.querySelector('.weui-dialog')).toBeTruthy()
-    document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary').click()
+    ;(document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary') as HTMLElement).click()
   })
 
   test('setDefaultOptions method', () => {
     DialogApi.setDefaultOptions({
-      duration: 1000,
+      title: 'foo',
     })
 
-    expect(DialogApi.currentOptions.duration).toBe(1000)
+    expect(DialogApi.currentOptions.title).toBe('foo')
   })
 
   test('resetDefaultOptions method', () => {

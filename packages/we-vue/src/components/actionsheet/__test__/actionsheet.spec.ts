@@ -129,7 +129,7 @@ describe('actionsheet', () => {
 
     wrapper.find('.weui-mask').trigger('click')
 
-    expect(wrapper.vm.currentVisible).toBeFalsy()
+    expect(wrapper.vm.currentValue).toBeFalsy()
 
     jest.resetAllMocks()
 
@@ -144,6 +144,6 @@ describe('actionsheet', () => {
 
     wrapper.find('.weui-mask').trigger('click')
 
-    expect(wrapper.vm.currentVisible).toBeFalsy()
+    expect(wrapper.vm.currentValue).toBeFalsy()
   })
 })

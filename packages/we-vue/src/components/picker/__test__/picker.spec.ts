@@ -1,7 +1,8 @@
-import { mount } from '@vue/test-utils'
+import { mount, Wrapper } from '@vue/test-utils'
 import Picker from '../picker'
 import PickerColumn from '../../picker/picker-column'
 import { slowVerticalDrag } from '@/test/unit/utils'
+import { ExtractVue } from '@utils/mixins';
 
 const testSingleColumn = [
   {
@@ -17,6 +18,9 @@ const testMultiColumn = [
     options: ['yes', 'no'],
   },
 ]
+
+type PickerWrapper = Wrapper<ExtractVue<typeof Picker>>
+type PickerColumnWrapper = Wrapper<ExtractVue<typeof PickerColumn>>
 
 describe('picker', () => {
   test('create', () => {
@@ -328,7 +332,7 @@ describe('picker-column', () => {
         },
       })
 
-      const columnWrapper = wrapper.find(PickerColumn)
+      const columnWrapper = wrapper.find(PickerColumn) as PickerColumnWrapper
 
       slowVerticalDrag(columnWrapper, 0, -34)
       expect(columnWrapper.vm.currentIndex).toBe(1)
@@ -364,7 +368,7 @@ describe('picker-column', () => {
       },
     })
 
-    const columnWrapper = wrapper.find(PickerColumn)
+    const columnWrapper = wrapper.find(PickerColumn) as PickerColumnWrapper
 
     const option1 = wrapper.findAll('.weui-picker__item').at(1)
     option1.trigger('click')
@@ -420,7 +424,7 @@ describe('picker-column', () => {
       },
     })
 
-    const pickerColumnWrapper = wrapper.find(PickerColumn)
+    const pickerColumnWrapper = wrapper.find(PickerColumn) as PickerColumnWrapper
 
     pickerColumnWrapper.vm.setIndex(4)
 
@@ -442,7 +446,7 @@ describe('picker-column', () => {
       },
     })
 
-    const pickerColumnWrapper = wrapper.find(PickerColumn)
+    const pickerColumnWrapper = wrapper.find(PickerColumn) as PickerColumnWrapper
 
     pickerColumnWrapper.setProps({
       defaultIndex: 1,
@@ -452,7 +456,7 @@ describe('picker-column', () => {
   })
 
   test('test setValue method', () => {
-    const wrapper = mount(Picker, {
+    const wrapper: PickerWrapper = mount(Picker, {
       attachToDocument: true,
       propsData: {
         visible: true,
@@ -465,7 +469,7 @@ describe('picker-column', () => {
       },
     })
 
-    const pickerColumnWrapper = wrapper.find(PickerColumn)
+    const pickerColumnWrapper = wrapper.find(PickerColumn) as PickerColumnWrapper
 
     const spy = jest.spyOn(pickerColumnWrapper.vm, 'setIndex')
 

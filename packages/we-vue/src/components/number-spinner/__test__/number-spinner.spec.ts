@@ -34,7 +34,7 @@ describe('number-spinner', () => {
       },
     })
 
-    wrapper.vm.$refs.input.value = 2
+    wrapper.vm.$refs.input.value = '2'
 
     wrapper.find('input').trigger('change')
 
@@ -49,11 +49,10 @@ describe('number-spinner', () => {
       },
     })
 
-    const mockEvent = {
-      preventDefault: jest.fn(),
-    }
+    const mockEvent = new Event('paste')
+    jest.spyOn(mockEvent, 'preventDefault')
 
-    wrapper.vm.onPaste(mockEvent)
+    wrapper.vm.onPaste(mockEvent as ClipboardEvent)
 
     expect(mockEvent.preventDefault).toHaveBeenCalled()
   })
