@@ -42,7 +42,7 @@ export default mixins<options &
       type: String,
       default: 'weui-mask',
     },
-    backgroundColor: String
+    backgroundColor: String,
   },
 
   computed: {

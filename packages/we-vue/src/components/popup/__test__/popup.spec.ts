@@ -9,7 +9,7 @@ describe('popup', () => {
   beforeEach(() => {
     mountFunction = (options = {}) => {
       return mount(Popup, {
-        ...options
+        ...options,
       })
     }
   })

@@ -1,6 +1,6 @@
 import { shallowMount, mount, Wrapper } from '@vue/test-utils'
 import Input from '../input'
-import { ExtractVue } from '@utils/mixins';
+import { ExtractVue } from '@utils/mixins'
 
 describe('input', () => {
   type Instance = ExtractVue<typeof Input>
@@ -9,7 +9,7 @@ describe('input', () => {
   beforeEach(() => {
     mountFunction = (options = {}) => {
       return mount(Input, {
-        ...options
+        ...options,
       })
     }
   })
