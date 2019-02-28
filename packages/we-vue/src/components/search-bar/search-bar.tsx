@@ -130,7 +130,7 @@ export default mixins<options &
           this.$slots.default ||
           <div
             class="weui-cells searchbar-result"
-            vShow={this.show || this.currentValue}
+            vShow={this.show || this.result}
           >
             {
               this.result && this.result.map((item, index) => (

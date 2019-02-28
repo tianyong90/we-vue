@@ -113,15 +113,17 @@ export default {
 
   computed: {
     filterResult () {
-      return this.defaultResult.filter(value =>
-        new RegExp(this.value1, 'i').test(value)
-      )
+      return this.defaultResult.filter(value => {
+        if (!this.value1) return
+        return new RegExp(this.value1, 'i').test(value)
+      })
     },
 
     filterObjectResult () {
-      return this.defaultObjectResult.filter(value =>
-        new RegExp(this.value2, 'i').test(value.name)
-      )
+      return this.defaultObjectResult.filter(value => {
+        if (!this.value2) return
+        return new RegExp(this.value2, 'i').test(value.name)
+      })
     }
   },
 

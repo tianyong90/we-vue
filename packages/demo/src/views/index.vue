@@ -9,10 +9,14 @@
       v-model="keyword"
       :result="filterResult"
     >
-      <wv-group v-show="keyword">
-        <wv-cell v-for="item in filterResult" :key="item.name" :title="item.name" :to="item.path"
-        is-link
-      >
+      <wv-group v-show="keyword && filterResult.length">
+        <wv-cell
+          v-for="item in filterResult"
+          :key="item.name"
+          :title="item.name"
+          :to="item.path"
+          is-link
+        >
           <i class="cell-icon iconfont" :class="'icon-' + item.icon" slot="icon"/>
         </wv-cell>
       </wv-group>
