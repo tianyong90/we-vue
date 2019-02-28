@@ -1,6 +1,6 @@
 import Vue, { Component, DirectiveOptions, PluginFunction } from 'vue'
 
-import './lib'
+// import './lib'
 
 declare const WeVue: WeVue
 export default WeVue
