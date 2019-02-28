@@ -150,7 +150,7 @@ describe('datetime-picker', () => {
   })
 
   // FIXME:
-  test.skip('drag datetime picker', async () => {
+  test('drag datetime picker', async () => {
     const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {
@@ -187,7 +187,7 @@ describe('datetime-picker', () => {
   })
 
   // FIXME:
-  test.skip('drag date picker', async () => {
+  test('drag date picker', async () => {
     const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
       propsData: {

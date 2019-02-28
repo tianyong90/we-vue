@@ -23,7 +23,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!weui)'
+    'node_modules/(?!weui)',
   ],
   transform: {
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
@@ -38,13 +38,7 @@ module.exports = {
     'src/**/*.{js,ts,tsx}',
     '!**/*.d.ts',
   ],
-  // testMatch: [
-  //   '**/test/**/*.js',
-  //   '**/__test__/**/*.spec.js',
-  //   '**/__test__/**/*.spec.ts',
-  // ],
   globals: {
-    // TODO: ts-jest 配置
     __WE_VUE_VERSION__: '3.0.0', // version variable
-  }
+  },
 }

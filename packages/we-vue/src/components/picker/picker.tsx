@@ -205,8 +205,7 @@ export default mixins(
 
     // confirm event handler
     onConfirm (): void {
-      console.log(this.$listeners)
-
+      // TODO: v-model 问题
       // this.$emit('input', this.getValues())
       this.$emit('confirm', this)
       this.isActive = false

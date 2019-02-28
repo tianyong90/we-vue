@@ -44,11 +44,6 @@ module.exports = {
         'allowFirstLine': false
       }
     }],
-    'vue/component-name-in-template-casing': ['error', 'PascalCase', {
-      // TODO
-      // 'registeredComponentsOnly': true,
-      'ignores': []
-    }],
     'vue/require-prop-types': 'off',
     'comma-dangle': ['warn', 'always-multiline'],
     'jest/no-large-snapshots': 'warn',
