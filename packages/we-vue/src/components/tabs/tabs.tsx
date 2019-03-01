@@ -3,12 +3,13 @@
  */
 import Vue from 'vue'
 
+// Utils
+import mixins, { ExtractVue } from '../../utils/mixins'
+import { isDef } from '../../utils'
 import { raf } from '../../utils/raf'
 import { off, on } from '../../utils/event'
 import scrollUtils from '../../utils/scroll'
 
-// Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
 // Mixins
 import Touchable from '../../mixins/touchable'
 
@@ -40,9 +41,24 @@ export default mixins<options &
 
   props: {
     sticky: Boolean,
-    lineWidth: Number,
     swipeable: Boolean,
     animated: Boolean,
+    color: String, // TODO
+    background: String, // TODO
+    titleActiveColor: String, // TODO
+    titleInactiveColor: String, // TODO
+    ellipsis: {
+      type: Boolean,
+      default: true,
+    },
+    lineWidth: {
+      type: Number,
+      default: null,
+    },
+    lineHeight: {
+      type: Number,
+      default: null,
+    },
     active: {
       type: [Number, String],
       default: 0,
@@ -64,10 +80,13 @@ export default mixins<options &
 
   data () {
     return {
+      inited: false,
       tabs: [] as Array<WVTabInstance>,
       position: '' as string,
       currentActive: 0 as number,
-      lineStyle: {} as object,
+      lineStyle: {
+        backgroundColor: this.color,
+      } as object,
       events: {
         resize: false,
         sticky: false,
@@ -79,7 +98,7 @@ export default mixins<options &
   computed: {
     // whether the nav is scrollable
     scrollable (): boolean {
-      return this.tabs.length > this.swipeThreshold
+      return this.tabs.length > this.swipeThreshold || !this.ellipsis
     },
 
     wrapStyle (): object | null {
@@ -98,6 +117,13 @@ export default mixins<options &
           return null
       }
     },
+
+    navStyle (): object {
+      return {
+        borderColor: this.color,
+        background: this.background,
+      }
+    },
   },
 
   watch: {
@@ -105,6 +131,10 @@ export default mixins<options &
       if (val !== this.currentActive) {
         this.correctActive(val)
       }
+    },
+
+    color () {
+      this.setLine()
     },
 
     tabs () {
@@ -118,7 +148,7 @@ export default mixins<options &
       this.setLine()
 
       // scroll to correct position
-      if (this.position === 'page-top' || this.position === 'content-bottom') {
+      if (this.position === 'top' || this.position === 'bottom') {
         scrollUtils.setScrollTop(window, scrollUtils.getElementTop(this.$el))
       }
     },
@@ -133,20 +163,11 @@ export default mixins<options &
   },
 
   mounted () {
-    this.correctActive(this.active)
-    this.setLine()
-
-    this.$nextTick(() => {
-      this.handlers(true)
-      this.scrollIntoView(true)
-    })
+    this.onShow()
   },
 
   activated () {
-    this.$nextTick(() => {
-      this.handlers(true)
-      this.scrollIntoView(true)
-    })
+    this.onShow()
   },
 
   deactivated () {
@@ -158,6 +179,14 @@ export default mixins<options &
   },
 
   methods: {
+    onShow (): void {
+      this.$nextTick(() => {
+        this.inited = true
+        this.handlers(true)
+        this.scrollIntoView(true)
+      })
+    },
+
     // whether to bind sticky listener
     handlers (bind: boolean): void {
       const { events } = this
@@ -232,14 +261,23 @@ export default mixins<options &
         }
 
         const tab = tabs[this.currentActive] as HTMLElement
-        const width = this.lineWidth || tab.offsetWidth
+        const { lineWidth, lineHeight } = this
+        const width = isDef(lineWidth) ? lineWidth : tab.offsetWidth
         const left = tab.offsetLeft + (tab.offsetWidth - width) / 2
 
-        this.lineStyle = {
+        const lineStyle = {
           width: `${width}px`,
+          backgroundColor: this.color,
           transform: `translateX(${left}px)`,
           transitionDuration: `${this.duration}s`,
+        } as any
+
+        if (isDef(lineHeight)) {
+          lineStyle.height = `${lineHeight}px`
+          lineStyle.borderRadius = `${lineHeight}px`
         }
+
+        this.lineStyle = lineStyle
       })
     },
 
@@ -365,6 +403,7 @@ export default mixins<options &
                 <div
                   key={index}
                   ref="tabs"
+                  refInFor
                   class={{
                     'wv-tab': true,
                     'wv-tab--active': index === this.currentActive,
@@ -372,7 +411,7 @@ export default mixins<options &
                   }}
                   onClick={() => { this.onClick(index) }}
                 >
-                  <span class="wv-ellipsis" ref="title">
+                  <span class="wv-ellipsis" ref="title" refInFor>
                     { tab.title }
                   </span>
                 </div>

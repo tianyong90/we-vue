@@ -3,7 +3,7 @@ import Vue from 'vue'
 export default Vue.extend({
   data () {
     return {
-      parent: null as any,
+      parent: {} as Vue,
     }
   },
 

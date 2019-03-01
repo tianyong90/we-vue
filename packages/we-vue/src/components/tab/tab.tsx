@@ -1,11 +1,17 @@
 // Utils
-import mixins from '../../utils/mixins'
+import mixins, { ExtractVue } from '../../utils/mixins'
 
 // Mixins
 import findParent from '../../mixins/find-parent'
-import { CreateElement, VNode } from 'vue'
+import Vue, { CreateElement, VNode } from 'vue'
 
-export default mixins(
+interface options extends Vue {
+  parent: any
+}
+
+export default mixins<options &
+  ExtractVue<typeof findParent>
+>(
   findParent,
 ).extend({
   name: 'wv-tab',

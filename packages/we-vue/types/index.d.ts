@@ -1,6 +1,6 @@
 import Vue, { Component, DirectiveOptions, PluginFunction } from 'vue'
 
-// import './lib'
+import './lib'
 
 declare const WeVue: WeVue
 export default WeVue
@@ -9,6 +9,7 @@ export interface WeVue {
   version: string
 }
 
+/* eslint-disable-next-line */
 export type ComponentOrPack = Component & { $_we_vue_subcomponents?: Record<string, ComponentOrPack> }
 
 export interface WeVueUseOptions {
