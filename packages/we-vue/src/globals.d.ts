@@ -48,7 +48,6 @@ declare global {
   export type Dictionary<T> = Record<string, T>
 
   export const __WE_VUE_VERSION__: string
-  export const __REQUIRED_VUE__: string
 }
 
 declare module 'vue/types/vnode' {

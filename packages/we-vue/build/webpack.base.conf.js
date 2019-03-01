@@ -14,14 +14,14 @@ const scssLoaders = [
   { loader: 'css-loader' },
   {
     loader: 'postcss-loader',
-    options: { sourceMap: !isProd }
+    options: { sourceMap: !isProd },
   },
   {
     loader: 'sass-loader',
     options: {
-      implementation: require('sass')
-    }
-  }
+      implementation: require('sass'),
+    },
+  },
 ]
 
 module.exports = {
@@ -29,23 +29,23 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js'
-    }
+      vue$: 'vue/dist/vue.esm.js',
+    },
   },
   node: {
-    fs: 'empty'
+    fs: 'empty',
   },
   stats: {
-    children: false
+    children: false,
   },
   performance: {
-    hints: false
+    hints: false,
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: scssLoaders
+        use: scssLoaders,
       },
       {
         test: /\.js$/,
@@ -53,15 +53,15 @@ module.exports = {
           {
             loader: 'cache-loader',
             options: {
-              cacheDirectory: resolve(`../node_modules/.cache/babel-loader`)
-            }
+              cacheDirectory: resolve(`../node_modules/.cache/babel-loader`),
+            },
           },
           {
             loader: 'thread-loader',
           },
-          'babel-loader'
+          'babel-loader',
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.tsx?$/,
@@ -69,53 +69,52 @@ module.exports = {
           {
             loader: 'cache-loader',
             options: {
-              cacheDirectory: resolve(`../node_modules/.cache/ts-loader`)
-            }
+              cacheDirectory: resolve(`../node_modules/.cache/ts-loader`),
+            },
           },
           {
-            loader: 'thread-loader'
+            loader: 'thread-loader',
           },
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
           },
           {
             loader: 'ts-loader',
             options: {
               transpileOnly: true,
               happyPackMode: true,
-            }
-          }
+            },
+          },
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: path.posix.join('static', 'img/[name].[hash:7].[ext]')
-        }
+          name: path.posix.join('static', 'img/[name].[hash:7].[ext]'),
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: path.posix.join('static', 'fonts/[name].[hash:7].[ext]')
-        }
-      }
-    ]
+          name: path.posix.join('static', 'fonts/[name].[hash:7].[ext]'),
+        },
+      },
+    ],
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin({
-      clearConsole: true
+      clearConsole: true,
     }),
     new ForkTsChecker({
-      checkSyntacticErrors: isProd,
-      vue: true,
+      checkSyntacticErrors: true,
       tslint: false, // TODO
       formatter: 'codeframe',
-      tsconfig: resolve('../tsconfig.json')
+      tsconfig: resolve('../tsconfig.json'),
     }),
-  ]
+  ],
 }
