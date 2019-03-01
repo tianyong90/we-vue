@@ -1,6 +1,6 @@
 {
   "name": "we-vue",
-  "version": "3.0.0-alpha.6",
+  "version": "3.0.0-alpha.7",
   "description": "Vue components based on Vue2.x and weui1.x",
   "keywords": [
     "vue",
@@ -90,11 +90,11 @@
     "eslint-friendly-formatter": "^4.0.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.0.0",
-    "eslint-plugin-jest": "^22.3.0",
     "faker": "^4.1.0",
     "file-loader": "^3.0.1",
     "fork-ts-checker-webpack-plugin": "^0.5.0",
