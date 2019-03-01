@@ -12,6 +12,39 @@
     </div>
 
     <div class="demo-tabs-wrap">
+      <div class="tips">自定义颜色（下划线式）</div>
+      <wv-tabs
+        v-model="activeIndex"
+        color="red"
+        title-active-color="red"
+        title-inactive-color="gray"
+      >
+        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+          <div class="my-content">
+            内容 {{ index }}
+          </div>
+        </wv-tab>
+      </wv-tabs>
+    </div>
+
+    <div class="demo-tabs-wrap">
+      <div class="tips">自定义颜色（卡片式）</div>
+      <wv-tabs
+        v-model="activeIndex"
+        color="red"
+        title-active-color="#fff"
+        title-inactive-color="gray"
+        type="card"
+      >
+        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+          <div class="my-content">
+            内容 {{ index }}
+          </div>
+        </wv-tab>
+      </wv-tabs>
+    </div>
+
+    <div class="demo-tabs-wrap">
       <div class="tips">可滚动</div>
       <wv-tabs>
         <wv-tab v-for="index in 6" :key="index" :title="'标签 ' + index">
@@ -132,5 +165,10 @@ export default {
     text-align: center;
     background-color: #e8e8e8;
   }
+}
+
+// 自定义标签里的图标样式
+.weui-icon-success-no-circle {
+  display: inline-block;
 }
 </style>

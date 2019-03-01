@@ -43,10 +43,10 @@ export default mixins<options &
     sticky: Boolean,
     swipeable: Boolean,
     animated: Boolean,
-    color: String, // TODO
-    background: String, // TODO
-    titleActiveColor: String, // TODO
-    titleInactiveColor: String, // TODO
+    color: String,
+    background: String,
+    titleActiveColor: String,
+    titleInactiveColor: String,
     ellipsis: {
       type: Boolean,
       default: true,
@@ -371,14 +371,61 @@ export default mixins<options &
         title.parentNode && title.parentNode.replaceChild(el, title)
       })
     },
+
+    getTabStyle (item: WVTabInstance, index: number): object {
+      const style = {} as any
+      const { color } = this
+      const active = index === this.currentActive
+      const isCard = this.type === 'card'
+
+      if (color) {
+        if (!item.disabled && isCard && !active) {
+          style.color = color
+        }
+        if (!item.disabled && isCard && active) {
+          style.backgroundColor = color
+        }
+        if (isCard) {
+          style.borderColor = color
+        }
+      }
+
+      const titleColor = active ? this.titleActiveColor : this.titleInactiveColor
+      if (titleColor) {
+        style.color = titleColor
+      }
+
+      return style
+    },
   },
 
   render (h) {
+    const { type, scrollable } = this
+
+    const Nav = this.tabs.map((tab, index) => (
+      <div
+        key={index}
+        ref="tabs"
+        refInFor
+        class={{
+          'wv-tab': true,
+          'wv-tab--active': index === this.currentActive,
+          'wv-tab--disabled': tab.disabled,
+        }}
+        style={this.getTabStyle(tab, index)}
+        onClick={() => { this.onClick(index) }}
+      >
+        <span class="wv-ellipsis" ref="title" refInFor>
+          { tab.title }
+        </span>
+      </div>
+    ))
+
     return (
       <div
         class={[
           'wv-tabs',
-          `wv-tabs--${this.type}`,
+          `wv-tabs--${type}`,
         ]}
       >
         <div
@@ -386,37 +433,20 @@ export default mixins<options &
           style={this.wrapStyle}
           class={{
             'wv-tabs__wrap': true,
-            'wv-tabs__wrap--scrollable': this.scrollable,
-            'wv-hairline--top-bottom': this.type === 'line',
+            'wv-tabs__wrap--scrollable': scrollable,
+            'wv-hairline--top-bottom': type === 'line',
           }}
         >
           <div
             ref="nav"
             class={[
               'wv-tabs__nav',
-              `wv-tabs__nav--${this.type}`,
+              `wv-tabs__nav--${type}`,
             ]}
+            style={this.navStyle}
           >
-            {this.type === 'line' ? <div class="wv-tabs__line" style={this.lineStyle} /> : h() }
-            {
-              this.tabs.map((tab, index) => (
-                <div
-                  key={index}
-                  ref="tabs"
-                  refInFor
-                  class={{
-                    'wv-tab': true,
-                    'wv-tab--active': index === this.currentActive,
-                    'wv-tab--disabled': tab.disabled,
-                  }}
-                  onClick={() => { this.onClick(index) }}
-                >
-                  <span class="wv-ellipsis" ref="title" refInFor>
-                    { tab.title }
-                  </span>
-                </div>
-              ))
-            }
+            {type === 'line' && <div class="wv-tabs__line" style={this.lineStyle} /> }
+            {Nav}
           </div>
         </div>
         <div class="wv-tabs__content" ref="content">
