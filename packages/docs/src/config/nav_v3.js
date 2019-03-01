@@ -105,6 +105,10 @@ export default [
             path: '/doc/v3/action_sheet'
           },
           {
+            title: 'Area',
+            path: '/doc/v3/area'
+          },
+          {
             title: 'DatetimePicker',
             path: '/doc/v3/datetime_picker'
           },

@@ -153,6 +153,14 @@ let v3 = [
     }
   },
   {
+    path: 'v3/area',
+    component: () => import('../markdown/v3/area.md'),
+    meta: {
+      title: 'Area',
+      demo_url: `${demoUrlBase}/area`
+    }
+  },
+  {
     path: 'v3/dialog',
     component: () => import('../markdown/v3/dialog.md'),
     meta: {

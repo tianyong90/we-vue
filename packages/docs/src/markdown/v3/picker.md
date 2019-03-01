@@ -113,19 +113,6 @@ Vue.use(Picker)
 </script>
 ```
 
-### 省市区三级联动
-
-**省市区三级联运示例代码较多，不便于在文档中显示和查看，建议查看[相应示例的源码](https://github.com/tianyong90/we-vue/blob/master/example/pages/picker.vue)**
-
-picker 上注册了下列方法，最常见的使用场景就是在 change 事件中使用它们，以便获取或更改当前 picker 的值（包括获取/设置 column 的值）
-
-- getColumnValue(index)：获取给定列目前被选中的值
-- setColumnValue(index, value)：设定给定列被选中的值，该值必须存在于该列的备选值数组中
-- getColumnValues(index)：获取给定列的备选值数组
-- setColumnValues(index, values)：设定给定列的备选值数组
-- getValues()：获取所有列目前被选中的值（分隔符列除外）
-- setValues(values)：设定所有列被选中的值（分隔符列除外），该值必须存在于对应列的备选值数组中
-
 ## API
 
 - picker
