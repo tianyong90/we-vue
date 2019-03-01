@@ -12,14 +12,13 @@ const release = async () => {
   bumps.forEach(b => {
     versions[b] = semver.inc(currentVersion, b)
   })
-  const bumpChoices = bumps.map(b => ({ name: `${b} (${versions[b]})`, balue: b}))
+  const bumpChoices = bumps.map(b => ({ name: `${b} (${versions[b]})`, value: b}))
 
   function getVersion (answers) {
     return answers.customVersion || versions[answers.bump]
   }
 
   function getNpmTags (version) {
-    console.log(version)
     if (isPreRelease(version)) {
       return ['next', 'latest']
     }
