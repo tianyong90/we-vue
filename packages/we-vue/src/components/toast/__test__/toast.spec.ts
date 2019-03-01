@@ -83,26 +83,17 @@ describe('toast api', () => {
     expect(ToastApi.currentOptions).toEqual(ToastApi.defaultOptions)
   })
 
-  // TODO
-  // test('multiple toast', async () => {
-  //   ToastApi.allowMultiple()
-  //   // close all
-  //   ToastApi.close(true)
-  //
-  //   // await later(500)
-  //
-  //   const toast1 = ToastApi.success('1')
-  //   const toast2 = ToastApi.success('2')
-  //   ToastApi.close()
-  //   // await later(500)
-  //   expect(toast1.visible).toBeFalsy()
-  //   expect(toast2.visible).toBeTruthy()
-  //   ToastApi.close()
-  //   ToastApi.close()
-  //   // await later(500)
-  //   expect(toast2.visible).toBeFalsy()
-  //   ToastApi.allowMultiple(false)
-  // })
+  test('singleton toast', () => {
+    ToastApi.allowMultiple(false)
+    // close all
+    ToastApi.close(true)
+
+    const toast1 = ToastApi.success('1')
+    const toast2 = ToastApi.success('2')
+
+    // 因为是单例，第二次调用时返回前一个实例
+    expect(toast2).toEqual(toast1)
+  })
 })
 
 describe('toast', () => {

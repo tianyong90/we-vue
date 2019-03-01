@@ -12199,9 +12199,9 @@ tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   integrity sha1-1+TdeSRdhUKMTX5IIqeZF5VMooY=
 
 tslint@^5.11.0:
-  version "5.13.0"
-  resolved "http://registry.npm.taobao.org/tslint/download/tslint-5.13.0.tgz#239a2357c36b620d72d86744754b6fc088a25359"
-  integrity sha1-I5ojV8NrYg1y2GdEdUtvwIiiU1k=
+  version "5.13.1"
+  resolved "http://registry.npm.taobao.org/tslint/download/tslint-5.13.1.tgz#fbc0541c425647a33cd9108ce4fd4cd18d7904ed"
+  integrity sha1-+8BUHEJWR6M82RCM5P1M0Y15BO0=
   dependencies:
     babel-code-frame "^6.22.0"
     builtin-modules "^1.1.1"

@@ -61,20 +61,16 @@ export default Vue.extend<options>().extend({
   },
 
   methods: {
-    // TODO: InputEvent types
-    handleInput (event: any) {
+    handleInput (event: InputEvent): void {
       // 当有最大长度属性时，限制过长的输入
-      if (this.maxlength && event.target.value.length >= this.maxlength) {
+      if (this.maxlength && (event.target as HTMLInputElement).value.length >= this.maxlength) {
         this.currentValue = ''
-        this.currentValue = event.target.value.substr(0, this.maxlength)
+        this.currentValue = (event.target as HTMLInputElement).value.substr(0, this.maxlength)
       } else {
-        this.currentValue = event.target.value
+        this.currentValue = (event.target as HTMLInputElement).value
       }
 
-      if (
-        typeof this.validateMode === 'undefined' ||
-        this.validateMode.onInput !== false
-      ) {
+      if (typeof this.validateMode === 'undefined' || this.validateMode.onInput) {
         this.validate()
       }
     },
@@ -160,15 +156,11 @@ export default Vue.extend<options>().extend({
         }}
       >
         <div class="weui-cell__hd">
-          {
-            this.label
-              ? <label
-                class="weui-label"
-                domPropsInnerHTML={this.label}
-                style={{ width: this.labelWidth + 'px' }}
-              />
-              : h()
-          }
+          {this.label && <label
+            class="weui-label"
+            domPropsInnerHTML={this.label}
+            style={{ width: this.labelWidth + 'px' }}
+          />}
         </div>
         <div class="weui-cell__bd">
           <input
@@ -190,9 +182,7 @@ export default Vue.extend<options>().extend({
           />
         </div>
         <div class="weui-cell__ft">
-          { !this.valid
-            ? <WVIcon type="warn" />
-            : h() }
+          { !this.valid && <WVIcon type="warn" /> }
           {this.$slots.ft}
         </div>
       </div>

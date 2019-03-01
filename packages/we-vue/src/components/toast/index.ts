@@ -91,7 +91,6 @@ Toast.close = function (all: boolean = true): void {
     } else if (singleton) {
       queue[0].close()
     } else {
-      // FIXME
       queue.shift()!.close()
     }
   }

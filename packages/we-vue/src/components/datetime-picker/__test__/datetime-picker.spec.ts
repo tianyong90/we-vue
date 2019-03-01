@@ -149,7 +149,6 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.internalValue).toEqual('0:00')
   })
 
-  // FIXME:
   test('drag datetime picker', async () => {
     const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -186,7 +185,6 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.internalValue.getMinutes()).toBe(testDate.getMinutes() + 1)
   })
 
-  // FIXME:
   test('drag date picker', async () => {
     const wrapper = mount(DatetimePicker, {
       attachToDocument: true,
@@ -200,20 +198,19 @@ describe('datetime-picker', () => {
 
     await wrapper.vm.$nextTick()
 
-    // @ts-ignore
     const [yearColumn, monthColumn, dateColumn] = wrapper.findAll(
       '.weui-picker__group'
     ).wrappers
 
     slowVerticalDrag(yearColumn, 0, -34)
-    // slowVerticalDrag(monthColumn, 0, -34)
-    // slowVerticalDrag(dateColumn, 0, -34)
+    slowVerticalDrag(monthColumn, 0, -34)
+    slowVerticalDrag(dateColumn, 0, -34)
 
     expect(wrapper.vm.internalValue.getFullYear()).toEqual(
       testDate.getFullYear() + 1
     )
-    // expect(wrapper.vm.internalValue.getMonth()).toEqual(testDate.getMonth() + 1)
-    // expect(wrapper.vm.internalValue.getDate()).toEqual(testDate.getDate() + 1)
+    expect(wrapper.vm.internalValue.getMonth()).toEqual(testDate.getMonth() + 1)
+    expect(wrapper.vm.internalValue.getDate()).toEqual(testDate.getDate() + 1)
   })
 
   test('watch value change', () => {

@@ -11,7 +11,9 @@
 
 <script>
 // TODO
-// import { Dialog } from 'we-vue'
+// import { WvDialog } from 'we-vue/lib'
+//
+// console.log(WvDialog)
 
 export default {
   data () {

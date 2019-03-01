@@ -11,7 +11,8 @@
     },
     "types": [
       "jest",
-      "faker"
+      "faker",
+      "dom-inputevent"
     ]
   }
 }
