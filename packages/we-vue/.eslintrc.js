@@ -52,6 +52,7 @@ module.exports = {
     'jest/prefer-to-be-undefined': 'warn',
     'jest/prefer-to-contain': 'warn',
     'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect-in-promise': 'off', // TODO: 后期移除此条并优化相关测试代码
   },
   overrides: [
     {
