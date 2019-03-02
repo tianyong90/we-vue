@@ -108,6 +108,8 @@ Toast.allowMultiple = function (allow = true) {
   singleton = !allow
 }
 
+// TODO: 放到 install？
 Vue.prototype.$toast = Toast
 
+export { Toast }
 export default Toast

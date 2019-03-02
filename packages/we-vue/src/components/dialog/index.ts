@@ -91,4 +91,5 @@ Dialog.resetDefaultOptions = function () {
 
 Vue.prototype.$dialog = Dialog
 
+export { Dialog }
 export default Dialog

@@ -79,4 +79,5 @@ TopTips.resetDefaultOptions = function (): void {
 
 Vue.prototype.$toptips = TopTips
 
+export { TopTips }
 export default TopTips
