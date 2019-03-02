@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Footer from '../footer'
 
 describe('footer', () => {
@@ -22,6 +22,28 @@ describe('footer', () => {
 
     expect(wrapper.contains('p.weui-footer__text')).toBeTruthy()
     expect(wrapper.find('p.weui-footer__text').text()).toBe('test')
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  test('render with links', () => {
+    const wrapper = mount(Footer, {
+      propsData: {
+        text: 'test',
+        links: [
+          {
+            text: 'foo',
+            link: 'bar',
+          },
+          {
+            text: 'foo',
+            link: 'bar',
+          },
+        ],
+      },
+    })
+
+    expect(wrapper.findAll('.weui-footer__link')).toHaveLength(2)
 
     expect(wrapper.html()).toMatchSnapshot()
   })

@@ -2,14 +2,22 @@
 
 exports[`footer create 1`] = `
 <div class="weui-footer">
-  <!---->
   <p class="weui-footer__text"></p>
+</div>
+`;
+
+exports[`footer render with links 1`] = `
+<div class="weui-footer">
+  <p class="weui-footer__links">
+    <div class="weui-footer__link">foo</div>
+    <div class="weui-footer__link">foo</div>
+  </p>
+  <p class="weui-footer__text">test</p>
 </div>
 `;
 
 exports[`footer text 1`] = `
 <div class="weui-footer">
-  <!---->
   <p class="weui-footer__text">test</p>
 </div>
 `;

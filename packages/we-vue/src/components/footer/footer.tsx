@@ -6,10 +6,6 @@ import { PropValidator } from 'vue/types/options'
 export default Vue.extend({
   name: 'wv-footer',
 
-  components: {
-    FooterLink,
-  },
-
   props: {
     text: String,
     links: {
@@ -29,13 +25,10 @@ export default Vue.extend({
 
     return (
       <div class="weui-footer">
-        {
-          this.links.length > 0
-            ? <p class="weui-footer__links">
-              {footerLinks}
-            </p>
-            : h()
-        }
+        {this.links.length > 0 &&
+          <p class="weui-footer__links">
+            {footerLinks}
+          </p>}
         <p class="weui-footer__text" domPropsInnerHTML={this.text} />
       </div>
     )
