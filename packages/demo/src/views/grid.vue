@@ -1,53 +1,53 @@
 <template>
   <div class="page">
-    <wv-grid>
-      <wv-grid-item class="demo-grid-item" to="/">
+    <w-grid>
+      <w-grid-item class="demo-grid-item" to="/">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">vue-router 跳转</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" to="/">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" to="/">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">vue-router 跳转</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" to="/">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" to="/">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">vue-router 跳转</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" url="/">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" url="/">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">url 跳转</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" url="/">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" url="/">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">url 跳转</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" url="/">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" url="/">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">url 跳转</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" @click="onClick">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" @click="onClick">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">点击事件</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" @click="onClick">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" @click="onClick">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">点击事件</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item" @click="onClick">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item" @click="onClick">
         <img :src="thumbSmall" slot="icon">
         <span slot="label">点击事件</span>
-      </wv-grid-item>
+      </w-grid-item>
 
-      <wv-grid-item class="demo-grid-item">
+      <w-grid-item class="demo-grid-item">
         <span class="custom-content">自定义内容</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item">
         <span class="custom-content">自定义内容</span>
-      </wv-grid-item>
-      <wv-grid-item class="demo-grid-item">
+      </w-grid-item>
+      <w-grid-item class="demo-grid-item">
         <span class="custom-content">自定义内容</span>
-      </wv-grid-item>
-    </wv-grid>
+      </w-grid-item>
+    </w-grid>
   </div>
 </template>
 

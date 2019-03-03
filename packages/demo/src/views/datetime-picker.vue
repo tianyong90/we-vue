@@ -1,63 +1,63 @@
 <template>
   <div class="page">
-    <wv-group title="基本示例">
-      <wv-cell
+    <w-group title="基本示例">
+      <w-cell
         title="时间"
         :value="demoTime | datetimeFilter('time')"
         is-link
         @click="openPicker('timePicker')"
       />
-      <wv-cell
+      <w-cell
         title="日期"
         :value="demoDate | datetimeFilter('date')"
         is-link
         @click="openPicker('datePicker')"
       />
-      <wv-cell
+      <w-cell
         title="日期时间"
         :value="demoDatetime1 | datetimeFilter('datetime')"
         is-link
         @click="openPicker('datetimePicker')"
       />
-    </wv-group>
+    </w-group>
 
-    <wv-group title="高级示例">
-      <wv-cell
+    <w-group title="高级示例">
+      <w-cell
         title="自定义模板"
         :value="demoDatetime2 | datetimeFilter('datetime')"
         is-link
         @click="openPicker('formatDatetimePicker')"
       />
-      <wv-cell
+      <w-cell
         title="自定义范围"
         :value="demoDatetime3 | datetimeFilter('datetime')"
         is-link
         @click="openPicker('rangeDatetimePicker')"
       />
-    </wv-group>
+    </w-group>
 
-    <wv-datetime-picker
+    <w-datetime-picker
       type="time"
       ref="timePicker"
       v-model="demoTime"
       @confirm="onConfirm"
     />
 
-    <wv-datetime-picker
+    <w-datetime-picker
       type="date"
       ref="datePicker"
       v-model="demoDate"
       @confirm="onConfirm"
     />
 
-    <wv-datetime-picker
+    <w-datetime-picker
       type="datetime"
       ref="datetimePicker"
       v-model="demoDatetime1"
       @confirm="onConfirm"
     />
 
-    <wv-datetime-picker
+    <w-datetime-picker
       type="datetime"
       ref="formatDatetimePicker"
       v-model="demoDatetime2"
@@ -69,7 +69,7 @@
       minute-format="{value}分"
     />
 
-    <wv-datetime-picker
+    <w-datetime-picker
       type="datetime"
       ref="rangeDatetimePicker"
       v-model="demoDatetime3"

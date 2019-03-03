@@ -1,27 +1,27 @@
 <template>
   <div class="page page-with-padding">
-    <wv-circle
+    <w-circle
       class="circle-1"
       :line-width="3"
       :value="12"
-    >12 %</wv-circle>
+    >12 %</w-circle>
 
-    <wv-circle
+    <w-circle
       class="circle-1"
       :line-width="4"
       fill-color="yellow"
       :value="12"
-    >12 %</wv-circle>
+    >12 %</w-circle>
 
-    <wv-slider v-model="sliderValue"/>
+    <w-slider v-model="sliderValue"/>
 
-    <wv-circle
+    <w-circle
       class="circle-2"
       :line-width="5"
       stroke-color="#f44336"
       v-model="sliderValue"
       :diameter="200"
-    >{{ sliderValue }}%</wv-circle>
+    >{{ sliderValue }}%</w-circle>
   </div>
 </template>
 

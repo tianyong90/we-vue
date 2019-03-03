@@ -1,30 +1,30 @@
 <template>
   <div>
-    <wv-group>
-      <wv-textarea
+    <w-group>
+      <w-textarea
         placeholder="请输入文本"
         :rows="1"
         :show-counter="false"
         v-model="content1"
       />
-    </wv-group>
+    </w-group>
 
-    <wv-group>
-      <wv-textarea
+    <w-group>
+      <w-textarea
         placeholder="请输入文本"
         :rows="3"
         v-model="content2"
         :max-length="5"
       />
-    </wv-group>
+    </w-group>
 
-    <wv-group title="标题">
-      <wv-textarea
+    <w-group title="标题">
+      <w-textarea
         placeholder="请输入文本"
         :rows="6"
         v-model="content1"
       />
-    </wv-group>
+    </w-group>
   </div>
 </template>
 

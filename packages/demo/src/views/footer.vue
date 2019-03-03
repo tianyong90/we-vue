@@ -1,9 +1,9 @@
 <template>
   <div class="page">
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org"/>
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links1"/>
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links2"/>
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links3"/>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org"/>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links1"/>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links2"/>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links3"/>
   </div>
 </template>
 

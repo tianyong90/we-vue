@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <wv-loadmore/>
-    <wv-loadmore type="line" text="loading"/>
-    <wv-loadmore type="lineDot" text="loading"/>
+    <w-loadmore/>
+    <w-loadmore type="line" text="loading"/>
+    <w-loadmore type="lineDot" text="loading"/>
   </div>
 </template>
 

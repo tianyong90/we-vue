@@ -2,126 +2,126 @@
   <div>
     <div class="demo-tabs-wrap">
       <div class="tips">基本示例</div>
-      <wv-tabs v-model="activeIndex">
-        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+      <w-tabs v-model="activeIndex">
+        <w-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">自定义颜色（下划线式）</div>
-      <wv-tabs
+      <w-tabs
         v-model="activeIndex"
         color="red"
         title-active-color="red"
         title-inactive-color="gray"
       >
-        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+        <w-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">自定义颜色（卡片式）</div>
-      <wv-tabs
+      <w-tabs
         v-model="activeIndex"
         color="red"
         title-active-color="#fff"
         title-inactive-color="gray"
         type="card"
       >
-        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+        <w-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">可滚动</div>
-      <wv-tabs>
-        <wv-tab v-for="index in 6" :key="index" :title="'标签 ' + index">
+      <w-tabs>
+        <w-tab v-for="index in 6" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">Sticky</div>
-      <wv-tabs sticky>
-        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+      <w-tabs sticky>
+        <w-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">禁用标签</div>
-      <wv-tabs @disabled="onClickDisabled">
-        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index" :disabled="index === 2">
+      <w-tabs @disabled="onClickDisabled">
+        <w-tab v-for="index in 4" :key="index" :title="'标签 ' + index" :disabled="index === 2">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">卡片式标签</div>
-      <wv-tabs type="card">
-        <wv-tab v-for="index in 3" :key="index" :title="'标签 ' + index">
+      <w-tabs type="card">
+        <w-tab v-for="index in 3" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">点击事件</div>
-      <wv-tabs @click="onClick">
-        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+      <w-tabs @click="onClick">
+        <w-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">滑动切换</div>
-      <wv-tabs :active="activeIndex" swipeable>
-        <wv-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
+      <w-tabs :active="activeIndex" swipeable>
+        <w-tab v-for="index in 4" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
 
     <div class="demo-tabs-wrap">
       <div class="tips">自定义标签</div>
-      <wv-tabs :active="activeIndex">
-        <wv-tab v-for="index in 3" :key="index" :title="'标签 ' + index">
+      <w-tabs :active="activeIndex">
+        <w-tab v-for="index in 3" :key="index" :title="'标签 ' + index">
           <div slot="title">
-            <wv-icon type="success-no-circle" /> 标签 {{ index }}
+            <w-icon type="success-no-circle" /> 标签 {{ index }}
           </div>
           <div class="my-content">
             内容 {{ index }}
           </div>
-        </wv-tab>
-      </wv-tabs>
+        </w-tab>
+      </w-tabs>
     </div>
   </div>
 </template>

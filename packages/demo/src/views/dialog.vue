@@ -1,10 +1,10 @@
 <template>
   <div class="page">
-    <wv-radio title="选择皮肤" :options="['ios', 'android']" v-model="skin" />
+    <w-radio title="选择皮肤" :options="['ios', 'android']" v-model="skin" />
 
     <div class="buttons">
-      <wv-button type="primary" @click="showAlert()">Alert</wv-button>
-      <wv-button type="warn" @click="showConfirm()">Confirm</wv-button>
+      <w-button type="primary" @click="showAlert()">Alert</w-button>
+      <w-button type="warn" @click="showConfirm()">Confirm</w-button>
     </div>
   </div>
 </template>

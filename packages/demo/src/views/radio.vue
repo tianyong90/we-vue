@@ -1,5 +1,5 @@
 <template>
-  <wv-radio
+  <w-radio
     title="title"
     v-model="value"
     :options="options"

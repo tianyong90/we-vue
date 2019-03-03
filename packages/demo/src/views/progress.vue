@@ -1,10 +1,10 @@
 <template>
   <div class="page page-with-padding">
-    <wv-progress :percent="percent1" :show-clear="false"/>
-    <wv-progress :percent="percent2" @cancel="onCancel"/>
-    <wv-progress percent="10"/>
+    <w-progress :percent="percent1" :show-clear="false"/>
+    <w-progress :percent="percent2" @cancel="onCancel"/>
+    <w-progress percent="10"/>
 
-    <wv-button type="primary" @click="upload">上传</wv-button>
+    <w-button type="primary" @click="upload">上传</w-button>
   </div>
 </template>
 

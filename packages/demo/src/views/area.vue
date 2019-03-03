@@ -1,18 +1,18 @@
 <template>
   <div class="page">
-    <wv-group title="省市区选择示例">
-      <wv-cell title="默认" is-link @click.native="showPickerDefault"/>
-      <wv-cell title="两列" is-link @click.native="showPickerTwoColumns"/>
-    </wv-group>
+    <w-group title="省市区选择示例">
+      <w-cell title="默认" is-link @click.native="showPickerDefault"/>
+      <w-cell title="两列" is-link @click.native="showPickerTwoColumns"/>
+    </w-group>
 
-    <wv-area
+    <w-area
       :visible.sync="pickerShowDefault"
       :area-list="area"
       @confirm="confirmArea"
       v-model="selectedArea"
     />
 
-    <wv-area
+    <w-area
       :visible.sync="pickerShowTwoColumns"
       :area-list="area"
       value-key="name"

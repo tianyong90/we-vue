@@ -1,37 +1,37 @@
 <template>
   <div class="page">
-    <wv-group title="带说明的列表项">
-      <wv-cell title="标题文字" value="说明文字"/>
-    </wv-group>
+    <w-group title="带说明的列表项">
+      <w-cell title="标题文字" value="说明文字"/>
+    </w-group>
 
-    <wv-group title="带图标、说明的列表项">
-      <wv-cell title="标题文字">
+    <w-group title="带图标、说明的列表项">
+      <w-cell title="标题文字">
         <img :src="imgIcon" slot="icon" class="cell-icon">
         <span slot="ft">说明文字</span>
-      </wv-cell>
-      <wv-cell title="标题文字" value="说明文字">
+      </w-cell>
+      <w-cell title="标题文字" value="说明文字">
         <img :src="imgIcon" slot="icon" class="cell-icon">
-      </wv-cell>
-    </wv-group>
+      </w-cell>
+    </w-group>
 
-    <wv-group title="带跳转的列表项">
-      <wv-cell title="vue-router 链接" is-link to="/"/>
-      <wv-cell title="url 链接" is-link url="http://demo.wevue.org"/>
-    </wv-group>
+    <w-group title="带跳转的列表项">
+      <w-cell title="vue-router 链接" is-link to="/"/>
+      <w-cell title="url 链接" is-link url="http://demo.wevue.org"/>
+    </w-group>
 
-    <wv-group title="带说明、跳转的列表项">
-      <wv-cell title="vue-router 链接" value="to='/'" is-link to="/"/>
-      <wv-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org"/>
-    </wv-group>
+    <w-group title="带说明、跳转的列表项">
+      <w-cell title="vue-router 链接" value="to='/'" is-link to="/"/>
+      <w-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org"/>
+    </w-group>
 
-    <wv-group title="带图标、说明、跳转的列表项">
-      <wv-cell title="vue-router 链接" value="to='/'" is-link to="/">
+    <w-group title="带图标、说明、跳转的列表项">
+      <w-cell title="vue-router 链接" value="to='/'" is-link to="/">
         <img :src="imgIcon" slot="icon" class="cell-icon">
-      </wv-cell>
-      <wv-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org">
+      </w-cell>
+      <w-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org">
         <img :src="imgIcon" slot="icon" class="cell-icon">
-      </wv-cell>
-    </wv-group>
+      </w-cell>
+    </w-group>
   </div>
 </template>
 

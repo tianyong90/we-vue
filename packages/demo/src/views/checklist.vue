@@ -1,13 +1,13 @@
 <template>
   <div>
-    <wv-checklist
+    <w-checklist
       title="基本示例"
       :options="options"
       v-model="checkedItems1"
       @change="onChange"
     />
 
-    <wv-checklist
+    <w-checklist
       title="限制最多选两个"
       :options="options"
       v-model="checkedItems2"
@@ -15,7 +15,7 @@
       @change="onChange"
     />
 
-    <wv-checklist
+    <w-checklist
       title="右对齐"
       align="right"
       :options="options"

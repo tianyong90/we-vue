@@ -1,55 +1,55 @@
 <template>
   <div class="page page-with-padding">
-    <wv-button type="default" @click="popupVisible1 = true">默认弹出层</wv-button>
-    <wv-button type="default" @click="popupVisible2 = true">指定高度为 300px</wv-button>
-    <wv-button type="default" @click="popupVisible3 = true">指定高度 100%</wv-button>
-    <wv-button type="default" @click="popupVisible4 = true">点击遮罩层不关闭</wv-button>
-    <wv-button type="default" @click="popupVisible5 = true">自定义遮罩样式</wv-button>
+    <w-button type="default" @click="popupVisible1 = true">默认弹出层</w-button>
+    <w-button type="default" @click="popupVisible2 = true">指定高度为 300px</w-button>
+    <w-button type="default" @click="popupVisible3 = true">指定高度 100%</w-button>
+    <w-button type="default" @click="popupVisible4 = true">点击遮罩层不关闭</w-button>
+    <w-button type="default" @click="popupVisible5 = true">自定义遮罩样式</w-button>
 
-    <wv-popup :visible.sync="popupVisible1">
-      <wv-group>
-        <wv-switch title="关闭" v-model="popupVisible1"/>
-        <wv-cell title="title" value="value" is-link/>
-        <wv-cell title="title" value="value" is-link/>
-      </wv-group>
-    </wv-popup>
+    <w-popup :visible.sync="popupVisible1">
+      <w-group>
+        <w-switch title="关闭" v-model="popupVisible1"/>
+        <w-cell title="title" value="value" is-link/>
+        <w-cell title="title" value="value" is-link/>
+      </w-group>
+    </w-popup>
 
-    <wv-popup :visible.sync="popupVisible2" :height="300">
-      <wv-group>
-        <wv-switch title="关闭" v-model="popupVisible2"/>
-        <wv-cell title="title" value="value" is-link/>
-        <wv-cell title="title" value="value" is-link/>
-      </wv-group>
-    </wv-popup>
+    <w-popup :visible.sync="popupVisible2" :height="300">
+      <w-group>
+        <w-switch title="关闭" v-model="popupVisible2"/>
+        <w-cell title="title" value="value" is-link/>
+        <w-cell title="title" value="value" is-link/>
+      </w-group>
+    </w-popup>
 
-    <wv-popup :visible.sync="popupVisible3" height="100%">
-      <wv-group>
-        <wv-switch title="关闭" v-model="popupVisible3"/>
-        <wv-cell title="title" value="value" is-link/>
-        <wv-cell title="title" value="value" is-link/>
-      </wv-group>
-    </wv-popup>
+    <w-popup :visible.sync="popupVisible3" height="100%">
+      <w-group>
+        <w-switch title="关闭" v-model="popupVisible3"/>
+        <w-cell title="title" value="value" is-link/>
+        <w-cell title="title" value="value" is-link/>
+      </w-group>
+    </w-popup>
 
-    <wv-popup
+    <w-popup
       :visible.sync="popupVisible4"
       :close-on-click-mask="false"
       @open="onShow"
       @close="onHide"
     >
-      <wv-group>
-        <wv-switch title="关闭" v-model="popupVisible4"/>
-        <wv-cell title="title" value="value" is-link/>
-        <wv-cell title="title" value="value" is-link/>
-      </wv-group>
-    </wv-popup>
+      <w-group>
+        <w-switch title="关闭" v-model="popupVisible4"/>
+        <w-cell title="title" value="value" is-link/>
+        <w-cell title="title" value="value" is-link/>
+      </w-group>
+    </w-popup>
 
-    <wv-popup :visible.sync="popupVisible5" :mask-style="{ backgroundColor: 'rgba(0, 255, 255, 0.5)' }">
-      <wv-group>
-        <wv-switch title="关闭" v-model="popupVisible5"/>
-        <wv-cell title="title" value="value" is-link/>
-        <wv-cell title="title" value="value" is-link/>
-      </wv-group>
-    </wv-popup>
+    <w-popup :visible.sync="popupVisible5" :mask-style="{ backgroundColor: 'rgba(0, 255, 255, 0.5)' }">
+      <w-group>
+        <w-switch title="关闭" v-model="popupVisible5"/>
+        <w-cell title="title" value="value" is-link/>
+        <w-cell title="title" value="value" is-link/>
+      </w-group>
+    </w-popup>
   </div>
 </template>
 

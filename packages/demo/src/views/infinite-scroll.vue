@@ -5,23 +5,23 @@
       ref="wrapper"
       :style="{ height: wrapperHeight + 'px' }"
     >
-      <wv-group
+      <w-group
         title="无限滚动加载"
         v-infinite-scroll="loadMore"
         infinite-scroll-disabled="loading"
         infinite-scroll-distance="50"
         infinite-scroll-immediate-check="true"
       >
-        <wv-cell
+        <w-cell
           v-for="item in list"
           :key="item"
           title="条目"
           :value="item"
           to="/"
         />
-      </wv-group>
+      </w-group>
       <p v-show="loading" class="loading-tips">
-        <wv-spinner
+        <w-spinner
           type="snake"
           color="#444"
           :size="24"

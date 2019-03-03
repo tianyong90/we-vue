@@ -1,39 +1,39 @@
 <template>
   <div class="page">
-    <wv-group title="选择器示例">
-      <wv-cell
+    <w-group title="选择器示例">
+      <w-cell
         title="单列(对象数组)"
         is-link
         :value="fruit | fruitValueFilter"
         @click.native="fruitPickerShow = true"
       />
-      <wv-cell
+      <w-cell
         title="单列"
         is-link
         :value="ticket | pickerValueFilter"
         @click.native="ticketPickerShow = true"
       />
-      <wv-cell
+      <w-cell
         title="多列"
         is-link
         :value="dayValue | pickerValueFilter"
         @click.native="dayPickerShow = true"
       />
-    </wv-group>
+    </w-group>
 
-    <wv-picker
+    <w-picker
       :visible.sync="fruitPickerShow"
       :columns="fruitColumns"
       value-key="name"
       v-model="fruit"
     />
-    <wv-picker
+    <w-picker
       :visible.sync="ticketPickerShow"
       v-model="ticket"
       :columns="ticketColumns"
       @confirm="confirmTicket"
     />
-    <wv-picker
+    <w-picker
       :visible.sync="dayPickerShow"
       :columns="dayColumns"
       v-model="dayValue"

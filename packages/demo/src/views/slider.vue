@@ -1,13 +1,13 @@
 <template>
   <div class="page page-with-padding">
     <div class="tips">禁用</div>
-    <wv-slider
+    <w-slider
       v-model="percent1"
       disabled
     />
 
     <div class="tips">自定义最大最小值</div>
-    <wv-slider
+    <w-slider
       v-model="percent2"
       :min="10"
       :max="80"
@@ -15,7 +15,7 @@
     />
 
     <div class="tips">禁用点击操作</div>
-    <wv-slider
+    <w-slider
       v-model="percent3"
       :enable-click="false"
     />

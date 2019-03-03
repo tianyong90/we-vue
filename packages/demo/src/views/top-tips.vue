@@ -1,13 +1,13 @@
 <template>
   <div class="page page-with-padding">
-    <wv-button
+    <w-button
       type="primary"
       @click="openTips"
-    >显示提示 (3S)</wv-button>
-    <wv-button
+    >显示提示 (3S)</w-button>
+    <w-button
       type="warn"
       @click="closeTips"
-    >关闭提示</wv-button>
+    >关闭提示</w-button>
   </div>
 </template>
 

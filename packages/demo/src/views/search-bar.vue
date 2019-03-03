@@ -1,6 +1,6 @@
 <template>
   <div>
-    <wv-search-bar
+    <w-search-bar
       class="search-bar-1"
       v-model="value1"
       :result="filterResult"
@@ -8,7 +8,7 @@
       @search="onSearch"
     />
 
-    <wv-search-bar
+    <w-search-bar
       class="search-bar-2"
       v-model="value2"
       result-text-key="name"
