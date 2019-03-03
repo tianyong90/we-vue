@@ -13,8 +13,16 @@
 
 <script>
 export default {
+  mounted () {
+    this.$toptips.setDefaultOptions({
+      duration: 200
+    })
+  },
+
   methods: {
     openTips () {
+      console.log(this.$toptips.defaultOptions)
+
       this.$toptips({
         message: '提示信息',
         duration: 3000

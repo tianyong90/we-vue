@@ -63,6 +63,26 @@ describe('test top-tips api', () => {
       expect(document.querySelectorAll('.weui-toptips')).toHaveLength(1)
     })
   })
+
+  test('setDefaultOptions and resetDefaultOptions', () => {
+    const theDefault = {
+      visible: true,
+      message: '',
+      duration: 3000,
+    }
+
+    const opts = {
+      duration: 3000,
+    }
+
+    TopTipsApi.setDefaultOptions(opts)
+
+    expect(TopTipsApi.defaultOptions).toEqual({ ...theDefault, ...opts })
+
+    TopTipsApi.resetDefaultOptions()
+
+    expect(TopTipsApi.defaultOptions).toEqual(theDefault)
+  })
 })
 
 describe('top-tips component', () => {

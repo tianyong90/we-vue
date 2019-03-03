@@ -1,18 +1,30 @@
-import Vue from 'vue'
+import Vue, { PluginFunction } from 'vue'
 import TopTipsComponent from './top-tips'
 import { isObj } from '../../utils'
 
 type TopTipsOptions = {
-  message: string
+  message?: string
   visible?: boolean
   duration?: number
 }
 
-type TopTipsType = {
-  visible: boolean
+type TopTipsParams = (string | Partial<TopTipsOptions>)
+
+type InstanceType = Vue & {
+  visible?: boolean
   timer?: any
+}
+
+export interface TopTips {
+  (params: TopTipsParams): InstanceType
+  close (): void
+  setDefaultOptions (options: TopTipsOptions): void
+  resetDefaultOptions (): void
+  install?: PluginFunction<Vue>
   defaultOptions?: TopTipsOptions
-} & Vue
+}
+
+let instance: InstanceType
 
 const defaultOptions: TopTipsOptions = {
   visible: true,
@@ -20,11 +32,8 @@ const defaultOptions: TopTipsOptions = {
   duration: 3000,
 }
 
-let instance: TopTipsType
-let currentOptions: TopTipsOptions = { ...defaultOptions }
-
-function parseOptions (message: TopTipsOptions | string): object {
-  return (isObj(message) ? <object>message : { message })
+function parseOptions (params: TopTipsParams): Partial<TopTipsOptions> {
+  return (isObj(params) ? <object>params : { message: params })
 }
 
 const createInstance: () => void = () => {
@@ -39,9 +48,9 @@ const createInstance: () => void = () => {
   document.body.appendChild(instance.$el)
 }
 
-function TopTips (options: TopTipsOptions | string) {
+const TopTips = <TopTips> function (options: TopTipsParams) {
   options = {
-    ...currentOptions,
+    ...TopTips.defaultOptions,
     ...parseOptions(options),
   }
 
@@ -57,11 +66,13 @@ function TopTips (options: TopTipsOptions | string) {
   if ((options as TopTipsOptions).duration! > 0) {
     instance.timer = setTimeout(() => {
       instance.visible = false
-    }, (options as TopTipsOptions).duration)
+    }, options.duration)
   }
 
   return instance
 }
+
+TopTips.defaultOptions = defaultOptions
 
 TopTips.close = function (): void {
   if (instance) {
@@ -69,14 +80,17 @@ TopTips.close = function (): void {
   }
 }
 
-TopTips.setDefaultOptions = function (options: TopTipsOptions): void {
-  Object.assign(currentOptions, options)
+TopTips.setDefaultOptions = function (options: Partial<TopTipsOptions>): void {
+  TopTips.defaultOptions = { ...defaultOptions, ...options }
 }
 
 TopTips.resetDefaultOptions = function (): void {
-  currentOptions = { ...defaultOptions }
+  TopTips.defaultOptions = defaultOptions
 }
 
+TopTips.install = () => {
+  // TODO
+}
 Vue.prototype.$toptips = TopTips
 
 export { TopTips }

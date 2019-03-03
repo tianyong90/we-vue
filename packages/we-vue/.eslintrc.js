@@ -70,8 +70,8 @@ module.exports = {
             delimiter: 'comma'
           }
         }],
-        '@typescript-eslint/member-ordering': 'error',
-        '@typescript-eslint/type-annotation-spacing': 'error'
+        '@typescript-eslint/member-ordering': 'off',
+        '@typescript-eslint/type-annotation-spacing': 'error',
       }
     }
   ]
