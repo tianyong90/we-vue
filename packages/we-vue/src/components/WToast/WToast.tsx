@@ -58,20 +58,18 @@ export default mixins(
         >
           {
             this.type !== 'text' && this.type !== 'loading'
-              ? <WVIcon
+              && <WVIcon
                 type={this.icon}
                 class="weui-icon_toast"
               />
-              : h()
           }
           {
             this.type === 'loading' && this.spinnerType !== 'none'
-              ? <WVSpinner
+              && <WVSpinner
                 size={25}
                 type={this.spinnerType}
                 class="weui-icon_toast"
               />
-              : h()
           }
           <p class="weui-toast__content" domPropsTextContent={this.message} />
         </div>

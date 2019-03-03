@@ -2,28 +2,21 @@
 
 exports[`radio create 1`] = `
 <div>
-  <!---->
   <div class="weui-cells weui-cells_radio"><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option1</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option2</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option3</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label></div>
 </div>
 `;
@@ -35,51 +28,38 @@ exports[`radio create 2`] = `
       <div class="weui-cell__bd">
         <p>option1</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option2</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option3</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label></div>
 </div>
 `;
 
 exports[`radio options 1`] = `
 <div>
-  <!---->
   <div class="weui-cells weui-cells_radio"><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option1</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option2</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label><label class="weui-cell weui-check__label">
       <div class="weui-cell__bd">
         <p>option3</p>
       </div>
-      <div class="weui-cell__ft">
-        <!---->
-      </div>
+      <div class="weui-cell__ft"></div>
     </label></div>
 </div>
 `;

@@ -6,7 +6,7 @@ describe('area picker', () => {
   test('create', () => {
     const wrapper = mount(Area)
 
-    expect(wrapper.name()).toBe('wv-area')
+    expect(wrapper.name()).toBe('w-area')
 
     expect(wrapper.html()).toMatchSnapshot()
   })

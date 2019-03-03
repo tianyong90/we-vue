@@ -7,7 +7,7 @@ describe('tabbar-item', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-tabbar-item')
+    expect(wrapper.name()).toBe('w-tabbar-item')
     expect(wrapper.classes()).toContain('weui-tabbar__item')
 
     expect(wrapper.html()).toMatchSnapshot()

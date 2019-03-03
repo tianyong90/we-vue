@@ -19,7 +19,7 @@ describe('input', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-input')
+    expect(wrapper.name()).toBe('w-input')
     expect(wrapper.classes()).toContain('weui-cell')
     expect(wrapper.html()).toMatchSnapshot()
   })

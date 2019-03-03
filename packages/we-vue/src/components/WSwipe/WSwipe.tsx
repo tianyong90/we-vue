@@ -228,7 +228,7 @@ export default Vue.extend<options>().extend({
         </div>
         {
           this.showIndicators && this.count > 1
-            ? <div class="wv-swipe__indicators">
+            && <div class="wv-swipe__indicators">
               {
                 (new Array(this.count)).map(index => (
                   <i
@@ -238,7 +238,6 @@ export default Vue.extend<options>().extend({
                 ))
               }
             </div>
-            : h()
         }
       </div>
     )

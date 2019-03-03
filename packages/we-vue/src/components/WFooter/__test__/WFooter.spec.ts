@@ -7,7 +7,7 @@ describe('footer', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-footer')
+    expect(wrapper.name()).toBe('w-footer')
     expect(wrapper.classes()).toContain('weui-footer')
 
     expect(wrapper.html()).toMatchSnapshot()

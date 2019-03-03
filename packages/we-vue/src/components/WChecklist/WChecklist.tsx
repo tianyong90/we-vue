@@ -85,7 +85,7 @@ export default Vue.extend<options>().extend({
   render (h) {
     return (
       <div>
-        { this.title ? <div class="weui-cells__title" domPropsInnerHTML={this.title} /> : h() }
+        { this.title && <div class="weui-cells__title" domPropsInnerHTML={this.title} /> }
         <div class="weui-cells weui-cells_checkbox">
           {
             this.options.map(option => (
@@ -102,7 +102,7 @@ export default Vue.extend<options>().extend({
               >
                 {
                   this.align === 'left'
-                    ? <div class="weui-cell__hd">
+                    && <div class="weui-cell__hd">
                       <i
                         class={{
                           'weui-icon-checked': true,
@@ -110,14 +110,13 @@ export default Vue.extend<options>().extend({
                         }}
                       />
                     </div>
-                    : h()
                 }
                 <div class="weui-cell__bd">
                   <p domPropsTextContent={option.label || option} />
                 </div>
                 {
                   this.align === 'right'
-                    ? <div class="weui-cell__hd">
+                    && <div class="weui-cell__hd">
                       <i
                         className={{
                           'weui-icon-checked': true,
@@ -125,7 +124,6 @@ export default Vue.extend<options>().extend({
                         }}
                       />
                     </div>
-                    : h()
                 }
               </label>
             ))

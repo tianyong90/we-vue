@@ -2,7 +2,6 @@
 
 exports[`group create 1`] = `
 <div>
-  <!---->
   <div class="weui-cells"></div>
 </div>
 `;

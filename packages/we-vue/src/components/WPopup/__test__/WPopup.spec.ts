@@ -19,7 +19,7 @@ describe('popup', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-popup')
+    expect(wrapper.name()).toBe('w-popup')
     expect(wrapper.classes()).toContain('wv-popup')
     expect(wrapper.html()).toMatchSnapshot()
   })

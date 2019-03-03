@@ -8,7 +8,7 @@ describe('search', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-search-bar')
+    expect(wrapper.name()).toBe('w-search-bar')
     expect(wrapper.contains('.weui-search-bar')).toBeTruthy()
 
     expect(wrapper.html()).toMatchSnapshot()

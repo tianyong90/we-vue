@@ -7,7 +7,7 @@ describe('circle', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-circle')
+    expect(wrapper.name()).toBe('w-circle')
     expect(wrapper.classes()).toContain('wv-circle')
 
     expect(wrapper.html()).toMatchSnapshot()

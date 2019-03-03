@@ -7,7 +7,7 @@ describe('panel', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-panel')
+    expect(wrapper.name()).toBe('w-panel')
     expect(wrapper.classes()).toContain('weui-panel')
 
     expect(wrapper.html()).toMatchSnapshot()

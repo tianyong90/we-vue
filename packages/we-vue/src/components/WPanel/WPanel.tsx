@@ -13,11 +13,10 @@ export default Vue.extend({
       <div class="weui-panel weui-panel_access">
         {
           this.title
-            ? <div
+            && <div
               class="weui-panel__hd"
               domPropsInnerHTML={this.title}
             />
-            : h()
         }
         <div class="weui-panel__bd">
           {this.$slots.default}

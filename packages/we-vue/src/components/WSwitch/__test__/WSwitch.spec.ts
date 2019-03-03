@@ -10,7 +10,7 @@ describe('switch', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-switch')
+    expect(wrapper.name()).toBe('w-switch')
     expect(wrapper.contains('.wv-switch')).toBeTruthy()
 
     expect(wrapper.html()).toMatchSnapshot()

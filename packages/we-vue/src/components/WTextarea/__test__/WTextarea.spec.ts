@@ -7,7 +7,7 @@ describe('textarea', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-textarea')
+    expect(wrapper.name()).toBe('w-textarea')
     expect(wrapper.classes()).toContain('weui-cell')
 
     expect(wrapper.html()).toMatchSnapshot()

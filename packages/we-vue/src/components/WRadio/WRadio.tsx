@@ -52,7 +52,7 @@ export default Vue.extend({
   render (h) {
     return (
       <div>
-        { this.title ? <div class="weui-cells__title" domPropsInnerHTML={this.title} /> : h() }
+        { this.title && <div class="weui-cells__title" domPropsInnerHTML={this.title} /> }
         <div class="weui-cells weui-cells_radio">
           {
             this.options.map(option => (
@@ -70,7 +70,7 @@ export default Vue.extend({
                   <p domPropsTextContent={option.label || option} />
                 </div>
                 <div class="weui-cell__ft">
-                  { this.isChecked(option) ? <span class="weui-icon-checked" /> : h() }
+                  { this.isChecked(option) && <span class="weui-icon-checked" /> }
                 </div>
               </label>
             ))

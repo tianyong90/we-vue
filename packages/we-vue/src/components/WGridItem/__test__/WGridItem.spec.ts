@@ -7,7 +7,7 @@ describe('grid-item', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-grid-item')
+    expect(wrapper.name()).toBe('w-grid-item')
     expect(wrapper.classes()).toContain('weui-grid')
 
     expect(wrapper.html()).toMatchSnapshot()

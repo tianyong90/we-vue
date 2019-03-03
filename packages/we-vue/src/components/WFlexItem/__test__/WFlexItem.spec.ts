@@ -20,7 +20,7 @@ describe('flex-item', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-flex-item')
+    expect(wrapper.name()).toBe('w-flex-item')
     expect(wrapper.classes()).toContain('weui-flex__item')
 
     expect(wrapper.html()).toMatchSnapshot()

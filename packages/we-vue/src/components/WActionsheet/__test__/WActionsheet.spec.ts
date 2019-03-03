@@ -18,7 +18,7 @@ describe('actionsheet', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-actionsheet')
+    expect(wrapper.name()).toBe('w-actionsheet')
 
     // default type == 'ios', check mask element class
     expect(wrapper.contains('.weui-mask')).toBeTruthy()

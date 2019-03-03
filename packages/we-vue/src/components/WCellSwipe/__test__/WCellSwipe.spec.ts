@@ -37,7 +37,7 @@ describe('cell-swipe', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-cell-swipe')
+    expect(wrapper.name()).toBe('w-cell-swipe')
     expect(wrapper.classes()).toContain('weui-cell')
 
     expect(wrapper.html()).toMatchSnapshot()

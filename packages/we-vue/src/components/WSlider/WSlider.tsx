@@ -152,10 +152,9 @@ export default Vue.extend<options>().extend({
         </div>
         {
           this.showValue
-            ? <div class="weui-slider-box__value">
+            && <div class="weui-slider-box__value">
               {this.$slots.valueBox || this.value}
             </div>
-            : h()
         }
       </div>
     )

@@ -9,7 +9,7 @@ describe('tabs', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-tabs')
+    expect(wrapper.name()).toBe('w-tabs')
     expect(wrapper.classes()).toContain('wv-tabs')
   })
 
@@ -24,7 +24,7 @@ describe('tabs', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
 
-    expect(wrapper.name()).toBe('wv-tabs')
+    expect(wrapper.name()).toBe('w-tabs')
     expect(wrapper.classes()).toContain('wv-tabs')
   })
 

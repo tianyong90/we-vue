@@ -7,7 +7,7 @@ describe('header', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-header')
+    expect(wrapper.name()).toBe('w-header')
     expect(wrapper.classes()).toContain('wv-header')
 
     expect(wrapper.html()).toMatchSnapshot()

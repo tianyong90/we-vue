@@ -7,7 +7,7 @@ describe('spinner', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-spinner')
+    expect(wrapper.name()).toBe('w-spinner')
     expect(wrapper.html()).toMatchSnapshot()
 
     // default type

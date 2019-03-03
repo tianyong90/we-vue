@@ -9,7 +9,7 @@ describe('slider', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-slider')
+    expect(wrapper.name()).toBe('w-slider')
     expect(wrapper.classes()).toContain('weui-slider-box')
 
     expect(wrapper.html()).toMatchSnapshot()

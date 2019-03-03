@@ -125,7 +125,7 @@ export default mixins(
     if (this.isInCell) {
       return (
         <WCell title={this.title}>
-          <wv-switch
+          <w-switch
             is-in-cell={false}
             slot="ft"
             vModel={this.isActive}

@@ -9,13 +9,15 @@
 
 <script>
 // TODO
-// import { Toast } from 'we-vue'
+import { WToast } from 'we-vue/lib'
 
 export default {
   mounted () {
     this.$toast.setDefaultOptions({
       duration: 1000
     })
+
+    WToast.success('Hello')
   },
 
   methods: {

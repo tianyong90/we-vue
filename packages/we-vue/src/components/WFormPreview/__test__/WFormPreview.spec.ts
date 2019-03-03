@@ -7,7 +7,7 @@ describe('preview', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-form-preview')
+    expect(wrapper.name()).toBe('w-form-preview')
     expect(wrapper.classes()).toContain('weui-form-preview')
 
     expect(wrapper.html()).toMatchSnapshot()

@@ -7,7 +7,7 @@ describe('progress', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-progress')
+    expect(wrapper.name()).toBe('w-progress')
     expect(wrapper.classes()).toContain('weui-progress')
     expect(wrapper.html()).toMatchSnapshot()
   })

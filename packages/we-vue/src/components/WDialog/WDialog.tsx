@@ -75,31 +75,28 @@ export default mixins(
         >
           {
             this.title
-              ? <div class="weui-dialog__hd">
+              && <div class="weui-dialog__hd">
                 <strong class="weui-dialog__title" domPropsInnerHTML={this.title} />
               </div>
-              : h()
           }
 
           <div class="weui-dialog__bd" domPropsInnerHTML={this.message} />
           <div class="weui-dialog__ft">
             {
               this.showCancelButton
-                ? <div
+                && <div
                   class="weui-dialog__btn weui-dialog__btn_default"
                   onClick={() => { this.handleAction('cancel') }}
                   domPropsTextContent={this.cancelButtonText}
                 />
-                : h()
             }
             {
               this.showConfirmButton
-                ? <div
+                && <div
                   class="weui-dialog__btn weui-dialog__btn_primary"
                   onClick={() => { this.handleAction('confirm') }}
                   domPropsTextContent={this.confirmButtonText}
                 />
-                : h()
             }
           </div>
         </div>

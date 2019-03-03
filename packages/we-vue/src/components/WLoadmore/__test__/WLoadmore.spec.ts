@@ -7,7 +7,7 @@ describe('loadmore', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-loadmore')
+    expect(wrapper.name()).toBe('w-loadmore')
     expect(wrapper.classes()).toContain('weui-loadmore')
     expect(wrapper.html()).toMatchSnapshot()
   })

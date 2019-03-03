@@ -88,15 +88,14 @@ export default Vue.extend({
             >
               {
                 this.title
-                  ? <div class="weui-actionsheet__title">
+                  && <div class="weui-actionsheet__title">
                     <p class="weui-actionsheet__title-text" domPropsInnerHTML={this.title}/>
                   </div>
-                  : h()
               }
               {actionsheetMenu()}
               {
                 this.cancelText
-                  ? <div class="weui-actionsheet__action">
+                  && <div class="weui-actionsheet__action">
                     <div
                       class="weui-actionsheet__cell"
                       onClick={() => {
@@ -105,7 +104,6 @@ export default Vue.extend({
                       domPropsInnerHTML={this.cancelText}
                     />
                   </div>
-                  : h()
               }
             </div>
           </transition>

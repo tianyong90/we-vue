@@ -2,7 +2,6 @@
 
 exports[`panel create 1`] = `
 <div class="weui-panel weui-panel_access">
-  <!---->
   <div class="weui-panel__bd"></div>
   <div class="weui-panel__ft"></div>
 </div>

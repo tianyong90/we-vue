@@ -30,7 +30,7 @@ describe('picker', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-picker')
+    expect(wrapper.name()).toBe('w-picker')
 
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -279,7 +279,7 @@ describe('picker-column', () => {
   //     parentComponent: Picker
   //   })
   //
-  //   expect(wrapper.name()).toBe('wv-picker-column')
+  //   expect(wrapper.name()).toBe('w-picker-column')
   // })
 
   // test('create using object-array values', () => {

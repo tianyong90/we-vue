@@ -140,17 +140,15 @@ export default mixins<options &
             </template>
             {
               !this.title
-                ? <template slot="bd">
+                && <template slot="bd">
                   {this.$slots.bd}
                 </template>
-                : h()
             }
             {
               typeof this.value === 'undefined'
-                ? <template slot="ft">
+                && <template slot="ft">
                   {this.$slots.ft}
                 </template>
-                : h()
             }
           </WCell>
         </div>

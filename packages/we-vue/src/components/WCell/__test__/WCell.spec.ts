@@ -7,7 +7,7 @@ describe('cell', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-cell')
+    expect(wrapper.name()).toBe('w-cell')
     expect(wrapper.classes()).toContain('weui-cell')
 
     expect(wrapper).toMatchSnapshot()

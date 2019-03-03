@@ -7,7 +7,7 @@ describe('cell-swipe-button', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-cell-swipe-button')
+    expect(wrapper.name()).toBe('w-cell-swipe-button')
     expect(wrapper.classes()).toContain('weui-swiped-btn')
 
     expect(wrapper.html()).toMatchSnapshot()

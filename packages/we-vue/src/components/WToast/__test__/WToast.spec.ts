@@ -108,7 +108,7 @@ describe('toast', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-toast')
+    expect(wrapper.name()).toBe('w-toast')
     expect(wrapper.find('.weui-toast').classes()).toContain('weui-toast')
   })
 

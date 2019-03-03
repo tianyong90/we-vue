@@ -95,10 +95,9 @@ export default Vue.extend({
           />
           {
             this.showCounter
-              ? <div class="weui-textarea-counter">
+              && <div class="weui-textarea-counter">
                 { `${this.length}/${this.maxLength}` }
               </div>
-              : h()
           }
         </div>
       </div>

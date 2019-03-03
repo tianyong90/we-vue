@@ -81,7 +81,7 @@ describe('dialog component', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-dialog')
+    expect(wrapper.name()).toBe('w-dialog')
     expect(wrapper.contains('.weui-dialog')).toBeTruthy()
   })
 

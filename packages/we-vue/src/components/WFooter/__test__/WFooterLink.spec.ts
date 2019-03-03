@@ -7,7 +7,7 @@ describe('footer-link', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-footer-link')
+    expect(wrapper.name()).toBe('w-footer-link')
     expect(wrapper.classes()).toContain('weui-footer__link')
 
     expect(wrapper.html()).toMatchSnapshot()

@@ -23,7 +23,7 @@ export default Vue.extend({
         }}
         {...context.data}
       >
-        { !context.props.isDot ? context.children : h() }
+        { !context.props.isDot && context.children }
       </span>
     )
   },

@@ -94,7 +94,7 @@ describe('top-tips component', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-top-tips')
+    expect(wrapper.name()).toBe('w-top-tips')
     expect(wrapper.classes()).toContain('weui-toptips')
     expect(wrapper.html()).toMatchSnapshot()
   })

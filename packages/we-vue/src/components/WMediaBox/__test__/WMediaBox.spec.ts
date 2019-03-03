@@ -7,7 +7,7 @@ describe('media-box', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-media-box')
+    expect(wrapper.name()).toBe('w-media-box')
     expect(wrapper.html()).toMatchSnapshot()
 
     wrapper = shallowMount(MediaBox, {
@@ -16,7 +16,7 @@ describe('media-box', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-media-box')
+    expect(wrapper.name()).toBe('w-media-box')
     expect(wrapper.html()).toMatchSnapshot()
   })
 

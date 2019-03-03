@@ -9,7 +9,7 @@ describe('button', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-button')
+    expect(wrapper.name()).toBe('w-button')
     expect(wrapper.classes()).toContain('weui-btn')
   })
 

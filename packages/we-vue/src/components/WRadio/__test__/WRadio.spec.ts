@@ -15,7 +15,7 @@ describe('radio', () => {
       },
     })
 
-    // expect(wrapper.name()).toBe('wv-radio')
+    // expect(wrapper.name()).toBe('w-radio')
     expect(wrapper.contains('.weui-cells_radio')).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
 

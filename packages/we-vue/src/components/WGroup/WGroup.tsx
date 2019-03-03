@@ -16,12 +16,11 @@ export default Vue.extend({
       <div {...context.data}>
         {
           context.props.title
-            ? <div
+            && <div
               style={{ color: context.props.titleColor }}
               class="weui-cells__title"
               domPropsInnerHTML={context.props.title}
             />
-            : h()
         }
         <div class="weui-cells">
           {context.children}

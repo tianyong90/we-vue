@@ -8,15 +8,9 @@ exports[`tab create 1`] = `
     </div>
   </div>
   <div class="wv-tabs__content">
-    <div class="wv-tab__pane">
-      <!---->
-    </div>
-    <div class="wv-tab__pane">
-      <!---->
-    </div>
-    <div class="wv-tab__pane">
-      <!---->
-    </div>
+    <div class="wv-tab__pane"></div>
+    <div class="wv-tab__pane"></div>
+    <div class="wv-tab__pane"></div>
   </div>
 </div>
 `;
@@ -32,15 +26,9 @@ exports[`tabs create with tab items 1`] = `
     </div>
   </div>
   <div class="wv-tabs__content">
-    <div class="wv-tab__pane">
-      <!---->
-    </div>
-    <div class="wv-tab__pane" style="display: none;">
-      <!---->
-    </div>
-    <div class="wv-tab__pane" style="display: none;">
-      <!---->
-    </div>
+    <div class="wv-tab__pane"></div>
+    <div class="wv-tab__pane" style="display: none;"></div>
+    <div class="wv-tab__pane" style="display: none;"></div>
   </div>
 </div>
 `;

@@ -7,7 +7,7 @@ describe('flex', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-flex')
+    expect(wrapper.name()).toBe('w-flex')
     expect(wrapper.classes()).toContain('weui-flex')
 
     expect(wrapper.html()).toMatchSnapshot()

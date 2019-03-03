@@ -10,7 +10,7 @@ describe('swipe', () => {
       propsData: {},
     })
 
-    expect(wrapper.name()).toBe('wv-swipe')
+    expect(wrapper.name()).toBe('w-swipe')
     expect(wrapper.classes()).toContain('wv-swipe')
 
     expect(wrapper.html()).toMatchSnapshot()

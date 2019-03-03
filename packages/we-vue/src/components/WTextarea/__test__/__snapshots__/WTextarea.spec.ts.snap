@@ -18,8 +18,6 @@ exports[`textarea show counter 1`] = `
 
 exports[`textarea show counter 2`] = `
 <div class="weui-cell">
-  <div class="weui-cell__bd"><textarea rows="3" class="weui-textarea"></textarea>
-    <!---->
-  </div>
+  <div class="weui-cell__bd"><textarea rows="3" class="weui-textarea"></textarea></div>
 </div>
 `;

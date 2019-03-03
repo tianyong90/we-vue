@@ -15,7 +15,7 @@ describe('checklist', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-checklist')
+    expect(wrapper.name()).toBe('w-checklist')
     expect(wrapper.contains('.weui-cells_checkbox')).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
 

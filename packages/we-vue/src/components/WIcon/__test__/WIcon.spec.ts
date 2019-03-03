@@ -9,7 +9,7 @@ describe('icon', () => {
       },
     })
 
-    expect(wrapper.name()).toBe('wv-icon')
+    expect(wrapper.name()).toBe('w-icon')
 
     expect(wrapper.html()).toMatchSnapshot()
 

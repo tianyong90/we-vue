@@ -50,7 +50,7 @@ export default Vue.extend({
         onClick={(e: MouseEvent) => { this.onClick(e) }}
         disabled={this.disabled}
       >
-        { this.isLoading ? <i class="weui-loading" /> : h() }
+        { this.isLoading && <i class="weui-loading" /> }
         { this.$slots.default }
       </button>
     )

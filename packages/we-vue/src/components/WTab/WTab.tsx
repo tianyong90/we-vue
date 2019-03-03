@@ -38,7 +38,7 @@ export default mixins<options &
   },
 
   created () {
-    this.findParent('wv-tabs')
+    this.findParent('w-tabs')
   },
 
   mounted () {
@@ -68,13 +68,12 @@ export default mixins<options &
   render (h: CreateElement): VNode {
     return (
       <div class="wv-tab__pane" vShow={this.selected || this.parent.animated}>
-        { this.inited ? this.$slots.default : h() }
+        { this.inited && this.$slots.default }
         {
           this.$slots.title
-            ? <div ref="title">
+            && <div ref="title">
               {this.$slots.title}
             </div>
-            : h()
         }
       </div>
     )

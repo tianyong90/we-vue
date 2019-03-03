@@ -6,6 +6,5 @@ exports[`swipe item create 1`] = `
     <div class="wv-swipe-item" style="width: 0px; transform: translate3d(0px, 0, 0);"></div>
     <div class="wv-swipe-item" style="width: 0px; transform: translate3d(0px, 0, 0);"></div>
   </div>
-  <!---->
 </div>
 `;
