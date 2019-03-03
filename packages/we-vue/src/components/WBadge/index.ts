@@ -1,4 +1,4 @@
-import Badge from './badge'
+import WBadge from './WBadge'
 
-export { Badge }
-export default Badge
+export { WBadge }
+export default WBadge

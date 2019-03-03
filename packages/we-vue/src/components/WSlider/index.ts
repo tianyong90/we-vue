@@ -1,4 +1,4 @@
-import Slider from './slider'
+import WSlider from './WSlider'
 
-export { Slider }
-export default Slider
+export { WSlider }
+export default WSlider

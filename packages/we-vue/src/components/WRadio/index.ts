@@ -1,4 +1,4 @@
-import Radio from './radio'
+import WRadio from './WRadio'
 
-export { Radio }
-export default Radio
+export { WRadio }
+export default WRadio

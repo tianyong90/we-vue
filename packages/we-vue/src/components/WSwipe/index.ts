@@ -1,4 +1,4 @@
-import Swipe from './swipe'
+import WSwipe from './WSwipe'
 
-export { Swipe }
-export default Swipe
+export { WSwipe }
+export default WSwipe

@@ -1,4 +1,4 @@
-import Icon from './icon'
+import WIcon from './WIcon'
 
-export { Icon }
-export default Icon
+export { WIcon }
+export default WIcon

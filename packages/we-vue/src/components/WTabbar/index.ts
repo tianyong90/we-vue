@@ -1,4 +1,4 @@
-import Tabbar from './tabbar'
+import WTabbar from './WTabbar'
 
-export { Tabbar }
-export default Tabbar
+export { WTabbar }
+export default WTabbar

@@ -1,4 +1,4 @@
-import Checklist from './checklist'
+import WChecklist from './WChecklist'
 
-export { Checklist }
-export default Checklist
+export { WChecklist }
+export default WChecklist

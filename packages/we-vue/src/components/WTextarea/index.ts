@@ -1,4 +1,4 @@
-import Textarea from './textarea'
+import WTextarea from './WTextarea'
 
-export { Textarea }
-export default Textarea
+export { WTextarea }
+export default WTextarea

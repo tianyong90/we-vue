@@ -1,4 +1,4 @@
-import Loadmore from './loadmore'
+import WLoadmore from './WLoadmore'
 
-export { Loadmore }
-export default Loadmore
+export { WLoadmore }
+export default WLoadmore

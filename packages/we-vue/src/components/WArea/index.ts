@@ -1,4 +1,4 @@
-import Area from './area'
+import WArea from './WArea'
 
-export { Area }
-export default Area
+export { WArea }
+export default WArea

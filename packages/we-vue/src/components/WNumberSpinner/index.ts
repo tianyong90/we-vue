@@ -1,4 +1,4 @@
-import NumberSpinner from './number-spinner'
+import WNumberSpinner from './WNumberSpinner'
 
-export { NumberSpinner }
-export default NumberSpinner
+export { WNumberSpinner }
+export default WNumberSpinner

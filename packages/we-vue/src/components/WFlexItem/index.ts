@@ -1,4 +1,4 @@
-import FlexItem from './flex-item'
+import WFlexItem from './WFlexItem'
 
-export { FlexItem }
-export default FlexItem
+export { WFlexItem }
+export default WFlexItem

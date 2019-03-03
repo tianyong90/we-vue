@@ -1,4 +1,4 @@
-import Header from './header'
+import WHeader from './WHeader'
 
-export { Header }
-export default Header
+export { WHeader }
+export default WHeader

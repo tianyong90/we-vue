@@ -1,4 +1,4 @@
-import Circle from './circle'
+import WCircle from './WCircle'
 
-export { Circle }
-export default Circle
+export { WCircle }
+export default WCircle

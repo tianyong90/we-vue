@@ -1,4 +1,4 @@
-import GridItem from './grid-item'
+import WGridItem from './WGridItem'
 
-export { GridItem }
-export default GridItem
+export { WGridItem }
+export default WGridItem

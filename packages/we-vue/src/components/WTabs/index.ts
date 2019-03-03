@@ -1,4 +1,4 @@
-import Tabs from './tabs'
+import WTabs from './WTabs'
 
-export { Tabs }
-export default Tabs
+export { WTabs }
+export default WTabs

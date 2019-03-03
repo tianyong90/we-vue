@@ -1,4 +1,4 @@
-import SwipeItem from './swipe-item'
+import WSwipeItem from './WSwipeItem'
 
-export { SwipeItem }
-export default SwipeItem
+export { WSwipeItem }
+export default WSwipeItem

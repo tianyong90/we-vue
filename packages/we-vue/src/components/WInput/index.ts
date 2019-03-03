@@ -1,4 +1,4 @@
-import Input from './input'
+import WInput from './WInput'
 
-export { Input }
-export default Input
+export { WInput }
+export default WInput

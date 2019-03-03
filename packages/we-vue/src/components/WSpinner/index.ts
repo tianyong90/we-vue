@@ -1,4 +1,4 @@
-import Spinner from './spinner'
+import WSpinner from './WSpinner'
 
-export { Spinner }
-export default Spinner
+export { WSpinner }
+export default WSpinner

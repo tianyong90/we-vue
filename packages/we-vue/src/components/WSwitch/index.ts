@@ -1,4 +1,4 @@
-import Switch from './switch'
+import WSwitch from './WSwitch'
 
-export { Switch }
-export default Switch
+export { WSwitch }
+export default WSwitch

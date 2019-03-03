@@ -1,4 +1,4 @@
-import Actionsheet from './actionsheet'
+import WActionsheet from './WActionsheet'
 
-export { Actionsheet }
-export default Actionsheet
+export { WActionsheet }
+export default WActionsheet

@@ -1,4 +1,4 @@
-import CellSwipeButton from './cell-swipe-button'
+import WCellSwipeButton from './WCellSwipeButton'
 
-export { CellSwipeButton }
-export default CellSwipeButton
+export { WCellSwipeButton }
+export default WCellSwipeButton

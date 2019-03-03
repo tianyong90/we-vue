@@ -1,4 +1,4 @@
-import Picker from './picker'
+import WPicker from './WPicker'
 
-export { Picker }
-export default Picker
+export { WPicker }
+export default WPicker

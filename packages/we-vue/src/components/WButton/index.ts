@@ -1,4 +1,4 @@
-import Button from './button'
+import WButton from './WButton'
 
-export { Button }
-export default Button
+export { WButton }
+export default WButton

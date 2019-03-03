@@ -1,4 +1,4 @@
-import Group from './group'
+import WGroup from './WGroup'
 
-export { Group }
-export default Group
+export { WGroup }
+export default WGroup

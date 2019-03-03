@@ -1,4 +1,4 @@
-import Popup from './popup'
+import WPopup from './WPopup'
 
-export { Popup }
-export default Popup
+export { WPopup }
+export default WPopup

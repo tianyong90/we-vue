@@ -1,4 +1,4 @@
-import FormPreview from './form-preview'
+import WFormPreview from './WFormPreview'
 
-export { FormPreview }
-export default FormPreview
+export { WFormPreview }
+export default WFormPreview

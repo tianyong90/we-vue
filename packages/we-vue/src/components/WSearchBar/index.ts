@@ -1,4 +1,4 @@
-import SearchBar from './search-bar'
+import WSearchBar from './WSearchBar'
 
-export { SearchBar }
-export default SearchBar
+export { WSearchBar }
+export default WSearchBar

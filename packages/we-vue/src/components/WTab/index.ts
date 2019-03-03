@@ -1,4 +1,4 @@
-import Tab from './tab'
+import WTab from './WTab'
 
-export { Tab }
-export default Tab
+export { WTab }
+export default WTab

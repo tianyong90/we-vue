@@ -1,5 +1,5 @@
 import Vue, { PluginFunction } from 'vue'
-import TopTipsComponent from './top-tips'
+import TopTipsComponent from './WTopTips'
 import { isObj } from '../../utils'
 
 type TopTipsOptions = {
@@ -48,9 +48,9 @@ const createInstance: () => void = () => {
   document.body.appendChild(instance.$el)
 }
 
-const TopTips = <TopTips> function (options: TopTipsParams) {
+const WTopTips = <TopTips> function (options: TopTipsParams) {
   options = {
-    ...TopTips.defaultOptions,
+    ...WTopTips.defaultOptions,
     ...parseOptions(options),
   }
 
@@ -72,26 +72,26 @@ const TopTips = <TopTips> function (options: TopTipsParams) {
   return instance
 }
 
-TopTips.defaultOptions = defaultOptions
+WTopTips.defaultOptions = defaultOptions
 
-TopTips.close = function (): void {
+WTopTips.close = function (): void {
   if (instance) {
     instance.visible = false
   }
 }
 
-TopTips.setDefaultOptions = function (options: Partial<TopTipsOptions>): void {
-  TopTips.defaultOptions = { ...defaultOptions, ...options }
+WTopTips.setDefaultOptions = function (options: Partial<TopTipsOptions>): void {
+  WTopTips.defaultOptions = { ...defaultOptions, ...options }
 }
 
-TopTips.resetDefaultOptions = function (): void {
-  TopTips.defaultOptions = defaultOptions
+WTopTips.resetDefaultOptions = function (): void {
+  WTopTips.defaultOptions = defaultOptions
 }
 
-TopTips.install = () => {
+WTopTips.install = () => {
   // TODO
 }
-Vue.prototype.$toptips = TopTips
+Vue.prototype.$toptips = WTopTips
 
-export { TopTips }
-export default TopTips
+export { WTopTips }
+export default WTopTips

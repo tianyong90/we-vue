@@ -1,5 +1,5 @@
 import Vue, { PluginFunction } from 'vue'
-import ToastComponent from './toast'
+import ToastComponent from './WToast'
 import { isObj } from '../../utils'
 
 type ToastOptions = {
@@ -57,11 +57,11 @@ const createInstance: () => InstanceType = () => {
   return queue[queue.length - 1]
 }
 
-const Toast = <Toast> function (options: ToastParams) {
+const WToast = <Toast> function (options: ToastParams) {
   const toast = createInstance()
 
   options = {
-    ...Toast.defaultOptions,
+    ...WToast.defaultOptions,
     ...parseOptions(options),
   }
 
@@ -82,20 +82,20 @@ const Toast = <Toast> function (options: ToastParams) {
 }
 
 const createMethod = (type: string) => (options: ToastOptions | string) => {
-  return Toast({
+  return WToast({
     type,
     ...parseOptions(options),
   })
 }
 
-Toast.defaultOptions = defaultOptions
+WToast.defaultOptions = defaultOptions
 
-Toast.text = createMethod('text')
-Toast.success = createMethod('success')
-Toast.fail = createMethod('fail')
-Toast.loading = createMethod('loading')
+WToast.text = createMethod('text')
+WToast.success = createMethod('success')
+WToast.fail = createMethod('fail')
+WToast.loading = createMethod('loading')
 
-Toast.close = function (all: boolean = true): void {
+WToast.close = function (all: boolean = true): void {
   if (queue.length > 1) {
     if (all) {
       queue.forEach(toast => {
@@ -110,24 +110,24 @@ Toast.close = function (all: boolean = true): void {
   }
 }
 
-Toast.setDefaultOptions = function (options: Partial<ToastOptions>) {
-  Toast.defaultOptions = { ...defaultOptions, ...options }
+WToast.setDefaultOptions = function (options: Partial<ToastOptions>) {
+  WToast.defaultOptions = { ...defaultOptions, ...options }
 }
 
-Toast.resetDefaultOptions = function () {
-  Toast.defaultOptions = defaultOptions
+WToast.resetDefaultOptions = function () {
+  WToast.defaultOptions = defaultOptions
 }
 
-Toast.allowMultiple = function (allow = true) {
+WToast.allowMultiple = function (allow = true) {
   singleton = !allow
 }
 
-Toast.install = () => {
+WToast.install = () => {
   // TODO
 }
 
 // TODO: 放到 install？
-Vue.prototype.$toast = Toast
+Vue.prototype.$toast = WToast
 
-export { Toast }
-export default Toast
+export { WToast }
+export default WToast

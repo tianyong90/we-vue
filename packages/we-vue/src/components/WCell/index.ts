@@ -1,4 +1,4 @@
-import Cell from './cell'
+import WCell from './WCell'
 
-export { Cell }
-export default Cell
+export { WCell }
+export default WCell

@@ -1,4 +1,4 @@
-import Panel from './panel'
+import WPanel from './WPanel'
 
-export { Panel }
-export default Panel
+export { WPanel }
+export default WPanel

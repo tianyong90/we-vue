@@ -1,4 +1,4 @@
-import Progress from './progress'
+import WProgress from './WProgress'
 
-export { Progress }
-export default Progress
+export { WProgress }
+export default WProgress

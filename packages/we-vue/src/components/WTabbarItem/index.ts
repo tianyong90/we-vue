@@ -1,4 +1,4 @@
-import TabbarItem from './tabbar-item'
+import TabbarItem from './WTabbarItem'
 
 export { TabbarItem }
 export default TabbarItem

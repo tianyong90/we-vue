@@ -1,4 +1,4 @@
-import MediaBox from './media-box'
+import WMediaBox from './WMediaBox'
 
-export { MediaBox }
-export default MediaBox
+export { WMediaBox }
+export default WMediaBox

@@ -30,7 +30,7 @@ export function install (Vue: VueConstructor, args: WeVueOptions = {}) {
         const component = components[key]
         if (component) {
           // TODO: 前线可配置
-          Vue.component('W' + key, component as typeof Vue)
+          Vue.component(key, component as typeof Vue)
         }
       }
     }

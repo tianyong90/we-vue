@@ -1,4 +1,4 @@
-import Flex from './flex'
+import WFlex from './WFlex'
 
-export { Flex }
-export default Flex
+export { WFlex }
+export default WFlex

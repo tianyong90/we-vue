@@ -1,5 +1,5 @@
 import Vue, { PluginFunction } from 'vue'
-import DialogComponent from './dialog'
+import DialogComponent from './WDialog'
 
 type DialogOptions = {
   visible: boolean
@@ -70,9 +70,9 @@ const createInstance = () => {
   document.body.appendChild(instance.$el)
 }
 
-const Dialog = <Dialog> function (options: DialogParams) {
+const WDialog = <Dialog> function (options: DialogParams) {
   options = {
-    ...Dialog.defaultOptions,
+    ...WDialog.defaultOptions,
     ...options,
   }
 
@@ -89,37 +89,37 @@ const Dialog = <Dialog> function (options: DialogParams) {
   })
 }
 
-Dialog.defaultOptions = defaultOptions
+WDialog.defaultOptions = defaultOptions
 
-Dialog.alert = function (options: DialogParams) {
-  return Dialog(options)
+WDialog.alert = function (options: DialogParams) {
+  return WDialog(options)
 }
 
-Dialog.confirm = function (options: DialogParams) {
+WDialog.confirm = function (options: DialogParams) {
   options.showCancelButton = true
 
-  return Dialog(options)
+  return WDialog(options)
 }
 
-Dialog.close = function () {
+WDialog.close = function () {
   if (instance) {
     instance.visible = false
   }
 }
 
-Dialog.setDefaultOptions = function (options: Partial<DialogOptions>) {
-  Dialog.defaultOptions = { ...defaultOptions, ...options }
+WDialog.setDefaultOptions = function (options: Partial<DialogOptions>) {
+  WDialog.defaultOptions = { ...defaultOptions, ...options }
 }
 
-Dialog.resetDefaultOptions = function () {
-  Dialog.defaultOptions = defaultOptions
+WDialog.resetDefaultOptions = function () {
+  WDialog.defaultOptions = defaultOptions
 }
 
-Dialog.install = () => {
+WDialog.install = () => {
   // TODO
 }
 
-Vue.prototype.$dialog = Dialog
+Vue.prototype.$dialog = WDialog
 
-export { Dialog }
-export default Dialog
+export { WDialog }
+export default WDialog

@@ -1,4 +1,4 @@
-import Grid from './grid'
+import WGrid from './WGrid'
 
-export { Grid }
-export default Grid
+export { WGrid }
+export default WGrid
