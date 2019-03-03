@@ -65,22 +65,16 @@ describe('toast api', () => {
     expect(instance.type).toBe('loading')
   })
 
-  test('setDefaultOptions method', () => {
+  test('setDefaultOptions & resetDefaultOptions method', () => {
     ToastApi.setDefaultOptions({
       duration: 1000,
     })
 
-    expect(ToastApi.currentOptions.duration).toBe(1000)
-  })
-
-  test('resetDefaultOptions method', () => {
-    ToastApi.setDefaultOptions({
-      duration: 1000,
-    })
+    expect(ToastApi.defaultOptions.duration).toBe(1000)
 
     ToastApi.resetDefaultOptions()
 
-    expect(ToastApi.currentOptions).toEqual(ToastApi.defaultOptions)
+    expect(ToastApi.defaultOptions.duration).toBe(2000)
   })
 
   test('singleton toast', () => {
@@ -93,6 +87,18 @@ describe('toast api', () => {
 
     // 因为是单例，第二次调用时返回前一个实例
     expect(toast2).toEqual(toast1)
+  })
+
+  test('cloase all', () => {
+    ToastApi.allowMultiple(true)
+
+    const toast1 = ToastApi.success('1')
+    const toast2 = ToastApi.success('2')
+
+    ToastApi.close(true)
+
+    expect(toast1.currentVisible).toBeFalsy()
+    expect(toast2.currentVisible).toBeFalsy()
   })
 })
 

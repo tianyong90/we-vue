@@ -10,11 +10,6 @@ export default mixins(
 ).extend({
   name: 'wv-toast',
 
-  components: {
-    WVIcon,
-    WVSpinner,
-  },
-
   props: {
     mask: {
       type: Boolean,

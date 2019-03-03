@@ -15,7 +15,7 @@ describe('test dialog api', () => {
       title: 'title',
       message: 'test message',
       skin: 'ios',
-      showCancelBtn: true,
+      showCancelButton: true,
     })
 
     await later(500)
@@ -61,22 +61,17 @@ describe('test dialog api', () => {
     ;(document.querySelector('.weui-dialog__ft>.weui-dialog__btn_primary') as HTMLElement).click()
   })
 
-  test('setDefaultOptions method', () => {
-    DialogApi.setDefaultOptions({
+  test('setDefaultOptions & resetDefaultOptions method', () => {
+    const opts = {
       title: 'foo',
-    })
+    }
 
-    expect(DialogApi.currentOptions.title).toBe('foo')
-  })
-
-  test('resetDefaultOptions method', () => {
-    DialogApi.setDefaultOptions({
-      duration: 1000,
-    })
+    DialogApi.setDefaultOptions(opts)
+    expect(DialogApi.defaultOptions.title).toBe(opts.title)
 
     DialogApi.resetDefaultOptions()
 
-    expect(DialogApi.currentOptions).toEqual(DialogApi.defaultOptions)
+    expect(DialogApi.defaultOptions.title).toEqual('')
   })
 })
 

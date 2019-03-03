@@ -1,19 +1,62 @@
-import Vue from 'vue'
+import Vue, { PluginFunction } from 'vue'
 import DialogComponent from './dialog'
 
 type DialogOptions = {
-  // TODO
+  visible: boolean
+  title: string
+  message: string
+  type: string
+  modalFade: boolean
+  lockScroll: boolean
+  skin: string
+  closeOnClickModal: boolean
+  showConfirmButton: boolean
+  showCancelButton: boolean
+  confirmButtonText: string
+  cancelButtonText: string
+  callback: (action: action) => void
 }
 
-type DialogType = {
+type DialogParams = Partial<DialogOptions>
+
+type InstanceType = Vue & {
   visible: boolean
   resolve: (action: action) => void
   reject: (action: action) => void
-} & Vue
+}
 
 type action = 'cancel' | 'confirm'
 
-let instance: DialogType
+const defaultOptions: DialogOptions = {
+  visible: true,
+  title: '',
+  message: '',
+  type: '',
+  modalFade: false,
+  lockScroll: false,
+  skin: 'ios',
+  closeOnClickModal: true,
+  showConfirmButton: true,
+  showCancelButton: false,
+  confirmButtonText: '确定',
+  cancelButtonText: '取消',
+  callback: (action: action) => {
+    instance[action === 'confirm' ? 'resolve' : 'reject'](action)
+  },
+}
+
+let instance: InstanceType
+
+export interface Dialog {
+  (params: DialogParams): Promise<any>
+  alert (params: DialogParams): Promise<any>
+  confirm (params: DialogParams): Promise<any>
+  close (): void
+  setDefaultOptions (options: Partial<DialogOptions>): void
+  resetDefaultOptions (): void
+  install: PluginFunction<Vue>
+  defaultOptions: DialogOptions
+}
 
 const createInstance = () => {
   instance = new (Vue.extend(DialogComponent))({
@@ -27,7 +70,12 @@ const createInstance = () => {
   document.body.appendChild(instance.$el)
 }
 
-function Dialog (options: DialogOptions) {
+const Dialog = <Dialog> function (options: DialogParams) {
+  options = {
+    ...Dialog.defaultOptions,
+    ...options,
+  }
+
   return new Promise((resolve, reject) => {
     if (!instance) {
       createInstance()
@@ -41,38 +89,16 @@ function Dialog (options: DialogOptions) {
   })
 }
 
-Dialog.defaultOptions = {
-  visible: true,
-  title: '',
-  message: '',
-  type: '',
-  modalFade: false,
-  lockScroll: false,
-  closeOnClickModal: true,
-  showConfirmButton: true,
-  showCancelButton: false,
-  confirmButtonText: '确定',
-  cancelButtonText: '取消',
-  callback: (action: action) => {
-    instance[action === 'confirm' ? 'resolve' : 'reject'](action)
-  },
+Dialog.defaultOptions = defaultOptions
+
+Dialog.alert = function (options: DialogParams) {
+  return Dialog(options)
 }
 
-Dialog.currentOptions = Dialog.defaultOptions
+Dialog.confirm = function (options: DialogParams) {
+  options.showCancelButton = true
 
-Dialog.alert = function (options: DialogOptions) {
-  return Dialog({
-    ...Dialog.currentOptions,
-    ...options,
-  })
-}
-
-Dialog.confirm = function (options: DialogOptions) {
-  return Dialog({
-    ...Dialog.currentOptions,
-    showCancelButton: true,
-    ...options,
-  })
+  return Dialog(options)
 }
 
 Dialog.close = function () {
@@ -81,12 +107,16 @@ Dialog.close = function () {
   }
 }
 
-Dialog.setDefaultOptions = function (options: DialogOptions) {
-  Object.assign(Dialog.currentOptions, options)
+Dialog.setDefaultOptions = function (options: Partial<DialogOptions>) {
+  Dialog.defaultOptions = { ...defaultOptions, ...options }
 }
 
 Dialog.resetDefaultOptions = function () {
-  Dialog.currentOptions = { ...Dialog.defaultOptions }
+  Dialog.defaultOptions = defaultOptions
+}
+
+Dialog.install = () => {
+  // TODO
 }
 
 Vue.prototype.$dialog = Dialog

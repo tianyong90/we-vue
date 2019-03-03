@@ -18,10 +18,10 @@ type InstanceType = Vue & {
 export interface TopTips {
   (params: TopTipsParams): InstanceType
   close (): void
-  setDefaultOptions (options: TopTipsOptions): void
+  setDefaultOptions (options: Partial<TopTipsOptions>): void
   resetDefaultOptions (): void
-  install?: PluginFunction<Vue>
-  defaultOptions?: TopTipsOptions
+  install: PluginFunction<Vue>
+  defaultOptions: TopTipsOptions
 }
 
 let instance: InstanceType
