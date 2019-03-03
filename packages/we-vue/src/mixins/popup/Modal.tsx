@@ -6,7 +6,7 @@ interface options extends Vue {
 }
 
 export default Vue.extend<options>().extend({
-  name: 'wv-modal',
+  name: 'w-modal',
 
   props: {
     visible: Boolean,

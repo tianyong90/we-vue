@@ -9,98 +9,98 @@ declare module 'we-vue/lib' {
     InfiniteScroll: DirectiveOptions
   }
 
-  const WvActionsheet: Component
-  const WvArea: Component
-  const WvBadge: Component
-  const WvButton: Component
-  const WvCell: Component
-  const WvCellSwipe: Component
-  const WvCellSwipeButton: Component
-  const WvChecklist: Component
-  const WvCircle: Component
-  const WvDatetimePicker: Component
-  const WvDialog: Component
-  const WvFlex: Component
-  const WvFlexItem: Component
-  const WvFooter: Component
-  const WvFormPreview: Component
-  const WvGrid: Component
-  const WvGridItem: Component
-  const WvGroup: Component
-  const WvHeader: Component
-  const WvIcon: Component
-  const WvInfiniteScroll: Component
-  const WvInput: Component
-  const WvLazyload: Component
-  const WvLoadmore: Component
-  const WvMediaBox: Component
-  const WvNumberSpinner: Component
-  const WvPanel: Component
-  const WvPicker: Component
-  const WvPopup: Component
-  const WvProgress: Component
-  const WvRadio: Component
-  const WvSearchBar: Component
-  const WvSlider: Component
-  const WvSpinner: Component
-  const WvSwipe: Component
-  const WvSwipeItem: Component
-  const WvSwitch: Component
-  const WvTab: Component
-  const WvTabbar: Component
-  const WvTabbarItem: Component
-  const WvTabs: Component
-  const WvTextarea: Component
-  const WvToast: Component
-  const WvTopTips: Component
+  const WActionsheet: Component
+  const WArea: Component
+  const WBadge: Component
+  const WButton: Component
+  const WCell: Component
+  const WCellSwipe: Component
+  const WCellSwipeButton: Component
+  const WChecklist: Component
+  const WCircle: Component
+  const WDatetimePicker: Component
+  const WDialog: Component
+  const WFlex: Component
+  const WFlexItem: Component
+  const WFooter: Component
+  const WFormPreview: Component
+  const WGrid: Component
+  const WGridItem: Component
+  const WGroup: Component
+  const WHeader: Component
+  const WIcon: Component
+  const WInfiniteScroll: Component
+  const WInput: Component
+  const WLazyload: Component
+  const WLoadmore: Component
+  const WMediaBox: Component
+  const WNumberSpinner: Component
+  const WPanel: Component
+  const WPicker: Component
+  const WPopup: Component
+  const WProgress: Component
+  const WRadio: Component
+  const WSearchBar: Component
+  const WSlider: Component
+  const WSpinner: Component
+  const WSwipe: Component
+  const WSwipeItem: Component
+  const WSwitch: Component
+  const WTab: Component
+  const WTabbar: Component
+  const WTabbarItem: Component
+  const WTabs: Component
+  const WTextarea: Component
+  const WToast: Component
+  const WTopTips: Component
 
   export default WeVue
 
   export {
     directives,
-    WvActionsheet,
-    WvArea,
-    WvBadge,
-    WvButton,
-    WvCell,
-    WvCellSwipe,
-    WvCellSwipeButton,
-    WvChecklist,
-    WvCircle,
-    WvDatetimePicker,
-    WvDialog,
-    WvFlex,
-    WvFlexItem,
-    WvFooter,
-    WvFormPreview,
-    WvGrid,
-    WvGridItem,
-    WvGroup,
-    WvHeader,
-    WvIcon,
-    WvInfiniteScroll,
-    WvInput,
-    WvLazyload,
-    WvLoadmore,
-    WvMediaBox,
-    WvNumberSpinner,
-    WvPanel,
-    WvPicker,
-    WvPopup,
-    WvProgress,
-    WvRadio,
-    WvSearchBar,
-    WvSlider,
-    WvSpinner,
-    WvSwipe,
-    WvSwipeItem,
-    WvSwitch,
-    WvTab,
-    WvTabbar,
-    WvTabbarItem,
-    WvTabs,
-    WvTextarea,
-    WvToast,
-    WvTopTips,
+    WActionsheet,
+    WArea,
+    WBadge,
+    WButton,
+    WCell,
+    WCellSwipe,
+    WCellSwipeButton,
+    WChecklist,
+    WCircle,
+    WDatetimePicker,
+    WDialog,
+    WFlex,
+    WFlexItem,
+    WFooter,
+    WFormPreview,
+    WGrid,
+    WGridItem,
+    WGroup,
+    WHeader,
+    WIcon,
+    WInfiniteScroll,
+    WInput,
+    WLazyload,
+    WLoadmore,
+    WMediaBox,
+    WNumberSpinner,
+    WPanel,
+    WPicker,
+    WPopup,
+    WProgress,
+    WRadio,
+    WSearchBar,
+    WSlider,
+    WSpinner,
+    WSwipe,
+    WSwipeItem,
+    WSwitch,
+    WTab,
+    WTabbar,
+    WTabbarItem,
+    WTabs,
+    WTextarea,
+    WToast,
+    WTopTips,
   }
 }
