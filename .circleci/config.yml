@@ -29,14 +29,11 @@ jobs:
       # update codecov stats
       - run: yarn lerna run coverage --scope we-vue
 
-      # build component lib
-      - run: yarn lerna run build:dist --scope we-vue
+      # build component lib and dist
+      - run: yarn lerna run build --scope we-vue
 
-      # build demo
-      - run: yarn lerna run build --scope demo
-
-      # build docs
-      - run: yarn lerna run build --scope docs
+      # build demo and docs
+      - run: yarn lerna run build --ignore we-vue --parallel
 
       - persist_to_workspace:
           root: ./

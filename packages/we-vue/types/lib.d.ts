@@ -29,9 +29,7 @@ declare module 'we-vue/lib' {
   const WGroup: Component
   const WHeader: Component
   const WIcon: Component
-  const WInfiniteScroll: Component
   const WInput: Component
-  const WLazyload: Component
   const WLoadmore: Component
   const WMediaBox: Component
   const WNumberSpinner: Component
@@ -78,9 +76,7 @@ declare module 'we-vue/lib' {
     WGroup,
     WHeader,
     WIcon,
-    WInfiniteScroll,
     WInput,
-    WLazyload,
     WLoadmore,
     WMediaBox,
     WNumberSpinner,
