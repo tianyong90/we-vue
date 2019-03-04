@@ -227,8 +227,8 @@ export default Vue.extend<options>().extend({
           {this.$slots.default}
         </div>
         {
-          this.showIndicators && this.count > 1
-            && <div class="wv-swipe__indicators">
+          this.showIndicators && this.count > 1 &&
+            <div class="wv-swipe__indicators">
               {
                 (new Array(this.count)).map(index => (
                   <i

@@ -139,14 +139,14 @@ export default mixins<options &
               {this.$slots.icon}
             </template>
             {
-              !this.title
-                && <template slot="bd">
+              !this.title &&
+                <template slot="bd">
                   {this.$slots.bd}
                 </template>
             }
             {
-              typeof this.value === 'undefined'
-                && <template slot="ft">
+              typeof this.value === 'undefined' &&
+                <template slot="ft">
                   {this.$slots.ft}
                 </template>
             }

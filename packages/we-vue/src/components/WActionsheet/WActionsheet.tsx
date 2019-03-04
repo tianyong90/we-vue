@@ -87,15 +87,15 @@ export default Vue.extend({
               vShow={this.currentValue}
             >
               {
-                this.title
-                  && <div class="weui-actionsheet__title">
+                this.title &&
+                  <div class="weui-actionsheet__title">
                     <p class="weui-actionsheet__title-text" domPropsInnerHTML={this.title}/>
                   </div>
               }
               {actionsheetMenu()}
               {
-                this.cancelText
-                  && <div class="weui-actionsheet__action">
+                this.cancelText &&
+                  <div class="weui-actionsheet__action">
                     <div
                       class="weui-actionsheet__cell"
                       onClick={() => {

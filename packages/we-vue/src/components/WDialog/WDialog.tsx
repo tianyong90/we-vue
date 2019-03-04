@@ -74,8 +74,8 @@ export default mixins(
           key="dialog"
         >
           {
-            this.title
-              && <div class="weui-dialog__hd">
+            this.title &&
+              <div class="weui-dialog__hd">
                 <strong class="weui-dialog__title" domPropsInnerHTML={this.title} />
               </div>
           }
@@ -83,16 +83,16 @@ export default mixins(
           <div class="weui-dialog__bd" domPropsInnerHTML={this.message} />
           <div class="weui-dialog__ft">
             {
-              this.showCancelButton
-                && <div
+              this.showCancelButton &&
+                <div
                   class="weui-dialog__btn weui-dialog__btn_default"
                   onClick={() => { this.handleAction('cancel') }}
                   domPropsTextContent={this.cancelButtonText}
                 />
             }
             {
-              this.showConfirmButton
-                && <div
+              this.showConfirmButton &&
+                <div
                   class="weui-dialog__btn weui-dialog__btn_primary"
                   onClick={() => { this.handleAction('confirm') }}
                   domPropsTextContent={this.confirmButtonText}

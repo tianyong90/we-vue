@@ -94,8 +94,8 @@ export default Vue.extend({
             vModel={this.internalValue}
           />
           {
-            this.showCounter
-              && <div class="weui-textarea-counter">
+            this.showCounter &&
+              <div class="weui-textarea-counter">
                 { `${this.length}/${this.maxLength}` }
               </div>
           }

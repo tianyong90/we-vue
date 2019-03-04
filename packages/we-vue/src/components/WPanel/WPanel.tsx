@@ -12,8 +12,8 @@ export default Vue.extend({
     return (
       <div class="weui-panel weui-panel_access">
         {
-          this.title
-            && <div
+          this.title &&
+            <div
               class="weui-panel__hd"
               domPropsInnerHTML={this.title}
             />

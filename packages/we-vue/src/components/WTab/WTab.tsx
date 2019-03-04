@@ -70,8 +70,8 @@ export default mixins<options &
       <div class="wv-tab__pane" vShow={this.selected || this.parent.animated}>
         { this.inited && this.$slots.default }
         {
-          this.$slots.title
-            && <div ref="title">
+          this.$slots.title &&
+            <div ref="title">
               {this.$slots.title}
             </div>
         }

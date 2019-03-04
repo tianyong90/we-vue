@@ -15,8 +15,8 @@ export default Vue.extend({
     return (
       <div {...context.data}>
         {
-          context.props.title
-            && <div
+          context.props.title &&
+            <div
               style={{ color: context.props.titleColor }}
               class="weui-cells__title"
               domPropsInnerHTML={context.props.title}

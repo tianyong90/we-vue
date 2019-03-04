@@ -32,8 +32,8 @@ export default Vue.extend({
           />
         </div>
         {
-          this.showClear
-            && <span class="weui-progress__opr">
+          this.showClear &&
+            <span class="weui-progress__opr">
               <i class="weui-icon-cancel" onClick={(e: MouseEvent) => { this.onClickCancel(e) }}/>
             </span>
         }

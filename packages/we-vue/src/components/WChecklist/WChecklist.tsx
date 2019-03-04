@@ -101,8 +101,8 @@ export default Vue.extend<options>().extend({
                 }}
               >
                 {
-                  this.align === 'left'
-                    && <div class="weui-cell__hd">
+                  this.align === 'left' &&
+                    <div class="weui-cell__hd">
                       <i
                         class={{
                           'weui-icon-checked': true,
@@ -115,8 +115,8 @@ export default Vue.extend<options>().extend({
                   <p domPropsTextContent={option.label || option} />
                 </div>
                 {
-                  this.align === 'right'
-                    && <div class="weui-cell__hd">
+                  this.align === 'right' &&
+                    <div class="weui-cell__hd">
                       <i
                         className={{
                           'weui-icon-checked': true,

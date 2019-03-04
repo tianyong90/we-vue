@@ -57,15 +57,15 @@ export default mixins(
           vShow={this.visible}
         >
           {
-            this.type !== 'text' && this.type !== 'loading'
-              && <WVIcon
+            this.type !== 'text' && this.type !== 'loading' &&
+              <WVIcon
                 type={this.icon}
                 class="weui-icon_toast"
               />
           }
           {
-            this.type === 'loading' && this.spinnerType !== 'none'
-              && <WVSpinner
+            this.type === 'loading' && this.spinnerType !== 'none' &&
+              <WVSpinner
                 size={25}
                 type={this.spinnerType}
                 class="weui-icon_toast"
