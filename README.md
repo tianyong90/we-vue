@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="120" height="120" src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/logo.png">
+  <img width="120" height="120" src="https://raw.githubusercontent.com/tianyong90/we-vue/master/images/logo.png">
   <h2 align="center">WeVue, 不止是 Vue.js + weui!</h2>
 </p>
 
@@ -26,7 +26,7 @@ we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui 官方样式�
 ### [在线示例（https://demo.wevue.org）](https://demo.wevue.org)
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/img/qrcode-demo.png" width="180">
+  <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/images/qrcode-demo.png" width="180">
 </div>
 
 ## 安装
