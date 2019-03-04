@@ -17,7 +17,7 @@ type InstanceType = Vue & {
   [key: string]: any
 }
 
-export interface Toast {
+export interface WToast {
   (params: ToastParams): InstanceType
   text (msg: string): InstanceType
   success (msg: string): InstanceType
@@ -57,7 +57,7 @@ const createInstance: () => InstanceType = () => {
   return queue[queue.length - 1]
 }
 
-const WToast = <Toast> function (options: ToastParams) {
+const WToast = <WToast> function (options: ToastParams) {
   const toast = createInstance()
 
   options = {

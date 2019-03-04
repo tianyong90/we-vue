@@ -47,7 +47,7 @@ const defaultOptions: DialogOptions = {
 
 let instance: InstanceType
 
-export interface Dialog {
+export interface WDialog {
   (params: DialogParams): Promise<any>
   alert (params: DialogParams): Promise<any>
   confirm (params: DialogParams): Promise<any>
@@ -70,7 +70,7 @@ const createInstance = () => {
   document.body.appendChild(instance.$el)
 }
 
-const WDialog = <Dialog> function (options: DialogParams) {
+const WDialog = <WDialog> function (options: DialogParams) {
   options = {
     ...WDialog.defaultOptions,
     ...options,

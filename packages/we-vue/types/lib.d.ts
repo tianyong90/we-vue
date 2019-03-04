@@ -9,6 +9,10 @@ declare module 'we-vue/lib' {
     InfiniteScroll: DirectiveOptions
   }
 
+  import { WDialog } from '@components/WDialog'
+  import { WToast } from '@components/WToast'
+  import { WTopTips } from '@components/WTopTips'
+
   const WActionsheet: Component
   const WArea: Component
   const WBadge: Component
@@ -19,7 +23,7 @@ declare module 'we-vue/lib' {
   const WChecklist: Component
   const WCircle: Component
   const WDatetimePicker: Component
-  const WDialog: Component
+  const WDialog: WDialog
   const WFlex: Component
   const WFlexItem: Component
   const WFooter: Component
@@ -49,8 +53,8 @@ declare module 'we-vue/lib' {
   const WTabbarItem: Component
   const WTabs: Component
   const WTextarea: Component
-  const WToast: Component
-  const WTopTips: Component
+  const WToast: WToast
+  const WTopTips: WTopTips
 
   export default WeVue
 

@@ -15,7 +15,7 @@ type InstanceType = Vue & {
   timer?: any
 }
 
-export interface TopTips {
+export interface WTopTips {
   (params: TopTipsParams): InstanceType
   close (): void
   setDefaultOptions (options: Partial<TopTipsOptions>): void
@@ -48,7 +48,7 @@ const createInstance: () => void = () => {
   document.body.appendChild(instance.$el)
 }
 
-const WTopTips = <TopTips> function (options: TopTipsParams) {
+const WTopTips = <WTopTips> function (options: TopTipsParams) {
   options = {
     ...WTopTips.defaultOptions,
     ...parseOptions(options),

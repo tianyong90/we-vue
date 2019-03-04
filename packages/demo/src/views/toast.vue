@@ -18,6 +18,8 @@ export default {
     })
 
     WToast.success('Hello')
+
+    WToast.success()
   },
 
   methods: {
