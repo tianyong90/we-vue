@@ -33,13 +33,17 @@ export default {
   list-style: none;
 
   .lazyload-list-item {
-    width: 400px;
+    display: block;
+    min-width: 200px;
+    min-height: 100px;
+    overflow: hidden;
     margin: 15px auto;
   }
 
   img {
     display: block;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
 
     &[lazy='loading'] {
       width: 40px;

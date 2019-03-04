@@ -3,10 +3,10 @@
 
 本文将介绍如果在项目中使用 WeVue。
 
-1. 创建一个 vue.js 项目，推荐引用最新版本的 vue-cli 工具来创建。
+1. 创建一个 Vvue.js 项目，推荐引用最新版本的 vue-cli 工具来创建。
 
 ```bash
-npm install -g @vue/cli @vue/cli-service-global
+yarn global add @vue/cli
 
 vue create <your_projectname>
 ```
@@ -20,7 +20,7 @@ vue create <your_projectname>
 ```js
 import Vue from 'vue'
 import WeVue from 'we-vue'
-import 'we-vue/lib/style.css'
+import 'we-vue/lib/we-vue.css'
 import App from './App.vue'
 
 Vue.use(WeVue)
