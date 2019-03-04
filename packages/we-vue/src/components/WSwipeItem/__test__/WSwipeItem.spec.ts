@@ -16,4 +16,16 @@ describe('swipe item', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  test('destroyed', () => {
+    const wrapper = mount(WSwipe, {
+      attachToDocument: true,
+      slots: {
+        default: [WSwipeItem, WSwipeItem],
+      },
+    })
+
+    wrapper.findAll(WSwipeItem).at(0).vm.$destroy()
+    expect(wrapper.vm.swipes).toHaveLength(1)
+  })
 })

@@ -125,7 +125,7 @@ export default mixins(
       let { children } = this
       return children.find((child, index) => {
         return (
-          child.$options.name === 'wv-picker-column' &&
+          child.$options.name === 'w-picker-column' &&
           index === columnIndex
         )
       })

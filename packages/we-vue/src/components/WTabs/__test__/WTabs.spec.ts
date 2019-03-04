@@ -1,7 +1,6 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import Tabs from '../WTabs'
 import Tab from '../../WTab'
-import { renderToString } from '@vue/server-test-utils'
 
 describe('tabs', () => {
   test('create', () => {
@@ -46,32 +45,28 @@ describe('tabs', () => {
 
 describe('tab', () => {
   test('create', () => {
-    const wrapper = renderToString(Tabs, {
+    const wrapper = mount(Tabs, {
+      attachToDocument: true,
       propsData: {},
       slots: {
         default: [Tab, Tab, Tab],
       },
     })
 
-    expect(wrapper).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
-  // TODO: 更多测试
-  // test('title', () => {
-  //   const wrapper = mount(Tabs, {
-  //     attachToDocument: true,
-  //     propsData: {},
-  //     slots: {
-  //       default: [
-  //         '<wv-tab title="title1">1</wv-tab>',
-  //         '<wv-tab title="title2">2</wv-tab>',
-  //       ],
-  //     },
-  //   })
-  //
-  //   const tabItems = wrapper.findAll('.wv-tab')
-  //   expect(tabItems.length).toBe(2)
-  //
-  //   expect(wrapper.html()).toMatchSnapshot()
-  // })
+  test('destroy', () => {
+    const wrapper = mount(Tabs, {
+      attachToDocument: true,
+      propsData: {},
+      slots: {
+        default: [Tab, Tab, Tab],
+      },
+    })
+
+    wrapper.findAll(Tab).at(0).vm.$destroy()
+
+    expect(wrapper.vm.tabs).toHaveLength(2)
+  })
 })

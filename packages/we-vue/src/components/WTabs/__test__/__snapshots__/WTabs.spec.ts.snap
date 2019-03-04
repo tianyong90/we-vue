@@ -5,12 +5,15 @@ exports[`tab create 1`] = `
   <div class="wv-tabs__wrap wv-hairline--top-bottom">
     <div class="wv-tabs__nav wv-tabs__nav--line">
       <div class="wv-tabs__line"></div>
+      <div class="wv-tab wv-tab--active"><span class="wv-ellipsis"></span></div>
+      <div class="wv-tab"><span class="wv-ellipsis"></span></div>
+      <div class="wv-tab"><span class="wv-ellipsis"></span></div>
     </div>
   </div>
   <div class="wv-tabs__content">
     <div class="wv-tab__pane"></div>
-    <div class="wv-tab__pane"></div>
-    <div class="wv-tab__pane"></div>
+    <div class="wv-tab__pane" style="display: none;"></div>
+    <div class="wv-tab__pane" style="display: none;"></div>
   </div>
 </div>
 `;
