@@ -1,17 +1,14 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount, shallowMount, Wrapper } from '@vue/test-utils'
 import Routable from '@/mixins/routable'
 
 describe('routable mixin', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
+  type RoutableWrapper = Wrapper<InstanceType<typeof Routable>>
 
   test('create', () => {
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [Routable],
       render: h => h('div'),
-    })
+    }) as RoutableWrapper
 
     expect(wrapper.props().to).toBeUndefined()
     expect(wrapper.props().url).toBeUndefined()
@@ -22,7 +19,7 @@ describe('routable mixin', () => {
     const pushSpy = jest.fn()
     const replaceSpy = jest.fn()
 
-    wrapper = shallowMount({
+    const wrapper = shallowMount({
       mixins: [Routable],
       render: h => h('div'),
     }, {
@@ -35,7 +32,7 @@ describe('routable mixin', () => {
           replace: replaceSpy,
         },
       },
-    })
+    }) as RoutableWrapper
 
     wrapper.vm.routeLink()
 
@@ -54,7 +51,7 @@ describe('routable mixin', () => {
   })
 
   test('routeLink method without $router', () => {
-    wrapper = mount({
+    const wrapper = mount({
       mixins: [Routable],
       render: h => h('div'),
     },
@@ -63,7 +60,7 @@ describe('routable mixin', () => {
         href: '#test',
         replace: false,
       },
-    })
+    }) as RoutableWrapper
 
     wrapper.vm.routeLink()
 

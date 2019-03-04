@@ -1,8 +1,10 @@
-import { mount, TransitionStub } from '@vue/test-utils'
+import { mount, TransitionStub, Wrapper } from '@vue/test-utils'
 import PopupMixin from '@/mixins/popup'
-import { verticalDrag } from '../utils'
+import { verticalDrag } from '@/test/unit/utils'
 
 describe('mixins/popup', () => {
+  type PopupWrapper = Wrapper<InstanceType<typeof PopupMixin>>
+
   test('mixed props', () => {
     const wrapper = mount({
       mixins: [PopupMixin],
@@ -11,14 +13,14 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
       },
     }, {
       propsData: {},
-    })
+    }) as PopupWrapper
 
     expect(wrapper.vm.$options.props).toHaveProperty('visible')
     expect(wrapper.vm.$options.props).toHaveProperty('mask')
@@ -37,7 +39,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -46,7 +48,7 @@ describe('mixins/popup', () => {
       propsData: {
         zIndex: 1,
       },
-    })
+    }) as PopupWrapper
 
     wrapper.vm.open()
 
@@ -64,7 +66,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -76,7 +78,7 @@ describe('mixins/popup', () => {
       methods: {
         move: spyMove,
       },
-    })
+    }) as PopupWrapper
 
     wrapper.vm.$nextTick(() => {
       expect(spyMove).toHaveBeenCalled()
@@ -91,7 +93,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -100,7 +102,7 @@ describe('mixins/popup', () => {
       propsData: {
         visible: true,
       },
-    })
+    }) as PopupWrapper
 
     wrapper.vm.close()
 
@@ -116,7 +118,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -131,14 +133,14 @@ describe('mixins/popup', () => {
       stubs: {
         transition: TransitionStub,
       },
-    })
+    }) as PopupWrapper
 
     wrapper.vm.open()
 
     const spy = jest.spyOn(wrapper.vm, 'close')
 
     // trigger click on the mask element
-    document.querySelector('.wv-modal').click()
+    ;(document.querySelector('.wv-modal') as HTMLElement).click()
 
     expect(spy).toHaveBeenCalled()
 
@@ -153,7 +155,7 @@ describe('mixins/popup', () => {
     wrapper.vm.open()
 
     // trigger click on the mask element
-    document.querySelector('.wv-modal').click()
+    ;(document.querySelector('.wv-modal') as HTMLElement).click()
 
     expect(spy).not.toHaveBeenCalled()
   })
@@ -166,7 +168,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -177,7 +179,7 @@ describe('mixins/popup', () => {
         visible: true,
         lockScroll: true,
       },
-    })
+    }) as PopupWrapper
 
     wrapper.vm.open()
 
@@ -200,7 +202,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -211,7 +213,7 @@ describe('mixins/popup', () => {
         open: openSpy,
         close: closeSpy,
       },
-    })
+    }) as PopupWrapper
 
     wrapper.setProps({
       visible: true,
@@ -234,7 +236,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -244,7 +246,7 @@ describe('mixins/popup', () => {
       propsData: {
         visible: true,
       },
-    })
+    }) as PopupWrapper
 
     const spy = jest.spyOn(wrapper.vm, 'move')
 
@@ -265,7 +267,7 @@ describe('mixins/popup', () => {
           directives: [
             {
               name: 'show',
-              value: this.visible,
+              value: (this as any).visible,
             },
           ],
         })
@@ -278,7 +280,7 @@ describe('mixins/popup', () => {
       methods: {
         renderMask: renderMaskSpy,
       },
-    })
+    }) as PopupWrapper
 
     wrapper.setProps({
       mask: false,

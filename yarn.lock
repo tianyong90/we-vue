@@ -3166,9 +3166,9 @@ camelcase@^4.1.0:
   integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
 
 camelcase@^5.0.0:
-  version "5.0.0"
-  resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-5.0.0.tgz#03295527d58bd3cd4aa75363f35b2e8d97be2f42"
-  integrity sha1-AylVJ9WL081Kp1Nj81sujZe+L0I=
+  version "5.1.0"
+  resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-5.1.0.tgz#29e83b9cfaf7ad478f401a187ae089cf83c257ea"
+  integrity sha1-Keg7nPr3rUePQBoYeuCJz4PCV+o=
 
 can-promise@0.0.1:
   version "0.0.1"

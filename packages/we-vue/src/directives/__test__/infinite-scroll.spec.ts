@@ -1,15 +1,10 @@
 import { mount } from '@vue/test-utils'
-import InfiniteScrollComponent from '../component-mocks/infinite-scroll-component'
+import InfiniteScrollComponent from './infinite-scroll-component.vue'
 
 describe('infinite-scroll', () => {
-  let wrapper
-  afterEach(() => {
-    wrapper && wrapper.destroy()
-  })
-
   test('create', (done) => {
     const loadMoreSpy = jest.fn()
-    wrapper = mount(InfiniteScrollComponent, {
+    const wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
@@ -29,7 +24,7 @@ describe('infinite-scroll', () => {
   })
 
   test('loadMore function', (done) => {
-    wrapper = mount(InfiniteScrollComponent, {
+    const wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
@@ -50,7 +45,7 @@ describe('infinite-scroll', () => {
 
   test('test disabled', (done) => {
     const loadMoreSpy = jest.fn()
-    wrapper = mount(InfiniteScrollComponent, {
+    const wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: true,
@@ -76,33 +71,31 @@ describe('infinite-scroll', () => {
   })
 
   test('when scrollTarget is hidden, the loadMore callback should not be called', () => {
-    const loadMoreSpy = jest.fn()
-    wrapper = mount(InfiniteScrollComponent, {
+    const wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         disabled: false,
         hidden: true,
         list: [],
-        onLoadMore: loadMoreSpy,
+        onLoadMore: jest.fn(),
       },
     })
 
-    expect(loadMoreSpy).not.toHaveBeenCalled()
+    expect(wrapper.vm.onLoadMore).not.toHaveBeenCalled()
   })
 
   test('do not loadmore when mounted, immedialateCheck === false', (done) => {
-    const loadMoreSpy = jest.fn()
-    wrapper = mount(InfiniteScrollComponent, {
+    const wrapper = mount(InfiniteScrollComponent, {
       attachToDocument: true,
       propsData: {
         immediateCheck: false,
         list: [],
-        onLoadMore: loadMoreSpy,
+        onLoadMore: jest.fn(),
       },
     })
 
     setTimeout(() => {
-      expect(loadMoreSpy).not.toHaveBeenCalled()
+      expect(wrapper.vm.onLoadMore).not.toHaveBeenCalled()
       done()
     }, 500)
   })

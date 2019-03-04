@@ -1,7 +1,7 @@
-import ClickOutside from '@/directives/click-outside'
+import ClickOutside from '../click-outside'
 
 function bootstrap () {
-  let registeredHandler
+  let registeredHandler = {} as any
 
   const el = document.createElement('div')
 
@@ -9,13 +9,13 @@ function bootstrap () {
     value: jest.fn(),
   }
 
-  jest.spyOn(global.document.body, 'addEventListener').mockImplementation((eventName, eventHandler, options) => {
+  jest.spyOn(document.body, 'addEventListener').mockImplementation((eventName, eventHandler, options) => {
     registeredHandler = eventHandler
   })
 
-  jest.spyOn(global.document.body, 'removeEventListener')
+  jest.spyOn(document.body, 'removeEventListener')
 
-  ClickOutside.inserted(el, binding)
+  ClickOutside.inserted(el, binding as any)
 
   return {
     callback: binding.value,
@@ -25,24 +25,21 @@ function bootstrap () {
 }
 
 describe('click-outside', () => {
-  let wrapper
   afterEach(() => {
-    wrapper && wrapper.destroy()
-
     jest.clearAllMocks()
   })
 
   test('should register and unregister handler', () => {
     const { registeredHandler, el } = bootstrap()
 
-    expect(global.document.body.addEventListener).toHaveBeenCalledWith('click', registeredHandler, true)
+    expect(document.body.addEventListener).toHaveBeenCalledWith('click', registeredHandler, true)
 
     ClickOutside.unbind(el)
-    expect(global.document.body.removeEventListener).toHaveBeenCalledWith('click', registeredHandler, true)
+    expect(document.body.removeEventListener).toHaveBeenCalledWith('click', registeredHandler, true)
   })
 
   test('callback should be called when click outside', () => {
-    const { registeredHandler, callback, el } = bootstrap()
+    const { registeredHandler, callback } = bootstrap()
 
     const event = new MouseEvent('click', {
       view: window,

@@ -1,5 +1,4 @@
-import { VNodeDirective, VNode } from 'vue/types/vnode'
-import { DirectiveOptions } from 'vue/types/options'
+import { VNode, VNodeDirective } from 'vue/types/vnode'
 import Utils from '../utils/scroll'
 import throttle from 'lodash/throttle'
 
@@ -99,4 +98,4 @@ export default {
     }
     delete el._onInfiniteScroll
   },
-} as DirectiveOptions
+}
