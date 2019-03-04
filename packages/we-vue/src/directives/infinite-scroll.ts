@@ -46,7 +46,7 @@ function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): 
 }
 
 export default {
-  inserted (el: HTMLElement, binding: InfiniteScrollDirective, vnode: VNode, oldVnode: VNode) {
+  inserted (el: HTMLElement, binding: InfiniteScrollDirective, vnode: VNode) {
     vnode.context!.$nextTick(function () {
       const target = Utils.getScrollEventTarget(el) as HTMLElement
       const listener = throttle(handleScrollEvent.bind(null, el, binding), 200)
@@ -87,7 +87,7 @@ export default {
     })
   },
 
-  unbind (el: HTMLElement, binding: InfiniteScrollDirective, vnode: VNode, oldVnode: VNode): void {
+  unbind (el: HTMLElement): void {
     /* istanbul ignore next */
     if (!el._onInfiniteScroll) {
       return
