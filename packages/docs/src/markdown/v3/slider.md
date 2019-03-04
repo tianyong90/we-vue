@@ -15,19 +15,19 @@ Vue.use(Slider)
 ### 基本示例
 
 ```html
-<wv-slider v-model="percent" :min="10" :max="80"></wv-slider>
+<w-slider v-model="percent" :min="10" :max="80"></w-slider>
 ```
 
 ### 不显示当前数值
 
 ```html
-<wv-slider v-model="percent" :show-value="false"></wv-slider>
+<w-slider v-model="percent" :show-value="false"></w-slider>
 ```
 
 ### 禁用
 
 ```html
-<wv-slider v-model="percent" disabled></wv-slider>
+<w-slider v-model="percent" disabled></w-slider>
 ```
 
 ## API

@@ -15,29 +15,29 @@ Vue.use(Swipe).use(SwipeItem)
 ### 基础示例
 
 ```html
-<wv-swipe :height="130" :autoplay="4000">
-  <wv-swipe-item style="background-color: #f44336">1</wv-swipe-item>
-  <wv-swipe-item style="background-color: #ffc107">2</wv-swipe-item>
-  <wv-swipe-item style="background-color: #03a9f4">3</wv-swipe-item>
-</wv-swipe>
+<w-swipe :height="130" :autoplay="4000">
+  <w-swipe-item style="background-color: #f44336">1</w-swipe-item>
+  <w-swipe-item style="background-color: #ffc107">2</w-swipe-item>
+  <w-swipe-item style="background-color: #03a9f4">3</w-swipe-item>
+</w-swipe>
 ```
 
 ### 不自动播放
 
 ```html
-<wv-swipe :height="130" :autoplay="0">
-  <wv-swipe-item style="background-color: #f44336">1</wv-swipe-item>
-  <wv-swipe-item style="background-color: #ffc107">2</wv-swipe-item>
-  <wv-swipe-item style="background-color: #03a9f4">3</wv-swipe-item>
-</wv-swipe>
+<w-swipe :height="130" :autoplay="0">
+  <w-swipe-item style="background-color: #f44336">1</w-swipe-item>
+  <w-swipe-item style="background-color: #ffc107">2</w-swipe-item>
+  <w-swipe-item style="background-color: #03a9f4">3</w-swipe-item>
+</w-swipe>
 ```
 
 ### 单张轮播
 
 ```html
-<wv-swipe :height="130" :show-indicators="false" :autoplay="5000">
-  <wv-swipe-item style="background-color: #f44336">单张轮播</wv-swipe-item>
-</wv-swipe>
+<w-swipe :height="130" :show-indicators="false" :autoplay="5000">
+  <w-swipe-item style="background-color: #f44336">单张轮播</w-swipe-item>
+</w-swipe>
 ```
 
 ## API

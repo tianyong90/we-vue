@@ -19,50 +19,50 @@ media-box 仅与 panel 结合使用
 ### 图文结合
 
 ```html
-<wv-panel title="图文组合列表">
-  <wv-media-box :thumb="thumb" title="标题一" :description="description" to="/"></wv-media-box>
-  <wv-media-box :thumb="thumb" title="标题二" :description="description" to="/"></wv-media-box>
+<w-panel title="图文组合列表">
+  <w-media-box :thumb="thumb" title="标题一" :description="description" to="/"></w-media-box>
+  <w-media-box :thumb="thumb" title="标题二" :description="description" to="/"></w-media-box>
 
-  <wv-cell title="查看更多" is-link slot="ft"></wv-cell>
-</wv-panel>
+  <w-cell title="查看更多" is-link slot="ft"></w-cell>
+</w-panel>
 ```
 
 ### 文字组合
 
 ```html
-<wv-panel title="文字组合列表">
-  <wv-media-box :thumb="thumb" title="标题一" :description="description" to="/" type="text"></wv-media-box>
-  <wv-media-box :thumb="thumb" title="标题二" :description="description" to="/" type="text"></wv-media-box>
+<w-panel title="文字组合列表">
+  <w-media-box :thumb="thumb" title="标题一" :description="description" to="/" type="text"></w-media-box>
+  <w-media-box :thumb="thumb" title="标题二" :description="description" to="/" type="text"></w-media-box>
 
-  <wv-cell title="查看更多" is-link slot="ft"></wv-cell>
-</wv-panel>
+  <w-cell title="查看更多" is-link slot="ft"></w-cell>
+</w-panel>
 ```
 
 ### 小图标图文组合
 
 ``` html
-<wv-panel title="小图文组合列表">
-  <wv-cell title="文字标题" is-link to="/">
+<w-panel title="小图文组合列表">
+  <w-cell title="文字标题" is-link to="/">
     <img :src="thumbSmall" alt="" slot="icon" class="cell-icon">
-  </wv-cell>
-  <wv-cell title="文字标题" is-link to="/">
+  </w-cell>
+  <w-cell title="文字标题" is-link to="/">
     <img :src="thumbSmall" alt="" slot="icon" class="cell-icon">
-  </wv-cell>
-</wv-panel>
+  </w-cell>
+</w-panel>
 ```
 
 ### 文字列表附来源
 
 ```html
-<wv-panel title="文字列表附来源">
-  <wv-media-box :thumb="thumb" title="标题一" :description="description" to="/" type="text">
+<w-panel title="文字列表附来源">
+  <w-media-box :thumb="thumb" title="标题一" :description="description" to="/" type="text">
     <ul class="weui-media-box__info" slot="box_ft">
       <li class="weui-media-box__info__meta">文字来源</li>
       <li class="weui-media-box__info__meta">时间</li>
       <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">其它信息</li>
     </ul>
-  </wv-media-box>
-</wv-panel>
+  </w-media-box>
+</w-panel>
 ```
 
 ## API

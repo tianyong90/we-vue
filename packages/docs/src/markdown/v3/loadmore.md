@@ -15,19 +15,19 @@ Vue.use(Loadmore)
 ### 基本示例
 
 ```html
-<wv-loadmore></wv-loadmore>
+<w-loadmore></w-loadmore>
 ```
 
 ### 指定文字
 
 ```html
-<wv-loadmore type="line" text="loading"></wv-loadmore>
+<w-loadmore type="line" text="loading"></w-loadmore>
 ```
 
 ### 点划线
 
 ```html
-<wv-loadmore type="lineDot" text="loading"></wv-loadmore>
+<w-loadmore type="lineDot" text="loading"></w-loadmore>
 ```
 
 ## API

@@ -24,11 +24,11 @@ Vue.use(DatetimePicker)
 
 ```html
 <template>
-  <wv-datetime-picker
+  <w-datetime-picker
     ref="picker"
     type="time"
     v-model="pickerValue">
-  </wv-datetime-picker>
+  </w-datetime-picker>
 </template>
 ```
 
@@ -47,23 +47,23 @@ Vue.use(DatetimePicker)
 可以为选项提供自定义模板。模板须为一个包含了 `{value}` 的字符串，`{value}` 会被解析为相应选项的值。
 
 ```html
-<wv-datetime-picker
+<w-datetime-picker
   v-model="pickerVisible"
   type="date"
   year-format="{value} 年"
   month-format="{value} 月"
   date-format="{value} 日">
-</wv-datetime-picker>
+</w-datetime-picker>
 ```
 
 当点击确认按钮时会触发 `confirm` 事件，参数为当前 value 的值。
 
 ```html
-<wv-datetime-picker
+<w-datetime-picker
   v-model="pickerVisible"
   type="time"
   @confirm="onConfirm">
-</wv-datetime-picker>
+</w-datetime-picker>
 ```
 
 ```js

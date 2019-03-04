@@ -15,7 +15,7 @@ Vue.use(CheckList)
 ```html
 <template>
 	<div>
-		<wv-checklist title="基本示例" :options="options" v-model="checkedItems"></wv-checklist>
+		<w-checklist title="基本示例" :options="options" v-model="checkedItems"></w-checklist>
 	</div>
 </template>
 

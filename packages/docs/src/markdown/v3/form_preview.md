@@ -15,8 +15,8 @@ Vue.use(FormPreview)
 ```html
 <template>
   <div class="page">
-    <wv-form-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons1"/>
-    <wv-form-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons2"/>
+    <w-form-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons1"/>
+    <w-form-preview class="preview-item" title="订单详情" value="100.00" :dataItems="dataItems" :buttons="buttons2"/>
   </div>
 </template>
 

@@ -15,10 +15,10 @@ Vue.use(Footer)
 ```html
 <template>
   <div class="page">
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org"></wv-footer>
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links1"></wv-footer>
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links2"></wv-footer>
-    <wv-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links3"></wv-footer>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org"></w-footer>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links1"></w-footer>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links2"></w-footer>
+    <w-footer class="footer-demo" text="Copyright © 2017 wevue.org" :links="links3"></w-footer>
   </div>
 </template>
 

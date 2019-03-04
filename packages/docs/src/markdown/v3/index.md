@@ -32,7 +32,7 @@ $ yarn add we-vue
 从易用性的角度出发，我们对 Button 组件进行了处理，使它可以监听 click 事件：
 
 ```html
-<wv-button @click="onClick">Click Me</wv-button>
+<w-button @click="onClick">Click Me</w-button>
 ```
 
 对于其他组件，还是需要添加 .native 修饰符。

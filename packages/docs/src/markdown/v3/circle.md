@@ -15,19 +15,19 @@ Vue.use(Circle)
 ### 指定线宽
 
 ```html
-<wv-circle :line-width="3" value="12">12 %</wv-circle>
+<w-circle :line-width="3" value="12">12 %</w-circle>
 ```
 
 ### 指定填充色
 
 ```html
-<wv-circle :line-width="5" fill-color="yellow" value="12">12 %</wv-circle>
+<w-circle :line-width="5" fill-color="yellow" value="12">12 %</w-circle>
 ```
 
 ### 指定直径
 
 ```html
-<wv-circle :line-width="10" stroke-color="red" v-model="sliderValue" :diameter="200">{{ sliderValue }}%</wv-circle>
+<w-circle :line-width="10" stroke-color="red" v-model="sliderValue" :diameter="200">{{ sliderValue }}%</w-circle>
 ```
 
 ## API

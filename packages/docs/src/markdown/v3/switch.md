@@ -15,19 +15,19 @@ Vue.use(Switch)
 ### 默认
 
 ```html
-<wv-switch title="开关1"  v-model="switchValue1"></wv-switch>
+<w-switch title="开关1"  v-model="switchValue1"></w-switch>
 ```
 
 ### 禁用
 
 ```html
-<wv-switch title="开关2（禁用）" disabled v-model="switchValue2"></wv-switch>
+<w-switch title="开关2（禁用）" disabled v-model="switchValue2"></w-switch>
 ```
 
 ### 非列表项中的开关（即独立开关）
 
 ```html
-<wv-switch v-model="switchValue3" :is-in-cell="false"></wv-switch>
+<w-switch v-model="switchValue3" :is-in-cell="false"></w-switch>
 ```
 
 ## API

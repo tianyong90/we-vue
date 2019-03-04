@@ -15,7 +15,7 @@ Vue.use(ActionSheet)
 ### 基本使用
 
 ```html
-<wv-actionsheet 
+<w-actionsheet 
   type="ios" 
   :actions="actions" 
   cancel-text="取消" 
@@ -26,7 +26,7 @@ Vue.use(ActionSheet)
 ### 指定皮肤样式
 
 ```html
-<wv-actionsheet 
+<w-actionsheet 
   type="android" 
   :actions="actions" 
   cancel-text="取消" 
@@ -37,7 +37,7 @@ Vue.use(ActionSheet)
 ### 带标题（仅 iOS 样式菜单支持）
 
 ```html
-<wv-actionsheet 
+<w-actionsheet 
   type="ios" 
   title="<h3 style='color: red;'>一个大标题</h3><p>最多两行</p>" 
   :actions="actions" 

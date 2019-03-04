@@ -16,16 +16,16 @@ Vue.use(InfiniteScroll)
 
 ```html
 <div class="page-infinite-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
-  <wv-group
+  <w-group
     title="无限滚动加载"
     v-infinite-scroll="loadMore"
     infinite-scroll-disabled="loading"
     infinite-scroll-distance="50"
   >
-    <wv-cell title="条目" v-for="item in list" :key="item" :value="item"/>
-  </wv-group>
+    <w-cell title="条目" v-for="item in list" :key="item" :value="item"/>
+  </w-group>
   <p v-show="loading" class="loading-tips">
-    <wv-spinner type="snake" color="#444" :size="24"/>
+    <w-spinner type="snake" color="#444" :size="24"/>
   </p>
 </div>
 ```

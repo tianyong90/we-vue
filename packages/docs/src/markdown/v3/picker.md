@@ -17,18 +17,18 @@ Vue.use(Picker)
 ```html
 <template>
   <div class="page page-with-padding">
-    <wv-group title="选择器示例">
-      <wv-cell title="单列(对象数组)" is-link :value="fruit.name" @click.native="fruitPickerShow = true" />
-      <wv-cell title="多列" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true" />
-    </wv-group>
+    <w-group title="选择器示例">
+      <w-cell title="单列(对象数组)" is-link :value="fruit.name" @click.native="fruitPickerShow = true" />
+      <w-cell title="多列" is-link :value="dayAndTime | pickerValueFilter" @click.native="dayPickerShow = true" />
+    </w-group>
 
-    <wv-picker
+    <w-picker
       :visible.sync="fruitPickerShow"
       :columns="fruitColumns"
       value-key="name"
       @confirm="confirmPerson"
     />
-    <wv-picker
+    <w-picker
       :visible.sync="dayPickerShow"
       :columns="dayColumns"
       @confirm="confirmDayTime"

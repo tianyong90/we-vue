@@ -15,11 +15,11 @@ Vue.use(Tabs).use(Tab)
 ### 基本示例
 
 ```html
-<wv-tabs v-model="active">
-  <wv-tab v-for="index in 4" :title="'标签 ' + index">
+<w-tabs v-model="active">
+  <w-tab v-for="index in 4" :title="'标签 ' + index">
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 ### 可滚动
@@ -27,51 +27,51 @@ Vue.use(Tabs).use(Tab)
 默认情况下标签页多于 4 个时，可以横向滚动 tab，可通过设置 swipe-threshold 阈值，多于这个值时，tab 就支持横向滚动。
 
 ```html
-<wv-tabs>
-  <wv-tab v-for="index in 4" :title="'标签 ' + index">
+<w-tabs>
+  <w-tab v-for="index in 4" :title="'标签 ' + index">
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 ### 粘性布局（sticky）
 
 ```html
-<wv-tabs sticky>
-  <wv-tab v-for="index in 4" :title="'标签 ' + index">
+<w-tabs sticky>
+  <w-tab v-for="index in 4" :title="'标签 ' + index">
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 ### 禁用标签
 
 ```html
-<wv-tabs @disabled="onClickDisabled">
-  <wv-tab v-for="index in 4" :title="'标签 ' + index" :disabled="index === 2">
+<w-tabs @disabled="onClickDisabled">
+  <w-tab v-for="index in 4" :title="'标签 ' + index" :disabled="index === 2">
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 ### 卡片式布局
 
 ```html
-<wv-tabs type="card">
-  <wv-tab v-for="index in 4" :title="'标签 ' + index">
+<w-tabs type="card">
+  <w-tab v-for="index in 4" :title="'标签 ' + index">
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 ### 点击事件
 
 ```html
-<wv-tabs @click="onClick">
-  <wv-tab v-for="index in 4" :title="'标签 ' + index">
+<w-tabs @click="onClick">
+  <w-tab v-for="index in 4" :title="'标签 ' + index">
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 ```js
@@ -87,25 +87,25 @@ export default {
 ### 滑动切换
 
 ```html
-<wv-tabs swipeable>
-  <wv-tab v-for="index in 4" :title="'标签 ' + index">
+<w-tabs swipeable>
+  <w-tab v-for="index in 4" :title="'标签 ' + index">
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 ### 自定义标签
 
 ```html
-<wv-tabs>
-  <wv-tab v-for="index in 4">
+<w-tabs>
+  <w-tab v-for="index in 4">
     <div slot="title">
-      <wv-icon type="success-no-circle" :large="false" /> 
+      <w-icon type="success-no-circle" :large="false" /> 
       标签 {{ index }}
     </div>
     内容 {{ index }}
-  </wv-tab>
-</wv-tabs>
+  </w-tab>
+</w-tabs>
 ```
 
 

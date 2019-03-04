@@ -15,34 +15,34 @@ Vue.use(Spinner)
 ### 默认例子
 
 ```html
-<wv-group>
-  <wv-cell title="default">
-    <wv-spinner type="default" slot="ft"></wv-spinner>
-    <wv-spinner type="snake" slot="ft"></wv-spinner>
-  </wv-cell>
-</wv-group>
+<w-group>
+  <w-cell title="default">
+    <w-spinner type="default" slot="ft"></w-spinner>
+    <w-spinner type="snake" slot="ft"></w-spinner>
+  </w-cell>
+</w-group>
 ```
 
 ### 指定大小
 
 ```html
-<wv-group>
-  <wv-cell title="default">
-    <wv-spinner type="default" :size="25" slot="ft"></wv-spinner>
-    <wv-spinner type="snake" :size="25" slot="ft"></wv-spinner>
-  </wv-cell>
-</wv-group>
+<w-group>
+  <w-cell title="default">
+    <w-spinner type="default" :size="25" slot="ft"></w-spinner>
+    <w-spinner type="snake" :size="25" slot="ft"></w-spinner>
+  </w-cell>
+</w-group>
 ```
 
 ### 指定颜色
 
 ```html
-<wv-group>
-  <wv-cell title="default">
-    <wv-spinner type="default" color="red" slot="ft"></wv-spinner>
-    <wv-spinner type="snake" color="red" slot="ft"></wv-spinner>
-  </wv-cell>
-</wv-group>
+<w-group>
+  <w-cell title="default">
+    <w-spinner type="default" color="red" slot="ft"></w-spinner>
+    <w-spinner type="snake" color="red" slot="ft"></w-spinner>
+  </w-cell>
+</w-group>
 ```
 
 ## API

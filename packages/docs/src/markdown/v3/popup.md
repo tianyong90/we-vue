@@ -15,50 +15,50 @@ Vue.use(Popup)
 ### 指定高度
 
 ```html
-<wv-popup :visible.sync="popupVisible2" :height="300">
-  <wv-group>
-    <wv-switch title="关闭" v-model="popupVisible2"/>
-    <wv-cell title="title" value="value" is-link/>
-    <wv-cell title="title" value="value" is-link/>
-  </wv-group>
-</wv-popup>
+<w-popup :visible.sync="popupVisible2" :height="300">
+  <w-group>
+    <w-switch title="关闭" v-model="popupVisible2"/>
+    <w-cell title="title" value="value" is-link/>
+    <w-cell title="title" value="value" is-link/>
+  </w-group>
+</w-popup>
 
-<wv-popup :visible.sync="popupVisible3" height="100%">
-  <wv-group>
-    <wv-switch title="关闭" v-model="popupVisible3"/>
-    <wv-cell title="title" value="value" is-link/>
-    <wv-cell title="title" value="value" is-link/>
-  </wv-group>
-</wv-popup>
+<w-popup :visible.sync="popupVisible3" height="100%">
+  <w-group>
+    <w-switch title="关闭" v-model="popupVisible3"/>
+    <w-cell title="title" value="value" is-link/>
+    <w-cell title="title" value="value" is-link/>
+  </w-group>
+</w-popup>
 ```
 
 ### 模态弹出层
 
 ```html
-<wv-popup
+<w-popup
   :visible.sync="popupVisible4"
   :close-on-click-mask="false"
   @open="onShow"
   @close="onHide"
 >
-  <wv-group>
-    <wv-switch title="关闭" v-model="popupVisible4"/>
-    <wv-cell title="title" value="value" is-link/>
-    <wv-cell title="title" value="value" is-link/>
-  </wv-group>
-</wv-popup>
+  <w-group>
+    <w-switch title="关闭" v-model="popupVisible4"/>
+    <w-cell title="title" value="value" is-link/>
+    <w-cell title="title" value="value" is-link/>
+  </w-group>
+</w-popup>
 ```
 
 ### 自定义遮罩背景色
 
 ```html
-<wv-popup :visible.sync="popupVisible5" :mask-style="{ backgroundColor: 'rgba(0, 255, 255, 0.5)' }">
-  <wv-group>
-    <wv-switch title="关闭" v-model="popupVisible5"/>
-    <wv-cell title="title" value="value" is-link/>
-    <wv-cell title="title" value="value" is-link/>
-  </wv-group>
-</wv-popup>
+<w-popup :visible.sync="popupVisible5" :mask-style="{ backgroundColor: 'rgba(0, 255, 255, 0.5)' }">
+  <w-group>
+    <w-switch title="关闭" v-model="popupVisible5"/>
+    <w-cell title="title" value="value" is-link/>
+    <w-cell title="title" value="value" is-link/>
+  </w-group>
+</w-popup>
 ```
 
 ## API

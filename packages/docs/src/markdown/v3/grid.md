@@ -18,26 +18,26 @@ grid 需要与 grid-item 配合使用
 ### 基本示例
 
 ```html
-<wv-grid>
-  <wv-grid-item to="/">
+<w-grid>
+  <w-grid-item to="/">
     <img :src="thumbSmall" slot="icon">
     <span slot="label">GridItem</span>
-  </wv-grid-item>
-  <wv-grid-item url="/">
+  </w-grid-item>
+  <w-grid-item url="/">
     <img :src="thumbSmall" slot="icon">
     <span slot="label">GridItem</span>
-  </wv-grid-item>
-  <wv-grid-item>
+  </w-grid-item>
+  <w-grid-item>
     <img :src="thumbSmall" slot="icon">
     <span slot="label">GridItem</span>
-  </wv-grid-item>
-  <wv-grid-item to="/">
+  </w-grid-item>
+  <w-grid-item to="/">
     <span>自定义内容</span>
-  </wv-grid-item>
-  <wv-grid-item @click="onClick">
+  </w-grid-item>
+  <w-grid-item @click="onClick">
       <span>处理点击事件</span>
-    </wv-grid-item>
-</wv-grid>
+    </w-grid-item>
+</w-grid>
 
 <script>
 export default {

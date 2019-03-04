@@ -15,19 +15,19 @@ Vue.use(Badge)
 ### 基本使用
 
 ```html
-<wv-badge>20</wv-badge>
+<w-badge>20</w-badge>
 ```
 
 ### 指定背景色
 
 ```html
-<wv-badge color="red">20</wv-badge>
+<w-badge color="red">20</w-badge>
 ```
 
 ### 指定为小红点状态
 
 ```html
-<wv-badge :is-dot="true"></wv-badge>
+<w-badge :is-dot="true"></w-badge>
 ```
 
 ## API

@@ -15,13 +15,13 @@ Vue.use(Progress)
 ### 默认
 
 ```html
-<wv-progress :percent="percent2"/>
+<w-progress :percent="percent2"/>
 ```
 
 ### 隐藏取消按钮
 
 ```html
-<wv-progress :percent="percent1" :show-clear="false" @cancel="onCancel"/>
+<w-progress :percent="percent1" :show-clear="false" @cancel="onCancel"/>
 ```
 
 ## API

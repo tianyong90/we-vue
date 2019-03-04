@@ -19,25 +19,25 @@ textarea 只能在 group 中使用。
 ### 基本示例
 
 ```html
-<wv-group title="标题">
-  <wv-textarea placeholder="请输入文本" :rows="6" v-model="content1"></wv-textarea>
-</wv-group>
+<w-group title="标题">
+  <w-textarea placeholder="请输入文本" :rows="6" v-model="content1"></w-textarea>
+</w-group>
 ```
 
 ### 自定义字数限制
 
 ```html
-<wv-group>
-  <wv-textarea placeholder="请输入文本" :rows="3" v-model="content2" :max-length="10"></wv-textarea>
-</wv-group>
+<w-group>
+  <w-textarea placeholder="请输入文本" :rows="3" v-model="content2" :max-length="10"></w-textarea>
+</w-group>
 ```
 
 ### 不显示字数提示
 
 ```html
-<wv-group>
-  <wv-textarea placeholder="请输入文本" :rows="1" :show-counter="false" v-model="content1"></wv-textarea>
-</wv-group>
+<w-group>
+  <w-textarea placeholder="请输入文本" :rows="1" :show-counter="false" v-model="content1"></w-textarea>
+</w-group>
 ```
 
 ## API

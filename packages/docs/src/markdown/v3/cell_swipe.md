@@ -18,50 +18,50 @@ cell-swipe 只能在 group 中使用。cell-swipe-button 仅与 cell-swipe 结�
 ### 默认示例
 
 ```html
-<wv-group title="默认">
-  <wv-cell-swipe title="标题文字" :value="true">
-    <wv-cell-swipe-button type="warn" slot="right" @click="deleteClicked">删除</wv-cell-swipe-button>
-    <wv-cell-swipe-button type="default" slot="right" @click="readClicked">查看</wv-cell-swipe-button>
-  </wv-cell-swipe>
-</wv-group>
+<w-group title="默认">
+  <w-cell-swipe title="标题文字" :value="true">
+    <w-cell-swipe-button type="warn" slot="right" @click="deleteClicked">删除</w-cell-swipe-button>
+    <w-cell-swipe-button type="default" slot="right" @click="readClicked">查看</w-cell-swipe-button>
+  </w-cell-swipe>
+</w-group>
 ```
 
 ### 右侧按钮内为图标
 
 ```html
-<wv-group title="图标按钮">
-  <wv-cell-swipe title="标题文字" :value="true">
-    <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">
+<w-group title="图标按钮">
+  <w-cell-swipe title="标题文字" :value="true">
+    <w-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">
       <i class="iconfont icon-rubish"></i>
-    </wv-cell-swipe-button>
-    <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">
+    </w-cell-swipe-button>
+    <w-cell-swipe-button type="default" slot="right" @click.native="readClicked">
       <i class="iconfont icon-view"></i>
-    </wv-cell-swipe-button>
-  </wv-cell-swipe>
-</wv-group>
+    </w-cell-swipe-button>
+  </w-cell-swipe>
+</w-group>
 ```
 
 ### 左侧带图标
 
 ```html
-<wv-group title="左侧带图标">
-  <wv-cell-swipe title="标题文字">
+<w-group title="左侧带图标">
+  <w-cell-swipe title="标题文字">
     <img :src="imgIcon" slot="icon" class="cell-icon">
-    <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</wv-cell-swipe-button>
-    <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</wv-cell-swipe-button>
-  </wv-cell-swipe>
-</wv-group>
+    <w-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</w-cell-swipe-button>
+    <w-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</w-cell-swipe-button>
+  </w-cell-swipe>
+</w-group>
 ```
 
 ### 点击后可跳转
 
 ```html
-<wv-group title="可跳转">
-  <wv-cell-swipe title="标题文字" is-link to="/">
-    <wv-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</wv-cell-swipe-button>
-    <wv-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</wv-cell-swipe-button>
-  </wv-cell-swipe>
-</wv-group>
+<w-group title="可跳转">
+  <w-cell-swipe title="标题文字" is-link to="/">
+    <w-cell-swipe-button type="warn" slot="right" @click.native="deleteClicked">删除</w-cell-swipe-button>
+    <w-cell-swipe-button type="default" slot="right" @click.native="readClicked">查看</w-cell-swipe-button>
+  </w-cell-swipe>
+</w-group>
 ```
 
 ## API

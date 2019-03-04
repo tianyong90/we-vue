@@ -15,13 +15,13 @@ Vue.use(Icon)
 ### 大图标
 
 ```html
-<wv-icon type="success" :large="true"></wv-icon>
+<w-icon type="success" :large="true"></w-icon>
 ```
 
 ### 小图标
 
 ```html
-<wv-icon type="success"></wv-icon>
+<w-icon type="success"></w-icon>
 ```
 
 ## API

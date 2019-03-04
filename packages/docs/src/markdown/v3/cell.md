@@ -18,54 +18,54 @@ cell 只能在 group 中使用。
 ### 带说明的列表项
 
 ```html
-<wv-group title="带说明的列表项">
-  <wv-cell title="标题文字" :value="true"></wv-cell>
-</wv-group>
+<w-group title="带说明的列表项">
+  <w-cell title="标题文字" :value="true"></w-cell>
+</w-group>
 ```
 
 ### 带图标、说明的列表项
 
 ```html
-<wv-group title="带图标、说明的列表项">
-  <wv-cell title="标题文字">
+<w-group title="带图标、说明的列表项">
+  <w-cell title="标题文字">
     <img :src="imgIcon" slot="icon" class="cell-icon">
     <span slot="ft">说明文字</span>
-  </wv-cell>
-  <wv-cell title="标题文字" value="说明文字">
+  </w-cell>
+  <w-cell title="标题文字" value="说明文字">
     <img :src="imgIcon" slot="icon" class="cell-icon">
-  </wv-cell>
-</wv-group>
+  </w-cell>
+</w-group>
 ```
 
 ### 带跳转的列表项
 
 ```html
-<wv-group title="带跳转的列表项">
-  <wv-cell title="标题文字" is-link to="/"></wv-cell>
-  <wv-cell title="标题文字" is-link to="/"></wv-cell>
-</wv-group>
+<w-group title="带跳转的列表项">
+  <w-cell title="标题文字" is-link to="/"></w-cell>
+  <w-cell title="标题文字" is-link to="/"></w-cell>
+</w-group>
 ```
 
 ### 带说明、跳转的列表项
 
 ```html
-<wv-group title="带说明、跳转的列表项">
-  <wv-cell title="标题文字" value="说明文字" is-link to="/"></wv-cell>
-  <wv-cell title="标题文字" value="说明文字" is-link to="/"></wv-cell>
-</wv-group>
+<w-group title="带说明、跳转的列表项">
+  <w-cell title="标题文字" value="说明文字" is-link to="/"></w-cell>
+  <w-cell title="标题文字" value="说明文字" is-link to="/"></w-cell>
+</w-group>
 ```
 
 ### 带图标、说明、跳转的列表项
 
 ```html
-<wv-group title="带图标、说明、跳转的列表项">
-  <wv-cell title="标题文字" value="说明文字" is-link to="/">
+<w-group title="带图标、说明、跳转的列表项">
+  <w-cell title="标题文字" value="说明文字" is-link to="/">
     <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
-  </wv-cell>
-  <wv-cell title="标题文字" value="说明文字" is-link to="/">
+  </w-cell>
+  <w-cell title="标题文字" value="说明文字" is-link to="/">
     <img :src="imgIcon" alt="" slot="icon" class="cell-icon">
-  </wv-cell>
-</wv-group>
+  </w-cell>
+</w-group>
 ```
 
 ## API

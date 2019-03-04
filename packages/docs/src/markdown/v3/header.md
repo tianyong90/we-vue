@@ -15,20 +15,20 @@ Vue.use(Header)
 ### 默认
 
 ```html
-<wv-header title="wevue" @headerClick="onHeaderClick">
-</wv-header>
+<w-header title="wevue" @headerClick="onHeaderClick">
+</w-header>
 ```
 
 ### 不固定并指定背景色
 ```html
-<wv-header title="wevue" @headerClick="onHeaderClick" :fixed="false" background-color="#2196f3">
+<w-header title="wevue" @headerClick="onHeaderClick" :fixed="false" background-color="#2196f3">
   <div class="btn-back" slot="left">
     <i class="iconfont icon-back" @click="$router.push('/')"></i>
   </div>
   <div class="btn-menu" slot="right">
     <i class="iconfont icon-menu" @click="$router.push('/')"></i>
   </div>
-</wv-header>
+</w-header>
 ```
 
 ## API

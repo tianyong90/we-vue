@@ -18,56 +18,56 @@ flex 需要与 flex-item 配合使用
 ### 基本示例
 
 ```html
-<wv-flex>
-  <wv-flex-item>
+<w-flex>
+  <w-flex-item>
     <div class="placeholder"></div>
-  </wv-flex-item>
-</wv-flex>
+  </w-flex-item>
+</w-flex>
 ```
 
 ### 指定间距，两列等宽
 
 ```html
-<wv-flex :gutter="10">
-  <wv-flex-item>
+<w-flex :gutter="10">
+  <w-flex-item>
     <div class="placeholder">1/2</div>
-  </wv-flex-item>
-  <wv-flex-item>
+  </w-flex-item>
+  <w-flex-item>
     <div class="placeholder">1/2</div>
-  </wv-flex-item>
-</wv-flex>
+  </w-flex-item>
+</w-flex>
 ```
 
 ### 三列等宽
 
 ```html
-<wv-flex :gutter="10">
-  <wv-flex-item>
+<w-flex :gutter="10">
+  <w-flex-item>
     <div class="placeholder">1/3</div>
-  </wv-flex-item>
-  <wv-flex-item>
+  </w-flex-item>
+  <w-flex-item>
     <div class="placeholder">1/3</div>
-  </wv-flex-item>
-  <wv-flex-item>
+  </w-flex-item>
+  <w-flex-item>
     <div class="placeholder">1/3</div>
-  </wv-flex-item>
-</wv-flex>
+  </w-flex-item>
+</w-flex>
 ```
 
 ### 三列不等宽
 
 ```html
-<wv-flex :gutter="10">
-  <wv-flex-item>
+<w-flex :gutter="10">
+  <w-flex-item>
     <div class="placeholder">1/4</div>
-  </wv-flex-item>
-  <wv-flex-item flex="2">
+  </w-flex-item>
+  <w-flex-item flex="2">
     <div class="placeholder">1/2</div>
-  </wv-flex-item>
-  <wv-flex-item>
+  </w-flex-item>
+  <w-flex-item>
     <div class="placeholder">1/4</div>
-  </wv-flex-item>
-</wv-flex>
+  </w-flex-item>
+</w-flex>
 ```
 
 ### offset
@@ -75,17 +75,17 @@ flex 需要与 flex-item 配合使用
 flex-item offset 属性接受一个 String 类型的值，表示对应 fle-item 的 margin-left
 
 ```html
-<wv-flex :gutter="10">
-  <wv-flex-item>
+<w-flex :gutter="10">
+  <w-flex-item>
     <div class="placeholder">1/4</div>
-  </wv-flex-item>
-  <wv-flex-item flex="2">
+  </w-flex-item>
+  <w-flex-item flex="2">
     <div class="placeholder">1/2</div>
-  </wv-flex-item>
-  <wv-flex-item>
+  </w-flex-item>
+  <w-flex-item>
     <div class="placeholder">1/4</div>
-  </wv-flex-item>
-</wv-flex>
+  </w-flex-item>
+</w-flex>
 ```
 
 ## API

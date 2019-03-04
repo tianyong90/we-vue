@@ -15,7 +15,7 @@ Vue.use(SearchBar)
 ```html
 <template>
   <div>
-    <wv-search-bar 
+    <w-search-bar 
       :autofocus="false" 
       v-model="value" 
       :result="filterResult"
