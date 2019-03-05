@@ -5,14 +5,14 @@
       <w-cell title="两列" is-link @click.native="showPickerTwoColumns"/>
     </w-group>
 
-    <w-area
+    <w-area-picker
       :visible.sync="pickerShowDefault"
       :area-list="area"
       @confirm="confirmArea"
       v-model="selectedArea"
     />
 
-    <w-area
+    <w-area-picker
       :visible.sync="pickerShowTwoColumns"
       :area-list="area"
       value-key="name"

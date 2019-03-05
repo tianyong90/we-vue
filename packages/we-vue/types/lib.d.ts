@@ -14,7 +14,7 @@ declare module 'we-vue/lib' {
   import { WTopTips } from '@components/WTopTips'
 
   const WActionsheet: Component
-  const WArea: Component
+  const WAreaPicker: Component
   const WBadge: Component
   const WButton: Component
   const WCell: Component
@@ -61,7 +61,7 @@ declare module 'we-vue/lib' {
   export {
     directives,
     WActionsheet,
-    WArea,
+    WAreaPicker,
     WBadge,
     WButton,
     WCell,

@@ -1402,12 +1402,12 @@
     universal-user-agent "^2.0.1"
 
 "@octokit/rest@^16.16.0":
-  version "16.16.3"
-  resolved "http://registry.npm.taobao.org/@octokit/rest/download/@octokit/rest-16.16.3.tgz#89b64b1f5ed1f85cfd1925f0c4b968c403b895db"
-  integrity sha1-ibZLH17R+Fz9GSXwxLloxAO4lds=
+  version "16.16.4"
+  resolved "http://registry.npm.taobao.org/@octokit/rest/download/@octokit/rest-16.16.4.tgz#c168cd14d7b9e43074d0e5b091e5a8d66b924610"
+  integrity sha1-wWjNFNe55DB00OWwkeWo1muSRhA=
   dependencies:
     "@octokit/request" "2.4.0"
-    before-after-hook "^1.2.0"
+    before-after-hook "^1.4.0"
     btoa-lite "^1.0.0"
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
@@ -1483,9 +1483,9 @@
     "@types/jest-diff" "*"
 
 "@types/lodash@^4.14.119":
-  version "4.14.121"
-  resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.121.tgz#9327e20d49b95fc2bf983fc2f045b2c6effc80b9"
-  integrity sha1-kyfiDUm5X8K/mD/C8EWyxu/8gLk=
+  version "4.14.122"
+  resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.122.tgz#3e31394c38cf1e5949fb54c1192cbc406f152c6c"
+  integrity sha1-PjE5TDjPHllJ+1TBGSy8QG8VLGw=
 
 "@types/lolex@^0.0.0":
   version "0.0.0"
@@ -2541,12 +2541,12 @@ autocomplete.js@0.33.0:
     immediate "^3.2.3"
 
 autoprefixer@^9.1.5, autoprefixer@^9.4.7:
-  version "9.4.9"
-  resolved "http://registry.npm.taobao.org/autoprefixer/download/autoprefixer-9.4.9.tgz#0d3eb86bc1d1228551abcf55220d6fd246b6cb31"
-  integrity sha1-DT64a8HRIoVRq89VIg1v0ka2yzE=
+  version "9.4.10"
+  resolved "http://registry.npm.taobao.org/autoprefixer/download/autoprefixer-9.4.10.tgz#e1be61fc728bacac8f4252ed242711ec0dcc6a7b"
+  integrity sha1-4b5h/HKLrKyPQlLtJCcR7A3Mans=
   dependencies:
     browserslist "^4.4.2"
-    caniuse-lite "^1.0.30000939"
+    caniuse-lite "^1.0.30000940"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^7.0.14"
@@ -2754,10 +2754,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-before-after-hook@^1.2.0:
-  version "1.3.2"
-  resolved "http://registry.npm.taobao.org/before-after-hook/download/before-after-hook-1.3.2.tgz#7bfbf844ad670aa7a96b5a4e4e15bd74b08ed66b"
-  integrity sha1-e/v4RK1nCqepa1pOThW9dLCO1ms=
+before-after-hook@^1.4.0:
+  version "1.4.0"
+  resolved "http://registry.npm.taobao.org/before-after-hook/download/before-after-hook-1.4.0.tgz#2b6bf23dca4f32e628fd2747c10a37c74a4b484d"
+  integrity sha1-K2vyPcpPMuYo/SdHwQo3x0pLSE0=
 
 bfj@^6.1.1:
   version "6.1.1"
@@ -3187,7 +3187,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000939:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000939, caniuse-lite@^1.0.30000940:
   version "1.0.30000940"
   resolved "http://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000940.tgz#19f2b1497fbfa5b96b615963097c3757f27989ce"
   integrity sha1-GfKxSX+/pblrYVljCXw3V/J5ic4=
@@ -5071,9 +5071,9 @@ eslint@^4.19.1:
     text-table "~0.2.0"
 
 eslint@^5.8.0, eslint@^5.9.0:
-  version "5.15.0"
-  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.15.0.tgz#f313a2f7c7628d39adeefdba4a9c41f842012c9e"
-  integrity sha1-8xOi98dijTmt7v26SpxB+EIBLJ4=
+  version "5.15.1"
+  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.15.1.tgz#8266b089fd5391e0009a047050795b1d73664524"
+  integrity sha1-gmawif1TkeAAmgRwUHlbHXNmRSQ=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -5549,9 +5549,9 @@ finalhandler@1.1.1:
     unpipe "~1.0.0"
 
 find-babel-config@^1.1.0:
-  version "1.1.0"
-  resolved "http://registry.npm.taobao.org/find-babel-config/download/find-babel-config-1.1.0.tgz#acc01043a6749fec34429be6b64f542ebb5d6355"
-  integrity sha1-rMAQQ6Z0n+w0Qpvmtk9ULrtdY1U=
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/find-babel-config/download/find-babel-config-1.2.0.tgz#a9b7b317eb5b9860cda9d54740a8c8337a2283a2"
+  integrity sha1-qbezF+tbmGDNqdVHQKjIM3oig6I=
   dependencies:
     json5 "^0.5.1"
     path-exists "^3.0.0"
@@ -12477,9 +12477,9 @@ vue-hot-reload-api@^2.3.0:
   integrity sha1-J1b0bLMlgFTF9HI96K5+hzAqHM8=
 
 vue-jest@^3.0.3:
-  version "3.0.3"
-  resolved "http://registry.npm.taobao.org/vue-jest/download/vue-jest-3.0.3.tgz#80f664712f2678b1d8bb3af0f2c0bef5efa8de31"
-  integrity sha1-gPZkcS8meLHYuzrw8sC+9e+o3jE=
+  version "3.0.4"
+  resolved "http://registry.npm.taobao.org/vue-jest/download/vue-jest-3.0.4.tgz#b6a2b0d874968f26fa775ac901903fece531e08b"
+  integrity sha1-tqKw2HSWjyb6d1rJAZA/7OUx4Is=
   dependencies:
     babel-plugin-transform-es2015-modules-commonjs "^6.26.0"
     chalk "^2.1.0"

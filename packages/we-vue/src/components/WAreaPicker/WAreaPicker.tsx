@@ -46,7 +46,7 @@ export default mixins<ioptions &
 >(
   Picker
 ).extend({
-  name: 'w-area',
+  name: 'w-area-picker',
 
   components: {
     WPicker,

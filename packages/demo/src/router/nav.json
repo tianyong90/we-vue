@@ -115,8 +115,8 @@
         "icon": "actionsort"
       },
       {
-        "path": "/area",
-        "name": "Area",
+        "path": "/area-picker",
+        "name": "AreaPicker",
         "description": "省市区选择",
         "icon": "actionsort"
       },

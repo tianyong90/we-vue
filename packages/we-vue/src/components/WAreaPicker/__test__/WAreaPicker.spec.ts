@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils'
-import Area from '../WArea'
+import WAreaPicker from '../WAreaPicker'
 // import { slowVerticalDrag } from '@/test/unit/utils'
 
 describe('area picker', () => {
   test('create', () => {
-    const wrapper = mount(Area)
+    const wrapper = mount(WAreaPicker)
 
-    expect(wrapper.name()).toBe('w-area')
+    expect(wrapper.name()).toBe('w-area-picker')
 
     expect(wrapper.html()).toMatchSnapshot()
   })

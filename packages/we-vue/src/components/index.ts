@@ -1,5 +1,5 @@
 export * from './WActionsheet'
-export * from './WArea'
+export * from './WAreaPicker'
 export * from './WBadge'
 export * from './WButton'
 export * from './WCell'
