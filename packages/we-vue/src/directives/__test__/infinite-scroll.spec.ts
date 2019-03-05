@@ -1,102 +1,72 @@
+import Vue, { CreateElement } from 'vue'
 import { mount } from '@vue/test-utils'
-import InfiniteScrollComponent from './infinite-scroll-component.vue'
+import InfiniteScroll from '../infinite-scroll'
 
 describe('infinite-scroll', () => {
-  test('create', (done) => {
-    const loadMoreSpy = jest.fn()
-    const wrapper = mount(InfiniteScrollComponent, {
-      attachToDocument: true,
-      propsData: {
-        disabled: false,
-        list: [],
-        onLoadMore: loadMoreSpy,
+  test('by default, loadMore callback should be called', async () => {
+    const spy = jest.fn()
+
+    const testComponent = Vue.component('test', {
+      directives: {
+        InfiniteScroll,
       },
-      methods: {
-        loadMore: loadMoreSpy,
+      render (h: CreateElement) {
+        const data = {
+          directives: [{
+            name: 'infinite-scroll',
+            value: spy,
+          }],
+        }
+        return h('div', data)
       },
     })
 
-    setTimeout(() => {
-      expect(loadMoreSpy).toHaveBeenCalled()
-
-      done()
-    }, 500)
+    const wrapper = mount(testComponent, {})
+    await wrapper.vm.$nextTick()
+    expect(spy).toHaveBeenCalled()
   })
 
-  test('loadMore function', (done) => {
-    const wrapper = mount(InfiniteScrollComponent, {
-      attachToDocument: true,
-      propsData: {
-        disabled: false,
-        onLoadMore: jest.fn(() => {
-          wrapper.vm.list = wrapper.vm.list.concat([{ id: 1 }, { id: 2 }, { id: 3 }])
-        }),
+  test('attrs', async () => {
+    const spy = jest.fn()
+
+    const testComponent = Vue.component('test', {
+      directives: {
+        InfiniteScroll,
+      },
+      render (h: CreateElement) {
+        const data = {
+          attrs: {
+            'infinite-scroll-disabled': 'true',
+            'infinite-scroll-immediate-check': 'true',
+            'infinite-scroll-distance': '200',
+          },
+          directives: [{
+            name: 'infinite-scroll',
+            value: spy,
+          }],
+        }
+        return h('div', data)
       },
     })
 
-    setTimeout(() => {
-      const item = wrapper.findAll('.list-item')
-      expect(item).toHaveLength(3)
+    const wrapper = mount(testComponent, {})
+    await wrapper.vm.$nextTick()
 
-      expect(wrapper.vm.onLoadMore).toHaveBeenCalledTimes(1)
-      done()
-    }, 500)
+    expect(wrapper.element._onInfiniteScroll!.disabled).toBeTruthy()
+    expect(wrapper.element._onInfiniteScroll!.distance).toBe(200)
   })
 
-  test('test disabled', (done) => {
-    const loadMoreSpy = jest.fn()
-    const wrapper = mount(InfiniteScrollComponent, {
-      attachToDocument: true,
-      propsData: {
-        disabled: true,
-        list: [],
-        onLoadMore: loadMoreSpy,
+  test('should remove event listeners and delete _onInfiniteScroll on unbind', () => {
+    let el = {
+      _onInfiniteScroll: {
+        target: {
+          removeEventListener: jest.fn(),
+        },
       },
-    })
+    }
 
-    setTimeout(() => {
-      expect(loadMoreSpy).not.toHaveBeenCalled()
-    }, 500)
+    InfiniteScroll.unbind(el as any)
 
-    setTimeout(() => {
-      wrapper.setProps({
-        disabled: false,
-      })
-
-      setTimeout(() => {
-        expect(loadMoreSpy).toHaveBeenCalled()
-        done()
-      }, 500)
-    }, 600)
-  })
-
-  test('when scrollTarget is hidden, the loadMore callback should not be called', () => {
-    const wrapper = mount(InfiniteScrollComponent, {
-      attachToDocument: true,
-      propsData: {
-        disabled: false,
-        hidden: true,
-        list: [],
-        onLoadMore: jest.fn(),
-      },
-    })
-
-    expect(wrapper.vm.onLoadMore).not.toHaveBeenCalled()
-  })
-
-  test('do not loadmore when mounted, immedialateCheck === false', (done) => {
-    const wrapper = mount(InfiniteScrollComponent, {
-      attachToDocument: true,
-      propsData: {
-        immediateCheck: false,
-        list: [],
-        onLoadMore: jest.fn(),
-      },
-    })
-
-    setTimeout(() => {
-      expect(wrapper.vm.onLoadMore).not.toHaveBeenCalled()
-      done()
-    }, 500)
+    expect(el._onInfiniteScroll).toBeUndefined()
   })
 })

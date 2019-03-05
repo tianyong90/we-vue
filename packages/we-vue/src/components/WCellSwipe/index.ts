@@ -1,4 +1,4 @@
-import CellSwipe from './WCellSwipe'
+import WCellSwipe from './WCellSwipe'
 
-export { CellSwipe }
-export default CellSwipe
+export { WCellSwipe }
+export default WCellSwipe

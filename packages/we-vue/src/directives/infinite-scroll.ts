@@ -5,7 +5,7 @@ import throttle from 'lodash/throttle'
 const DISTANCE = 300
 
 interface InfiniteScrollDirective extends VNodeDirective {
-  value: () => any
+  value?: () => any
 }
 
 /**
@@ -45,7 +45,7 @@ function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): 
   }
 }
 
-export default {
+const infiniteScroll = {
   inserted (el: HTMLElement, binding: InfiniteScrollDirective, vnode: VNode) {
     vnode.context!.$nextTick(function () {
       const target = Utils.getScrollEventTarget(el) as HTMLElement
@@ -59,7 +59,7 @@ export default {
           el._onInfiniteScroll!.disabled = value
           listener()
         })
-        disabled = Boolean((vnode.context! as any)[disabledExpr])
+        disabled = Boolean(disabledExpr)
       }
 
       let distance = Number(el.getAttribute('infinite-scroll-distance')) || DISTANCE
@@ -75,7 +75,7 @@ export default {
         : true
 
       if (immediateCheck && !disabled) {
-        binding.value()
+        binding.value!()
       }
 
       el._onInfiniteScroll = {
@@ -99,3 +99,6 @@ export default {
     delete el._onInfiniteScroll
   },
 }
+
+export { infiniteScroll }
+export default infiniteScroll
