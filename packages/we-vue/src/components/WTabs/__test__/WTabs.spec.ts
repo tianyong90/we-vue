@@ -27,7 +27,7 @@ describe('tabs', () => {
     expect(wrapper.classes()).toContain('wv-tabs')
   })
 
-  test('click tab items', () => {
+  test('click tab items', async () => {
     const wrapper = mount(Tabs, {
       attachToDocument: true,
       propsData: {},
@@ -36,37 +36,75 @@ describe('tabs', () => {
       },
     })
 
+    await wrapper.vm.$nextTick()
+
     wrapper
-      .findAll(Tab)
+      .findAll('.wv-tab')
       .at(1)
       .trigger('click')
   })
-})
 
-describe('tab', () => {
-  test('create', () => {
+  test('watch color', async () => {
     const wrapper = mount(Tabs, {
       attachToDocument: true,
-      propsData: {},
       slots: {
         default: [Tab, Tab, Tab],
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const spy = jest.spyOn(wrapper.vm, 'setLine')
+    await wrapper.vm.$nextTick()
+    wrapper.setProps({
+      color: '#f00',
+    })
+
+    expect(spy).toHaveBeenCalled()
   })
 
-  test('destroy', () => {
+  test('watch sticky', async () => {
     const wrapper = mount(Tabs, {
       attachToDocument: true,
-      propsData: {},
       slots: {
         default: [Tab, Tab, Tab],
       },
     })
 
-    wrapper.findAll(Tab).at(0).vm.$destroy()
+    const spy = jest.spyOn(wrapper.vm, 'handlers')
+    await wrapper.vm.$nextTick()
+    wrapper.setProps({
+      sticky: true,
+    })
 
-    expect(wrapper.vm.tabs).toHaveLength(2)
+    expect(spy).toHaveBeenCalled()
+  })
+
+  test('watch swipeable', async () => {
+    const wrapper = mount(Tabs, {
+      attachToDocument: true,
+      slots: {
+        default: [Tab, Tab, Tab],
+      },
+    })
+
+    const spy = jest.spyOn(wrapper.vm, 'handlers')
+    await wrapper.vm.$nextTick()
+    wrapper.setProps({
+      swipeable: true,
+    })
+
+    expect(spy).toHaveBeenCalled()
+  })
+
+  test('beforeDestroy hooks', () => {
+    const wrapper = mount(Tabs, {
+      attachToDocument: true,
+      slots: {
+        default: [Tab, Tab, Tab],
+      },
+    })
+
+    const spy = jest.spyOn(wrapper.vm, 'handlers')
+    wrapper.vm.$destroy()
+    expect(spy).toHaveBeenCalled()
   })
 })

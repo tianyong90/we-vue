@@ -128,6 +128,7 @@
     "url-loader": "^1.0.1",
     "vue": "^2.5.9",
     "vue-jest": "^3.0.3",
+    "vue-template-compiler": "^2.6.8",
     "vue-tsx-support": "^2.2.2"
   },
   "publishConfig": {

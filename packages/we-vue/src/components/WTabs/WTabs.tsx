@@ -166,10 +166,12 @@ export default mixins<options &
     this.onShow()
   },
 
+  /* istanbul ignore next */
   activated () {
     this.onShow()
   },
 
+  /* istanbul ignore next */
   deactivated () {
     this.handlers(false)
   },
