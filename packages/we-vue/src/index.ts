@@ -5,7 +5,7 @@ import { install } from './install'
 
 export default class WeVue {
   static install: (Vue: VueConstructor) => void
-  static version: string
+  static version: string;
 
   installed: string[] = []
 

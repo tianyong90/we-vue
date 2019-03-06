@@ -3,9 +3,9 @@ import * as _directives from './directives'
 // lazyload plugin
 import { Lazyload } from './plugins'
 
-import { WeVueOptions } from 'types'
-
 import { VueConstructor } from 'vue'
+
+import { WeVueOptions } from 'types'
 
 export function install (Vue: VueConstructor, args: WeVueOptions = {}) {
   if ((install as any).installed) return

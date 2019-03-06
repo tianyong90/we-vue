@@ -15,29 +15,16 @@ exports[`tab create 1`] = `
 </div>
 `;
 
-exports[`tab render title 1`] = `
-<div class="wv-tabs wv-tabs--line">
-  <div class="wv-tabs__wrap wv-hairline--top-bottom">
-    <div class="wv-tabs__nav wv-tabs__nav--line">
-      <div class="wv-tabs__line"></div>
-    </div>
-  </div>
-  <div class="wv-tabs__content">
-    <div class="wv-tab__pane"></div>
-  </div>
-</div>
-`;
-
 exports[`tab render title slot 1`] = `
 <div class="wv-tabs wv-tabs--line">
   <div class="wv-tabs__wrap wv-hairline--top-bottom">
     <div class="wv-tabs__nav wv-tabs__nav--line">
       <div class="wv-tabs__line"></div>
+      <div class="wv-tab wv-tab--active"><span class="wv-ellipsis"></span></div>
     </div>
   </div>
   <div class="wv-tabs__content">
-    <div class="wv-tab__pane">
-      <div><span>title</span></div>
+    <div class="wv-tab__pane">content1<div><span>title</span></div>
     </div>
   </div>
 </div>

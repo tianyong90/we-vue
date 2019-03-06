@@ -2,10 +2,9 @@ const wevuePackage = require('./package.json')
 
 const versions = {
   __WE_VUE_VERSION__: wevuePackage.version,
-  __REQUIRED_VUE__: wevuePackage.peerDependencies.vue
 }
 
-module.exports = function(api) {
+module.exports = function (api) {
   const { BABEL_MODULE, NODE_ENV } = process.env
   const useESModules = BABEL_MODULE !== 'commonjs' && NODE_ENV !== 'test'
 
@@ -16,16 +15,19 @@ module.exports = function(api) {
       [
         '@babel/preset-env',
         {
-          loose: true,
-          modules: useESModules ? false : 'commonjs'
-        }
+          targets: {
+            browsers: ['>0.5%', 'last 2 versions', 'not dead', 'not op_mini all'],
+            node: 8,
+          },
+          modules: useESModules ? false : 'commonjs',
+        },
       ],
       [
         '@vue/babel-preset-jsx',
         {
-          functional: false
-        }
-      ]
+          functional: false,
+        },
+      ],
     ],
     plugins: [
       [
@@ -34,14 +36,15 @@ module.exports = function(api) {
           corejs: false,
           helpers: true,
           regenerator: false,
-          useESModules
-        }
+          useESModules,
+        },
       ],
+      '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-object-assign',
       [
-        'transform-define', versions
-      ]
+        'transform-define', versions,
+      ],
     ],
     env: {
       test: {
@@ -49,16 +52,12 @@ module.exports = function(api) {
           [
             '@babel/preset-env',
             {
-              loose: true,
-              modules: useESModules ? false : 'commonjs'
-            }
+              targets: {
+                node: true,
+              },
+            },
           ],
-          [
-            '@vue/babel-preset-jsx',
-            {
-              functional: false
-            }
-          ],
+          // 本项目未使用 ts-jest 而是在测试时直接配置使用 preset-typescript
           [
             '@babel/preset-typescript',
             // TODO:
@@ -67,40 +66,20 @@ module.exports = function(api) {
             //   jsxPragma: 'h',
             //   allExtensions: true
             // }
-          ]
+          ],
         ],
       },
       es5: {
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              targets: {
-                browsers: [">0.5%", "last 2 versions", "not dead", "not op_mini all"],
-                node: 8
-              }
-            }
-          ]
-        ],
         plugins: [
           './build/babel-transform-scss-paths.js',
-        ]
+        ],
       },
       lib: {
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              loose: true,
-              modules: false
-            }
-          ]
-        ],
         plugins: [
           './build/babel-transform-scss-paths.js',
-        ]
+        ],
 
-      }
-    }
+      },
+    },
   }
 }

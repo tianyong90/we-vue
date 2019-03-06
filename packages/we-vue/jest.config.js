@@ -27,8 +27,7 @@ module.exports = {
   ],
   transform: {
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
-    '^.+\\.(js|jsx)$': 'babel-jest',
-    '^.+\\.(ts|tsx)$': 'babel-jest',
+    '^.+\\.[jt]sx?$': 'babel-jest',
     '.*\\.(vue)$': 'vue-jest',
   },
   snapshotSerializers: ['jest-serializer-vue'],
