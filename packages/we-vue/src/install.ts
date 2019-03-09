@@ -5,9 +5,9 @@ import { Lazyload } from './plugins'
 
 import { VueConstructor } from 'vue'
 
-import { WeVueOptions } from 'types'
+import { WeVueUseOptions } from 'types'
 
-export function install (Vue: VueConstructor, args: WeVueOptions = {}) {
+export function install (Vue: VueConstructor, args: WeVueUseOptions = {}) {
   if ((install as any).installed) return
 
   (install as any).installed = true
@@ -16,9 +16,10 @@ export function install (Vue: VueConstructor, args: WeVueOptions = {}) {
   const components = args.components || _components as any
 
   for (const name in directives) {
-    const directive = directives[name]
-
-    Vue.directive(name, directive)
+    if (directives.hasOwnProperty(name)) {
+      const directive = directives[name]
+      Vue.directive(name, directive)
+    }
   }
 
   // install lazyload plugin

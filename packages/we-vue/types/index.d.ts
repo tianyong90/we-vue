@@ -10,25 +10,22 @@ export interface WeVue {
 }
 
 /* eslint-disable-next-line */
-export type ComponentOrPack = Component & { $_we_vue_subcomponents?: Record<string, ComponentOrPack> }
+export type WeVueComponents = Component & { $_we_vue_subcomponents?: Record<string, WeVueComponents> }
 
 export interface WeVueUseOptions {
   directives?: Record<string, DirectiveOptions>
-  components?: Record<string, ComponentOrPack>
-  options?: Partial<WeVueOptions>
+  components?: Record<string, WeVueComponents>
+
+  // TODO
+  // plugins?:
 }
 
 export interface WeVueObject extends Vue {
-  options?: WeVueOptions
+  // TODO
 }
 
 declare module 'vue/types/vue' {
   export interface Vue {
     $wevue: WeVueObject
   }
-}
-
-export interface WeVueOptions {
-  directives?: Record<string, DirectiveOptions>
-  components?: Record<string, ComponentOrPack>
 }
