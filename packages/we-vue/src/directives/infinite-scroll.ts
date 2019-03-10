@@ -1,5 +1,5 @@
 import { VNode, VNodeDirective } from 'vue/types/vnode'
-import Utils from '../utils/scroll'
+import ScrollUtil from '../utils/scroll'
 import throttle from 'lodash/throttle'
 
 const DISTANCE = 300
@@ -18,10 +18,10 @@ function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): 
     return
   }
 
-  const targetScrollTop = Utils.getScrollTop(scrollEventTarget)
+  const targetScrollTop = ScrollUtil.getScrollTop(scrollEventTarget)
   const targetBottom =
-    targetScrollTop + Utils.getVisibleHeight(scrollEventTarget)
-  const targetVisibleHeight = Utils.getVisibleHeight(scrollEventTarget)
+    targetScrollTop + ScrollUtil.getVisibleHeight(scrollEventTarget)
+  const targetVisibleHeight = ScrollUtil.getVisibleHeight(scrollEventTarget)
 
   // return when the targetElement has no height (treat as hidden)
   if (!targetVisibleHeight) {
@@ -33,9 +33,9 @@ function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): 
     needLoadMore = (scrollEventTarget as HTMLElement).scrollHeight - targetBottom < el._onInfiniteScroll!.distance
   } else {
     const elementBottom =
-      Utils.getElementTop(el) -
-      Utils.getElementTop(scrollEventTarget) +
-      Utils.getVisibleHeight(el)
+      ScrollUtil.getElementTop(el) -
+      ScrollUtil.getElementTop(scrollEventTarget) +
+      ScrollUtil.getVisibleHeight(el)
 
     needLoadMore = elementBottom - targetVisibleHeight < el._onInfiniteScroll!.distance
   }
@@ -48,7 +48,7 @@ function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): 
 const infiniteScroll = {
   inserted (el: HTMLElement, binding: InfiniteScrollDirective, vnode: VNode) {
     vnode.context!.$nextTick(function () {
-      const target = Utils.getScrollEventTarget(el) as HTMLElement
+      const target = ScrollUtil.getScrollEventTarget(el) as HTMLElement
       const listener = throttle(handleScrollEvent.bind(null, el, binding), 200)
 
       const disabledExpr = el.getAttribute('infinite-scroll-disabled')

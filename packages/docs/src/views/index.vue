@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <Header theme="darker"/>
     <div class="banner py-5">
       <div class="container p-5">
         <div class="row justify-content-center align-items-center flex-column">
@@ -85,10 +85,6 @@ import '@fortawesome/fontawesome-free'
 export default {
   components: {
     Header
-  },
-
-  data () {
-    return {}
   }
 }
 </script>
@@ -113,10 +109,6 @@ export default {
   .slogan {
     text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   }
-}
-
-.title-feature {
-  color: #666;
 }
 
 .card {

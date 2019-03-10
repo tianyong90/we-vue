@@ -1,6 +1,6 @@
 Badge
 ---
-小徽章，支持不同颜色，包含小红点状态。
+小徽章。
 
 ## 引入
 
@@ -24,10 +24,10 @@ Vue.use(Badge)
 <w-badge color="red">20</w-badge>
 ```
 
-### 指定为小红点状态
+### 指定为小红点样式
 
 ```html
-<w-badge :is-dot="true"></w-badge>
+<w-badge is-dot></w-badge>
 ```
 
 ## API

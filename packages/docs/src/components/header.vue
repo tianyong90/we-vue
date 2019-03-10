@@ -1,5 +1,8 @@
 <template>
-  <header class="navbar navbar-expand flex-column flex-md-row fixed-top">
+  <header
+    class="navbar navbar-expand flex-column flex-md-row fixed-top"
+    :class="['navbar-' + theme]"
+  >
     <div class="container-fluid justify-content-between">
       <router-link class="navbar-brand" to="/" exact>
         <img class="d-block logo" src="../assets/images/logo.png" alt="we-vue">
@@ -50,7 +53,11 @@ export default {
   },
 
   props: {
-    versionPickerVisible: Boolean
+    versionPickerVisible: Boolean,
+    theme: {
+      type: String,
+      default: 'lighter'
+    }
   },
 
   data () {
@@ -104,19 +111,40 @@ $header-home-background-color: #040f23;
     height: 55px;
   }
 
-  .navbar-nav {
-    a {
-      color: #333;
-      text-decoration: none;
-      display: inline-block;
-      padding: 0 1em;
+  &.navbar-lighter {
+    .navbar-nav {
+      a {
+        color: #333;
+        text-decoration: none;
+        display: inline-block;
+        padding: 0 1em;
 
-      &:hover {
-        color: #41b883;
+        &:hover {
+          color: #41b883;
+        }
+
+        &.router-link-active {
+          color: #41b883;
+        }
       }
+    }
+  }
 
-      &.router-link-active {
-        color: #41b883;
+  &.navbar-darker {
+    .navbar-nav {
+      a {
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        padding: 0 1em;
+
+        &:hover {
+          color: #222;
+        }
+
+        &.router-link-active {
+          color: #222;
+        }
       }
     }
   }
