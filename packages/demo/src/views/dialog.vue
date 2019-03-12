@@ -10,10 +10,8 @@
 </template>
 
 <script>
-// TODO
-// import { WvDialog } from 'we-vue/lib'
-//
-// console.log(WvDialog)
+// 按需引入
+// import { WDialog } from 'we-vue/lib'
 
 export default {
   data () {

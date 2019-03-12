@@ -8,18 +8,14 @@
 </template>
 
 <script>
-// TODO
-import { WToast } from 'we-vue/lib'
+// 按需引入
+// import { WToast } from 'we-vue/lib'
 
 export default {
   mounted () {
     this.$toast.setDefaultOptions({
       duration: 1000
     })
-
-    WToast.success('Hello')
-
-    WToast.success()
   },
 
   methods: {
