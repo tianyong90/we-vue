@@ -8,7 +8,7 @@ import mixins, { ExtractVue } from '../../utils/mixins'
 import { isDef } from '../../utils'
 import { raf } from '../../utils/raf'
 import { off, on } from '../../utils/event'
-import scrollUtils from '../../utils/scroll'
+import { getScrollEventTarget, getScrollTop, setScrollTop, getElementTop } from '../../utils/scroll'
 
 // Mixins
 import Touchable from '../../mixins/touchable'
@@ -149,7 +149,7 @@ export default mixins<options &
 
       // scroll to correct position
       if (this.position === 'top' || this.position === 'bottom') {
-        scrollUtils.setScrollTop(window, scrollUtils.getElementTop(this.$el))
+        setScrollTop(window, getElementTop(this.$el))
       }
     },
 
@@ -204,7 +204,7 @@ export default mixins<options &
       // listen to scroll event
       if (events.sticky !== sticky) {
         events.sticky = sticky
-        const scrollEl = scrollUtils.getScrollEventTarget(this.$el)
+        const scrollEl = getScrollEventTarget(this.$el)
         ;(sticky ? on : off)(scrollEl, 'scroll', this.onScroll, true)
         this.onScroll()
       }
@@ -240,8 +240,8 @@ export default mixins<options &
 
     // adjust tab position
     onScroll (): void {
-      const scrollTop = scrollUtils.getScrollTop(window) + this.offsetTop
-      const elTopToPageTop = scrollUtils.getElementTop(this.$el)
+      const scrollTop = getScrollTop(window) + this.offsetTop
+      const elTopToPageTop = getElementTop(this.$el)
       const elBottomToPageTop =
         elTopToPageTop + this.$el.offsetHeight - this.$refs.wrap.offsetHeight
       if (scrollTop > elBottomToPageTop) {

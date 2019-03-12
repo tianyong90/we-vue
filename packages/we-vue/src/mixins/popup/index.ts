@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import manager from './manager'
 import context from './context'
-import scrollUtils from '../../utils/scroll'
+import { getScrollEventTarget } from '../../utils/scroll'
 import { off, on } from '../../utils/event'
 import Touchable from '../../mixins/touchable'
 
@@ -167,7 +167,7 @@ export default mixins<options &
       this.onTouchmove(e)
 
       const direction = this.deltaY > 0 ? '10' : '01'
-      const el = scrollUtils.getScrollEventTarget(e.target as HTMLElement, this.$el)
+      const el = getScrollEventTarget(e.target as HTMLElement, this.$el as HTMLElement)
       const { scrollHeight, offsetHeight, scrollTop } = el as HTMLElement
 
       let status = '11'

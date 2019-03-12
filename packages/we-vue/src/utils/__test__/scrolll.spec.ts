@@ -1,4 +1,4 @@
-import ScrollUtil from '@/utils/scroll'
+import * as ScrollUtil from '@/utils/scroll'
 
 describe('utils scroll', () => {
   beforeEach(() => {
@@ -25,19 +25,19 @@ describe('utils scroll', () => {
 
   test('getScrollTop method', () => {
     // the element has scrollTop property
-    let element = { scrollTop: 10 }
+    let element = { scrollTop: 10 } as HTMLElement
 
     expect(ScrollUtil.getScrollTop(element)).toBe(10)
 
     // the element has no scrollTop property
-    element = { pageYOffset: 20 }
+    let theWindow = { pageYOffset: 20 } as Window
 
-    expect(ScrollUtil.getScrollTop(element)).toBe(20)
+    expect(ScrollUtil.getScrollTop(theWindow)).toBe(20)
   })
 
   test('setScrollTop method', () => {
     // the element has scrollTop property
-    let element = { scrollTop: null }
+    let element = { scrollTop: 0 } as HTMLElement
 
     ScrollUtil.setScrollTop(element, 10)
 
@@ -48,7 +48,7 @@ describe('utils scroll', () => {
     element = {
       scrollX: 0,
       scrollTo: scrollToSpy,
-    }
+    } as any
 
     ScrollUtil.setScrollTop(element, 10)
 
@@ -59,15 +59,15 @@ describe('utils scroll', () => {
     // getElementTop of window
     expect(ScrollUtil.getElementTop(window)).toBe(0)
 
-    const element = { getBoundingClientRect: () => {} }
+    const element = { getBoundingClientRect: () => {} } as HTMLElement
 
     const getBoundingClientRectStub = jest.spyOn(element, 'getBoundingClientRect')
-    getBoundingClientRectStub.mockReturnValue({ top: 10 })
+    getBoundingClientRectStub.mockReturnValue({ top: 10 } as ClientRect)
 
     const getScrollTopStub = jest.spyOn(ScrollUtil, 'getScrollTop')
     getScrollTopStub.mockReturnValue(10)
 
-    expect(ScrollUtil.getElementTop(element)).toBe(20)
+    expect(ScrollUtil.getElementTop(element)).toBe(10)
 
     getBoundingClientRectStub.mockReset()
     getBoundingClientRectStub.mockRestore()
@@ -79,10 +79,10 @@ describe('utils scroll', () => {
     // getVisibleHeight of window
     expect(ScrollUtil.getVisibleHeight(window)).toBe(window.innerHeight)
 
-    const element = { getBoundingClientRect: () => {} }
+    const element = { getBoundingClientRect: () => {} } as HTMLElement
 
     const spy = jest.spyOn(element, 'getBoundingClientRect')
-    spy.mockReturnValue({ height: 10 })
+    spy.mockReturnValue({ height: 10 } as ClientRect)
 
     expect(ScrollUtil.getVisibleHeight(element)).toBe(10)
 

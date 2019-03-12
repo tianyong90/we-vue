@@ -1,5 +1,5 @@
 import { VNode, VNodeDirective } from 'vue/types/vnode'
-import ScrollUtil from '../utils/scroll'
+import { getScrollEventTarget, getScrollTop, getVisibleHeight, getElementTop } from '../utils/scroll'
 import throttle from 'lodash/throttle'
 
 const DISTANCE = 300
@@ -12,16 +12,16 @@ interface InfiniteScrollDirective extends VNodeDirective {
  * handle the scroll event
  */
 function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): void {
-  const scrollEventTarget = el._onInfiniteScroll!.target
+  const scrollEventTarget = el._onInfiniteScroll!.target as HTMLElement
 
   if (el._onInfiniteScroll!.disabled) {
     return
   }
 
-  const targetScrollTop = ScrollUtil.getScrollTop(scrollEventTarget)
+  const targetScrollTop = getScrollTop(scrollEventTarget)
   const targetBottom =
-    targetScrollTop + ScrollUtil.getVisibleHeight(scrollEventTarget)
-  const targetVisibleHeight = ScrollUtil.getVisibleHeight(scrollEventTarget)
+    targetScrollTop + getVisibleHeight(scrollEventTarget)
+  const targetVisibleHeight = getVisibleHeight(scrollEventTarget)
 
   // return when the targetElement has no height (treat as hidden)
   if (!targetVisibleHeight) {
@@ -33,9 +33,9 @@ function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): 
     needLoadMore = (scrollEventTarget as HTMLElement).scrollHeight - targetBottom < el._onInfiniteScroll!.distance
   } else {
     const elementBottom =
-      ScrollUtil.getElementTop(el) -
-      ScrollUtil.getElementTop(scrollEventTarget) +
-      ScrollUtil.getVisibleHeight(el)
+      getElementTop(el) -
+      getElementTop(scrollEventTarget) +
+      getVisibleHeight(el)
 
     needLoadMore = elementBottom - targetVisibleHeight < el._onInfiniteScroll!.distance
   }
@@ -48,7 +48,7 @@ function handleScrollEvent (el: HTMLElement, binding: InfiniteScrollDirective): 
 const infiniteScroll = {
   inserted (el: HTMLElement, binding: InfiniteScrollDirective, vnode: VNode) {
     vnode.context!.$nextTick(function () {
-      const target = ScrollUtil.getScrollEventTarget(el) as HTMLElement
+      const target = getScrollEventTarget(el) as HTMLElement
       const listener = throttle(handleScrollEvent.bind(null, el, binding), 200)
 
       const disabledExpr = el.getAttribute('infinite-scroll-disabled')
