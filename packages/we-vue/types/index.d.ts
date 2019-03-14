@@ -13,11 +13,10 @@ export interface WeVue {
 export type WeVueComponents = Component & { $_we_vue_subcomponents?: Record<string, WeVueComponents> }
 
 export interface WeVueUseOptions {
+  namePrefix?: string
   directives?: Record<string, DirectiveOptions>
   components?: Record<string, WeVueComponents>
-
-  // TODO
-  // plugins?:
+  plugins?: Record<string, PluginFunction<Vue>>
 }
 
 export interface WeVueObject extends Vue {

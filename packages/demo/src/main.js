@@ -10,7 +10,8 @@ import 'we-vue/dist/we-vue.css'
 Vue.config.productionTip = false
 Vue.config.devtools = true
 
-Vue.use(WeVue)
+Vue.use(WeVue, {
+})
 
 router.afterEach((to, from) => {
   document.title = to.meta.title

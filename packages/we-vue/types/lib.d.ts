@@ -18,7 +18,7 @@ declare module 'we-vue/lib' {
   }
 
   const plugins: {
-    // TODO
+    Lazyload: PluginFunction<Vue>
   }
 
   const WActionsheet: WeVueComponent
@@ -68,6 +68,7 @@ declare module 'we-vue/lib' {
 
   export {
     directives,
+    plugins,
     WActionsheet,
     WAreaPicker,
     WBadge,
