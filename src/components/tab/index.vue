@@ -56,7 +56,7 @@ export default create({
   },
 
   watch: {
-    '$parent.currentActive' () {
+    'parent.currentActive' () {
       this.inited = this.inited || this.isSelected
     },
 
