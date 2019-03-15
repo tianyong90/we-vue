@@ -43,7 +43,7 @@ const release = function (version) {
           },
           {
             title: 'Git push',
-            task: () => execa.shell('git push origin master')
+            task: () => execa.shell('git push origin')
           }
         ])
       }
