@@ -33,7 +33,7 @@ jobs:
       - run: yarn lerna run build --scope we-vue
 
       # build demo and docs
-      - run: yarn lerna run build --ignore we-vue --parallel
+      - run: yarn lerna run build --ignore we-vue
 
       - persist_to_workspace:
           root: ./
@@ -51,7 +51,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "6f:b8:91:11:81:42:a3:9c:24:17:cf:be:e9:0b:41:67"
+            - "6a:aa:77:77:28:51:9f:01:4b:b2:7e:3e:ea:f6:20:1a"
 
       - run: echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
