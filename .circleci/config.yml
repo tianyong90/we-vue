@@ -33,7 +33,7 @@ jobs:
       - run: yarn lerna run build --scope we-vue
 
       # build demo and docs
-      - run: yarn lerna run build --ignore we-vue
+      - run: yarn lerna run build --ignore we-vue --parallel
 
       - persist_to_workspace:
           root: ./
