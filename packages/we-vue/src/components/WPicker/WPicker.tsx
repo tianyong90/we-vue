@@ -1,11 +1,12 @@
 import WPickerColumn from './WPickerColumn'
 // Types
 import { PropValidator } from 'vue/types/options'
+import { CreateElement, VNode } from 'vue'
 // Mixins
 import { factory as ToaaleableFactory } from '../../mixins/toggleable'
 // Utils
-import mixins from '../../utils/mixins'
 
+import mixins from '../../utils/mixins'
 import cloneDeep from 'lodash/cloneDeep'
 
 // height of th option item
@@ -206,13 +207,13 @@ export default mixins(
     // confirm event handler
     onConfirm (): void {
       // TODO: v-model 问题
-      // this.$emit('input', this.getValues())
+      this.$emit('input', this.getValues())
       this.$emit('confirm', this)
       this.isActive = false
     },
   },
 
-  render (h) {
+  render (h: CreateElement): VNode {
     return (
       <div>
         <transition
