@@ -74,7 +74,7 @@ describe('area picker', () => {
     expect(spy).toHaveBeenCalled()
   })
 
-  test('drag columns', () => {
+  test('getValues', async () => {
     const wrapper = mount(WAreaPicker, {
       propsData: {
         areaList: areaList,
@@ -82,8 +82,15 @@ describe('area picker', () => {
       },
     })
 
-    // FIXME
-    console.log(wrapper.vm.getArea())
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.getArea()).toEqual({
+      'code': '110000',
+      'country': '',
+      'city': '北京市',
+      'county': '东城区',
+      'province': '北京市',
+    })
   })
 
   test('onChange method', () => {
@@ -132,12 +139,13 @@ describe('area picker', () => {
     const wrapper = mount(WAreaPicker, {
       propsData: {
         areaList: areaList,
+        value: '110000',
       },
     })
 
     wrapper.findAll('.weui-picker__action').at(1).trigger('click')
 
     expect(wrapper.vm.isActive).toBe(false)
-    // expect(wrapper.emitted('cancel')).toBeTruthy()
+    expect(wrapper.emitted('confirm')).toBeTruthy()
   })
 })
