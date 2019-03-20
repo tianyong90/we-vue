@@ -170,6 +170,7 @@ export default mixins<ioptions &
       const province = this.getList(columnType.province)
       const city = this.getList(columnType.city, code.slice(0, 2))
 
+      /* istanbul ignore next */
       if (!picker) {
         return
       }
