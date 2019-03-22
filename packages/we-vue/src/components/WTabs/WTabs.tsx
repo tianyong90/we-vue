@@ -229,10 +229,9 @@ export default mixins<options &
 
       /* istanbul ignore else */
       if (direction === 'horizontal' && this.offsetX >= minSwipeDistance) {
-        /* istanbul ignore else */
-        if (deltaX > 0 && currentActive !== 0) {
+        if (deltaX < 0 && currentActive !== 0) {
           this.setCurActive(currentActive - 1)
-        } else if (deltaX < 0 && currentActive !== this.tabs.length - 1) {
+        } else if (deltaX > 0 && currentActive !== this.tabs.length - 1) {
           this.setCurActive(currentActive + 1)
         }
       }
@@ -380,15 +379,13 @@ export default mixins<options &
       const active = index === this.currentActive
       const isCard = this.type === 'card'
 
-      if (color) {
-        if (!item.disabled && isCard && !active) {
+      if (color && isCard) {
+        style.borderColor = color
+
+        if (!item.disabled && !active) {
           style.color = color
-        }
-        if (!item.disabled && isCard && active) {
+        } else if (!item.disabled && active) {
           style.backgroundColor = color
-        }
-        if (isCard) {
-          style.borderColor = color
         }
       }
 

@@ -36,6 +36,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{js,ts,tsx}',
     '!**/*.d.ts',
+    '!**/__test__/area.js',
   ],
   globals: {
     __WE_VUE_VERSION__: '3.0.0', // version variable
