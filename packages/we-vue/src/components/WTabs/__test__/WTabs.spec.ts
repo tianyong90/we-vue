@@ -119,14 +119,14 @@ describe('tabs', () => {
     const spy = jest.spyOn(wrapper.vm, 'setCurActive')
     await wrapper.vm.$nextTick()
 
-    // drag to right
-    horizontalDrag(wrapper.vm.$refs.content, 0, 1000)
+    // drag to left
+    horizontalDrag(wrapper.vm.$refs.content, 0, -1000)
     expect(spy).toHaveBeenCalledWith(1)
 
     await wrapper.vm.$nextTick()
 
-    // drag to left
-    horizontalDrag(wrapper.vm.$refs.content, 0, -1000)
+    // drag to right
+    horizontalDrag(wrapper.vm.$refs.content, 0, 1000)
     expect(spy).toHaveBeenLastCalledWith(0)
   })
 

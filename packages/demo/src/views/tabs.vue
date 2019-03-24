@@ -46,7 +46,7 @@
 
     <div class="demo-tabs-wrap">
       <div class="tips">可滚动</div>
-      <w-tabs>
+      <w-tabs swipeable>
         <w-tab v-for="index in 6" :key="index" :title="'标签 ' + index">
           <div class="my-content">
             内容 {{ index }}

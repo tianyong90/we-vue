@@ -229,9 +229,9 @@ export default mixins<options &
 
       /* istanbul ignore else */
       if (direction === 'horizontal' && this.offsetX >= minSwipeDistance) {
-        if (deltaX < 0 && currentActive !== 0) {
+        if (deltaX > 0 && currentActive !== 0) {
           this.setCurActive(currentActive - 1)
-        } else if (deltaX > 0 && currentActive !== this.tabs.length - 1) {
+        } else if (deltaX < 0 && currentActive !== this.tabs.length - 1) {
           this.setCurActive(currentActive + 1)
         }
       }
