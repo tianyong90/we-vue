@@ -42,10 +42,6 @@ export default mixins<options &
       default: 500,
     },
     prevent: Boolean,
-    noDragWhenSingle: {
-      type: Boolean,
-      default: true,
-    },
     loop: {
       type: Boolean,
       default: true,
@@ -125,7 +121,7 @@ export default mixins<options &
       return this.vertical ? this.computedHeight : this.computedWidth
     },
 
-    trackSize (): number {
+    wrapperSize (): number {
       return this.count * this.size
     },
 
@@ -134,12 +130,12 @@ export default mixins<options &
       return this.direction === expect
     },
 
-    trackStyle (): object {
+    wrapperStyle (): object {
       const mainAxis = this.vertical ? 'height' : 'width'
       const crossAxis = this.vertical ? 'width' : 'height'
 
       return {
-        [mainAxis]: `${this.trackSize}px`,
+        [mainAxis]: `${this.wrapperSize}px`,
         [crossAxis]: this[crossAxis] ? `${this[crossAxis]}px` : '',
         transitionDuration: `${this.swiping ? 0 : this.duration}ms`,
         transform: `translate${this.vertical ? 'Y' : 'X'}(${this.offset}px)`,
@@ -218,7 +214,7 @@ export default mixins<options &
     },
 
     move ({ pace = 0, offset = 0, emitChange }: { pace?: number, offset?: number, emitChange?: boolean}): void {
-      const { delta, active, count, swipes, trackSize } = this
+      const { delta, active, count, swipes, wrapperSize } = this
       const atFirst = active === 0
       const atLast = active === count - 1
       const outOfBounds =
@@ -230,11 +226,11 @@ export default mixins<options &
       }
 
       if (swipes[0]) {
-        swipes[0].offset = atLast && (delta < 0 || pace > 0) ? trackSize : 0
+        swipes[0].offset = atLast && (delta < 0 || pace > 0) ? wrapperSize : 0
       }
 
       if (swipes[count - 1]) {
-        swipes[count - 1].offset = atFirst && (delta > 0 || pace < 0) ? -trackSize : 0
+        swipes[count - 1].offset = atFirst && (delta > 0 || pace < 0) ? -wrapperSize : 0
       }
 
       if (pace && active + pace >= -1 && active + pace <= count) {
@@ -321,9 +317,9 @@ export default mixins<options &
     return (
       <div class="wv-swipe">
         <div
-          style={this.trackStyle}
+          style={this.wrapperStyle}
           class="wv-swipe__wrapper"
-          ref="track"
+          ref="wrapper"
           onTouchstart={this.onTouchStart}
           onTouchmove={this.onTouchMove}
           onTouchend={this.onTouchEnd}

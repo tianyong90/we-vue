@@ -58,11 +58,13 @@ describe('swipe', () => {
       },
     })
 
-    horizontalDrag(wrapper, 0, 100)
+    const swipeWrapperItem = wrapper.find('.wv-swipe__wrapper')
+
+    horizontalDrag(swipeWrapperItem, 0, 100)
     expect(wrapper.vm.active).toBe(-1)
-    horizontalDrag(wrapper, 0, 100)
+    horizontalDrag(swipeWrapperItem, 0, 100)
     expect(wrapper.vm.active).toBe(1)
-    horizontalDrag(wrapper, 0, 100)
+    horizontalDrag(swipeWrapperItem, 0, 100)
     expect(wrapper.vm.active).toBe(0)
   })
 
@@ -77,13 +79,15 @@ describe('swipe', () => {
       },
     })
 
-    horizontalDrag(wrapper, 0, -100)
+    const swipeWrapperItem = wrapper.find('.wv-swipe__wrapper')
+
+    horizontalDrag(swipeWrapperItem, 0, -100)
     expect(wrapper.vm.active).toBe(1)
-    horizontalDrag(wrapper, 0, -100)
+    horizontalDrag(swipeWrapperItem, 0, -100)
     expect(wrapper.vm.active).toBe(2)
-    horizontalDrag(wrapper, 0, -100)
+    horizontalDrag(swipeWrapperItem, 0, -100)
     expect(wrapper.vm.active).toBe(3)
-    horizontalDrag(wrapper, 0, -100)
+    horizontalDrag(swipeWrapperItem, 0, -100)
     expect(wrapper.vm.active).toBe(1)
   })
 
@@ -103,33 +107,6 @@ describe('swipe', () => {
     dragAndHoldHelper(wrapper, distance, 0)
     expect(wrapper.vm.offset).toBe(0)
 
-    horizontalDrag(wrapper, 0, distance)
-    expect(wrapper.vm.offset).toBe(0)
-  })
-
-  test('drag single slide while noDragWhenSingle is false', () => {
-    const wrapper = mount(WSwipe, {
-      attachToDocument: true,
-      propsData: {
-        height: 120,
-        noDragWhenSingle: false,
-      },
-      slots: {
-        default: [WSwipeItem],
-      },
-    })
-
-    const distance = faker.random.number()
-
-    dragAndHoldHelper(wrapper, distance, 0)
-
-    if (Math.abs(distance) > 20) {
-      expect(wrapper.vm.offset).toBe(20)
-    } else {
-      expect(wrapper.vm.offset).toBe(distance)
-    }
-
-    // drag a single slide, the offset will return to 0 after touchend event
     horizontalDrag(wrapper, 0, distance)
     expect(wrapper.vm.offset).toBe(0)
   })
