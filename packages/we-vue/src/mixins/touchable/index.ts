@@ -21,6 +21,8 @@ interface options extends Vue {
 }
 
 export default Vue.extend<Vue & options>().extend({
+  name: 'touchable',
+
   data () {
     return {
       direction: '',
@@ -28,13 +30,13 @@ export default Vue.extend<Vue & options>().extend({
   },
 
   methods: {
-    onTouchstart (event: TouchEvent): void {
+    touchStart (event: TouchEvent): void {
       this.resetTouchStatus()
       this.startX = event.touches[0].clientX
       this.startY = event.touches[0].clientY
     },
 
-    onTouchmove (event: TouchEvent): void {
+    touchMove (event: TouchEvent): void {
       const touch = event.touches[0]
       this.deltaX = touch.clientX - this.startX
       this.deltaY = touch.clientY - this.startY

@@ -20,7 +20,7 @@
 1. Fork [tianyong90/we-vue](https://github.com/tianyong90/we-vue)
 2. 把库（repository）复制到电脑上，并安装所依赖的插件。
 
-    ```shell
+    ```bash
     git clone https://github.com/<your-github-username>/we-vue.git
     cd we-vue
     npm install
@@ -28,14 +28,14 @@
 
 3. 新增一个功能分支。
 
-    ```shell
+    ```bash
     git checkout -b new_feature
     ```
 
 4. 开始开发。
 5. 推送（push）分支。
 
-    ```shell
+    ```bash
     git push origin new_feature
     ```
 

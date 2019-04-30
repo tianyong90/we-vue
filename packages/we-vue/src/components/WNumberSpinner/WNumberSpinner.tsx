@@ -122,7 +122,7 @@ export default Vue.extend<options>().extend({
       if (
         !this.fillable ||
         !/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(
-          e.clipboardData.getData('text')
+          e.clipboardData!.getData('text')
         )
       ) {
         e.preventDefault()

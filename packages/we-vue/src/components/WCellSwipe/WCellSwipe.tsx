@@ -60,7 +60,7 @@ export default mixins<options &
   },
 
   methods: {
-    onTouchstart (e: TouchEvent): void {
+    touchStart (e: TouchEvent): void {
       const touch = getTouch(e)
       this.startPosX = touch.clientX
 
@@ -68,7 +68,7 @@ export default mixins<options &
       this.transition = ''
     },
 
-    onTouchmove (e: TouchEvent): void {
+    touchMove (e: TouchEvent): void {
       const touch = getTouch(e)
       this.deltaX = touch.clientX - this.startPosX
 
@@ -121,8 +121,8 @@ export default mixins<options &
         <div
           class="weui-cell__bd"
           ref="cellBd"
-          onTouchstart={this.onTouchstart}
-          onTouchmove={this.onTouchmove}
+          onTouchstart={this.touchStart}
+          onTouchmove={this.touchMove}
           onTouchend={this.onTouchend}
           onTouchcancel={this.onTouchend}
           style={this.style}

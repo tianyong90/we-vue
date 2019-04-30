@@ -3,7 +3,7 @@ module.exports = {
     disableHostCheck: true
   },
   css: {
-    sourceMap: true
+    sourceMap: false
   },
   configureWebpack: {
     resolve: {

@@ -40,19 +40,6 @@
 .custom-block {
   position: relative;
 
-  &:before {
-    content: "!";
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    left: -15px;
-    top: 15px;
-    text-align: center;
-    line-height: 25px;
-    border-radius: 50%;
-    color: #fff;
-  }
-
   &.tip,
   &.warning,
   &.danger {
@@ -64,34 +51,30 @@
   &.tip {
     background-color: #f3f5f7;
     border-color: #42b983;
-
-    &:before {
-      background-color: #42b983;
-    }
   }
 
   &.warning {
     background-color: rgba(255, 229, 100, 0.3);
     border-color: darken(#ffe564, 35%);
     color: darken(#ffe564, 70%);
-
-    &:before {
-      background-color: darken(#ffe564, 35%);
-    }
   }
 
   &.danger {
     background-color: #ffe6e6;
     border-color: darken(red, 20%);
     color: darken(red, 70%);
-
-    &:before {
-      background-color: darken(red, 20%);
-    }
   }
 }
 
 .doc-content {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #24292e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  word-wrap: break-word;
+
   .header-anchor {
     font-size: 0.85em;
     float: left;
@@ -116,14 +99,120 @@
   }
 }
 
-.doc-content {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  line-height: 1.5;
-  color: #24292e;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 16px;
-  word-wrap: break-word;
+div[class*="language-"] {
+  position: relative;
+  //z-index: 100;
+  background: #1d1f21;
+
+  &::before {
+    position: absolute;
+    z-index: 3;
+    top: 0.8em;
+    right: 1em;
+    font-size: 0.75rem;
+    color: #fff;
+  }
+
+  // 隐藏行号
+  &:not(.line-numbers-mode) .line-numbers-wrapper {
+    display: none;
+  }
+
+  &.line-numbers-mode .highlight-lines .highlighted {
+    position: relative;
+
+    ::before {
+      content: " ";
+      position: absolute;
+      z-index: 3;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 3.5rem;
+      height: 100%;
+      background-color: rgba(0,0,0,.66)
+    }
+  }
+
+  &.line-numbers-mode {
+    pre {
+      padding-left: 4.5rem;
+      vertical-align: middle;
+    }
+
+    .line-numbers-wrapper {
+      position: absolute;
+      top: 0;
+      width: 3.5rem;
+      text-align: center;
+      color: hsla(0, 0, 100%, 0.3);
+      padding: 13.6px 0;
+      line-height: 19px;
+      border-radius: 6px 0 0 6px;
+      border-right: 1px solid rgba(0, 0, 0, 0.66);
+      background-color: #282c45;
+      z-index: 2;
+
+      .line-number,
+      br {
+        user-select: none;
+      }
+
+      .line-number {
+        position: relative;
+        z-index: 4;
+        font-size: 0.85em;
+      }
+    }
+  }
+
+  & pre {
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-lines {
+    user-select: none;
+    padding-top: 13.6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 20.4px;
+
+    .highlighted {
+      background-color: rgba(0, 0, 0, 0.66);
+    }
+  }
+}
+
+$languages: (
+  javascript: 'js',
+  typescript: 'ts',
+  markup: 'html',
+  markdown: 'md',
+  ruby: 'rb',
+  python: 'py',
+  bash: 'sh',
+  php: 'php',
+  css: 'css',
+  scss: 'scss',
+  diff: 'diff',
+);
+
+@each $language, $language-text in $languages {
+  div[class~="language-#{$language}"] {
+    &::before {
+      content: $language-text;
+    }
+  }
+}
+
+.highlight-lines {
+  position: relative;
+  top: 0;
+  bottom: 0;
 }
 
 .fade-enter-active,

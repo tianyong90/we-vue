@@ -1,23 +1,34 @@
 import '../../scss/swipe.scss'
 
 import Vue from 'vue'
-import { getTouch } from '../../utils'
+
+// Utils
+import mixins, { ExtractVue } from '../../utils/mixins'
+import { off, on } from '../../utils/event'
 
 import SwipeItem from '../WSwipeItem'
 
-// Types
+// Mixins
+import Touchable from '../../mixins/touchable'
+
 type SwipeItemInstance = InstanceType<typeof SwipeItem>
 
+// Types
 interface options extends Vue {
   timer: any
 }
 
-export default Vue.extend<options>().extend({
+export default mixins<options &
+  ExtractVue<[typeof Touchable]>
+>(Touchable).extend({
   name: 'w-swipe',
 
   props: {
+    width: Number,
     height: Number,
     autoplay: Number,
+    vertical: Boolean,
+    indicatorColor: String,
     defaultIndex: {
       type: Number,
       default: 0,
@@ -35,37 +46,69 @@ export default Vue.extend<options>().extend({
       type: Boolean,
       default: true,
     },
+    loop: {
+      type: Boolean,
+      default: true,
+    },
+    touchable: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   data () {
     return {
-      width: 0 as number,
+      computedWidth: 0 as number,
+      computedHeight: 0 as number,
       offset: 0 as number,
-      startX: 0 as number,
-      startY: 0 as number,
       active: 0 as number,
       deltaX: 0 as number,
+      deltaY: 0 as number,
       swipes: [] as Array<SwipeItemInstance>,
-      direction: '' as string,
-      currentDuration: 0 as number,
+      swiping: false,
+      rendered: false,
     }
   },
 
   mounted () {
     this.initialize()
+
+    if (!this.$isServer) {
+      on(window, 'resize', this.onResize, true)
+    }
+  },
+
+  activated () {
+    if (this.rendered) {
+      this.initialize()
+    }
+
+    this.rendered = true
   },
 
   destroyed () {
-    clearTimeout(this.timer)
+    this.clear()
+
+    if (!this.$isServer) {
+      off(window, 'resize', this.onResize)
+    }
   },
 
   watch: {
-    swipes (): void {
+    swipes () {
       this.initialize()
     },
 
-    defaultIndex (): void {
+    defaultIndex () {
       this.initialize()
+    },
+
+    autoplay (autoplay) {
+      if (!autoplay) {
+        this.clear()
+      } else {
+        this.autoPlay()
+      }
     },
   },
 
@@ -74,19 +117,39 @@ export default Vue.extend<options>().extend({
       return this.swipes.length
     },
 
-    wrapperStyle (): object {
-      let ret: any = {
-        paddingLeft: this.count > 1 ? this.width + 'px' : 0,
-        width: this.count > 1 ? (this.count + 2) * this.width + 'px' : '100%',
-        transitionDuration: `${this.currentDuration}ms`,
-        transform: `translate3d(${this.offset}px, 0, 0)`,
-      }
+    delta (): number {
+      return this.vertical ? this.deltaY : this.deltaX
+    },
 
-      if (this.height) {
-        ret.height = this.height + 'px'
-      }
+    size (): number {
+      return this.vertical ? this.computedHeight : this.computedWidth
+    },
 
-      return ret
+    trackSize (): number {
+      return this.count * this.size
+    },
+
+    isCorrectDirection (): boolean {
+      const expect = this.vertical ? 'vertical' : 'horizontal'
+      return this.direction === expect
+    },
+
+    trackStyle (): object {
+      const mainAxis = this.vertical ? 'height' : 'width'
+      const crossAxis = this.vertical ? 'width' : 'height'
+
+      return {
+        [mainAxis]: `${this.trackSize}px`,
+        [crossAxis]: this[crossAxis] ? `${this[crossAxis]}px` : '',
+        transitionDuration: `${this.swiping ? 0 : this.duration}ms`,
+        transform: `translate${this.vertical ? 'Y' : 'X'}(${this.offset}px)`,
+      }
+    },
+
+    indicatorStyle (): object {
+      return {
+        backgroundColor: this.indicatorColor,
+      }
     },
 
     activeIndicator (): number {
@@ -95,150 +158,180 @@ export default Vue.extend<options>().extend({
   },
 
   methods: {
-    initialize (): void {
-      clearTimeout(this.timer)
+    initialize (active?: number): void {
+      active = active || this.defaultIndex
+
+      this.clear()
       if (this.$el) {
-        this.width = this.$el.getBoundingClientRect().width
+        const rect = this.$el.getBoundingClientRect()
+        this.computedWidth = this.width || rect.width
+        this.computedHeight = this.height || rect.height
       }
-      this.active = this.defaultIndex
-      this.currentDuration = 0
-      this.offset = this.count > 1 ? -this.width * (this.active + 1) : 0
+      this.swiping = true
+      this.active = active
+      this.offset = this.count > 1 ? -this.size * this.active : 0
       this.swipes.forEach(swipe => {
         swipe.offset = 0
       })
       this.autoPlay()
     },
 
-    onTouchstart (e: TouchEvent): void {
-      if (this.count === 1 && this.noDragWhenSingle) {
+    onResize (): void {
+      this.initialize(this.activeIndicator)
+    },
+
+    onTouchStart (e: TouchEvent): void {
+      if (!this.touchable) return
+
+      this.clear()
+      this.swiping = true
+      this.touchStart(e)
+      this.correctPosition()
+    },
+
+    onTouchMove (e: TouchEvent): void {
+      if (!this.touchable || !this.swiping) return
+
+      this.touchMove(e)
+
+      if (this.isCorrectDirection) {
+        e.preventDefault()
+        e.stopPropagation()
+        this.move({ offset: Math.min(Math.max(this.delta, -this.size), this.size) })
+      }
+    },
+
+    onTouchEnd (): void {
+      if (!this.touchable || !this.swiping) return
+
+      if (this.delta && this.isCorrectDirection) {
+        const offset = this.vertical ? this.offsetY : this.offsetX
+
+        this.move({
+          pace: offset > 0 ? (this.delta > 0 ? -1 : 1) : 0,
+          emitChange: true,
+        })
+      }
+
+      this.swiping = false
+      this.autoPlay()
+    },
+
+    move ({ pace = 0, offset = 0, emitChange }: { pace?: number, offset?: number, emitChange?: boolean}): void {
+      const { delta, active, count, swipes, trackSize } = this
+      const atFirst = active === 0
+      const atLast = active === count - 1
+      const outOfBounds =
+        !this.loop &&
+        ((atFirst && (offset > 0 || pace < 0)) || (atLast && (offset < 0 || pace > 0)))
+
+      if (outOfBounds || count <= 1) {
         return
       }
 
-      clearTimeout(this.timer)
-      const touch = getTouch(e)
+      if (swipes[0]) {
+        swipes[0].offset = atLast && (delta < 0 || pace > 0) ? trackSize : 0
+      }
 
-      this.deltaX = 0
-      this.direction = ''
-      this.currentDuration = 0
-      this.startX = touch.clientX
-      this.startY = touch.clientY
+      if (swipes[count - 1]) {
+        swipes[count - 1].offset = atFirst && (delta > 0 || pace < 0) ? -trackSize : 0
+      }
 
+      if (pace && active + pace >= -1 && active + pace <= count) {
+        this.active += pace
+
+        if (emitChange) {
+          this.$emit('change', this.activeIndicator)
+        }
+      }
+
+      this.offset = Math.round(offset - this.active * this.size)
+    },
+
+    swipeTo (index: number): void {
+      this.swiping = true
+      this.resetTouchStatus()
+      this.correctPosition()
+      setTimeout(() => {
+        this.swiping = false
+        this.move({
+          pace: (index % this.count) - this.active,
+          emitChange: true,
+        })
+      }, 30)
+    },
+
+    correctPosition (): void {
       if (this.active <= -1) {
-        this.move(this.count)
+        this.move({ pace: this.count })
       }
       if (this.active >= this.count) {
-        this.move(-this.count)
-      }
-    },
-
-    onTouchmove (e: TouchEvent): void {
-      if (this.prevent) {
-        e.preventDefault()
-      }
-
-      const touch = getTouch(e)
-
-      this.deltaX = touch.clientX - this.startX
-      const deltaY = touch.clientY - this.startY
-
-      if (this.count === 1) {
-        if (this.noDragWhenSingle) return
-
-        this.offset = this.range(this.deltaX, [-20, 20])
-      } else if (this.count > 1 && Math.abs(this.deltaX) > Math.abs(deltaY)) {
-        this.move(0, this.range(this.deltaX, [-this.width, this.width]))
-      }
-    },
-
-    onTouchend (): void {
-      if (this.count === 1) {
-        if (this.noDragWhenSingle) return
-
-        this.offset = 0
-        this.currentDuration = this.duration
-      } else {
-        if (this.deltaX) {
-          this.move(Math.abs(this.deltaX) > 50 ? (this.deltaX > 0 ? -1 : 1) : 0)
-          this.currentDuration = this.duration
-        }
-        this.autoPlay()
-      }
-    },
-
-    move (move: number = 0, offset: number = 0): void {
-      const { active, count, swipes, deltaX, width } = this
-
-      if (move) {
-        if (active === -1) {
-          swipes[count - 1].offset = 0
-        }
-        swipes[0].offset = active === count - 1 && move > 0 ? count * width : 0
-
-        this.active += move
-      } else {
-        if (active === 0) {
-          swipes[count - 1].offset = deltaX > 0 ? -count * width : 0
-        } else if (active === count - 1) {
-          swipes[0].offset = deltaX < 0 ? count * width : 0
-        }
-      }
-      this.offset = offset - (this.active + 1) * this.width
-    },
-
-    autoPlay (): void {
-      const { autoplay } = this
-      if (autoplay && this.count > 1) {
-        clearTimeout(this.timer)
-        this.timer = setTimeout(() => {
-          this.currentDuration = 0
-
-          if (this.active >= this.count) {
-            this.move(-this.count)
-          }
-
-          setTimeout(() => {
-            this.currentDuration = this.duration
-            this.move(1)
-            this.autoPlay()
-          }, 30)
-        }, autoplay)
+        this.move({ pace: -this.count })
       }
     },
 
     range (num: number, arr: number[]): number {
       return Math.min(Math.max(num, arr[0]), arr[1])
     },
+
+    clear (): void {
+      clearTimeout(this.timer)
+    },
+
+    autoPlay (): void {
+      const { autoplay } = this
+      if (autoplay && this.count > 1) {
+        this.clear()
+        this.timer = setTimeout(() => {
+          this.swiping = true
+          this.resetTouchStatus()
+          this.correctPosition()
+
+          setTimeout(() => {
+            this.swiping = false
+            this.move({
+              pace: 1,
+              emitChange: true,
+            })
+            this.autoPlay()
+          }, 30)
+        }, autoplay)
+      }
+    },
   },
 
   render (h) {
+    const { count, activeIndicator } = this
+
+    const Indicator = this.$slots.indicator || (
+      this.showIndicators && count > 1 &&
+      <div class="wv-swipe__indicators">
+        {
+          Array(...Array(count)).map((empty, index) => (
+            <i
+              key={index}
+              class={{ 'wv-swipe__indicator--active': index === activeIndicator }}
+              style={index === activeIndicator ? this.indicatorStyle : null}
+            />
+          ))
+        }
+      </div>
+    )
+
     return (
-      <div
-        class="wv-swipe"
-        onTouchstart={(e: TouchEvent) => { this.onTouchstart(e) }}
-        onTouchmove={(e: TouchEvent) => { this.onTouchmove(e) }}
-        onTouchend={() => { this.onTouchend() }}
-        onTouchcancel={() => { this.onTouchend() }}
-      >
+      <div class="wv-swipe">
         <div
-          style={this.wrapperStyle}
+          style={this.trackStyle}
           class="wv-swipe__wrapper"
-          onTransitionend={() => { this.$emit('change', this.activeIndicator) }}
+          ref="track"
+          onTouchstart={this.onTouchStart}
+          onTouchmove={this.onTouchMove}
+          onTouchend={this.onTouchEnd}
+          onTouchcancel={this.onTouchEnd}
         >
           {this.$slots.default}
         </div>
-        {
-          this.showIndicators && this.count > 1 &&
-            <div class="wv-swipe__indicators">
-              {
-                (new Array(this.count)).map(index => (
-                  <i
-                    key={index}
-                    class={{ 'wv-swipe__indicator--active': index - 1 === this.activeIndicator }}
-                  />
-                ))
-              }
-            </div>
-        }
+        {Indicator}
       </div>
     )
   },

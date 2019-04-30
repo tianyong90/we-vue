@@ -27,7 +27,10 @@ module.exports = {
               }
             },
             {
-              loader: '@tianyong90/vue-markdown-loader'
+              loader: '@tianyong90/vue-markdown-loader',
+              options: {
+                contentCssClass: 'markdown-body'
+              }
             }
           ]
         }

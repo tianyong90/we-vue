@@ -60,7 +60,7 @@ export default mixins(
       this.isActive = !this.isActive
     },
 
-    onTouchstart (e: TouchEvent): void {
+    touchStart (e: TouchEvent): void {
       if (this.disabled) return
 
       const touch = getTouch(e)
@@ -70,7 +70,7 @@ export default mixins(
       this.transition = ''
     },
 
-    onTouchmove (e: TouchEvent): void {
+    touchMove (e: TouchEvent): void {
       if (this.disabled) return
 
       const touch = getTouch(e)
@@ -147,8 +147,8 @@ export default mixins(
           <div
             class="thumb"
             style={this.thumbStyle}
-            onTouchstart={this.onTouchstart}
-            onTouchmove={this.onTouchmove}
+            onTouchstart={this.touchStart}
+            onTouchmove={this.touchMove}
             onTouchend={this.onTouchend}
             onTouchcancel={this.onTouchend}
           />

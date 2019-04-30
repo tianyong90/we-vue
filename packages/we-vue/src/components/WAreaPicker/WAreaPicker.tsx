@@ -86,7 +86,9 @@ export default mixins<ioptions &
       get (): string {
         return this.lazyValue
       },
-      set (val: string): void {
+      set (val: string| Array<any>): void {
+        console.log(Array.isArray(val))
+
         this.lazyValue = val
         this.$emit('input', val)
       },

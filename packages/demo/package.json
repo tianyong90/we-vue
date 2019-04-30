@@ -5,9 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve --colors",
     "build": "vue-cli-service build --colors",
-    "lint": "vue-cli-service lint --colors"
+    "lint": "vue-cli-service lint --colors",
+    "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "core-js": "^3.0.1",
     "qrcode": "^1.3.2",
     "vue": "^2.5.22",
     "vue-router": "^3.0.1",
@@ -15,16 +17,17 @@
     "we-vue": "^3.0.0-alpha.9"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.1",
-    "@vue/cli-plugin-eslint": "^3.4.1",
-    "@vue/cli-service": "^3.4.1",
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-e2e-cypress": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "fibers": "^3.1.1",
+    "fibers": "^4.0.0",
     "lint-staged": "^8.1.0",
-    "node-sass": "^4.11.0",
+    "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
   },
@@ -32,11 +35,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
+    "*.{js,vue}": [
       "vue-cli-service lint",
       "git add"
     ]

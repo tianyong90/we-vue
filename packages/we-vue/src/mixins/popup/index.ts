@@ -130,7 +130,7 @@ export default mixins<options &
       this.renderMask()
 
       if (this.lockScroll) {
-        on(document, 'touchstart', this.onTouchstart as EventListener)
+        on(document, 'touchstart', this.touchStart as EventListener)
         on(document, 'touchmove', this.onThisTouchmove as EventListener)
       }
 
@@ -150,7 +150,7 @@ export default mixins<options &
       if (this.lockScroll) {
         context.lockCount--
 
-        off(document, 'touchstart', this.onTouchstart as EventListener)
+        off(document, 'touchstart', this.touchStart as EventListener)
         off(document, 'touchmove', this.onThisTouchmove as EventListener)
 
         if (!context.lockCount) {
@@ -164,7 +164,7 @@ export default mixins<options &
     },
 
     onThisTouchmove (e: TouchEvent): void {
-      this.onTouchmove(e)
+      this.touchMove(e)
 
       const direction = this.deltaY > 0 ? '10' : '01'
       const el = getScrollEventTarget(e.target as HTMLElement, this.$el as HTMLElement)

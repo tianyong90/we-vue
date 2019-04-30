@@ -215,8 +215,8 @@ export default mixins<options &
         const { content } = this.$refs
         const action = swipeable ? on : off
 
-        action(content, 'touchstart', this.onTouchstart as EventListener)
-        action(content, 'touchmove', this.onTouchmove as EventListener)
+        action(content, 'touchstart', this.touchStart as EventListener)
+        action(content, 'touchmove', this.touchMove as EventListener)
         action(content, 'touchend', this.onTouchend)
         action(content, 'touchcancel', this.onTouchend)
       }

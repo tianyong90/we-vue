@@ -13,8 +13,8 @@
   color: #fff;
   z-index: 5000;
   @include text_wrap();
-}
 
-.weui-toptips_warn {
-  background-color: $weui-color-warn;
+  &_warn {
+    background-color: $weui-color-warn;
+  }
 }

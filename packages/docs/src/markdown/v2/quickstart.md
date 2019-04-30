@@ -37,7 +37,7 @@ new Vue({
 可以借助 babel-plugin-import 实现按需引入，以减小项目体积。
 首先，安装 babel-plugin-import:
 
-```shell
+```bash
 npm install babel-plugin-import -D
 ```
 

@@ -39,7 +39,7 @@
             </ul>
           </div>
         </div>
-        <div class="doc-content markdown-body col-md-6 col-lg-7 px-4 offset-md-2">
+        <div class="doc-content col-md-6 col-lg-7 px-4 offset-md-2">
           <router-view/>
         </div>
 
@@ -58,8 +58,6 @@
 import { nav } from '../config'
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import 'highlight.js/styles/atom-one-dark.css'
-import 'github-markdown-css/github-markdown.css'
 import Header from '../components/header'
 import WevueDemo from '../components/wevue-demo'
 
@@ -101,6 +99,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~github-markdown-css/github-markdown.css";
+@import "~prism-themes/themes/prism-atom-dark.css";
+
 .doc-wrapper {
   margin-top: 70px;
 }

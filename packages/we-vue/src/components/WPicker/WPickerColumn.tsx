@@ -130,7 +130,7 @@ export default Vue.extend<options>().extend({
       )
     },
 
-    onTouchstart (event: TouchEvent): void {
+    touchStart (event: TouchEvent): void {
       this.startOffset = this.offset
       this.startY = event.touches[0].clientY
       this.prevY = event.touches[0].clientY
@@ -138,7 +138,7 @@ export default Vue.extend<options>().extend({
       this.transition = ''
     },
 
-    onTouchmove (event: TouchEvent): void {
+    touchMove (event: TouchEvent): void {
       const currentTime = +new Date()
       const currentY = event.touches[0].clientY
       const distance = currentY - this.startY
@@ -202,8 +202,8 @@ export default Vue.extend<options>().extend({
     return (
       <div
         class="weui-picker__group"
-        onTouchstart={(e: TouchEvent) => { this.onTouchstart(e) }}
-        onTouchmove_prevent={(e: TouchEvent) => { this.onTouchmove(e) }}
+        onTouchstart={(e: TouchEvent) => { this.touchStart(e) }}
+        onTouchmove_prevent={(e: TouchEvent) => { this.touchMove(e) }}
         onTouchend={() => { this.onTouchend() }}
         onTouchcancel={() => { this.onTouchend() }}
       >

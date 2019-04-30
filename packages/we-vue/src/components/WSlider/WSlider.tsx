@@ -99,13 +99,13 @@ export default Vue.extend<options>().extend({
       this.$emit('change', value)
     },
 
-    onTouchstart (): void {
+    touchStart (): void {
       if (this.disabled) return
 
       this.handlerStartPos = this.getHandlerStartPos()
     },
 
-    onTouchmove (e: TouchEvent): void {
+    touchMove (e: TouchEvent): void {
       if (this.disabled) return
 
       const touch = getTouch(e)
@@ -145,8 +145,8 @@ export default Vue.extend<options>().extend({
               style={{ left: this.percent + '%' }}
               class="weui-slider__handler"
               ref="handler"
-              onTouchstart={this.onTouchstart}
-              onTouchmove={this.onTouchmove}
+              onTouchstart={this.touchStart}
+              onTouchmove={this.touchMove}
             />
           </div>
         </div>
