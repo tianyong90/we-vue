@@ -21,13 +21,9 @@ type objectColumn = {
 
 type simpleColumns = Array<string | number | object>
 
-type typeColumns = Array<Array<
-  string | number | objectColumn
->>
+type typeColumns = Array<Array<string | number | objectColumn>>
 
-export default mixins(
-  ToaaleableFactory('visible', 'update:visible')
-).extend({
+export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
   name: 'w-picker',
 
   props: {
@@ -110,12 +106,7 @@ export default mixins(
 
     columnValueChange (columnIndex: number): void {
       if (this.simple) {
-        this.$emit(
-          'change',
-          this,
-          this.getColumnOptions(0),
-          this.getColumnIndex(0)
-        )
+        this.$emit('change', this, this.getColumnOptions(0), this.getColumnIndex(0))
       } else {
         this.$emit('change', this, this.getValues(), columnIndex)
       }
@@ -125,10 +116,7 @@ export default mixins(
     getColumn (columnIndex: number) {
       let { children } = this
       return children.find((child, index) => {
-        return (
-          child.$options.name === 'w-picker-column' &&
-          index === columnIndex
-        )
+        return child.$options.name === 'w-picker-column' && index === columnIndex
       })
     },
 
@@ -148,7 +136,7 @@ export default mixins(
     setColumnOptions (columnIndex: number, options: Array<string | number | object>): void {
       const column = this.columns[columnIndex]
       if (column) {
-        (column as objectColumn).options = options
+        ;(column as objectColumn).options = options
       }
     },
 
@@ -171,7 +159,7 @@ export default mixins(
 
     // get column option index by column index
     getColumnIndex (columnIndex: number): number {
-      return (this.getColumn(columnIndex))!.currentIndex
+      return this.getColumn(columnIndex)!.currentIndex
     },
 
     // set column option index by column index
@@ -192,7 +180,7 @@ export default mixins(
       })
     },
 
-    onClickMask () {
+    onClickMask (): void {
       if (!this.closeOnClickMask) return
 
       this.onCancel()
@@ -216,48 +204,28 @@ export default mixins(
   render (h: CreateElement): VNode {
     return (
       <div>
-        <transition
-          enter-active-class="weui-animate-fade-in"
-          leave-active-class="weui-animate-fade-out"
-        >
-          <div
-            vShow={this.isActive}
-            class="weui-mask"
-            onClick={this.onClickMask}
-          />
+        <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
+          <div vShow={this.isActive} class="weui-mask" onClick={this.onClickMask} />
         </transition>
-        <transition
-          enter-active-class="weui-animate-slide-up"
-          leave-active-class="weui-animate-slide-down"
-        >
+        <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
           <div vShow={this.isActive} class="weui-picker">
             <div class="weui-picker__hd">
-              <div
-                class="weui-picker__action"
-                onClick={this.onCancel}
-                domPropsTextContent={this.cancelText}
-              />
-              <div
-                class="weui-picker__action"
-                onClick={this.onConfirm}
-                domPropsTextContent={this.confirmText}
-              />
+              <div class="weui-picker__action" onClick={this.onCancel} domPropsTextContent={this.cancelText} />
+              <div class="weui-picker__action" onClick={this.onConfirm} domPropsTextContent={this.confirmText} />
             </div>
             <div class="weui-picker__bd" style={this.pickerBodyStyle}>
-              {
-                (this.simple ? [this.columns] : this.columns).map((column, index) => (
-                  <WPickerColumn
-                    key={index}
-                    options={this.simple ? column : (column as any).options}
-                    value-key={this.valueKey}
-                    default-index={(column as any).defaultIndex}
-                    visible-item-count={this.visibleItemCount}
-                    onChange={() => {
-                      this.columnValueChange(index)
-                    }}
-                  />
-                ))
-              }
+              {(this.simple ? [this.columns] : this.columns).map((column, index) => (
+                <WPickerColumn
+                  key={index}
+                  options={this.simple ? column : (column as any).options}
+                  value-key={this.valueKey}
+                  default-index={(column as any).defaultIndex}
+                  visible-item-count={this.visibleItemCount}
+                  onChange={() => {
+                    this.columnValueChange(index)
+                  }}
+                />
+              ))}
             </div>
           </div>
         </transition>

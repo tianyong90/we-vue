@@ -12,7 +12,7 @@ type PickerInstance = InstanceType<typeof WPicker>
 enum columnType {
   province = 'province',
   city = 'city',
-  county = 'county'
+  county = 'county',
 }
 
 type typeAreaList = {
@@ -41,11 +41,7 @@ interface ioptions extends Vue {
   }
 }
 
-export default mixins<ioptions &
-  ExtractVue<[typeof Picker]>
->(
-  Picker
-).extend({
+export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
   name: 'w-area-picker',
 
   components: {
@@ -86,11 +82,13 @@ export default mixins<ioptions &
       get (): string {
         return this.lazyValue
       },
-      set (val: string| Array<any>): void {
+      set (val: string | Array<any>): void {
         console.log(Array.isArray(val))
 
-        this.lazyValue = val
-        this.$emit('input', val)
+        // TODO
+
+        // this.lazyValue = val
+        this.$emit('input', '110000')
       },
     },
 
@@ -255,8 +253,12 @@ export default mixins<ioptions &
     const on = {
       ...this.$listeners,
       change: this.onChange,
-      cancel: () => { this.onCancel() },
-      confirm: () => { this.onConfirm() },
+      cancel: () => {
+        this.onCancel()
+      },
+      confirm: () => {
+        this.onConfirm()
+      },
     }
 
     return (
