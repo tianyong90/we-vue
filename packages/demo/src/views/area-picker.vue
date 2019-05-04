@@ -29,7 +29,7 @@ import areaList from '../assets/data/area'
 export default {
   data () {
     return {
-      pickerShowDefault: false,
+      pickerShowDefault: true,
       pickerShowTwoColumns: false,
       area: areaList,
       code: '110101',

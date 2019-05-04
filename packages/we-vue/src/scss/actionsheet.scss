@@ -13,58 +13,63 @@ $actionsheet-android-border-radius: 2px;
   background-color: $weui-bg-color-default;
   //slide up animation
   transition: transform 0.3s;
-}
 
-.weui-actionsheet__title {
-  position: relative;
-  height: 65px;
-  padding: 0 20px;
-  line-height: 1.4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  font-size: 14px;
-  color: #888;
-  background: #fcfcfd;
+  &__title {
+    position: relative;
+    height: 65px;
+    padding: 0 20px;
+    line-height: 1.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    background: #fcfcfd;
 
-  &:before {
-    @include setBottomLine($weui-cell-border-color);
-  }
-
-  .weui-actionsheet__title-text {
-    @include ellipsisLn(2);
-  }
-}
-
-.weui-actionsheet__menu {
-  background-color: #fcfcfd;
-}
-
-.weui-actionsheet__action {
-  margin-top: 6px;
-  background-color: #fcfcfd;
-}
-
-.weui-actionsheet__cell {
-  position: relative;
-  padding: 10px 0;
-  text-align: center;
-  font-size: 18px;
-
-  &:before {
-    @include setTopLine($weui-cell-border-color);
-  }
-
-  &:active {
-    background-color: $weui-bg-color-active;
-  }
-
-  &:first-child {
     &:before {
-      display: none;
+      @include setBottomLine($weui-cell-border-color);
     }
+
+    &-text {
+      @include ellipsisLn(2);
+    }
+  }
+
+  &__menu {
+    background-color: #fcfcfd;
+  }
+
+  &__action {
+    margin-top: 6px;
+    background-color: #fcfcfd;
+  }
+
+  &__cell {
+    position: relative;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 18px;
+
+    &:before {
+      @include setTopLine($weui-cell-border-color);
+    }
+
+    &:active {
+      background-color: $weui-bg-color-active;
+    }
+
+    &:first-child {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  //actionSheet aniamtion
+  &_toggle {
+    transform: translate(0, 0);
   }
 }
 
@@ -110,9 +115,4 @@ $actionsheet-android-border-radius: 2px;
       border-bottom-right-radius: $actionsheet-android-border-radius;
     }
   }
-}
-
-//actionSheet aniamtion
-.weui-actionsheet_toggle {
-  transform: translate(0, 0);
 }

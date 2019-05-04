@@ -30,7 +30,7 @@
     "conventional-changelog": "^3.0.5",
     "conventional-changelog-cli": "^2.0.12",
     "cz-conventional-changelog": "^2.1.0",
-    "husky": "2.1.0",
+    "husky": "^2.2.0",
     "inquirer": "^6.3.0",
     "lerna": "^3.7.1",
     "lint-staged": "^8.0.0",
