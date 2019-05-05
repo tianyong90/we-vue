@@ -8,7 +8,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   background-color: $weui-dialog-background-color;
   text-align: center;
   border-radius: 3px;
@@ -46,7 +45,7 @@
   display: flex;
 
   &:after {
-    content: " ";
+    content: "";
     @include setTopLine($weui-dialog-line-color);
   }
 }
@@ -65,7 +64,7 @@
   position: relative;
 
   &:after {
-    content: " ";
+    content: "";
     @include setLeftLine($weui-dialog-line-color);
   }
 

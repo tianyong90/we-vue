@@ -72,7 +72,7 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
 
   data () {
     return {
-      lazyValue: this.value as string,
+      lazyValue: this.value,
       columns: [{ options: [] }, { options: [] }, { options: [] }],
     }
   },

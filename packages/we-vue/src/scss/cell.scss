@@ -53,7 +53,7 @@
     position: relative;
 
     &:after {
-      content: " ";
+      content: "";
       @include setArrow(right, 6px, #c8c8cd, 2px);
       position: absolute;
       top: 50%;
