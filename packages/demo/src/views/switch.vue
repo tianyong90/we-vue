@@ -5,8 +5,8 @@
     </div>
 
     <w-group>
-      <w-switch title="开关1" v-model="switchValue1"/>
-      <w-switch title="开关2（禁用）" disabled v-model="switchValue2"/>
+      <w-switch title="开关 1" v-model="switchValue1"/>
+      <w-switch title="开关 2（禁用）" disabled v-model="switchValue2"/>
     </w-group>
 
     <div class="standalone-switches">

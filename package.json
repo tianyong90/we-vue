@@ -4,7 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "lerna run serve --ignore docs --stream --parallel -- --colors",
+    "dev": "lerna run serve --ignore docs --parallel --no-bail -- --colors",
     "dev:docs": "lerna run serve --scope docs --stream -- --colors",
     "lint": "lerna run lint --parallel -- --color",
     "lint:fix": "lerna run lint --parallel -- --color --fix",

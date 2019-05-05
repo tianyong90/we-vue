@@ -2,7 +2,6 @@ const path = require('path')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CleanPlugin = require('clean-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
   devtool: 'source-map',
@@ -26,13 +25,6 @@ module.exports = merge(baseWebpackConfig, {
     },
   },
   plugins: [
-    new CleanPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        path.join(__dirname, '../dist'),
-      ],
-      verbose: true,
-      dry: false,
-    }),
     new MiniCssExtractPlugin({
       filename: 'we-vue.css',
     }),
