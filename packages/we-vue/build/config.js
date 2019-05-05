@@ -14,34 +14,34 @@ const builds = {
       mode: 'development',
       output: {
         filename: 'we-vue.js',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
       },
       plugins: [
         new MiniCssExtractPlugin({
-          filename: 'we-vue.css'
-        })
-      ]
-    }
+          filename: 'we-vue.css',
+        }),
+      ],
+    },
   },
   production: {
     config: {
       mode: 'production',
       output: {
         filename: 'we-vue.min.js',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
       },
       plugins: [
         new MiniCssExtractPlugin({
-          filename: 'we-vue.min.css'
-        })
+          filename: 'we-vue.min.css',
+        }),
       ],
       performance: {
         hints: 'warning',
-        maxEntrypointSize: 500000
-      }
+        maxEntrypointSize: 500000,
+      },
     },
-    env: 'production'
-  }
+    env: 'production',
+  },
 }
 
 function genConfig (opts) {
@@ -49,8 +49,8 @@ function genConfig (opts) {
 
   config.plugins = config.plugins.concat([
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(opts.env || 'development')
-    })
+      'process.env.NODE_ENV': JSON.stringify(opts.env || 'development'),
+    }),
   ])
 
   if (opts.env) {
@@ -62,15 +62,15 @@ function genConfig (opts) {
 * Released under the MIT License.
 */     `,
         raw: true,
-        entryOnly: true
-      })
+        entryOnly: true,
+      }),
     ])
     config.optimization = {
       minimizer: [
         new TerserPlugin({
           cache: true,
           parallel: true,
-          sourceMap: true
+          sourceMap: true,
         }),
         new OptimizeCssAssetsPlugin({
           assetNameRegExp: /\.css$/g,
@@ -78,11 +78,11 @@ function genConfig (opts) {
           cssProcessorOptions: {
             discardComments: { removeAll: true },
             postcssZindex: false,
-            reduceIdents: false
+            reduceIdents: false,
           },
-          canPrint: false
-        })
-      ]
+          canPrint: false,
+        }),
+      ],
     }
   }
 
@@ -92,5 +92,6 @@ function genConfig (opts) {
 if (process.env.TARGET) {
   module.exports = genConfig(builds[process.env.TARGET])
 } else {
+  // 同时生成 development 和 production 两种模式配置
   module.exports = Object.keys(builds).map(name => genConfig(builds[name]))
 }

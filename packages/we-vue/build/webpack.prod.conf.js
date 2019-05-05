@@ -1,9 +1,13 @@
+const webpack = require('webpack')
 const path = require('path')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CleanPlugin = require('clean-webpack-plugin')
+
+const version = process.env.VERSION || require('../package.json').version
 
 module.exports = merge(baseWebpackConfig, {
   devtool: 'source-map',
@@ -28,6 +32,22 @@ module.exports = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new CleanPlugin({
+      cleanOnceBeforeBuildPatterns: [
+        path.join(__dirname, '../dist'),
+      ],
+      verbose: true,
+      dry: false,
+    }),
+    new webpack.BannerPlugin({
+      banner: `/*!
+* we-vue v${version}
+* Forged by Tian Yong
+* Released under the MIT License.
+*/     `,
+      raw: true,
+      entryOnly: true
+    }),
     new MiniCssExtractPlugin({
       filename: 'we-vue.min.css'
     }),

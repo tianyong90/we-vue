@@ -5,12 +5,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
-const extractCSS = isProd || process.env.TARGET === 'development'
 
 const resolve = file => require('path').resolve(__dirname, file)
 
 const scssLoaders = [
-  extractCSS ? MiniCssExtractPlugin.loader : 'style-loader',
+  {
+    loader: MiniCssExtractPlugin.loader,
+    options: {
+      hmr: process.env.NODE_ENV === 'development',
+    },
+  },
   { loader: 'css-loader' },
   {
     loader: 'postcss-loader',
