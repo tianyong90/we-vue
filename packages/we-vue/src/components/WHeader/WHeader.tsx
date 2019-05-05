@@ -16,7 +16,7 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <header
         class={{

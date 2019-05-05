@@ -398,7 +398,7 @@ export default mixins<options &
     },
   },
 
-  render (h) {
+  render () {
     const { type, scrollable } = this
 
     const Nav = this.tabs.map((tab, index) => (

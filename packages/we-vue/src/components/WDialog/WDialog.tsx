@@ -58,7 +58,7 @@ export default mixins(
     },
   },
 
-  render (h) {
+  render () {
     return (
       <transition-group
         enter-active-class="weui-animate-fade-in"

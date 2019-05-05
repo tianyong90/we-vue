@@ -22,7 +22,7 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div class="weui-progress">
         <div class="weui-progress__bar">

@@ -8,7 +8,7 @@ export default Vue.extend({
     title: String,
   },
 
-  render (h) {
+  render () {
     return (
       <div class="weui-panel weui-panel_access">
         {

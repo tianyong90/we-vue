@@ -25,7 +25,10 @@ module.exports = function (api) {
       [
         '@vue/babel-preset-jsx',
         {
-          functional: false,
+          functional: true,
+          injectH: true,
+          vModel: true,
+          vOn: true,
         },
       ],
     ],

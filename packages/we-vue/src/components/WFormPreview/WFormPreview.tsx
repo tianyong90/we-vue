@@ -19,7 +19,7 @@ export default Vue.extend({
     } as PropValidator<Array<any>>,
   },
 
-  render (h) {
+  render () {
     return (
       <div class="weui-form-preview">
         <div class="weui-form-preview__hd">

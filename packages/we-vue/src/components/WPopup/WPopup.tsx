@@ -60,7 +60,7 @@ export default mixins<options &
     }
   },
 
-  render (h) {
+  render () {
     return (
       <transition
         enter-active-class="weui-animate-slide-up"

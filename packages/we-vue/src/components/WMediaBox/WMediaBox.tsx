@@ -27,7 +27,7 @@ export default mixins(
     },
   },
 
-  render (h) {
+  render () {
     const content = () => {
       if (this.type === 'appmsg') {
         return [

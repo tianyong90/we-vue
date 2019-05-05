@@ -198,7 +198,7 @@ export default Vue.extend<options>().extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div
         class="weui-picker__group"

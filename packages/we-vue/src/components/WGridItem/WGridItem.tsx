@@ -15,7 +15,7 @@ export default mixins(
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div class="weui-grid" onClick={() => {
         this.onClick()

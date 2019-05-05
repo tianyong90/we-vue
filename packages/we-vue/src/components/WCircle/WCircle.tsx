@@ -88,7 +88,7 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div class="wv-circle" style={this.style}>
         <svg

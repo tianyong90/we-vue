@@ -83,12 +83,8 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
         return this.lazyValue
       },
       set (val: string | Array<any>): void {
-        console.log(Array.isArray(val))
-
-        // TODO
-
-        // this.lazyValue = val
-        this.$emit('input', '110000')
+        this.lazyValue = val
+        // this.$emit('input', val)
       },
     },
 
@@ -224,10 +220,12 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       return area
     },
 
-    onChange (picker: PickerInstance, values: Array<typeArea>, index: number) {
-      this.internalValue = values[index].code as string
+    onChange (picker: PickerInstance) {
+      const values = this.getValues()
+
+      this.internalValue = values[0].code as string
       this.setOptions()
-      this.$emit('change', picker, values, index)
+      this.$emit('change', picker, values)
     },
 
     reset (): void {
@@ -235,8 +233,9 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       this.setOptions()
     },
 
-    onConfirm () {
-      // console.log(this.$listeners)
+    onConfirm (e: Event) {
+      // TODO:
+      // e.preventDefault()
 
       this.isActive = false
       console.log(this.internalValue)
@@ -249,18 +248,7 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
     },
   },
 
-  render (h: CreateElement): VNode {
-    const on = {
-      ...this.$listeners,
-      change: this.onChange,
-      cancel: () => {
-        this.onCancel()
-      },
-      confirm: () => {
-        this.onConfirm()
-      },
-    }
-
+  render (): VNode {
     return (
       <WPicker
         ref="picker"
@@ -271,7 +259,9 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
         close-on-click-mask={this.closeOnClickMask}
         visibleItemCount={this.visibleItemCount}
         valueKey="name"
-        {...{ on }}
+        onChange={this.onChange}
+        onCancel={this.onCancel}
+        onConfirm={this.onConfirm}
       />
     )
   },

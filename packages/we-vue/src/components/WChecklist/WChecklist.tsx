@@ -82,7 +82,7 @@ export default Vue.extend<options>().extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div>
         { this.title && <div class="weui-cells__title" domPropsInnerHTML={this.title} /> }

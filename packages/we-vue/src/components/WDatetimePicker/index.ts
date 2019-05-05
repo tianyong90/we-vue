@@ -1,4 +1,4 @@
-import DatetimePicker from './WDatetimePicker'
+import WDatetimePicker from './WDatetimePicker'
 
-export { DatetimePicker }
-export default DatetimePicker
+export { WDatetimePicker }
+export default WDatetimePicker

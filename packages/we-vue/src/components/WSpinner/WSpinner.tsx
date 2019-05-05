@@ -44,7 +44,7 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render () {
     if (this.type === 'default') {
       return <i class="weui-loading" style={this.style} />
     } else {

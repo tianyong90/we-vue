@@ -1,4 +1,4 @@
-import Footer from './WFooter'
+import WFooter from './WFooter'
 
-export { Footer }
-export default Footer
+export { WFooter }
+export default WFooter

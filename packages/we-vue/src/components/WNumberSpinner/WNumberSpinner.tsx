@@ -163,7 +163,7 @@ export default Vue.extend<options>().extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div
         class="wv-number-spinner"

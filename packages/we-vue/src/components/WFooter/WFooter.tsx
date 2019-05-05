@@ -14,7 +14,7 @@ export default Vue.extend({
     } as PropValidator<Array<any>>,
   },
 
-  render (h) {
+  render () {
     const footerLinks = this.links.map(item => (
       <WFooterLink
         key={item.text}

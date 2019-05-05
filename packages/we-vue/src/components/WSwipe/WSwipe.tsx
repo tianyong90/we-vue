@@ -296,7 +296,7 @@ export default mixins<options &
     },
   },
 
-  render (h) {
+  render () {
     const { count, activeIndicator } = this
 
     const Indicator = this.$slots.indicator || (

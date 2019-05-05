@@ -9,7 +9,7 @@ export default Vue.extend({
     fixed: Boolean,
   },
 
-  render (h): VNode {
+  render (): VNode {
     const style = { position: this.fixed ? 'fixed' : 'absolute' }
 
     return h('div', {

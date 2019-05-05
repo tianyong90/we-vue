@@ -17,7 +17,7 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div
         class={{

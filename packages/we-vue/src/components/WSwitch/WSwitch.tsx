@@ -121,7 +121,7 @@ export default mixins(
     },
   },
 
-  render (h) {
+  render () {
     if (this.isInCell) {
       return (
         <WCell title={this.title}>

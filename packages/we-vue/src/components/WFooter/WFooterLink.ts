@@ -21,7 +21,7 @@ export default mixins(
     },
   },
 
-  render (h): VNode {
+  render (): VNode {
     return h('div', {
       class: 'weui-footer__link',
       on: {

@@ -147,7 +147,7 @@ export default Vue.extend<options>().extend({
     },
   },
 
-  render (h): VNode {
+  render (): VNode {
     return (
       <div
         class={{

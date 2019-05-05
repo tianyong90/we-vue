@@ -123,7 +123,7 @@ export default Vue.extend<options>().extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div class="weui-slider-box">
         <div

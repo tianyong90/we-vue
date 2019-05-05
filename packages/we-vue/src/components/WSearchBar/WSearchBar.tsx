@@ -90,7 +90,7 @@ export default mixins<options &
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div>
         <div class="weui-search-bar">

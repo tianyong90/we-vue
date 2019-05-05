@@ -43,7 +43,7 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <button
         class={this.classes}

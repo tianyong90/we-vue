@@ -47,7 +47,7 @@ export default Vue.extend<options>().extend({
     },
   },
 
-  render (h): VNode {
+  render (): VNode {
     return h('div', {
       class: 'weui-flex__item',
       style: this.style,

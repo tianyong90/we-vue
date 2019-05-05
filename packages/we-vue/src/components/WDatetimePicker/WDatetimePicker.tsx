@@ -394,25 +394,25 @@ export default mixins<options &
       this.$refs.picker.setValues(values)
     },
 
-    onConfirm () {
-      this.isActive = false
-      this.$emit('confirm', this.internalValue)
-    },
-
     onCancel () {
       this.isActive = false
       this.$emit('cancel')
     },
+
+    onConfirm () {
+      this.isActive = false
+      this.$emit('confirm', this.internalValue)
+    },
   },
 
-  render (h) {
+  render () {
     return (
       <WPicker
         ref="picker"
         visible={this.isActive}
         columns={this.columns}
-        onChange={() => { this.onChange(this.$refs.picker) }}
-        onConfirm={() => { this.onConfirm() }}
+        onChange:stop-prevent={() => { this.onChange(this.$refs.picker) }}
+        onConfirm:stop-prevent={() => { this.onConfirm() }}
         onCancel={() => { this.onCancel() }}
         confirm-text={this.confirmText}
         cancel-text={this.cancelText}

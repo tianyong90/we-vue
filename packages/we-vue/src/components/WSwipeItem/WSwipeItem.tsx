@@ -26,7 +26,7 @@ export default Vue.extend<options>().extend({
     this.$parent.swipes.splice(this.$parent.swipes.indexOf(this), 1)
   },
 
-  render (h) {
+  render () {
     const { vertical, computedWidth, computedHeight } = this.$parent
 
     const style = {

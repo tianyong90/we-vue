@@ -77,7 +77,7 @@ export default Vue.extend({
     },
   },
 
-  render (h) {
+  render () {
     return (
       <div class="weui-cell">
         <div class="weui-cell__bd">
