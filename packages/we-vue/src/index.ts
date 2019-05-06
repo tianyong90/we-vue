@@ -13,7 +13,7 @@ import { WeVueUseOptions } from '../types'
 
 export default class WeVue {
   static install: (Vue: VueConstructor, args?: WeVueUseOptions) => void
-  static version: string;
+  static version: string
 
   // TODO
   // constructor () {

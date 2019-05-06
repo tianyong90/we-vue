@@ -5422,9 +5422,9 @@ eslint-plugin-es@^1.3.1, eslint-plugin-es@^1.4.0:
     eslint-utils "^1.3.0"
     regexpp "^2.0.1"
 
-eslint-plugin-import@^2.14.0, eslint-plugin-import@^2.9.0:
+eslint-plugin-import@^2.14.0, eslint-plugin-import@^2.16.0, eslint-plugin-import@^2.9.0:
   version "2.17.2"
-  resolved "https://registry.npm.taobao.org/eslint-plugin-import/download/eslint-plugin-import-2.17.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-plugin-import%2Fdownload%2Feslint-plugin-import-2.17.2.tgz#d227d5c6dc67eca71eb590d2bb62fb38d86e9fcb"
+  resolved "https://registry.npm.taobao.org/eslint-plugin-import/download/eslint-plugin-import-2.17.2.tgz#d227d5c6dc67eca71eb590d2bb62fb38d86e9fcb"
   integrity sha1-0ifVxtxn7KcetZDSu2L7ONhun8s=
   dependencies:
     array-includes "^3.0.3"
@@ -5456,7 +5456,7 @@ eslint-plugin-node@^8.0.0:
     resolve "^1.8.1"
     semver "^5.5.0"
 
-eslint-plugin-node@^9.0.0:
+eslint-plugin-node@^9.0.0, eslint-plugin-node@^9.0.1:
   version "9.0.1"
   resolved "https://registry.npm.taobao.org/eslint-plugin-node/download/eslint-plugin-node-9.0.1.tgz#93e44626fa62bcb6efea528cee9687663dc03b62"
   integrity sha1-k+RGJvpivLbv6lKM7paHZj3AO2I=
@@ -5468,7 +5468,7 @@ eslint-plugin-node@^9.0.0:
     resolve "^1.10.1"
     semver "^6.0.0"
 
-eslint-plugin-promise@^4.0.0, eslint-plugin-promise@^4.0.1:
+eslint-plugin-promise@^4.0.0, eslint-plugin-promise@^4.0.1, eslint-plugin-promise@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npm.taobao.org/eslint-plugin-promise/download/eslint-plugin-promise-4.1.1.tgz#1e08cb68b5b2cd8839f8d5864c796f56d82746db"
   integrity sha1-HgjLaLWyzYg5+NWGTHlvVtgnRts=
@@ -5485,7 +5485,7 @@ eslint-plugin-vue@^4.7.1:
   dependencies:
     vue-eslint-parser "^2.0.3"
 
-eslint-plugin-vue@^5.0.0:
+eslint-plugin-vue@^5.0.0, eslint-plugin-vue@^5.2.2:
   version "5.2.2"
   resolved "https://registry.npm.taobao.org/eslint-plugin-vue/download/eslint-plugin-vue-5.2.2.tgz#86601823b7721b70bc92d54f1728cfc03b36283c"
   integrity sha1-hmAYI7dyG3C8ktVPFyjPwDs2KDw=
@@ -5570,7 +5570,7 @@ eslint@^4.19.1:
     table "4.0.2"
     text-table "~0.2.0"
 
-eslint@^5.8.0, eslint@^5.9.0:
+eslint@^5.16.0, eslint@^5.8.0, eslint@^5.9.0:
   version "5.16.0"
   resolved "https://registry.npm.taobao.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
   integrity sha1-oeOsGq5KP72Clvz496tzFMu2q+o=
@@ -7100,6 +7100,11 @@ immediate@^3.2.3:
   version "3.2.3"
   resolved "https://registry.npm.taobao.org/immediate/download/immediate-3.2.3.tgz#d140fa8f614659bd6541233097ddaac25cdd991c"
   integrity sha1-0UD6j2FGWb1lQSMwl92qwlzdmRw=
+
+immutable@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.npm.taobao.org/immutable/download/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+  integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -12906,7 +12911,21 @@ tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha1-1+TdeSRdhUKMTX5IIqeZF5VMooY=
 
-tslint@^5.11.0:
+tslint-microsoft-contrib@^5.0.3:
+  version "5.2.1"
+  resolved "https://registry.npm.taobao.org/tslint-microsoft-contrib/download/tslint-microsoft-contrib-5.2.1.tgz#a6286839f800e2591d041ea2800c77487844ad81"
+  integrity sha1-pihoOfgA4lkdBB6igAx3SHhErYE=
+  dependencies:
+    tsutils "^2.27.2 <2.29.0"
+
+tslint-sonarts@^1.8.0:
+  version "1.9.0"
+  resolved "https://registry.npm.taobao.org/tslint-sonarts/download/tslint-sonarts-1.9.0.tgz#feb593e92db328c0328b430b838adbe65d504de9"
+  integrity sha1-/rWT6S2zKMAyi0MLg4rb5l1QTek=
+  dependencies:
+    immutable "^3.8.2"
+
+tslint@^5.11.0, tslint@^5.16.0:
   version "5.16.0"
   resolved "https://registry.npm.taobao.org/tslint/download/tslint-5.16.0.tgz#ae61f9c5a98d295b9a4f4553b1b1e831c1984d67"
   integrity sha1-rmH5xamNKVuaT0VTsbHoMcGYTWc=
@@ -12924,6 +12943,13 @@ tslint@^5.11.0:
     semver "^5.3.0"
     tslib "^1.8.0"
     tsutils "^2.29.0"
+
+"tsutils@^2.27.2 <2.29.0":
+  version "2.28.0"
+  resolved "https://registry.npm.taobao.org/tsutils/download/tsutils-2.28.0.tgz#6bd71e160828f9d019b6f4e844742228f85169a1"
+  integrity sha1-a9ceFggo+dAZtvToRHQiKPhRaaE=
+  dependencies:
+    tslib "^1.8.1"
 
 tsutils@^2.29.0:
   version "2.29.0"
@@ -12981,10 +13007,18 @@ typedarray@^0.0.6:
   resolved "https://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.2.0:
+typescript@^3.2.0, typescript@^3.4.3:
   version "3.4.5"
   resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
   integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
+
+typestrict@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/typestrict/download/typestrict-1.0.2.tgz#7167559a128508162920614ce58af6ac6b5ba29a"
+  integrity sha1-cWdVmhKFCBYpIGFM5Yr2rGtbopo=
+  dependencies:
+    tslint-microsoft-contrib "^5.0.3"
+    tslint-sonarts "^1.8.0"
 
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.6"
@@ -13333,7 +13367,7 @@ vue-style-loader@^4.1.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.5.21, vue-template-compiler@^2.6.8:
+vue-template-compiler@^2.5.21, vue-template-compiler@^2.6.10, vue-template-compiler@^2.6.8:
   version "2.6.10"
   resolved "https://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.6.10.tgz#323b4f3495f04faa3503337a82f5d6507799c9cc"
   integrity sha1-MjtPNJXwT6o1AzN6gvXWUHeZycw=
@@ -13346,7 +13380,7 @@ vue-template-es2015-compiler@^1.6.0, vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.5.22, vue@^2.5.9:
+vue@^2.5.22, vue@^2.5.9, vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=

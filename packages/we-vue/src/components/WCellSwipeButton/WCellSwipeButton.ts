@@ -13,7 +13,7 @@ export default Vue.extend({
     },
   },
 
-  render (): VNode {
+  render (h): VNode {
     const classes = [
       'weui-swiped-btn',
       'weui-swiped-btn_' + this.type,

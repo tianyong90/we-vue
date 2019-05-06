@@ -28,7 +28,7 @@ export default Vue.extend({
     },
   },
 
-  render (): VNode {
+  render (h): VNode {
     return h('div', {
       class: 'weui-flex',
       style: this.style,
