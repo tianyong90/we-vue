@@ -39,7 +39,7 @@ export default create({
 
   props: {
     mask: {
-      default: true
+      default: false
     },
     icon: {
       type: String,
@@ -61,7 +61,7 @@ export default create({
       default: ''
     },
     maskClass: {
-      default: 'weui-mask_transparent'
+      default: 'weui-mask'
     }
   }
 })

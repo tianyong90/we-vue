@@ -5,7 +5,7 @@ let instance
 const defaultOptions = {
   visible: true,
   duration: 2000,
-  mask: true,
+  mask: false,
   icon: 'success-no-circle',
   type: 'success'
 }

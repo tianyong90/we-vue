@@ -1,5 +1,5 @@
-import manager from './manager'
 import context from './context'
+import { openMask, closeMask, updateMask, onClickMask } from './mask'
 import scrollUtils from '../../utils/scroll'
 import { off, on } from '../../utils/event'
 
@@ -40,7 +40,6 @@ export default {
   },
 
   created () {
-    this._popupId = 'popup-' + context.plusKey('idSeed')
     this.pos = {
       x: 0,
       y: 0
@@ -129,19 +128,19 @@ export default {
         off(document, 'touchmove', this.onTouchmove)
       }
 
-      manager.close(this._popupId)
+      closeMask(this)
       this.$emit('update:visible', false)
     },
 
     renderMask () {
       if (this.mask) {
-        manager.open(this, {
+        openMask(this, {
           zIndex: context.plusKey('zIndex'),
           className: this.maskClass,
           customStyle: this.maskStyle
         })
       } else {
-        manager.close(this._popupId)
+        closeMask(this)
       }
       this.$el.style.zIndex = context.plusKey('zIndex')
     }
