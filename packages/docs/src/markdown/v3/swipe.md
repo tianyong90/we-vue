@@ -5,7 +5,7 @@ Swipe
 ## 引入
 
 ```js
-import { Swipe, SwipeItem } from 'we-vue'=
+import { Swipe, SwipeItem } from 'we-vue'
 
 Vue.use(Swipe).use(SwipeItem)
 ```
