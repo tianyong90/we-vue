@@ -38,7 +38,7 @@ export default mixins(
     },
     maskClass: {
       type: String,
-      default: 'weui-mask_transparent',
+      default: 'weui-mask',
     },
   },
 

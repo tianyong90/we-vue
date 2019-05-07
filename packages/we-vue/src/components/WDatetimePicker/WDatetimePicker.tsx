@@ -411,8 +411,8 @@ export default mixins<options &
         ref="picker"
         visible={this.isActive}
         columns={this.columns}
-        onChange:stop-prevent={() => { this.onChange(this.$refs.picker) }}
-        onConfirm:stop-prevent={() => { this.onConfirm() }}
+        onChange={() => { this.onChange(this.$refs.picker) }}
+        onConfirm={() => { this.onConfirm() }}
         onCancel={() => { this.onCancel() }}
         confirm-text={this.confirmText}
         cancel-text={this.cancelText}

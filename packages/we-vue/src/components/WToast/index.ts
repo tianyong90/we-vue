@@ -36,7 +36,7 @@ const parseOptions = (params: ToastParams): Partial<ToastOptions> => (isObj(para
 const defaultOptions: ToastOptions = {
   visible: true,
   duration: 2000,
-  mask: true,
+  mask: false,
   message: '',
   type: 'success',
   icon: 'success-no-circle',
