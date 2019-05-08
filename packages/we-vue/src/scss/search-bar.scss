@@ -9,11 +9,11 @@
   -webkit-text-size-adjust: 100%;
   align-items: center;
 
-  &:before {
+  &::before {
     @include setTopLine(#d7d6dc);
   }
 
-  &:after {
+  &::after {
     @include setBottomLine(#d7d6dc);
   }
 
@@ -33,7 +33,7 @@
   flex: auto;
   background-color: #efeff4;
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     left: 0;
@@ -45,7 +45,7 @@
     border-radius: 10px;
     border: 1px solid #e6e6ea;
     box-sizing: border-box;
-    background: #ffffff;
+    background: #fff;
   }
 }
 
@@ -101,7 +101,10 @@
   border-radius: 3px;
   text-align: center;
   color: #9b9b9b;
-  background: #ffffff;
+  background: #fff;
+  transform-origin: 0 0 0;
+  opacity: 1;
+  transform: scale(1, 1);
 
   span {
     display: inline-block;
@@ -115,7 +118,7 @@
 }
 
 .weui-search-bar__cancel-btn {
-  display: none;
+  display: block;
   margin-left: 10px;
   line-height: 28px;
   color: #09bb07;
@@ -134,19 +137,9 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
-.weui-search-bar__label {
-  transform-origin: 0px 0px 0px;
-  opacity: 1;
-  transform: scale(1, 1);
-}
-
-.weui-search-bar__cancel-btn {
-  display: block;
-}
-
 .searchbar-result {
   display: block;
-  transform-origin: 0px 0px 0px;
+  transform-origin: 0 0 0;
   opacity: 1;
   transform: scale(1, 1);
   margin-top: 0;

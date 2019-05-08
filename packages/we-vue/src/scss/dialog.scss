@@ -44,8 +44,9 @@
   font-size: 18px;
   display: flex;
 
-  &:after {
+  &::after {
     content: "";
+
     @include setTopLine($weui-dialog-line-color);
   }
 }
@@ -55,6 +56,7 @@
   flex: 1;
   color: $weui-dialog-link-color;
   text-decoration: none;
+
   @include setTapColor();
 
   &:active {
@@ -63,13 +65,14 @@
 
   position: relative;
 
-  &:after {
+  &::after {
     content: "";
+
     @include setLeftLine($weui-dialog-line-color);
   }
 
   &:first-child {
-    &:after {
+    &::after {
       display: none;
     }
   }
@@ -116,7 +119,7 @@
     font-size: 16px;
     padding: 0 $weui-dialog-gap-width 0.7em;
 
-    &:after {
+    &::after {
       display: none;
     }
   }
@@ -126,7 +129,7 @@
     vertical-align: top;
     padding: 0 0.8em;
 
-    &:after {
+    &::after {
       display: none;
     }
 

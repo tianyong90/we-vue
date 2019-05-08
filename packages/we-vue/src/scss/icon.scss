@@ -16,7 +16,7 @@
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 
-  &:before {
+  &::before {
     // 平滑升级
     display: inline-block;
     margin-left: 0.2em;
@@ -24,94 +24,94 @@
   }
 }
 
-.weui-icon-circle:before {
+.weui-icon-circle::before {
   content: "\EA01";
 }
 
 /* '' */
-.weui-icon-download:before {
+.weui-icon-download::before {
   content: "\EA02";
 }
 
 /* '' */
-.weui-icon-info:before {
+.weui-icon-info::before {
   content: "\EA03";
 }
 
 /* '' */
-.weui-icon-safe-success:before {
+.weui-icon-safe-success::before {
   content: "\EA04";
 }
 
 /* '' */
-.weui-icon-safe-warn:before {
+.weui-icon-safe-warn::before {
   content: "\EA05";
 }
 
 /* '' */
-.weui-icon-success:before {
+.weui-icon-success::before {
   content: "\EA06";
 }
 
 /* '' */
-.weui-icon-success-circle:before {
+.weui-icon-success-circle::before {
   content: "\EA07";
 }
 
 /* '' */
-.weui-icon-success-no-circle:before {
+.weui-icon-success-no-circle::before {
   content: "\EA08";
 }
 
 /* '' */
-.weui-icon-waiting:before {
+.weui-icon-waiting::before {
   content: "\EA09";
 }
 
 /* '' */
-.weui-icon-waiting-circle:before {
+.weui-icon-waiting-circle::before {
   content: "\EA0A";
 }
 
 /* '' */
-.weui-icon-warn:before {
+.weui-icon-warn::before {
   content: "\EA0B";
 }
 
 /* '' */
-.weui-icon-info-circle:before {
+.weui-icon-info-circle::before {
   content: "\EA0C";
 }
 
 /* '' */
-.weui-icon-cancel:before {
+.weui-icon-cancel::before {
   content: "\EA0D";
 }
 
 /* '' */
-.weui-icon-search:before {
+.weui-icon-search::before {
   content: "\EA0E";
 }
 
 /* '' */
-.weui-icon-clear:before {
+.weui-icon-clear::before {
   content: "\EA0F";
 }
 
 /* '' */
-.weui-icon-back:before {
+.weui-icon-back::before {
   content: "\EA10";
 }
 
 /* '' */
-.weui-icon-delete:before {
+.weui-icon-delete::before {
   content: "\EA11";
 }
 
 /* '' */
 
-[class^="weui-icon_"]:before,
-[class*=" weui-icon_"]:before {
+[class^="weui-icon_"]::before,
+[class*=" weui-icon_"]::before {
   margin: 0;
 }
 
@@ -190,7 +190,7 @@
 
 .weui-icon-delete {
   &.weui-icon_gallery-delete {
-    color: #ffffff;
+    color: #fff;
     font-size: 22px;
   }
 }

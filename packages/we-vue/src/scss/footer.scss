@@ -28,15 +28,16 @@
   position: relative;
   font-size: 14px;
 
-  &:before {
+  &::before {
     @include setLeftLine();
+
     left: -0.65em;
     top: 0.36em;
     bottom: 0.36em;
   }
 
   &:first-child {
-    &:before {
+    &::before {
       display: none;
     }
   }

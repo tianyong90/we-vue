@@ -15,10 +15,12 @@
   color: $weui-btn-font-color;
   line-height: $weui-btn-height / $weui-btn-font-size;
   border-radius: $weui-btn-border-radius;
+
   @include setTapColor();
+
   overflow: hidden;
 
-  &:after {
+  &::after {
     content: "";
     width: 200%;
     height: 200%;
@@ -127,7 +129,7 @@
     border-color: $weui-btn-plain-primary-active-border-color;
   }
 
-  &:after {
+  &::after {
     border-width: 0;
   }
 }
@@ -141,7 +143,7 @@
     border-color: $weui-btn-plain-default-active-border-color;
   }
 
-  &:after {
+  &::after {
     border-width: 0;
   }
 }
@@ -183,7 +185,7 @@ input {
   font-size: $weui-btn-mini-font-size;
 }
 
-/*gap between btn*/
+/* gap between btn */
 .weui-btn + .weui-btn {
   margin-top: $weui-btn-default-gap;
 }

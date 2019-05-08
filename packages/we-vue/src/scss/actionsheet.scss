@@ -28,7 +28,7 @@ $actionsheet-android-border-radius: 2px;
     color: #888;
     background: #fcfcfd;
 
-    &:before {
+    &::before {
       @include setBottomLine($weui-cell-border-color);
     }
 
@@ -52,7 +52,7 @@ $actionsheet-android-border-radius: 2px;
     text-align: center;
     font-size: 18px;
 
-    &:before {
+    &::before {
       @include setTopLine($weui-cell-border-color);
     }
 
@@ -61,7 +61,7 @@ $actionsheet-android-border-radius: 2px;
     }
 
     &:first-child {
-      &:before {
+      &::before {
         display: none;
       }
     }

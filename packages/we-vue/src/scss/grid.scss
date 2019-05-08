@@ -4,11 +4,11 @@
   position: relative;
   overflow: hidden;
 
-  &:before {
+  &::before {
     @include setTopLine($weui-grid-border-color);
   }
 
-  &:after {
+  &::after {
     @include setLeftLine($weui-grid-border-color);
   }
 }
@@ -20,11 +20,11 @@
   width: 100% / $weui-grid-column-count;
   box-sizing: border-box;
 
-  &:before {
+  &::before {
     @include setRightLine($weui-grid-border-color);
   }
 
-  &:after {
+  &::after {
     @include setBottomLine($weui-grid-border-color);
   }
 

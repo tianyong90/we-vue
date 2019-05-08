@@ -8,7 +8,7 @@
   width: 100%;
   background-color: #f7f7fa;
 
-  &:before {
+  &::before {
     @include setTopLine(#c0bfc4);
   }
 }
@@ -20,6 +20,7 @@
   font-size: 0;
   color: $weui-text-color-gray;
   text-align: center;
+
   @include setTapColor();
 
   &.weui-bar__item_on {

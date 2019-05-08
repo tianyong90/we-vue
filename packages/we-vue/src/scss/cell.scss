@@ -14,14 +14,15 @@
   display: flex;
   align-items: center;
 
-  &:before {
+  &::before {
     @include setTopLine($weui-cell-border-color);
+
     left: $weui-cell-gap-h;
     z-index: 2;
   }
 
   &:first-child {
-    &:before {
+    &::before {
       display: none;
     }
   }
@@ -42,6 +43,7 @@
 
 .weui-cell_access {
   @include setTapColor();
+
   color: inherit;
 
   &:active {
@@ -52,9 +54,11 @@
     padding-right: 13px;
     position: relative;
 
-    &:after {
+    &::after {
       content: "";
+
       @include setArrow(right, 6px, #c8c8cd, 2px);
+
       position: absolute;
       top: 50%;
       margin-top: -4px;
@@ -69,7 +73,7 @@
 
   // 由于weui-cell:first-child的:before为隐藏，所以这里要重新显示出来
   &:first-child {
-    &:before {
+    &::before {
       display: block;
     }
   }

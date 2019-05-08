@@ -12,6 +12,7 @@
   text-align: center;
   color: #fff;
   z-index: 5000;
+
   @include text_wrap();
 
   &_warn {

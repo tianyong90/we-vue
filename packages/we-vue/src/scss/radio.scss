@@ -15,7 +15,7 @@
     padding-left: $weui-cell-inner-gap-h;
 
     .weui-icon-checked {
-      &:before {
+      &::before {
         display: block;
         content: "\EA08";
         color: #09bb07;

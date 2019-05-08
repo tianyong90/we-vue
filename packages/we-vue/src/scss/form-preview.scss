@@ -2,13 +2,13 @@
 
 .weui-form-preview {
   position: relative;
-  background-color: #ffffff;
+  background-color: #fff;
 
-  &:before {
+  &::before {
     @include setTopLine($weui-cell-border-color);
   }
 
-  &:after {
+  &::after {
     @include setBottomLine($weui-cell-border-color);
   }
 }
@@ -19,8 +19,9 @@
   text-align: right;
   line-height: 2.5em;
 
-  &:after {
+  &::after {
     @include setBottomLine($weui-cell-border-color);
+
     left: $weui-cell-gap-h;
   }
 
@@ -43,7 +44,7 @@
   line-height: 50px;
   display: flex;
 
-  &:before {
+  &::before {
     @include setTopLine($weui-dialog-line-color);
   }
 }
@@ -74,6 +75,7 @@
   flex: 1;
   color: $weui-dialog-link-color;
   text-align: center;
+
   @include setTapColor();
 
   &button {
@@ -88,12 +90,12 @@
     background-color: $weui-dialog-link-active-bc;
   }
 
-  &:after {
+  &::after {
     @include setLeftLine($weui-dialog-line-color);
   }
 
   &:first-child {
-    &:after {
+    &::after {
       display: none;
     }
   }

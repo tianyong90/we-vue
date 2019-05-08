@@ -1,7 +1,7 @@
 @import "./base/fn";
 
 .weui-panel {
-  background-color: #ffffff;
+  background-color: #fff;
   margin-top: 10px;
 
   &:first-child {
@@ -11,11 +11,11 @@
   position: relative;
   overflow: hidden;
 
-  &:before {
+  &::before {
     @include setTopLine($weui-line-color-light);
   }
 
-  &:after {
+  &::after {
     @include setBottomLine($weui-line-color-light);
   }
 }
@@ -26,8 +26,9 @@
   font-size: 13px;
   position: relative;
 
-  &:after {
+  &::after {
     @include setBottomLine($weui-line-color-light);
+
     left: 15px;
   }
 }

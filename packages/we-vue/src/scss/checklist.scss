@@ -15,7 +15,7 @@
   }
 
   .weui-icon-checked {
-    &:before {
+    &::before {
       content: "\EA01";
       color: #c9c9c9;
       font-size: 23px;
@@ -23,7 +23,7 @@
     }
 
     &.checked {
-      &:before {
+      &::before {
         content: "\EA06";
         color: #09bb07;
       }

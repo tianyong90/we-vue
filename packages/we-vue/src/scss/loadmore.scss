@@ -21,7 +21,7 @@
     position: relative;
     top: -0.9em;
     padding: 0 0.55em;
-    background-color: #ffffff;
+    background-color: #fff;
     color: $weui-text-color-gray;
   }
 }
@@ -30,7 +30,7 @@
   .weui-loadmore__tips {
     padding: 0 0.16em;
 
-    &:before {
+    &::before {
       content: "";
       width: 4px;
       height: 4px;

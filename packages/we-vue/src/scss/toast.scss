@@ -11,7 +11,7 @@
   background: rgba(17, 17, 17, 0.7);
   text-align: center;
   border-radius: 5px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .weui-icon_toast {
@@ -20,8 +20,8 @@
   font-size: 40px;
 
   &.weui-icon-success-no-circle {
-    &:before {
-      color: #ffffff;
+    &::before {
+      color: #fff;
       font-size: 55px;
     }
   }

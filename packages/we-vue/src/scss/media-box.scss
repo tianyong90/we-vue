@@ -4,19 +4,21 @@
   padding: 15px;
   position: relative;
 
-  &:before {
+  &::before {
     @include setTopLine($weui-line-color-light);
+
     left: 15px;
   }
 
   &:first-child {
-    &:before {
+    &::before {
       display: none;
     }
   }
 
   &a {
-    color: #000000;
+    color: #000;
+
     @include setTapColor();
 
     &:active {
@@ -28,7 +30,9 @@
 .weui-media-box__title {
   font-weight: 400;
   font-size: 17px;
+
   @include ellipsis();
+
   word-wrap: break-word;
   word-break: break-all;
 }
@@ -37,6 +41,7 @@
   color: $weui-text-color-gray;
   font-size: 13px;
   line-height: 1.2;
+
   @include ellipsisLn(2);
 }
 
@@ -96,7 +101,7 @@
   .weui-cells {
     margin-top: 0;
 
-    &:before {
+    &::before {
       display: none;
     }
   }
