@@ -1,7 +1,7 @@
 import Vue, { CreateElement, VNode } from 'vue'
 import { shallowMount, mount, Wrapper } from '@vue/test-utils'
-import CellSwipe from '../WCellSwipe'
-import WCellSwipeButton from '../../WCellSwipeButton'
+import WSwipeCell from '../WSwipeCell'
+import WCellSwipeButton from '../../WSwipeCellButton'
 import { horizontalDrag } from '@/test/unit/utils'
 
 describe('cell-swipe', () => {
@@ -31,7 +31,7 @@ describe('cell-swipe', () => {
   })
 
   test('create', () => {
-    const wrapper = shallowMount(CellSwipe, {
+    const wrapper = shallowMount(WSwipeCell, {
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
       },
@@ -44,7 +44,7 @@ describe('cell-swipe', () => {
   })
 
   test('drag to left and show the buttons', () => {
-    const wrapper = mount(CellSwipe, {
+    const wrapper = mount(WSwipeCell, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -57,7 +57,7 @@ describe('cell-swipe', () => {
   })
 
   test('drag to left with a small distance', () => {
-    const wrapper = mount(CellSwipe, {
+    const wrapper = mount(WSwipeCell, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -70,7 +70,7 @@ describe('cell-swipe', () => {
   })
 
   test('drag to left with a distance out of range', () => {
-    const wrapper = mount(CellSwipe, {
+    const wrapper = mount(WSwipeCell, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -83,7 +83,7 @@ describe('cell-swipe', () => {
   })
 
   test('drag to right and close right buttons', () => {
-    const wrapper = mount(CellSwipe, {
+    const wrapper = mount(WSwipeCell, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -101,7 +101,7 @@ describe('cell-swipe', () => {
   })
 
   test('drag to right with a small distance', () => {
-    const wrapper = mount(CellSwipe, {
+    const wrapper = mount(WSwipeCell, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -119,7 +119,7 @@ describe('cell-swipe', () => {
   })
 
   test('drag to right with a distance out of range', () => {
-    const wrapper = mount(CellSwipe, {
+    const wrapper = mount(WSwipeCell, {
       attachToDocument: true,
       slots: {
         right: [CellSwipeButtonComponent, CellSwipeButtonComponent],
@@ -137,7 +137,7 @@ describe('cell-swipe', () => {
   })
 
   test('click outside', () => {
-    const wrapper = mount(CellSwipe, {
+    const wrapper = mount(WSwipeCell, {
       attachToDocument: true,
       data: function () {
         return {

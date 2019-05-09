@@ -202,9 +202,9 @@
         "icon": "cell"
       },
       {
-        "path": "/cell-swipe",
-        "name": "CellSwipe",
-        "description": "列表",
+        "path": "/swipe-cell",
+        "name": "SwipeCell",
+        "description": "滑动列表",
         "icon": "swipe"
       },
       {
