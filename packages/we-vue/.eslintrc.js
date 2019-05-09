@@ -5,11 +5,11 @@ module.exports = {
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    ecmaVersion: 2019,
+    ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
-    }
+    },
   },
   extends: [
     'standard',

@@ -28,7 +28,7 @@ module.exports = function (api) {
           functional: true,
           injectH: true,
           vModel: true,
-          vOn: true,
+          vOn: false, // 暂不使用 vOn:click 语法，因为 eslint 无法解析
         },
       ],
     ],

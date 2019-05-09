@@ -16,6 +16,13 @@ export default Vue.extend({
     },
   },
 
+  methods: {
+    onClick (e: Event) {
+      e.stopPropagation()
+      this.$emit('headerClick')
+    },
+  },
+
   render () {
     return (
       <header
@@ -23,9 +30,7 @@ export default Vue.extend({
           'wv-header': true,
           'is-fixed': this.fixed,
         }}
-        onClick_stop={() => {
-          this.$emit('headerClick')
-        }}
+        onClick={this.onClick}
         style={{ 'background-color': this.backgroundColor }}
       >
         <div class="wv-header-btn left">

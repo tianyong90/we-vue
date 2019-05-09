@@ -1845,7 +1845,7 @@
   resolved "https://registry.npm.taobao.org/@types/yargs/download/@types/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
   integrity sha1-Rd0dBjjoyPFT6H0paQdlkpaHORY=
 
-"@typescript-eslint/eslint-plugin@^1.3.0":
+"@typescript-eslint/eslint-plugin@^1.1.0", "@typescript-eslint/eslint-plugin@^1.3.0":
   version "1.7.0"
   resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-1.7.0.tgz#570e45dc84fb97852e363f1e00f47e604a0b8bcc"
   integrity sha1-Vw5F3IT7l4UuNj8eAPR+YEoLi8w=
@@ -1857,7 +1857,7 @@
     requireindex "^1.2.0"
     tsutils "^3.7.0"
 
-"@typescript-eslint/parser@1.7.0", "@typescript-eslint/parser@^1.3.0":
+"@typescript-eslint/parser@1.7.0", "@typescript-eslint/parser@^1.1.0", "@typescript-eslint/parser@^1.3.0":
   version "1.7.0"
   resolved "https://registry.npm.taobao.org/@typescript-eslint/parser/download/@typescript-eslint/parser-1.7.0.tgz#c3ea0d158349ceefbb6da95b5b09924b75357851"
   integrity sha1-w+oNFYNJzu+7balbWwmSS3U1eFE=
@@ -2101,6 +2101,14 @@
     eslint-plugin-node "^8.0.0"
     eslint-plugin-promise "^4.0.1"
     eslint-plugin-standard "^4.0.0"
+
+"@vue/eslint-config-typescript@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/@vue/eslint-config-typescript/download/@vue/eslint-config-typescript-4.0.0.tgz#a202983598a4a826460cbb8ee43826875b0f6673"
+  integrity sha1-ogKYNZikqCZGDLuO5Dgmh1sPZnM=
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^1.1.0"
+    "@typescript-eslint/parser" "^1.1.0"
 
 "@vue/preload-webpack-plugin@^1.1.0":
   version "1.1.0"
@@ -3896,14 +3904,14 @@ code-point-at@^1.0.0:
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
 codecov@^3.0.0:
-  version "3.3.0"
-  resolved "https://registry.npm.taobao.org/codecov/download/codecov-3.3.0.tgz#7bf337b3f7b0474606b5c31c56dd9e44e395e15d"
-  integrity sha1-e/M3s/ewR0YGtcMcVt2eROOV4V0=
+  version "3.4.0"
+  resolved "https://registry.npm.taobao.org/codecov/download/codecov-3.4.0.tgz#7d16d9d82b0ce20efe5dbf66245a9740779ff61b"
+  integrity sha1-fRbZ2CsM4g7+Xb9mJFqXQHef9hs=
   dependencies:
     argv "^0.0.2"
     ignore-walk "^3.0.1"
-    js-yaml "^3.12.0"
-    teeny-request "^3.7.0"
+    js-yaml "^3.13.0"
+    teeny-request "^3.11.3"
     urlgrey "^0.4.4"
 
 collapse-white-space@^1.0.2:
@@ -8365,7 +8373,7 @@ js-tokens@^3.0.2:
   resolved "https://registry.npm.taobao.org/js-tokens/download/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@^3.11.0, js-yaml@^3.12.0, js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.9.0, js-yaml@^3.9.1:
+js-yaml@^3.11.0, js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.9.0, js-yaml@^3.9.1:
   version "3.13.1"
   resolved "https://registry.npm.taobao.org/js-yaml/download/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha1-r/FRswv9+o5J4F2iLnQV6d+jeEc=
@@ -9173,9 +9181,9 @@ markdown-it@^8.4.2:
     uc.micro "^1.0.5"
 
 markdown-table@^1.1.0:
-  version "1.1.2"
-  resolved "https://registry.npm.taobao.org/markdown-table/download/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
-  integrity sha1-x425SPqHmQOkG85SLjuW+AHGN4Y=
+  version "1.1.3"
+  resolved "https://registry.npm.taobao.org/markdown-table/download/markdown-table-1.1.3.tgz#9fcb69bcfdb8717bfd0398c6ec2d93036ef8de60"
+  integrity sha1-n8tpvP24cXv9A5jG7C2TA2743mA=
 
 matcher@^1.0.0:
   version "1.1.1"
@@ -13082,9 +13090,9 @@ table@4.0.2:
     string-width "^2.1.1"
 
 table@^5.2.3:
-  version "5.2.3"
-  resolved "https://registry.npm.taobao.org/table/download/table-5.2.3.tgz#cde0cc6eb06751c009efab27e8c820ca5b67b7f2"
-  integrity sha1-zeDMbrBnUcAJ76sn6Mggyltnt/I=
+  version "5.3.0"
+  resolved "https://registry.npm.taobao.org/table/download/table-5.3.0.tgz#8a2c3354dc87312328c68732039b38b6a41c86c9"
+  integrity sha1-iiwzVNyHMSMoxocyA5s4tqQchsk=
   dependencies:
     ajv "^6.9.1"
     lodash "^4.17.11"
@@ -13109,7 +13117,7 @@ tar@^4, tar@^4.4.8:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-teeny-request@^3.7.0:
+teeny-request@^3.11.3:
   version "3.11.3"
   resolved "https://registry.npm.taobao.org/teeny-request/download/teeny-request-3.11.3.tgz#335c629f7645e5d6599362df2f3230c4cbc23a55"
   integrity sha1-M1xin3ZF5dZZk2LfLzIwxMvCOlU=
@@ -13868,9 +13876,9 @@ vary@~1.1.2:
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
 vendors@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.npm.taobao.org/vendors/download/vendors-1.0.2.tgz#7fcb5eef9f5623b156bcea89ec37d63676f21801"
-  integrity sha1-f8te759WI7FWvOqJ7DfWNnbyGAE=
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/vendors/download/vendors-1.0.3.tgz#a6467781abd366217c050f8202e7e50cc9eef8c0"
+  integrity sha1-pkZ3gavTZiF8BQ+CAuflDMnu+MA=
 
 verror@1.10.0:
   version "1.10.0"
@@ -14193,9 +14201,9 @@ webpack-sources@^1.1.0, webpack-sources@^1.3.0:
     webpack-sources "^1.3.0"
 
 webpack@^4.28.0:
-  version "4.30.0"
-  resolved "https://registry.npm.taobao.org/webpack/download/webpack-4.30.0.tgz#aca76ef75630a22c49fcc235b39b4c57591d33a9"
-  integrity sha1-rKdu91YwoixJ/MI1s5tMV1kdM6k=
+  version "4.31.0"
+  resolved "https://registry.npm.taobao.org/webpack/download/webpack-4.31.0.tgz#ae201d45f0571336e42d1c2b5c8ab56c4d3b0c63"
+  integrity sha1-riAdRfBXEzbkLRwrXIq1bE07DGM=
   dependencies:
     "@webassemblyjs/ast" "1.8.5"
     "@webassemblyjs/helper-module-context" "1.8.5"

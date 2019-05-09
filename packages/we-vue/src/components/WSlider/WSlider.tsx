@@ -86,6 +86,7 @@ export default Vue.extend<options>().extend({
     },
 
     onClick (e: MouseEvent): void {
+      e.preventDefault()
       if (this.disabled || !this.enableClick) return
 
       // 距初始值的目标步数
@@ -135,7 +136,7 @@ export default Vue.extend<options>().extend({
           <div
             class="weui-slider__inner"
             ref="inner"
-            onClick_prevent={(e: MouseEvent) => { this.onClick(e) }}
+            onClick={this.onClick}
           >
             <div
               style={{ width: this.percent + '%' }}

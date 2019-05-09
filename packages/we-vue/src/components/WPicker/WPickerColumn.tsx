@@ -139,6 +139,7 @@ export default Vue.extend<options>().extend({
     },
 
     touchMove (event: TouchEvent): void {
+      event.preventDefault()
       const currentTime = +new Date()
       const currentY = event.touches[0].clientY
       const distance = currentY - this.startY
@@ -202,10 +203,10 @@ export default Vue.extend<options>().extend({
     return (
       <div
         class="weui-picker__group"
-        onTouchstart={(e: TouchEvent) => { this.touchStart(e) }}
-        onTouchmove_prevent={(e: TouchEvent) => { this.touchMove(e) }}
-        onTouchend={() => { this.onTouchend() }}
-        onTouchcancel={() => { this.onTouchend() }}
+        onTouchstart={this.touchStart}
+        onTouchmove={this.touchMove}
+        onTouchend={this.onTouchend}
+        onTouchcancel={this.onTouchend}
       >
         <div class="weui-picker__mask" style={this.pickerMaskStyle} />
         <div
