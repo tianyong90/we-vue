@@ -1,6 +1,6 @@
 import WPicker from '../WPicker'
 
-import Vue, { CreateElement, VNode } from 'vue'
+import Vue, { VNode } from 'vue'
 import { PropValidator } from 'vue/types/options'
 // Mixins
 import Picker from '../../mixins/picker'

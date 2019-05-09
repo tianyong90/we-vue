@@ -1,4 +1,4 @@
-import { shallowMount, mount, Wrapper } from '@vue/test-utils'
+import { mount, shallowMount, Wrapper } from '@vue/test-utils'
 import WFlex from '../../WFlex'
 import WFlexItem from '../WFlexItem'
 import { ExtractVue } from '../../../utils/mixins'

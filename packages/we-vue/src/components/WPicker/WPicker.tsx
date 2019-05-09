@@ -4,8 +4,8 @@ import { PropValidator } from 'vue/types/options'
 import { CreateElement, VNode } from 'vue'
 // Mixins
 import { factory as ToaaleableFactory } from '../../mixins/toggleable'
-// Utils
 
+// Utils
 import mixins from '../../utils/mixins'
 import cloneDeep from 'lodash/cloneDeep'
 

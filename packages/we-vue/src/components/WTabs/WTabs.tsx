@@ -8,7 +8,7 @@ import mixins, { ExtractVue } from '../../utils/mixins'
 import { isDef } from '../../utils'
 import { raf } from '../../utils/raf'
 import { off, on } from '../../utils/event'
-import { getScrollEventTarget, getScrollTop, setScrollTop, getElementTop } from '../../utils/scroll'
+import { getElementTop, getScrollEventTarget, getScrollTop, setScrollTop } from '../../utils/scroll'
 
 // Mixins
 import Touchable from '../../mixins/touchable'

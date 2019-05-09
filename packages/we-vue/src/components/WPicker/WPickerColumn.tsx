@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import { isObj } from '../../utils'
 import cloneDeep from 'lodash/cloneDeep'
-
 // Types
 import { PropValidator } from 'vue/types/options'
 
