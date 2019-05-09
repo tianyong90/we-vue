@@ -60,16 +60,6 @@ module.exports = function (api) {
               },
             },
           ],
-          // 本项目未使用 ts-jest 而是在测试时直接配置使用 preset-typescript
-          [
-            '@babel/preset-typescript',
-            // TODO:
-            // {
-            //   isTSX: true,
-            //   jsxPragma: 'h',
-            //   allExtensions: true
-            // }
-          ],
         ],
       },
       es5: {
