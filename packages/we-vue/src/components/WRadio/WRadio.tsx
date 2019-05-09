@@ -25,6 +25,17 @@ export default Vue.extend({
     }
   },
 
+  watch: {
+    internalValue (val): void {
+      this.$emit('input', val)
+      this.$emit('change', val)
+    },
+
+    value (val): void {
+      this.internalValue = val
+    },
+  },
+
   methods: {
     onClick  (option: any): void {
       if (option.disabled) {
@@ -35,17 +46,6 @@ export default Vue.extend({
 
     isChecked (option: any): boolean {
       return typeof option === 'string' ? this.internalValue === option : this.internalValue === option.value
-    },
-  },
-
-  watch: {
-    internalValue (val): void {
-      this.$emit('input', val)
-      this.$emit('change', val)
-    },
-
-    value (val): void {
-      this.internalValue = val
     },
   },
 

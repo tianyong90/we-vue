@@ -48,6 +48,17 @@ export default Vue.extend({
     },
   },
 
+  watch: {
+    value (val) {
+      // 有最大字数限制时对超出限制部分进行截取
+      if (this.maxLength && val.length > this.maxLength) {
+        val = val.slice(0, this.maxLength)
+      }
+
+      this.lazyValue = val
+    },
+  },
+
   mounted () {
     if (this.maxLength && this.length > this.maxLength) {
       this.lazyValue = this.value.slice(0, this.maxLength as number)
@@ -63,17 +74,6 @@ export default Vue.extend({
 
     onBlur (): void {
       this.$emit('blur')
-    },
-  },
-
-  watch: {
-    value (val) {
-      // 有最大字数限制时对超出限制部分进行截取
-      if (this.maxLength && val.length > this.maxLength) {
-        val = val.slice(0, this.maxLength)
-      }
-
-      this.lazyValue = val
     },
   },
 

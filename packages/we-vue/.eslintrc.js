@@ -13,7 +13,7 @@ module.exports = {
   },
   extends: [
     'standard',
-    'plugin:vue/strongly-recommended',
+    'plugin:vue/recommended',
     'plugin:jest/recommended'
   ],
   env: {

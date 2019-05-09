@@ -54,6 +54,16 @@ export default mixins<options &
     }
   },
 
+  watch: {
+    currentValue (val): void {
+      this.$emit('input', val)
+    },
+
+    value (val): void {
+      this.currentValue = val
+    },
+  },
+
   mounted () {
     if (this.autofocus) {
       this.isActive = true
@@ -77,16 +87,6 @@ export default mixins<options &
       this.$emit('cancel')
       this.clear()
       this.isActive = false
-    },
-  },
-
-  watch: {
-    currentValue (val): void {
-      this.$emit('input', val)
-    },
-
-    value (val): void {
-      this.currentValue = val
     },
   },
 

@@ -15,12 +15,6 @@ export default Vue.extend({
     plain: Boolean,
   },
 
-  methods: {
-    onClick (event: MouseEvent): void {
-      this.$emit('click', event)
-    },
-  },
-
   computed: {
     classes (): object {
       let ret: any = {
@@ -40,6 +34,12 @@ export default Vue.extend({
       ret[classDisabled] = this.disabled
 
       return ret as object
+    },
+  },
+
+  methods: {
+    onClick (event: MouseEvent): void {
+      this.$emit('click', event)
     },
   },
 
