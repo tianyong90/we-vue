@@ -4,14 +4,9 @@
       switch 支持左右滑动和点击进行开关操作
     </div>
 
-    <w-group>
-      <w-switch title="开关 1" v-model="switchValue1"/>
-      <w-switch title="开关 2（禁用）" disabled v-model="switchValue2"/>
-    </w-group>
-
     <div class="standalone-switches">
-      <w-switch v-model="switchValue3" :is-in-cell="false"/>
-      <w-switch v-model="switchValue4" :is-in-cell="false" disabled/>
+      <w-switch v-model="switchValue1" :is-in-cell="false"/>
+      <w-switch v-model="switchValue2" :is-in-cell="false" disabled/>
     </div>
   </div>
 </template>
@@ -21,9 +16,7 @@ export default {
   data () {
     return {
       switchValue1: true,
-      switchValue2: false,
-      switchValue3: false,
-      switchValue4: true
+      switchValue2: false
     }
   }
 }
@@ -38,9 +31,11 @@ export default {
 
 .standalone-switches {
   margin: 20px 0;
+  display: flex;
+  justify-content: center;
 
-  .w-switch {
-    margin: 10px auto;
+  .wv-switch {
+    margin: 10px 20px;
   }
 }
 </style>

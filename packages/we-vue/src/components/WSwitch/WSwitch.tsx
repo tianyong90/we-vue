@@ -4,8 +4,6 @@ import '../../scss/switch.scss'
 import { getTouch } from '../../utils'
 import mixins from '../../utils/mixins'
 
-import WCell from '../WCell'
-
 // Mixins
 import Toggleable from '../../mixins/toggleable'
 
@@ -17,17 +15,8 @@ export default mixins(
 ).extend({
   name: 'w-switch',
 
-  components: {
-    WCell,
-  },
-
   props: {
-    title: String,
     disabled: Boolean,
-    isInCell: {
-      type: Boolean,
-      default: true,
-    },
   },
 
   data () {
@@ -122,38 +111,25 @@ export default mixins(
   },
 
   render () {
-    if (this.isInCell) {
-      return (
-        <WCell title={this.title}>
-          <w-switch
-            is-in-cell={false}
-            slot="ft"
-            vModel={this.isActive}
-            disabled={this.disabled}
-          />
-        </WCell>
-      )
-    } else {
-      return (
+    return (
+      <div
+        class={{
+          'wv-switch': true,
+          'wv-switch-on': this.isActive,
+          'wv-switch-disabled': this.disabled,
+        }}
+        onClick={(e: MouseEvent) => { this.onClick(e) }}
+      >
+        <div class="background" />
         <div
-          class={{
-            'wv-switch': true,
-            'wv-switch-on': this.isActive,
-            'wv-switch-disabled': this.disabled,
-          }}
-          onClick={(e: MouseEvent) => { this.onClick(e) }}
-        >
-          <div class="background" />
-          <div
-            class="thumb"
-            style={this.thumbStyle}
-            onTouchstart={this.touchStart}
-            onTouchmove={this.touchMove}
-            onTouchend={this.onTouchend}
-            onTouchcancel={this.onTouchend}
-          />
-        </div>
-      )
-    }
+          class="thumb"
+          style={this.thumbStyle}
+          onTouchstart={this.touchStart}
+          onTouchmove={this.touchMove}
+          onTouchend={this.onTouchend}
+          onTouchcancel={this.onTouchend}
+        />
+      </div>
+    )
   },
 })

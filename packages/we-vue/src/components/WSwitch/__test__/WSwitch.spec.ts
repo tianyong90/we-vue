@@ -16,29 +16,6 @@ describe('switch', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  test('is-in-cell', () => {
-    let wrapper = mount(WSwitch, {
-      propsData: {
-        isInCell: true,
-      },
-    })
-
-    expect(wrapper.classes()).toContain('weui-cell')
-
-    expect(wrapper.html()).toMatchSnapshot()
-
-    wrapper = mount(WSwitch, {
-      propsData: {
-        isInCell: false,
-      },
-    })
-
-    expect(wrapper.classes()).not.toContain('weui-cell')
-    expect(wrapper.classes()).toContain('wv-switch')
-
-    expect(wrapper.html()).toMatchSnapshot()
-  })
-
   test('click', () => {
     let wrapper = mount(WSwitch, {
       propsData: {

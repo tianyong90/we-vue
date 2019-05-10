@@ -92,6 +92,12 @@
         "icon": "switch-copy"
       },
       {
+        "path": "/switch-cell",
+        "name": "SwitchCell",
+        "description": "开关列表",
+        "icon": "switch-copy"
+      },
+      {
         "path": "/textarea",
         "name": "Textarea",
         "description": "文本框",
