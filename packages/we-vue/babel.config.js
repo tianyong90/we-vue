@@ -28,7 +28,7 @@ module.exports = function (api) {
           functional: true,
           injectH: true,
           vModel: true,
-          vOn: false, // 暂不使用 vOn:click 语法，因为 eslint 无法解析
+          vOn: false, // ts 不支持 vOn:click 语法（namespaced syntax），同时导致 eslint 也无法解析
         },
       ],
     ],

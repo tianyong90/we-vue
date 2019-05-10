@@ -1,5 +1,5 @@
 import '../../scss/actionsheet.scss'
-import Vue, { CreateElement, VNode } from 'vue'
+import Vue, { VNode } from 'vue'
 import { PropValidator } from 'vue/types/options'
 
 export default Vue.extend({
@@ -47,7 +47,7 @@ export default Vue.extend({
     },
   },
 
-  render (h: CreateElement): VNode {
+  render (): VNode {
     const actionsheetMenu = () => (
       <div class="weui-actionsheet__menu">
         {

@@ -3,7 +3,7 @@ import WVSpinner from '../WSpinner'
 import PopupMixin from '../../mixins/popup'
 
 import mixins from '../../utils/mixins'
-import { CreateElement, VNode } from 'vue'
+import { VNode } from 'vue'
 
 export default mixins(
   PopupMixin
@@ -42,7 +42,7 @@ export default mixins(
     },
   },
 
-  render (h: CreateElement): VNode {
+  render (): VNode {
     return (
       <transition
         enter-active-class="weui-animate-fade-in"

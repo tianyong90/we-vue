@@ -1,7 +1,9 @@
 import WPickerColumn from './WPickerColumn'
+
 // Types
 import { PropValidator } from 'vue/types/options'
-import { CreateElement, VNode } from 'vue'
+import { VNode } from 'vue'
+
 // Mixins
 import { factory as ToaaleableFactory } from '../../mixins/toggleable'
 
@@ -201,7 +203,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
   },
 
-  render (h: CreateElement): VNode {
+  render (): VNode {
     return (
       <div>
         <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">

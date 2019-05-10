@@ -3,7 +3,7 @@ import mixins, { ExtractVue } from '../../utils/mixins'
 
 // Mixins
 import findParent from '../../mixins/find-parent'
-import Vue, { CreateElement, VNode } from 'vue'
+import Vue, { VNode } from 'vue'
 
 interface options extends Vue {
   parent: any
@@ -65,7 +65,7 @@ export default mixins<options &
     },
   },
 
-  render (h: CreateElement): VNode {
+  render (): VNode {
     return (
       <div class="wv-tab__pane" vShow={this.selected || this.parent.animated}>
         { this.inited && this.$slots.default }
