@@ -99,7 +99,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~github-markdown-css/github-markdown.css";
+@import "../assets/style/vue.css";
 @import "~prism-themes/themes/prism-atom-dark.css";
 
 .doc-wrapper {
