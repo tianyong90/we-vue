@@ -8,10 +8,48 @@ export default Vue.extend({
   props: {
     percent: {
       type: [Number, String],
+      required: true,
+      validator: (val: number) => val >= 0 && val <= 100,
     },
     showClear: {
       type: Boolean,
       default: true,
+    },
+    color: {
+      type: String,
+      default: '#09bb07',
+    },
+    backgroundColor: {
+      type: String,
+      default: '#ebebeb',
+    },
+    strokeWidth: {
+      type: Number,
+      default: 3,
+      validator: (val: number) => val > 0,
+    },
+    borderRadius: {
+      type: Number,
+      default: 0,
+    },
+  },
+
+  computed: {
+    style (): object {
+      return {
+        height: `${this.strokeWidth}px`,
+        backgroundColor: this.backgroundColor,
+        borderRadius: `${this.borderRadius}px`,
+      }
+    },
+
+    barStyle (): object {
+      return {
+        width: `${this.percent}%`,
+        height: `${this.strokeWidth}px`,
+        backgroundColor: this.color,
+        borderRadius: `${this.borderRadius}px`,
+      }
     },
   },
 
@@ -25,10 +63,10 @@ export default Vue.extend({
   render () {
     return (
       <div class="weui-progress">
-        <div class="weui-progress__bar">
+        <div class="weui-progress__bar" style={this.style}>
           <div
             class="weui-progress__inner-bar js_progress"
-            style={{ width: this.percent + '%' }}
+            style={this.barStyle}
           />
         </div>
         {

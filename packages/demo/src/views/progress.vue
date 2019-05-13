@@ -3,6 +3,9 @@
     <w-progress :percent="percent1" :show-clear="false"/>
     <w-progress :percent="percent2" @cancel="onCancel"/>
     <w-progress percent="10"/>
+    <w-progress percent="12" color="red" background-color="rgba(0, 0, 0, 0.2)" />
+    <w-progress percent="60" :stroke-width="10"/>
+    <w-progress percent="60" :stroke-width="10" :border-radius="5"/>
 
     <w-button type="primary" @click="upload">上传</w-button>
   </div>
@@ -47,6 +50,6 @@ export default {
 
 <style scoped lang="scss">
 .weui-progress {
-  height: 50px;
+  height: 60px;
 }
 </style>
