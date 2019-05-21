@@ -1,11 +1,12 @@
 import path from 'path'
-import pkg from './package'
-
+import Fiber from 'fibers'
+import Sass from 'sass'
 import _ from 'lodash'
+import pkg from './package'
 import { nav } from './config'
 
 // 从 config 的侧栏菜单配置中提取路由
-const generatePaths = function (navs) {
+const generatePaths = function(navs) {
   const res = _.flatMap(navs, item => {
     return item.groups
   })
@@ -90,6 +91,13 @@ export default {
     // 生产模式下使用 extractCSS，开发时不用，以免影响热替换 hmr
     extractCSS: process.env.NODE_ENV === 'production',
 
+    loaders: {
+      scss: {
+        implementation: Sass,
+        fiber: Fiber
+      }
+    },
+
     /*
      ** You can extend webpack config here
      */
@@ -99,7 +107,7 @@ export default {
         test: /\.md$/,
         include: [
           path.resolve(__dirname, 'markdown'),
-          path.resolve(__dirname, '../../'), // 为了加载 CHANGELOG.md
+          path.resolve(__dirname, '../../') // 为了加载 CHANGELOG.md
         ],
         exclude: /node_modules/,
         use: [
@@ -120,6 +128,6 @@ export default {
   },
 
   generate: {
-    routes: ['404'].concat(generatePaths(nav['v2']), generatePaths(nav['v3']))
+    routes: ['404'].concat(generatePaths(nav.v2), generatePaths(nav.v3))
   }
 }
