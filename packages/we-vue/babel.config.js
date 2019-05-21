@@ -42,9 +42,7 @@ module.exports = function (api) {
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-object-assign',
-      [
-        'transform-define', versions,
-      ],
+      ['transform-define', versions],
     ],
     env: {
       test: {
@@ -70,15 +68,10 @@ module.exports = function (api) {
         ],
       },
       es5: {
-        plugins: [
-          './build/babel-transform-scss-paths.js',
-        ],
+        plugins: ['./build/babel-transform-scss-paths.js'],
       },
       lib: {
-        plugins: [
-          './build/babel-transform-scss-paths.js',
-        ],
-
+        plugins: ['./build/babel-transform-scss-paths.js'],
       },
     },
   }

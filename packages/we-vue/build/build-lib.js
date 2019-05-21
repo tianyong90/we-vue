@@ -2,7 +2,7 @@
  * Build npm lib
  */
 'use strict'
-const shell = require('shelljs');
+const shell = require('shelljs')
 
 shell.rm('-r', 'es5', 'lib', 'lib-temp')
 shell.exec('yarn run tsc -p tsconfig.dist.json')

@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "dev": "lerna run serve --ignore docs --stream --parallel -- --colors",
-    "dev:docs": "lerna run serve --scope docs --stream -- --colors",
+    "dev:docs": "lerna run dev --scope docs --stream -- --colors",
     "lint": "lerna run lint --parallel -- --color",
     "lint:fix": "lerna run lint --parallel -- --color --fix",
     "test": "lerna run test --scope we-vue --stream",
@@ -39,10 +39,7 @@
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
-    "shelljs": "^0.8.0",
-    "webpack": "^4.28.0",
-    "webpack-cli": "^3.1.2",
-    "webpack-merge": "^4.2.1"
+    "shelljs": "^0.8.0"
   },
   "resolutions": {
     "@babel/core": "^7.3.4",
