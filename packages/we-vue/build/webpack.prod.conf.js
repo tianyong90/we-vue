@@ -12,7 +12,7 @@ const version = process.env.VERSION || require('../package.json').version
 module.exports = merge(baseWebpackConfig, {
   devtool: 'source-map',
   entry: {
-    'we-vue': './src/index.ts'
+    'we-vue': './src/index.ts',
   },
   output: {
     path: path.join(__dirname, '../dist'),
@@ -21,15 +21,15 @@ module.exports = merge(baseWebpackConfig, {
     library: 'we-vue',
     libraryTarget: 'umd',
     libraryExport: 'default',
-    globalObject: 'typeof self !== \'undefined\' ? self : this'
+    globalObject: "typeof self !== 'undefined' ? self : this",
   },
   externals: {
     vue: {
       root: 'Vue',
       commonjs: 'vue',
       commonjs2: 'vue',
-      amd: 'vue'
-    }
+      amd: 'vue',
+    },
   },
   plugins: [
     new CleanPlugin({
