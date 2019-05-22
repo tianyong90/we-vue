@@ -10,16 +10,10 @@
         </div>
 
         <div class="row mt-5 justify-content-center">
-          <router-link
-            to="/doc/v2/index"
-            class="btn btn-light btn-lg mx-2 btn-quickstart"
+          <router-link to="/doc/v2/index" class="btn btn-light btn-lg mx-2 btn-quickstart"
             >文档
           </router-link>
-          <a
-            href="https://demo.wevue.org"
-            class="btn btn-outline-light btn-lg mx-2"
-            >在线示例</a
-          >
+          <a href="https://demo.wevue.org" class="btn btn-outline-light btn-lg mx-2">在线示例</a>
           <a
             href="https://github.com/tianyong90/WE-VUE"
             class="btn btn-outline-light btn-lg mx-2 text-uppercase"
@@ -27,12 +21,7 @@
           >
         </div>
         <div class="row justify-content-center mt-5">
-          <img
-            class="qrcode"
-            width="120"
-            height="120"
-            src="/images/demo_qrcode.png"
-          />
+          <img class="qrcode" width="120" height="120" src="/images/demo_qrcode.png" />
         </div>
       </div>
       <div class="container">
@@ -67,8 +56,8 @@
                 在线示例
               </div>
               <p class="card-text">
-                针对最新版本，我们为每一个组件都编写了示例。查看示例可以随时了解
-                WE-VUE 组件的最新特性及细节。
+                针对最新版本，我们为每一个组件都编写了示例。查看示例可以随时了解 WE-VUE
+                组件的最新特性及细节。
               </p>
             </div>
           </div>
@@ -79,24 +68,16 @@
     <footer class="footer">
       <div class="container py-4">
         <div class="row justify-content-center">
-          <a class="text-light m-2" href="https://github.com/tianyong90/WE-VUE"
-            >GitHub</a
-          >
-          <a class="text-light m-2" href="https://gitee.com/tianyong/WE-VUE"
-            >Gitee</a
-          >
+          <a class="text-light m-2" href="https://github.com/tianyong90/WE-VUE">GitHub</a>
+          <a class="text-light m-2" href="https://gitee.com/tianyong/WE-VUE">Gitee</a>
         </div>
 
         <hr />
 
-        <div
-          class="row justify-content-center align-items-center mt-2 flex-column"
-        >
+        <div class="row justify-content-center align-items-center mt-2 flex-column">
           <p class="d-block text-light">Copyright © 2016-2019 tianyong90</p>
           <p>
-            <a class="text-light" href="http://www.miitbeian.gov.cn/"
-              >粤ICP备17009332号-1</a
-            >
+            <a class="text-light" href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a>
           </p>
         </div>
       </div>
@@ -105,11 +86,8 @@
 </template>
 
 <script>
-// TODO
-// import '@fortawesome/fontawesome-free'
-
 export default {
-  components: {}
+  components: {},
 }
 </script>
 

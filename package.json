@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "dev": "lerna run serve --ignore docs --parallel --no-bail -- --colors",
-    "dev:docs": "lerna run serve --scope docs --stream -- --colors",
+    "dev:docs": "lerna run dev --scope docs --stream -- --colors",
     "lint": "lerna run lint --parallel -- --color",
     "lint:fix": "lerna run lint --parallel -- --color --fix",
     "test": "lerna run test --scope we-vue --stream",
