@@ -21,7 +21,7 @@ module.exports = merge(baseWebpackConfig, {
     library: 'we-vue',
     libraryTarget: 'umd',
     libraryExport: 'default',
-    globalObject: "typeof self !== 'undefined' ? self : this",
+    globalObject: 'typeof self !== \'undefined\' ? self : this',
   },
   externals: {
     vue: {
@@ -46,10 +46,10 @@ module.exports = merge(baseWebpackConfig, {
 * Released under the MIT License.
 */     `,
       raw: true,
-      entryOnly: true
+      entryOnly: true,
     }),
     new MiniCssExtractPlugin({
-      filename: 'we-vue.min.css'
+      filename: 'we-vue.min.css',
     }),
   ],
   performance: {
@@ -61,7 +61,7 @@ module.exports = merge(baseWebpackConfig, {
       new TerserPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true
+        sourceMap: true,
       }),
       new OptimizeCssAssetsPlugin({
         assetNameRegExp: /\.css$/g,
@@ -69,10 +69,10 @@ module.exports = merge(baseWebpackConfig, {
         cssProcessorOptions: {
           discardComments: { removeAll: true },
           postcssZindex: false,
-          reduceIdents: false
+          reduceIdents: false,
         },
-        canPrint: false
-      })
-    ]
-  }
+        canPrint: false,
+      }),
+    ],
+  },
 })
