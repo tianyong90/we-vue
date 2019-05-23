@@ -14,7 +14,7 @@ export default Vue.extend({
     actions: {
       type: Array,
       default: () => [],
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
     cancelText: {
       type: String,
       default: 'Cancel',

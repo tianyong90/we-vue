@@ -44,7 +44,7 @@ export default mixins<options &
     resultTextKey: String,
     result: {
       type: Array,
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
   },
 
   data () {

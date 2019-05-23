@@ -12,11 +12,11 @@ export default Vue.extend({
     dataItems: {
       type: Array,
       default: () => [],
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
     buttons: {
       type: Array,
       default: () => [],
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
   },
 
   render () {

@@ -12,15 +12,17 @@ export default Vue.extend({
   },
 
   render (h, context): VNode {
+    const style = {
+      backgroundColor: context.props.color,
+    }
+
     return (
       <span
         class={{
           'weui-badge': true,
           'weui-badge_dot': context.props.isDot,
         }}
-        style={{
-          backgroundColor: context.props.color,
-        }}
+        style={style}
         {...context.data}
       >
         { !context.props.isDot && context.children }

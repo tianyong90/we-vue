@@ -82,7 +82,7 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       get (): string {
         return this.lazyValue
       },
-      set (val: string | Array<any>): void {
+      set (val: string | any[]): void {
         this.lazyValue = val
         // this.$emit('input', val)
       },
@@ -100,7 +100,7 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       return this.areaList.county_list || {}
     },
 
-    displayColumns (): Array<any> {
+    displayColumns (): any[] {
       return this.columns.slice(0, +this.columnsCount)
     },
   },

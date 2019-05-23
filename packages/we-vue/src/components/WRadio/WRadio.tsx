@@ -15,7 +15,7 @@ export default Vue.extend({
     options: {
       type: Array,
       required: true,
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
     value: null as any as PropValidator<any>,
   },
 

@@ -28,20 +28,20 @@ export default Vue.extend<options>().extend({
     options: {
       type: Array,
       required: true,
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
     value: {
       type: Array,
       default: () => [],
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
   },
 
   computed: {
     currentValue: {
-      get (): Array<any> {
+      get (): any[] {
         return this.value
       },
 
-      set (val: Array<any>): void {
+      set (val: any[]): void {
         if (this.max && val.length > this.max) {
           val = val.slice(0, this.max)
         }

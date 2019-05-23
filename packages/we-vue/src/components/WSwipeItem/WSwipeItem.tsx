@@ -5,7 +5,7 @@ interface options extends Vue {
     vertical: number
     computedWidth: number
     computedHeight: number
-    swipes: Array<any>
+    swipes: any[]
   }
 }
 

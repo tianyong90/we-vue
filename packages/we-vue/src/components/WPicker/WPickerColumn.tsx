@@ -19,7 +19,7 @@ const DEFAULT_TRANSITION: string = 'all 150ms ease'
 
 interface options extends Vue {
   $parent: {
-    children: Array<any>
+    children: any[]
   } & Vue
 }
 
@@ -60,7 +60,7 @@ export default Vue.extend<options>().extend({
   },
 
   computed: {
-    currentOptions (): Array<any> {
+    currentOptions (): any[] {
       return cloneDeep(this.options)
     },
 

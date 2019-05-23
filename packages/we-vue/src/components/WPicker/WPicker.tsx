@@ -17,7 +17,7 @@ const ITEM_HEIGHT = 34
 type WPickerColumnInstance = InstanceType<typeof WPickerColumn>
 
 type objectColumn = {
-  options: Array<any>
+  options: any[]
   [key: string]: any
 }
 
@@ -148,12 +148,12 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
 
     // get values of all columns
-    getValues (): Array<any> {
+    getValues (): any[] {
       return this.children.map(child => child.getValue())
     },
 
     // set values of all columns
-    setValues (values: Array<any>): void {
+    setValues (values: any[]): void {
       values.forEach((value, index) => {
         this.setColumnValue(index, value)
       })

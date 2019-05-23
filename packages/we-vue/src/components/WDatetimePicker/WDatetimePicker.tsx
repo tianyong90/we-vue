@@ -151,7 +151,7 @@ export default mixins<options &
       }
     },
 
-    columns (): Array<any> {
+    columns (): any[] {
       let result = []
       for (let rangeKey in this.ranges) {
         result.push({
@@ -390,7 +390,7 @@ export default mixins<options &
       })
     },
 
-    setColumnByValues (values: Array<string>) {
+    setColumnByValues (values: string[]) {
       this.$refs.picker.setValues(values)
     },
 

@@ -11,7 +11,7 @@ export default Vue.extend({
     links: {
       type: Array,
       default: () => [],
-    } as PropValidator<Array<any>>,
+    } as PropValidator<any[]>,
   },
 
   render () {
