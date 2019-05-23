@@ -21,7 +21,7 @@ interface ModalInstance extends Vue {
 
 const PopupContext = {
   zIndex: 2000,
-  stack: [] as Array<stackItem>,
+  stack: [] as stackItem[],
   lockCount: 0,
   modal: {} as ModalInstance,
 

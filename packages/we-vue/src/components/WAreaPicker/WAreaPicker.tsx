@@ -124,8 +124,8 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
   },
 
   methods: {
-    getList (type: columnType, code: string = ''): Array<typeArea> {
-      let result: Array<typeArea> = []
+    getList (type: columnType, code = ''): typeArea[] {
+      let result: typeArea[] = []
       if (type !== 'province' && !code) {
         return result
       }
@@ -187,7 +187,7 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
     },
 
     // get current selected values of all typeColumns
-    getValues (): Array<typeArea> {
+    getValues (): typeArea[] {
       return this.$refs.picker ? this.$refs.picker.getValues() : []
     },
 

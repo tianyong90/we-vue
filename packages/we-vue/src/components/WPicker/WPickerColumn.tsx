@@ -8,14 +8,14 @@ type objectOptionType = {
   disabled?: boolean
   [key: string]: any
 }
-type optionsType = Array<objectOptionType | string | number>
+type optionsType = (objectOptionType | string | number)[]
 
 const range: (num: number, min: number, max: number) => number = (num, min, max) => Math.min(Math.max(num, min), max)
 
 // height of th option item
-const ITEM_HEIGHT: number = 34
+const ITEM_HEIGHT = 34
 // default transition
-const DEFAULT_TRANSITION: string = 'all 150ms ease'
+const DEFAULT_TRANSITION = 'all 150ms ease'
 
 interface options extends Vue {
   $parent: {

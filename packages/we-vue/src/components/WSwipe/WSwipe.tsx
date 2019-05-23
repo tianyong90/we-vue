@@ -60,7 +60,7 @@ export default mixins<options &
       active: 0 as number,
       deltaX: 0 as number,
       deltaY: 0 as number,
-      swipes: [] as Array<SwipeItemInstance>,
+      swipes: [] as SwipeItemInstance[],
       swiping: false,
       rendered: false,
     }

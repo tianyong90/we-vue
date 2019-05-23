@@ -21,9 +21,9 @@ type objectColumn = {
   [key: string]: any
 }
 
-type simpleColumns = Array<string | number | object>
+type simpleColumns = (string | number | object)[]
 
-type typeColumns = Array<Array<string | number | objectColumn>>
+type typeColumns = (string | number | objectColumn)[][]
 
 export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
   name: 'w-picker',
@@ -61,7 +61,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
 
   data () {
     return {
-      children: [] as Array<WPickerColumnInstance>,
+      children: [] as WPickerColumnInstance[],
     }
   },
 
@@ -135,7 +135,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
 
     // set options of column by index
-    setColumnOptions (columnIndex: number, options: Array<string | number | object>): void {
+    setColumnOptions (columnIndex: number, options: (string | number | object)[]): void {
       const column = this.columns[columnIndex]
       if (column) {
         ;(column as objectColumn).options = options
@@ -143,7 +143,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
 
     // get options of column by index
-    getColumnOptions (columnIndex: number): Array<string | number> {
+    getColumnOptions (columnIndex: number): (string | number)[] {
       return (this.columns[columnIndex] as objectColumn).options
     },
 
@@ -176,7 +176,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
 
     // set indexes of all columns
-    setIndexes (indexes: Array<number>): void {
+    setIndexes (indexes: number[]): void {
       indexes.forEach((optionIndex, columnIndex) => {
         this.setColumnIndex(columnIndex, optionIndex)
       })
@@ -188,7 +188,6 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
       this.onCancel()
     },
 
-    // cancel event hand: Array<number>l: voider
     onCancel (): void {
       this.$emit('cancel', this)
       this.isActive = false

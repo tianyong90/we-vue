@@ -81,7 +81,7 @@ export default mixins<options &
   data () {
     return {
       inited: false,
-      tabs: [] as Array<WTabInstance>,
+      tabs: [] as WTabInstance[],
       position: '' as string,
       currentActive: 0 as number,
       lineStyle: {

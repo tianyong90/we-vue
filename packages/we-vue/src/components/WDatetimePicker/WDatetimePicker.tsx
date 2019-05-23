@@ -413,7 +413,7 @@ export default mixins<options &
         columns={this.columns}
         onChange={() => { this.onChange(this.$refs.picker) }}
         onConfirm={this.onConfirm}
-        onCancel={() => { this.onCancel() }}
+        onCancel={this.onCancel}
         confirm-text={this.confirmText}
         cancel-text={this.cancelText}
         close-on-click-mask={this.closeOnClickMask}
