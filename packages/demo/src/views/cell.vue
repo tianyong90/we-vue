@@ -16,19 +16,19 @@
 
     <w-group title="带跳转的列表项">
       <w-cell title="vue-router 链接" is-link to="/"/>
-      <w-cell title="url 链接" is-link url="http://demo.wevue.org"/>
+      <w-cell title="url 链接" is-link href="http://demo.wevue.org"/>
     </w-group>
 
     <w-group title="带说明、跳转的列表项">
       <w-cell title="vue-router 链接" value="to='/'" is-link to="/"/>
-      <w-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org"/>
+      <w-cell title="url 链接" value="url='http://demo.wevue.org'" is-link href="http://demo.wevue.org"/>
     </w-group>
 
     <w-group title="带图标、说明、跳转的列表项">
       <w-cell title="vue-router 链接" value="to='/'" is-link to="/">
         <img :src="imgIcon" slot="icon" class="cell-icon">
       </w-cell>
-      <w-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org">
+      <w-cell title="url 链接" value="url='http://demo.wevue.org'" is-link href="http://demo.wevue.org">
         <img :src="imgIcon" slot="icon" class="cell-icon">
       </w-cell>
     </w-group>

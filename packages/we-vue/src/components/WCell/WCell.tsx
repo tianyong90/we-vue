@@ -34,9 +34,7 @@ export default mixins(
           'weui-cell': true,
           'weui-cell_access': this.isLink,
         }}
-        onClick={() => {
-          this.onClick()
-        }}
+        onClick={this.onClick}
       >
         <div class="weui-cell_hd">
           { this.$slots.icon }
