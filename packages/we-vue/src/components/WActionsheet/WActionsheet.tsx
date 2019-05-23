@@ -24,7 +24,7 @@ export default Vue.extend({
 
   data () {
     return {
-      currentValue: this.value as boolean,
+      currentValue: this.value,
     }
   },
 
@@ -48,7 +48,7 @@ export default Vue.extend({
   },
 
   render (): VNode {
-    const actionsheetMenu = () => (
+    const actionsheetMenu = (
       <div class="weui-actionsheet__menu">
         {
           this.actions.map(item => (
@@ -63,76 +63,74 @@ export default Vue.extend({
       </div>
     )
 
-    if (this.type === 'ios') {
-      return (
-        <div>
-          <transition
-            enter-active-class="weui-animate-fade-in"
-            leave-active-class="weui-animate-fade-out"
+    const renderIos = () => (
+      <div>
+        <transition
+          enter-active-class="weui-animate-fade-in"
+          leave-active-class="weui-animate-fade-out"
+        >
+          <div
+            class="weui-mask weui-animate-fade-in"
+            vShow={this.currentValue}
+            onClick={() => {
+              this.currentValue = false
+            }}
+          />
+        </transition>
+        <transition
+          enter-active-class="weui-animate-slide-up"
+          leave-active-class="weui-animate-slide-down"
+        >
+          <div
+            class="weui-actionsheet weui-actionsheet_toggle"
+            vShow={this.currentValue}
           >
-            <div
-              class="weui-mask weui-animate-fade-in"
-              vShow={this.currentValue}
-              onClick={() => {
-                this.currentValue = false
-              }}
-            />
-          </transition>
-          <transition
-            enter-active-class="weui-animate-slide-up"
-            leave-active-class="weui-animate-slide-down"
-          >
-            <div
-              class="weui-actionsheet weui-actionsheet_toggle"
-              vShow={this.currentValue}
-            >
-              {
-                this.title &&
-                  <div class="weui-actionsheet__title">
-                    <p class="weui-actionsheet__title-text" domPropsInnerHTML={this.title}/>
-                  </div>
-              }
-              {actionsheetMenu()}
-              {
-                this.cancelText &&
-                  <div class="weui-actionsheet__action">
-                    <div
-                      class="weui-actionsheet__cell"
-                      onClick={() => {
-                        this.currentValue = false
-                      }}
-                      domPropsInnerHTML={this.cancelText}
-                    />
-                  </div>
-              }
-            </div>
-          </transition>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <transition
-            enter-active-class="weui-animate-fade-in"
-            leave-active-class="weui-animate-fade-out"
-          >
-            <div
-              class="weui-skin_android"
-              vShow={this.currentValue}
-            >
-              <div
-                class="weui-mask"
-                onClick={() => {
-                  this.currentValue = false
-                }}
-              />
-              <div class="weui-actionsheet">
-                {actionsheetMenu()}
+            {
+              this.title &&
+              <div class="weui-actionsheet__title">
+                <p class="weui-actionsheet__title-text" domPropsInnerHTML={this.title}/>
               </div>
-            </div>
-          </transition>
+            }
+            {actionsheetMenu}
+            {
+              this.cancelText &&
+              <div class="weui-actionsheet__action">
+                <div
+                  class="weui-actionsheet__cell"
+                  onClick={() => {
+                    this.currentValue = false
+                  }}
+                  domPropsInnerHTML={this.cancelText}
+                />
+              </div>
+            }
+          </div>
+        </transition>
+      </div>
+    )
+
+    const renderAndroid = () => (
+      <transition
+        enter-active-class="weui-animate-fade-in"
+        leave-active-class="weui-animate-fade-out"
+      >
+        <div
+          class="weui-skin_android"
+          vShow={this.currentValue}
+        >
+          <div
+            class="weui-mask"
+            onClick={() => {
+              this.currentValue = false
+            }}
+          />
+          <div class="weui-actionsheet">
+            {actionsheetMenu}
+          </div>
         </div>
-      )
-    }
+      </transition>
+    )
+
+    return this.type === 'ios' ? renderIos() : renderAndroid()
   },
 })
