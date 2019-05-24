@@ -4,18 +4,10 @@
       <div class="col-md-2 d-none d-md-block bg-white sidebar">
         <div id="sidebarWrapper" class="sidebar-sticky">
           <ul>
-            <li
-              v-for="navItem in sidebarNav"
-              :key="navItem.title"
-              class="doc-nav__item"
-            >
+            <li v-for="navItem in sidebarNav" :key="navItem.title" class="doc-nav__item">
               <h2 class="title" v-html="navItem.title" />
               <div v-for="(group, index) in navItem.groups" :key="index">
-                <div
-                  v-if="group.groupName"
-                  class="group-name"
-                  v-text="group.groupName"
-                />
+                <div v-if="group.groupName" class="group-name" v-text="group.groupName" />
                 <ul class="sub-tree">
                   <li>
                     <router-link
@@ -38,51 +30,59 @@
       </div>
 
       <div class="col-md-4 col-lg-3">
-        <WevueDemo
-          :url="attributes.demo_url || '//demo.wevue.org'"
-          :sticky-top="0"
-        />
+        <WevueDemo :url="attributes.demo_url || '//demo.wevue.org'" :sticky-top="0" />
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'highlight.js/styles/atom-one-dark.css'
 import 'github-markdown-css/github-markdown.css'
 import WevueDemo from '~/components/wevue-demo.vue'
 
-export default {
+type loadedMdFileObj = {
+  attributes: object
+  html
+}
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    attributes: any
+  }
+}
+
+export default Vue.extend({
   components: {
-    WevueDemo
+    WevueDemo,
   },
 
   head() {
     return {
       title: this.attributes.title + ' - we-vue',
-      meta: [
-        { hid: 'keywords', name: 'keywords', content: this.attributes.keywords }
-      ]
+      meta: [{ hid: 'keywords', name: 'keywords', content: this.attributes.keywords }],
     }
   },
 
   data() {
     return {
       demoUrl: '//demo.wevue.org',
-      sidebarTop: 71
+      sidebarTop: 71,
     }
   },
 
   async asyncData({ params }) {
     const { version, title } = params
 
-    let res
+    let res: loadedMdFileObj
 
     if (title === 'contributing' || title === 'troubleshooting') {
       res = await import(`../../../markdown/${title}.md`)
     } else if (title === 'changelog') {
+      // @ts-ignore 特殊对待
       res = await import(`../../../../../CHANGELOG.md`)
     } else {
       res = await import(`../../../markdown/${version}/${title}.md`)
@@ -99,7 +99,7 @@ export default {
       title,
       sidebarNav,
       html,
-      attributes
+      attributes,
     }
   },
 
@@ -108,11 +108,11 @@ export default {
     new PerfectScrollbar('#sidebarWrapper')
 
     // 侧栏菜单当前项自动滚动到可见区
-    const containerSidebar = document.getElementById('sidebarWrapper')
+    const containerSidebar = document.getElementById('sidebarWrapper') as HTMLElement
     const sidebarActiveItem = document.querySelector('#sidebarWrapper .current')
-    containerSidebar.scrollTop = sidebarActiveItem.offsetTop
-  }
-}
+    containerSidebar.scrollTop = (sidebarActiveItem as HTMLElement).offsetTop
+  },
+})
 </script>
 
 <style scoped lang="scss">

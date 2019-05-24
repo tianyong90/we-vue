@@ -1765,6 +1765,31 @@
     serve-static "^1.14.1"
     server-destroy "^1.0.1"
 
+"@nuxt/typescript@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.npmjs.org/@nuxt/typescript/-/typescript-2.7.1.tgz#8ac368255306c13d19db10d011474c01e095ba03"
+  integrity sha512-DiUvQxWUczUtkUTLl+BY+sWFxpV6epU3MNweRPb0iFB2JfHYse5wx+QubExkG7+hMbD4sEdA2+X7/KavES3ulw==
+  dependencies:
+    "@types/babel__core" "^7.1.1"
+    "@types/chokidar" "^2.1.3"
+    "@types/compression" "^0.0.36"
+    "@types/etag" "^1.8.0"
+    "@types/express" "^4.16.1"
+    "@types/html-minifier" "^3.5.3"
+    "@types/node" "^11.13.10"
+    "@types/optimize-css-assets-webpack-plugin" "^1.3.4"
+    "@types/serve-static" "^1.13.2"
+    "@types/terser-webpack-plugin" "^1.2.1"
+    "@types/webpack" "^4.4.31"
+    "@types/webpack-bundle-analyzer" "^2.13.1"
+    "@types/webpack-dev-middleware" "^2.0.2"
+    "@types/webpack-hot-middleware" "^2.16.5"
+    consola "^2.6.1"
+    fork-ts-checker-webpack-plugin "^1.3.2"
+    fs-extra "^8.0.1"
+    ts-loader "^6.0.0"
+    typescript "^3.4.5"
+
 "@nuxt/utils@2.7.1":
   version "2.7.1"
   resolved "https://registry.npm.taobao.org/@nuxt/utils/download/@nuxt/utils-2.7.1.tgz#e7865895ad58b0365755732b9a3689978286c20c"
@@ -1979,7 +2004,12 @@
     prismjs "^1.16.0"
     toml "^3.0.0"
 
-"@types/babel__core@^7.1.0":
+"@types/anymatch@*":
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
+  integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
+
+"@types/babel__core@^7.1.0", "@types/babel__core@^7.1.1":
   version "7.1.2"
   resolved "https://registry.npm.taobao.org/@types/babel__core/download/@types/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
   integrity sha1-YIx09VkoAz/OGLmbITwWvks9EU8=
@@ -2012,15 +2042,75 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/body-parser@*":
+  version "1.17.0"
+  resolved "https://registry.npmjs.org/@types/body-parser/-/body-parser-1.17.0.tgz#9f5c9d9bd04bb54be32d5eb9fc0d8c974e6cf58c"
+  integrity sha512-a2+YeUjPkztKJu5aIF2yArYFQQp8d51wZ7DavSHjFuY1mqVgidGyzEQ41JIVNy82fXj8yPgy2vJmfIywgESW6w==
+  dependencies:
+    "@types/connect" "*"
+    "@types/node" "*"
+
+"@types/chokidar@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.npmjs.org/@types/chokidar/-/chokidar-2.1.3.tgz#123ab795dba6d89be04bf076e6aecaf8620db674"
+  integrity sha512-6qK3xoLLAhQVTucQGHTySwOVA1crHRXnJeLwqK6KIFkkKa2aoMFXh+WEi8PotxDtvN6MQJLyYN9ag9P6NLV81w==
+  dependencies:
+    chokidar "*"
+
+"@types/clean-css@*":
+  version "4.2.1"
+  resolved "https://registry.npmjs.org/@types/clean-css/-/clean-css-4.2.1.tgz#cb0134241ec5e6ede1b5344bc829668fd9871a8d"
+  integrity sha512-A1HQhQ0hkvqqByJMgg+Wiv9p9XdoYEzuwm11SVo1mX2/4PSdhjcrUlilJQoqLscIheC51t1D5g+EFWCXZ2VTQQ==
+  dependencies:
+    "@types/node" "*"
+
+"@types/compression@^0.0.36":
+  version "0.0.36"
+  resolved "https://registry.npmjs.org/@types/compression/-/compression-0.0.36.tgz#7646602ffbfc43ea48a8bf0b2f1d5e5f9d75c0d0"
+  integrity sha512-B66iZCIcD2eB2F8e8YDIVtCUKgfiseOR5YOIbmMN2tM57Wu55j1xSdxdSw78aVzsPmbZ6G+hINc+1xe1tt4NBg==
+  dependencies:
+    "@types/express" "*"
+
+"@types/connect@*":
+  version "3.4.32"
+  resolved "https://registry.npmjs.org/@types/connect/-/connect-3.4.32.tgz#aa0e9616b9435ccad02bc52b5b454ffc2c70ba28"
+  integrity sha512-4r8qa0quOvh7lGD0pre62CAb1oni1OO6ecJLGCezTmhQ8Fz50Arx9RUszryR8KlgK6avuSXvviL6yWyViQABOg==
+  dependencies:
+    "@types/node" "*"
+
 "@types/dom-inputevent@^1.0.3":
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/@types/dom-inputevent/download/@types/dom-inputevent-1.0.4.tgz#05bc0bbaed7006f74af6afa9fc897f402783ab42"
   integrity sha1-BbwLuu1wBvdK9q+p/Il/QCeDq0I=
 
+"@types/etag@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.npmjs.org/@types/etag/-/etag-1.8.0.tgz#37f0b1f3ea46da7ae319bbedb607e375b4c99f7e"
+  integrity sha512-EdSN0x+Y0/lBv7YAb8IU4Jgm6DWM+Bqtz7o5qozl96fzaqdqbdfHS5qjdpFeIv7xQ8jSLyjMMNShgYtMajEHyQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/@types/events/download/@types/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
   integrity sha1-KGLz9Yqaf3w+eNefEw3U1xwlwqc=
+
+"@types/express-serve-static-core@*":
+  version "4.16.5"
+  resolved "https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-4.16.5.tgz#0e473cceae141c43320759b7ff4af0d4428b9cdd"
+  integrity sha512-T8oej2B9TVALoCK4epWXRNWaFaqDyOaEQ3ntph+tSw5QoKnZfxgCXefIm3+nGp2XCRrkX4X7U5CSTMnwKJcOjQ==
+  dependencies:
+    "@types/node" "*"
+    "@types/range-parser" "*"
+
+"@types/express@*", "@types/express@^4.16.1":
+  version "4.16.1"
+  resolved "https://registry.npmjs.org/@types/express/-/express-4.16.1.tgz#d756bd1a85c34d87eaf44c888bad27ba8a4b7cf0"
+  integrity sha512-V0clmJow23WeyblmACoxbHBu2JKlE5TiIme6Lem14FnPW9gsttyHtk6wq7njcdIWH1njAaFgR8gW09lgY98gQg==
+  dependencies:
+    "@types/body-parser" "*"
+    "@types/express-serve-static-core" "*"
+    "@types/serve-static" "*"
 
 "@types/faker@^4.1.5":
   version "4.1.5"
@@ -2035,6 +2125,15 @@
     "@types/events" "*"
     "@types/minimatch" "*"
     "@types/node" "*"
+
+"@types/html-minifier@^3.5.3":
+  version "3.5.3"
+  resolved "https://registry.npmjs.org/@types/html-minifier/-/html-minifier-3.5.3.tgz#5276845138db2cebc54c789e0aaf87621a21e84f"
+  integrity sha512-j1P/4PcWVVCPEy5lofcHnQ6BtXz9tHGiFPWzqm7TtGuWZEfCHEP446HlkSNc9fQgNJaJZ6ewPtp2aaFla/Uerg==
+  dependencies:
+    "@types/clean-css" "*"
+    "@types/relateurl" "*"
+    "@types/uglify-js" "*"
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
@@ -2073,10 +2172,27 @@
   resolved "https://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.130.tgz#04b3a690d5f4fc34579963c99adae067b8c8eb5a"
   integrity sha1-BLOmkNX0/DRXmWPJmtrgZ7jI61o=
 
+"@types/loglevel@*":
+  version "1.5.4"
+  resolved "https://registry.npmjs.org/@types/loglevel/-/loglevel-1.5.4.tgz#6e296bf20d9f6b0a3274cfb01a918f1d634e4c32"
+  integrity sha512-8dx4ckP0vndJeN+iKZwdGiapLqFjVQ3JLOt92uqK0C63acs5NcPLbUOpfXCJkKVRjZLBQjw8NIGNBSsnatFnFQ==
+
 "@types/lolex@^3.1.0":
   version "3.1.1"
   resolved "https://registry.npm.taobao.org/@types/lolex/download/@types/lolex-3.1.1.tgz#d40895223e5c8f8aa64f5500c6ca4eeab067d432"
   integrity sha1-1AiVIj5cj4qmT1UAxspO6rBn1DI=
+
+"@types/memory-fs@*":
+  version "0.3.2"
+  resolved "https://registry.npmjs.org/@types/memory-fs/-/memory-fs-0.3.2.tgz#5d4753f9b390cb077c8c8af97bc96463399ceccd"
+  integrity sha512-j5AcZo7dbMxHoOimcHEIh0JZe5e1b8q8AqGSpZJrYc7xOgCIP79cIjTdx5jSDLtySnQDwkDTqwlC7Xw7uXw7qg==
+  dependencies:
+    "@types/node" "*"
+
+"@types/mime@*":
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
+  integrity sha512-FwI9gX75FgVBJ7ywgnq/P7tw+/o1GUbtP0KzbtusLigAOgIgNISRK0ZPl4qertvXSIE8YbsVJueQ90cDt9YYyw==
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -2088,15 +2204,45 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-12.0.2.tgz#3452a24edf9fea138b48fad4a0a028a683da1e40"
   integrity sha1-NFKiTt+f6hOLSPrUoKAopoPaHkA=
 
+"@types/node@^11.13.10":
+  version "11.13.11"
+  resolved "https://registry.npmjs.org/@types/node/-/node-11.13.11.tgz#65766752cbbe198ff353ea861a23b6484cf33df4"
+  integrity sha512-blLeR+KIy26km1OU8yTLUlSyVCOvT6+wPq/77tIA+uSHHa4yYQosn+bbaJqPtWId0wjVClUtD7aXzDbZeKWqig==
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.npm.taobao.org/@types/normalize-package-data/download/@types/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha1-5IbQ2XOW15vu3QpuM/RTT/a0lz4=
 
+"@types/optimize-css-assets-webpack-plugin@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.npmjs.org/@types/optimize-css-assets-webpack-plugin/-/optimize-css-assets-webpack-plugin-1.3.4.tgz#6838ab7a3a5ec1253ad98c348bdcd009e91b39cd"
+  integrity sha512-04LJJFAdZ7sW7V66htTeKz95WP/E+aTuKv3wikgM6bmmeO1alcqQ9eDoRSTrrkL/zeuoaoW4WR1FdjvqiWoSkQ==
+  dependencies:
+    "@types/webpack" "*"
+
 "@types/q@^1.5.1":
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
+
+"@types/range-parser@*":
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
+  integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
+
+"@types/relateurl@*":
+  version "0.2.28"
+  resolved "https://registry.npmjs.org/@types/relateurl/-/relateurl-0.2.28.tgz#6bda7db8653fa62643f5ee69e9f69c11a392e3a6"
+  integrity sha1-a9p9uGU/piZD9e5p6facEaOS46Y=
+
+"@types/serve-static@*", "@types/serve-static@^1.13.2":
+  version "1.13.2"
+  resolved "https://registry.npmjs.org/@types/serve-static/-/serve-static-1.13.2.tgz#f5ac4d7a6420a99a6a45af4719f4dcd8cd907a48"
+  integrity sha512-/BZ4QRLpH/bNYgZgwhKEh+5AsboDBcUdlBYgzoLX0fpj3Y2gp6EApyOlM3bK53wQS/OE1SrdSYBAbux2D1528Q==
+  dependencies:
+    "@types/express-serve-static-core" "*"
+    "@types/mime" "*"
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -2112,6 +2258,26 @@
   version "0.0.30"
   resolved "https://registry.npm.taobao.org/@types/strip-json-comments/download/@types/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
   integrity sha1-mqMMBNshKpoGSdaub9UKzMQHSKE=
+
+"@types/tapable@*":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@types/tapable/-/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
+  integrity sha512-78AdXtlhpCHT0K3EytMpn4JNxaf5tbqbLcbIRoQIHzpTIyjpxLQKRoxU55ujBXAtg3Nl2h/XWvfDa9dsMOd0pQ==
+
+"@types/terser-webpack-plugin@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/@types/terser-webpack-plugin/-/terser-webpack-plugin-1.2.1.tgz#02c2cacd7769c533cbdac28dd7610c24e46b5c95"
+  integrity sha512-5mzQulZabFsqiLh0PhJdccIKqpd5535UYpZ+Skugz8kPzZdajMMYBRKQSzM1KOkZ42NwLxbZSzQp6xKtaq46Gg==
+  dependencies:
+    "@types/webpack" "*"
+    terser "^3.16.1"
+
+"@types/uglify-js@*":
+  version "3.0.4"
+  resolved "https://registry.npmjs.org/@types/uglify-js/-/uglify-js-3.0.4.tgz#96beae23df6f561862a830b4288a49e86baac082"
+  integrity sha512-SudIN9TRJ+v8g5pTG8RRCqfqTMNqgWCKKd3vtynhGzkIIjxaicNAMuY5TRadJ6tzDu3Dotf3ngaMILtmOdmWEQ==
+  dependencies:
+    source-map "^0.6.1"
 
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.3"
@@ -2135,17 +2301,53 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@types/webpack-bundle-analyzer@^2.13.1":
+  version "2.13.1"
+  resolved "https://registry.npmjs.org/@types/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.13.1.tgz#25154f36585c0abc90f7e58fd3197c83fced789a"
+  integrity sha512-9M9jingj0izx1VfglYYJ+dvd0YCMlFgtrSCeb+C3VIQP8hmTXGJ5qqVeqiBnv0ffMyeKWqyij4K2F4VBcazQNw==
+  dependencies:
+    "@types/webpack" "*"
+
+"@types/webpack-dev-middleware@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/@types/webpack-dev-middleware/-/webpack-dev-middleware-2.0.2.tgz#33934f15de582f1a6c21ea21c42f69282e328c76"
+  integrity sha512-uZ1avIbAcnspcDKKm0WfgIdvBYRqUapPmwb0MYGzzB74q2F3T4Xi+qPSoS0Oq5iQvIMVxOm7KMqHQJii4VDCsw==
+  dependencies:
+    "@types/connect" "*"
+    "@types/loglevel" "*"
+    "@types/memory-fs" "*"
+    "@types/webpack" "*"
+
 "@types/webpack-env@^1.13.6":
   version "1.13.9"
   resolved "https://registry.npm.taobao.org/@types/webpack-env/download/@types/webpack-env-1.13.9.tgz#a67287861c928ebf4159a908d1fb1a2a34d4097a"
   integrity sha1-pnKHhhySjr9BWakI0fsaKjTUCXo=
+
+"@types/webpack-hot-middleware@^2.16.5":
+  version "2.16.5"
+  resolved "https://registry.npmjs.org/@types/webpack-hot-middleware/-/webpack-hot-middleware-2.16.5.tgz#5271eada42f34670a7ae79ddb6f1c419a19c985f"
+  integrity sha512-41qSQeyRGZkWSi366jMQVsLo5fdLT8EgmvHNoBwcCtwZcHrQk6An6tD+ZfC0zMdNHzVEFlzQvT2mTte8zDxqNw==
+  dependencies:
+    "@types/connect" "*"
+    "@types/webpack" "*"
+
+"@types/webpack@*", "@types/webpack@^4.4.31":
+  version "4.4.32"
+  resolved "https://registry.npmjs.org/@types/webpack/-/webpack-4.4.32.tgz#2d460cd33a15e568e93f38de5e628cf846396c51"
+  integrity sha512-mNARoaSJTzbiHxtZbf9NULFilu2frqD+g9Iyl9V2jPYJWXi+AC3Hz8lQWPZ5LLtgUm7iF4SDDMB/1bPrbRQgFw==
+  dependencies:
+    "@types/anymatch" "*"
+    "@types/node" "*"
+    "@types/tapable" "*"
+    "@types/uglify-js" "*"
+    source-map "^0.6.0"
 
 "@types/yargs@^12.0.2", "@types/yargs@^12.0.9":
   version "12.0.12"
   resolved "https://registry.npm.taobao.org/@types/yargs/download/@types/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
   integrity sha1-Rd0dBjjoyPFT6H0paQdlkpaHORY=
 
-"@typescript-eslint/eslint-plugin@^1.3.0":
+"@typescript-eslint/eslint-plugin@^1.3.0", "@typescript-eslint/eslint-plugin@^1.9.0":
   version "1.9.0"
   resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-1.9.0.tgz#29d73006811bf2563b88891ceeff1c5ea9c8d9c6"
   integrity sha1-KdcwBoEb8lY7iIkc7v8cXqnI2cY=
@@ -3024,6 +3226,11 @@ are-we-there-yet@~1.1.2:
   dependencies:
     delegates "^1.0.0"
     readable-stream "^2.0.6"
+
+arg@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/arg/-/arg-4.1.0.tgz#583c518199419e0037abb74062c37f8519e575f0"
+  integrity sha512-ZWc51jO3qegGkVh8Hwpv636EkbesNV5ZNQPCtRa+0qytRYPEs9IYT9qITY9buezqUH5uqyzlWLcufrzU2rffdg==
 
 argparse@^1.0.7:
   version "1.0.10"
@@ -4118,6 +4325,22 @@ cheerio@^1.0.0-rc.2:
     lodash "^4.15.0"
     parse5 "^3.0.1"
 
+chokidar@*, chokidar@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/chokidar/download/chokidar-3.0.0.tgz#6b538f0fd6d5d31d5dd2b59e05426bec0f49aa40"
+  integrity sha1-a1OPD9bV0x1d0rWeBUJr7A9JqkA=
+  dependencies:
+    anymatch "^3.0.1"
+    async-each "^1.0.3"
+    braces "^3.0.2"
+    glob-parent "^5.0.0"
+    is-binary-path "^2.1.0"
+    is-glob "^4.0.1"
+    normalize-path "^3.0.0"
+    readdirp "^3.0.1"
+  optionalDependencies:
+    fsevents "^2.0.6"
+
 chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.0.4, chokidar@^2.1.5, chokidar@^2.1.6:
   version "2.1.6"
   resolved "https://registry.npm.taobao.org/chokidar/download/chokidar-2.1.6.tgz#b6cad653a929e244ce8a834244164d241fa954c5"
@@ -4136,22 +4359,6 @@ chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.0.4, chokidar@^2.1.5, chokidar@^2.
     upath "^1.1.1"
   optionalDependencies:
     fsevents "^1.2.7"
-
-chokidar@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npm.taobao.org/chokidar/download/chokidar-3.0.0.tgz#6b538f0fd6d5d31d5dd2b59e05426bec0f49aa40"
-  integrity sha1-a1OPD9bV0x1d0rWeBUJr7A9JqkA=
-  dependencies:
-    anymatch "^3.0.1"
-    async-each "^1.0.3"
-    braces "^3.0.2"
-    glob-parent "^5.0.0"
-    is-binary-path "^2.1.0"
-    is-glob "^4.0.1"
-    normalize-path "^3.0.0"
-    readdirp "^3.0.1"
-  optionalDependencies:
-    fsevents "^2.0.6"
 
 chownr@^1.0.1, chownr@^1.1.1:
   version "1.1.1"
@@ -5632,7 +5839,7 @@ diff-sequences@^24.3.0:
   resolved "https://registry.npm.taobao.org/diff-sequences/download/diff-sequences-24.3.0.tgz#0f20e8a1df1abddaf4d9c226680952e64118b975"
   integrity sha1-DyDood8avdr02cImaAlS5kEYuXU=
 
-diff@^3.2.0:
+diff@^3.1.0, diff@^3.2.0:
   version "3.5.0"
   resolved "https://registry.npm.taobao.org/diff/download/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha1-gAwN0eCov7yVg1wgKtIg/jF+WhI=
@@ -7016,7 +7223,7 @@ forever-agent@~0.6.1:
   resolved "https://registry.npm.taobao.org/forever-agent/download/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
   integrity sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=
 
-fork-ts-checker-webpack-plugin@^1.0.0:
+fork-ts-checker-webpack-plugin@^1.0.0, fork-ts-checker-webpack-plugin@^1.3.2:
   version "1.3.4"
   resolved "https://registry.npm.taobao.org/fork-ts-checker-webpack-plugin/download/fork-ts-checker-webpack-plugin-1.3.4.tgz#a75b6fe8d3db0089555f083c4f77372227704244"
   integrity sha1-p1tv6NPbAIlVXwg8T3c3IidwQkQ=
@@ -9950,7 +10157,7 @@ make-dir@^2.0.0, make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
-make-error@1.x:
+make-error@1.x, make-error@^1.1.1:
   version "1.3.5"
   resolved "https://registry.npm.taobao.org/make-error/download/make-error-1.3.5.tgz#efe4e81f6db28cadd605c70f29c831b58ef776c8"
   integrity sha1-7+ToH22yjK3WBccPKcgxtY73dsg=
@@ -14582,7 +14789,7 @@ terser-webpack-plugin@^1.1.0, terser-webpack-plugin@^1.2.2, terser-webpack-plugi
     webpack-sources "^1.3.0"
     worker-farm "^1.7.0"
 
-terser@^3.17.0:
+terser@^3.16.1, terser@^3.17.0:
   version "3.17.0"
   resolved "https://registry.npm.taobao.org/terser/download/terser-3.17.0.tgz#f88ffbeda0deb5637f9d24b0da66f4e15ab10cb2"
   integrity sha1-+I/77aDetWN/nSSw2mb04VqxDLI=
@@ -14924,6 +15131,17 @@ ts-loader@^6.0.0:
     micromatch "^4.0.0"
     semver "^6.0.0"
 
+ts-node@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.npmjs.org/ts-node/-/ts-node-8.1.0.tgz#8c4b37036abd448577db22a061fd7a67d47e658e"
+  integrity sha512-34jpuOrxDuf+O6iW1JpgTRDFynUZ1iEqtYruBqh35gICNjN8x+LpVcPAcwzLPi9VU6mdA3ym+x233nZmZp445A==
+  dependencies:
+    arg "^4.1.0"
+    diff "^3.1.0"
+    make-error "^1.1.1"
+    source-map-support "^0.5.6"
+    yn "^3.0.0"
+
 tsconfig@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npm.taobao.org/tsconfig/download/tsconfig-7.0.0.tgz#84538875a4dc216e5c4a5432b3a4dec3d54e91b7"
@@ -15040,7 +15258,7 @@ typedarray@^0.0.6:
   resolved "https://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.2.0, typescript@^3.4.3:
+typescript@^3.2.0, typescript@^3.4.3, typescript@^3.4.5:
   version "3.4.5"
   resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
   integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
@@ -15500,6 +15718,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.3"
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
   integrity sha1-J1b0bLMlgFTF9HI96K5+hzAqHM8=
+
+vue-i18n@^8.11.2:
+  version "8.11.2"
+  resolved "https://registry.npmjs.org/vue-i18n/-/vue-i18n-8.11.2.tgz#92827fc42449f4602d2a0ddb437dfc4e3370d9d7"
+  integrity sha512-STcpmxqBrG77SyWi7e0Yn/B3DjKR6mSDwYS4F/V7zoi+e/+CPbVb2TaBqFwnrkoDcPmRfjM7nTwsiRQQOGdifw==
 
 vue-jest@^3.0.3:
   version "3.0.4"
@@ -16188,6 +16411,11 @@ yauzl@2.4.1:
   integrity sha1-lSj0QtqxsihOWLQ3m7GU4i4MQAU=
   dependencies:
     fd-slicer "~1.0.1"
+
+yn@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/yn/-/yn-3.1.0.tgz#fcbe2db63610361afcc5eb9e0ac91e976d046114"
+  integrity sha512-kKfnnYkbTfrAdd0xICNFw7Atm8nKpLcLv9AZGEt+kczL/WQVai4e2V6ZN8U/O+iI6WrNuJjNNOyu4zfhl9D3Hg==
 
 yorkie@^2.0.0:
   version "2.0.0"

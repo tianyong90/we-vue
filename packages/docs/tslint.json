@@ -1,0 +1,39 @@
+{
+  "defaultSeverity": "error",
+  "extends": "typestrict",
+  "linterOptions": {
+    "exclude": [
+      "**/*.spec.js",
+      "**/node_modules/**/*"
+    ]
+  },
+  "jsRules": {},
+  "rules": {
+    // IMPOTRANT: enforces use of T[] if T is a simple type (primitive or type reference).
+    "array-type": [true, "array-simple"],
+    "use-type-alias": true,
+    "no-inferrable-types": true,
+    "unified-signatures": true,
+    "no-undefined-argument": true,
+
+    // TODO: fails with "TypeError: Cannot read property 'default' of undefined"
+    "use-default-type-parameter": false,
+
+    /* typestrict overrides */
+
+    // Handled by tsc
+    "no-unused-variable": false,
+
+    // Useless with vue
+    "no-invalid-this": false,
+
+    // Retarded
+    "restrict-plus-operands": false,
+
+    // Fails with no-unused-variable for some reason
+    "no-useless-cast": false,
+
+    "no-floating-promises": false
+  },
+  "rulesDirectory": []
+}

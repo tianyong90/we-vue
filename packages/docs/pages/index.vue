@@ -85,10 +85,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  components: {},
-}
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({})
 </script>
 
 <style scoped lang="scss">

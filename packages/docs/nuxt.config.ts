@@ -1,8 +1,9 @@
 import path from 'path'
+import NuxtConfiguration from '@nuxt/config'
 import Fiber from 'fibers'
 import Sass from 'sass'
 import _ from 'lodash'
-import pkg from './package'
+import pkg from './package.json'
 import { nav } from './config'
 
 // 从 config 的侧栏菜单配置中提取路由
@@ -22,7 +23,7 @@ const generatePaths = function(navs) {
   return temp
 }
 
-export default {
+const config: NuxtConfiguration = {
   mode: 'universal',
 
   /*
@@ -36,16 +37,16 @@ export default {
       {
         hid: 'keywords',
         name: 'keywords',
-        content: 'we-vue,wevue,weui,vue,vue组件,微信组件'
+        content: 'we-vue,wevue,weui,vue,vue组件,微信组件',
       },
       {
         hid: 'description',
         name: 'description',
         content:
-          'we-vue 是一套简洁高效的 vue 组件库，封装了 weui.css，其一系列组件适合微信等移动端 web 应用开发。'
-      }
+          'we-vue 是一套简洁高效的 vue 组件库，封装了 weui.css，其一系列组件适合微信等移动端 web 应用开发。',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   /*
@@ -70,7 +71,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
   ],
 
   modulelsDir: ['../../node_modules'],
@@ -94,8 +95,8 @@ export default {
     loaders: {
       scss: {
         implementation: Sass,
-        fiber: Fiber
-      }
+        fiber: Fiber,
+      },
     },
 
     /*
@@ -103,11 +104,11 @@ export default {
      */
     extend(config, ctx) {
       // frontmatter-markdown-loader
-      config.module.rules.push({
+      config.module!.rules.push({
         test: /\.md$/,
         include: [
           path.resolve(__dirname, 'markdown'),
-          path.resolve(__dirname, '../../') // 为了加载 CHANGELOG.md
+          path.resolve(__dirname, '../../'), // 为了加载 CHANGELOG.md
         ],
         exclude: /node_modules/,
         use: [
@@ -118,16 +119,18 @@ export default {
               // sourceDir: ''
               contentCssClass: 'markdown-body',
               markdown: {
-                lineNumbers: true // enable line numbers
-              }
-            }
-          }
-        ]
+                lineNumbers: true, // enable line numbers
+              },
+            },
+          },
+        ],
       })
-    }
+    },
   },
 
   generate: {
-    routes: ['404'].concat(generatePaths(nav.v2), generatePaths(nav.v3))
-  }
+    routes: ['404'].concat(generatePaths(nav.v2), generatePaths(nav.v3)),
+  },
 }
+
+export default config
