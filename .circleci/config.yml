@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  lib_test_coverage:
     docker:
       - image: circleci/node:10.15.1-browsers-legacy
 
@@ -27,28 +27,15 @@ jobs:
       - run: yarn test:coverage
 
       # update codecov stats
-      - run: yarn lerna run coverage --scope we-vue
+      - run: yarn lerna run coverage --scope we-vue --stream
 
-      # build component lib and dist
-      - run: yarn lerna run build --scope we-vue
-
-      # build demo and docs
-      - run: yarn lerna run build --ignore we-vue --parallel
-
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - packages/demo/dist
-            - packages/docs/dist
-
-  deploy:
+  build_deploy_demo:
     docker:
       - image: circleci/node:10.15.1-browsers-legacy
 
-    steps:
-      - attach_workspace:
-          at: ~/we-vue
+    working_directory: ~/we-vue
 
+    steps:
       - add_ssh_keys:
           fingerprints:
             - "6a:aa:77:77:28:51:9f:01:4b:b2:7e:3e:ea:f6:20:1a"
@@ -57,12 +44,72 @@ jobs:
 
       - run: sudo apt install rsync -y
 
+      - checkout
+
+      - restore_cache:
+          keys:
+          - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - yarn-packages-{{ .Branch }}-
+
+      - run: yarn --frozen-lockfile --non-interactive
+
+      - save_cache:
+          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      # build component lib and dist《because demo needs to import it)
+      - run: yarn lerna run build --scope we-vue
+
+      # build demo
+      - run: yarn lerna run build --scope demo --stream
+
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - packages/demo/dist
+
       # deploy demo
       - deploy:
           name: deploy demo
           when: on_success
           command: |
             rsync -vzrtopg --progress -e ssh --delete ~/we-vue/packages/demo/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
+
+  # 生成文档并部署
+  generate_deploy_docs:
+    docker:
+      - image: circleci/node:10.15.1-browsers-legacy
+
+    working_directory: ~/we-vue
+
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "6a:aa:77:77:28:51:9f:01:4b:b2:7e:3e:ea:f6:20:1a"
+
+      - run: echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+      - run: sudo apt install rsync -y
+
+      - checkout
+
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - yarn-packages-{{ .Branch }}-
+
+      - run: yarn --frozen-lockfile --non-interactive
+
+      - save_cache:
+          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      # build demo and docs
+      - run: yarn lerna run generate --scope docs --stream
 
       # deploy docs
       - deploy:
@@ -74,17 +121,24 @@ jobs:
 workflows:
   version: 2
   # deploy both demo and docs-site
-  build_and_deploy:
+  lib_and_demo:
     jobs:
-      - build:
+      - lib_test_coverage:
           filters:
             branches:
               only:
                 - master
-                - docs
-      - deploy:
+      - build_deploy_demo:
           requires:
-            - build
+            - lib_test_coverage
+          filters:
+            branches:
+              only:
+                - master
+
+  deploy_docs:
+    jobs:
+      - generate_deploy_docs:
           filters:
             branches:
               only:
