@@ -6,9 +6,7 @@ const changeCase = require('change-case')
 
 const list = fs.readdirSync(path.resolve(__dirname, 'markdown/v3'))
 
-const posts = list
-  .filter(item => item.endsWith('.md'))
-  .map(item => item.replace('.md', ''))
+const posts = list.filter(item => item.endsWith('.md')).map(item => item.replace('.md', ''))
 
 posts.forEach(post => {
   const title = changeCase.pascalCase(post.replace(/-/g, ' '))
@@ -17,7 +15,7 @@ posts.forEach(post => {
     title: title,
     keywords: `we-vue, ${post}`,
     description: '',
-    demo_url: `//demo.wevue.org/${post}`
+    demo_url: `//demo.wevue.org/${post}`,
     // categories: ['2_WE-VUE 组件', '1_基础组件'],
     // sort: 1,
   }

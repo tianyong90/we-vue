@@ -6,19 +6,19 @@ export default [
         list: [
           {
             title: '概述',
-            path: '/doc/v2/index'
+            path: '/doc/v2/index',
           },
           {
             title: '快速上手',
-            path: '/doc/v2/quickstart'
+            path: '/doc/v2/quickstart',
           },
           {
             title: '变更记录',
-            path: '/doc/v2/changelog'
-          }
-        ]
-      }
-    ]
+            path: '/doc/v2/changelog',
+          },
+        ],
+      },
+    ],
   },
   {
     title: 'WE-VUE 组件',
@@ -28,176 +28,176 @@ export default [
         list: [
           {
             title: 'Badge',
-            path: '/doc/v2/badge'
+            path: '/doc/v2/badge',
           },
           {
             title: 'Circle',
-            path: '/doc/v2/circle'
+            path: '/doc/v2/circle',
           },
           {
             title: 'Icon',
-            path: '/doc/v2/icon'
+            path: '/doc/v2/icon',
           },
           {
             title: 'Lazyload',
-            path: '/doc/v2/lazyload'
+            path: '/doc/v2/lazyload',
           },
           {
             title: 'Progress',
-            path: '/doc/v2/progress'
+            path: '/doc/v2/progress',
           },
           {
             title: 'Slider',
-            path: '/doc/v2/slider'
+            path: '/doc/v2/slider',
           },
           {
             title: 'Spinner',
-            path: '/doc/v2/spinner'
+            path: '/doc/v2/spinner',
           },
           {
             title: 'Swipe',
-            path: '/doc/v2/swipe'
-          }
-        ]
+            path: '/doc/v2/swipe',
+          },
+        ],
       },
       {
         groupName: '表单',
         list: [
           {
             title: 'Button',
-            path: '/doc/v2/button'
+            path: '/doc/v2/button',
           },
           {
             title: 'Checklist',
-            path: '/doc/v2/checklist'
+            path: '/doc/v2/checklist',
           },
           {
             title: 'Input',
-            path: '/doc/v2/input'
+            path: '/doc/v2/input',
           },
           {
             title: 'NumberSpinner',
-            path: '/doc/v2/number-spinner'
+            path: '/doc/v2/number-spinner',
           },
           {
             title: 'Radio',
-            path: '/doc/v2/radio'
+            path: '/doc/v2/radio',
           },
           {
             title: 'Switch',
-            path: '/doc/v2/switch'
+            path: '/doc/v2/switch',
           },
           {
             title: 'Textarea',
-            path: '/doc/v2/textarea'
+            path: '/doc/v2/textarea',
           },
           {
             title: 'FormPreview',
-            path: '/doc/v2/form-preview'
-          }
-        ]
+            path: '/doc/v2/form-preview',
+          },
+        ],
       },
       {
         groupName: '操作反馈',
         list: [
           {
             title: 'Actionsheet',
-            path: '/doc/v2/actionsheet'
+            path: '/doc/v2/actionsheet',
           },
           {
             title: 'DatetimePicker',
-            path: '/doc/v2/datetime-picker'
+            path: '/doc/v2/datetime-picker',
           },
           {
             title: 'Dialog',
-            path: '/doc/v2/dialog'
+            path: '/doc/v2/dialog',
           },
           {
             title: 'InfiniteScroll',
-            path: '/doc/v2/infinite-scroll'
+            path: '/doc/v2/infinite-scroll',
           },
           {
             title: 'Picker',
-            path: '/doc/v2/picker'
+            path: '/doc/v2/picker',
           },
           {
             title: 'Toast',
-            path: '/doc/v2/toast'
+            path: '/doc/v2/toast',
           },
           {
             title: 'TopTips',
-            path: '/doc/v2/top-tips'
-          }
-        ]
+            path: '/doc/v2/top-tips',
+          },
+        ],
       },
       {
         groupName: '导航相关',
         list: [
           {
             title: 'Header',
-            path: '/doc/v2/header'
+            path: '/doc/v2/header',
           },
           {
             title: 'Navbar',
-            path: '/doc/v2/navbar'
+            path: '/doc/v2/navbar',
           },
           {
             title: 'Tabbar',
-            path: '/doc/v2/tabbar'
+            path: '/doc/v2/tabbar',
           },
           {
             title: 'Tabs',
-            path: '/doc/v2/tabs'
-          }
-        ]
+            path: '/doc/v2/tabs',
+          },
+        ],
       },
       {
         groupName: '搜索相关',
         list: [
           {
             title: 'SearchBar',
-            path: '/doc/v2/search-bar'
-          }
-        ]
+            path: '/doc/v2/search-bar',
+          },
+        ],
       },
       {
         groupName: '布局',
         list: [
           {
             title: 'Cell',
-            path: '/doc/v2/cell'
+            path: '/doc/v2/cell',
           },
           {
             title: 'CellSwipe',
-            path: '/doc/v2/cell-swipe'
+            path: '/doc/v2/cell-swipe',
           },
           {
             title: 'Flex',
-            path: '/doc/v2/flex'
+            path: '/doc/v2/flex',
           },
           {
             title: 'Footer',
-            path: '/doc/v2/footer'
+            path: '/doc/v2/footer',
           },
           {
             title: 'Grid',
-            path: '/doc/v2/grid'
+            path: '/doc/v2/grid',
           },
           {
             title: 'Loadmore',
-            path: '/doc/v2/loadmore'
+            path: '/doc/v2/loadmore',
           },
           {
             title: 'Panel',
-            path: '/doc/v2/panel'
+            path: '/doc/v2/panel',
           },
           {
             title: 'Popup',
-            path: '/doc/v2/popup'
-          }
-        ]
-      }
-    ]
+            path: '/doc/v2/popup',
+          },
+        ],
+      },
+    ],
   },
   {
     title: '其它',
@@ -206,14 +206,14 @@ export default [
         list: [
           {
             title: '问题解答',
-            path: '/doc/v2/troubleshooting'
+            path: '/doc/v2/troubleshooting',
           },
           {
             title: '贡献指南',
-            path: '/doc/v2/contributing'
-          }
-        ]
-      }
-    ]
-  }
+            path: '/doc/v2/contributing',
+          },
+        ],
+      },
+    ],
+  },
 ]

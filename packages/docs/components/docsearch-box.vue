@@ -17,8 +17,8 @@ export default {
   props: {
     options: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
 
   watch: {
@@ -27,7 +27,7 @@ export default {
         '<input class="form-control d-flex ml-2 mr-auto algolia-search-input search-query" id="asalgolia-search-input" placeholder="搜索文档">'
 
       this.initialize(newValue)
-    }
+    },
   },
 
   mounted() {
@@ -43,13 +43,13 @@ export default {
               apiKey: 'feb33c2506cdece7f0267859a856767a',
               indexName: 'wevue',
               inputSelector: '#algolia-search-input',
-              debug: true // Set debug to true if you want to inspect the dropdown
+              debug: true, // Set debug to true if you want to inspect the dropdown
             })
           )
         })
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

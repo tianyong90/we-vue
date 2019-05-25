@@ -22,15 +22,15 @@ export default {
   props: {
     url: {
       type: String,
-      default: '//demo.wevue.org'
-    }
+      default: '//demo.wevue.org',
+    },
   },
 
   data() {
     return {}
   },
 
-  mounted() {}
+  mounted() {},
 }
 </script>
 

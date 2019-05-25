@@ -6,9 +6,7 @@ const _ = require('lodash')
 
 const list = fs.readdirSync(path.resolve(__dirname, 'markdown/v2'))
 
-const posts = list
-  .filter(item => item.endsWith('.md'))
-  .map(item => item.replace('.md', ''))
+const posts = list.filter(item => item.endsWith('.md')).map(item => item.replace('.md', ''))
 
 let jsonData = posts.map(post => {
   // const title = changeCase.pascalCase(post.replace(/-/g, ' '))
@@ -17,7 +15,7 @@ let jsonData = posts.map(post => {
 
   return {
     file: post,
-    ...frontmatterData.data
+    ...frontmatterData.data,
   }
 })
 
@@ -34,5 +32,5 @@ jsonData['2_WE-VUE 组件'] = _.groupBy(jsonData['2_WE-VUE 组件'], item => {
 
 // 写入 json
 fs.writeJson('./test.json', jsonData, {
-  spaces: 2
+  spaces: 2,
 })

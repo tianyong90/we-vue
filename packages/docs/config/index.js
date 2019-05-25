@@ -5,7 +5,7 @@ import v3 from './nav_v3'
 
 const nav = {
   v2,
-  v3
+  v3,
 }
 
 export { nav }

@@ -8,10 +8,7 @@
         <img class="d-block logo" src="/images/logo.png" alt="we-vue" />
       </nuxt-link>
 
-      <DocsearchBox
-        v-if="$route.path.indexOf('/doc') > -1"
-        :options="searchBoxOptions"
-      />
+      <DocsearchBox v-if="$route.path.indexOf('/doc') > -1" :options="searchBoxOptions" />
 
       <div class="navbar-nav-scroll">
         <ul class="navbar-nav ml-3">
@@ -22,9 +19,7 @@
             <nuxt-link :to="`/doc/${version}/changelog`">变更记录</nuxt-link>
           </li>
           <li class="nav-item">
-            <a
-              href="https://github.com/tianyong90/we-vue/issues/new/choose"
-              target="new"
+            <a href="https://github.com/tianyong90/we-vue/issues/new/choose" target="new"
               >问题反馈</a
             >
           </li>
@@ -42,10 +37,7 @@
             >
               {{ version | versionText }}
             </a>
-            <div
-              v-show="dropdowVisible"
-              class="dropdown-menu dropdown-menu-right"
-            >
+            <div v-show="dropdowVisible" class="dropdown-menu dropdown-menu-right">
               <nuxt-link
                 class="dropdown-item"
                 :class="{ active: version === 'v2' }"
@@ -64,57 +56,61 @@
           </li>
         </ul>
       </div>
+
+      <!--TODO: 亮暗主题切换-->
+      <!--<div class="iconfont icon-light theme-toggle" @click="toggleTheme"></div>-->
     </div>
   </header>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import DocsearchBox from './docsearch-box'
 
-export default {
+export default Vue.extend({
   name: 'DocHeader',
 
   components: {
-    DocsearchBox
+    DocsearchBox,
   },
 
   filters: {
     versionText: value => {
       return value + '.x'
-    }
+    },
   },
 
   props: {
     theme: {
       type: String,
-      default: 'lighter'
-    }
+      default: 'lighter',
+    },
   },
 
   data() {
     return {
       version: this.$route.params.version,
-      dropdowVisible: false
+      dropdowVisible: false,
     }
   },
 
   computed: {
     searchBoxOptions() {
       return {
-        algoliaOptions: { facetFilters: [`version:${this.version}`] }
+        algoliaOptions: { facetFilters: [`version:${this.version}`] },
       }
     },
 
     versionPickerVisible() {
       return this.$route.path.startsWith('/doc')
-    }
+    },
   },
 
   watch: {
     '$route.params'(params) {
       const { version } = params
       this.version = version
-    }
+    },
   },
 
   mounted() {
@@ -128,7 +124,14 @@ export default {
       false
     )
   },
-}
+
+  methods: {
+    toggleTheme() {
+      const theme = this.$store.state.theme === 'dark' ? 'light' : 'dark'
+      this.$store.commit('SET_THEME', theme)
+    },
+  },
+})
 </script>
 
 <style scoped lang="scss">
@@ -188,5 +191,12 @@ $header-home-background-color: #040f23;
       }
     }
   }
+}
+
+.theme-toggle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000;
+  cursor: pointer;
 }
 </style>

@@ -1,18 +1,25 @@
 <template>
-  <div>
+  <div :class="`theme-${theme}`">
     <Header />
     <nuxt class="main" />
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
+import { mapState } from 'vuex'
+
 import Header from '~/components/Header'
 
-export default {
+export default Vue.extend({
   components: {
-    Header
-  }
-}
-</script>
+    Header,
+  },
 
-<style></style>
+  computed: {
+    ...mapState({
+      theme: state => state.theme,
+    }),
+  },
+})
+</script>
