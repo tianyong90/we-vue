@@ -1,15 +1,27 @@
 <template>
-  <div>
-    <h1>{{ error.statusCode }}</h1>
+  <div class="container">
+    <div class="error-code">{{ error.statusCode }}</div>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    error: Object
-  }
+    error: Object,
+  },
 }
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.error-code {
+  font-size: 10rem;
+  color: #999;
+}
+</style>
