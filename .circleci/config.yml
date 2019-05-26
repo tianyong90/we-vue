@@ -75,7 +75,7 @@ jobs:
           name: deploy demo
           when: on_success
           command: |
-            rsync -vzrtopg --progress -e ssh --delete ~/we-vue/packages/demo/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
+            rsync -vzrtopg --progress -e ssh --delete ./packages/demo/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
 
   # 生成文档并部署
   generate_deploy_docs:
@@ -116,7 +116,7 @@ jobs:
           name: deploy docs
           when: on_success
           command: |
-            rsync -vzrtopg --progress -e ssh --delete ~/we-vue/packages/docs/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
+            rsync -vzrtopg --progress -e ssh --delete ./packages/docs/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
 
 workflows:
   version: 2
