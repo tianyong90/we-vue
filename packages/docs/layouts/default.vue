@@ -9,7 +9,7 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 
-import Header from '~/components/Header.vue'
+import Header from '../components/Header.vue'
 
 export default Vue.extend({
   components: {

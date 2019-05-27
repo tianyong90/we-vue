@@ -41,7 +41,7 @@ import Vue from 'vue'
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'highlight.js/styles/atom-one-dark.css'
-import WevueDemo from '~/components/wevue-demo.vue'
+import WevueDemo from '@/components/wevue-demo.vue'
 
 // TODO: 引入 md 样式
 // if (false) {
@@ -94,7 +94,7 @@ export default Vue.extend({
 
     const { html, attributes } = res
 
-    const { nav } = await import('~/config')
+    const { nav } = await import('@/config')
 
     const sidebarNav = nav[version]
 
