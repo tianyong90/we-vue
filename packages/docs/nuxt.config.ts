@@ -87,6 +87,8 @@ const config: NuxtConfiguration = {
    ** Build configuration
    */
   build: {
+    quiet: false,
+
     parallel: false, // 这个设置为 false，因为 extractCSS 为true 时冲突
 
     // 生产模式下使用 extractCSS，开发时不用，以免影响热替换 hmr
