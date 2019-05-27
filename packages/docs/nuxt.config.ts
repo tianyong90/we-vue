@@ -87,6 +87,7 @@ const config: NuxtConfiguration = {
    ** Build configuration
    */
   build: {
+    // 非静默，便于 CI 中输出 log
     quiet: false,
 
     parallel: false, // 这个设置为 false，因为 extractCSS 为true 时冲突
