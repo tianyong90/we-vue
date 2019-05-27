@@ -1,27 +1,58 @@
 version: 2
 
-jobs:
-  lib_test_coverage:
-    docker:
-      - image: circleci/node:10.15.1-browsers-legacy
+defaults: &defaults
+  working_directory: ~/we-vue
+  docker:
+    - image: circleci/node:10.15.3-browsers-legacy
 
-    working_directory: ~/we-vue
+jobs:
+  # ----------------------------------------------------------
+  # Phase 1: Setup
+  # ----------------------------------------------------------
+  setup:
+    <<: *defaults
+    steps:
+      # Checkout repository
+      - checkout
+
+      # Restore cache
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - yarn-packages-{{ .Branch }}-
+
+      # Install dependencies
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile --non-interactive
+
+      # Save cache
+      - save_cache:
+          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - packages/*/node_modules
+
+      # Persist workspace
+      - persist_to_workspace:
+          root: ~/we-vue
+          paths:
+            - node_modules
+            - packages/*/node_modulels
+            - packages/*/dist
+
+  # ----------------------------------------------------------
+  # Phase 2: Test lib and update coverage result
+  # ----------------------------------------------------------
+  test-lib:
+    <<: *defaults
 
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-          - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - yarn-packages-{{ .Branch }}-
-
-      - run: yarn --frozen-lockfile --non-interactive
-
-      - save_cache:
-          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - attach_workspace:
+          at: ~/we-vue
 
       # test packages/we-vue
       - run: yarn test:coverage
@@ -29,35 +60,26 @@ jobs:
       # update codecov stats
       - run: yarn lerna run coverage --scope we-vue --stream
 
-  build_deploy_demo:
-    docker:
-      - image: circleci/node:10.15.1-browsers-legacy
-
-    working_directory: ~/we-vue
+  # ----------------------------------------------------------
+  # Phase 3: Build and deploy demo
+  # ----------------------------------------------------------
+  build-deploy-demo:
+    <<: *defaults
 
     steps:
+      - checkout
+
       - add_ssh_keys:
           fingerprints:
             - "6a:aa:77:77:28:51:9f:01:4b:b2:7e:3e:ea:f6:20:1a"
 
       - run: echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
+      # Install rsync
       - run: sudo apt install rsync -y
 
-      - checkout
-
-      - restore_cache:
-          keys:
-          - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - yarn-packages-{{ .Branch }}-
-
-      - run: yarn --frozen-lockfile --non-interactive
-
-      - save_cache:
-          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - attach_workspace:
+          at: ~/we-vue
 
       # build component lib and dist《because demo needs to import it)
       - run: yarn lerna run build --scope we-vue
@@ -65,80 +87,81 @@ jobs:
       # build demo
       - run: yarn lerna run build --scope demo --stream
 
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - packages/demo/dist
-
       # deploy demo
       - deploy:
-          name: deploy demo
+          name: Deploy Demo
           when: on_success
           command: |
-            rsync -vzrtopg --progress -e ssh --delete ./packages/demo/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
+            rsync -vzrtopg --progress -e ssh --delete packages/demo/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/demo.wevue.org
 
-  # 生成文档并部署
-  generate_deploy_docs:
-    docker:
-      - image: circleci/node:10.15.1-browsers-legacy
-
-    working_directory: ~/we-vue
+  # ----------------------------------------------------------
+  # Phase 3: Generate and deploy docs
+  # ----------------------------------------------------------
+  generate-deploy-docs:
+    <<: *defaults
 
     steps:
+      - checkout
+
       - add_ssh_keys:
           fingerprints:
             - "6a:aa:77:77:28:51:9f:01:4b:b2:7e:3e:ea:f6:20:1a"
 
       - run: echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
+      # Install rsync
       - run: sudo apt install rsync -y
 
-      - checkout
-
-      - restore_cache:
-          keys:
-            - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - yarn-packages-{{ .Branch }}-
-
-      - run: yarn --frozen-lockfile --non-interactive
-
-      - save_cache:
-          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - attach_workspace:
+          at: ~/we-vue
 
       # build demo and docs
       - run: yarn lerna run generate --scope docs --stream
 
+      # TODO:
+      - run: ls packages/docs -la
+      - run: ls .. -la
+
       # deploy docs
       - deploy:
-          name: deploy docs
+          name: Deploy Docs
           when: on_success
           command: |
-            rsync -vzrtopg --progress -e ssh --delete ./packages/docs/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
+            rsync -vzrtopg --progress -e ssh --delete packages/docs/dist/* $DEPLOY_USER@$DEPLOY_HOST:/data/wwwroot/wevue.org
 
 workflows:
   version: 2
-  # deploy both demo and docs-site
-  lib_and_demo:
+
+  # test lib and update codecove stats after commit to master branch.
+  lib-and-demo:
     jobs:
-      - lib_test_coverage:
+      - setup:
           filters:
             branches:
               only:
                 - master
-      - build_deploy_demo:
+      - test-lib:
           requires:
-            - lib_test_coverage
+            - setup
+          filters:
+            branches:
+              only:
+                - master
+      - build-deploy-demo:
+          requires:
+            - test-lib
           filters:
             branches:
               only:
                 - master
 
-  deploy_docs:
+  # Generate docs and deploy it
+  docs:
     jobs:
-      - generate_deploy_docs:
+      - setup
+      - generate-deploy-docs:
+          requires:
+            - setup
           filters:
             branches:
               only:
