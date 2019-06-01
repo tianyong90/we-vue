@@ -44,7 +44,6 @@ export default {
   top: 100px;
   right: 20px;
   width: 100%;
-  z-index: 50;
   border-radius: 6px;
   box-sizing: border-box;
   box-shadow: #999 -3px 3px 20px;

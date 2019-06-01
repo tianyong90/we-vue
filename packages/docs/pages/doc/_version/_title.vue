@@ -1,37 +1,38 @@
 <template>
-  <div class="container-fluid doc-wrapper">
-    <div class="row">
-      <div class="col-md-2 d-none d-md-block bg-white sidebar">
-        <div id="sidebarWrapper" class="sidebar-sticky">
-          <ul>
-            <li v-for="navItem in sidebarNav" :key="navItem.title" class="doc-nav__item">
-              <h2 class="title" v-html="navItem.title" />
-              <div v-for="(group, index) in navItem.groups" :key="index">
-                <div v-if="group.groupName" class="group-name" v-text="group.groupName" />
-                <ul class="sub-tree">
-                  <li>
-                    <router-link
-                      v-for="subItem in group.list"
-                      :key="subItem.title"
-                      :to="subItem.path"
-                      active-class="current"
-                      v-text="subItem.title"
-                    />
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
+  <div class="w-full flex flex-row -mx-2">
+    <div class="w-1/6 px-2  bg-white sidebar">
+      <div id="sidebarWrapper" class="sidebar-sticky">
+        <ul>
+          <li v-for="navItem in sidebarNav" :key="navItem.title" class="doc-nav__item">
+            <h2 class="title" v-html="navItem.title" />
+            <div v-for="(group, index) in navItem.groups" :key="index">
+              <div v-if="group.groupName" class="group-name" v-text="group.groupName" />
+              <ul class="sub-tree">
+                <li>
+                  <router-link
+                    v-for="subItem in group.list"
+                    :key="subItem.title"
+                    :to="subItem.path"
+                    active-class="current"
+                    v-text="subItem.title"
+                  />
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="doc-content markdown-body col-md-6 col-lg-7 px-4 offset-md-2">
-        <!--todo-->
-        <div class="markdown-body" v-html="html"></div>
-      </div>
+    </div>
+    <div class="w-7/12 px-2 doc-content">
+      <div class="markdown-body px-6 py-12" v-html="html"></div>
+    </div>
 
-      <div class="col-md-4 col-lg-3">
-        <WevueDemo :url="attributes.demo_url || '//demo.wevue.org'" :sticky-top="0" />
-      </div>
+    <div class="lg:w-3/12 px-2">
+      <WevueDemo
+        class="sticky right-0 top-0"
+        :url="attributes.demo_url || '//demo.wevue.org'"
+        :sticky-top="0"
+      />
     </div>
   </div>
 </template>
@@ -122,24 +123,20 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.doc-wrapper {
-  margin-top: 70px;
-}
-
 .sidebar {
-  position: fixed;
-  top: 70px;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  flex: 0 0 220px;
+  /*position: fixed;*/
+  /*top: 70px;*/
+  /*bottom: 0;*/
+  /*left: 0;*/
+  /*z-index: 100;*/
+  /*flex: 0 0 220px;*/
   border-right: 1px solid #e0e0e0;
-  background-color: #f00;
+  background-color: #fff;
   padding: 0;
 
   .sidebar-sticky {
     position: sticky;
-    top: 0;
+    top: 70px;
     height: calc(100vh - 70px);
     padding-top: 0.5rem;
     overflow-x: hidden;
@@ -203,10 +200,5 @@ export default Vue.extend({
       }
     }
   }
-}
-
-.doc-content {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 </style>

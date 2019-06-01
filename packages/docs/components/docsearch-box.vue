@@ -1,8 +1,8 @@
 <template>
-  <form class="form-inline ml-auto mr-2">
+  <form class="">
     <input
       id="algolia-search-input"
-      class="form-control algolia-search-input search-query"
+      class="appearance-none p-2 rounded-full border-none focus:shadow-outline bg-blue-700 text-white search-input"
       placeholder="搜索文档"
     />
   </form>
@@ -54,18 +54,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.algolia-search-input {
-  background: url(/svg/icon_search.svg) no-repeat 98% 50%;
+.search-input {
+  background-image: url(/svg/icon_search.svg);
+  background-repeat: no-repeat;
+  background-position: 95% center;
   background-size: 1.4rem;
 
-  &:focus {
-    outline: none;
-    border-color: #41b883;
-    box-shadow: 0 0 0 1px #41b883, 0 0 0 0.2rem rgba(41, 184, 83, 0.25);
-  }
-
   &::placeholder {
-    color: #999;
+    color: #ccc;
   }
 }
 </style>

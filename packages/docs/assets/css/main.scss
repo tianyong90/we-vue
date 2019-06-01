@@ -1,5 +1,6 @@
-@import "prism-themes/themes/prism-atom-dark.css";
-@import "github-markdown-css/github-markdown.css";
+@import "~normalize.css";
+@import "~prism-themes/themes/prism-atom-dark.css";
+@import "~github-markdown-css/github-markdown.css";
 
 // iconfont 图标
 // 项目地址：https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=223763
@@ -78,7 +79,7 @@
 
 div[class*="language-"] {
   position: relative;
-  z-index: 100;
+  z-index: 10;
   background: #1d1f21;
 
   &::before {

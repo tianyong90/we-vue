@@ -1,61 +1,68 @@
 <template>
-  <header
-    class="navbar navbar-expand flex-column flex-md-row fixed-top"
-    :class="['navbar-' + theme]"
-  >
-    <div class="container-fluid justify-content-between">
-      <nuxt-link class="navbar-brand" to="/">
-        <img class="d-block logo" src="/images/logo.png" alt="we-vue" />
+  <header class="bg-blue-600 sticky top-0 z-50 py-2 px-6" :class="['navbar-' + theme]">
+    <div class="w-full flex flex-row items-center overflow-visible">
+      <nuxt-link to="/">
+        <img class="w-12 h-12" src="/images/logo.png" alt="we-vue" />
       </nuxt-link>
 
-      <DocsearchBox v-if="$route.path.indexOf('/doc') > -1" :options="searchBoxOptions" />
+      <DocsearchBox
+        v-if="$route.path.indexOf('/doc') > -1"
+        class="ml-auto"
+        :options="searchBoxOptions"
+      />
 
-      <div class="navbar-nav-scroll">
-        <ul class="navbar-nav ml-3">
-          <li class="nav-item">
-            <nuxt-link to="/doc/v2/index">文档</nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link :to="`/doc/${version}/changelog`">变更记录</nuxt-link>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/tianyong90/we-vue/issues/new/choose" target="new"
-              >问题反馈</a
-            >
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/tianyong90/we-vue" target="new"
-              ><i class="fab fa-github"></i> GitHub</a
-            >
-          </li>
-          <li v-show="versionPickerVisible" class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
+      <ul class="flex flex-row ml-5 list-none">
+        <li class="mr-6">
+          <nuxt-link class="text-white no-underline text-lg" to="/doc/v2/index">文档</nuxt-link>
+        </li>
+        <li class="mr-6">
+          <nuxt-link class="text-white no-underline text-lg" :to="`/doc/${version}/changelog`"
+            >变更记录</nuxt-link
+          >
+        </li>
+        <li class="mr-6">
+          <a
+            class="text-white no-underline text-lg"
+            href="https://github.com/tianyong90/we-vue/issues/new/choose"
+            target="new"
+            >问题反馈</a
+          >
+        </li>
+        <li class="mr-6">
+          <a
+            class="text-white no-underline text-lg"
+            href="https://github.com/tianyong90/we-vue"
+            target="new"
+            ><i class="fab fa-github"></i> GitHub</a
+          >
+        </li>
+        <li v-show="versionPickerVisible" class="ml-6 relative overflow-visible dropdown">
+          <a
+            class="dropdown-toggle text-white no-underline text-lg"
+            href="#"
+            role="button"
+            @click.prevent="dropdowVisible = true"
+          >
+            {{ version | versionText }}
+          </a>
+          <div v-show="dropdowVisible" class="dropdown-menu">
+            <nuxt-link
+              class="text-base text-black px-8 py-1 hover:text-white hover:bg-blue-700 block no-underline"
+              :class="{ active: version === 'v2' }"
               href="#"
-              role="button"
-              @click.prevent="dropdowVisible = true"
+              to="/doc/v2/index"
+              >v2.x</nuxt-link
             >
-              {{ version | versionText }}
-            </a>
-            <div v-show="dropdowVisible" class="dropdown-menu dropdown-menu-right">
-              <nuxt-link
-                class="dropdown-item"
-                :class="{ active: version === 'v2' }"
-                href="#"
-                to="/doc/v2/index"
-                >v2.x</nuxt-link
-              >
-              <nuxt-link
-                class="dropdown-item"
-                :class="{ active: version === 'v3' }"
-                href="#"
-                to="/doc/v3/index"
-                >v3.x</nuxt-link
-              >
-            </div>
-          </li>
-        </ul>
-      </div>
+            <nuxt-link
+              class="text-base text-black px-8 py-1 hover:text-white hover:bg-blue-700 block no-underline"
+              :class="{ active: version === 'v3' }"
+              href="#"
+              to="/doc/v3/index"
+              >v3.x</nuxt-link
+            >
+          </div>
+        </li>
+      </ul>
 
       <!--TODO: 亮暗主题切换-->
       <!--<div class="iconfont icon-light theme-toggle" @click="toggleTheme"></div>-->
@@ -75,7 +82,7 @@ export default Vue.extend({
   },
 
   filters: {
-    versionText: value => {
+    versionText: (value: string) => {
       return value + '.x'
     },
   },
@@ -95,13 +102,13 @@ export default Vue.extend({
   },
 
   computed: {
-    searchBoxOptions() {
+    searchBoxOptions(): object {
       return {
         algoliaOptions: { facetFilters: [`version:${this.version}`] },
       }
     },
 
-    versionPickerVisible() {
+    versionPickerVisible(): boolean {
       return this.$route.path.startsWith('/doc')
     },
   },
@@ -135,68 +142,14 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-$header-height: 70px;
-$header-background-color: #fff;
-$header-home-background-color: #040f23;
-
 .dropdown-menu {
-  display: block;
-}
-
-.navbar {
-  height: $header-height;
-  background-color: $header-background-color;
-  border-bottom: 1px solid #dfdfdf;
-  z-index: 65535;
-
-  .logo {
-    width: 55px;
-    height: 55px;
-  }
-
-  &.navbar-lighter {
-    .navbar-nav {
-      a {
-        color: #333;
-        text-decoration: none;
-        display: inline-block;
-        padding: 0 1em;
-
-        &:hover {
-          color: #41b883;
-        }
-
-        &.router-link-active {
-          color: #41b883;
-        }
-      }
-    }
-  }
-
-  &.navbar-darker {
-    .navbar-nav {
-      a {
-        color: #fff;
-        text-decoration: none;
-        display: inline-block;
-        padding: 0 1em;
-
-        &:hover {
-          color: #222;
-        }
-
-        &.router-link-active {
-          color: #222;
-        }
-      }
-    }
-  }
-}
-
-.theme-toggle {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #000;
-  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  padding: 0.5rem 1rem;
+  background-color: #efefef;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 </style>

@@ -1,10 +1,28 @@
-import path from 'path'
+import path, { join } from 'path'
 import NuxtConfiguration from '@nuxt/config'
 import Fiber from 'fibers'
 import Sass from 'sass'
+import Purgecss from '@fullhuman/postcss-purgecss'
 import _ from 'lodash'
 import pkg from './package.json'
 import { nav } from './config'
+
+const purgecss = Purgecss({
+  // Specify the paths to all of the template files in your project
+  content: [
+    './pages/**/*.html',
+    './pages/**/*.vue',
+    './components/**/*.vue',
+    './components/**/*.jsx',
+    // etc.
+  ],
+
+  // Include any special characters you're using in this regular expression
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+})
+
+// console.log(posts)
+const tailwindJS = join(__dirname, 'tailwind.config.js')
 
 // 从 config 的侧栏菜单配置中提取路由
 const generatePaths = function(navs) {
@@ -57,7 +75,7 @@ const config: NuxtConfiguration = {
   /*
    ** Global CSS
    */
-  css: ['~assets/css/main.scss'],
+  css: ['~/assets/css/tailwind.css', '~assets/css/main.scss'],
 
   /*
    ** Plugins to load before mounting the App
@@ -70,10 +88,9 @@ const config: NuxtConfiguration = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
   ],
 
+  // monorepo 中使用时需要注意
   modulelsDir: ['../../node_modules'],
 
   /*
@@ -92,8 +109,12 @@ const config: NuxtConfiguration = {
 
     parallel: false, // 这个设置为 false，因为 extractCSS 为true 时冲突
 
-    // 生产模式下使用 extractCSS，开发时不用，以免影响热替换 hmr
-    extractCSS: process.env.NODE_ENV === 'production',
+    extractCSS: true,
+
+    postcss: {
+      plugins: [require('tailwindcss')(tailwindJS), require('autoprefixer')],
+      ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
+    },
 
     loaders: {
       scss: {
