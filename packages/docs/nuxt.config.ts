@@ -19,6 +19,8 @@ const purgecss = Purgecss({
 
   // Include any special characters you're using in this regular expression
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+  whitelist: ['html', 'body', 'nuxt-progress'],
+  whitelistPatternsChildren: [/^token/, /^pre/, /^code/, /^line-numbers-wrapper/, /^line-number/],
 })
 
 // console.log(posts)
@@ -113,8 +115,11 @@ const config: NuxtConfiguration = {
     extractCSS: process.env.NODE_ENV === 'production',
 
     postcss: {
-      plugins: [require('tailwindcss')(tailwindJS), require('autoprefixer')],
-      ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
+      plugins: [
+        require('tailwindcss')(tailwindJS),
+        require('autoprefixer'),
+        ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
+      ],
     },
 
     loaders: {
