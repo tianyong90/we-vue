@@ -1,68 +1,66 @@
 <template>
-  <header class="bg-blue-600 sticky top-0 z-50 py-2 px-6" :class="['navbar-' + theme]">
+  <header class="bg-blue-600 sticky top-0 z-50 px-6 py-2">
     <div class="w-full flex flex-row items-center overflow-visible">
       <nuxt-link to="/">
         <img class="w-12 h-12" src="/images/logo.png" alt="we-vue" />
       </nuxt-link>
 
-      <DocsearchBox
-        v-if="$route.path.indexOf('/doc') > -1"
-        class="ml-auto"
-        :options="searchBoxOptions"
-      />
+      <div class="ml-auto flex items-center">
+        <DocsearchBox v-if="$route.path.indexOf('/doc') > -1" :options="searchBoxOptions" />
 
-      <ul class="flex flex-row ml-5 list-none">
-        <li class="mr-6">
-          <nuxt-link class="text-white no-underline text-lg" to="/doc/v2/index">文档</nuxt-link>
-        </li>
-        <li class="mr-6">
-          <nuxt-link class="text-white no-underline text-lg" :to="`/doc/${version}/changelog`"
-            >变更记录</nuxt-link
-          >
-        </li>
-        <li class="mr-6">
-          <a
-            class="text-white no-underline text-lg"
-            href="https://github.com/tianyong90/we-vue/issues/new/choose"
-            target="new"
-            >问题反馈</a
-          >
-        </li>
-        <li class="mr-6">
-          <a
-            class="text-white no-underline text-lg"
-            href="https://github.com/tianyong90/we-vue"
-            target="new"
-            ><i class="fab fa-github"></i> GitHub</a
-          >
-        </li>
-        <li v-show="versionPickerVisible" class="ml-6 relative overflow-visible dropdown">
-          <a
-            class="dropdown-toggle text-white no-underline text-lg"
-            href="#"
-            role="button"
-            @click.prevent="dropdowVisible = true"
-          >
-            {{ version | versionText }}
-          </a>
-          <div v-show="dropdowVisible" class="dropdown-menu">
-            <nuxt-link
-              class="text-base text-black px-8 py-1 hover:text-white hover:bg-blue-700 block no-underline"
-              :class="{ active: version === 'v2' }"
-              href="#"
-              to="/doc/v2/index"
-              >v2.x</nuxt-link
+        <ul class="flex flex-row list-none">
+          <li class="mr-6">
+            <nuxt-link class="text-white no-underline text-lg" to="/doc/v2/index">文档</nuxt-link>
+          </li>
+          <li class="mr-6">
+            <nuxt-link class="text-white no-underline text-lg" :to="`/doc/${version}/changelog`"
+              >变更记录</nuxt-link
             >
-            <nuxt-link
-              class="text-base text-black px-8 py-1 hover:text-white hover:bg-blue-700 block no-underline"
-              :class="{ active: version === 'v3' }"
-              href="#"
-              to="/doc/v3/index"
-              >v3.x</nuxt-link
+          </li>
+          <li class="mr-6">
+            <a
+              class="text-white no-underline text-lg"
+              href="https://github.com/tianyong90/we-vue/issues/new/choose"
+              target="new"
+              >问题反馈</a
             >
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li class="mr-6">
+            <a
+              class="text-white no-underline text-lg"
+              href="https://github.com/tianyong90/we-vue"
+              target="new"
+              ><i class="fab fa-github"></i> GitHub</a
+            >
+          </li>
+          <li v-show="versionPickerVisible" class="ml-6 relative overflow-visible dropdown">
+            <a
+              class="dropdown-toggle text-white no-underline text-lg"
+              href="#"
+              role="button"
+              @click.prevent="dropdowVisible = true"
+            >
+              {{ version | versionText }}
+            </a>
+            <div v-show="dropdowVisible" class="dropdown-menu">
+              <nuxt-link
+                class="text-base text-black px-8 py-1 hover:text-white hover:bg-blue-700 block no-underline"
+                :class="{ active: version === 'v2' }"
+                href="#"
+                to="/doc/v2/index"
+                >v2.x</nuxt-link
+              >
+              <nuxt-link
+                class="text-base text-black px-8 py-1 hover:text-white hover:bg-blue-700 block no-underline"
+                :class="{ active: version === 'v3' }"
+                href="#"
+                to="/doc/v3/index"
+                >v3.x</nuxt-link
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
 
       <!--TODO: 亮暗主题切换-->
       <!--<div class="iconfont icon-light theme-toggle" @click="toggleTheme"></div>-->

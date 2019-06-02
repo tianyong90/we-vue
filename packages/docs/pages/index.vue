@@ -3,7 +3,7 @@
     <div class="">
       <div class="w-full bg-blue-600 py-16 justify-center">
         <div class="container max-w-6xl mx-auto justify-center">
-          <img class="w-64 flex mx-auto" src="/images/logo.png" alt="" />
+          <img class="w-64 flex mx-auto my-12" src="/images/logo.png" alt="" />
           <h1 class="text-center mt-2 text-white text-4xl">
             we-vue， 不只是 vue.js + weui！
           </h1>
@@ -12,17 +12,17 @@
         <div class="container max-w-md mx-auto flex mt-12 text-center justify-center">
           <router-link
             to="/doc/v2/index"
-            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-2 rounded-full"
+            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-4 rounded-full"
             >文档
           </router-link>
           <a
             href="https://demo.wevue.org"
-            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-2 rounded-full"
+            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-4 rounded-full"
             >在线示例</a
           >
           <a
             href="https://github.com/tianyong90/WE-VUE"
-            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-2 rounded-full uppercase"
+            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-4 rounded-full uppercase"
             ><i class="fab fa-github"></i> GitHub</a
           >
         </div>
