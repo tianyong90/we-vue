@@ -55,7 +55,7 @@ jobs:
           at: ~/we-vue
 
       # test packages/we-vue
-      - run: yarn test:coverage
+      - run: yarn lerna run test:coverage --scope we-vue --stream -- --runInBand
 
       # update codecov stats
       - run: yarn lerna run coverage --scope we-vue --stream
