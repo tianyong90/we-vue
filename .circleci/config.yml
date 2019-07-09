@@ -22,6 +22,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - yarn-packages-{{ .Branch }}-
 
+      - run:
+          command: yarn global add lerna
+
       # Install dependencies
       - run:
           name: Install Dependencies
@@ -55,10 +58,10 @@ jobs:
           at: ~/we-vue
 
       # test packages/we-vue
-      - run: lerna run test:coverage --scope we-vue --stream -- --runInBand
+      - run: lerna run test:coverage --scope we-vue --stream
 
       # update codecov stats
-      - run: yarn lerna run coverage --scope we-vue --stream
+      - run: lerna run coverage --scope we-vue --stream
 
   # ----------------------------------------------------------
   # Phase 3: Build and deploy demo
@@ -82,10 +85,10 @@ jobs:
           at: ~/we-vue
 
       # build component lib and dist《because demo needs to import it)
-      - run: yarn lerna run build --scope we-vue
+      - run: lerna run build --scope we-vue
 
       # build demo
-      - run: yarn lerna run build --scope demo --stream
+      - run: lerna run build --scope demo --stream
 
       # deploy demo
       - deploy:
@@ -116,7 +119,7 @@ jobs:
           at: ~/we-vue
 
       # build demo and docs
-      - run: yarn lerna run generate --scope docs --stream
+      - run: lerna run generate --scope docs --stream
 
       # deploy docs
       - deploy:
