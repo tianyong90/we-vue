@@ -25,7 +25,7 @@ jobs:
       # Install dependencies
       - run:
           name: Install Dependencies
-          command: yarn --frozen-lockfile --non-interactive
+          command: yarn --no-lockfile --frozen-lockfile --non-interactive
 
       # Save cache
       - save_cache:
