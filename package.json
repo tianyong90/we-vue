@@ -11,6 +11,7 @@
     "test": "lerna run test --scope we-vue --stream",
     "test:watch": "lerna run test:watch --scope we-vue --stream",
     "test:coverage": "lerna run test:coverage --scope we-vue --stream",
+    "test:ci": "lerna run test:coverage --scope we-vue --stream -- --runInBand",
     "release": "yarn --pure-lockfile && node scripts/release.js"
   },
   "husky": {
