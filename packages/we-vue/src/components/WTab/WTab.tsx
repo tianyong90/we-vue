@@ -1,8 +1,8 @@
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 
 // Mixins
-import findParent from '../../mixins/find-parent'
+import findParent from '@/mixins/find-parent'
 import Vue, { VNode } from 'vue'
 
 interface options extends Vue {

@@ -1,6 +1,6 @@
 import Vue, { PluginFunction } from 'vue'
 import ToastComponent from './WToast'
-import { isObj } from '../../utils'
+import { isObj } from '@/utils'
 
 type ToastOptions = {
   visible: boolean

@@ -1,6 +1,6 @@
 import { mount, shallowMount, Wrapper } from '@vue/test-utils'
 import Actionsheet from '../WActionsheet'
-import { ExtractVue } from '@utils/mixins'
+import { ExtractVue } from '@/utils/mixins'
 
 describe('actionsheet', () => {
   type Instance = ExtractVue<typeof Actionsheet>

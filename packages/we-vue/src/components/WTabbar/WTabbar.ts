@@ -1,4 +1,4 @@
-import '../../scss/tabbar.scss'
+import '@/scss/tabbar.scss'
 
 import Vue, { VNode } from 'vue'
 

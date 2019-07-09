@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/icon.scss'
+import '@/scss/icon.scss'
 // Types
 import { VNode } from 'vue/types/vnode'
 

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/flex.scss'
+import '@/scss/flex.scss'
 import { PropValidator } from 'vue/types/options'
 import { VNode } from 'vue/types/vnode'
 

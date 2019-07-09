@@ -1,4 +1,4 @@
-import '../../scss/checklist.scss'
+import '@/scss/checklist.scss'
 
 import Vue from 'vue'
 

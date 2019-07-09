@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/radio.scss'
+import '@/scss/radio.scss'
 
 import { PropValidator } from 'vue/types/options'
 

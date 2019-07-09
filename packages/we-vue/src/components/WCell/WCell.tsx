@@ -1,8 +1,8 @@
-import '../../scss/cell.scss'
+import '@/scss/cell.scss'
 
-import Routeable from '../../mixins/routable'
+import Routeable from '@/mixins/routable'
 
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 
 export default mixins(
   Routeable

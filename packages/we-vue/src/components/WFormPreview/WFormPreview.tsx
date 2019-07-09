@@ -1,4 +1,4 @@
-import '../../scss/form-preview.scss'
+import '@/scss/form-preview.scss'
 
 import Vue from 'vue'
 import { PropValidator } from 'vue/types/options'

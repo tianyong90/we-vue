@@ -1,8 +1,8 @@
-import '../../scss/media-box.scss'
+import '@/scss/media-box.scss'
 
-import Routeable from '../../mixins/routable'
+import Routeable from '@/mixins/routable'
 
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 
 export default mixins(
   Routeable

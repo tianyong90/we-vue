@@ -3,9 +3,9 @@ import WPicker from '../WPicker'
 import Vue, { VNode } from 'vue'
 import { PropValidator } from 'vue/types/options'
 // Mixins
-import Picker from '../../mixins/picker'
+import Picker from '@/mixins/picker'
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 
 type PickerInstance = InstanceType<typeof WPicker>
 
@@ -15,7 +15,7 @@ enum columnType {
   county = 'county',
 }
 
-type typeAreaList = {
+type AreaList = {
   /* eslint-disable camelcase */
   province_list?: {
     [code: string]: string
@@ -31,17 +31,17 @@ type typeAreaList = {
 }
 
 // 每列的选项值类型， { '110000': '北京' }
-type typeArea = {
+type Area = {
   [code: string]: string
 }
 
-interface ioptions extends Vue {
+interface Options extends Vue {
   $refs: {
     picker: PickerInstance
   }
 }
 
-export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
+export default mixins<Options & ExtractVue<[typeof Picker]>>(Picker).extend({
   name: 'w-area-picker',
 
   components: {
@@ -52,7 +52,7 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
     areaList: {
       type: Object,
       default: () => ({}),
-    } as PropValidator<typeAreaList>,
+    } as PropValidator<AreaList>,
     visibleItemCount: {
       type: Number,
       default: 7,
@@ -72,31 +72,21 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
 
   data () {
     return {
-      lazyValue: this.value,
+      internalValue: this.value,
       columns: [{ options: [] }, { options: [] }, { options: [] }],
     }
   },
 
   computed: {
-    internalValue: {
-      get (): string {
-        return this.lazyValue
-      },
-      set (val: string | any[]): void {
-        this.lazyValue = val
-        // this.$emit('input', val)
-      },
-    },
-
-    province (): typeArea {
+    province (): Area {
       return this.areaList.province_list || {}
     },
 
-    city (): typeArea {
+    city (): Area {
       return this.areaList.city_list || {}
     },
 
-    county (): typeArea {
+    county (): Area {
       return this.areaList.county_list || {}
     },
 
@@ -108,6 +98,9 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
   watch: {
     value (val) {
       this.internalValue = val
+    },
+
+    internalValue (val) {
       this.setOptions()
     },
 
@@ -124,8 +117,8 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
   },
 
   methods: {
-    getList (type: columnType, code = ''): typeArea[] {
-      let result: typeArea[] = []
+    getList (type: columnType, code = ''): Area[] {
+      let result: Area[] = []
       if (type !== 'province' && !code) {
         return result
       }
@@ -159,17 +152,16 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       return 0
     },
 
-    // set column values
+    // set column options
     setOptions (): void {
       let code = this.internalValue || Object.keys(this.county)[0] || ''
       const { picker } = this.$refs
-      const province = this.getList(columnType.province)
-      const city = this.getList(columnType.city, code.slice(0, 2))
-
       /* istanbul ignore next */
       if (!picker) {
         return
       }
+      const province = this.getList(columnType.province)
+      const city = this.getList(columnType.city, code.slice(0, 2))
 
       picker.setColumnOptions(0, province)
       picker.setColumnOptions(1, city)
@@ -179,15 +171,18 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       }
 
       picker.setColumnOptions(2, this.getList(columnType.county, code.slice(0, 4)))
-      picker.setIndexes([
-        this.getIndex(columnType.province, code),
-        this.getIndex(columnType.city, code),
-        this.getIndex(columnType.county, code),
-      ])
+
+      picker.$nextTick(() => {
+        picker.setIndexes([
+          this.getIndex(columnType.province, code),
+          this.getIndex(columnType.city, code),
+          this.getIndex(columnType.county, code),
+        ])
+      })
     },
 
     // get current selected values of all typeColumns
-    getValues (): typeArea[] {
+    getValues (): Area[] {
       return this.$refs.picker ? this.$refs.picker.getValues() : []
     },
 
@@ -220,10 +215,8 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       return area
     },
 
-    onChange (picker: PickerInstance) {
-      const values = this.getValues()
-
-      this.internalValue = values[0].code as string
+    onChange (picker: PickerInstance, values: any[], columnIndex: number): void {
+      this.internalValue = values[columnIndex].code as string
       this.setOptions()
       this.$emit('change', picker, values)
     },
@@ -233,18 +226,19 @@ export default mixins<ioptions & ExtractVue<[typeof Picker]>>(Picker).extend({
       this.setOptions()
     },
 
-    onConfirm (e: Event) {
-      // TODO:
-      // e.preventDefault()
-
-      this.isActive = false
-      console.log(this.internalValue)
-      this.$emit('confirm', this.internalValue)
+    setColumnByValues (values: string[]) {
+      this.$refs.picker.setValues(values)
     },
 
     onCancel () {
       this.isActive = false
       this.$emit('cancel')
+    },
+
+    onConfirm () {
+      this.isActive = false
+      this.$emit('input', this.internalValue)
+      this.$emit('confirm', this.internalValue)
     },
   },
 

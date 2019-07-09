@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "paths": {
       "@/test/*": ["test/*"],
-      "@*": ["src/*"]
+      "@/*": ["src/*"]
     },
     "types": [
       "jest",

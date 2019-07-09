@@ -1,8 +1,8 @@
 import { VNode } from 'vue/types/vnode'
 
-import Routeable from '../../mixins/routable'
+import Routeable from '@/mixins/routable'
 
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 
 /* @vue/component */
 export default mixins(

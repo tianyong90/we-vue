@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import manager from './manager'
 import context from './context'
-import { getScrollEventTarget } from '../../utils/scroll'
-import { off, on } from '../../utils/event'
-import Touchable from '../../mixins/touchable'
+import { getScrollEventTarget } from '@/utils/scroll'
+import { off, on } from '@/utils/event'
+import Touchable from '@/mixins/touchable'
 
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 
 interface options extends Vue {
   opened: boolean

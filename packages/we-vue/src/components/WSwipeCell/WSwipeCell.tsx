@@ -1,14 +1,14 @@
-import '../../scss/cell-swipe.scss'
+import '@/scss/cell-swipe.scss'
 
-import { getTouch } from '../../utils'
+import { getTouch } from '@/utils'
 import WCell from '../WCell'
 import ClickOutside from '../../directives/click-outside'
 
 import Vue from 'vue'
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 // Mixins
-import Routable from '../../mixins/routable'
+import Routable from '@/mixins/routable'
 
 interface options extends Vue {
   $refs: {

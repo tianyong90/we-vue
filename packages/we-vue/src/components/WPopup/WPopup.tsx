@@ -1,8 +1,8 @@
-import '../../scss/popup.scss'
+import '@/scss/popup.scss'
 
-import PopupMixin from '../../mixins/popup'
+import PopupMixin from '@/mixins/popup'
 
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 import Vue from 'vue'
 
 interface options extends Vue {

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/loadmore.scss'
+import '@/scss/loadmore.scss'
 
 import WVSpinner from '../WSpinner'
 

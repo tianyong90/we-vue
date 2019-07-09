@@ -1,4 +1,4 @@
-import '../../scss/number-spinner.scss'
+import '@/scss/number-spinner.scss'
 
 import Vue from 'vue'
 

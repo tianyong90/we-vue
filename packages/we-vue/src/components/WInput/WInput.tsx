@@ -1,5 +1,5 @@
 import Vue, { VNode } from 'vue'
-import '../../scss/input.scss'
+import '@/scss/input.scss'
 
 import WVIcon from '../WIcon'
 

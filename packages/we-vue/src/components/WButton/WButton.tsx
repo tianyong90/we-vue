@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/button.scss'
+import '@/scss/button.scss'
 
 export default Vue.extend({
   name: 'w-button',

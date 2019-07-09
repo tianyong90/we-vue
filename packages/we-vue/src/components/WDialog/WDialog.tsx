@@ -1,5 +1,5 @@
-import PopupMixin from '../../mixins/popup'
-import mixins from '../../utils/mixins'
+import PopupMixin from '@/mixins/popup'
+import mixins from '@/utils/mixins'
 
 const CONFIRM_TEXT = '确定'
 const CANCEL_TEXT = '取消'

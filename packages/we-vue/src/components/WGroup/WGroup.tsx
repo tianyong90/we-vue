@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/group.scss'
+import '@/scss/group.scss'
 
 export default Vue.extend({
   name: 'w-group',

@@ -1,6 +1,6 @@
 import Vue, { PluginFunction } from 'vue'
 import TopTipsComponent from './WTopTips'
-import { isObj } from '../../utils'
+import { isObj } from '@/utils'
 
 type TopTipsOptions = {
   message?: string

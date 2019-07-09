@@ -15,6 +15,15 @@ module.exports = {
   configureWebpack: {
     resolve: {
       symlinks: false
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          use: ['source-map-loader'],
+          enforce: 'pre'
+        }
+      ]
     }
   }
 }

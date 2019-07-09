@@ -1,8 +1,8 @@
 import WVIcon from '../WIcon'
 import WVSpinner from '../WSpinner'
-import PopupMixin from '../../mixins/popup'
+import PopupMixin from '@/mixins/popup'
 
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 import { VNode } from 'vue'
 
 export default mixins(

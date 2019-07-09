@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import '../../scss/progress.scss'
+import '@/scss/progress.scss'
 
 export default Vue.extend({
   name: 'w-progress',

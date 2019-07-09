@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/footer.scss'
+import '@/scss/footer.scss'
 import WFooterLink from './WFooterLink'
 import { PropValidator } from 'vue/types/options'
 

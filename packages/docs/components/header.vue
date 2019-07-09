@@ -6,7 +6,7 @@
       </nuxt-link>
 
       <div class="ml-auto flex items-center">
-        <DocsearchBox v-if="$route.path.indexOf('/doc') > -1" :options="searchBoxOptions" />
+        <DocsearchBox v-if="$route.path.includes('/doc')" :options="searchBoxOptions" />
 
         <ul class="flex flex-row list-none">
           <li class="mr-6">

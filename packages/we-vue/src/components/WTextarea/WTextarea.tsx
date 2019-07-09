@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/textarea.scss'
+import '@/scss/textarea.scss'
 
 export default Vue.extend({
   name: 'w-textarea',

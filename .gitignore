@@ -2,7 +2,6 @@
 node_modules/
 *.log*
 
-# Editor directories and files
-.idea
-
 /.env
+
+!.idea

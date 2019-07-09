@@ -2,7 +2,7 @@ import { mount, Wrapper } from '@vue/test-utils'
 import Picker from '../WPicker'
 import PickerColumn from '../WPickerColumn'
 import { slowVerticalDrag } from '@/test/unit/utils'
-import { ExtractVue } from '@utils/mixins'
+import { ExtractVue } from '@/utils/mixins'
 
 const testSingleColumn = [
   {

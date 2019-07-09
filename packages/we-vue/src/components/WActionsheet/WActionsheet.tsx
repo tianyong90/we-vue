@@ -1,4 +1,4 @@
-import '../../scss/actionsheet.scss'
+import '@/scss/actionsheet.scss'
 import Vue, { VNode } from 'vue'
 import { PropValidator } from 'vue/types/options'
 

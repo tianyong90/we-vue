@@ -1,4 +1,4 @@
-import '../../scss/cell-swipe-button.scss'
+import '@/scss/cell-swipe-button.scss'
 
 import Vue from 'vue'
 import { VNode } from 'vue/types/vnode'

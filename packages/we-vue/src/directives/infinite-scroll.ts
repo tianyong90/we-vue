@@ -1,5 +1,5 @@
 import { VNode, VNodeDirective } from 'vue/types/vnode'
-import { getScrollEventTarget, getScrollTop, getVisibleHeight, getElementTop } from '../utils/scroll'
+import { getScrollEventTarget, getScrollTop, getVisibleHeight, getElementTop } from '@/utils/scroll'
 import throttle from 'lodash/throttle'
 
 const DISTANCE = 300

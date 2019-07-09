@@ -1,14 +1,14 @@
 import Vue from 'vue'
-import '../../scss/search-bar.scss'
+import '@/scss/search-bar.scss'
 import WCell from '../WCell'
 
 import { PropValidator } from 'vue/types/options'
 
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 
 // Mixins
-import Validatable from '../../mixins/validatable'
+import Validatable from '@/mixins/validatable'
 
 interface options extends Vue {
   $refs: {

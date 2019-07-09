@@ -118,10 +118,6 @@ jobs:
       # build demo and docs
       - run: yarn lerna run generate --scope docs --stream
 
-      # TODO:
-      - run: ls packages/docs -la
-      - run: ls .. -la
-
       # deploy docs
       - deploy:
           name: Deploy Docs
@@ -158,7 +154,12 @@ workflows:
   # Generate docs and deploy it
   docs:
     jobs:
-      - setup
+      - setup:
+          filters:
+            branches:
+              only:
+                - master
+                - docs
       - generate-deploy-docs:
           requires:
             - setup

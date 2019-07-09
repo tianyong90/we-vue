@@ -1,9 +1,9 @@
 declare module 'we-vue/lib' {
   import Vue, { DirectiveOptions, PluginFunction } from 'vue'
   import { WeVue } from 'we-vue'
-  import { WDialog } from '@components/WDialog'
-  import { WToast } from '@components/WToast'
-  import { WTopTips } from '@components/WTopTips'
+  import { WDialog } from '@/components/WDialog'
+  import { WToast } from '@/components/WToast'
+  import { WTopTips } from '@/components/WTopTips'
 
   const WeVue: WeVue
 

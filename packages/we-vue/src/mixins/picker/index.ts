@@ -2,7 +2,7 @@
 import Toggleable, { factory as ToggleableFactory } from '../toggleable'
 
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 
 export default mixins<
   ExtractVue<[typeof Toggleable]>

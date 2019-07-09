@@ -13,12 +13,10 @@ exports[`actionsheet create 1`] = `
 `;
 
 exports[`actionsheet create 2`] = `
-<div>
-  <div class="weui-skin_android" style="display: none;">
-    <div class="weui-mask"></div>
-    <div class="weui-actionsheet">
-      <div class="weui-actionsheet__menu"></div>
-    </div>
+<div class="weui-skin_android" style="display: none;">
+  <div class="weui-mask"></div>
+  <div class="weui-actionsheet">
+    <div class="weui-actionsheet__menu"></div>
   </div>
 </div>
 `;

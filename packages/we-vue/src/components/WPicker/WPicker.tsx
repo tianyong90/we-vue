@@ -5,10 +5,10 @@ import { PropValidator } from 'vue/types/options'
 import { VNode } from 'vue'
 
 // Mixins
-import { factory as ToaaleableFactory } from '../../mixins/toggleable'
+import { factory as ToaaleableFactory } from '@/mixins/toggleable'
 
 // Utils
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 import cloneDeep from 'lodash/cloneDeep'
 
 // height of th option item
@@ -16,14 +16,14 @@ const ITEM_HEIGHT = 34
 
 type WPickerColumnInstance = InstanceType<typeof WPickerColumn>
 
-type objectColumn = {
+type Column = {
   options: any[]
   [key: string]: any
 }
 
 type simpleColumns = (string | number | object)[]
 
-type typeColumns = (string | number | objectColumn)[][]
+type Columns = (string | number | Column)[][]
 
 export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
   name: 'w-picker',
@@ -44,13 +44,13 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     columns: {
       type: Array,
       default: () => [],
-    } as PropValidator<typeColumns | simpleColumns>,
+    } as PropValidator<Columns | simpleColumns>,
     valueKey: String,
     visibleItemCount: {
       type: Number,
       default: 7,
       validator: (val: number) => {
-        return [3, 5, 7].indexOf(val) > -1
+        return [3, 5, 7].includes(val)
       },
     },
     value: {
@@ -73,7 +73,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
 
     simple (): boolean {
-      return this.columns.length > 0 && !(this.columns[0] as objectColumn).options
+      return this.columns.length > 0 && !(this.columns[0] as Column).options
     },
   },
 
@@ -100,9 +100,9 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
       this.isActive = false
     },
 
-    setColumns (columns: typeColumns | simpleColumns): void {
+    setColumns (columns: Columns | simpleColumns): void {
       columns.forEach((column, index: number) => {
-        this.setColumnOptions(index, cloneDeep((column as objectColumn).options))
+        this.setColumnOptions(index, cloneDeep((column as Column).options))
       })
     },
 
@@ -138,13 +138,13 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     setColumnOptions (columnIndex: number, options: (string | number | object)[]): void {
       const column = this.columns[columnIndex]
       if (column) {
-        ;(column as objectColumn).options = options
+        ;(column as Column).options = options
       }
     },
 
     // get options of column by index
     getColumnOptions (columnIndex: number): (string | number)[] {
-      return (this.columns[columnIndex] as objectColumn).options
+      return (this.columns[columnIndex] as Column).options
     },
 
     // get values of all columns
@@ -195,7 +195,6 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
 
     // confirm event handler
     onConfirm (): void {
-      // TODO: v-model 问题
       this.$emit('input', this.getValues())
       this.$emit('confirm', this)
       this.isActive = false

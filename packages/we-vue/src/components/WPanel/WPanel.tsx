@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/panel.scss'
+import '@/scss/panel.scss'
 
 export default Vue.extend({
   name: 'w-panel',

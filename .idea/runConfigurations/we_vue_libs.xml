@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="we-vue libs" type="JavascriptDebugType" uri="http://localhost:8080">
+    <mapping url="webpack://we-vue" local-file="$PROJECT_DIR$/packages/we-vue" />
+    <method v="2" />
+  </configuration>
+</component>

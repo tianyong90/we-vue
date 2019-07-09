@@ -81,11 +81,18 @@
 </template>
 
 <script>
+const timeNow = new Date()
+const year = timeNow.getFullYear()
+const month = timeNow.getMonth()
+const date = timeNow.getDate()
+const hour = timeNow.getHours()
+const minute = timeNow.getMinutes()
+
 export default {
   data () {
     return {
-      demoTime: '12:23',
-      demoDatetime1: new Date(2016, 11, 1, 12, 0, 0),
+      demoTime: `${hour}:${minute}`,
+      demoDatetime1: new Date(year, month, date, hour, minute, 0),
       demoDatetime2: new Date(),
       demoDatetime3: new Date(),
       demoDate: new Date()
@@ -143,6 +150,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-</style>

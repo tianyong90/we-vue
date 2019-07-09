@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../../scss/header.scss'
+import '@/scss/header.scss'
 
 export default Vue.extend({
   name: 'w-header',

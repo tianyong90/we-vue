@@ -1,5 +1,5 @@
 import Vue, { VNode } from 'vue'
-import '../../scss/grid.scss'
+import '@/scss/grid.scss'
 
 export default Vue.extend({
   name: 'w-grid',

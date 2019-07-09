@@ -1,15 +1,15 @@
-import '../../scss/swipe.scss'
+import '@/scss/swipe.scss'
 
 import Vue from 'vue'
 
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
-import { off, on } from '../../utils/event'
+import mixins, { ExtractVue } from '@/utils/mixins'
+import { off, on } from '@/utils/event'
 
 import SwipeItem from '../WSwipeItem'
 
 // Mixins
-import Touchable from '../../mixins/touchable'
+import Touchable from '@/mixins/touchable'
 
 type SwipeItemInstance = InstanceType<typeof SwipeItem>
 

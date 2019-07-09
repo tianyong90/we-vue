@@ -1,7 +1,7 @@
-import '../../scss/top-tips.scss'
-import PopupMixin from '../../mixins/popup'
+import '@/scss/top-tips.scss'
+import PopupMixin from '@/mixins/popup'
 
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 import { VNode } from 'vue'
 
 export default mixins(

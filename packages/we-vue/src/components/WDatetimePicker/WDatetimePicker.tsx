@@ -2,11 +2,11 @@ import Vue from 'vue'
 import { PropValidator } from 'vue/types/options'
 import WPicker from '../WPicker'
 // Mixins
-import Picker from '../../mixins/picker'
+import Picker from '@/mixins/picker'
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
+import mixins, { ExtractVue } from '@/utils/mixins'
 
-type startBoundary = {
+type StartBoundary = {
   startYear: number
   startMonth: number
   startDate: number
@@ -14,7 +14,7 @@ type startBoundary = {
   startMinute: number
 }
 
-type endBoundary = {
+type EndBoundary = {
   endYear: number
   endMonth: number
   endDate: number
@@ -22,7 +22,7 @@ type endBoundary = {
   endMinute: number
 }
 
-type valueRange = {
+type ValueRange = {
   year?: [number, number]
   month?: [number, number]
   date?: [number, number]
@@ -111,7 +111,7 @@ export default mixins<options &
   },
 
   computed: {
-    ranges (): valueRange {
+    ranges (): ValueRange {
       if (this.type === 'time') {
         return {
           hour: [this.startHour, this.endHour],
@@ -125,14 +125,14 @@ export default mixins<options &
         startDate,
         startHour,
         startMinute,
-      } = this.getBoundary('start', this.internalValue as Date) as startBoundary
+      } = this.getBoundary('start', this.internalValue as Date) as StartBoundary
       const {
         endYear,
         endMonth,
         endDate,
         endHour,
         endMinute,
-      } = this.getBoundary('end', this.internalValue as Date) as endBoundary
+      } = this.getBoundary('end', this.internalValue as Date) as EndBoundary
 
       if (this.type === 'datetime') {
         return {
@@ -181,7 +181,6 @@ export default mixins<options &
 
     internalValue (val) {
       this.updateColumnValue(val)
-      this.$emit('input', val)
     },
   },
 
@@ -192,7 +191,7 @@ export default mixins<options &
   mounted () {
     if (!this.value) {
       this.internalValue =
-        this.type.indexOf('date') > -1
+        this.type.includes('date')
           ? this.startDate
           : `${('0' + this.startHour).slice(-2)}:00`
     } else {
@@ -217,7 +216,7 @@ export default mixins<options &
 
     correctValue (value: Date | string | number): Date | string {
       // validate value
-      const isDateType = this.type.indexOf('date') > -1
+      const isDateType = this.type.includes('date')
       if (isDateType && !isValidDate(value)) {
         value = this.startDate
       } else if (!value) {
@@ -241,14 +240,14 @@ export default mixins<options &
         endDate,
         endHour,
         endMinute,
-      } = this.getBoundary('end', value as Date) as endBoundary
+      } = this.getBoundary('end', value as Date) as EndBoundary
       const {
         startYear,
         startMonth,
         startDate,
         startHour,
         startMinute,
-      } = this.getBoundary('start', value as Date) as startBoundary
+      } = this.getBoundary('start', value as Date) as StartBoundary
 
       const startDay = new Date(
         startYear,
@@ -294,7 +293,6 @@ export default mixins<options &
       value = this.correctValue(value)
       this.internalValue = value
       this.$emit('change', picker)
-      this.$emit('input', value)
     },
 
     fillColumnOptions (type: string, start: number, end: number): any[] {
@@ -311,7 +309,7 @@ export default mixins<options &
       return options
     },
 
-    getBoundary (type: 'start' | 'end', value: Date): startBoundary | endBoundary {
+    getBoundary (type: 'start' | 'end', value: Date): StartBoundary | EndBoundary {
       const boundary = type === 'start' ? this.startDate : this.endDate
       const year = boundary.getFullYear()
       let month = 1
@@ -401,6 +399,7 @@ export default mixins<options &
 
     onConfirm () {
       this.isActive = false
+      this.$emit('input', this.internalValue)
       this.$emit('confirm', this.internalValue)
     },
   },

@@ -1,4 +1,4 @@
-import '../../scss/badge.scss'
+import '@/scss/badge.scss'
 import Vue, { VNode } from 'vue'
 
 export default Vue.extend({

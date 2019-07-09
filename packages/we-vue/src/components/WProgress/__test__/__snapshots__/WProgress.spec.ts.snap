@@ -2,8 +2,8 @@
 
 exports[`progress create 1`] = `
 <div class="weui-progress">
-  <div class="weui-progress__bar">
-    <div class="weui-progress__inner-bar js_progress"></div>
+  <div class="weui-progress__bar" style="height: 3px; background-color: rgb(235, 235, 235); border-radius: 0px;">
+    <div class="weui-progress__inner-bar js_progress" style="height: 3px; background-color: rgb(9, 187, 7); border-radius: 0px;"></div>
   </div><span class="weui-progress__opr"><i class="weui-icon-cancel"></i></span>
 </div>
 `;

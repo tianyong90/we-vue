@@ -4,14 +4,14 @@
 import Vue from 'vue'
 
 // Utils
-import mixins, { ExtractVue } from '../../utils/mixins'
-import { isDef } from '../../utils'
-import { raf } from '../../utils/raf'
-import { off, on } from '../../utils/event'
-import { getElementTop, getScrollEventTarget, getScrollTop, setScrollTop } from '../../utils/scroll'
+import mixins, { ExtractVue } from '@/utils/mixins'
+import { isDef } from '@/utils'
+import { raf } from '@/utils/raf'
+import { off, on } from '@/utils/event'
+import { getElementTop, getScrollEventTarget, getScrollTop, setScrollTop } from '@/utils/scroll'
 
 // Mixins
-import Touchable from '../../mixins/touchable'
+import Touchable from '@/mixins/touchable'
 
 import WTab from '../WTab'
 

@@ -1,4 +1,4 @@
-import '../../scss/spinner.scss'
+import '@/scss/spinner.scss'
 
 import Vue from 'vue'
 

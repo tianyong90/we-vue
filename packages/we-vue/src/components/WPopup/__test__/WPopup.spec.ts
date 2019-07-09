@@ -1,6 +1,6 @@
 import { mount, Wrapper } from '@vue/test-utils'
 import Popup from '../WPopup'
-import { ExtractVue } from '@utils/mixins'
+import { ExtractVue } from '@/utils/mixins'
 
 describe('popup', () => {
   type Instance = ExtractVue<typeof Popup>

@@ -1,6 +1,6 @@
 import { mount, shallowMount, Wrapper } from '@vue/test-utils'
 import Input from '../WInput'
-import { ExtractVue } from '@utils/mixins'
+import { ExtractVue } from '@/utils/mixins'
 
 describe('input', () => {
   type Instance = ExtractVue<typeof Input>

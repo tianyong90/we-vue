@@ -1,8 +1,8 @@
 // Utils
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 
 // Mixins
-import Routeable from '../../mixins/routable'
+import Routeable from '@/mixins/routable'
 
 export default mixins(
   Routeable

@@ -1,11 +1,11 @@
-import '../../scss/switch.scss'
+import '@/scss/switch.scss'
 
 // Utils
-import { getTouch } from '../../utils'
-import mixins from '../../utils/mixins'
+import { getTouch } from '@/utils'
+import mixins from '@/utils/mixins'
 
 // Mixins
-import Toggleable from '../../mixins/toggleable'
+import Toggleable from '@/mixins/toggleable'
 
 // 开关的行程
 const THUMB_STROKE = 20

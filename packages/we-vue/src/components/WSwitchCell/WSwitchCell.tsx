@@ -1,11 +1,11 @@
 // Utils
-import mixins from '../../utils/mixins'
+import mixins from '@/utils/mixins'
 
 import WCell from '../WCell'
 import WSwitch from '../WSwitch'
 
 // Mixins
-import Toggleable from '../../mixins/toggleable'
+import Toggleable from '@/mixins/toggleable'
 
 export default mixins(
   Toggleable

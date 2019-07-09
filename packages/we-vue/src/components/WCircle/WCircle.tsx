@@ -1,4 +1,4 @@
-import '../../scss/circle.scss'
+import '@/scss/circle.scss'
 
 import Vue from 'vue'
 

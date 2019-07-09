@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import '../../scss/slider.scss'
+import '@/scss/slider.scss'
 // Utils
-import { getTouch } from '../../utils'
+import { getTouch } from '@/utils'
 
 interface options extends Vue {
   $refs: {
