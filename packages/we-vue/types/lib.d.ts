@@ -1,16 +1,8 @@
 declare module 'we-vue/lib' {
-  import Vue, { DirectiveOptions, PluginFunction } from 'vue'
+  import Vue, { Component, DirectiveOptions, PluginFunction } from 'vue'
   import { WeVue } from 'we-vue'
-  import { WDialog } from '@/components/WDialog'
-  import { WToast } from '@/components/WToast'
-  import { WTopTips } from '@/components/WTopTips'
 
   const WeVue: WeVue
-
-  class WeVueComponent {
-    static name: string
-    static install: (vue: Vue) => void
-  }
 
   const directives: {
     ClickOutside: DirectiveOptions
@@ -21,48 +13,48 @@ declare module 'we-vue/lib' {
     Lazyload: PluginFunction<Vue>
   }
 
-  const WActionsheet: WeVueComponent
-  const WAreaPicker: WeVueComponent
-  const WBadge: WeVueComponent
-  const WButton: WeVueComponent
-  const WCell: WeVueComponent
-  const WCellSwipe: WeVueComponent
-  const WCellSwipeButton: WeVueComponent
-  const WChecklist: WeVueComponent
-  const WCircle: WeVueComponent
-  const WDatetimePicker: WeVueComponent
-  const WDialog: WDialog
-  const WFlex: WeVueComponent
-  const WFlexItem: WeVueComponent
-  const WFooter: WeVueComponent
-  const WFormPreview: WeVueComponent
-  const WGrid: WeVueComponent
-  const WGridItem: WeVueComponent
-  const WGroup: WeVueComponent
-  const WHeader: WeVueComponent
-  const WIcon: WeVueComponent
-  const WInput: WeVueComponent
-  const WLoadmore: WeVueComponent
-  const WMediaBox: WeVueComponent
-  const WNumberSpinner: WeVueComponent
-  const WPanel: WeVueComponent
-  const WPicker: WeVueComponent
-  const WPopup: WeVueComponent
-  const WProgress: WeVueComponent
-  const WRadio: WeVueComponent
-  const WSearchBar: WeVueComponent
-  const WSlider: WeVueComponent
-  const WSpinner: WeVueComponent
-  const WSwipe: WeVueComponent
-  const WSwipeItem: WeVueComponent
-  const WSwitch: WeVueComponent
-  const WTab: WeVueComponent
-  const WTabbar: WeVueComponent
-  const WTabbarItem: WeVueComponent
-  const WTabs: WeVueComponent
-  const WTextarea: WeVueComponent
-  const WToast: WToast
-  const WTopTips: WTopTips
+  const WActionsheet: Component
+  const WAreaPicker: Component
+  const WBadge: Component
+  const WButton: Component
+  const WCell: Component
+  const WCellSwipe: Component
+  const WCellSwipeButton: Component
+  const WChecklist: Component
+  const WCircle: Component
+  const WDatetimePicker: Component
+  const WDialog: Component
+  const WFlex: Component
+  const WFlexItem: Component
+  const WFooter: Component
+  const WFormPreview: Component
+  const WGrid: Component
+  const WGridItem: Component
+  const WGroup: Component
+  const WHeader: Component
+  const WIcon: Component
+  const WInput: Component
+  const WLoadmore: Component
+  const WMediaBox: Component
+  const WNumberSpinner: Component
+  const WPanel: Component
+  const WPicker: Component
+  const WPopup: Component
+  const WProgress: Component
+  const WRadio: Component
+  const WSearchBar: Component
+  const WSlider: Component
+  const WSpinner: Component
+  const WSwipe: Component
+  const WSwipeItem: Component
+  const WSwitch: Component
+  const WTab: Component
+  const WTabbar: Component
+  const WTabbarItem: Component
+  const WTabs: Component
+  const WTextarea: Component
+  const WToast: Component
+  const WTopTips: Component
 
   export default WeVue
 

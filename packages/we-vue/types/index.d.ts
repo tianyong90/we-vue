@@ -2,6 +2,10 @@ import Vue, { Component, DirectiveOptions, PluginFunction } from 'vue'
 
 import './lib'
 
+import { WDialog } from '../src/components/WDialog'
+import { WToast } from '../src/components/WToast'
+import { WTopTips } from '../src/components/WTopTips'
+
 declare const WeVue: WeVue
 export default WeVue
 export interface WeVue {
