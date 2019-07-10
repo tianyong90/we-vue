@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import WSwitchCell from '../WSwitchCell'
+import WSwitchCell from '../'
 
 describe('switch-cell', () => {
   test('create', () => {

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import WDatetimePicker from '../WDatetimePicker'
+import WDatetimePicker from '../'
 import { slowVerticalDrag } from '@/test/unit/utils'
 
 const testTime = '12:00'

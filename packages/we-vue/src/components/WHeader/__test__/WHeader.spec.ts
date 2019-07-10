@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Header from '../WHeader'
+import Header from '../'
 
 describe('header', () => {
   test('create', () => {

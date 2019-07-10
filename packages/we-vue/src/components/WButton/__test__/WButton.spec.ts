@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Button from '../WButton'
+import Button from '../'
 
 describe('button', () => {
   test('create', () => {

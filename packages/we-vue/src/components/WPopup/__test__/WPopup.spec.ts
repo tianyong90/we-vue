@@ -1,5 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import Popup from '../WPopup'
+import Popup from '../'
 import { ExtractVue } from '@/utils/mixins'
 
 describe('popup', () => {

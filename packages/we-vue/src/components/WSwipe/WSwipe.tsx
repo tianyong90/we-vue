@@ -74,6 +74,7 @@ export default mixins<options &
     }
   },
 
+  /* istanbul ignore next */
   activated () {
     if (this.rendered) {
       this.initialize()
@@ -82,6 +83,7 @@ export default mixins<options &
     this.rendered = true
   },
 
+  /* istanbul ignore next */
   destroyed () {
     this.clear()
 

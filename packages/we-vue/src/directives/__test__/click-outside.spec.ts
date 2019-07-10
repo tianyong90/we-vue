@@ -1,4 +1,4 @@
-import ClickOutside from '../click-outside'
+import { ClickOutside } from '@/directives'
 
 function bootstrap () {
   let registeredHandler = {} as any

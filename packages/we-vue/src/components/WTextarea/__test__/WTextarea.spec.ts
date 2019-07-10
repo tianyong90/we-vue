@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import WTextarea from '../WTextarea'
+import WTextarea from '../'
 
 describe('textarea', () => {
   test('create', () => {

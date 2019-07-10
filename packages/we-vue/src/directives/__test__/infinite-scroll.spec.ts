@@ -1,6 +1,6 @@
 import Vue, { CreateElement } from 'vue'
 import { mount } from '@vue/test-utils'
-import InfiniteScroll from '../infinite-scroll'
+import { InfiniteScroll } from '@/directives'
 
 describe('infinite-scroll', () => {
   test('by default, loadMore callback should be called', async () => {

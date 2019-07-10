@@ -28,7 +28,7 @@ module.exports = {
     '.*\\.(vue)$': 'vue-jest',
   },
   snapshotSerializers: ['jest-serializer-vue'],
-  setupFiles: ['<rootDir>/test/unit/setup'],
+  setupFiles: ['<rootDir>/test/unit/setup.ts'],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'src/**/*.{js,ts,tsx}',
@@ -39,13 +39,13 @@ module.exports = {
     // Default
     '**/test/**/*.js',
     '**/__test__/**/*.spec.js',
-    '**/__test__/**/*.spec.ts'
+    '**/__test__/**/*.spec.ts',
   ],
   globals: {
     __WE_VUE_VERSION__: '3.0.0', // version variable
     'ts-jest': {
       babelConfig: true,
       diagnostics: false,
-    }
+    },
   },
 }

@@ -1,5 +1,5 @@
 import { mount, shallowMount, Wrapper } from '@vue/test-utils'
-import Actionsheet from '../WActionsheet'
+import Actionsheet from '../'
 import { ExtractVue } from '@/utils/mixins'
 
 describe('actionsheet', () => {

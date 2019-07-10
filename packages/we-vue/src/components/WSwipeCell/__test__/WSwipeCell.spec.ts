@@ -1,6 +1,6 @@
 import Vue, { CreateElement, VNode } from 'vue'
 import { mount, shallowMount, Wrapper } from '@vue/test-utils'
-import WSwipeCell from '../WSwipeCell'
+import WSwipeCell from '../'
 import WCellSwipeButton from '../../WSwipeCellButton'
 import { horizontalDrag } from '@/test/unit/utils'
 

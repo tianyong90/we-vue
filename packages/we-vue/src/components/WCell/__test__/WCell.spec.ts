@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Cell from '../WCell'
+import Cell from '../'
 
 describe('cell', () => {
   test('create', () => {

@@ -1,4 +1,4 @@
-import Lazyload from '../'
+import { Lazyload } from '@/plugins'
 
 describe('lazyload', () => {
   test('lazyload type', () => {

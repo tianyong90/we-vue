@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Radio from '../WRadio'
+import Radio from '../'
 
 const testOptions = [
   'option1',

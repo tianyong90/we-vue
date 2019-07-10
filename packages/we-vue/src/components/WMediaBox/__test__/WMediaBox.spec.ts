@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import MediaBox from '../WMediaBox'
+import MediaBox from '../'
 
 describe('media-box', () => {
   test('create', () => {

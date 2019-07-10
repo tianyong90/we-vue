@@ -1,7 +1,7 @@
 import { mount, shallowMount, Wrapper } from '@vue/test-utils'
 import WFlex from '../../WFlex'
-import WFlexItem from '../WFlexItem'
-import { ExtractVue } from '../../../utils/mixins'
+import WFlexItem from '../'
+import { ExtractVue } from '@/utils/mixins'
 
 describe('flex-item', () => {
   type FlexWrapper = Wrapper<ExtractVue<typeof WFlex>>

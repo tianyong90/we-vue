@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Icon from '../WIcon'
+import Icon from '../'
 
 describe('icon', () => {
   test('create', () => {

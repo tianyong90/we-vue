@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import SwipeCellButton from '../WSwipeCellButton'
+import SwipeCellButton from '../'
 
 describe('cell-swipe-button', () => {
   test('create', () => {

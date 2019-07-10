@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Circle from '../WCircle'
+import Circle from '../'
 
 describe('circle', () => {
   test('create', () => {

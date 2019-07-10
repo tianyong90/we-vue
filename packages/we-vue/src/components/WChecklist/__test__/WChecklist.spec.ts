@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Checklist from '../WChecklist'
+import Checklist from '../'
 
 const options = [
   'value1',

@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Slider from '../WSlider'
+import Slider from '../'
 import { horizontalDrag } from '@/test/unit/utils'
 import faker from 'faker'
 

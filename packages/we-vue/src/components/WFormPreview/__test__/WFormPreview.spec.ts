@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import FormPreview from '../WFormPreview'
+import FormPreview from '../'
 
 describe('preview', () => {
   test('create', () => {

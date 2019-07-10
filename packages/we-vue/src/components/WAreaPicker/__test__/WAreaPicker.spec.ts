@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import WAreaPicker from '../WAreaPicker'
+import WAreaPicker from '../'
 
 import areaList from './area'
 

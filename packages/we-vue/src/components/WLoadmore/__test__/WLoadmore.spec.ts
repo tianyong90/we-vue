@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Loadmore from '../WLoadmore'
+import Loadmore from '../'
 
 describe('loadmore', () => {
   test('create', () => {

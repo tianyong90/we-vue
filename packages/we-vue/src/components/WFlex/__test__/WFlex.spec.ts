@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Flex from '../WFlex'
+import Flex from '../'
 
 describe('flex', () => {
   test('create', () => {

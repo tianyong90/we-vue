@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Footer from '../WFooter'
+import Footer from '../'
 
 describe('footer', () => {
   test('create', () => {

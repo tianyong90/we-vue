@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import WSwitch from '../WSwitch'
+import WSwitch from '../'
 import { horizontalDrag } from '@/test/unit/utils'
 
 const THUMB_STROKE = 20

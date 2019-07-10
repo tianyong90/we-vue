@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Spinner from '../WSpinner'
+import Spinner from '../'
 
 describe('spinner', () => {
   test('create', () => {

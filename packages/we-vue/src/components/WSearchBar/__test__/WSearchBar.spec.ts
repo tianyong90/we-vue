@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import SearchBar from '../WSearchBar'
+import SearchBar from '../'
 import Cell from '../../WCell'
 
 describe('search', () => {

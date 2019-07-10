@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { mount } from '@vue/test-utils'
 import WTabs from '../../WTabs'
-import WTab from '../WTab'
+import WTab from '../'
 
 describe('tab', () => {
   test('create', () => {

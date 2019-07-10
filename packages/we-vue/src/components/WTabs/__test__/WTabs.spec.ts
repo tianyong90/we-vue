@@ -1,5 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Tabs from '../WTabs'
+import Tabs from '../'
 import Tab from '../../WTab'
 import { horizontalDrag } from '@/test/unit/utils'
 

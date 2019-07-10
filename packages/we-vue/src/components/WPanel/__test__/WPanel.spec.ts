@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Panel from '../WPanel'
+import Panel from '../'
 
 describe('panel', () => {
   test('create', () => {

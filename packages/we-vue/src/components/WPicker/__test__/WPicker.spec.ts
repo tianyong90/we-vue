@@ -1,5 +1,5 @@
 import { mount, Wrapper } from '@vue/test-utils'
-import Picker from '../WPicker'
+import Picker from '../'
 import PickerColumn from '../WPickerColumn'
 import { slowVerticalDrag } from '@/test/unit/utils'
 import { ExtractVue } from '@/utils/mixins'

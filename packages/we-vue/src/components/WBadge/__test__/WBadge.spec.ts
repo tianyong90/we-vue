@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Badge from '../WBadge'
+import Badge from '../'
 
 describe('badge', () => {
   test('create', () => {

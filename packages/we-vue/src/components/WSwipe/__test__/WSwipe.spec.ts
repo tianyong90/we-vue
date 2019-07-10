@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import WSwipe from '../WSwipe'
+import WSwipe from '../'
 import WSwipeItem from '../../WSwipeItem'
 import { dragAndHoldHelper, horizontalDrag, verticalDrag } from '@/test/unit/utils'
 import faker from 'faker'

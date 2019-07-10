@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Group from '../WGroup'
+import Group from '../'
 
 describe('group', () => {
   test('create', () => {

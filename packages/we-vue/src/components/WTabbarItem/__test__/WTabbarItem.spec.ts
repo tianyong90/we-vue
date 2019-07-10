@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import TabbarItem from '../WTabbarItem'
+import TabbarItem from '../'
 
 describe('tabbar-item', () => {
   test('create', () => {

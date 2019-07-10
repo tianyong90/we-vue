@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import GridItem from '../WGridItem'
+import GridItem from '../'
 
 describe('grid-item', () => {
   test('create', () => {
