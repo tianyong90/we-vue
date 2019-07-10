@@ -5,7 +5,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const CleanPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const version = process.env.VERSION || require('../package.json').version
 
@@ -32,7 +32,7 @@ module.exports = merge(baseWebpackConfig, {
     },
   },
   plugins: [
-    new CleanPlugin({
+    new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
         path.join(__dirname, '../dist'),
       ],

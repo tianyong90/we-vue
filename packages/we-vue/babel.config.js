@@ -61,10 +61,32 @@ module.exports = function (api) {
         ],
       },
       es5: {
-        plugins: ['./build/babel-transform-scss-paths.js'],
+        plugins: [
+          // TODO: 确实无用后清理 './build/babel-transform-scss-paths.js',
+          // 模块路径转换
+          ['module-resolver', {
+            cwd: 'babelrc',
+            root: ['./'],
+            alias: {
+              '@/scss': './src/scss', // 不可调换顺序
+              '@': './es5',
+            },
+          }],
+        ],
       },
       lib: {
-        plugins: ['./build/babel-transform-scss-paths.js'],
+        plugins: [
+          // TODO: 确实无用后清理 './build/babel-transform-scss-paths.js',
+          // 模块路径转换
+          ['module-resolver', {
+            cwd: 'babelrc',
+            root: ['./'],
+            alias: {
+              '@/scss': './src/scss', // 不可调换顺序
+              '@': './lib',
+            },
+          }],
+        ],
       },
     },
   }
