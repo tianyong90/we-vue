@@ -2,9 +2,9 @@
 node_modules/
 
 # Built files
+/dist/
 /es5/
 /lib/
 /lib-temp/
-/dist/
 
 /test/unit/coverage/

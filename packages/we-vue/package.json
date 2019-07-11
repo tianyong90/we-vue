@@ -25,6 +25,13 @@
     "*.scss",
     "*.css"
   ],
+  "files": [
+    "src/",
+    "dist/",
+    "lib/",
+    "es5/",
+    "types/"
+  ],
   "scripts": {
     "serve": "cross-env NODE_ENV=development webpack --config build/webpack.dev.conf.js --progress --hide-modules --colors --watch",
     "lint": "eslint --ext .js,.ts,.tsx,.vue src test/unit/",
