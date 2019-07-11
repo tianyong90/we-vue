@@ -82,7 +82,16 @@ const release = async () => {
     '*'
   ]
 
-  console.log(`lerna ${releaseArguments.join(' ')}`)
+  // 构建
+  await execa(require.resolve('lerna/cli'), [
+    'run',
+    'build',
+    '--scope',
+    'we-vue',
+    '--stream',
+  ], { stdio: 'inherit' })
+
+  console.info(`lerna ${releaseArguments.join(' ')}`)
   await execa(require.resolve('lerna/cli'), releaseArguments, { stdio: 'inherit' })
 }
 

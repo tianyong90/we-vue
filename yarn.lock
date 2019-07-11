@@ -2122,12 +2122,12 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@snyk/composer-lockfile-parser@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npm.taobao.org/@snyk/composer-lockfile-parser/download/@snyk/composer-lockfile-parser-1.0.2.tgz#d748e56076bc1c25b130c1f13ed705fa285a1994"
-  integrity sha1-10jlYHa8HCWxMMHxPtcF+ihaGZQ=
+"@snyk/composer-lockfile-parser@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/@snyk/composer-lockfile-parser/download/@snyk/composer-lockfile-parser-1.0.3.tgz#4b703883ec36f3cec63c64355031e06698c771f5"
+  integrity sha1-S3A4g+w2887GPGQ1UDHgZpjHcfU=
   dependencies:
-    lodash "4.17.11"
+    lodash "^4.17.13"
 
 "@snyk/dep-graph@1.8.1":
   version "1.8.1"
@@ -2510,9 +2510,9 @@
     loglevel "^1.6.2"
 
 "@types/webpack-env@^1.13.6":
-  version "1.13.9"
-  resolved "https://registry.npm.taobao.org/@types/webpack-env/download/@types/webpack-env-1.13.9.tgz#a67287861c928ebf4159a908d1fb1a2a34d4097a"
-  integrity sha1-pnKHhhySjr9BWakI0fsaKjTUCXo=
+  version "1.14.0"
+  resolved "https://registry.npm.taobao.org/@types/webpack-env/download/@types/webpack-env-1.14.0.tgz#8edfc5f8e6eae20eeed3ca0d02974ed4ee5e4efc"
+  integrity sha1-jt/F+Obq4g7u08oNApdO1O5eTvw=
 
 "@types/webpack-hot-middleware@^2.16.5":
   version "2.16.5"
@@ -6344,9 +6344,9 @@ ejs@^2.6.1:
   integrity sha1-OjLGPRzRbREmbNRwOxT+xOdKtPY=
 
 electron-to-chromium@^1.3.188:
-  version "1.3.188"
-  resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.188.tgz?cache=0&sync_timestamp=1562385767125&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.188.tgz#e28e1afe4bb229989e280bfd3b395c7ec03c8b7a"
-  integrity sha1-4o4a/kuyKZieKAv9OzlcfsA8i3o=
+  version "1.3.189"
+  resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.189.tgz?cache=0&sync_timestamp=1562817782470&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.189.tgz#aa84055eb36d364a68852ad2d25e1315a1d06196"
+  integrity sha1-qoQFXrNtNkpohSrS0l4TFaHQYZY=
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -6533,10 +6533,15 @@ eslint-config-prettier@^6.0.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-standard@>=12.0.0, eslint-config-standard@^12.0.0:
+eslint-config-standard@^12.0.0:
   version "12.0.0"
   resolved "https://registry.npm.taobao.org/eslint-config-standard/download/eslint-config-standard-12.0.0.tgz#638b4c65db0bd5a41319f96bba1f15ddad2107d9"
   integrity sha1-Y4tMZdsL1aQTGflruh8V3a0hB9k=
+
+eslint-config-standard@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.npm.taobao.org/eslint-config-standard/download/eslint-config-standard-13.0.0.tgz#8032d6fe954f651399763ba4607294aa3c201a23"
+  integrity sha1-gDLW/pVPZROZdjukYHKUqjwgGiM=
 
 eslint-friendly-formatter@^4.0.0:
   version "4.0.1"
@@ -6592,7 +6597,7 @@ eslint-plugin-es@^1.3.1, eslint-plugin-es@^1.4.0:
     eslint-utils "^1.3.0"
     regexpp "^2.0.1"
 
-eslint-plugin-import@>=2.16.0, eslint-plugin-import@^2.14.0, eslint-plugin-import@^2.16.0, eslint-plugin-import@^2.18.0, eslint-plugin-import@^2.9.0:
+eslint-plugin-import@^2.14.0, eslint-plugin-import@^2.16.0, eslint-plugin-import@^2.18.0, eslint-plugin-import@^2.9.0:
   version "2.18.0"
   resolved "https://registry.npm.taobao.org/eslint-plugin-import/download/eslint-plugin-import-2.18.0.tgz#7a5ba8d32622fb35eb9c8db195c2090bd18a3678"
   integrity sha1-eluo0yYi+zXrnI2xlcIJC9GKNng=
@@ -6609,24 +6614,12 @@ eslint-plugin-import@>=2.16.0, eslint-plugin-import@^2.14.0, eslint-plugin-impor
     read-pkg-up "^2.0.0"
     resolve "^1.11.0"
 
-eslint-plugin-jest@>=22.3.0, eslint-plugin-jest@^22.5.0, eslint-plugin-jest@^22.7.2:
+eslint-plugin-jest@^22.3.0, eslint-plugin-jest@^22.5.0, eslint-plugin-jest@^22.7.2:
   version "22.7.2"
   resolved "https://registry.npm.taobao.org/eslint-plugin-jest/download/eslint-plugin-jest-22.7.2.tgz#7ab118a66a34e46ae5e16a128b5d24fd28b43dca"
   integrity sha1-erEYpmo05Grl4WoSi10k/Si0Pco=
 
-eslint-plugin-node@>=8.0.1, eslint-plugin-node@^9.0.0, eslint-plugin-node@^9.0.1, eslint-plugin-node@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.npm.taobao.org/eslint-plugin-node/download/eslint-plugin-node-9.1.0.tgz#f2fd88509a31ec69db6e9606d76dabc5adc1b91a"
-  integrity sha1-8v2IUJox7GnbbpYG122rxa3BuRo=
-  dependencies:
-    eslint-plugin-es "^1.4.0"
-    eslint-utils "^1.3.1"
-    ignore "^5.1.1"
-    minimatch "^3.0.4"
-    resolve "^1.10.1"
-    semver "^6.1.0"
-
-eslint-plugin-node@^8.0.0:
+eslint-plugin-node@^8.0.0, eslint-plugin-node@^8.0.1:
   version "8.0.1"
   resolved "https://registry.npm.taobao.org/eslint-plugin-node/download/eslint-plugin-node-8.0.1.tgz#55ae3560022863d141fa7a11799532340a685964"
   integrity sha1-Va41YAIoY9FB+noReZUyNApoWWQ=
@@ -6638,7 +6631,19 @@ eslint-plugin-node@^8.0.0:
     resolve "^1.8.1"
     semver "^5.5.0"
 
-eslint-plugin-nuxt@>=0.4.2:
+eslint-plugin-node@^9.0.0, eslint-plugin-node@^9.0.1, eslint-plugin-node@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.npm.taobao.org/eslint-plugin-node/download/eslint-plugin-node-9.1.0.tgz#f2fd88509a31ec69db6e9606d76dabc5adc1b91a"
+  integrity sha1-8v2IUJox7GnbbpYG122rxa3BuRo=
+  dependencies:
+    eslint-plugin-es "^1.4.0"
+    eslint-utils "^1.3.1"
+    ignore "^5.1.1"
+    minimatch "^3.0.4"
+    resolve "^1.10.1"
+    semver "^6.1.0"
+
+eslint-plugin-nuxt@^0.4.2:
   version "0.4.3"
   resolved "https://registry.npm.taobao.org/eslint-plugin-nuxt/download/eslint-plugin-nuxt-0.4.3.tgz#4a6114372c3b1311685d19a00a470233fa6a477e"
   integrity sha1-SmEUNyw7ExFoXRmgCkcCM/pqR34=
@@ -6653,12 +6658,12 @@ eslint-plugin-prettier@^3.0.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-promise@>=4.0.1, eslint-plugin-promise@^4.0.0, eslint-plugin-promise@^4.0.1, eslint-plugin-promise@^4.1.1, eslint-plugin-promise@^4.2.1:
+eslint-plugin-promise@^4.0.0, eslint-plugin-promise@^4.0.1, eslint-plugin-promise@^4.1.1, eslint-plugin-promise@^4.2.1:
   version "4.2.1"
   resolved "https://registry.npm.taobao.org/eslint-plugin-promise/download/eslint-plugin-promise-4.2.1.tgz#845fd8b2260ad8f82564c1222fce44ad71d9418a"
   integrity sha1-hF/YsiYK2PglZMEiL85ErXHZQYo=
 
-eslint-plugin-standard@>=4.0.0, eslint-plugin-standard@^4.0.0:
+eslint-plugin-standard@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/eslint-plugin-standard/download/eslint-plugin-standard-4.0.0.tgz#f845b45109c99cd90e77796940a344546c8f6b5c"
   integrity sha1-+EW0UQnJnNkOd3lpQKNEVGyPa1w=
@@ -8759,9 +8764,9 @@ inquirer@^3.0.6:
     through "^2.3.6"
 
 inquirer@^6.2.0, inquirer@^6.2.2, inquirer@^6.3.0:
-  version "6.4.1"
-  resolved "https://registry.npm.taobao.org/inquirer/download/inquirer-6.4.1.tgz#7bd9e5ab0567cd23b41b0180b68e0cfa82fc3c0b"
-  integrity sha1-e9nlqwVnzSO0GwGAto4M+oL8PAs=
+  version "6.5.0"
+  resolved "https://registry.npm.taobao.org/inquirer/download/inquirer-6.5.0.tgz#2303317efc9a4ea7ec2e2df6f86569b734accf42"
+  integrity sha1-IwMxfvyaTqfsLi32+GVptzSsz0I=
   dependencies:
     ansi-escapes "^3.2.0"
     chalk "^2.4.2"
@@ -8769,7 +8774,7 @@ inquirer@^6.2.0, inquirer@^6.2.2, inquirer@^6.3.0:
     cli-width "^2.0.0"
     external-editor "^3.0.3"
     figures "^2.0.0"
-    lodash "^4.17.11"
+    lodash "^4.17.12"
     mute-stream "0.0.7"
     run-async "^2.2.0"
     rxjs "^6.4.0"
@@ -10084,9 +10089,9 @@ linkify-it@^2.0.0:
     uc.micro "^1.0.1"
 
 lint-staged@^9.0.0:
-  version "9.1.0"
-  resolved "https://registry.npm.taobao.org/lint-staged/download/lint-staged-9.1.0.tgz#24564128c9208bf5d8001a66afe7156dfbe9da30"
-  integrity sha1-JFZBKMkgi/XYABpmr+cVbfvp2jA=
+  version "9.2.0"
+  resolved "https://registry.npm.taobao.org/lint-staged/download/lint-staged-9.2.0.tgz#155e5723dffdaa55d252c47bab05a2962c1e9781"
+  integrity sha1-FV5XI9/9qlXSUsR7qwWiliwel4E=
   dependencies:
     chalk "^2.4.2"
     commander "^2.20.0"
@@ -10440,13 +10445,13 @@ lodash.zip@^4.2.0:
 
 lodash@4.17.11:
   version "4.17.11"
-  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.11.tgz?cache=0&sync_timestamp=1562711734328&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.11.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha1-s56mIp72B+zYniyN8SU2iRysm40=
 
-lodash@4.x, lodash@^4, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0:
-  version "4.17.13"
-  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.13.tgz?cache=0&sync_timestamp=1562711734328&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.13.tgz#0bdc3a6adc873d2f4e0c4bac285df91b64fc7b93"
-  integrity sha1-C9w6atyHPS9ODEusKF35G2T8e5M=
+lodash@4.x, lodash@^4, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0:
+  version "4.17.14"
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.14.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
+  integrity sha1-nOSHrmbJYlT+ILWZ8htoFgKAeLo=
 
 log-symbols@2.2.0, log-symbols@^2.2.0:
   version "2.2.0"
@@ -14707,12 +14712,12 @@ snyk-module@1.9.1, snyk-module@^1.6.0, snyk-module@^1.9.1:
     debug "^3.1.0"
     hosted-git-info "^2.7.1"
 
-snyk-mvn-plugin@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npm.taobao.org/snyk-mvn-plugin/download/snyk-mvn-plugin-2.3.0.tgz#a76cfc0041ecc4333f2c6f6f72138f1e4621da24"
-  integrity sha1-p2z8AEHsxDM/LG9vchOPHkYh2iQ=
+snyk-mvn-plugin@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.npm.taobao.org/snyk-mvn-plugin/download/snyk-mvn-plugin-2.3.1.tgz#5897dd56c1aa8042158106813025825df749bd23"
+  integrity sha1-WJfdVsGqgEIVgQaBMCWCXfdJvSM=
   dependencies:
-    lodash "4.17.11"
+    lodash "^4.17.13"
     tslib "1.9.3"
 
 snyk-nodejs-lockfile-parser@1.13.0:
@@ -14745,12 +14750,12 @@ snyk-paket-parser@1.4.3:
   dependencies:
     tslib "^1.9.3"
 
-snyk-php-plugin@1.6.2:
-  version "1.6.2"
-  resolved "https://registry.npm.taobao.org/snyk-php-plugin/download/snyk-php-plugin-1.6.2.tgz#f5ad6f081d2afc6dfc496cbce68165bdcd2e87ed"
-  integrity sha1-9a1vCB0q/G38SWy85oFlvc0uh+0=
+snyk-php-plugin@1.6.3:
+  version "1.6.3"
+  resolved "https://registry.npm.taobao.org/snyk-php-plugin/download/snyk-php-plugin-1.6.3.tgz#a47ff8d8e46edc709a9e90d25f9dad44e2c64178"
+  integrity sha1-pH/42ORu3HCanpDSX52tROLGQXg=
   dependencies:
-    "@snyk/composer-lockfile-parser" "1.0.2"
+    "@snyk/composer-lockfile-parser" "1.0.3"
 
 snyk-policy@1.13.5:
   version "1.13.5"
@@ -14833,9 +14838,9 @@ snyk-try-require@1.3.1, snyk-try-require@^1.1.1, snyk-try-require@^1.3.1:
     then-fs "^2.0.0"
 
 snyk@^1.189.0:
-  version "1.192.4"
-  resolved "https://registry.npm.taobao.org/snyk/download/snyk-1.192.4.tgz#ed1d484d42525cef7e7520ffd21c32182c2b4b50"
-  integrity sha1-7R1ITUJSXO9+dSD/0hwyGCwrS1A=
+  version "1.192.6"
+  resolved "https://registry.npm.taobao.org/snyk/download/snyk-1.192.6.tgz#f4bfd290d390f1c6ddc9d6d4a9ff7b1193a40d82"
+  integrity sha1-9L/SkNOQ8cbdydbUqf97EZOkDYI=
   dependencies:
     "@snyk/dep-graph" "1.8.1"
     "@snyk/gemfile" "1.2.0"
@@ -14849,7 +14854,7 @@ snyk@^1.189.0:
     git-url-parse "11.1.2"
     glob "^7.1.3"
     inquirer "^6.2.2"
-    lodash "^4.17.11"
+    lodash "^4.17.13"
     needle "^2.2.4"
     opn "^5.5.0"
     os-name "^3.0.0"
@@ -14861,10 +14866,10 @@ snyk@^1.189.0:
     snyk-go-plugin "1.10.2"
     snyk-gradle-plugin "2.12.5"
     snyk-module "1.9.1"
-    snyk-mvn-plugin "2.3.0"
+    snyk-mvn-plugin "2.3.1"
     snyk-nodejs-lockfile-parser "1.13.0"
     snyk-nuget-plugin "1.10.0"
-    snyk-php-plugin "1.6.2"
+    snyk-php-plugin "1.6.3"
     snyk-policy "1.13.5"
     snyk-python-plugin "1.10.2"
     snyk-resolve "1.0.1"
@@ -16754,7 +16759,7 @@ walker@^1.0.7, walker@~1.0.5:
 
 watchpack@^1.5.0:
   version "1.6.0"
-  resolved "https://registry.npm.taobao.org/watchpack/download/watchpack-1.6.0.tgz?cache=0&sync_timestamp=1562280010954&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwatchpack%2Fdownload%2Fwatchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"
+  resolved "https://registry.npm.taobao.org/watchpack/download/watchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"
   integrity sha1-S8EsLr6KonenHx0/FNaFx7RGzQA=
   dependencies:
     chokidar "^2.0.2"
