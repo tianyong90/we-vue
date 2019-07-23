@@ -34,20 +34,20 @@ const SPINNER_TYPES = [
   'snake',
   'double-snake',
   'dot-circle',
-  'bar-circle'
+  'bar-circle',
 ]
 
 export default {
   data () {
     return {
-      types: SPINNER_TYPES
+      types: SPINNER_TYPES,
     }
   },
 
   computed: {
     typesExceptDefault () {
       return this.types.filter(type => type !== 'default')
-    }
-  }
+    },
+  },
 }
 </script>

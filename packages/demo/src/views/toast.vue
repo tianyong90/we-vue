@@ -14,7 +14,7 @@
 export default {
   mounted () {
     this.$toast.setDefaultOptions({
-      duration: 1000
+      duration: 1000,
     })
   },
 
@@ -26,23 +26,23 @@ export default {
     showError () {
       this.$toast.fail({
         duration: 1000,
-        message: '操作失败'
+        message: '操作失败',
       })
     },
 
     showText () {
       this.$toast.text({
         duration: 1000,
-        message: 'hello'
+        message: 'hello',
       })
     },
 
     showLoading () {
       this.$toast.loading({
         message: 'Loaidng',
-        duration: 2000
+        duration: 2000,
       })
-    }
-  }
+    },
+  },
 }
 </script>

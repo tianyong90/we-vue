@@ -24,17 +24,17 @@ export default {
       dataItems: [
         {
           label: '商品',
-          value: '电动打蛋机'
+          value: '电动打蛋机',
         },
         {
           label: '标题标题',
-          value: '名字名字名字'
+          value: '名字名字名字',
         },
         {
           label: '标题标题',
           value:
-            '很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字'
-        }
+            '很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字',
+        },
       ],
       buttons1: [
         {
@@ -42,8 +42,8 @@ export default {
           type: 'primary',
           action: function () {
             console.log('执行主要操作……')
-          }
-        }
+          },
+        },
       ],
       buttons2: [
         {
@@ -51,18 +51,18 @@ export default {
           type: 'default',
           action: function () {
             console.log('执行辅助操作……')
-          }
+          },
         },
         {
           text: '操作',
           type: 'primary',
           action: function () {
             console.log('执行主要操作……')
-          }
-        }
-      ]
+          },
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

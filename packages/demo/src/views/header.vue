@@ -24,8 +24,8 @@ export default {
   methods: {
     onHeaderClick () {
       console.log('header clicked')
-    }
-  }
+    },
+  },
 }
 </script>
 

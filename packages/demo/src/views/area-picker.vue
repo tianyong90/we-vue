@@ -33,13 +33,13 @@ export default {
       twoColumnPickerVisible: false,
       area: areaList,
       area1: '440305',
-      area2: '440300'
+      area2: '440300',
     }
   },
 
   methods: {
     handleConfirm () {
-    }
+    },
   },
 
   filters: {
@@ -49,7 +49,7 @@ export default {
       } else {
         return '请选择'
       }
-    }
-  }
+    },
+  },
 }
 </script>

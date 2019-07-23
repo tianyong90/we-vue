@@ -16,7 +16,7 @@
 export default {
   data () {
     return {
-      skin: 'ios'
+      skin: 'ios',
     }
   },
 
@@ -24,14 +24,14 @@ export default {
     showAlert () {
       this.$dialog.alert({
         title: '提示窗口',
-        message: 'Hello WE-VUE!'
+        message: 'Hello WE-VUE!',
       })
     },
 
     showConfirm () {
       this.$dialog.confirm({
         title: '确认窗口',
-        message: '你确定吗？'
+        message: '你确定吗？',
       })
         .then(() => {
           this.$toast.text('confirmed')
@@ -39,16 +39,16 @@ export default {
         .catch(() => {
           this.$toast.text('canceled')
         })
-    }
+    },
   },
 
   watch: {
     skin (val) {
       this.$dialog.setDefaultOptions({
-        skin: val
+        skin: val,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

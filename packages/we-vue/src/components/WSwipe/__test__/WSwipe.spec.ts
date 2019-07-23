@@ -185,4 +185,25 @@ describe('swipe', () => {
 
     verticalDrag(wrapper, 0, 100)
   })
+
+  test('swipeTo', async () => {
+    const wrapper = mount(WSwipe, {
+      attachToDocument: true,
+      propsData: {
+        height: 120,
+        autoplay: false,
+      },
+      slots: {
+        default: [WSwipeItem, WSwipeItem, WSwipeItem],
+      },
+    })
+
+    wrapper.vm.swipeTo(1)
+    await wrapper.vm.$nextTick()
+    expect(wrapper.vm.active).toBe(1)
+
+    wrapper.vm.swipeTo(2)
+    await wrapper.vm.$nextTick()
+    expect(wrapper.vm.active).toBe(2)
+  })
 })

@@ -17,8 +17,8 @@ const registerRoute = groups => {
           name: nav.title || nav.name,
           meta: {
             title: nav.title || nav.name,
-            description: nav.description
-          }
+            description: nav.description,
+          },
         })
       } catch (e) {
         nav.disabled = true
@@ -37,8 +37,8 @@ routes.push({
   name: 'index',
   meta: {
     title: 'WE-VUE',
-    description: 'weui1.x + vue2.x + webpack2.x = we-vue'
-  }
+    description: 'weui1.x + vue2.x + webpack2.x = we-vue',
+  },
 })
 
 routes.push({
@@ -47,8 +47,8 @@ routes.push({
   name: '404',
   meta: {
     title: '404 Not Found',
-    description: ''
-  }
+    description: '',
+  },
 })
 
 const router = new VueRouter({
@@ -57,7 +57,7 @@ const router = new VueRouter({
   routes,
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }
-  }
+  },
 })
 
 export default router

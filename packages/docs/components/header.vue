@@ -61,9 +61,6 @@
           </li>
         </ul>
       </div>
-
-      <!--TODO: 亮暗主题切换-->
-      <!--<div class="iconfont icon-light theme-toggle" @click="toggleTheme"></div>-->
     </div>
   </header>
 </template>

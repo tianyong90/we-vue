@@ -69,9 +69,9 @@ export default {
       thumb,
       thumbSmall,
       descriptionRouterLink,
-      descriptionUrl
+      descriptionUrl,
     }
-  }
+  },
 }
 </script>
 

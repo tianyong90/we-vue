@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       percent1: 35,
-      percent2: 0
+      percent2: 0,
     }
   },
 
@@ -41,10 +41,10 @@ export default {
     onCancel () {
       Toast({
         message: 'canceled',
-        type: 'text'
+        type: 'text',
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

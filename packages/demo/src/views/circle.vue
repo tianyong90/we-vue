@@ -29,9 +29,9 @@
 export default {
   data () {
     return {
-      sliderValue: 20
+      sliderValue: 20,
     }
-  }
+  },
 }
 </script>
 

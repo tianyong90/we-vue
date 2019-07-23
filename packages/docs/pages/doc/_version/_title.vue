@@ -44,11 +44,6 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'highlight.js/styles/atom-one-dark.css'
 import WevueDemo from '@/components/wevue-demo.vue'
 
-// TODO: 引入 md 样式
-// if (false) {
-//   import('~/assets/css/typora-vue-theme/vue-dark.css')
-// }
-
 type loadedMdFileObj = {
   attributes: object
   html

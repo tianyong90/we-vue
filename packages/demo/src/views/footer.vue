@@ -14,27 +14,27 @@ export default {
       links1: [
         {
           text: '底部链接1',
-          link: '/'
-        }
+          link: '/',
+        },
       ],
       links2: [
         {
           text: '底部链接2',
-          link: '/footer'
+          link: '/footer',
         },
         {
           text: '底部链接3',
-          link: '/footer'
-        }
+          link: '/footer',
+        },
       ],
       links3: [
         {
           text: '返回首页',
-          link: '/'
-        }
-      ]
+          link: '/',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

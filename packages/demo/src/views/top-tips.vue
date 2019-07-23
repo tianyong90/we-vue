@@ -15,7 +15,7 @@
 export default {
   mounted () {
     this.$toptips.setDefaultOptions({
-      duration: 200
+      duration: 200,
     })
   },
 
@@ -25,14 +25,14 @@ export default {
 
       this.$toptips({
         message: '提示信息',
-        duration: 3000
+        duration: 3000,
       })
     },
 
     closeTips () {
       this.$toptips.close()
-    }
-  }
+    },
+  },
 }
 </script>
 

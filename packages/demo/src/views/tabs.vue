@@ -130,7 +130,7 @@
 export default {
   data () {
     return {
-      activeIndex: 1
+      activeIndex: 1,
     }
   },
 
@@ -141,8 +141,8 @@ export default {
 
     onClick (index) {
       this.$toast.text(`点击 ${index}`)
-    }
-  }
+    },
+  },
 }
 </script>
 

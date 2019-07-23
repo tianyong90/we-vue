@@ -3,7 +3,6 @@
     <div class="">
       <div class="w-full bg-blue-600 py-16 justify-center">
         <div class="container max-w-6xl mx-auto justify-center">
-          <img class="w-64 flex mx-auto my-12" src="/images/logo.png" alt="" />
           <h1 class="text-center mt-2 text-white text-4xl">
             we-vue， 不只是 vue.js + weui！
           </h1>

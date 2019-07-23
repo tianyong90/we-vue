@@ -3,7 +3,7 @@
     <transition :name="$root.transitionName">
       <router-view/>
     </transition>
-    <div class="qrcode">
+    <div class="qrcode" v-on-clickaway="clickAway">
       <img
         :src="qrcodeUrl"
         :class="{ 'qrcode-big': bigQrcode }"
@@ -15,24 +15,33 @@
 
 <script>
 import { mapState } from 'vuex'
+import { directive as onClickaway } from 'vue-clickaway'
 
 export default {
+  directives: {
+    onClickaway: onClickaway,
+  },
+
   data () {
     return {
-      bigQrcode: false
+      bigQrcode: false,
     }
   },
 
   computed: {
     ...mapState({
-      qrcodeUrl: state => state.qrcodeUrl
-    })
+      qrcodeUrl: state => state.qrcodeUrl,
+    }),
   },
 
   methods: {
     clickQrcode () {
-      this.bigQrcode = !this.bigQrcode
-    }
-  }
+      this.bigQrcode = true
+    },
+
+    clickAway () {
+      this.bigQrcode = false
+    },
+  },
 }
 </script>

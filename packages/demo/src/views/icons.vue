@@ -5,7 +5,11 @@
         v-for="type in iconTypes"
         :key="type"
       >
-        <w-icon :type="type" :large="false" slot="icon"/>
+        <w-icon
+          :type="type"
+          :large="false"
+          slot="icon"
+        />
         <span slot="label" v-text="type"/>
       </w-grid-item>
     </w-grid>
@@ -26,9 +30,9 @@ export default {
         'info-circle',
         'download',
         'cancel',
-        'search'
-      ]
+        'search',
+      ],
     }
-  }
+  },
 }
 </script>

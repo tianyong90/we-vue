@@ -39,7 +39,7 @@ export default {
       list: [],
       loading: false,
       allLoaded: false,
-      wrapperHeight: 0
+      wrapperHeight: 0,
     }
   },
 
@@ -56,7 +56,7 @@ export default {
           this.loading = false
         })
       }, 1000)
-    }
+    },
   },
 
   mounted () {
@@ -70,7 +70,7 @@ export default {
     setInterval(() => {
       this.loading = !this.loading
     }, 2000)
-  }
+  },
 }
 </script>
 

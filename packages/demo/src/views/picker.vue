@@ -56,28 +56,28 @@ export default {
           options: [
             {
               name: 'Apple',
-              price: 1.3
+              price: 1.3,
             },
             {
               name: 'Banana',
-              price: 2.0
+              price: 2.0,
             },
             {
               name: 'Orange',
-              price: 10
+              price: 10,
             },
             {
               name: 'Pear',
-              price: 0.5
-            }
-          ]
-        }
+              price: 0.5,
+            },
+          ],
+        },
       ],
       ticketColumns: [
         {
           options: ['汽车票', '飞机票', '火车票', '轮船票', '其它'],
-          defaultIndex: 2
-        }
+          defaultIndex: 2,
+        },
       ],
       dayColumns: [
         {
@@ -88,13 +88,13 @@ export default {
             '星期四',
             '星期五',
             '星期六',
-            '星期日'
-          ]
+            '星期日',
+          ],
         },
         {
-          options: ['上午', '下午']
-        }
-      ]
+          options: ['上午', '下午'],
+        },
+      ],
     }
   },
 
@@ -107,7 +107,7 @@ export default {
 
     confirmTicket (picker) {
       this.ticket = picker.getValues()
-    }
+    },
   },
 
   filters: {
@@ -121,7 +121,7 @@ export default {
       } else {
         return '请选择'
       }
-    }
-  }
+    },
+  },
 }
 </script>

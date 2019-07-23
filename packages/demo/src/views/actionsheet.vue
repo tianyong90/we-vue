@@ -28,7 +28,7 @@ export default {
     return {
       type: 'ios',
       actionsheetVisible: false,
-      actions: []
+      actions: [],
     }
   },
 
@@ -40,7 +40,7 @@ export default {
 
     menuClick (key) {
       console.log(`menu ${key} clicked`)
-    }
+    },
   },
 
   mounted () {
@@ -50,24 +50,24 @@ export default {
         key: 'menu1',
         method: () => {
           this.menuClick('menu1')
-        }
+        },
       },
       {
         name: '示例菜单2',
         key: 'menu2',
         method: () => {
           this.menuClick('menu2')
-        }
+        },
       },
       {
         name: '示例菜单3',
         key: 'menu3',
         method: () => {
           this.menuClick('menu3')
-        }
-      }
+        },
+      },
     ]
-  }
+  },
 }
 </script>
 

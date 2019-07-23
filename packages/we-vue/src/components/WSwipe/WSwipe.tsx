@@ -250,13 +250,14 @@ export default mixins<options &
       this.swiping = true
       this.resetTouchStatus()
       this.correctPosition()
-      setTimeout(() => {
+
+      this.$nextTick(() => {
         this.swiping = false
         this.move({
           pace: (index % this.count) - this.active,
           emitChange: true,
         })
-      }, 30)
+      })
     },
 
     correctPosition (): void {
@@ -266,10 +267,6 @@ export default mixins<options &
       if (this.active >= this.count) {
         this.move({ pace: -this.count })
       }
-    },
-
-    range (num: number, arr: number[]): number {
-      return Math.min(Math.max(num, arr[0]), arr[1])
     },
 
     clear (): void {

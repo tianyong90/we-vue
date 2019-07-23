@@ -16,9 +16,9 @@ const list = Array.from({ length: 7 }).map((item, index) => {
 export default {
   data () {
     return {
-      list
+      list,
     }
-  }
+  },
 }
 </script>
 

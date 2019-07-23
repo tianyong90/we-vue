@@ -57,15 +57,15 @@ import thumbSmall from '../assets/images/icon_tabbar.png'
 export default {
   data () {
     return {
-      thumbSmall
+      thumbSmall,
     }
   },
 
   methods: {
     onClick () {
       this.$root.message('click')
-    }
-  }
+    },
+  },
 }
 </script>
 

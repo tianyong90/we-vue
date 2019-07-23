@@ -112,10 +112,10 @@ export default {
       valueOnBlur: '',
       captcha: '',
       vcode: '',
-      vcodeImage
+      vcodeImage,
     }
   },
 
-  mounted () {}
+  mounted () {},
 }
 </script>

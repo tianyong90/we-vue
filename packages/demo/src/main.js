@@ -39,13 +39,13 @@ new Vue({
 
   data () {
     return {
-      transitionName: 'slide-right'
+      transitionName: 'slide-right',
     }
   },
 
   watch: {
     $route (to, from) {
       this.transitionName = from.name === 'index' ? 'slide-left' : 'slide-right'
-    }
-  }
+    },
+  },
 })

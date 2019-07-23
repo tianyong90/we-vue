@@ -41,7 +41,7 @@ import imgIcon from '../assets/images/icon_tabbar.png'
 export default {
   data () {
     return {
-      imgIcon
+      imgIcon,
     }
   },
 
@@ -52,8 +52,8 @@ export default {
 
     readClicked () {
       console.log('read')
-    }
-  }
+    },
+  },
 }
 </script>
 

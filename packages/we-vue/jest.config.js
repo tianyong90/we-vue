@@ -32,6 +32,10 @@ module.exports = {
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'src/**/*.{js,ts,tsx}',
+    '!src/entry-lib.ts',
+    '!src/index.ts',
+    '!src/install.ts',
+    '!src/components/index.ts',
     '!**/*.d.ts',
     '!**/__test__/area.js',
   ],

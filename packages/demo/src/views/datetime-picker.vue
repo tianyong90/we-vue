@@ -95,7 +95,7 @@ export default {
       demoDatetime1: new Date(year, month, date, hour, minute, 0),
       demoDatetime2: new Date(),
       demoDatetime3: new Date(),
-      demoDate: new Date()
+      demoDate: new Date(),
     }
   },
 
@@ -126,9 +126,9 @@ export default {
       this.$toast({
         duration: 3000,
         message: message,
-        type: 'text'
+        type: 'text',
       })
-    }
+    },
   },
 
   filters: {
@@ -146,7 +146,7 @@ export default {
       } else {
         return value
       }
-    }
-  }
+    },
+  },
 }
 </script>

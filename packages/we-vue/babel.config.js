@@ -62,7 +62,6 @@ module.exports = function (api) {
       },
       es5: {
         plugins: [
-          // TODO: 确实无用后清理 './build/babel-transform-scss-paths.js',
           // 模块路径转换
           ['module-resolver', {
             cwd: 'babelrc',
@@ -76,7 +75,6 @@ module.exports = function (api) {
       },
       lib: {
         plugins: [
-          // TODO: 确实无用后清理 './build/babel-transform-scss-paths.js',
           // 模块路径转换
           ['module-resolver', {
             cwd: 'babelrc',

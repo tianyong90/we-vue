@@ -61,7 +61,7 @@ export default {
       popupVisible2: false,
       popupVisible3: false,
       popupVisible4: false,
-      popupVisible5: false
+      popupVisible5: false,
     }
   },
 
@@ -72,7 +72,7 @@ export default {
 
     onHide () {
       console.log('hidden')
-    }
-  }
+    },
+  },
 }
 </script>

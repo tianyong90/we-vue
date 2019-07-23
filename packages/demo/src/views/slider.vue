@@ -28,9 +28,9 @@ export default {
     return {
       percent1: 20,
       percent2: 55,
-      percent3: 10
+      percent3: 10,
     }
-  }
+  },
 }
 </script>
 

@@ -33,8 +33,8 @@ export default {
   data () {
     return {
       content1: '',
-      content2: 'hello'
+      content2: 'hello',
     }
-  }
+  },
 }
 </script>

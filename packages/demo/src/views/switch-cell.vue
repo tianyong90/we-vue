@@ -12,8 +12,8 @@ export default {
   data () {
     return {
       switchValue1: true,
-      switchValue2: false
+      switchValue2: false,
     }
-  }
+  },
 }
 </script>

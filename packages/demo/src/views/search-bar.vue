@@ -40,74 +40,74 @@ export default {
         'Plum',
         'Pear',
         'Peanut',
-        'Other'
+        'Other',
       ],
       defaultObjectResult: [
         {
           name: 'Apple',
-          id: 1
+          id: 1,
         },
         {
           name: 'Banana',
-          id: 2
+          id: 2,
         },
         {
           name: 'Orange',
-          id: 3
+          id: 3,
         },
         {
           name: 'Durian',
-          id: 4
+          id: 4,
         },
         {
           name: 'Lemon',
-          id: 5
+          id: 5,
         },
         {
           name: 'Peach',
-          id: 6
+          id: 6,
         },
         {
           name: 'Cherry',
-          id: 7
+          id: 7,
         },
         {
           name: 'Berry',
-          id: 8
+          id: 8,
         },
         {
           name: 'Core',
-          id: 9
+          id: 9,
         },
         {
           name: 'Fig',
-          id: 10
+          id: 10,
         },
         {
           name: 'Haw',
-          id: 11
+          id: 11,
         },
         {
           name: 'Melon',
-          id: 12
+          id: 12,
         },
         {
           name: 'Plum',
-          id: 13
+          id: 13,
         },
         {
           name: 'Pear',
-          id: 14
+          id: 14,
         },
         {
           name: 'Peanut',
-          id: 15
+          id: 15,
         },
         {
           name: 'Other',
-          id: 16
-        }
-      ]
+          id: 16,
+        },
+      ],
     }
   },
 
@@ -124,7 +124,7 @@ export default {
         if (!this.value2) return
         return new RegExp(this.value2, 'i').test(value.name)
       })
-    }
+    },
   },
 
   methods: {
@@ -134,8 +134,8 @@ export default {
 
     onClickResult (item) {
       console.log(item)
-    }
-  }
+    },
+  },
 }
 </script>
 

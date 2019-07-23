@@ -45,15 +45,15 @@ export default {
       number6: 1,
       number7: 1,
       number8: 1,
-      number9: 1
+      number9: 1,
     }
   },
 
   methods: {
     onChange (evt) {
       console.log(evt)
-    }
-  }
+    },
+  },
 }
 </script>
 
