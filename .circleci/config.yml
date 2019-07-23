@@ -22,6 +22,10 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - yarn-packages-{{ .Branch }}-
 
+      - run:
+          name: isntall lerna and codecov globally
+          command: sudo npm install -g lerna codecov
+
       # Install dependencies
       - run:
           name: Install Dependencies
