@@ -1,4 +1,4 @@
-import TabbarItem from './WTabbarItem'
+import WTabbarItem from './WTabbarItem'
 
-export { TabbarItem }
-export default TabbarItem
+export { WTabbarItem }
+export default WTabbarItem
