@@ -52,7 +52,7 @@ export default Vue.extend({
         <span class="wv-spinner">
           <i
             class={{
-              'iconfont': true,
+              iconfont: true,
               [this.fontclass]: true,
             }}
             style={this.style} />

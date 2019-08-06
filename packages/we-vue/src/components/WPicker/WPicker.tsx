@@ -116,7 +116,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
 
     // get column instance
     getColumn (columnIndex: number) {
-      let { children } = this
+      const { children } = this
       return children.find((child, index) => {
         return child.$options.name === 'w-picker-column' && index === columnIndex
       })
@@ -218,9 +218,9 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
                 <WPickerColumn
                   key={index}
                   options={this.simple ? column : (column as any).options}
-                  value-key={this.valueKey}
-                  default-index={(column as any).defaultIndex}
-                  visible-item-count={this.visibleItemCount}
+                  valueKey={this.valueKey}
+                  defaultIndex={(column as any).defaultIndex}
+                  visibleItemCount={this.visibleItemCount}
                   onChange={() => {
                     this.columnValueChange(index)
                   }}

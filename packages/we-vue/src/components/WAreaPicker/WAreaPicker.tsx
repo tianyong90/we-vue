@@ -250,7 +250,7 @@ export default mixins<Options & ExtractVue<[typeof Picker]>>(Picker).extend({
         columns={this.displayColumns}
         cancelText={this.cancelText}
         confirmText={this.confirmText}
-        close-on-click-mask={this.closeOnClickMask}
+        closeOnClickMask={this.closeOnClickMask}
         visibleItemCount={this.visibleItemCount}
         valueKey="name"
         onChange={this.onChange}
