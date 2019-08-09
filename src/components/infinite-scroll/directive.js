@@ -25,14 +25,14 @@ function doBindEvent () {
   }
   this.disabled = disabled
 
-  let distance = this.el.getAttribute('infinite-scroll-distance')
+  const distance = this.el.getAttribute('infinite-scroll-distance')
   this.distance = Number(distance) || DISTANCE
 
   on(this.scrollEventTarget, 'scroll', this.scrollEventListener, true)
 
   const immediateCheckExpr = this.el.getAttribute('infinite-scroll-immediate-check')
 
-  let immediateCheck = immediateCheckExpr ? Boolean(this.vm[immediateCheckExpr]) : true
+  const immediateCheck = immediateCheckExpr ? Boolean(this.vm[immediateCheckExpr]) : true
 
   if (immediateCheck) {
     this.scrollEventListener()

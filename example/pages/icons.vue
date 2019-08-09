@@ -5,8 +5,8 @@
         v-for="type in iconTypes"
         :key="type"
       >
-        <wv-icon :type="type" :large="false" slot="icon"/>
-        <span slot="label" v-text="type"/>
+        <wv-icon :type="type" :large="false" slot="icon" />
+        <span slot="label" v-text="type" />
       </wv-grid-item>
     </wv-grid>
   </div>

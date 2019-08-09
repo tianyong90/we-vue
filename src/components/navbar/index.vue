@@ -53,7 +53,7 @@ export default create({
 
   computed: {
     style () {
-      let ret = {
+      const ret = {
         position: this.fixed ? 'fixed' : 'absolute',
         backgroundColor: this.backgroundColor
       }

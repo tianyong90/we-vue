@@ -11,7 +11,7 @@ describe('navbar-item', () => {
   })
 
   test('create', () => {
-    let wrapper = shallowMount(NavbarItem, {
+    const wrapper = shallowMount(NavbarItem, {
       parentComponent: Navbar
     })
 
@@ -19,7 +19,7 @@ describe('navbar-item', () => {
   })
 
   test('comput isSelected', () => {
-    let wrapper = shallowMount(NavbarItem, {
+    const wrapper = shallowMount(NavbarItem, {
       parentComponent: Navbar
     })
 
@@ -29,7 +29,7 @@ describe('navbar-item', () => {
   })
 
   test('comput style', () => {
-    let wrapper = shallowMount(NavbarItem, {
+    const wrapper = shallowMount(NavbarItem, {
       parentComponent: Navbar
     })
 
@@ -49,7 +49,7 @@ describe('navbar-item', () => {
       }
     })
 
-    let wrapper = shallowMount(NavbarItem, {
+    const wrapper = shallowMount(NavbarItem, {
       propsData: {},
       parent: parentWrapper.vm
     })
@@ -69,7 +69,7 @@ describe('navbar-item', () => {
       }
     })
 
-    let wrapper = shallowMount(NavbarItem, {
+    const wrapper = shallowMount(NavbarItem, {
       propsData: {
         disabled: true
       },

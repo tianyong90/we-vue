@@ -4,7 +4,8 @@
       v-show="visible"
       class="weui-toast"
       :class="{ 'weui-toast_text': type === 'text' }"
-      ref="toast">
+      ref="toast"
+    >
       <wv-icon
         :type="icon"
         class="weui-icon_toast"
@@ -16,7 +17,7 @@
         :type="spinnerType"
         :size="25"
       />
-      <p class="weui-toast__content" v-text="message"/>
+      <p class="weui-toast__content" v-text="message" />
     </div>
   </transition>
 </template>

@@ -17,7 +17,7 @@ describe('flex-item', () => {
       }
     })
 
-    let wrapper = shallowMount(FlexItem, {
+    const wrapper = shallowMount(FlexItem, {
       parent: parentWrapper.vm
     })
 
@@ -44,11 +44,11 @@ describe('flex-item', () => {
       propsData: {}
     })
 
-    let wrapper = shallowMount(FlexItem, {
+    const wrapper = shallowMount(FlexItem, {
       parent: parentWrapper.vm
     })
 
-    let computedStyle = {
+    const computedStyle = {
       flex: wrapper.vm.flex,
       marginLeft: wrapper.vm.offset
     }

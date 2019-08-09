@@ -103,11 +103,11 @@ export default {
       let message = ''
 
       if (value !== null && typeof value === 'object') {
-        let year = value.getFullYear()
-        let month = value.getMonth() + 1
-        let date = value.getDate()
-        let hour = value.getHours()
-        let minute = value.getMinutes()
+        const year = value.getFullYear()
+        const month = value.getMonth() + 1
+        const date = value.getDate()
+        const hour = value.getHours()
+        const minute = value.getMinutes()
 
         message = `${year}-${month}-${date} ${hour}:${minute}`
       } else {
@@ -125,11 +125,11 @@ export default {
   filters: {
     datetimeFilter (value, type) {
       if (value !== null && typeof value === 'object') {
-        let year = value.getFullYear()
-        let month = value.getMonth() + 1
-        let date = value.getDate()
-        let hour = value.getHours()
-        let minute = value.getMinutes()
+        const year = value.getFullYear()
+        const month = value.getMonth() + 1
+        const date = value.getDate()
+        const hour = value.getHours()
+        const minute = value.getMinutes()
 
         return type === 'date' ? `${year}-${month}-${date}` : `${year}-${month}-${date} ${hour}:${minute}`
       } else {

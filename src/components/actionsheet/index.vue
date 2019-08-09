@@ -20,7 +20,7 @@
         v-show="currentValue"
       >
         <div class="weui-actionsheet__title" v-if="title">
-          <p class="weui-actionsheet__title-text" v-html="title"/>
+          <p class="weui-actionsheet__title-text" v-html="title" />
         </div>
         <div class="weui-actionsheet__menu">
           <div
@@ -32,7 +32,7 @@
           />
         </div>
         <div class="weui-actionsheet__action" v-if="cancelText">
-          <div class="weui-actionsheet__cell" @click="onClickCancel" v-html="cancelText"/>
+          <div class="weui-actionsheet__cell" @click="onClickCancel" v-html="cancelText" />
         </div>
       </div>
     </transition>
@@ -46,7 +46,7 @@
         v-if="type === 'android'"
         v-show="currentValue"
       >
-        <div class="weui-mask" @click="currentValue = false"/>
+        <div class="weui-mask" @click="currentValue = false" />
         <div class="weui-actionsheet">
           <div class="weui-actionsheet__menu">
             <div

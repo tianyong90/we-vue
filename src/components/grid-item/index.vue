@@ -6,7 +6,7 @@
     <p class="weui-grid__label" v-if="$slots.label">
       <slot name="label" />
     </p>
-    <slot/>
+    <slot />
   </div>
 </template>
 

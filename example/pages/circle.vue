@@ -4,16 +4,20 @@
       class="circle-1"
       :line-width="3"
       :value="12"
-    >12 %</wv-circle>
+    >
+      12 %
+    </wv-circle>
 
     <wv-circle
       class="circle-1"
       :line-width="4"
       fill-color="yellow"
       :value="12"
-    >12 %</wv-circle>
+    >
+      12 %
+    </wv-circle>
 
-    <wv-slider v-model="sliderValue"/>
+    <wv-slider v-model="sliderValue" />
 
     <wv-circle
       class="circle-2"
@@ -21,7 +25,9 @@
       stroke-color="#f44336"
       v-model="sliderValue"
       :diameter="200"
-    >{{ sliderValue }}%</wv-circle>
+    >
+      {{ sliderValue }}%
+    </wv-circle>
   </div>
 </template>
 

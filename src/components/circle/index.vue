@@ -1,7 +1,7 @@
 <template>
   <div class="wv-circle" :style="style">
     <svg :width="diameter" :height="diameter" :viewBox="'0 0 ' + diameter + ' ' + diameter">
-      <path :d="pathString" :stroke="trailColor" :stroke-width="lineWidth" fill="none"/>
+      <path :d="pathString" :stroke="trailColor" :stroke-width="lineWidth" fill="none" />
       <path
         :d="pathString"
         stroke-linecap="round"
@@ -15,8 +15,9 @@
         text-anchor="middle"
         dominant-baseline="middle"
         x="50%"
-        y="50%">
-        <slot/>
+        y="50%"
+      >
+        <slot />
       </text>
     </svg>
   </div>
@@ -95,7 +96,7 @@ export default create({
       return {
         'stroke-dasharray': `${this.len}px ${this.len}px`,
         'stroke-dashoffset': `${((100 - this.currentValue) / 100 * this.len)}px`,
-        'transition': `stroke-dashoffset ${this.speed}ms ease 0s, stroke ${this.speed}ms ease`
+        transition: `stroke-dashoffset ${this.speed}ms ease 0s, stroke ${this.speed}ms ease`
       }
     }
   },

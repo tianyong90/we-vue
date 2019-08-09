@@ -10,7 +10,7 @@
       ]"
     >
       <div class="wv-tabs__nav" :class="`wv-tabs__nav--${type}`" ref="nav">
-        <div v-if="type === 'line'" class="wv-tabs__line" :style="lineStyle"/>
+        <div v-if="type === 'line'" class="wv-tabs__line" :style="lineStyle" />
         <div
           v-for="(tab, index) in tabs"
           :key="index"
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="wv-tabs__content" ref="content">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
@@ -176,7 +176,7 @@ export default create({
   methods: {
     // whether to bind sticky listener
     handlers (bind) {
-      const {events} = this
+      const { events } = this
       const sticky = this.sticky && bind
       const swipeable = this.swipeable && bind
 
@@ -197,7 +197,7 @@ export default create({
       // listen to touch event
       if (events.swipeable !== swipeable) {
         events.swipeable = swipeable
-        const {content} = this.$refs
+        const { content } = this.$refs
         const action = swipeable ? on : off
 
         action(content, 'touchstart', this.touchStart)
@@ -209,7 +209,7 @@ export default create({
 
     // watch swipe touch end
     onTouchEnd () {
-      const {direction, deltaX, currentActive} = this
+      const { direction, deltaX, currentActive } = this
       const minSwipeDistance = 50
 
       /* istanbul ignore else */
@@ -277,7 +277,7 @@ export default create({
 
     // emit event when clicked
     onClick (index) {
-      const {title, disabled} = this.tabs[index]
+      const { title, disabled } = this.tabs[index]
       if (disabled) {
         this.$emit('disabled', index, title)
       } else {
@@ -293,9 +293,9 @@ export default create({
       }
 
       const tab = this.$refs.tabs[this.currentActive]
-      const {nav} = this.$refs
-      const {scrollLeft, offsetWidth: navWidth} = nav
-      const {offsetLeft, offsetWidth: tabWidth} = tab
+      const { nav } = this.$refs
+      const { scrollLeft, offsetWidth: navWidth } = nav
+      const { offsetLeft, offsetWidth: tabWidth } = tab
 
       this.scrollTo(nav, scrollLeft, offsetLeft - (navWidth - tabWidth) / 2, immediate)
     },

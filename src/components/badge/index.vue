@@ -4,7 +4,7 @@
     :class="{ 'weui-badge_dot': isDot }"
     :style="{ 'background-color': color }"
   >
-    <slot v-if="!isDot"/>
+    <slot v-if="!isDot" />
   </span>
 </template>
 

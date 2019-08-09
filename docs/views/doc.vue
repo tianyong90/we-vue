@@ -7,7 +7,7 @@
           v-for="navItem in nav[version]"
           :key="navItem.title"
         >
-          <h2 class="title" v-html="navItem.title"/>
+          <h2 class="title" v-html="navItem.title" />
 
           <div
             v-for="(group, index) in navItem.groups"
@@ -34,10 +34,10 @@
       </ul>
     </div>
     <div class="doc-content">
-      <router-view/>
+      <router-view />
     </div>
 
-    <wevue-demo :url.sync="demoUrl" :sticky-top="90"/>
+    <wevue-demo :url.sync="demoUrl" :sticky-top="90" />
   </div>
 </template>
 

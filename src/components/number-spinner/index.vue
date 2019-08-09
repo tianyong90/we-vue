@@ -21,7 +21,8 @@
       @paste="onPaste"
       @keypress="onKeypress"
       v-bind="$attrs"
-      :style="inputStyle">
+      :style="inputStyle"
+    >
     <button
       class="spinner-btn btn-plus"
       @click="increase"

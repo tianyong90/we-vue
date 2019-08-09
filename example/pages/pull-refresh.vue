@@ -1,7 +1,9 @@
 <template>
   <wv-pull-refresh @refresh="refresh">
     <div class="content">
-      <p class="text">基础用法</p>
+      <p class="text">
+        基础用法
+      </p>
       刷新次数：{{ num }}
     </div>
   </wv-pull-refresh>

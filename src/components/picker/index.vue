@@ -4,7 +4,7 @@
       enter-active-class="weui-animate-fade-in"
       leave-active-class="weui-animate-fade-out"
     >
-      <div class="weui-mask" @click="onCancel" v-show="visible"/>
+      <div class="weui-mask" @click="onCancel" v-show="visible" />
     </transition>
     <transition
       enter-active-class="weui-animate-slide-up"
@@ -118,7 +118,7 @@ export default create({
     },
 
     getColumn (columnIndex) {
-      let children = this.children
+      const children = this.children
       return children.find((child, index) => {
         return (child.$options.name === 'wv-picker-column' && !child.divider && index === columnIndex)
       })

@@ -24,11 +24,12 @@
         @focus="onFocus"
         @blur="onBlur"
         @change="onChange"
-        @input="handleInput">
+        @input="handleInput"
+      >
     </div>
     <div class="weui-cell__ft">
-      <wv-icon type="warn" v-if="!valid"/>
-      <slot name="ft"/>
+      <wv-icon type="warn" v-if="!valid" />
+      <slot name="ft" />
     </div>
   </div>
 </template>

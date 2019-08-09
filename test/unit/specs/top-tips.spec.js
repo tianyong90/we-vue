@@ -27,7 +27,7 @@ describe('test top-tips api', () => {
 
   test('open a top-tips with string parameter', () => {
     const localVue = createLocalVue()
-    let instance = TopTipsApi('test')
+    const instance = TopTipsApi('test')
 
     expect(instance.visible).toBe(true)
 
@@ -38,7 +38,7 @@ describe('test top-tips api', () => {
   })
 
   test('create a toast with duration', () => {
-    let instance = TopTipsApi({
+    const instance = TopTipsApi({
       duration: 2000
     })
 

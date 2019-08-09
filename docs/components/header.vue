@@ -12,10 +12,14 @@
 
       <ul class="navbar-nav flex-row ml-3">
         <li class="nav-item">
-          <router-link to="/doc/v2_0/index">文档</router-link>
+          <router-link to="/doc/v2_0/index">
+            文档
+          </router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/doc/changelog">变更记录</router-link>
+          <router-link to="/doc/changelog">
+            变更记录
+          </router-link>
         </li>
         <li class="nav-item">
           <a href="https://github.com/tianyong90/we-vue" target="new">GitHub</a>
@@ -28,11 +32,14 @@
         @mouseleave="dropDownVisible = false"
         v-if="$route.name !== 'home'"
       >
-
         <span class="version-number">{{ version | versionText }}</span>
         <div class="dropdown-menu" :class="{ 'd-block': dropDownVisible }">
-          <div class="dropdown-item" @click="changeVersion('v1_6')">v1.6</div>
-          <div class="dropdown-item" @click="changeVersion('v2_0')">v2.0</div>
+          <div class="dropdown-item" @click="changeVersion('v1_6')">
+            v1.6
+          </div>
+          <div class="dropdown-item" @click="changeVersion('v2_0')">
+            v2.0
+          </div>
         </div>
       </div>
     </div>
@@ -65,7 +72,7 @@ export default {
   computed: {
     searchBoxOptions () {
       return {
-        algoliaOptions: { 'facetFilters': [`version:${this.version}`] }
+        algoliaOptions: { facetFilters: [`version:${this.version}`] }
       }
     }
   },

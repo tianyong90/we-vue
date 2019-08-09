@@ -18,7 +18,7 @@ export default create({
 
   computed: {
     classObject () {
-      let classType = `weui-icon-${this.type}`
+      const classType = `weui-icon-${this.type}`
 
       return {
         [classType]: true,

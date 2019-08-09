@@ -2,25 +2,31 @@
   <div class="page">
     <div class="page__hd">
       <img :src="logoImg" class="logo">
-      <h1 class="page__title">WE-VUE</h1>
+      <h1 class="page__title">
+        WE-VUE
+      </h1>
     </div>
     <wv-search-bar placeholder="搜索组件" v-model="keyword" :result="filterResult">
       <wv-group v-show="keyword">
         <wv-cell v-for="item in filterResult" :key="item.name" :title="item.name" :to="item.path" is-link>
-          <i class="cell-icon iconfont" :class="'icon-' + item.icon" slot="icon"/>
+          <i class="cell-icon iconfont" :class="'icon-' + item.icon" slot="icon" />
         </wv-cell>
       </wv-group>
     </wv-search-bar>
 
     <wv-group :title="navGroup.groupTitle" v-for="navGroup in navs" :key="navGroup.index">
       <wv-cell v-for="nav in navGroup.navItems" :key="nav.name" :to="nav.path" is-link :title="nav.name">
-        <i class="cell-icon iconfont" :class="'icon-' + nav.icon" slot="icon"/>
-        <wv-badge slot="ft" v-if="nav.status === 'todo'">Todo</wv-badge>
+        <i class="cell-icon iconfont" :class="'icon-' + nav.icon" slot="icon" />
+        <wv-badge slot="ft" v-if="nav.status === 'todo'">
+          Todo
+        </wv-badge>
       </wv-cell>
     </wv-group>
 
     <div class="weui-footer footer-copyright">
-      <p data-v-62fe346e="" class="weui-footer__text">Copyright © 2016 - 2018 <a href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a></p>
+      <p data-v-62fe346e="" class="weui-footer__text">
+        Copyright © 2016 - 2018 <a href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a>
+      </p>
     </div>
   </div>
 </template>

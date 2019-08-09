@@ -3,7 +3,7 @@
     <div class="weui-search-bar">
       <div class="weui-search-bar__form">
         <div class="weui-search-bar__box">
-          <i class="weui-icon-search"/>
+          <i class="weui-icon-search" />
           <form action="javascript:" @submit="$emit('search', currentValue)">
             <input
               class="weui-search-bar__input"
@@ -14,11 +14,11 @@
               ref="input"
             >
           </form>
-          <div class="weui-icon-clear" @click="clear"/>
+          <div class="weui-icon-clear" @click="clear" />
         </div>
         <label class="weui-search-bar__label" @click="textClick" v-show="!isActive">
-          <i class="weui-icon-search"/>
-          <span v-text="placeholder"/>
+          <i class="weui-icon-search" />
+          <span v-text="placeholder" />
         </label>
       </div>
       <div

@@ -1,8 +1,8 @@
 <template>
   <div class="weui-form-preview">
     <div class="weui-form-preview__hd">
-      <label class="weui-form-preview__label" v-html="title"/>
-      <em class="weui-form-preview__value" v-html="value"/>
+      <label class="weui-form-preview__label" v-html="title" />
+      <em class="weui-form-preview__value" v-html="value" />
     </div>
     <div class="weui-form-preview__bd">
       <div class="weui-form-preview__item" v-for="(item, key, index) in dataItems" :key="key">

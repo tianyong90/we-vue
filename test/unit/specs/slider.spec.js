@@ -33,7 +33,7 @@ describe('slider', () => {
   })
 
   test('compute percent', () => {
-    const fakeValue = faker.random.number({min: 0, max: 100})
+    const fakeValue = faker.random.number({ min: 0, max: 100 })
     wrapper = shallowMount(Slider, {
       propsData: {
         value: fakeValue
@@ -72,7 +72,7 @@ describe('slider', () => {
     wrapper.find({ ref: 'inner' }).trigger('click')
 
     // drag handler
-    horizontalDrag(wrapper.find({ref: 'handler'}), 0, 10)
+    horizontalDrag(wrapper.find({ ref: 'handler' }), 0, 10)
 
     expect(wrapper.vm.value).toBe(0)
   })

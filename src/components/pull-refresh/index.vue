@@ -5,13 +5,18 @@
     :style="style"
     @touchstart="touchStart"
     @touchmove="touchMove"
-    @touchend="touchEnd">
+    @touchend="touchEnd"
+  >
     <div class="weui-pull-refreshing-box">
-      <div v-if="moveState < 2">{{ moveState === 0 ? '下拉即可刷新...' : '释放即可刷新...' }}</div>
-      <div v-else><i class="weui-loading"/> 加载中...</div>
+      <div v-if="moveState < 2">
+        {{ moveState === 0 ? '下拉即可刷新...' : '释放即可刷新...' }}
+      </div>
+      <div v-else>
+        <i class="weui-loading" /> 加载中...
+      </div>
     </div>
     <div class="weui-pull-present-box">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
@@ -44,12 +49,12 @@ export default create({
       this.startY = e.targetTouches[0].clientY
     },
     touchMove (e) {
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       if (scrollTop > 0) return
-      let move = e.targetTouches[0].clientY - this.startY
+      const move = e.targetTouches[0].clientY - this.startY
       if (move > 0) {
         e.preventDefault()
-        let diff = e.targetTouches[0].clientY - this.startY
+        const diff = e.targetTouches[0].clientY - this.startY
         this.moveDistance = Math.pow(diff, 0.8)
         if (this.moveDistance > 50) {
           if (this.moveState === 1) return

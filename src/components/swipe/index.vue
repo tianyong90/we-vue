@@ -4,13 +4,14 @@
     @touchstart="onTouchstart"
     @touchmove="onTouchmove"
     @touchend="onTouchend"
-    @touchcancel="onTouchend">
+    @touchcancel="onTouchend"
+  >
     <div
       :style="wrapperStyle"
       class="wv-swipe__wrapper"
       @transitionend="$emit('change', activeIndicator)"
     >
-      <slot/>
+      <slot />
     </div>
     <div class="wv-swipe__indicators" v-if="showIndicators && count > 1">
       <i
@@ -88,7 +89,7 @@ export default create({
     },
 
     wrapperStyle () {
-      let ret = {
+      const ret = {
         paddingLeft: this.count > 1 ? this.width + 'px' : 0,
         width: this.count > 1 ? (this.count + 2) * this.width + 'px' : '100%',
         transitionDuration: `${this.currentDuration}ms`,
@@ -177,7 +178,7 @@ export default create({
     },
 
     move (move = 0, offset = 0) {
-      const {active, count, swipes, deltaX, width} = this
+      const { active, count, swipes, deltaX, width } = this
 
       if (move) {
         if (active === -1) {
@@ -197,7 +198,7 @@ export default create({
     },
 
     autoPlay () {
-      const {autoplay} = this
+      const { autoplay } = this
       if (autoplay && this.count > 1) {
         clearTimeout(this.timer)
         this.timer = setTimeout(() => {

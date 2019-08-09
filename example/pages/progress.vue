@@ -1,10 +1,12 @@
 <template>
   <div class="page page-with-padding">
-    <wv-progress :percent="percent1" :show-clear="false"/>
-    <wv-progress :percent="percent2" @cancel="onCancel"/>
-    <wv-progress percent="10"/>
+    <wv-progress :percent="percent1" :show-clear="false" />
+    <wv-progress :percent="percent2" @cancel="onCancel" />
+    <wv-progress percent="10" />
 
-    <wv-button type="primary" @click="upload">上传</wv-button>
+    <wv-button type="primary" @click="upload">
+      上传
+    </wv-button>
   </div>
 </template>
 
@@ -23,7 +25,7 @@ export default {
     upload () {
       let temp = 0
 
-      let ticker = setInterval(() => {
+      const ticker = setInterval(() => {
         temp++
 
         this.percent1 = temp

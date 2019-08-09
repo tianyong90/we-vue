@@ -8,7 +8,7 @@
     @touchcancel="onTouchend"
     @click="onClick"
   >
-    <div class="weui-picker__mask" :style="pickerMaskStyle"/>
+    <div class="weui-picker__mask" :style="pickerMaskStyle" />
     <div
       class="weui-picker__indicator"
       ref="indicator"
@@ -24,7 +24,7 @@
       />
     </div>
   </div>
-  <div class="wv-picker-column-divider" v-else v-html="content"/>
+  <div class="wv-picker-column-divider" v-else v-html="content" />
 </template>
 
 <script>

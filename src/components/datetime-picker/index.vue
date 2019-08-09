@@ -121,8 +121,8 @@ export default create({
     },
 
     pickerColumns () {
-      let result = []
-      for (let rangeKey in this.ranges) {
+      const result = []
+      for (const rangeKey in this.ranges) {
         result.push({
           values: this.fillColumnValues(rangeKey, this.ranges[rangeKey][0], this.ranges[rangeKey][1])
         })
@@ -226,7 +226,7 @@ export default create({
     },
 
     fillColumnValues (type, start, end) {
-      let values = []
+      const values = []
       for (let i = start; i <= end; i++) {
         if (i < 10) {
           values.push(this[`${type}Format`].replace('{value}', ('0' + i).slice(-2)))

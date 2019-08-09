@@ -47,7 +47,7 @@ export default {
       this.loading = true
       console.log('loading more')
       setTimeout(() => {
-        let last = this.list[this.list.length - 1]
+        const last = this.list[this.list.length - 1]
         for (let i = 1; i <= 5; i++) {
           this.list.push(last + i)
         }

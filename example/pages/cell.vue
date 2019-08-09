@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <wv-group title="带说明的列表项">
-      <wv-cell title="标题文字" value="说明文字"/>
+      <wv-cell title="标题文字" value="说明文字" />
     </wv-group>
 
     <wv-group title="带图标、说明的列表项">
@@ -15,13 +15,13 @@
     </wv-group>
 
     <wv-group title="带跳转的列表项">
-      <wv-cell title="vue-router 链接" is-link to="/"/>
-      <wv-cell title="url 链接" is-link url="http://demo.wevue.org"/>
+      <wv-cell title="vue-router 链接" is-link to="/" />
+      <wv-cell title="url 链接" is-link url="http://demo.wevue.org" />
     </wv-group>
 
     <wv-group title="带说明、跳转的列表项">
-      <wv-cell title="vue-router 链接" value="to='/'" is-link to="/"/>
-      <wv-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org"/>
+      <wv-cell title="vue-router 链接" value="to='/'" is-link to="/" />
+      <wv-cell title="url 链接" value="url='http://demo.wevue.org'" is-link url="http://demo.wevue.org" />
     </wv-group>
 
     <wv-group title="带图标、说明、跳转的列表项">

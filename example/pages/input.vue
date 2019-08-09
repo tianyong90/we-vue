@@ -74,7 +74,7 @@
     </wv-group>
 
     <wv-group title="无标签">
-      <wv-input placeholder="请输入内容" v-model="valueText"/>
+      <wv-input placeholder="请输入内容" v-model="valueText" />
     </wv-group>
 
     <wv-group title="综合示例">
@@ -83,7 +83,9 @@
         placeholder="请输入验证码"
         v-model="captcha"
       >
-        <button class="weui-vcode-btn" slot="ft">获取验证码</button>
+        <button class="weui-vcode-btn" slot="ft">
+          获取验证码
+        </button>
       </wv-input>
       <wv-input
         label="验证码"

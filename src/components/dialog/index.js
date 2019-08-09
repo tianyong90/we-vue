@@ -3,10 +3,10 @@ import DialogComponent from './dialog.vue'
 
 let instance
 
-let CONFIRM_TEXT = '确定'
-let CANCEL_TEXT = '取消'
+const CONFIRM_TEXT = '确定'
+const CANCEL_TEXT = '取消'
 
-let defaultOptions = {
+const defaultOptions = {
   visible: true,
   title: '提示',
   message: '',

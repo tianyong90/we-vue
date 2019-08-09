@@ -4,11 +4,15 @@
       <wv-button
         type="default"
         @click="showActionsheet('ios')"
-      >iOS ActionSheet</wv-button>
+      >
+        iOS ActionSheet
+      </wv-button>
       <wv-button
         type="default"
         @click="showActionsheet('android')"
-      >Android ActionSheet</wv-button>
+      >
+        Android ActionSheet
+      </wv-button>
     </div>
 
     <wv-actionsheet

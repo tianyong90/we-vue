@@ -14,7 +14,7 @@
     @click="onClick"
     v-else
   >
-    <div class="background"/>
+    <div class="background" />
     <div
       class="thumb"
       :style="thumbStyle"
@@ -113,7 +113,7 @@ export default create({
 
       const touch = getTouch(event)
 
-      let deltaX = touch.clientX - this.startX
+      const deltaX = touch.clientX - this.startX
 
       this.transition = '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
       if (this.currentValue) {

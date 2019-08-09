@@ -13,7 +13,7 @@ describe('datetime-picker', () => {
   })
 
   test('create datetime picker', () => {
-    let date = new Date()
+    const date = new Date()
 
     wrapper = mount(DatetimePicker, {
       attachToDocument: true,

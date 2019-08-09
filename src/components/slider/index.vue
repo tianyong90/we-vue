@@ -23,7 +23,9 @@
       </div>
     </div>
     <div class="weui-slider-box__value" v-if="showValue">
-      <slot name="value-box">{{ value }}</slot>
+      <slot name="value-box">
+        {{ value }}
+      </slot>
     </div>
   </div>
 </template>

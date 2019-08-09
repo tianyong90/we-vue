@@ -44,7 +44,7 @@ const provinces = Object.values(chinaAreaData[86])
 // 获取某一省下的市
 const getCities = (province) => {
   let provinceCode
-  for (let i in chinaAreaData[86]) {
+  for (const i in chinaAreaData[86]) {
     if (province === chinaAreaData[86][i]) {
       provinceCode = i
       break
@@ -56,14 +56,14 @@ const getCities = (province) => {
 // 获取某一市下的区/县
 function getAreas (province, city) {
   let provinceCode, cityCode
-  for (let i in chinaAreaData[86]) {
+  for (const i in chinaAreaData[86]) {
     if (province === chinaAreaData[86][i]) {
       provinceCode = i
       break
     }
   }
 
-  for (let i in chinaAreaData[provinceCode]) {
+  for (const i in chinaAreaData[provinceCode]) {
     if (city === chinaAreaData[provinceCode][i]) {
       cityCode = i
       break
@@ -90,7 +90,7 @@ export default {
       ticket: ['汽车票'],
       dayAndTime: [],
       address: [],
-      fruit: [{name: 'Apple', age: 1}],
+      fruit: [{ name: 'Apple', age: 1 }],
       fruitColumns: [
         {
           values: [

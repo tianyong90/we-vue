@@ -1,7 +1,7 @@
 <template>
   <div class="demo-wrap" :style="{ top: positionTop + 'px' }">
-    <div class="mobile-top"/>
-    <iframe id="iframe-demo" :src="url" frameborder="0"/>
+    <div class="mobile-top" />
+    <iframe id="iframe-demo" :src="url" frameborder="0" />
   </div>
 </template>
 

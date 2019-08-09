@@ -9,8 +9,8 @@
       <img class="weui-media-box__thumb" :src="thumb" alt="">
     </div>
     <div class="weui-media-box__bd">
-      <h4 class="weui-media-box__title" v-text="title"/>
-      <p class="weui-media-box__desc" v-text="description"/>
+      <h4 class="weui-media-box__title" v-text="title" />
+      <p class="weui-media-box__desc" v-text="description" />
     </div>
   </div>
 
@@ -20,9 +20,9 @@
     v-else
     @click="onClick"
   >
-    <h4 class="weui-media-box__title" v-text="title"/>
-    <p class="weui-media-box__desc" v-text="description"/>
-    <slot name="box_ft"/>
+    <h4 class="weui-media-box__title" v-text="title" />
+    <p class="weui-media-box__desc" v-text="description" />
+    <slot name="box_ft" />
   </div>
 </template>
 

@@ -1,9 +1,17 @@
 <template>
   <div class="page page-with-padding buttons">
-    <wv-button type="primary" @click="showDialog('ios', '窗口标题')">iOS Dialog 有标题</wv-button>
-    <wv-button type="primary" @click="showDialog('ios')">iOS Dialog 无标题</wv-button>
-    <wv-button type="primary" @click="showDialog('android', '窗口标题')">Android Dialog 有标题</wv-button>
-    <wv-button type="primary" @click="showDialog('android')">Android Dialog 无标题</wv-button>
+    <wv-button type="primary" @click="showDialog('ios', '窗口标题')">
+      iOS Dialog 有标题
+    </wv-button>
+    <wv-button type="primary" @click="showDialog('ios')">
+      iOS Dialog 无标题
+    </wv-button>
+    <wv-button type="primary" @click="showDialog('android', '窗口标题')">
+      Android Dialog 有标题
+    </wv-button>
+    <wv-button type="primary" @click="showDialog('android')">
+      Android Dialog 无标题
+    </wv-button>
   </div>
 </template>
 

@@ -3,7 +3,8 @@
     class="weui-btn"
     :class="classObject"
     @click="handleClick"
-    :disabled="disabled">
+    :disabled="disabled"
+  >
     <i class="weui-loading" v-if="isLoading" />
     <slot />
   </button>
@@ -34,10 +35,10 @@ export default create({
 
   computed: {
     classObject () {
-      let ret = {}
+      const ret = {}
 
-      let classType = this.plain ? `weui-btn_plain-${this.type}` : `weui-btn_${this.type}`
-      let classDisabled = this.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
+      const classType = this.plain ? `weui-btn_plain-${this.type}` : `weui-btn_${this.type}`
+      const classDisabled = this.plain ? 'weui-btn_plain-disabled' : 'weui-btn_disabled'
 
       ret[classType] = true
       ret[classDisabled] = this.disabled

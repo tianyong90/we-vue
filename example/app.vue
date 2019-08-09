@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition :name="$root.transitionName">
-      <router-view/>
+      <router-view />
     </transition>
     <div class="qrcode">
       <img

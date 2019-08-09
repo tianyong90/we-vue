@@ -39,7 +39,7 @@ export default create({
 
   computed: {
     style () {
-      let ret = {}
+      const ret = {}
 
       if (/^\d+$/.test(this.height)) {
         ret.height = parseInt(this.height) + 'px'
