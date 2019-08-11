@@ -20,7 +20,7 @@
 
     <w-group title="左侧带图标">
       <w-swipe-cell title="标题文字">
-        <img :src="imgIcon" slot="icon" class="cell-icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon" class="cell-icon">
         <w-swipe-cell-button type="warn" slot="right" @click.native="deleteClicked">删除</w-swipe-cell-button>
         <w-swipe-cell-button type="default" slot="right" @click.native="readClicked">查看</w-swipe-cell-button>
       </w-swipe-cell>
@@ -36,12 +36,9 @@
 </template>
 
 <script>
-import imgIcon from '../assets/images/icon_tabbar.png'
-
 export default {
   data () {
     return {
-      imgIcon,
     }
   },
 

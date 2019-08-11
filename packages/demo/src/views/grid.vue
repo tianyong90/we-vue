@@ -2,39 +2,39 @@
   <div class="page">
     <w-grid>
       <w-grid-item class="demo-grid-item" to="/">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">vue-router 跳转</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" to="/">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">vue-router 跳转</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" to="/">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">vue-router 跳转</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" url="/">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">url 跳转</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" url="/">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">url 跳转</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" url="/">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">url 跳转</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" @click="onClick">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">点击事件</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" @click="onClick">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">点击事件</span>
       </w-grid-item>
       <w-grid-item class="demo-grid-item" @click="onClick">
-        <img :src="thumbSmall" slot="icon">
+        <img src="../assets/images/icon_tabbar.png" slot="icon">
         <span slot="label">点击事件</span>
       </w-grid-item>
 
@@ -52,12 +52,9 @@
 </template>
 
 <script>
-import thumbSmall from '../assets/images/icon_tabbar.png'
-
 export default {
   data () {
     return {
-      thumbSmall,
     }
   },
 

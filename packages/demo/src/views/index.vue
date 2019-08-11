@@ -1,10 +1,11 @@
 <template>
   <div class="page">
     <div class="page__hd">
-      <img :src="logoImg" class="logo">
+      <img src="../assets/logo.png" class="logo">
       <h1 class="page__title">WE-VUE</h1>
     </div>
     <w-search-bar
+      class="sticky"
       placeholder="搜索组件"
       v-model="keyword"
       :result="filterResult"
@@ -17,7 +18,11 @@
           :to="item.path"
           is-link
         >
-          <i class="cell-icon iconfont" :class="'icon-' + item.icon" slot="icon"/>
+          <i
+            class="cell-icon iconfont"
+            :class="'icon-' + item.icon"
+            slot="icon"
+          />
         </w-cell>
       </w-group>
     </w-search-bar>
@@ -43,12 +48,10 @@
 
 <script>
 import { navs } from '../router'
-import logoImg from '../assets/images/logo.png'
 
 export default {
   data () {
     return {
-      logoImg,
       navs,
       keyword: '',
       componentList: [],
@@ -95,7 +98,7 @@ export default {
 .cell-icon {
   display: block;
   margin-right: 5px;
-  color: #2196f3;
+  color: #1A2386;
   overflow: hidden;
   font-size: 20px;
   width: 25px;
@@ -104,5 +107,10 @@ export default {
 
 .footer-copyright {
   margin: 40px 0 20px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
 </style>

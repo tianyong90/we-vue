@@ -10,7 +10,7 @@
     <w-group title="未读数红点跟在主题信息后，统一在列表左侧">
       <w-cell class="cell-big-thumb">
         <div slot="icon" style="position: relative;margin-right: 10px;">
-          <img :src="thumb" style="width: 50px; height: 50px;display: block">
+          <img src="../assets/images/wevue_placeholder.png" style="width: 50px; height: 50px;display: block">
           <w-badge style="position: absolute;top: -.4em;right: -.4em;">2</w-badge>
         </div>
         <template slot="bd">
@@ -35,12 +35,9 @@
 </template>
 
 <script>
-import thumb from '../assets/images/wevue_placeholder.png'
-
 export default {
   data () {
     return {
-      thumb,
     }
   },
 }

@@ -91,15 +91,13 @@
         placeholder="请输入验证码"
         v-model="vcode"
       >
-        <img :src="vcodeImage" class="vcode" slot="ft">
+        <img src="../assets/images/vcode.jpg" class="vcode" slot="ft">
       </w-input>
     </w-group>
   </div>
 </template>
 
 <script>
-import vcodeImage from '../assets/images/vcode.jpg'
-
 export default {
   data () {
     return {
@@ -112,10 +110,7 @@ export default {
       valueOnBlur: '',
       captcha: '',
       vcode: '',
-      vcodeImage,
     }
   },
-
-  mounted () {},
 }
 </script>
