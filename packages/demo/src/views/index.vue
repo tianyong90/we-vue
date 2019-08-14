@@ -20,7 +20,7 @@
         >
           <i
             class="cell-icon iconfont"
-            :class="'icon-' + item.icon"
+            :class="item.icon"
             slot="icon"
           />
         </w-cell>
@@ -35,7 +35,7 @@
         is-link
         :title="nav.name"
       >
-        <i class="cell-icon iconfont" :class="'icon-' + nav.icon" slot="icon"/>
+        <i class="cell-icon iconfont" :class="nav.icon" slot="icon"/>
         <w-badge slot="ft" v-if="nav.status === 'todo'">Todo</w-badge>
       </w-cell>
     </w-group>
