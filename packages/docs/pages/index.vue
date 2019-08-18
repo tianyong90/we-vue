@@ -3,7 +3,7 @@
     <div class="">
       <div class="w-full bg-blue-600 py-16 justify-center">
         <div class="container max-w-6xl mx-auto justify-center">
-          <h1 class="text-center mt-2 text-white text-4xl">
+          <h1 class="text-center mt-2 text-white text-4xl font-normal">
             we-vue， 不只是 vue.js + weui！
           </h1>
         </div>
@@ -11,17 +11,17 @@
         <div class="container max-w-md mx-auto flex mt-12 text-center justify-center">
           <router-link
             to="/doc/v2/index"
-            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-4 rounded-full"
+            class="text-white no-underline mx-3 border-white hover:bg-white hover:text-black border border-solid px-5 py-2 rounded-full"
             >文档
           </router-link>
           <a
             href="https://demo.wevue.org"
-            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-4 rounded-full"
+            class="text-white no-underline mx-3 border-white hover:bg-white hover:text-black border border-solid px-5 py-2 rounded-full"
             >在线示例</a
           >
           <a
             href="https://github.com/tianyong90/WE-VUE"
-            class="text-white text-xl no-underline mx-3 border-white hover:bg-white hover:text-black border-2 border-solid px-5 py-4 rounded-full uppercase"
+            class="text-white no-underline mx-3 border-white hover:bg-white hover:text-black border border-solid px-5 py-2 rounded-full uppercase"
             ><i class="fab fa-github"></i> GitHub</a
           >
         </div>
@@ -35,8 +35,8 @@
           <div class="w-1/3 px-2">
             <div class="shadow-lg rounded-lg overflow-hidden">
               <img class="w-full object-cover" src="/images/easy-to-use.jpg" alt="" />
-              <div class="px-3 py-4">
-                <div class="font-semibold text-gray-800 text-2xl text-center">
+              <div class="px-8 py-4">
+                <div class="text-gray-800 text-xl text-center">
                   简单易用
                 </div>
                 <p class="leading-relaxed text-justify h-24">
@@ -49,8 +49,8 @@
           <div class="w-1/3 px-2">
             <div class="shadow-lg rounded-lg overflow-hidden">
               <img class="w-full object-cover" src="/images/full-document.jpg" alt="" />
-              <div class="px-3 py-4">
-                <div class="font-semibold text-gray-800 text-2xl text-center">
+              <div class="px-8 py-4">
+                <div class="text-gray-800 text-xl text-center">
                   文档完善
                 </div>
                 <p class="leading-relaxed text-justify h-24">
@@ -62,8 +62,8 @@
           <div class="w-1/3 px-2">
             <div class="shadow-lg rounded-lg overflow-hidden">
               <img class="w-full object-cover" src="/images/online-demo.jpg" alt="" />
-              <div class="px-3 py-4">
-                <div class="font-semibold text-gray-800 text-2xl text-center">
+              <div class="px-8 py-4">
+                <div class="text-gray-800 text-xl text-center">
                   在线示例
                 </div>
                 <p class="leading-relaxed text-justify h-24">
