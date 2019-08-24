@@ -5,10 +5,10 @@
   "author": "tianyong90",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
     "test": "jest"
   },
@@ -24,13 +24,15 @@
     ]
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.5.3",
+    "@nuxt/typescript-runtime": "^0.1.3",
+    "@nuxtjs/axios": "^5.5.4",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.8.0"
+    "nuxt": "^2.9.1"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "@nuxt/typescript": "^2.7.1",
+    "@nuxt/typescript-build": "^0.1.11",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@tianyong90/vue-markdown-loader": "^0.1.1",
     "@vue/test-utils": "^1.0.0-beta.27",
@@ -39,12 +41,11 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "change-case": "^3.1.0",
-    "css-loader": "^2.1.1",
     "docsearch.js": "^2.6.3",
     "eslint": "^6.0.0",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-config-standard": "^13.0.0",
-    "eslint-loader": "^2.1.2",
+    "eslint-config-standard": "^14.0.0",
+    "eslint-loader": "^3.0.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-node": "^9.1.0",

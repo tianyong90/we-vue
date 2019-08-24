@@ -92,6 +92,8 @@ const config: NuxtConfiguration = {
     '@nuxtjs/axios',
   ],
 
+  buildModules: ['@nuxt/typescript-build'],
+
   // monorepo 中使用时需要注意
   modulelsDir: ['../../node_modules'],
 
@@ -156,6 +158,11 @@ const config: NuxtConfiguration = {
         ],
       })
     },
+  },
+
+  typescript: {
+    typeCheck: true,
+    ignoreNotFoundWarnings: true,
   },
 
   generate: {
