@@ -27,7 +27,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "fibers": "^4.0.0",
     "sass": "^1.18.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^8.0.0",
     "source-map-loader": "^0.2.4",
     "vue-clickaway": "^2.2.2",
     "vue-template-compiler": "^2.5.21"
