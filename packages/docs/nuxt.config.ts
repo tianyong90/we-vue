@@ -1,6 +1,5 @@
 import path, { join } from 'path'
-import NuxtConfiguration from '@nuxt/config'
-import Fiber from 'fibers'
+import { Configuration } from '@nuxt/types'
 import Sass from 'sass'
 import Purgecss from '@fullhuman/postcss-purgecss'
 import _ from 'lodash'
@@ -27,7 +26,7 @@ const purgecss = Purgecss({
 const tailwindJS = join(__dirname, 'tailwind.config.js')
 
 // 从 config 的侧栏菜单配置中提取路由
-const generatePaths = function(navs) {
+const generatePaths = function(navs: Array<any>) {
   const res = _.flatMap(navs, item => {
     return item.groups
   })
@@ -43,7 +42,7 @@ const generatePaths = function(navs) {
   return temp
 }
 
-const config: NuxtConfiguration = {
+const config: Configuration = {
   mode: 'universal',
 
   /*
@@ -127,7 +126,6 @@ const config: NuxtConfiguration = {
     loaders: {
       scss: {
         implementation: Sass,
-        fiber: Fiber,
       },
     },
 
