@@ -80,6 +80,7 @@ export default mixins<options &
     // 清除输入
     clear (): void {
       this.currentValue = ''
+      this.$refs.input.focus()
     },
 
     // 取消搜索
@@ -97,21 +98,19 @@ export default mixins<options &
           <div class="weui-search-bar__form">
             <div class="weui-search-bar__box">
               <i class="weui-icon-search" />
-              <form action="javascript:" onSubmit={this.$emit('search', this.currentValue)}>
-                <input
-                  class="weui-search-bar__input"
-                  type="search"
-                  placeholder={this.placeholder}
-                  autofocus={this.autofocus}
-                  vModel={this.currentValue}
-                  ref="input"
-                />
-              </form>
+              <input
+                class="weui-search-bar__input"
+                type="search"
+                placeholder={this.placeholder}
+                autofocus={this.autofocus}
+                vModel={this.currentValue}
+                ref="input"
+              />
               <div class="weui-icon-clear" onClick={this.clear} />
             </div>
             <label
               class="weui-search-bar__label"
-              onClick={() => { this.textClick() }}
+              onClick={this.textClick}
               vShow={!this.isActive}
             >
               <i class="weui-icon-search" />
@@ -120,7 +119,7 @@ export default mixins<options &
           </div>
           <div
             class="weui-search-bar__cancel-btn"
-            onClick={() => { this.cancel() }}
+            onClick={this.cancel}
             vShow={this.isActive}
             domPropsTextContent={this.cancelText}
           />
