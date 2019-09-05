@@ -7,29 +7,16 @@
         :key="option.label || option"
         class="weui-cell weui-check__label"
         :class="{ 'weui-check__label-disabled': option.disabled }"
+        @click="handleClick(option)"
       >
         <div class="weui-cell__hd" v-if="align === 'left'">
-          <input
-            type="checkbox"
-            class="weui-check"
-            v-model="currentValue"
-            :disabled="option.disabled"
-            :value="option.value || option"
-          >
-          <i class="weui-icon-checked" />
+          <i class="weui-icon-checked" :class="{ checked: isChecked(option) }" />
         </div>
         <div class="weui-cell__bd">
           <p v-text="option.label || option" />
         </div>
         <div class="weui-cell__hd" v-if="align === 'right'">
-          <input
-            type="checkbox"
-            class="weui-check"
-            v-model="currentValue"
-            :disabled="option.disabled"
-            :value="option.value || option"
-          >
-          <i class="weui-icon-checked" />
+          <i class="weui-icon-checked" :class="{ checked: isChecked(option) }" />
         </div>
       </label>
     </div>
@@ -45,7 +32,7 @@ export default create({
   props: {
     max: {
       type: Number,
-      validator: (val) => {
+      validator: val => {
         return val >= 0
       }
     },
@@ -53,7 +40,7 @@ export default create({
     align: {
       type: String,
       default: 'left',
-      validator: (val) => {
+      validator: val => {
         return val === 'left' || val === 'right'
       }
     },
@@ -67,19 +54,9 @@ export default create({
     }
   },
 
-  computed: {
-    currentValue: {
-      get () {
-        return this.value
-      },
-
-      set (val) {
-        if (this.max && val.length > this.max) {
-          val = val.slice(0, this.max)
-        }
-
-        this.$emit('input', val)
-      }
+  data () {
+    return {
+      currentValue: this.value
     }
   },
 
@@ -89,9 +66,38 @@ export default create({
 
   watch: {
     value (val, oldValue) {
+      this.currentValue = val
       if (JSON.stringify(val) !== JSON.stringify(oldValue)) {
         this.$emit('change', val)
       }
+    },
+
+    currentValue (val) {
+      if (this.max && val.length > this.max) {
+        val = val.slice(0, this.max)
+      }
+
+      this.$emit('input', val)
+    }
+  },
+
+  methods: {
+    handleClick (option) {
+      if (option.disabled) return
+
+      this.toggle(option)
+    },
+
+    toggle (option) {
+      if (this.currentValue.includes(option.value)) {
+        this.currentValue = this.currentValue.filter(item => item !== option.value)
+      } else {
+        this.currentValue = [...this.currentValue, ...[option.value]]
+      }
+    },
+
+    isChecked (option) {
+      return this.currentValue.includes(option.value)
     }
   }
 })
@@ -100,5 +106,10 @@ export default create({
 <style scoped lang="scss">
   .weui-check__label-disabled {
     background-color: rgba(0, 0, 0, 0.1)
+  }
+
+  .checked::before {
+    content: '\EA06';
+    color: #07c160;
   }
 </style>

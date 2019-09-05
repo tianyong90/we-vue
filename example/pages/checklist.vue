@@ -49,7 +49,7 @@ export default {
         }
       ],
       checkedItems1: ['value1'],
-      checkedItems2: ['value1', 'value2', 'value3'],
+      checkedItems2: ['value1', 'value2'],
       checkedItems3: []
     }
   },
