@@ -81,7 +81,7 @@ export default mixins(
 
       const touch = getTouch(e)
 
-      let deltaX = touch.clientX - this.startX
+      const deltaX = touch.clientX - this.startX
 
       this.transition =
         '-webkit-transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35)'

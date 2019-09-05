@@ -86,7 +86,7 @@ export function horizontalDrag (el: HTMLElement|Wrapper<Vue>, startX = 0, endX: 
  * @param endY
  */
 export function slowVerticalDrag (el: HTMLElement|Wrapper<Vue>, startY: number, endY: number): void {
-  let clock = lolex.install({
+  const clock = lolex.install({
     shouldAdvanceTime: true,
   })
 

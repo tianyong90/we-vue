@@ -57,7 +57,7 @@ describe('infinite-scroll', () => {
   })
 
   test('should remove event listeners and delete _onInfiniteScroll on unbind', () => {
-    let el = {
+    const el = {
       _onInfiniteScroll: {
         target: {
           removeEventListener: jest.fn(),

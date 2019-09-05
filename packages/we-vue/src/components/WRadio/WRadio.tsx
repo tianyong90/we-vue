@@ -61,7 +61,8 @@ export default Vue.extend({
                 class={{
                   'weui-cell': true,
                   'weui-check__label': true,
-                  'weui-check__label-disabled': option.disabled }}
+                  'weui-check__label-disabled': option.disabled,
+                }}
                 onClick={() => {
                   this.onClick(option)
                 }}

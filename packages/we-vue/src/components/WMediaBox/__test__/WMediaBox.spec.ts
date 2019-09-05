@@ -22,7 +22,7 @@ describe('media-box', () => {
 
   test('handle click', () => {
     const routeLinkSpy = jest.fn()
-    let wrapper = shallowMount(MediaBox, {
+    const wrapper = shallowMount(MediaBox, {
       propsData: {},
       methods: {
         routeLink: routeLinkSpy,

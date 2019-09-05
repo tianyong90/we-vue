@@ -12,7 +12,7 @@ posts.forEach(post => {
   const title = changeCase.pascalCase(post.replace(/-/g, ' '))
 
   const frontmatterData = {
-    title: title,
+    title,
     keywords: `we-vue, ${post}`,
     description: '',
     demo_url: `//demo.wevue.org/${post}`,

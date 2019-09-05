@@ -36,7 +36,7 @@ export default Vue.extend<options>().extend({
     style (): object {
       const padding = `${Number(this.gutter) / 2}px`
 
-      let ret = this.gutter
+      const ret = this.gutter
         ? {
           paddingLeft: padding,
           paddingRight: padding,

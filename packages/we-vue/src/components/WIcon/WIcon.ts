@@ -16,7 +16,7 @@ export default Vue.extend({
 
   computed: {
     classes (): object {
-      let classType = `weui-icon-${this.type}`
+      const classType = `weui-icon-${this.type}`
 
       return {
         [classType]: true,

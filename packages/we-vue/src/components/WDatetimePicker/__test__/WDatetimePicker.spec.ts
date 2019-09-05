@@ -7,7 +7,7 @@ const testDate = new Date('2018/01/01 19:00')
 
 describe('datetime-picker', () => {
   test('create datetime picker', () => {
-    let date = new Date()
+    const date = new Date()
 
     const wrapper = mount(WDatetimePicker, {
       attachToDocument: true,

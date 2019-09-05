@@ -7,5 +7,5 @@ import { config } from '@vue/test-utils'
 Vue.config.silent = true
 
 // IMPORTANT: DO NOT use vue-test-utils transitionStub
-;(config.stubs as any)['transition'] = false
+;(config.stubs as any).transition = false
 ;(config.stubs as any)['transition-group'] = false

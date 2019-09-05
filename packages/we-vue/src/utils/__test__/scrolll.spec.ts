@@ -25,12 +25,12 @@ describe('utils scroll', () => {
 
   test('getScrollTop method', () => {
     // the element has scrollTop property
-    let element = { scrollTop: 10 } as HTMLElement
+    const element = { scrollTop: 10 } as HTMLElement
 
     expect(ScrollUtil.getScrollTop(element)).toBe(10)
 
     // the element has no scrollTop property
-    let theWindow = { pageYOffset: 20 } as Window
+    const theWindow = { pageYOffset: 20 } as Window
 
     expect(ScrollUtil.getScrollTop(theWindow)).toBe(20)
   })

@@ -23,7 +23,8 @@ export default Vue.extend({
         class={{
           'weui-loadmore': true,
           'weui-loadmore_line': (this.type === 'line' || this.type === 'lineDot'),
-          'weui-loadmore_dot': this.type === 'lineDot' }}
+          'weui-loadmore_dot': this.type === 'lineDot',
+        }}
       >
         { this.type === 'default' && <WVSpinner type="default" /> }
         <span class="weui-loadmore__tips" domPropsTextContent={this.type === 'lineDot' ? '' : this.text} />

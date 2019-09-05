@@ -17,16 +17,16 @@ export default Vue.extend({
 
   computed: {
     classes (): object {
-      let ret: any = {
+      const ret: any = {
         'weui-btn': true,
         'weui-btn_loading': this.isLoading,
         'weui-btn_mini': this.mini,
       }
 
-      let classType = this.plain
+      const classType = this.plain
         ? `weui-btn_plain-${this.type}`
         : `weui-btn_${this.type}`
-      let classDisabled = this.plain
+      const classDisabled = this.plain
         ? 'weui-btn_plain-disabled'
         : 'weui-btn_disabled'
 

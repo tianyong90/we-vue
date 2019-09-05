@@ -35,14 +35,14 @@ export default mixins(
             <img class="weui-media-box__thumb" src={this.thumb}/>
           </div>,
           <div class="weui-media-box__bd">
-            <h4 class="weui-media-box__title" domPropsTextContent={this.title}/>
-            <p class="weui-media-box__desc" domPropsTextContent={this.description}/>
+            <h4 class="weui-media-box__title" domPropsInnerHTML={this.title}/>
+            <p class="weui-media-box__desc" domPropsInnerHTML={this.description}/>
           </div>,
         ]
       } else {
         return [
-          <h4 class="weui-media-box__title" domPropsTextContent={this.title} />,
-          <p class="weui-media-box__desc" domPropsTextContent={this.description} />,
+          <h4 class="weui-media-box__title" domPropsInnerHTML={this.title} />,
+          <p class="weui-media-box__desc" domPropsInnerHTML={this.description} />,
         ]
       }
     }

@@ -85,11 +85,11 @@ describe('area picker', () => {
     await wrapper.vm.$nextTick()
 
     expect(wrapper.vm.getArea()).toEqual({
-      'code': '110000',
-      'country': '',
-      'city': '北京市',
-      'county': '东城区',
-      'province': '北京市',
+      code: '110000',
+      country: '',
+      city: '北京市',
+      county: '东城区',
+      province: '北京市',
     })
   })
 
@@ -100,7 +100,7 @@ describe('area picker', () => {
       },
     })
 
-    let values = [
+    const values = [
       {
         name: 'foo',
         code: 'foo',

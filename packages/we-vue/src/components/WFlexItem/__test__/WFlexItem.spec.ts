@@ -55,7 +55,7 @@ describe('flex-item', () => {
       },
     }) as Wrapper<ExtractVue<[typeof WFlexItem]>>
 
-    let computedStyle: {[key: string]: any} = {
+    const computedStyle: {[key: string]: any} = {
       flex: wrapper.vm.flex,
       marginLeft: wrapper.vm.offset,
     }

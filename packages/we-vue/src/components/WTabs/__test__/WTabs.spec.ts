@@ -64,7 +64,7 @@ describe('tabs', () => {
   })
 
   test('getTabStyle method', async () => {
-    let wrapper = mount(Tabs, {
+    const wrapper = mount(Tabs, {
       attachToDocument: true,
       propsData: {
         color: 'red',
@@ -79,12 +79,12 @@ describe('tabs', () => {
 
     await wrapper.vm.$nextTick()
 
-    let tab1 = wrapper.findAll(Tab).at(0)
+    const tab1 = wrapper.findAll(Tab).at(0)
 
     expect(wrapper.vm.getTabStyle(tab1.vm as any, 0)).toEqual({
-      'backgroundColor': 'red',
-      'borderColor': 'red',
-      'color': '#fff',
+      backgroundColor: 'red',
+      borderColor: 'red',
+      color: '#fff',
     })
   })
 
@@ -106,7 +106,7 @@ describe('tabs', () => {
   })
 
   test('swipe content', async () => {
-    let wrapper = mount(Tabs, {
+    const wrapper = mount(Tabs, {
       attachToDocument: true,
       propsData: {
         swipeable: true,

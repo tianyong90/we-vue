@@ -62,7 +62,7 @@ const infiniteScroll = {
         disabled = Boolean(disabledExpr)
       }
 
-      let distance = Number(el.getAttribute('infinite-scroll-distance')) || DISTANCE
+      const distance = Number(el.getAttribute('infinite-scroll-distance')) || DISTANCE
 
       target.addEventListener('scroll', listener, true)
 
@@ -70,7 +70,7 @@ const infiniteScroll = {
         'infinite-scroll-immediate-check'
       )
 
-      let immediateCheck = immediateCheckExpr
+      const immediateCheck = immediateCheckExpr
         ? Boolean((vnode.context! as any)[immediateCheckExpr])
         : true
 

@@ -152,8 +152,8 @@ export default mixins<options &
     },
 
     columns (): any[] {
-      let result = []
-      for (let rangeKey in this.ranges) {
+      const result = []
+      for (const rangeKey in this.ranges) {
         result.push({
           options: this.fillColumnOptions(
             rangeKey,
@@ -296,7 +296,7 @@ export default mixins<options &
     },
 
     fillColumnOptions (type: string, start: number, end: number): any[] {
-      let options = []
+      const options = []
       for (let i = start; i <= end; i++) {
         if (i < 10) {
           options.push(

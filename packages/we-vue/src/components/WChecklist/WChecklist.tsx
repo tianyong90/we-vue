@@ -106,7 +106,7 @@ export default Vue.extend<options>().extend({
                       <i
                         class={{
                           'weui-icon-checked': true,
-                          'checked': this.isChecked(option),
+                          checked: this.isChecked(option),
                         }}
                       />
                     </div>
@@ -120,7 +120,7 @@ export default Vue.extend<options>().extend({
                       <i
                         className={{
                           'weui-icon-checked': true,
-                          'checked': this.isChecked(option),
+                          checked: this.isChecked(option),
                         }}
                       />
                     </div>

@@ -107,7 +107,7 @@
     "eslint-loader": "^3.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jest": "^22.5.0",
-    "eslint-plugin-node": "^9.0.0",
+    "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-vue": "^5.0.0",
     "faker": "^4.1.0",
