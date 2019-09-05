@@ -25,29 +25,46 @@ export default Vue.extend<options>().extend({
         return val === 'left' || val === 'right'
       },
     },
+    checkedColor: {
+      type: String,
+      default: '#09bb07',
+    },
     options: {
       type: Array,
       required: true,
     } as PropValidator<any[]>,
+    labelKey: {
+      type: String,
+      default: 'label',
+    },
+    valueKey: {
+      type: String,
+      default: 'value',
+    },
     value: {
       type: Array,
       default: () => [],
     } as PropValidator<any[]>,
   },
 
-  computed: {
-    currentValue: {
-      get (): any[] {
-        return this.value
-      },
+  data () {
+    return {
+      currentValue: this.value,
+    }
+  },
 
-      set (val: any[]): void {
-        if (this.max && val.length > this.max) {
-          val = val.slice(0, this.max)
-        }
+  watch: {
+    value (val) {
+      this.currentValue = val
+      this.$emit('change', val)
+    },
 
-        this.$emit('input', val)
-      },
+    currentValue (val) {
+      if (this.max && val.length > this.max) {
+        val = val.slice(0, this.max)
+      }
+
+      this.$emit('input', val)
     },
   },
 
@@ -56,29 +73,19 @@ export default Vue.extend<options>().extend({
       if (option.disabled) {
         return
       }
-      const value = typeof option === 'string' ? option : option.value
+
+      const value = typeof option === 'string' ? option : option[this.valueKey]
       if (this.currentValue.includes(value)) {
         this.currentValue = this.currentValue.filter(val => val !== value)
       } else {
-        this.currentValue.push(value)
+        // DO NOT use push()
+        this.currentValue = [...this.currentValue, ...[value]]
       }
     },
 
     isChecked (option: any): boolean {
-      const value = typeof option === 'string' ? option : option.value
+      const value = typeof option === 'string' ? option : option[this.valueKey]
       return this.currentValue.includes(value)
-    },
-  },
-
-  created () {
-    this.currentValue = this.value
-  },
-
-  watch: {
-    value (val, oldValue) {
-      if (JSON.stringify(val) !== JSON.stringify(oldValue)) {
-        this.$emit('change', val)
-      }
     },
   },
 
@@ -104,6 +111,7 @@ export default Vue.extend<options>().extend({
                   this.align === 'left' &&
                     <div class="weui-cell__hd">
                       <i
+                        style={{ color: this.checkedColor }}
                         class={{
                           'weui-icon-checked': true,
                           checked: this.isChecked(option),
@@ -112,13 +120,14 @@ export default Vue.extend<options>().extend({
                     </div>
                 }
                 <div class="weui-cell__bd">
-                  <p domPropsTextContent={option.label || option} />
+                  <p domPropsTextContent={option[this.labelKey] || option} />
                 </div>
                 {
                   this.align === 'right' &&
                     <div class="weui-cell__hd">
                       <i
-                        className={{
+                        style={{ color: this.checkedColor }}
+                        class={{
                           'weui-icon-checked': true,
                           checked: this.isChecked(option),
                         }}

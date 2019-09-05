@@ -8,7 +8,7 @@
     />
 
     <w-checklist
-      title="限制最多选两个"
+      title="限制最多选定项数为 2"
       :options="options"
       v-model="checkedItems2"
       :max="2"
@@ -20,6 +20,15 @@
       align="right"
       :options="options"
       v-model="checkedItems3"
+      @change="onChange"
+    />
+
+    <w-checklist
+      title="自定义颜色"
+      align="right"
+      checked-color="#fa5151"
+      :options="options"
+      v-model="checkedItems4"
       @change="onChange"
     />
   </div>
@@ -49,8 +58,9 @@ export default {
         },
       ],
       checkedItems1: ['value1'],
-      checkedItems2: ['value1', 'value2', 'value3'],
+      checkedItems2: ['value1', 'value2'],
       checkedItems3: [],
+      checkedItems4: ['value1'],
     }
   },
 

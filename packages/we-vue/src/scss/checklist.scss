@@ -22,11 +22,14 @@
       display: block;
     }
 
+
     &.checked {
-      &::before {
-        content: "\EA06";
-        color: #09bb07;
-      }
+      color: yellow;
+    }
+
+    &.checked::before {
+      content: "\EA06";
+      color: currentColor; // 为了实现自定义颜色
     }
   }
 }
