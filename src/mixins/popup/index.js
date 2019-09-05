@@ -1,5 +1,5 @@
 import context from './context'
-import { openMask, closeMask, updateMask, onClickMask } from './mask'
+import { closeMask, openMask } from './mask'
 import scrollUtils from '../../utils/scroll'
 import { off, on } from '../../utils/event'
 

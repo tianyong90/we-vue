@@ -7,7 +7,6 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const safeParser = require('postcss-safe-parser')
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -37,15 +36,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: false,
-      parallel: true
-    }),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: 'style.css',
