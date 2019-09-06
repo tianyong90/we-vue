@@ -12,9 +12,9 @@
 
 .weui-footer_fixed-bottom {
   position: fixed;
+  right: 0;
   bottom: 0.52em;
   left: 0;
-  right: 0;
 }
 
 .weui-footer__links {
@@ -22,18 +22,18 @@
 }
 
 .weui-footer__link {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 0.62em;
   position: relative;
+  display: inline-block;
+  margin: 0 0.62em;
   font-size: 14px;
+  vertical-align: top;
 
   &::before {
     @include setLeftLine();
 
-    left: -0.65em;
     top: 0.36em;
     bottom: 0.36em;
+    left: -0.65em;
   }
 
   &:first-child {

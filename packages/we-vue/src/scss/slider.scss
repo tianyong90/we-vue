@@ -12,21 +12,21 @@
 }
 
 .weui-slider__track {
+  width: 0;
   height: 2px;
   background-color: $weui-color-primary;
-  width: 0;
 }
 
 .weui-slider__handler {
   position: absolute;
-  left: 0;
   top: 50%;
+  left: 0;
   width: 28px;
   height: 28px;
-  margin-left: -14px;
   margin-top: -14px;
-  border-radius: 50%;
+  margin-left: -14px;
   background-color: #fff;
+  border-radius: 50%;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -40,11 +40,11 @@
 }
 
 .weui-slider-box__value {
-  margin-left: 0.5em;
   min-width: 24px;
+  margin-left: 0.5em;
   color: #888;
-  text-align: center;
   font-size: 14px;
+  text-align: center;
 }
 
 .wv-slider--disabled {

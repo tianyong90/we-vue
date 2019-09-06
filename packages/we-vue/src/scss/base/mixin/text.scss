@@ -1,15 +1,15 @@
 @mixin ellipsis($w: auto) {
   width: $w;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
   word-wrap: normal;
 }
 
 @mixin ellipsisLn($line) {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $line;
 }

@@ -16,8 +16,8 @@
 .weui-form-preview__hd {
   position: relative;
   padding: $weui-cell-gap-v $weui-cell-gap-h;
-  text-align: right;
   line-height: 2.5em;
+  text-align: right;
 
   &::after {
     @include setBottomLine($weui-cell-border-color);
@@ -26,23 +26,23 @@
   }
 
   .weui-form-preview__value {
-    font-style: normal;
     font-size: 1.6em;
+    font-style: normal;
   }
 }
 
 .weui-form-preview__bd {
   padding: $weui-cell-gap-v $weui-cell-gap-h;
-  font-size: 0.9em;
-  text-align: right;
   color: $weui-text-color-gray;
+  font-size: 0.9em;
   line-height: 2;
+  text-align: right;
 }
 
 .weui-form-preview__ft {
   position: relative;
-  line-height: 50px;
   display: flex;
+  line-height: 50px;
 
   &::before {
     @include setTopLine($weui-dialog-line-color);
@@ -55,8 +55,8 @@
 
 .weui-form-preview__label {
   float: left;
-  margin-right: 1em;
   min-width: 4em;
+  margin-right: 1em;
   color: $weui-text-color-gray;
   text-align: justify;
   text-align-last: justify;
@@ -65,8 +65,8 @@
 .weui-form-preview__value {
   display: block;
   overflow: hidden;
-  word-break: normal;
   word-wrap: break-word;
+  word-break: normal;
 }
 
 .weui-form-preview__btn {
@@ -79,11 +79,11 @@
   @include setTapColor();
 
   &button {
+    font-size: inherit;
+    line-height: inherit;
     background-color: transparent;
     border: 0;
     outline: 0;
-    line-height: inherit;
-    font-size: inherit;
   }
 
   &:active {

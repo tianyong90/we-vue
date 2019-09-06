@@ -3,8 +3,8 @@
 .weui-loadmore {
   width: 65%;
   margin: 1.5em auto;
-  line-height: 1.6em;
   font-size: 14px;
+  line-height: 1.6em;
   text-align: center;
 }
 
@@ -14,15 +14,15 @@
 }
 
 .weui-loadmore_line {
-  border-top: 1px solid $weui-line-color-light;
   margin-top: 2.4em;
+  border-top: 1px solid $weui-line-color-light;
 
   .weui-loadmore__tips {
     position: relative;
     top: -0.9em;
     padding: 0 0.55em;
-    background-color: #fff;
     color: $weui-text-color-gray;
+    background-color: #fff;
   }
 }
 
@@ -31,15 +31,15 @@
     padding: 0 0.16em;
 
     &::before {
-      content: "";
+      position: relative;
+      top: -0.16em;
+      display: inline-block;
       width: 4px;
       height: 4px;
-      border-radius: 50%;
-      background-color: $weui-line-color-light;
-      display: inline-block;
-      position: relative;
       vertical-align: 0;
-      top: -0.16em;
+      background-color: $weui-line-color-light;
+      border-radius: 50%;
+      content: "";
     }
   }
 }

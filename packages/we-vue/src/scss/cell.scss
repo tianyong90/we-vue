@@ -2,17 +2,17 @@
 
 .weui-cells__tips {
   margin-top: 0.3em; // 8px - 行高
-  color: $weui-text-color-gray;
-  padding-left: $weui-cell-gap-h;
   padding-right: $weui-cell-gap-h;
+  padding-left: $weui-cell-gap-h;
+  color: $weui-text-color-gray;
   font-size: $weui-cell-tips-font-size;
 }
 
 .weui-cell {
-  padding: $weui-cell-gap-v $weui-cell-gap-h;
   position: relative; //这个是为了兼容cells容器onepx方案被before挡住而做的
   display: flex;
   align-items: center;
+  padding: $weui-cell-gap-v $weui-cell-gap-h;
 
   &::before {
     @include setTopLine($weui-cell-border-color);
@@ -37,8 +37,8 @@
 }
 
 .weui-cell__ft {
-  text-align: right;
   color: $weui-text-color-gray;
+  text-align: right;
 }
 
 .weui-cell_access {
@@ -51,18 +51,17 @@
   }
 
   .weui-cell__ft {
-    padding-right: 13px;
     position: relative;
+    padding-right: 13px;
 
     &::after {
+      position: absolute;
+      top: 50%;
+      right: 2px;
+      margin-top: -4px;
       content: "";
 
       @include setArrow(right, 6px, #c8c8cd, 2px);
-
-      position: absolute;
-      top: 50%;
-      margin-top: -4px;
-      right: 2px;
     }
   }
 }

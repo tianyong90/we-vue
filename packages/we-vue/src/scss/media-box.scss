@@ -1,8 +1,8 @@
 @import "./base/fn";
 
 .weui-media-box {
-  padding: 15px;
   position: relative;
+  padding: 15px;
 
   &::before {
     @include setTopLine($weui-line-color-light);
@@ -48,11 +48,11 @@
 .weui-media-box__info {
   margin-top: 15px;
   padding-bottom: 5px;
-  font-size: 13px;
+  overflow: hidden;
   color: #cecece;
+  font-size: 13px;
   line-height: 1em;
   list-style: none;
-  overflow: hidden;
 }
 
 .weui-media-box__info__meta {
@@ -76,9 +76,9 @@
   align-items: center;
 
   .weui-media-box__hd {
-    margin-right: 0.8em;
     width: 60px;
     height: 60px;
+    margin-right: 0.8em;
     line-height: 60px;
     text-align: center;
   }

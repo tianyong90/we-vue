@@ -3,19 +3,19 @@
 
 .weui-input {
   width: 100%;
+  height: $weui-cell-line-height + em;
+  color: inherit;
+  font-size: inherit;
+  line-height: $weui-cell-line-height;
+  background-color: transparent;
   border: 0;
   outline: 0;
   -webkit-appearance: none;
-  background-color: transparent;
-  font-size: inherit;
-  color: inherit;
-  height: $weui-cell-line-height + em;
-  line-height: $weui-cell-line-height;
 
   // hides the spin-button
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     margin: 0;
+    -webkit-appearance: none;
   }
 }

@@ -7,12 +7,12 @@ $wv-tabs-card-height: 30px;
   position: relative;
 
   &__wrap {
+    position: absolute;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     z-index: 99;
     overflow: hidden;
-    position: absolute;
 
     &--page-top {
       position: fixed;
@@ -41,28 +41,28 @@ $wv-tabs-card-height: 30px;
   }
 
   &__nav {
-    display: flex;
-    user-select: none;
     position: relative;
+    display: flex;
     background-color: #fff;
+    user-select: none;
 
     &--line {
+      box-sizing: content-box;
       height: 100%;
       padding-bottom: 15px;
-      box-sizing: content-box;
     }
 
     &--card {
-      margin: 0 15px;
-      border-radius: 2px;
       box-sizing: border-box;
-      border: 1px solid #1aad19;
       height: $wv-tabs-card-height;
+      margin: 0 15px;
+      border: 1px solid #1aad19;
+      border-radius: 2px;
 
       .wv-tab {
         color: #1aad19;
-        border-right: 1px solid #1aad19;
         line-height: calc(#{$wv-tabs-card-height} - 2px);
+        border-right: 1px solid #1aad19;
 
         &:last-child {
           border-right: none;
@@ -77,11 +77,11 @@ $wv-tabs-card-height: 30px;
   }
 
   &__line {
-    z-index: 1;
-    left: 0;
-    bottom: 15px;
-    height: 2px;
     position: absolute;
+    bottom: 15px;
+    left: 0;
+    z-index: 1;
+    height: 2px;
     background-color: #1aad19;
   }
 
@@ -90,9 +90,9 @@ $wv-tabs-card-height: 30px;
 
     .wv-tabs__wrap {
       height: $wv-tabs-line-height;
-      border-width: 1px 0;
       border-color: #dedede;
       border-style: solid;
+      border-width: 1px 0;
     }
   }
 
@@ -106,17 +106,17 @@ $wv-tabs-card-height: 30px;
 }
 
 .wv-tab {
-  flex: 1;
-  cursor: pointer;
-  padding: 0 5px;
-  font-size: 14px;
   position: relative;
-  color: #000;
-  background-color: #fff;
-  line-height: $wv-tabs-line-height;
-  text-align: center;
+  flex: 1;
   box-sizing: border-box;
   min-width: 0;
+  padding: 0 5px;
+  color: #000;
+  font-size: 14px;
+  line-height: $wv-tabs-line-height;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
 
   span {
     display: block;

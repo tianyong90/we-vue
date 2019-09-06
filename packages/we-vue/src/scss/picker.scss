@@ -4,23 +4,23 @@ $pickerItemHeight: 34px;
 
 .weui-picker {
   position: fixed;
-  width: 100%;
-  left: 0;
   bottom: 0;
+  left: 0;
   z-index: 5000;
-  backface-visibility: hidden;
+  width: 100%;
   transform: none;
+  backface-visibility: hidden;
   //slide up animation
   transition: transform 0.3s;
 }
 
 .weui-picker__hd {
+  position: relative;
   display: flex;
   padding: 9px 15px;
-  background-color: #fff;
-  position: relative;
-  text-align: center;
   font-size: 17px;
+  text-align: center;
+  background-color: #fff;
 
   &::after {
     @include setBottomLine($weui-line-color-light);
@@ -33,8 +33,8 @@ $pickerItemHeight: 34px;
   color: $weui-color-primary;
 
   &:first-child {
-    text-align: left;
     color: #888;
+    text-align: left;
   }
 
   &:last-child {
@@ -43,16 +43,16 @@ $pickerItemHeight: 34px;
 }
 
 .weui-picker__bd {
-  display: flex;
   position: relative;
-  background-color: #fff;
+  display: flex;
   height: 238px;
   overflow: hidden;
+  background-color: #fff;
 }
 
 .weui-picker__group {
-  flex: 1;
   position: relative;
+  flex: 1;
   height: 100%;
 }
 
@@ -60,30 +60,30 @@ $pickerItemHeight: 34px;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 3;
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  z-index: 3;
   background: linear-gradient(
     180deg,
     hsla(0, 0%, 100%, 0.95),
     hsla(0, 0%, 100%, 0.6)
   ),
     linear-gradient(0deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6));
+  background-repeat: no-repeat;
   background-position: top, bottom;
   background-size: 100% 102px;
-  background-repeat: no-repeat;
   transform: translateZ(0);
   pointer-events: none; // IE 10 以上
 }
 
 .weui-picker__indicator {
+  position: absolute;
+  top: 102px;
+  left: 0;
+  z-index: 3;
   width: 100%;
   height: $pickerItemHeight;
-  position: absolute;
-  left: 0;
-  top: 102px;
-  z-index: 3;
 
   &::before {
     @include setTopLine($weui-line-color-light);
@@ -102,14 +102,14 @@ $pickerItemHeight: 34px;
 }
 
 .weui-picker__item {
-  padding: 0;
   height: $pickerItemHeight;
-  line-height: $pickerItemHeight;
-  text-align: center;
-  color: #000;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding: 0;
   overflow: hidden;
+  color: #000;
+  line-height: $pickerItemHeight;
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
 }
 
 .weui-picker__item_disabled {

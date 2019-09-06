@@ -4,28 +4,28 @@ $actionsheet-android-border-radius: 2px;
 
 .weui-actionsheet {
   position: fixed;
-  left: 0;
   bottom: 0;
-  transform: translate(0, 100%);
-  backface-visibility: hidden;
+  left: 0;
   z-index: 5000;
   width: 100%;
   background-color: $weui-bg-color-default;
+  transform: translate(0, 100%);
+  backface-visibility: hidden;
   //slide up animation
   transition: transform 0.3s;
 
   &__title {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 65px;
     padding: 0 20px;
-    line-height: 1.4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    font-size: 14px;
     color: #888;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
     background: #fcfcfd;
 
     &::before {
@@ -49,8 +49,8 @@ $actionsheet-android-border-radius: 2px;
   &__cell {
     position: relative;
     padding: 10px 0;
-    text-align: center;
     font-size: 18px;
+    text-align: center;
 
     &::before {
       @include setTopLine($weui-cell-border-color);
@@ -77,15 +77,15 @@ $actionsheet-android-border-radius: 2px;
 .weui-skin_android {
   .weui-actionsheet {
     position: fixed;
-    left: 50%;
     top: 50%;
     bottom: auto;
-    transform: translate(-50%, -50%);
+    left: 50%;
+    box-sizing: border-box;
     //padding: 0 40px;
     width: 274px;
-    box-sizing: border-box;
-    backface-visibility: hidden;
     background: transparent;
+    transform: translate(-50%, -50%);
+    backface-visibility: hidden;
     //slide up animation
     transition: transform 0.3s;
   }
@@ -111,8 +111,8 @@ $actionsheet-android-border-radius: 2px;
     }
 
     &:last-child {
-      border-bottom-left-radius: $actionsheet-android-border-radius;
       border-bottom-right-radius: $actionsheet-android-border-radius;
+      border-bottom-left-radius: $actionsheet-android-border-radius;
     }
   }
 }

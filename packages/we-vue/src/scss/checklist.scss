@@ -16,20 +16,19 @@
 
   .weui-icon-checked {
     &::before {
-      content: "\EA01";
+      display: block;
       color: #c9c9c9;
       font-size: 23px;
-      display: block;
+      content: "\EA01";
     }
-
 
     &.checked {
       color: yellow;
     }
 
     &.checked::before {
-      content: "\EA06";
       color: currentColor; // 为了实现自定义颜色
+      content: "\EA06";
     }
   }
 }

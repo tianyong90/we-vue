@@ -2,16 +2,16 @@
 
 .weui-dialog {
   position: fixed;
+  top: 50%;
+  left: 50%;
   z-index: 5000;
   width: 80%;
   max-width: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: $weui-dialog-background-color;
-  text-align: center;
-  border-radius: 3px;
   overflow: hidden;
+  text-align: center;
+  background-color: $weui-dialog-background-color;
+  border-radius: 3px;
+  transform: translate(-50%, -50%);
 }
 
 .weui-dialog__hd {
@@ -24,13 +24,13 @@
 }
 
 .weui-dialog__bd {
-  padding: 0 $weui-dialog-gap-width 0.8em;
   min-height: 40px;
+  padding: 0 $weui-dialog-gap-width 0.8em;
+  color: $weui-text-color-gray;
   font-size: 15px;
   line-height: 1.3;
   word-wrap: break-word;
   word-break: break-all;
-  color: $weui-text-color-gray;
 
   &:first-child {
     padding: 2.7em 20px 1.7em;
@@ -40,9 +40,9 @@
 
 .weui-dialog__ft {
   position: relative;
-  line-height: 48px;
-  font-size: 18px;
   display: flex;
+  font-size: 18px;
+  line-height: 48px;
 
   &::after {
     content: "";
@@ -52,6 +52,7 @@
 }
 
 .weui-dialog__btn {
+  position: relative;
   display: block;
   flex: 1;
   color: $weui-dialog-link-color;
@@ -62,8 +63,6 @@
   &:active {
     background-color: $weui-dialog-link-active-bc;
   }
-
-  position: relative;
 
   &::after {
     content: "";
@@ -101,8 +100,8 @@
   }
 
   .weui-dialog__bd {
-    color: $weui-text-color-gray;
     padding: 0.25em $weui-dialog-gap-width 2em;
+    color: $weui-text-color-gray;
     font-size: 17px;
     text-align: left;
 
@@ -114,10 +113,10 @@
 
   .weui-dialog__ft {
     display: block;
-    text-align: right;
-    line-height: 42px;
-    font-size: 16px;
     padding: 0 $weui-dialog-gap-width 0.7em;
+    font-size: 16px;
+    line-height: 42px;
+    text-align: right;
 
     &::after {
       display: none;
@@ -126,8 +125,8 @@
 
   .weui-dialog__btn {
     display: inline-block;
-    vertical-align: top;
     padding: 0 0.8em;
+    vertical-align: top;
 
     &::after {
       display: none;

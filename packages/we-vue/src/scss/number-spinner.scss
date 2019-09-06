@@ -4,24 +4,24 @@ $border-color: #ddd;
 
 .wv-number-spinner {
   display: flex;
-  font-size: 13px;
-  height: 1.5em;
+  justify-content: space-between;
   width: auto;
+  height: 1.5em;
   overflow: hidden;
+  font-size: 13px;
   border: 1px solid $border-color;
   border-radius: 3px;
-  justify-content: space-between;
 
   &:focus {
     border: 1px solid red;
   }
 
   input {
-    border: none;
-    outline: none;
     padding: 0 0.5em;
     font-size: 1em;
     line-height: 1.5;
+    border: none;
+    outline: none;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -44,9 +44,9 @@ $border-color: #ddd;
   }
 
   .spinner-btn {
-    background-color: transparent;
-    width: 1.5em;
     position: relative;
+    width: 1.5em;
+    background-color: transparent;
     border: none;
     border-radius: 0;
     outline: none;
@@ -57,23 +57,23 @@ $border-color: #ddd;
 
     &::before,
     &::after {
-      background-color: #333;
-      content: "";
       position: absolute;
-      left: 50%;
       top: 50%;
+      left: 50%;
+      background-color: #333;
       transform: translate(-50%, -50%);
       transition: background-color 0.15s;
+      content: "";
     }
 
     &::before {
-      height: 0.0625rem;
       width: 50%;
+      height: 0.0625rem;
     }
 
     &::after {
-      height: 50%;
       width: 0.0625rem;
+      height: 50%;
     }
 
     &:disabled {

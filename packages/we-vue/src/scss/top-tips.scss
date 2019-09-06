@@ -1,17 +1,17 @@
 @import "./base/fn";
 
 .weui-toptips {
-  display: block;
   position: fixed;
-  transform: translateZ(0);
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
+  z-index: 5000;
+  display: block;
   padding: 5px;
+  color: #fff;
   font-size: 14px;
   text-align: center;
-  color: #fff;
-  z-index: 5000;
+  transform: translateZ(0);
 
   @include text_wrap();
 

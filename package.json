@@ -51,6 +51,7 @@
     "shelljs": "^0.8.0",
     "stylelint": "^10.0.1",
     "stylelint-config-standard": "^18.3.0",
+    "stylelint-config-rational-order": "^0.1.2",
     "tslint": "^5.16.0",
     "typescript": "^3.4.3",
     "typestrict": "^1.0.2",

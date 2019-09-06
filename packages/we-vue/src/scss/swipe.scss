@@ -3,8 +3,8 @@
 $wv-swipe-indicator: 6px;
 
 .wv-swipe {
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
   user-select: none;
 
   &__wrapper {
@@ -12,19 +12,19 @@ $wv-swipe-indicator: 6px;
   }
 
   &__indicators {
-    left: 50%;
-    bottom: 10px;
     position: absolute;
+    bottom: 10px;
+    left: 50%;
     height: $wv-swipe-indicator;
     transform: translate3d(-50%, 0, 0);
 
     > i {
-      border-radius: 100%;
-      vertical-align: top;
       display: inline-block;
-      background-color: gray;
       width: $wv-swipe-indicator;
       height: $wv-swipe-indicator;
+      vertical-align: top;
+      background-color: gray;
+      border-radius: 100%;
 
       &:not(:last-child) {
         margin-right: $wv-swipe-indicator;

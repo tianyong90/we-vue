@@ -16,9 +16,9 @@
 .weui-grid {
   position: relative;
   float: left;
-  padding: 20px 10px;
-  width: 100% / $weui-grid-column-count;
   box-sizing: border-box;
+  width: 100% / $weui-grid-column-count;
+  padding: 20px 10px;
 
   &::before {
     @include setRightLine($weui-grid-border-color);
@@ -51,10 +51,10 @@
 
 .weui-grid__label {
   display: block;
-  text-align: center;
+  overflow: hidden;
   color: $weui-text-color-title;
   font-size: $weui-grid-font-size;
   white-space: nowrap;
+  text-align: center;
   text-overflow: ellipsis;
-  overflow: hidden;
 }

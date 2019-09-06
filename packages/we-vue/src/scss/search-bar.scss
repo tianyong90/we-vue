@@ -2,12 +2,12 @@
 
 .weui-search-bar {
   position: relative;
-  padding: 8px 10px;
   display: flex;
+  align-items: center;
   box-sizing: border-box;
+  padding: 8px 10px;
   background-color: #efeff4;
   -webkit-text-size-adjust: 100%;
-  align-items: center;
 
   &::before {
     @include setTopLine(#d7d6dc);
@@ -34,39 +34,39 @@
   background-color: #efeff4;
 
   &::after {
-    content: "";
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
+    box-sizing: border-box;
     width: 200%;
     height: 200%;
+    background: #fff;
+    border: 1px solid #e6e6ea;
+    border-radius: 10px;
     transform: scale(0.5);
     transform-origin: 0 0;
-    border-radius: 10px;
-    border: 1px solid #e6e6ea;
-    box-sizing: border-box;
-    background: #fff;
+    content: "";
   }
 }
 
 .weui-search-bar__box {
   position: relative;
-  padding-left: 30px;
-  padding-right: 30px;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
   z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding-right: 30px;
+  padding-left: 30px;
 
   .weui-search-bar__input {
-    padding: 4px 0;
+    box-sizing: content-box;
     width: 100%;
     height: 20/14em;
-    border: 0;
+    padding: 4px 0;
     font-size: 14px;
     line-height: 20/14em;
-    box-sizing: content-box;
     background: transparent;
+    border: 0;
 
     &:focus {
       outline: none;
@@ -98,13 +98,13 @@
   bottom: 1px;
   left: 1px;
   z-index: 2;
-  border-radius: 3px;
-  text-align: center;
   color: #9b9b9b;
+  text-align: center;
   background: #fff;
+  border-radius: 3px;
+  transform: scale(1, 1);
   transform-origin: 0 0 0;
   opacity: 1;
-  transform: scale(1, 1);
 
   span {
     display: inline-block;
@@ -120,8 +120,8 @@
 .weui-search-bar__cancel-btn {
   display: block;
   margin-left: 10px;
-  line-height: 28px;
   color: #09bb07;
+  line-height: 28px;
   white-space: nowrap;
 }
 
@@ -139,9 +139,9 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .searchbar-result {
   display: block;
-  transform-origin: 0 0 0;
-  opacity: 1;
-  transform: scale(1, 1);
   margin-top: 0;
   font-size: 14px;
+  transform: scale(1, 1);
+  transform-origin: 0 0 0;
+  opacity: 1;
 }

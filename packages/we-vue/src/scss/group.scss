@@ -1,14 +1,14 @@
 @import "./base/fn";
 
 .weui-cells {
-  margin-top: $weui-cells-margin-top;
-  background-color: $weui-cell-bg;
-  line-height: $weui-cell-line-height;
-  font-size: $weui-cell-font-size; // cell 中间有效高度23px，跟客户端默认图标尺寸一致
-  overflow: hidden; // 因为每个 cell 的 border 使用 before 元素 left 搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
 
   // onepx
   position: relative;
+  margin-top: $weui-cells-margin-top;
+  overflow: hidden; // 因为每个 cell 的 border 使用 before 元素 left 搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
+  font-size: $weui-cell-font-size; // cell 中间有效高度23px，跟客户端默认图标尺寸一致
+  line-height: $weui-cell-line-height;
+  background-color: $weui-cell-bg;
 
   &::before {
     @include setTopLine($weui-cell-border-color);
@@ -26,8 +26,8 @@
 .weui-cells__title {
   margin-top: 0.77em; // 15px - 行高
   margin-bottom: 0.3em; // 8px - 行高
-  padding-left: $weui-cell-gap-h;
   padding-right: $weui-cell-gap-h;
+  padding-left: $weui-cell-gap-h;
   color: $weui-text-color-gray;
   font-size: $weui-cell-tips-font-size;
 
