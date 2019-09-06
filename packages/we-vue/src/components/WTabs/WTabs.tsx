@@ -328,7 +328,7 @@ export default mixins<options &
     },
 
     // scroll active tab into view
-    scrollIntoView (immediate: boolean = false): void {
+    scrollIntoView (immediate = false): void {
       if (!this.scrollable || !this.$refs.tabs) {
         return
       }

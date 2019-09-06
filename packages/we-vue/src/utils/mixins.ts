@@ -11,7 +11,7 @@ export default function mixins (...args: VueConstructor[]): VueConstructor {
  * Returns the instance type from a VueConstructor
  * Useful for adding types when using mixins().extend()
  */
-export type ExtractVue<T extends VueConstructor | VueConstructor[]> = T extends (infer U)[]
+export type ExtractVue<T extends VueConstructor | VueConstructor[]> = T extends Array<infer U>
   ? UnionToIntersection<U extends VueConstructor<infer V> ? V : never>
   : T extends VueConstructor<infer V> ? V : never
 

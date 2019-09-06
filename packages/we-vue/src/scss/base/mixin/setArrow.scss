@@ -6,7 +6,7 @@
   border-style: solid;
   border-width: $borderWidth $borderWidth 0 0;
 
-  @if $direction == top {
+  @if $direction == up {
     transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0); // rotate(-45deg)
   }
 

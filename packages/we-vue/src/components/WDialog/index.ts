@@ -27,6 +27,8 @@ type InstanceType = Vue & {
 
 type action = 'cancel' | 'confirm'
 
+let instance: InstanceType
+
 const defaultOptions: DialogOptions = {
   visible: true,
   title: '',
@@ -44,8 +46,6 @@ const defaultOptions: DialogOptions = {
     instance[action === 'confirm' ? 'resolve' : 'reject'](action)
   },
 }
-
-let instance: InstanceType
 
 export interface WDialog {
   (params: DialogParams): Promise<any>

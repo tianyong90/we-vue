@@ -5,9 +5,9 @@ import lolex from 'lolex'
 Vue.config.silent = true
 
 type MyTouchEvent = CustomEvent & {
-  touches?: Array<any>
-  targetTouches?: Array<any>
-  changedTouches?: Array<any>
+  touches?: any[]
+  targetTouches?: any[]
+  changedTouches?: any[]
 }
 
 /**

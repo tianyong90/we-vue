@@ -21,9 +21,9 @@ type Column = {
   [key: string]: any
 }
 
-type simpleColumns = (string | number | object)[]
+type simpleColumns = Array<string | number | object>
 
-type Columns = (string | number | Column)[][]
+type Columns = Array<string | number | Column>[]
 
 export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
   name: 'w-picker',
@@ -135,7 +135,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
 
     // set options of column by index
-    setColumnOptions (columnIndex: number, options: (string | number | object)[]): void {
+    setColumnOptions (columnIndex: number, options: Array<string | number | object>): void {
       const column = this.columns[columnIndex]
       if (column) {
         ;(column as Column).options = options
@@ -143,7 +143,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
     },
 
     // get options of column by index
-    getColumnOptions (columnIndex: number): (string | number)[] {
+    getColumnOptions (columnIndex: number): Array<string | number> {
       return (this.columns[columnIndex] as Column).options
     },
 

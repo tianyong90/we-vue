@@ -9,7 +9,7 @@ type objectOptionType = {
   disabled?: boolean
   [key: string]: any
 }
-type optionsType = (objectOptionType | string | number)[]
+type optionsType = Array<objectOptionType | string | number>
 
 const range: (num: number, min: number, max: number) => number = (num, min, max) => Math.min(Math.max(num, min), max)
 
@@ -172,7 +172,7 @@ export default Vue.extend<options>().extend({
       return index
     },
 
-    setIndex (index: number, userAction: boolean = false): void {
+    setIndex (index: number, userAction = false): void {
       index = this.adjustIndex(index) || 0
       this.offset = this.indexToOffset(index)
 

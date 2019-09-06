@@ -43,7 +43,7 @@ const defaultOptions: ToastOptions = {
 }
 
 let queue: InstanceType[] = []
-let singleton: boolean = true
+let singleton = true
 
 const createInstance: () => InstanceType = () => {
   if (!queue.length || !singleton) {
@@ -95,7 +95,7 @@ WToast.success = createMethod('success')
 WToast.fail = createMethod('fail')
 WToast.loading = createMethod('loading')
 
-WToast.close = function (all: boolean = true): void {
+WToast.close = function (all = true): void {
   if (queue.length > 1) {
     if (all) {
       queue.forEach(toast => {

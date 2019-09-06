@@ -117,7 +117,7 @@ module.exports = {
     }),
     new ForkTsChecker({
       checkSyntacticErrors: true,
-      tslint: false, // TODO
+      tslint: true,
       formatter: 'codeframe',
       tsconfig: resolve('../tsconfig.json'),
     }),
