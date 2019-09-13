@@ -17,13 +17,7 @@
           :title="item.name"
           :to="item.path"
           is-link
-        >
-          <i
-            class="cell-icon iconfont"
-            :class="item.icon"
-            slot="icon"
-          />
-        </w-cell>
+        />
       </w-group>
     </w-search-bar>
 
@@ -34,10 +28,7 @@
         :to="nav.path"
         is-link
         :title="nav.name"
-      >
-        <i class="cell-icon iconfont" :class="nav.icon" slot="icon"/>
-        <w-badge slot="ft" v-if="nav.status === 'todo'">Todo</w-badge>
-      </w-cell>
+      />
     </w-group>
 
     <div class="weui-footer footer-copyright">
@@ -93,16 +84,6 @@ export default {
 
 .page {
   margin-bottom: 0;
-}
-
-.cell-icon {
-  display: block;
-  margin-right: 5px;
-  color: #1A2386;
-  overflow: hidden;
-  font-size: 20px;
-  width: 25px;
-  text-align: center;
 }
 
 .footer-copyright {

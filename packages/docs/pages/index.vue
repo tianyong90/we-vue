@@ -89,7 +89,8 @@
         <div class="text-center">
           <p class="text-gray-300">Copyright © 2016-2019 tianyong90</p>
           <p>
-            <a class="text-gray-300 text-sm no-underline" href="http://www.miitbeian.gov.cn/">粤ICP备17009332号-1</a
+            <a class="text-gray-300 text-sm no-underline" href="http://www.miitbeian.gov.cn/"
+              >粤ICP备17009332号-1</a
             >
           </p>
         </div>
