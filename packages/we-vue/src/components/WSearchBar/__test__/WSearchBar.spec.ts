@@ -71,15 +71,15 @@ describe('search', () => {
   })
 
   test('click cancel btn', () => {
-    const wrapper = shallowMount(SearchBar, {
-      propsData: {},
-    })
+    const wrapper = shallowMount(SearchBar)
 
-    jest.spyOn(wrapper.vm, 'cancel')
+    jest.spyOn(wrapper.vm, 'clear')
 
     wrapper.find('.weui-search-bar__cancel-btn').trigger('click')
 
-    expect(wrapper.vm.cancel).toHaveBeenCalled()
+    expect(wrapper.emitted().cancel).toBeTruthy()
+
+    expect(wrapper.vm.clear).toHaveBeenCalled()
   })
 
   test('watch currentValue', () => {

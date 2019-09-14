@@ -54,8 +54,11 @@ describe('checklist', () => {
       propsData: {
         max: 2,
         options: options,
-        value: options,
       },
+    })
+
+    wrapper.setData({
+      currentValue: options,
     })
 
     expect(wrapper.emitted().input[0]).toEqual([['value1', 'value2']])
@@ -65,8 +68,11 @@ describe('checklist', () => {
       propsData: {
         max: 1,
         options: options,
-        value: options,
       },
+    })
+
+    wrapper.setData({
+      currentValue: options,
     })
 
     expect(wrapper.emitted().input[0]).toEqual([['value1']])
@@ -113,13 +119,13 @@ describe('checklist', () => {
       currentValue: ['value1'],
     })
 
-    expect(wrapper.emitted().input).toHaveLength(2)
+    expect(wrapper.emitted().input[0]).toEqual([['value1']])
 
     wrapper.setData({
       currentValue: options,
     })
 
-    expect(wrapper.emitted().input[2]).toEqual([['value1', 'value2']])
+    expect(wrapper.emitted().input[1]).toEqual([['value1', 'value2']])
   })
 
   test('watch value', () => {

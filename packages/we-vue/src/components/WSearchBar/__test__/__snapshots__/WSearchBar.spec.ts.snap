@@ -4,8 +4,7 @@ exports[`search create 1`] = `
 <div>
   <div class="weui-search-bar">
     <div class="weui-search-bar__form">
-      <div class="weui-search-bar__box"><i class="weui-icon-search"></i>
-        <form action="javascript:"><input type="search" placeholder="搜索" class="weui-search-bar__input"></form>
+      <div class="weui-search-bar__box"><i class="weui-icon-search"></i><input type="search" placeholder="搜索" class="weui-search-bar__input">
         <div class="weui-icon-clear"></div>
       </div><label class="weui-search-bar__label"><i class="weui-icon-search"></i><span>搜索</span></label>
     </div>
