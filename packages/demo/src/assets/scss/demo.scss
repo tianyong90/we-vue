@@ -11,7 +11,7 @@
 @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
   // For Google Chrome
   ::-webkit-scrollbar {
-    width:  $size;
+    width: $size;
     height: $size;
   }
 
@@ -36,10 +36,10 @@
 
 html,
 body {
-  background-color: #f8f8f8;
-  user-select: none;
   margin: 0;
   padding: 0;
+  background-color: #f8f8f8;
+  user-select: none;
 }
 
 a,
@@ -52,51 +52,51 @@ img {
 }
 
 .page-with-padding {
-  padding: .5rem .7rem;
   width: calc(100% - .7rem * 2);
+  padding: .5rem .7rem;
 }
 
 .slide-left-enter-active,
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition: all 250ms;
-  top: 0;
-  height: 100%;
-  width: 100%;
   position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
   backface-visibility: hidden;
+  transition: all 250ms;
   will-change: transform;
 }
 
 .slide-left-enter {
-  opacity: 0;
   transform: translateX(100%);
+  opacity: 0;
 }
 
 .slide-left-leave-active {
-  opacity: 0;
   transform: translateX(-100%);
+  opacity: 0;
 }
 
 .slide-right-enter {
-  opacity: 0;
   transform: translateX(-100%);
+  opacity: 0;
 }
 
 .slide-right-leave-active {
-  opacity: 0;
   transform: translateX(100%);
+  opacity: 0;
 }
 
 .qrcode {
-  display: block;
-  overflow: hidden;
   position: fixed;
-  z-index: 1000;
-  bottom: 20px;
   right: 10px;
+  bottom: 20px;
+  z-index: 1000;
+  display: block;
   padding: 3px;
+  overflow: hidden;
   background-color: #eee;
 
   img {

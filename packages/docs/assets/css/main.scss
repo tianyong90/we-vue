@@ -17,7 +17,7 @@
 @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
   // For Google Chrome
   ::-webkit-scrollbar {
-    width:  $size;
+    width: $size;
     height: $size;
   }
 
@@ -44,16 +44,16 @@
   position: relative;
 
   img {
-    max-width: 100%;
     box-sizing: border-box;
+    max-width: 100%;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    border-bottom: none;
     margin-top: 1em;
+    border-bottom: none;
   }
 
   h1 {
@@ -72,7 +72,7 @@
     font-size: 1.1rem;
   }
 
-  h4 {
+  h5 {
     font-size: 1.05rem;
   }
 }
@@ -84,11 +84,11 @@ div[class*="language-"] {
 
   &::before {
     position: absolute;
-    z-index: 3;
     top: 0.8em;
     right: 1em;
-    font-size: 0.75rem;
+    z-index: 3;
     color: #fff;
+    font-size: 0.75rem;
   }
 
   // 隐藏行号
@@ -100,15 +100,15 @@ div[class*="language-"] {
     position: relative;
 
     ::before {
-      content: " ";
       position: absolute;
-      z-index: 3;
-      left: 0;
       top: 0;
+      left: 0;
+      z-index: 3;
       display: block;
       width: 3.5rem;
       height: 100%;
-      background-color: rgba(0,0,0,.66)
+      background-color: rgba(0, 0, 0, .66);
+      content: " ";
     }
   }
 
@@ -122,15 +122,15 @@ div[class*="language-"] {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 3.5rem;
-      text-align: center;
-      color: hsla(0, 0, 100%, 0.3);
-      padding: 16px 0;
-      line-height: 18.61px;
-      border-radius: 6px 0 0 6px;
-      border-right: 1px solid rgba(0, 0, 0, 0.66);
-      background-color: #282c45;
       z-index: 2;
+      width: 3.5rem;
+      padding: 16px 0;
+      color: hsla(0, 0, 100%, 0.3);
+      line-height: 18.61px;
+      text-align: center;
+      background-color: #282c45;
+      border-right: 1px solid rgba(0, 0, 0, 0.66);
+      border-radius: 6px 0 0 6px;
 
       .line-number,
       br {
@@ -146,19 +146,19 @@ div[class*="language-"] {
   }
 
   & pre {
-    background-color: transparent;
     position: relative;
     z-index: 1;
+    background-color: transparent;
   }
 
   .highlight-lines {
-    user-select: none;
-    padding-top: 13.6px;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    padding-top: 13.6px;
     line-height: 20.4px;
+    user-select: none;
 
     .highlighted {
       background-color: rgba(0, 0, 0, 0.66);
@@ -196,47 +196,48 @@ $languages: (
 }
 
 .custom-block .custom-block-title {
+  margin-bottom: .4rem;
   font-weight: 600;
-  margin-bottom: .4rem
 }
 
-.custom-block.danger,.custom-block.tip,.custom-block.warning {
+.custom-block.danger,
+.custom-block.tip,
+.custom-block.warning {
+  margin: 1rem 0;
   padding: .1rem 1.5rem;
   border-left-width: .5rem;
   border-left-style: solid;
-  margin: 1rem 0
 }
 
 .custom-block.tip {
   background-color: #f3f5f7;
-  border-color: #42b983
+  border-color: #42b983;
 }
 
 .custom-block.warning {
-  background-color: rgba(255,229,100,.3);
+  color: #6b5900;
+  background-color: rgba(255, 229, 100, .3);
   border-color: #e7c000;
-  color: #6b5900
 }
 
 .custom-block.warning .custom-block-title {
-  color: #b29400
+  color: #b29400;
 }
 
 .custom-block.warning a {
-  color: #2c3e50
+  color: #2c3e50;
 }
 
 .custom-block.danger {
+  color: #4d0000;
   background-color: #ffe6e6;
   border-color: #c00;
-  color: #4d0000
 }
 
 .custom-block.danger .custom-block-title {
-  color: #900
+  color: #900;
 }
 
 .custom-block.danger a {
-  color: #2c3e50
+  color: #2c3e50;
 }
-
