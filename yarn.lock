@@ -8070,7 +8070,7 @@ globjoin@^0.1.4:
   resolved "https://registry.npm.taobao.org/globjoin/download/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
   integrity sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=
 
-gonzales-pe@^4.2.3:
+gonzales-pe@^4.2.3, gonzales-pe@^4.2.4:
   version "4.2.4"
   resolved "https://registry.npm.taobao.org/gonzales-pe/download/gonzales-pe-4.2.4.tgz#356ae36a312c46fe0f1026dd6cb539039f8500d2"
   integrity sha1-NWrjajEsRv4PECbdbLU5A5+FANI=
@@ -10012,10 +10012,10 @@ known-css-properties@^0.11.0:
   resolved "https://registry.npm.taobao.org/known-css-properties/download/known-css-properties-0.11.0.tgz#0da784f115ea77c76b81536d7052e90ee6c86a8a"
   integrity sha1-DaeE8RXqd8drgVNtcFLpDubIaoo=
 
-known-css-properties@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.npm.taobao.org/known-css-properties/download/known-css-properties-0.14.0.tgz#d7032b4334a32dc22e6e46b081ec789daf18756c"
-  integrity sha1-1wMrQzSjLcIubkawgex4na8YdWw=
+known-css-properties@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.npm.taobao.org/known-css-properties/download/known-css-properties-0.15.0.tgz#5aa14a98b5a1652448aad44a1c67e867e4e7d88c"
+  integrity sha1-WqFKmLWhZSRIqtRKHGfoZ+Tn2Iw=
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -12581,7 +12581,7 @@ postcss-js@^2.0.0:
     camelcase-css "^2.0.1"
     postcss "^7.0.18"
 
-postcss-jsx@^0.36.0, postcss-jsx@^0.36.1:
+postcss-jsx@^0.36.0, postcss-jsx@^0.36.3:
   version "0.36.3"
   resolved "https://registry.npm.taobao.org/postcss-jsx/download/postcss-jsx-0.36.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpostcss-jsx%2Fdownload%2Fpostcss-jsx-0.36.3.tgz#c91113eae2935a1c94f00353b788ece9acae3f46"
   integrity sha1-yRET6uKTWhyU8ANTt4js6ayuP0Y=
@@ -13010,6 +13010,14 @@ postcss-sass@^0.3.5:
     gonzales-pe "^4.2.3"
     postcss "^7.0.1"
 
+postcss-sass@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.npm.taobao.org/postcss-sass/download/postcss-sass-0.4.1.tgz?cache=0&sync_timestamp=1562542112844&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpostcss-sass%2Fdownload%2Fpostcss-sass-0.4.1.tgz#6177205d2c287973551bd2938fc4b375961e3173"
+  integrity sha1-YXcgXSwoeXNVG9KTj8SzdZYeMXM=
+  dependencies:
+    gonzales-pe "^4.2.4"
+    postcss "^7.0.14"
+
 postcss-scss@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/postcss-scss/download/postcss-scss-2.0.0.tgz#248b0a28af77ea7b32b1011aba0f738bda27dea1"
@@ -13108,7 +13116,7 @@ postcss-value-parser@^3.0.0, postcss-value-parser@^3.2.3, postcss-value-parser@^
   resolved "https://registry.npm.taobao.org/postcss-value-parser/download/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
   integrity sha1-n/giVH4okyE88cMO+lGsX9G6goE=
 
-postcss-value-parser@^4.0.0:
+postcss-value-parser@^4.0.0, postcss-value-parser@^4.0.2:
   version "4.0.2"
   resolved "https://registry.npm.taobao.org/postcss-value-parser/download/postcss-value-parser-4.0.2.tgz#482282c09a42706d1fc9a069b73f44ec08391dc9"
   integrity sha1-SCKCwJpCcG0fyaBptz9E7Ag5Hck=
@@ -15193,17 +15201,17 @@ stylelint-config-rational-order@^0.1.2:
     stylelint "^9.10.1"
     stylelint-order "^2.2.1"
 
-stylelint-config-recommended@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npm.taobao.org/stylelint-config-recommended/download/stylelint-config-recommended-2.2.0.tgz#46ab139db4a0e7151fd5f94af155512886c96d3f"
-  integrity sha1-RqsTnbSg5xUf1flK8VVRKIbJbT8=
+stylelint-config-recommended@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/stylelint-config-recommended/download/stylelint-config-recommended-3.0.0.tgz#e0e547434016c5539fe2650afd58049a2fd1d657"
+  integrity sha1-4OVHQ0AWxVOf4mUK/VgEmi/R1lc=
 
-stylelint-config-standard@^18.3.0:
-  version "18.3.0"
-  resolved "https://registry.npm.taobao.org/stylelint-config-standard/download/stylelint-config-standard-18.3.0.tgz#a2a1b788d2cf876c013feaff8ae276117a1befa7"
-  integrity sha1-oqG3iNLPh2wBP+r/iuJ2EXob76c=
+stylelint-config-standard@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.npm.taobao.org/stylelint-config-standard/download/stylelint-config-standard-19.0.0.tgz#66f0cf13f33b8a9e34965881493b38fc1313693a"
+  integrity sha1-ZvDPE/M7ip40lliBSTs4/BMTaTo=
   dependencies:
-    stylelint-config-recommended "^2.2.0"
+    stylelint-config-recommended "^3.0.0"
 
 stylelint-order@^2.2.1:
   version "2.2.1"
@@ -15214,10 +15222,10 @@ stylelint-order@^2.2.1:
     postcss "^7.0.2"
     postcss-sorting "^4.1.0"
 
-stylelint@^10.0.1:
-  version "10.1.0"
-  resolved "https://registry.npm.taobao.org/stylelint/download/stylelint-10.1.0.tgz#1bc4c4ce878107e7c396b19226d91ba28268911a"
-  integrity sha1-G8TEzoeBB+fDlrGSJtkbooJokRo=
+stylelint@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.npm.taobao.org/stylelint/download/stylelint-11.0.0.tgz#1458d1e126d4f2fb9f41076197f852aa1fcae91d"
+  integrity sha1-FFjR4SbU8vufQQdhl/hSqh/K6R0=
   dependencies:
     autoprefixer "^9.5.1"
     balanced-match "^1.0.0"
@@ -15234,29 +15242,28 @@ stylelint@^10.0.1:
     ignore "^5.0.6"
     import-lazy "^4.0.0"
     imurmurhash "^0.1.4"
-    known-css-properties "^0.14.0"
+    known-css-properties "^0.15.0"
     leven "^3.1.0"
-    lodash "^4.17.11"
+    lodash "^4.17.14"
     log-symbols "^3.0.0"
     mathml-tag-names "^2.1.0"
     meow "^5.0.0"
     micromatch "^4.0.0"
     normalize-selector "^0.2.0"
-    pify "^4.0.1"
     postcss "^7.0.14"
     postcss-html "^0.36.0"
-    postcss-jsx "^0.36.1"
+    postcss-jsx "^0.36.3"
     postcss-less "^3.1.4"
     postcss-markdown "^0.36.0"
     postcss-media-query-parser "^0.2.3"
     postcss-reporter "^6.0.1"
     postcss-resolve-nested-selector "^0.1.1"
     postcss-safe-parser "^4.0.1"
-    postcss-sass "^0.3.5"
+    postcss-sass "^0.4.1"
     postcss-scss "^2.0.0"
     postcss-selector-parser "^3.1.0"
     postcss-syntax "^0.36.2"
-    postcss-value-parser "^3.3.1"
+    postcss-value-parser "^4.0.2"
     resolve-from "^5.0.0"
     signal-exit "^3.0.2"
     slash "^3.0.0"
@@ -15267,6 +15274,7 @@ stylelint@^10.0.1:
     sugarss "^2.0.0"
     svg-tags "^1.0.0"
     table "^5.2.3"
+    v8-compile-cache "^2.1.0"
 
 stylelint@^9.10.1:
   version "9.10.1"
@@ -15872,10 +15880,21 @@ ts-loader@^6.0.0, ts-loader@^6.0.2, ts-loader@^6.0.4:
     micromatch "^4.0.0"
     semver "^6.0.0"
 
-ts-node@^8.1.0, ts-node@^8.3.0:
+ts-node@^8.3.0:
   version "8.3.0"
   resolved "https://registry.npm.taobao.org/ts-node/download/ts-node-8.3.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fts-node%2Fdownload%2Fts-node-8.3.0.tgz#e4059618411371924a1fb5f3b125915f324efb57"
   integrity sha1-5AWWGEETcZJKH7XzsSWRXzJO+1c=
+  dependencies:
+    arg "^4.1.0"
+    diff "^4.0.1"
+    make-error "^1.1.1"
+    source-map-support "^0.5.6"
+    yn "^3.0.0"
+
+ts-node@^8.4.1:
+  version "8.4.1"
+  resolved "https://registry.npm.taobao.org/ts-node/download/ts-node-8.4.1.tgz#270b0dba16e8723c9fa4f9b4775d3810fd994b4f"
+  integrity sha1-JwsNuhbocjyfpPm0d104EP2ZS08=
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
@@ -16384,7 +16403,7 @@ v8-compile-cache@2.0.3:
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.0.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fv8-compile-cache%2Fdownload%2Fv8-compile-cache-2.0.3.tgz#00f7494d2ae2b688cfe2899df6ed2c54bef91dbe"
   integrity sha1-APdJTSritojP4omd9u0sVL75Hb4=
 
-v8-compile-cache@^2.0.3:
+v8-compile-cache@^2.0.3, v8-compile-cache@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.1.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fv8-compile-cache%2Fdownload%2Fv8-compile-cache-2.1.0.tgz#e14de37b31a6d194f5690d67efc4e7f6fc6ab30e"
   integrity sha1-4U3jezGm0ZT1aQ1n78Tn9vxqsw4=
