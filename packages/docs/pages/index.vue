@@ -16,11 +16,13 @@
           </router-link>
           <a
             href="https://demo.wevue.org"
+            target="_blank"
             class="text-white no-underline mx-3 border-white hover:bg-white hover:text-black border border-solid px-5 py-2 rounded-full"
             >在线示例</a
           >
           <a
             href="https://github.com/tianyong90/WE-VUE"
+            target="_blank"
             class="text-white no-underline mx-3 border-white hover:bg-white hover:text-black border border-solid px-5 py-2 rounded-full uppercase"
             ><i class="fab fa-github"></i> GitHub</a
           >
@@ -87,7 +89,10 @@
         </div>
 
         <div class="text-center">
-          <p class="text-gray-300">Copyright © 2016-2019 tianyong90</p>
+          <p class="text-gray-300">
+            Copyright © 2016-2019
+            <a class="text-gray-300" href="https://tianyong90.com" target="_blank">tianyong90</a>
+          </p>
           <p>
             <a class="text-gray-300 text-sm no-underline" href="http://www.miitbeian.gov.cn/"
               >粤ICP备17009332号-1</a
