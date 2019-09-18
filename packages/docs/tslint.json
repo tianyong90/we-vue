@@ -15,9 +15,7 @@
     "no-inferrable-types": true,
     "unified-signatures": true,
     "no-undefined-argument": true,
-
-    // TODO: fails with "TypeError: Cannot read property 'default' of undefined"
-    "use-default-type-parameter": false,
+    "use-default-type-parameter": true,
 
     /* typestrict overrides */
 
