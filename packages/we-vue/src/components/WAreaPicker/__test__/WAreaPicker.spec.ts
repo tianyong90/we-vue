@@ -134,7 +134,6 @@ describe('area picker', () => {
     expect(wrapper.emitted('cancel')).toBeTruthy()
   })
 
-  // TODO
   test('click confirm button', () => {
     const wrapper = mount(WAreaPicker, {
       propsData: {

@@ -1,6 +1,7 @@
 import Vue, { PluginFunction } from 'vue'
 import ToastComponent from './WToast'
 import { isObj } from '@/utils'
+import DialogComponent from '@/components/WDialog/WDialog'
 
 type ToastOptions = {
   visible: boolean
@@ -123,11 +124,9 @@ WToast.allowMultiple = function (allow = true) {
 }
 
 WToast.install = () => {
-  // TODO
+  Vue.component('w-toast', ToastComponent)
 }
 
-// TODO: 放到 install？
 Vue.prototype.$toast = WToast
 
-export { WToast }
 export default WToast

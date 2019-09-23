@@ -89,9 +89,9 @@ WTopTips.resetDefaultOptions = function (): void {
 }
 
 WTopTips.install = () => {
-  // TODO
+  Vue.component('w-top-tips', TopTipsComponent)
 }
+
 Vue.prototype.$toptips = WTopTips
 
-export { WTopTips }
 export default WTopTips

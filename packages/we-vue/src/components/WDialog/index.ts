@@ -116,10 +116,9 @@ WDialog.resetDefaultOptions = function () {
 }
 
 WDialog.install = () => {
-  // TODO
+  Vue.component('w-dialog', DialogComponent)
 }
 
 Vue.prototype.$dialog = WDialog
 
-export { WDialog }
 export default WDialog
