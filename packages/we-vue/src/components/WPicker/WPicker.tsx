@@ -23,7 +23,7 @@ type Column = {
 
 type simpleColumns = Array<string | number | object>
 
-type Columns = Array<string | number | Column>[]
+type Columns = Array<Array<string | number | Column>>
 
 export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
   name: 'w-picker',

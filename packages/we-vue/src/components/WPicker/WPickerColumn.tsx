@@ -5,11 +5,16 @@ import { cloneDeep } from 'lodash'
 // Types
 import { PropValidator } from 'vue/types/options'
 
-type objectOptionType = {
+type SimpleOption = string | number
+
+type ObjectOption = {
   disabled?: boolean
   [key: string]: any
 }
-type optionsType = Array<objectOptionType | string | number>
+
+type Option = SimpleOption | ObjectOption
+
+type Options = Option[]
 
 const range: (num: number, min: number, max: number) => number = (num, min, max) => Math.min(Math.max(num, min), max)
 
@@ -31,7 +36,7 @@ export default Vue.extend<options>().extend({
     options: {
       type: Array,
       default: () => [],
-    } as PropValidator<optionsType>,
+    } as PropValidator<Options>,
     value: {},
     valueKey: String,
     visibleItemCount: {
@@ -107,14 +112,14 @@ export default Vue.extend<options>().extend({
   },
 
   methods: {
-    getOptionText (option: objectOptionType | string | number): string {
+    getOptionText (option: Option): string {
       return isObj(option) && this.valueKey in (option as any)
-        ? (option as objectOptionType)[this.valueKey]
+        ? (option as ObjectOption)[this.valueKey]
         : option
     },
 
-    isDisabled (option: objectOptionType | string | number) {
-      return isObj(option) && (option as objectOptionType).disabled
+    isDisabled (option: Option) {
+      return isObj(option) && (option as ObjectOption).disabled
     },
 
     indexToOffset (index: number): number {
@@ -186,11 +191,11 @@ export default Vue.extend<options>().extend({
       return this.currentOptions[this.currentIndex]
     },
 
-    setValue (value: objectOptionType | string | number) {
+    setValue (value: Option) {
       const { options } = this
       const valueIndex = options.findIndex(option => {
         if (isObj(value)) {
-          return this.getOptionText(option) === (value as objectOptionType)[this.valueKey]
+          return this.getOptionText(option) === (value as ObjectOption)[this.valueKey]
         } else {
           return this.getOptionText(option) === value
         }

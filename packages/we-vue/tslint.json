@@ -32,7 +32,8 @@
     // Fails with no-unused-variable for some reason
     "no-useless-cast": false,
 
-    "no-floating-promises": false
+    "no-floating-promises": false,
+    "promise-must-complete": false
   },
   "rulesDirectory": []
 }
