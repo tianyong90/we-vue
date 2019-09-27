@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "3.0.0-alpha.19",
+  "version": "3.0.0-alpha.20",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --colors",
@@ -14,7 +14,7 @@
     "vue": "^2.5.22",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "we-vue": "^3.0.0-alpha.19"
+    "we-vue": "^3.0.0-alpha.20"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",
