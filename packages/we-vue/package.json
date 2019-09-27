@@ -37,7 +37,7 @@
     "lint": "eslint --ext .js,.ts,.tsx,.vue src test/unit/",
     "lint:style": "stylelint src/scss",
     "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r",
-    "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
+    "build:dist": "rimraf dist node_modules/.cache && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
     "build:lib": "node build/build-lib.js",
     "test": "jest --config=jest.config.js --colors",
     "test:types": "tsc -p ./types/test/tsconfig.json",
