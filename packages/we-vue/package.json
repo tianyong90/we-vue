@@ -43,8 +43,7 @@
     "test:types": "tsc -p ./types/test/tsconfig.json",
     "test:watch": "jest --config=jest.config.js --colors --watchAll",
     "test:coverage": "jest --config=jest.config.js --colors --coverage",
-    "coverage": "yarn codecov",
-    "postinstall": "rimraf node_modules/.cache"
+    "coverage": "yarn codecov"
   },
   "husky": {
     "hooks": {
