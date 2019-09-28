@@ -4225,7 +4225,7 @@ cache-loader@^2.0.1:
     normalize-path "^3.0.0"
     schema-utils "^1.0.0"
 
-cache-loader@^4.0.0, cache-loader@^4.1.0:
+cache-loader@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npm.taobao.org/cache-loader/download/cache-loader-4.1.0.tgz#9948cae353aec0a1fcb1eafda2300816ec85387e"
   integrity sha1-mUjK41OuwKH8ser9ojAIFuyFOH4=
