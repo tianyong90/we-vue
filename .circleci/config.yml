@@ -23,8 +23,8 @@ jobs:
             - yarn-packages-{{ .Branch }}-
 
       - run:
-          name: isntall lerna and codecov globally
-          command: sudo yarn global add lerna codecov
+          name: isntall tools globally
+          command: sudo yarn global add lerna codecov cross-env rimraf
 
       # Install dependencies
       - run:
