@@ -29,7 +29,7 @@ jobs:
       # Install dependencies
       - run:
           name: Install Dependencies
-          command: yarn --no-lockfile --frozen-lockfile --non-interactive
+          command: lerna bootstrap
 
       # Save cache
       - save_cache:
