@@ -56,6 +56,12 @@ module.exports = {
         test: /\.js$/,
         use: [
           {
+            loader: 'cache-loader',
+            options: {
+              cacheDirectory: resolve('../node_modules/.cache/babel-loader'),
+            },
+          },
+          {
             loader: 'thread-loader',
           },
           'babel-loader',
@@ -65,6 +71,12 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
+          {
+            loader: 'cache-loader',
+            options: {
+              cacheDirectory: resolve('../node_modules/.cache/ts-loader'),
+            },
+          },
           {
             loader: 'thread-loader',
           },
@@ -76,6 +88,7 @@ module.exports = {
             options: {
               transpileOnly: true,
               happyPackMode: true,
+              experimentalWatchApi: true,
             },
           },
         ],

@@ -25,23 +25,38 @@ module.exports = merge(baseWebpackConfig, {
       amd: 'vue',
     },
   },
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-      }),
-      new OptimizeCssAssetsPlugin({
-        assetNameRegExp: /\.css$/g,
-        cssProcessor: require('cssnano'),
-        cssProcessorOptions: {
-          discardComments: { removeAll: true },
-          postcssZindex: false,
-          reduceIdents: false,
-        },
-        canPrint: false,
-      }),
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'thread-loader',
+          },
+          'babel-loader',
+        ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'thread-loader',
+          },
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              happyPackMode: true,
+              experimentalWatchApi: true,
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
     ],
   },
 })
