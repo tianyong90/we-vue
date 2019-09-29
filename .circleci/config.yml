@@ -24,7 +24,7 @@ jobs:
 
       - run:
           name: isntall lerna and codecov globally
-          command: sudo npm install -g lerna codecov
+          command: sudo yarn global add lerna codecov
 
       # Install dependencies
       - run:
