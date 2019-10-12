@@ -53,48 +53,6 @@ module.exports = {
         use: scssLoaders,
       },
       {
-        test: /\.js$/,
-        use: [
-          {
-            loader: 'cache-loader',
-            options: {
-              cacheDirectory: resolve('../node_modules/.cache/babel-loader'),
-            },
-          },
-          {
-            loader: 'thread-loader',
-          },
-          'babel-loader',
-        ],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'cache-loader',
-            options: {
-              cacheDirectory: resolve('../node_modules/.cache/ts-loader'),
-            },
-          },
-          {
-            loader: 'thread-loader',
-          },
-          {
-            loader: 'babel-loader',
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-              happyPackMode: true,
-              experimentalWatchApi: true,
-            },
-          },
-        ],
-        exclude: /node_modules/,
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -115,12 +73,6 @@ module.exports = {
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       clearConsole: true,
-    }),
-    new ForkTsChecker({
-      checkSyntacticErrors: true,
-      tslint: true,
-      formatter: 'codeframe',
-      tsconfig: resolve('../tsconfig.json'),
     }),
   ],
 }
