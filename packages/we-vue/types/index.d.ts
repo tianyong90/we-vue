@@ -1,5 +1,4 @@
 import Vue, { Component, DirectiveOptions, PluginFunction } from 'vue'
-
 import './lib'
 
 declare const WeVue: WeVue
@@ -10,20 +9,20 @@ export interface WeVue {
 }
 
 /* eslint-disable-next-line */
-export type WeVueComponents = Component & { $_we_vue_subcomponents?: Record<string, WeVueComponents> }
+export type ComponentOrPack = Component & { $_we_vue_subcomponents?: Record<string, ComponentOrPack> }
 
 export interface WeVueUseOptions {
   directives?: Record<string, DirectiveOptions>
-  components?: Record<string, WeVueComponents>
+  components?: Record<string, ComponentOrPack>
   plugins?: Record<string, PluginFunction<Vue>>
 }
 
-export interface WeVueObject extends Vue {
+export interface Framewrok {
   // TODO
 }
 
 declare module 'vue/types/vue' {
   export interface Vue {
-    $wevue: WeVueObject
+    $wevue: Framewrok
   }
 }

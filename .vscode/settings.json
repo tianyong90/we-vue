@@ -9,5 +9,20 @@
   "flow.useNPMPackagedFlow": true,
   "javascript.validate.enable": false,
   "jest.pathToJest": "yarn jest --",
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#f6b468",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#099655",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "titleBar.activeBackground": "#f39c38",
+    "titleBar.inactiveBackground": "#f39c3899",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveForeground": "#15202b99",
+    "statusBar.background": "#f39c38",
+    "statusBarItem.hoverBackground": "#ea840e",
+    "statusBar.foreground": "#15202b"
+  },
+  "peacock.color": "#f39c38"
 }

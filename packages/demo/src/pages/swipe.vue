@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="demo-tips">默认示例</div>
-    <w-swipe class="demo-swipe" :height="130" :autoplay="4000">
+    <w-swipe class="demo-swipe" :height="130" :autoplay="4000" @change="handleChange">
       <w-swipe-item style="background-color: #f44336"/>
       <w-swipe-item style="background-color: #ffc107"/>
       <w-swipe-item style="background-color: #03a9f4"/>
@@ -31,6 +31,16 @@
     </w-swipe>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    handleChange (index) {
+      console.log(index)
+    },
+  },
+}
+</script>
 
 <style scoped lang="scss">
 .demo-tips {
