@@ -22,7 +22,6 @@ const purgecss = Purgecss({
   whitelistPatternsChildren: [/^token/, /^pre/, /^code/, /^line-numbers-wrapper/, /^line-number/],
 })
 
-// console.log(posts)
 const tailwindJS = join(__dirname, 'tailwind.config.js')
 
 // 从 config 的侧栏菜单配置中提取路由
