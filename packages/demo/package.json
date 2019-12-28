@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --colors",
     "build": "vue-cli-service build --colors",
-    "lint": "vue-cli-service lint --colors",
-    "test:e2e": "vue-cli-service test:e2e"
+    "lint": "vue-cli-service lint --colors"
   },
   "dependencies": {
     "core-js": "^3.0.1",
@@ -18,7 +17,6 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.4",
-    "@vue/cli-plugin-e2e-cypress": "^4.0.4",
     "@vue/cli-plugin-eslint": "^4.0.4",
     "@vue/cli-service": "^4.0.4",
     "@vue/eslint-config-standard": "^4.0.0",
