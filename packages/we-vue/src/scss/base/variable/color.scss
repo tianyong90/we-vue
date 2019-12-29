@@ -1,20 +1,26 @@
 // color
-$weui-color-primary: #1aad19;
-$weui-color-warn: #e64340;
+$weui-color-primary: #07C160;
+$weui-color-warn: #FA5151;
+
+// active mask
+$weui-active-mask-white: rgba(0, 0, 0, .05);
+$weui-active-mask-colored: rgba(0, 0, 0, .1);
+$weui-active-mask-black: rgba(0, 0, 0, .15);
 
 // link
-$weui-link-color-default: #586c94;
+$weui-link-color-default: #576B95;
 
 // background
-$weui-bg-color-default: #efeff4;
-$weui-bg-color-active: #ececec;
+$weui-bg-color-default: #EDEDED;
+$weui-bg-color-primary: #F7F7F7;
+$weui-bg-color-active: #ECECEC;
 
 // line
-$weui-line-color-light: #e5e5e5;
-$weui-line-color-dark: #bcbab6;
+$weui-line-color-light: rgba(0, 0, 0, .1);
+$weui-line-color-dark: rgba(0, 0, 0, .3);
 
 // text
-$weui-text-color-title: #000;
-$weui-text-color-tips: #b2b2b2;
+$weui-text-color-title: rgba(0, 0, 0, .9);
+$weui-text-color-desc: rgba(0, 0, 0, .5);
+$weui-text-color-tips: rgba(0, 0, 0, .3);
 $weui-text-color-warn: $weui-color-warn;
-$weui-text-color-gray: #999;

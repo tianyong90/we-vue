@@ -24,3 +24,11 @@ a {
 
   @include setTapColor();
 }
+
+input,textarea{
+  caret-color: $weui-color-primary;
+}
+
+::-webkit-input-placeholder{
+  color: $weui-text-color-tips;
+}

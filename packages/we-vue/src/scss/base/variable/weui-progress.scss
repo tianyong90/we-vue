@@ -1,5 +1,7 @@
-$weui-progress-bg: #ebebeb;
-$weui-progress-color: #09bb07;
+@import "./color";
+
+$weui-progress-bg: $weui-bg-color-default;
+$weui-progress-color: $weui-color-primary;
 $weui-progress-height: 3px;
 $weui-progress-close-bg: #ef4f4f;
 $weui-progress-active-bg: #c13e3e;

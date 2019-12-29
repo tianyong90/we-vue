@@ -1,22 +1,25 @@
-$weui-cell-bg: #fff;
-$weui-cell-border-color: #e5e5e5;
-$weui-cell-gap-v: 10px;
-$weui-cell-gap-h: 15px;
-$weui-cell-inner-gap-h: 0.35em;
-$weui-cell-height: 45px;
+@import "./color";
+
+$weui-cell-bg: #FFFFFF;
+$weui-cell-border-color: $weui-line-color-light;
+$weui-cell-gap-v: 16px;
+$weui-cell-gap-h: 16px;
+$weui-cell-inner-gap-h: 16px;
+$weui-cell-height: 56px;
 $weui-cell-font-size: 17px;
 $weui-cell-tips-font-size: 14px;
 $weui-cell-label-width: 105px;
 
-$weui-cell-line-height: ($weui-cell-height - 2 * $weui-cell-gap-v) / $weui-cell-font-size; // 高度减去上下padding的行高
-$weui-cells-margin-top: (20px / $weui-cell-font-size) + em;
+$weui-cell-line-height: unit(($weui-cell-height - 2 * $weui-cell-gap-v) / $weui-cell-font-size); // 高度减去上下padding的行高
+$weui-cells-margin-top: 8px;
+
 
 // weui switch
 $weui-switch-height: 32px;
 
 // weui uploader
-$weui-uploader-border-color: #d9d9d9;
-$weui-uploader-active-border-color: #999;
-$weui-uploader-file-spacing: 9px;
-$weui-uploader-size: 79px;
+$weui-uploader-border-color: #A3A3A3;
+$weui-uploader-active-border-color: overlay($weui-active-mask-black, $weui-uploader-border-color);
+$weui-uploader-file-spacing: 8px;
+$weui-uploader-size: 96px;
 $weui-uploader-border-width: 1px;

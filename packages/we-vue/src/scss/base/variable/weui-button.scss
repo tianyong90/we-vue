@@ -1,36 +1,58 @@
-$weui-btn-height: 46px;
-$weui-btn-font-size: 18px;
-$weui-btn-font-color: #fff;
-$weui-btn-active-font-color: rgba(255, 255, 255, 0.6);
-$weui-btn-disabled-font-color: rgba(255, 255, 255, 0.6);
-$weui-btn-border-radius: 5px;
-$weui-btn-default-gap: 15px;
+@import "./color";
 
-$weui-btn-mini-font-size: 13px;
-$weui-btn-mini-height: 2.3;
+$weui-btn-width: 184px;
+$weui-btn-height: 40px;
+$weui-btn-font-size: 17px;
+$weui-btn-border-radius: 4px;
+$weui-btn-default-gap: 16px;
 
-$weui-btn-default-font-color: #000;
-$weui-btn-default-active-font-color: rgba(0, 0, 0, 0.6);
-$weui-btn-default-disabled-font-color: rgba(0, 0, 0, 0.3);
+$weui-btn-mini-font-size: 16px;
+$weui-btn-mini-height: 32px;
 
-$weui-btn-default-bg: #f8f8f8;
-$weui-btn-default-active-bg: #dedede;
-$weui-btn-default-disabled-bg: #f7f7f7;
+$weui-btn-cell-height: 56px;
+$weui-btn-cell-gap: 16px;
+$weui-btn-cell-line-height: unit(($weui-btn-cell-height - 2 * $weui-btn-cell-gap) / $weui-btn-font-size);
 
-$weui-btn-primary-bg: #1aad19;
-$weui-btn-primary-active-bg: #179b16;
-$weui-btn-primary-disabled-bg: #9ed99d;
+$weui-btn-font-color: #FFFFFF;
+$weui-btn-active-font-color: #FFFFFF;
+$weui-btn-disabled-font-color: rgba(0, 0, 0, .18);
+$weui-btn-disabled-bg: overlay(rgba(0, 0, 0, .02), #FFFFFF);
+$weui-btn-hover-default-mask: $weui-active-mask-white;
+$weui-btn-hover-primary-mask: $weui-active-mask-colored;
 
-$weui-btn-warn-bg: #e64340;
-$weui-btn-warn-active-bg: #ce3c39;
-$weui-btnwarn-disabled-bg: #ec8b89;
+$weui-btn-default-font-color: #06AE56;
+$weui-btn-default-active-font-color: #06AE56;
+$weui-btn-default-disabled-font-color: $weui-btn-disabled-font-color;
 
-$weui-btn-plain-primary-color: rgba(26, 173, 25, 1);
+$weui-btn-default-bg: #F2F2F2;
+$weui-btn-default-active-bg: #D9D9D9;
+$weui-btn-default-disabled-bg: $weui-btn-disabled-bg;
+
+
+$weui-btn-primary-font-color: #FFFFFF;
+$weui-btn-primary-active-font-color: #FFFFFF;
+$weui-btn-primary-disabled-font-color: $weui-btn-disabled-font-color;
+
+$weui-btn-primary-bg: #07C160;
+$weui-btn-primary-active-bg: #06AD56;
+$weui-btn-primary-disabled-bg: $weui-btn-disabled-bg;
+
+
+$weui-btn-warn-font-color: $weui-color-warn;
+$weui-btn-warn-active-font-color: $weui-color-warn;
+$weui-btn-warn-disabled-font-color: $weui-btn-disabled-font-color;
+
+$weui-btn-warn-bg: #F2F2F2;
+$weui-btn-warn-active-bg: #D9D9D9;
+$weui-btnwarn-disabled-bg: $weui-btn-disabled-bg;
+
+
+$weui-btn-plain-primary-color: #07C160;
 $weui-btn-plain-primary-border-color: rgba(26, 173, 25, 1);
-$weui-btn-plain-primary-active-color: rgba(26, 173, 25, 0.6);
-$weui-btn-plain-primary-active-border-color: rgba(26, 173, 25, 0.6);
+$weui-btn-plain-primary-active-color: overlay($weui-btn-hover-primary-mask, $weui-btn-plain-primary-color);
+$weui-btn-plain-primary-active-border-color: overlay($weui-btn-hover-primary-mask, $weui-btn-plain-primary-border-color);
 
 $weui-btn-plain-default-color: rgba(53, 53, 53, 1);
 $weui-btn-plain-default-border-color: rgba(53, 53, 53, 1);
-$weui-btn-plain-default-active-color: rgba(53, 53, 53, 0.6);
-$weui-btn-plain-default-active-border-color: rgba(53, 53, 53, 0.6);
+$weui-btn-plain-default-active-color: overlay($weui-btn-hover-default-mask, $weui-btn-plain-default-color);
+$weui-btn-plain-default-active-border-color: overlay($weui-btn-hover-default-mask, $weui-btn-plain-default-border-color);
