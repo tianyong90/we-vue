@@ -33,7 +33,7 @@
 
 .weui-form-preview__bd {
   padding: $weui-cell-gap-v $weui-cell-gap-h;
-  color: $weui-text-color-gray;
+  color: $weui-text-color-tips;
   font-size: 0.9em;
   line-height: 2;
   text-align: right;
@@ -57,7 +57,7 @@
   float: left;
   min-width: 4em;
   margin-right: 1em;
-  color: $weui-text-color-gray;
+  color: $weui-text-color-tips;
   text-align: justify;
   text-align-last: justify;
 }
@@ -102,7 +102,7 @@
 }
 
 .weui-form-preview__btn_default {
-  color: $weui-text-color-gray;
+  color: $weui-text-color-tips;
 }
 
 .weui-form-preview__btn_primary {

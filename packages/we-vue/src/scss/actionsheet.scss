@@ -4,29 +4,31 @@ $actionsheet-android-border-radius: 2px;
 
 .weui-actionsheet {
   position: fixed;
-  bottom: 0;
   left: 0;
-  z-index: 5000;
-  width: 100%;
-  background-color: $weui-bg-color-default;
+  bottom: 0;
   transform: translate(0, 100%);
   backface-visibility: hidden;
+  z-index: 5000;
+  width: 100%;
+  background-color: #EAE7E8;
   //slide up animation
-  transition: transform 0.3s;
+  transition: transform .3s;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: hidden;
 
   &__title {
     position: relative;
+    height: 56px;
+    padding: 0 24px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 65px;
-    padding: 0 20px;
-    color: #888;
-    font-size: 14px;
-    line-height: 1.4;
+    flex-direction: column;
     text-align: center;
-    background: #fcfcfd;
+    font-size: 12px;
+    color: $weui-text-color-desc;
+    line-height: 1.4;
+    background: #FFFFFF;
 
     &::before {
       @include setBottomLine($weui-cell-border-color);
@@ -38,19 +40,23 @@ $actionsheet-android-border-radius: 2px;
   }
 
   &__menu {
-    background-color: #fcfcfd;
+    color: $weui-text-color-title;
+    background-color: #fff;
   }
 
   &__action {
-    margin-top: 6px;
-    background-color: #fcfcfd;
+    margin-top: 8px;
+    background-color: #FFFFFF;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   &__cell {
     position: relative;
-    padding: 10px 0;
-    font-size: 18px;
+    padding: $weui-cell-gap-v;
+    font-size: 17px;
     text-align: center;
+    line-height: $weui-cell-line-height;
 
     &::before {
       @include setTopLine($weui-cell-border-color);
@@ -65,6 +71,10 @@ $actionsheet-android-border-radius: 2px;
         display: none;
       }
     }
+
+    &_warn {
+      color: $weui-color-warn;
+    }
   }
 
   //actionSheet aniamtion
@@ -77,17 +87,19 @@ $actionsheet-android-border-radius: 2px;
 .weui-skin_android {
   .weui-actionsheet {
     position: fixed;
+    left: 50%;
     top: 50%;
     bottom: auto;
-    left: 50%;
-    box-sizing: border-box;
+    transform: translate(-50%, -50%);
     //padding: 0 40px;
     width: 274px;
-    background: transparent;
-    transform: translate(-50%, -50%);
+    box-sizing: border-box;
     backface-visibility: hidden;
+    background: transparent;
     //slide up animation
-    transition: transform 0.3s;
+    transition: transform .3s;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 
   .weui-actionsheet__action {
@@ -100,9 +112,10 @@ $actionsheet-android-border-radius: 2px;
   }
 
   .weui-actionsheet__cell {
-    padding: 13px 24px;
-    font-size: 16px;
-    line-height: 1.4;
+    padding: $weui-cell-gap-v;
+    font-size: 17px;
+    line-height: $weui-cell-line-height;
+    color: $weui-text-color-title;
     text-align: left;
 
     &:first-child {
