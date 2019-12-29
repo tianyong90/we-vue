@@ -62,7 +62,7 @@ describe('utils scroll', () => {
     const element = { getBoundingClientRect: () => {} } as HTMLElement
 
     const getBoundingClientRectStub = jest.spyOn(element, 'getBoundingClientRect')
-    getBoundingClientRectStub.mockReturnValue({ top: 10 } as ClientRect)
+    getBoundingClientRectStub.mockReturnValue({ top: 10 } as DOMRect)
 
     const getScrollTopStub = jest.spyOn(ScrollUtil, 'getScrollTop')
     getScrollTopStub.mockReturnValue(10)
@@ -82,7 +82,7 @@ describe('utils scroll', () => {
     const element = { getBoundingClientRect: () => {} } as HTMLElement
 
     const spy = jest.spyOn(element, 'getBoundingClientRect')
-    spy.mockReturnValue({ height: 10 } as ClientRect)
+    spy.mockReturnValue({ height: 10 } as DOMRect)
 
     expect(ScrollUtil.getVisibleHeight(element)).toBe(10)
 

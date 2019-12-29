@@ -5,8 +5,7 @@ module.exports = {
   },
   'extends': [
     'plugin:vue/essential',
-    // TODO:
-    // '@vue/standard'
+    '@vue/standard'
   ],
   rules: {
     'no-console': 'off',

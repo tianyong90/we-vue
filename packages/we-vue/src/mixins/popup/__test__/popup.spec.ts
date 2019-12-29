@@ -1,4 +1,4 @@
-import { mount, TransitionStub, Wrapper } from '@vue/test-utils'
+import { mount, Wrapper } from '@vue/test-utils'
 import PopupMixin from '@/mixins/popup'
 import { verticalDrag } from '@/test/unit/utils'
 
@@ -131,7 +131,7 @@ describe('mixins/popup', () => {
         closeOnClickMask: true,
       },
       stubs: {
-        transition: TransitionStub,
+        // TODO: transition: TransitionStub,
       },
     }) as PopupWrapper
 
