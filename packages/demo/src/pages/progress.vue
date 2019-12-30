@@ -1,11 +1,11 @@
 <template>
-  <div class="page page-with-padding">
-    <w-progress :percent="percent1" :show-clear="false"/>
-    <w-progress :percent="percent2" @cancel="onCancel"/>
-    <w-progress percent="10"/>
-    <w-progress percent="12" color="red" background-color="rgba(0, 0, 0, 0.2)" />
-    <w-progress percent="60" :stroke-width="10"/>
-    <w-progress percent="60" :stroke-width="10" :border-radius="5"/>
+  <div class="p-6">
+    <w-progress class="my-6" :percent="percent1" :show-clear="false"/>
+    <w-progress class="my-6" :percent="percent2" @cancel="onCancel"/>
+    <w-progress class="my-6" percent="10"/>
+    <w-progress class="my-6" percent="12" color="red" background-color="rgba(0, 0, 0, 0.2)" />
+    <w-progress class="my-6" percent="60" :stroke-width="10"/>
+    <w-progress class="my-6" percent="60" :stroke-width="10" :border-radius="5"/>
 
     <w-button type="primary" @click="upload">上传</w-button>
   </div>
@@ -26,7 +26,7 @@ export default {
     upload () {
       let temp = 0
 
-      let ticker = setInterval(() => {
+      const ticker = setInterval(() => {
         temp++
 
         this.percent1 = temp
@@ -49,7 +49,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.weui-progress {
-  height: 60px;
-}
 </style>
