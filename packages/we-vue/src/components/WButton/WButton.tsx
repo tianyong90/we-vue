@@ -30,6 +30,7 @@ export default Vue.extend({
         classType = `weui-btn_plain-${this.type}`
       }
 
+      // TODO:
       if (this.cell) {
         classType = `weui-btn_cell-${this.type}`
       }
