@@ -10,9 +10,8 @@ $weui-cell-font-size: 17px;
 $weui-cell-tips-font-size: 14px;
 $weui-cell-label-width: 105px;
 
-$weui-cell-line-height: unit(($weui-cell-height - 2 * $weui-cell-gap-v) / $weui-cell-font-size); // 高度减去上下padding的行高
+$weui-cell-line-height: ($weui-cell-height - 2 * $weui-cell-gap-v) / $weui-cell-font-size; // 高度减去上下padding的行高
 $weui-cells-margin-top: 8px;
-
 
 // weui switch
 $weui-switch-height: 32px;
