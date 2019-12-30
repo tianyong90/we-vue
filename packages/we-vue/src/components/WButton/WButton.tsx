@@ -13,19 +13,27 @@ export default Vue.extend({
     disabled: Boolean,
     mini: Boolean,
     plain: Boolean,
+    cell: Boolean,
   },
 
   computed: {
     classes (): object {
       const ret: any = {
-        'weui-btn': true,
+        'weui-btn': !this.cell,
         'weui-btn_loading': this.isLoading,
         'weui-btn_mini': this.mini,
+        'weui-btn_cell': this.cell,
       }
 
-      const classType = this.plain
-        ? `weui-btn_plain-${this.type}`
-        : `weui-btn_${this.type}`
+      let classType = `weui-btn_${this.type}`
+      if (this.plain) {
+        classType = `weui-btn_plain-${this.type}`
+      }
+
+      if (this.cell) {
+        classType = `weui-btn_cell-${this.type}`
+      }
+
       const classDisabled = this.plain
         ? 'weui-btn_plain-disabled'
         : 'weui-btn_disabled'

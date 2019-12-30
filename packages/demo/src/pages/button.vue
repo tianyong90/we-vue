@@ -1,6 +1,6 @@
 <template>
-  <div class="page page-with-padding">
-    <div class="buttons-big">
+  <div class="flex flex-col py-3">
+    <div class="my-3">
       <w-button type="primary">页面主要操作</w-button>
       <w-button type="primary" is-loading>页面主要操作</w-button>
       <w-button type="primary" disabled>页面主要操作</w-button>
@@ -12,14 +12,21 @@
       <w-button type="warn" disabled>警告类操作</w-button>
     </div>
 
-    <div class="buttons-plain">
+    <div class="my-6">
       <w-button type="default" :plain="true">按钮</w-button>
       <w-button type="default" :plain="true" disabled>按钮</w-button>
       <w-button type="primary" :plain="true">按钮</w-button>
       <w-button type="primary" :plain="true" disabled>按钮</w-button>
     </div>
 
-    <div class="buttons-mini">
+    <w-group class="my-6">
+      <div class="cell">
+        <!--TODO:-->
+        <w-button type="default" :cell="true">按钮</w-button>
+      </div>
+    </w-group>
+
+    <div class="my-6 mx-auto">
       <w-button type="primary" :mini="true">按钮</w-button>
       <w-button type="default" :mini="true">按钮</w-button>
       <w-button type="warn" :mini="true">按钮</w-button>
@@ -33,20 +40,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.buttons-big {
-  display: block;
-  margin: 10px auto;
-}
-
-.buttons-plain {
-  display: block;
-  width: 60%;
-  margin: 10px auto;
-}
-
-.buttons-mini {
-  display: block;
-  width: 60%;
-  margin: 10px auto;
-}
 </style>
