@@ -1,15 +1,15 @@
 <template>
   <div class="page page-with-padding">
     <div class="buttons-big">
-      <w-button type="primary">页面主要操作 Normal</w-button>
-      <w-button type="primary" is-loading>页面主要操作 Loading</w-button>
-      <w-button type="primary" disabled>页面主要操作 Disabled</w-button>
-      <w-button type="default">页面次要操作 Normal</w-button>
-      <w-button type="default" is-loading>页面次要操作 Loading</w-button>
-      <w-button type="default" disabled>页面次要操作 Disabled</w-button>
-      <w-button type="warn">警告类操作 Normal</w-button>
-      <w-button type="warn" is-loading>警告类操作 Loading</w-button>
-      <w-button type="warn" disabled>警告类操作 Disabled</w-button>
+      <w-button type="primary">页面主要操作</w-button>
+      <w-button type="primary" is-loading>页面主要操作</w-button>
+      <w-button type="primary" disabled>页面主要操作</w-button>
+      <w-button type="default">页面次要操作</w-button>
+      <w-button type="default" is-loading>页面次要操作</w-button>
+      <w-button type="default" disabled>页面次要操作</w-button>
+      <w-button type="warn">警告类操作</w-button>
+      <w-button type="warn" is-loading>警告类操作</w-button>
+      <w-button type="warn" disabled>警告类操作</w-button>
     </div>
 
     <div class="buttons-plain">
