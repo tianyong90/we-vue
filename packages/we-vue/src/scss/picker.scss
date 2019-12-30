@@ -1,89 +1,86 @@
 @import "./base/fn";
 
-$pickerItemHeight: 34px;
+$picker-item-height: 58px;
 
 .weui-picker {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 5000;
   width: 100%;
-  transform: none;
+  box-sizing: border-box;
+  left: 0;
+  bottom: 0;
+  z-index: 5000;
+  background-color: #fff;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
   backface-visibility: hidden;
+  transform: translate(0, 100%);
   //slide up animation
-  transition: transform 0.3s;
+  transition: transform .3s;
 }
 
 .weui-picker__hd {
-  position: relative;
   display: flex;
-  padding: 9px 15px;
-  font-size: 17px;
+  padding: 16px;
+  padding: 16px calc(16px ~"+ constant(safe-area-inset-right)") 16px calc(16px ~"+ constant(safe-area-inset-left)");
+  padding: 16px calc(16px ~"+ env(safe-area-inset-right)") 16px calc(16px ~"+ env(safe-area-inset-left)");
+  position: relative;
   text-align: center;
-  background-color: #fff;
+  font-size: 17px;
+  line-height:1.4;
 
   &::after {
     @include setBottomLine($weui-line-color-light);
   }
 }
 
-.weui-picker__action {
-  display: block;
-  flex: 1;
-  color: $weui-color-primary;
-
-  &:first-child {
-    color: #888;
-    text-align: left;
-  }
-
-  &:last-child {
-    text-align: right;
-  }
-}
-
 .weui-picker__bd {
-  position: relative;
   display: flex;
-  height: 238px;
-  overflow: hidden;
+  position: relative;
   background-color: #fff;
+  height: 240px;
+  overflow: hidden;
 }
 
 .weui-picker__group {
-  position: relative;
   flex: 1;
+  position: relative;
   height: 100%;
+  //-webkit-mask-box-image: -webkit-linear-gradient(bottom,transparent,transparent 5%,#fff 50%,#fff 50%,transparent 95%,transparent);
+  &:first-child{
+    .weui-picker__item {
+      padding-left:constant(safe-area-inset-left);
+      padding-left:env(safe-area-inset-left);
+    }
+  } &:last-child{
+      .weui-picker__item {
+        padding-right:constant(safe-area-inset-right);
+        padding-right:env(safe-area-inset-right);
+      }
+    }
 }
 
 .weui-picker__mask {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 3;
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 100%, 0.95),
-    hsla(0, 0%, 100%, 0.6)
-  ),
-    linear-gradient(0deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6));
-  background-repeat: no-repeat;
+  z-index: 3;
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6));
   background-position: top, bottom;
-  background-size: 100% 102px;
+  background-size: 100% 92px;
+  background-repeat: no-repeat;
   transform: translateZ(0);
-  pointer-events: none; // IE 10 以上
 }
 
 .weui-picker__indicator {
-  position: absolute;
-  top: 102px;
-  left: 0;
-  z-index: 3;
   width: 100%;
-  height: $pickerItemHeight;
+  height: 56px;
+  position: absolute;
+  left: 0;
+  top: 92px;
+  z-index: 3;
 
   &::before {
     @include setTopLine($weui-line-color-light);
@@ -102,18 +99,18 @@ $pickerItemHeight: 34px;
 }
 
 .weui-picker__item {
-  height: $pickerItemHeight;
+  height: $picker-item-height;
   padding: 0;
   overflow: hidden;
   color: #000;
-  line-height: $pickerItemHeight;
+  line-height: $picker-item-height;
   white-space: nowrap;
   text-align: center;
   text-overflow: ellipsis;
 }
 
 .weui-picker__item_disabled {
-  color: $weui-text-color-tips;
+  color: $weui-text-color-desc;
 }
 
 .wv-picker-column-divider {
