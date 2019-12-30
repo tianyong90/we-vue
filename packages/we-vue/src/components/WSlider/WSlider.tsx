@@ -91,7 +91,7 @@ export default Vue.extend<options>().extend({
 
       // 距初始值的目标步数
       const steps = Math.round(
-        (e.clientX - this.sliderLeft) / this.stepWidth
+        (e.clientX - this.sliderLeft) / this.stepWidth,
       )
 
       const value = this.min + this.step * steps
@@ -113,7 +113,7 @@ export default Vue.extend<options>().extend({
 
       // 距初始值的目标步数
       const steps = Math.round(
-        (touch.clientX - this.sliderLeft) / this.stepWidth
+        (touch.clientX - this.sliderLeft) / this.stepWidth,
       )
 
       let value = this.min + this.step * steps
@@ -125,8 +125,8 @@ export default Vue.extend<options>().extend({
   },
 
   render () {
-    return (
-      <div class="weui-slider-box">
+    if (!this.showValue) {
+      return (
         <div
           class={{
             'weui-slider': true,
@@ -151,13 +151,42 @@ export default Vue.extend<options>().extend({
             />
           </div>
         </div>
-        {
-          this.showValue &&
+      )
+    } else {
+      return (
+        <div class="weui-slider-box">
+          <div
+            class={{
+              'weui-slider': true,
+              'wv-slider--disabled': this.disabled,
+            }}
+          >
+            <div
+              class="weui-slider__inner"
+              ref="inner"
+              onClick={this.onClick}
+            >
+              <div
+                style={{ width: this.percent + '%' }}
+                class="weui-slider__track"
+              />
+              <div
+                style={{ left: this.percent + '%' }}
+                class="weui-slider__handler"
+                ref="handler"
+                onTouchstart={this.touchStart}
+                onTouchmove={this.touchMove}
+              />
+            </div>
+          </div>
+          {
+            this.showValue &&
             <div class="weui-slider-box__value">
               {this.$slots.valueBox || this.value}
             </div>
-        }
-      </div>
-    )
+          }
+        </div>
+      )
+    }
   },
 })

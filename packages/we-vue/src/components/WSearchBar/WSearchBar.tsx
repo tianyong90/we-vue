@@ -21,7 +21,7 @@ export default mixins<options &
    typeof Validatable
   ]>
 >(
-  Validatable
+  Validatable,
   /* @vue/component */
 ).extend({
   name: 'w-search-bar',
@@ -95,7 +95,7 @@ export default mixins<options &
     return (
       <div>
         <div class="weui-search-bar">
-          <div class="weui-search-bar__form">
+          <form action="javascript:" class="weui-search-bar__form">
             <div class="weui-search-bar__box">
               <i class="weui-icon-search" />
               <input
@@ -116,7 +116,7 @@ export default mixins<options &
               <i class="weui-icon-search" />
               <span domPropsTextContent={this.placeholder} />
             </label>
-          </div>
+          </form>
           <div
             class="weui-search-bar__cancel-btn"
             onClick={this.cancel}
