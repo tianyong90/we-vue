@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`popup create 1`] = `<div class="wv-popup" style="height: auto; display: none;"></div>`;

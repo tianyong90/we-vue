@@ -204,9 +204,7 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
   render (): VNode {
     return (
       <div>
-        <transition enter-active-class="weui-animate-fade-in" leave-active-class="weui-animate-fade-out">
-          <div vShow={this.isActive} class="weui-mask" onClick={this.onClickMask} />
-        </transition>
+        <div vShow={this.isActive} class="weui-mask weui-animate-fade-in" onClick={this.onClickMask} />
         <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
           <div vShow={this.isActive} class="weui-picker">
             <div class="weui-picker__hd">

@@ -113,6 +113,11 @@
         "description": "对话框"
       },
       {
+        "path": "/half-screen-dialog",
+        "name": "Half-screen Dialog",
+        "description": "半屏组件"
+      },
+      {
         "path": "/toast",
         "name": "Toast",
         "description": "弹出式提示"
