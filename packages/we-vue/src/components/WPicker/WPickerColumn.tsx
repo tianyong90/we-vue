@@ -107,6 +107,15 @@ export default Vue.extend<options>().extend({
     this.setIndex(this.currentIndex)
   },
 
+  mounted () {
+    this.$nextTick(() => {
+      const swiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        loop: true,
+      })
+    })
+  },
+
   destroyed () {
     const { children } = this.$parent
     children && children.splice(children.indexOf(this), 1)
@@ -208,11 +217,7 @@ export default Vue.extend<options>().extend({
   render () {
     return (
       <div
-        class="weui-picker__group"
-        onTouchstart={this.touchStart}
-        onTouchmove={this.touchMove}
-        onTouchend={this.onTouchend}
-        onTouchcancel={this.onTouchend}
+        class="weui-picker__group swiper-container"
       >
         <div class="weui-picker__mask" style={this.pickerMaskStyle} />
         <div
@@ -220,12 +225,13 @@ export default Vue.extend<options>().extend({
           ref="indicator"
           style={this.pickerIndicatorStyle}
         />
-        <div class="weui-picker__content" style={this.wrapperStyle}>
+        <div class="weui-picker__content swiper-wrapper" style={this.wrapperStyle}>
           {
             this.options.map((option, index) => (
               <div
                 key={index}
                 class={{
+                  'swiper-slide': true,
                   'weui-picker__item': true,
                   'weui-picker__item_disabled': this.isDisabled(option),
                 }}
