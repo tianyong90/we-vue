@@ -103,10 +103,14 @@ export default Vue.extend<options>().extend({
 
   mounted () {
     this.$nextTick(() => {
-      const swiper = new Swiper('.swiper-container', {
+      const swiper = new Swiper(this.$el, {
         direction: 'vertical',
-        loop: true,
+        loop: false,
+        loopAdditionalSlides: 2, // TODO:
         slidesPerView: 5,
+
+        freeMode: true,
+        freeModeSticky: true,
       })
     })
   },
