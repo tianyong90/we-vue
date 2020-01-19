@@ -78,12 +78,6 @@ export default Vue.extend<options>().extend({
       }
     },
 
-    pickerIndicatorStyle (): object {
-      return {
-        top: Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT + 'px',
-      }
-    },
-
     pickerMaskStyle (): object {
       return {
         backgroundSize:
@@ -112,6 +106,7 @@ export default Vue.extend<options>().extend({
       const swiper = new Swiper('.swiper-container', {
         direction: 'vertical',
         loop: true,
+        slidesPerView: 5,
       })
     })
   },
@@ -220,11 +215,7 @@ export default Vue.extend<options>().extend({
         class="weui-picker__group swiper-container"
       >
         <div class="weui-picker__mask" style={this.pickerMaskStyle} />
-        <div
-          class="weui-picker__indicator"
-          ref="indicator"
-          style={this.pickerIndicatorStyle}
-        />
+        <div class="weui-picker__indicator"/>
         <div class="weui-picker__content swiper-wrapper" style={this.wrapperStyle}>
           {
             this.options.map((option, index) => (

@@ -82,7 +82,8 @@ $picker-item-height: 58px;
   height: 56px;
   position: absolute;
   left: 0;
-  top: 92px;
+  top: 50%;
+  transform: translateY(-28px);
   z-index: 3;
 
   &::before {
@@ -630,4 +631,10 @@ button.swiper-pagination-bullet {
   z-index: 0;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+
+// TODO
+.swiper-container {
+  //background-color: #f00;
 }
