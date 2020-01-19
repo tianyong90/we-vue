@@ -45,7 +45,7 @@
 export default {
   data () {
     return {
-      fruitPickerShow: false,
+      fruitPickerShow: true,
       ticketPickerShow: false,
       dayPickerShow: false,
       fruit: [{ name: 'Banana', price: 2.0 }],

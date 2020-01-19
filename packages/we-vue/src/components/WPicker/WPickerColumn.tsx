@@ -19,7 +19,7 @@ type Options = Option[]
 const range: (num: number, min: number, max: number) => number = (num, min, max) => Math.min(Math.max(num, min), max)
 
 // height of th option item
-const ITEM_HEIGHT = 34
+const ITEM_HEIGHT = 58
 // default transition
 const DEFAULT_TRANSITION = 'all 150ms ease'
 

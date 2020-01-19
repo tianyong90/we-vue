@@ -206,24 +206,33 @@ export default mixins(ToaaleableFactory('visible', 'update:visible')).extend({
       <div>
         <div vShow={this.isActive} class="weui-mask weui-animate-fade-in" onClick={this.onClickMask} />
         <transition enter-active-class="weui-animate-slide-up" leave-active-class="weui-animate-slide-down">
-          <div vShow={this.isActive} class="weui-picker">
-            <div class="weui-picker__hd">
-              <div class="weui-picker__action" onClick={this.onCancel} domPropsTextContent={this.cancelText} />
-              <div class="weui-picker__action" onClick={this.onConfirm} domPropsTextContent={this.confirmText} />
+          <div vShow={this.isActive} class="weui-half-screen-dialog weui-picker weui-animate-slide-up">
+            <div class="weui-half-screen-dialog__hd">
+              <div class="weui-half-screen-dialog__hd__side">
+                <button class="weui-icon-btn weui-icon-btn_close weui-picker__btn" onClick={this.onCancel}>关闭</button>
+              </div>
+              <div class="weui-half-screen-dialog__hd__main"><strong class="weui-half-screen-dialog__title">单列选择器</strong>
+              </div>
             </div>
-            <div class="weui-picker__bd" style={this.pickerBodyStyle}>
-              {(this.simple ? [this.columns] : this.columns).map((column, index) => (
-                <WPickerColumn
-                  key={index}
-                  options={this.simple ? column : (column as any).options}
-                  valueKey={this.valueKey}
-                  defaultIndex={(column as any).defaultIndex}
-                  visibleItemCount={this.visibleItemCount}
-                  onChange={() => {
-                    this.columnValueChange(index)
-                  }}
-                />
-              ))}
+
+            <div class="weui-half-screen-dialog__bd">
+              <div class="weui-picker__bd" style={this.pickerBodyStyle}>
+                {(this.simple ? [this.columns] : this.columns).map((column, index) => (
+                  <WPickerColumn
+                    key={index}
+                    options={this.simple ? column : (column as any).options}
+                    valueKey={this.valueKey}
+                    defaultIndex={(column as any).defaultIndex}
+                    visibleItemCount={this.visibleItemCount}
+                    onChange={() => {
+                      this.columnValueChange(index)
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+            <div class="weui-half-screen-dialog__ft">
+              <a href="javascript:;" class="weui-btn weui-btn_primary weui-picker__btn" id="weui-picker-confirm" data-action="select">确定</a>
             </div>
           </div>
         </transition>
