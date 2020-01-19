@@ -79,7 +79,6 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new ForkTsChecker({
       checkSyntacticErrors: true,
-      tslint: true,
       formatter: 'codeframe',
       tsconfig: resolve('../tsconfig.json'),
     }),
