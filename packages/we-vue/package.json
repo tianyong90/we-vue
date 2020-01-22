@@ -54,12 +54,10 @@
   "lint-staged": {
     "*.{js,ts,tsx,vue}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.scss": [
-      "stylelint --fix",
-      "git add"
+      "stylelint --fix"
     ]
   },
   "dependencies": {
