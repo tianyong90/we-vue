@@ -12,15 +12,14 @@ import { mapState } from 'vuex'
 import Header from '@/components/header.vue'
 
 export default Vue.extend({
+  components: {
+    Header,
+  },
   head() {
     return {
       // 酷暑模板
       titleTemplate: `%s - WE-VUE`,
     }
-  },
-
-  components: {
-    Header,
   },
 
   computed: {

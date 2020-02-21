@@ -12,7 +12,7 @@ interface options extends Vue {
 export default mixins<options &
   ExtractVue<[typeof PopupMixin]>
 >(
-  PopupMixin
+  PopupMixin,
   /* @vue/component */
 ).extend({
   name: 'w-popup',

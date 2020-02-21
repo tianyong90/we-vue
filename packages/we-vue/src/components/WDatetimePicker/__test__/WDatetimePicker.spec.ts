@@ -80,37 +80,41 @@ describe('datetime-picker', () => {
     expect(wrapper.vm.getTrueValue('A2018年')).toBe(2018)
   })
 
-  test('onConfirm', done => {
-    const wrapper = mount(WDatetimePicker, {
-      propsData: {},
-    })
+  test('onConfirm', () => {
+    return new Promise(done => {
+      const wrapper = mount(WDatetimePicker, {
+        propsData: {},
+      })
 
-    wrapper.vm.$nextTick(() => {
-      wrapper
-        .findAll('.weui-picker__action')
-        .at(1)
-        .trigger('click')
+      wrapper.vm.$nextTick(() => {
+        wrapper
+          .findAll('.weui-picker__action')
+          .at(1)
+          .trigger('click')
 
-      expect(wrapper.vm.isActive).toBe(false)
-      expect(wrapper.emitted().confirm).toBeTruthy()
-      done()
+        expect(wrapper.vm.isActive).toBe(false)
+        expect(wrapper.emitted().confirm).toBeTruthy()
+        done()
+      })
     })
   })
 
-  test('onCancel', done => {
-    const wrapper = mount(WDatetimePicker, {
-      propsData: {},
-    })
+  test('onCancel', () => {
+    return new Promise(done => {
+      const wrapper = mount(WDatetimePicker, {
+        propsData: {},
+      })
 
-    wrapper.vm.$nextTick(() => {
-      wrapper
-        .findAll('.weui-picker__action')
-        .at(0)
-        .trigger('click')
+      wrapper.vm.$nextTick(() => {
+        wrapper
+          .findAll('.weui-picker__action')
+          .at(0)
+          .trigger('click')
 
-      expect(wrapper.vm.isActive).toBe(false)
-      expect(wrapper.emitted().cancel).toBeTruthy()
-      done()
+        expect(wrapper.vm.isActive).toBe(false)
+        expect(wrapper.emitted().cancel).toBeTruthy()
+        done()
+      })
     })
   })
 
@@ -127,7 +131,7 @@ describe('datetime-picker', () => {
     await wrapper.vm.$nextTick()
 
     const [hourColumn, minuteColumn] = wrapper.findAll(
-      '.weui-picker__group'
+      '.weui-picker__group',
     ).wrappers
 
     slowVerticalDrag(hourColumn, 0, -34)
@@ -177,7 +181,7 @@ describe('datetime-picker', () => {
     slowVerticalDrag(minuteColumn, 0, -34)
 
     expect(wrapper.vm.internalValue.getFullYear()).toBe(
-      testDate.getFullYear() + 1
+      testDate.getFullYear() + 1,
     )
     expect(wrapper.vm.internalValue.getMonth()).toBe(testDate.getMonth() + 1)
     expect(wrapper.vm.internalValue.getDate()).toBe(testDate.getDate() + 1)
@@ -199,7 +203,7 @@ describe('datetime-picker', () => {
     await wrapper.vm.$nextTick()
 
     const [yearColumn, monthColumn, dateColumn] = wrapper.findAll(
-      '.weui-picker__group'
+      '.weui-picker__group',
     ).wrappers
 
     slowVerticalDrag(yearColumn, 0, -34)
@@ -207,7 +211,7 @@ describe('datetime-picker', () => {
     slowVerticalDrag(dateColumn, 0, -34)
 
     expect(wrapper.vm.internalValue.getFullYear()).toEqual(
-      testDate.getFullYear() + 1
+      testDate.getFullYear() + 1,
     )
     expect(wrapper.vm.internalValue.getMonth()).toEqual(testDate.getMonth() + 1)
     expect(wrapper.vm.internalValue.getDate()).toEqual(testDate.getDate() + 1)

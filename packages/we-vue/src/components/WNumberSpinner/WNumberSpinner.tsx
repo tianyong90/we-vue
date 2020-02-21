@@ -97,7 +97,7 @@ export default Vue.extend<options>().extend({
           currentValue = 0
         }
         this.setValue(
-          Math.min(this.max, Math.max(this.min, currentValue - this.step))
+          Math.min(this.max, Math.max(this.min, currentValue - this.step)),
         )
       }
     },
@@ -109,7 +109,7 @@ export default Vue.extend<options>().extend({
           currentValue = 0
         }
         this.setValue(
-          Math.min(this.max, Math.max(this.min, currentValue + this.step))
+          Math.min(this.max, Math.max(this.min, currentValue + this.step)),
         )
       }
     },
@@ -122,7 +122,7 @@ export default Vue.extend<options>().extend({
       if (
         !this.fillable ||
         !/^-?(\d+|\d+\.\d+|\.\d+)([eE][-+]?\d+)?$/.test(
-          e.clipboardData!.getData('text')
+          e.clipboardData!.getData('text'),
         )
       ) {
         e.preventDefault()

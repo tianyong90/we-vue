@@ -351,7 +351,7 @@ describe('picker-column', () => {
       slowVerticalDrag(columnWrapper, 0, 100)
       expect(columnWrapper.vm.currentIndex).toBe(0)
     },
-    15000
+    15000,
   )
 
   test('click slot to change the current-value', () => {

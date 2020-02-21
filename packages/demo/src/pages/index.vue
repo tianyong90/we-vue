@@ -58,7 +58,7 @@ export default {
   computed: {
     filterResult () {
       return this.componentList.filter(value =>
-        new RegExp(this.keyword, 'i').test(value.name)
+        new RegExp(this.keyword, 'i').test(value.name),
       )
     },
   },

@@ -6,7 +6,7 @@ import mixins from '@/utils/mixins'
 import { VNode } from 'vue'
 
 export default mixins(
-  PopupMixin
+  PopupMixin,
 ).extend({
   name: 'w-toast',
 

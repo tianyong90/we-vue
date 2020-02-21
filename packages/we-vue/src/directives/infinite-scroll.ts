@@ -67,7 +67,7 @@ const infiniteScroll = {
       target.addEventListener('scroll', listener, true)
 
       const immediateCheckExpr = el.getAttribute(
-        'infinite-scroll-immediate-check'
+        'infinite-scroll-immediate-check',
       )
 
       const immediateCheck = immediateCheckExpr

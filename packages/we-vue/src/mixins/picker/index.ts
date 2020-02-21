@@ -7,7 +7,7 @@ import mixins, { ExtractVue } from '@/utils/mixins'
 export default mixins<
   ExtractVue<[typeof Toggleable]>
 >(
-  ToggleableFactory('visible', 'update:visible')
+  ToggleableFactory('visible', 'update:visible'),
 ).extend({
   name: 'picker',
 

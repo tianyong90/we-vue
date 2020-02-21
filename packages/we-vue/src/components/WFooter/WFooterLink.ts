@@ -6,7 +6,7 @@ import mixins from '@/utils/mixins'
 
 /* @vue/component */
 export default mixins(
-  Routeable
+  Routeable,
 ).extend({
   name: 'w-footer-link',
 

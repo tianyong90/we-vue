@@ -15,7 +15,7 @@ interface options extends Vue {
 export default mixins<options &
   ExtractVue<[typeof Touchable]>
 >(
-  Touchable
+  Touchable,
 ).extend({
   props: {
     // whether to show popup

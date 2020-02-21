@@ -60,20 +60,6 @@ export default Vue.extend({
     WevueDemo,
   },
 
-  head() {
-    return {
-      title: this.attributes.title + ' - we-vue',
-      meta: [{ hid: 'keywords', name: 'keywords', content: this.attributes.keywords }],
-    }
-  },
-
-  data() {
-    return {
-      demoUrl: '//demo.wevue.org',
-      sidebarTop: 71,
-    }
-  },
-
   async asyncData({ params }) {
     const { version, title } = params
 
@@ -103,6 +89,13 @@ export default Vue.extend({
     }
   },
 
+  data() {
+    return {
+      demoUrl: '//demo.wevue.org',
+      sidebarTop: 71,
+    }
+  },
+
   created() {},
 
   mounted() {
@@ -113,6 +106,13 @@ export default Vue.extend({
     const containerSidebar = document.getElementById('sidebarWrapper') as HTMLElement
     const sidebarActiveItem = document.querySelector('#sidebarWrapper .current')
     containerSidebar.scrollTop = (sidebarActiveItem as HTMLElement).offsetTop
+  },
+
+  head() {
+    return {
+      title: this.attributes.title + ' - we-vue',
+      meta: [{ hid: 'keywords', name: 'keywords', content: this.attributes.keywords }],
+    }
   },
 })
 </script>

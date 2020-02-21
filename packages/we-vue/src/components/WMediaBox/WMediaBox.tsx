@@ -5,7 +5,7 @@ import Routeable from '@/mixins/routable'
 import mixins from '@/utils/mixins'
 
 export default mixins(
-  Routeable
+  Routeable,
   /* @vue/component */
 ).extend({
   name: 'w-media-box',

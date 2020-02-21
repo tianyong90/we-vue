@@ -8,7 +8,7 @@ import WSwitch from '../WSwitch'
 import Toggleable from '@/mixins/toggleable'
 
 export default mixins(
-  Toggleable
+  Toggleable,
 ).extend({
   name: 'w-switch-cell',
 

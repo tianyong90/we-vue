@@ -22,7 +22,7 @@ export function on (target: Element | Window | Document, event: string, handler:
     target.addEventListener(
       event,
       handler,
-      supportsPassive ? { capture: false, passive } : false
+      supportsPassive ? { capture: false, passive } : false,
     )
 }
 

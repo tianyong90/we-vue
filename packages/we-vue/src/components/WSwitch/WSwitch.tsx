@@ -11,7 +11,7 @@ import Toggleable from '@/mixins/toggleable'
 const THUMB_STROKE = 20
 
 export default mixins(
-  Toggleable
+  Toggleable,
 ).extend({
   name: 'w-switch',
 

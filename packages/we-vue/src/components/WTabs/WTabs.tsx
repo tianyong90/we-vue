@@ -31,7 +31,7 @@ interface options extends Vue {
 export default mixins<options &
   ExtractVue<[typeof Touchable]>
 >(
-  Touchable
+  Touchable,
 ).extend({
   name: 'w-tabs',
 
@@ -342,7 +342,7 @@ export default mixins<options &
         nav,
         scrollLeft,
         offsetLeft - (navWidth - tabWidth) / 2,
-        immediate
+        immediate,
       )
     },
 

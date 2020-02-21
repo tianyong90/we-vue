@@ -5,7 +5,7 @@ import mixins from '@/utils/mixins'
 import Routeable from '@/mixins/routable'
 
 export default mixins(
-  Routeable
+  Routeable,
 ).extend({
   name: 'w-tabbar-item',
 

@@ -46,7 +46,7 @@ const isValidDate = (date: any) =>
 export default mixins<options &
   ExtractVue<[typeof Picker]>
 >(
-  Picker
+  Picker,
 ).extend({
   name: 'w-datetime-picker',
 
@@ -158,7 +158,7 @@ export default mixins<options &
           options: this.fillColumnOptions(
             rangeKey,
             (this.ranges as any)[rangeKey][0],
-            (this.ranges as any)[rangeKey][1]
+            (this.ranges as any)[rangeKey][1],
           ),
         })
       }
@@ -254,14 +254,14 @@ export default mixins<options &
         startMonth - 1,
         startDate,
         startHour,
-        startMinute
+        startMinute,
       )
       const endDay = new Date(
         endYear,
         endMonth - 1,
         endDate,
         endHour,
-        endMinute
+        endMinute,
       )
       value = Math.min(Math.max((value as Date).getTime(), startDay.getTime()), endDay.getTime())
 
@@ -300,7 +300,7 @@ export default mixins<options &
       for (let i = start; i <= end; i++) {
         if (i < 10) {
           options.push(
-            (this as any)[`${type}Format`].replace('{value}', ('0' + i).slice(-2))
+            (this as any)[`${type}Format`].replace('{value}', ('0' + i).slice(-2)),
           )
         } else {
           options.push((this as any)[`${type}Format`].replace('{value}', i))
@@ -365,7 +365,7 @@ export default mixins<options &
           this.yearFormat.replace('{value}', `${(value as Date).getFullYear()}`),
           this.monthFormat.replace(
             '{value}',
-            `0${(value as Date).getMonth() + 1}`.slice(-2)
+            `0${(value as Date).getMonth() + 1}`.slice(-2),
           ),
           this.dateFormat.replace('{value}', `0${(value as Date).getDate()}`.slice(-2)),
         ]
@@ -373,12 +373,12 @@ export default mixins<options &
           values.push(
             this.hourFormat.replace(
               '{value}',
-              `0${(value as Date).getHours()}`.slice(-2)
+              `0${(value as Date).getHours()}`.slice(-2),
             ),
             this.minuteFormat.replace(
               '{value}',
-              `0${(value as Date).getMinutes()}`.slice(-2)
-            )
+              `0${(value as Date).getMinutes()}`.slice(-2),
+            ),
           )
         }
       }

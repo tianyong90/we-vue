@@ -19,7 +19,7 @@ interface options extends Vue {
 export default mixins<options &
   ExtractVue<[typeof Routable]>
 >(
-  Routable
+  Routable,
 ).extend({
   name: 'w-cell-swipe',
 

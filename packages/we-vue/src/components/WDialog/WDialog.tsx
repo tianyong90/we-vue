@@ -7,7 +7,7 @@ const CANCEL_TEXT = '取消'
 type action = 'cancel' | 'confirm'
 
 export default mixins(
-  PopupMixin
+  PopupMixin,
 ).extend({
   name: 'w-dialog',
 
