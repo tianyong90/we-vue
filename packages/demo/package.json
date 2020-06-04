@@ -22,11 +22,11 @@
     "@vue/cli-service": "^4.0.4",
     "@vue/eslint-config-standard": "^5.0.1",
     "babel-eslint": "^10.0.1",
-    "eslint": "^6.4.0",
+    "eslint": "^7.1.0",
     "eslint-plugin-vue": "^6.1.1",
     "sass": "^1.18.0",
     "sass-loader": "^8.0.0",
-    "source-map-loader": "^0.2.4",
+    "source-map-loader": "^1.0.0",
     "tailwindcss": "^1.1.4",
     "vue-clickaway": "^2.2.2",
     "vue-template-compiler": "^2.5.21"
