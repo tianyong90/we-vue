@@ -22,8 +22,9 @@ $picker-item-height: 58px;
 .weui-picker__hd {
   display: flex;
   padding: 16px;
-  padding: 16px calc(16px ~ "+ constant(safe-area-inset-right)") 16px calc(16px ~ "+ constant(safe-area-inset-left)");
-  padding: 16px calc(16px ~ "+ env(safe-area-inset-right)") 16px calc(16px ~ "+ env(safe-area-inset-left)");
+  /*TODO:*/
+  /*padding: 16px calc(16px ~ "+ constant(safe-area-inset-right)") 16px calc(16px ~ "+ constant(safe-area-inset-left)");
+  padding: 16px calc(16px ~ "+ env(safe-area-inset-right)") 16px calc(16px ~ "+ env(safe-area-inset-left)");*/
   position: relative;
   text-align: center;
   font-size: 17px;

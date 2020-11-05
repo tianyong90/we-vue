@@ -6,8 +6,6 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const resolve = file => require('path').resolve(__dirname, file)
-
 const scssLoaders = [
   {
     loader: MiniCssExtractPlugin.loader,
@@ -36,9 +34,6 @@ module.exports = {
       vue$: 'vue/dist/vue.esm.js',
       '@': path.join(__dirname, '../src'),
     },
-  },
-  node: {
-    fs: 'empty',
   },
   stats: {
     children: false,
