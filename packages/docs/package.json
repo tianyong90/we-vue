@@ -41,7 +41,7 @@
     "babel-jest": "^26.0.1",
     "change-case": "^4.1.1",
     "docsearch.js": "^2.6.3",
-    "eslint": "^7.1.0",
+    "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-standard": "^16.0.1",
     "eslint-loader": "^4.0.2",
