@@ -21,13 +21,13 @@ we-vue 是一套基于 Vue.js 的移动关组件库，结合 weui 官方样式�
 * 详细的在线文档和示例
 * 支持 Typescript
 
-### [在线文档（https://wevue.org）](https://wevue.org)
+<!-- ### [在线文档（https://wevue.org）](https://wevue.org)
 
-### [在线示例（https://demo.wevue.org）](https://demo.wevue.org)
+### [在线示例（https://demo.wevue.org）](https://demo.wevue.org) -->
 
-<div align="center">
+<!-- <div align="center">
   <img src="https://raw.githubusercontent.com/tianyong90/we-vue/master/images/qrcode-demo.png" width="180">
-</div>
+</div> -->
 
 ## 安装
 
